@@ -28,6 +28,13 @@ $users = $userRepository->fetchAll();
 </header>
 
 <div class="container">
+
+	<div id="search">
+		<form>
+		Trouve le spot le plus près : <input type="text" name="ville" value="Ville">
+		</form>
+	</div>
+
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
