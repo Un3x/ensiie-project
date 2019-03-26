@@ -20,7 +20,7 @@ stop:
 	docker-compose down -v
 	docker-compose rm -v
 
-install: uninstall start composer.install db.install
+install: start composer.install db.install
 
 uninstall: stop
 	@sudo rm -rf postgres-data
