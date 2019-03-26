@@ -24,6 +24,11 @@ class User
     private $birthday;
 
     /**
+     * @var string
+     */
+    private $location;
+
+    /**
      * @return int
      */
     public function getId()
@@ -110,5 +115,15 @@ class User
 
         return $now->diff($this->getBirthday())->y;
     }
+
+    /**
+     * @return string
+     * @throws \NoStringException
+     */
+    public function getLocation(): string 
+    {
+        
+    }
+    
 }
 

@@ -35,6 +35,7 @@ $users = $userRepository->fetchAll();
                 <td><?php echo $user->getFirstname() ?></td>
                 <td><?php echo $user->getLastname() ?></td>
                 <td><?php echo $user->getAge() ?> years</td>
+                <td><?php echo $user->getLocation() ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
