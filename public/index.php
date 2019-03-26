@@ -23,11 +23,11 @@ $users = $userRepository->fetchAll();
 </head>
 <body>
 
-<div class="container">
-    <header>
-	<?php header_login(); ?>
-    </header>
+<header>
+    <?php header_login(); ?>
+</header>
 
+<div class="container">
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
