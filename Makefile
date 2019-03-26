@@ -3,7 +3,7 @@ normal=$(shell (tput sgr0))
 .DEFAULT_GOAL=help
 DISTRIB:=$(shell lsb_release -is | tr '[:upper:]' '[:lower:]')
 VERSION:=$(shell lsb_release -cs)
-ARCHITECTURE:=$(shell dpkg --print-architecture)
+ARCHITECTURE:=$(shell uname -m)
 
 help:
 	@echo "${bold}install${normal}\n\t Installs the whole appplication.\n"
@@ -23,7 +23,7 @@ stop:
 install: uninstall start composer.install db.install
 
 uninstall: stop
-	@sudo rm -rf postgres-data
+	@rm -rf postgres-data
 
 reinstall: install
 
