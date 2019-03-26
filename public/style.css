@@ -1,4 +1,17 @@
 #top-bar {
-	color:white;
-	background-color: black;
+	top: 50%;
+	position: absolute;
+	color:black;
+	background-color: powderblue;
+	height: 50px;
+	text-align: left;
+}
+
+#banniere {
+	border: 2px solid black;
+	height: 100px;
+}
+
+.flex-container {
+	position: relative;
 }
