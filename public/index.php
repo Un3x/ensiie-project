@@ -27,6 +27,7 @@ $users = $userRepository->fetchAll();
             <td>Firstname</td>
             <td>Lastname</td>
             <td>Age</td>
+            <td>Location</td>
         </thead>
         <?php /** @var \User\User $user */
         foreach ($users as $user) : ?>

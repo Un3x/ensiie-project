@@ -26,7 +26,8 @@ class UserRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->location);
 
             $users[] = $user;
         }

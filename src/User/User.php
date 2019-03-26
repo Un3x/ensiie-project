@@ -117,12 +117,21 @@ class User
     }
 
     /**
+     * @param $location
+     * @return User
+     */
+    public function setLocation($location){
+        $this->location=$location;
+        return this;
+    }
+
+    /**
      * @return string
      * @throws \NoStringException
      */
     public function getLocation(): string 
     {
-        
+        return $this->$location;
     }
     
 }
