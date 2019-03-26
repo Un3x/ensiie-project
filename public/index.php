@@ -43,5 +43,6 @@ $users = $userRepository->fetchAll();
 
     </table>
 </div>
+<?php include ('footer.php'); footer();?>
 </body>
 </html>
