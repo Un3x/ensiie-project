@@ -2,6 +2,7 @@
 require '../vendor/autoload.php';
 //require '../src/User/UserRepository.php';
 //require '../src/User/User.php';
+include ('view.php');
 
 //postgres
 $dbName = getenv('DB_NAME');
@@ -17,13 +18,17 @@ $users = $userRepository->fetchAll();
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 <title>Move it !</title>
 </head>
 <body>
 
 <div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
+    <header>
+	<?php header_login(); ?>
+    </header>
 
+    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
             <td>#</td>
