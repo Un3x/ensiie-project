@@ -1,19 +1,39 @@
+/*TODO FINIR LES DB*/
 CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+    id id_user VARCHAR PRIMARY KEY,
+    firstname VARCHAR NOT NULL,
+    lastname VARCHAR NOT NULL,
+    birthday date,
+    city VARCHAR,
+    yop INT,
+    mail VARCHAR,
+    phone VARCHAR,
+    current_training VARCHAR,
+
+    CHECK (yop BETWEEN 0 AND 100)
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
+INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Thomas', 'GUITTON', '1998-08-31', 'Evry', 2,'guittonthomas41@gmail.com', '0606426456');
+INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Charles', 'Anteunis', '1998-02-26', 'Evry', 3, 'charles.anteunis@gmail.com','','Dame du Lac');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+
+
+CREATE TABLE "spot"(
+       nom VARCHAR PRIMARY KEY
+       latitude VARCHAR NOT NULL,
+       longitude VARCHAR NOT NULL
+);
+
+INSERT INTO "spot"(latitude, longitude) VALUES ('48.623169575973634', '2.4283207872682624');
+INSERT INTO "spot"(latitude, longitude) VALUES ('47.21167517573434','-1.5615792589997');
+
+CREATE TABLE "move"(
+       nom PRIMARY KEY,
+       difficulte INT,
+
+       CHECK (difficulte BETWEEN 0 AND 5)
+);
+
+CREATE TABLE "spotXmove"(
+       
+);
