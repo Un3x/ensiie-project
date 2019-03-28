@@ -1,11 +1,14 @@
 #top-bar {
 	background-color: powderblue;
-	height: 50px;
+	height: 60px;
 	position: sticky;
 	top: 0;
+	margin-bottom: 0px;
+	width: 100%;
 }
 
 #logo {
+	font-size: 160%;
 	color: black;
 	left: 10px;
 	top: 50%;
@@ -14,30 +17,76 @@
 }
 
 #connexion {
+	font-size: 110%;
 	color: white;
 	right: 10px;
-	padding: 3px;
+	padding: 10px;
 	top: 50%;
 	position: absolute;
 	transform: translateY(-50%);
-	display: box;
-	background-color: blue;
+	display: block;
+	background-color: gray;
+	border-radius: 5px;
+}
+
+#connexion-link {
+	color:white;
 }
 
 #banniere {
-	border: 1px solid gray;
-	height: 202px;
-	background-image: url("banniere.jpg");
+	height: 200px;
+	background-position: 0px 50px;
+	background-image: url("banniere3.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: cover;
+
 }
 
 .flex-container {
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.article {
+	background-color: white;
+	border: 0px solid lightgray;
+	width: 600px;
+	height: 600px;
+	padding: 10px;
+	box-shadow: 0px 0px 4px lightgray;
+}
+
+.article-container {
+
 }
 
 footer {
 	height: 200px;
 	background-color: black;
 	color: white;
+}
+
+#search {
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	width: 600px;
+	display: block;
+}
+
+input[type="text"] {
+	margin-top: 8px;
+	border-radius: 0px;
+	border: 0px;
+	width: 600px;
+	height: 45px;
+	background-color: powderblue;
+	box-shadow: 1px 1px 4px lightgray;
+}
+
+body {
+	margin: 0;
+	background-color: #e8e8ee;
 }

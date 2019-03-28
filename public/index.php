@@ -17,24 +17,64 @@ $users = $userRepository->fetchAll();
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-<title>Move it !</title>
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+    <?php my_head(); ?>
 </head>
 <body>
 
-<header>
     <?php header_login(); ?>
-</header>
 
 <div class="container">
 
 	<div id="search">
-		<form>
-		Trouve le spot le plus près : <input type="text" name="ville" value="Ville">
+		<form action="map.php">
+		<span style="font-size:160%">Trouve le spot le plus près de chez toi :</br></span>
+		<input style="font-size:160%" type="text" name="ville" placeholder=" Entrez votre ville">
 		</form>
 	</div>
 
+	<div class="flex-container" class="article-container">
+		<div class="article">
+			<h3>Titre de l'article n°1</h3>
+			<p>
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+			</p>
+		</div>
+		<div class="article">
+			<h3>Titre de l'article n°2</h3>
+			<p>
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
+			</p>
+		</div>
+	</div>
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
@@ -43,7 +83,7 @@ $users = $userRepository->fetchAll();
             <td>Lastname</td>
             <td>Age</td>
         </thead>
-      <?php /** @var \User\User $user */ 
+      <?php /** @var \User\User $user */
         foreach ($users as $user) : ?>
             <tr>
                 <td><?php echo $user->getId() ?></td>

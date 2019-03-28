@@ -1,20 +1,26 @@
-<?php 
+<?php
 
 function header_login() {
 	echo "
-	<div class=\"flex-container\">
+
 		<div id=\"top-bar\">
 			<div id=\"logo\">
-			LOGO
+			<a href=\"index.php\">LOGO</a> Move IT!
 			</div>
 			<div id=\"connexion\">
-			CONNEXION
+			<a id=\"connexion-link\" href=#>CONNEXION</a>
 			</div>
 		</div>
 		<div id=\"banniere\">
-			
+
 		</div>
-	</div>
+	";
+}
+
+function my_head() {
+	echo "
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">
+		<title>Move it !</title>
 	";
 }
 
