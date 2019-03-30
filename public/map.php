@@ -13,7 +13,7 @@
 		<div id="search">
 			<form action="map.php">
 			<span style="font-size:160%">Cherches à un autre endroit :</br></span>
-			<input style="font-size:160%" type="text" name="ville" placeholder=" Entrez votre ville">
+			<input style="font-size:160%; padding-left:10px" type="text" name="ville" placeholder="Entrez votre ville">
 			</form>
 		</div>
 		Vous avez choisi cette ville : <?php echo $ville; ?></br>

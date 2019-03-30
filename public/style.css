@@ -1,5 +1,5 @@
 #top-bar {
-	background-color: powderblue;
+	background-color: #81d4fa;
 	height: 60px;
 	position: sticky;
 	top: 0;
@@ -10,7 +10,7 @@
 #logo {
 	font-size: 160%;
 	color: black;
-	left: 10px;
+	left: 70px;
 	top: 50%;
 	position: absolute;
 	transform: translateY(-50%);
@@ -25,14 +25,60 @@
 	position: absolute;
 	transform: translateY(-50%);
 	display: block;
-	background-color: gray;
+	background-color: #0277bd;
 	border-radius: 5px;
+}
+
+#connexion :hover {
+	font-size: 100%;
+	right: 0px;
+	padding: 10px;
+	top: 50%;
+	position: absolute;
+	transform: translateY(-50%);
+	display: block;
+	background-color: #01579b;
+	border-radius: 5px;
+
 }
 
 #connexion-link {
 	color:white;
+	display: block;
 }
 
+#menu {
+	font-size: 110%;
+	color: black;
+	right: 130px;
+	width: 150px;
+	padding: 10px 10px;
+	top: 50%;
+	position: absolute;
+	transform: translateY(-50%);
+	display: inline-block;
+}
+
+#menu:hover {
+	background-color: gray;
+}
+
+.dropdown-content {
+	color: black;
+	background-color: gray;
+	display: none;
+	position: absolute;
+	min-width: 150px;
+	z-index: 1;
+}
+.dropdown-content a {
+	padding: 10px 10px;
+	color: black;
+	display: block;
+}
+.dropdown:hover .dropdown-content{
+	display: block;
+}
 #banniere {
 	height: 200px;
 	background-position: 0px 50px;
@@ -82,11 +128,23 @@ input[type="text"] {
 	border: 0px;
 	width: 600px;
 	height: 45px;
-	background-color: powderblue;
+	background-color: #81d4fa;
 	box-shadow: 1px 1px 4px lightgray;
 }
 
 body {
 	margin: 0;
 	background-color: #e8e8ee;
+	font-family: 'Roboto', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+li {
+	list-style-position: inherit;
 }

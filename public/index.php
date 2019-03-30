@@ -19,6 +19,7 @@ $users = $userRepository->fetchAll();
     <!-- Latest compiled and minified CSS -->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <?php my_head(); ?>
+
 </head>
 <body>
 
@@ -29,7 +30,7 @@ $users = $userRepository->fetchAll();
 	<div id="search">
 		<form action="map.php">
 		<span style="font-size:160%">Trouve le spot le plus près de chez toi :</br></span>
-		<input style="font-size:160%" type="text" name="ville" placeholder=" Entrez votre ville">
+		<input style="font-size:160%; padding-left:10px" type="text" name="ville" placeholder="Entrez votre ville">
 		</form>
 	</div>
 
