@@ -34,7 +34,7 @@ $users = $userRepository->fetchAll();
 		</form>
 	</div>
 
-	<div class="flex-container" class="article-container">
+	<div class="article-container">
 		<div class="article">
 			<h3>Titre de l'article n°1</h3>
 			<p>

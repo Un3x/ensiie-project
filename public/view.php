@@ -3,13 +3,13 @@
 function header_login() {
 	echo "
 
-		<div id=\"top-bar\">
-			<a href=\"index.php\"><img src=\"logo.png\" height=\"60\"></a>
+		<div id=\"top-bar\" class=\"flex-container\">
+			<div><a href=\"index.php\"><img src=\"logo.png\" height=\"60\"></a></div>
 			<div id=\"logo\">
 			Move IT!
 			</div>
-			<div id=\"menu\" class=\"dropdown\">
-			MENU
+			<div class=\"dropdown\">
+			<button class=\"bouton\">Mon compte</button>
 				<div class=\"dropdown-content\">
 					<a href=\"#\">Les menus !</a>
 					<a href=\"#\">et un autre</a>
@@ -17,7 +17,7 @@ function header_login() {
 				</div>
 			</div>
 			<div id=\"connexion\">
-			<a id=\"connexion-link\" href=#>CONNEXION</a>
+			<button class=\"bouton\"><a href=\"#\">Connexion</a></button>
 			</div>
 		</div>
 		<div id=\"banniere\">
