@@ -8,7 +8,8 @@ function enTete($titre)
     print "    <meta charset=\"utf-8\" />\n";
     print "    <title>$titre</title>\n";
     print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/affichage/user_head.css\"/>\n";
-    print "      <a href=\"signin.php\"> Sign In </a>";
+    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/User/signin.css\"/>\n";
+    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/affichage/carroussel.css\"/>\n";
     print "  </head>\n";
   
     print "  <body>\n";
@@ -35,7 +36,6 @@ function navigation(){
             <a href="cat3.php"> Cat_3 </a>
             <a href="contact.php"> Contact </a>
             <a href="aboutus.php"> About Us </a>
-            <a href="../src/User/signin.php"> Sign In </a>
             <button onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Login</button>
     </nav>
     ';

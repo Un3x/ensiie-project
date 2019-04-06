@@ -118,10 +118,10 @@ echo '
         </form>
         </div>
         </div>
-        
+        </div>
         <script src=”signin.js”>
         
-        </script>';
+        </script><br/>';
 }
 
 ?>
