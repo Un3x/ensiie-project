@@ -19,18 +19,25 @@ $users = $userRepository->fetchAll();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/general.css">
 	<title> Points assos IIE </title>
 </head>
 <body>
 <nav>
 	<ul>
 		<li><a href="/"> Accueil </a></li>
-		<li><a href="/"> Connexion AriseID </a><li>
+		<li><a href="http://oauth.iiens.net/authorize.php?token=2fe342c035ff8220ecc811176be06e90"> Connexion AriseID </a><li>
 	</ul>
 </nav>
-<h1> Bienvenue sur le site où on gratte ses points asso' pour valider le semestre ! </h1>
-<footer> Attention ce site n'est pas fait pour les fantômes... <footer>
-<!-- example php : 
+<h1 id="MainTitle"> <label> Bienvenue sur le site où on gratte ses points asso' pour valider le semestre ! </label> </h1>
+
+
+
+
+
+
+
+<!-- example php :--> 
 <div class="container">
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
 
@@ -52,7 +59,8 @@ $users = $userRepository->fetchAll();
         <?php endforeach; ?>
     </table>
 </div>
--->
 
+
+<footer> Attention ce site n'est pas fait pour les fantômes... </footer>
 </body>
 </html>

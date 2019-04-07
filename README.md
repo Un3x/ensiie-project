@@ -28,3 +28,14 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+
+
+## Oauth
+
+Identifiant :
+bbef9fe3dba5bb488e3433e275e97f61
+Secret partagé :
+4b6289c7ae8ef153038b9b4a6c1473a1
+Clé privée de l'application :
+2fe342c035ff8220ecc811176be06e90
