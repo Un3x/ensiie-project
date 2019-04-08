@@ -12,6 +12,7 @@ class User
      * @var string
      */
     private $firstname;
+	private $password;
 
     /**
      * @var string
@@ -19,9 +20,14 @@ class User
     private $lastname;
 
     /**
-     * @var \DateTimeInterface
+     * @var int
      */
-    private $birthday;
+	private $promo;
+
+	/**
+	 *  @var string
+	 */
+	private $pseudo;
 
     /**
      * @return int
@@ -76,39 +82,60 @@ class User
         $this->lastname = $lastname;
         return $this;
     }
+	
+	public function setPassword($password)
+	{
+		$this->password = $password;
+		return $this;
+	}
+
+	public function getPassword()
+	{
+		return $this->password;	
+	}
+
+	public function setPseudo($pseudo)
+	{
+		$this->pseudo = $pseudo;
+		return $this;
+	}
+	public function getPseudo()
+	{
+		return $this->pseudo;
+	}
 
     /**
-     * @return \DateTimeInterface
+     * @return int
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getPromo()
     {
-        return $this->birthday;
+        return $this->promo;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param int $promo
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setPromo($promo)
     {
-        $this->birthday = $birthday;
+        $this->promo = $promo;
         return $this;
     }
 
 
     /**
      * @return int
-     * @throws \OutOfRangeException
      */
-    public function getAge(): int
+    public function getAnnee(): int
     {
-        $now = new \DateTime();
+		$promo = $this->promo;
+		$before = strtotime('09/01/$promo');
 
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
-
-        return $now->diff($this->getBirthday())->y;
+		$age = date('Y')-$promo;
+		if (date('md') < date('md', $before)) {
+			return $age-1;
+		}
+		return $age;
     }
 }
 

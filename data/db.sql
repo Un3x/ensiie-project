@@ -24,22 +24,24 @@ create table users (
 	id_user serial primary key,
 	firstname varchar not null,
 	lastname varchar not null,
-	pseudo varchar not null,
+	pseudo varchar unique not null,
 	year int not null,
+	password varchar default 'default',
 	role varchar 
 );
 
 create table associations (
 	id_asso serial primary key,
 	name varchar not null,
-	president int references users(id_user)
+	president int references users(id_user),
+	coeff_asso int not null default 50 check (coeff_asso<=100 and coeff_asso>0)
 );
 
 create table events (
 	id_event serial primary key,
 	name varchar not null,
-	association int references associations(id_asso),
-	coeff int not null check (coeff<=1 and coeff>0)
+	id_asso int references associations(id_asso),
+	coeff_event int default 100 check (coeff_event<=100 and coeff_event>0)
 );
 
 create table score (
@@ -58,19 +60,33 @@ create table pointsassos (
 	primary key (id_user,id_asso)
 );
 
+create view pointsassos_prop as select id_user,id_asso,sum(a.point)/sum(a.coefficient) moyenne 
+from (select id_asso,id_event,id_user, notation*coeff_event point, coeff_event coefficient from score join events using (id_event)) a 
+group by id_asso,id_user;
 
-insert into users (firstname,lastname,pseudo,year) values ('Loïc','Dubard','Wikle','2018');
-insert into users(firstname,lastname,pseudo,year) values ('Quentin','Japhet','Samuh','2018');
-insert into associations(name,president) values ('Securitiie',1);
-insert into events(name,association,coeff) values ('reu',1,1); 
+create view leaderboard as select id_user,sum(a.point)/sum(a.coefficient) moyenne 
+from (select id_user,id_asso, moyenne*coeff_asso point, coeff_asso coefficient from pointsassos_prop join associations using (id_asso)) a
+group by a.id_user
+order by moyenne asc;
+
+insert into users (firstname,lastname,pseudo,year) values ('Loïc','Dubard','Wikle',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Quentin','Japhet','Samuh',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
+insert into associations(name,president,coeff_asso) values ('Securitiie',1,50);
+insert into events(name,id_asso,coeff_event) values ('reu',1,1); 
 insert into score(id_user,id_event,notation) values (1,1,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);
 
 /*pour q'un élève consulte ses points asso : 
-select name,notation from (pointsassos join associations using (id_asso)) where iduser=$iduser; --par assos
+select moyenne from leaderboard where id_user=$iduser; --la moyenne totale
+select name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user=$iduser; --par assos
 select name,association,notation from (score natural join events using (id_event) join associations using (id_asso)) where iduser=$iduser; --par evenements
 */
 
 /*pour qu'un élève modifie sa participation a un évènement
  
  */
+
+/*pour que le BDE ai le leaderboard
+select firstname,lastname,pseudo,year,moyenne from users join leaderboard using (id_user); 
+*/

@@ -1,6 +1,8 @@
 footer {
 	text-align:center;
 	bottom:0;
+	position:absolute;
+	width:100%;
 }
 
 h1 {
@@ -8,7 +10,17 @@ h1 {
 }
 
 #MainTitle {
-	
+	margin-top:20%;	
+}
+
+body {
+	min-height:100%;
+	position:relative;
+
+}
+
+html {
+	height:100%;	
 }
 
 nav {

@@ -22,17 +22,23 @@ class UserRepository
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
+			if ($row->password == 'default') {
+				$row->password = password_hash('default');
+			}
             $user
-                ->setId($row->id)
+                ->setId($row->id_user)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+				->setPseudo($row->pseudo)
+				->setPassword($row->password)
+                ->setPromo($row->year);
 
-            $users[] = $user;
+            $users[$user->getPseudo()] = $user;
         }
 
         return $users;
     }
 
-
+	
 }
+
