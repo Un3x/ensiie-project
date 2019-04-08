@@ -7,9 +7,9 @@ function enTete($titre)
     print "  <head>\n";
     print "    <meta charset=\"utf-8\" />\n";
     print "    <title>$titre</title>\n";
-    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/affichage/user_head.css\"/>\n";
-    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/User/signin.css\"/>\n";
-    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../src/affichage/carroussel.css\"/>\n";
+    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"user_head.css\"/>\n";
+    print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"signin.css\"/>\n";
+    //print "    <link rel=\"stylesheet\" type=\"text/css\" href=\"carroussel.css\"/>\n";
     print "  </head>\n";
   
     print "  <body>\n";
