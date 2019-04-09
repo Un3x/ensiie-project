@@ -23,7 +23,7 @@ function displayHeader(){
 
 <!--tout ce qui est affiché dans le menu si l'utilisateur est identifié-->
 	<li><a href="deauth.php"> Déconnexion du compte de <? echo $_SESSION["login"] ?></a></li>
-	<li><a href="profile.php"> Mon Profile </a></li>
+	<li><a href="profile.php"> Mon Profil </a></li>
 <!--fin de ce qui est affiché dans le menu si l'utilisateur est identifié-->
 <?php }
 echo "</ul></nav>";
