@@ -34,5 +34,14 @@ class UserRepository
         return $users;
     }
 
+    public function connexion($login, $password)
+    {
+	$rows = $this->connection->query('SELECT id FROM "user" WHERE mail='.$login.' AND password='.$password)->fetchAll(\PDO::FETCH_OBJ);
+	if ($rows) {
+	    return $rows[0];
+	}
+	else return $rows;
+
+    }
 
 }

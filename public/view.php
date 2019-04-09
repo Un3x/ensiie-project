@@ -11,13 +11,13 @@ function header_login() {
 			<div class=\"dropdown\">
 			<button class=\"bouton\">Mon compte</button>
 				<div class=\"dropdown-content\">
-					<a href=\"#\">Les menus !</a>
-					<a href=\"#\">et un autre</a>
-					<a href=\"#\">et un dernier</a>
+					<a href=\"compte.php\">Mon profil</a>
+					<a href=\"#\">Mes spots</a>
+					<a href=\"#\">Mes follows</a>
 				</div>
 			</div>
 			<div id=\"connexion\">
-			<button class=\"bouton\"><a href=\"#\">Connexion</a></button>
+			<button class=\"bouton\"><a href=\"connexion.php\">Connexion</a></button>
 			</div>
 		</div>
 		<div id=\"banniere\">
