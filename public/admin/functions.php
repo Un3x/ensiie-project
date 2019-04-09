@@ -22,7 +22,7 @@ function displayHeader(){
 <?php else: ?>
 	<!--tout ce qui est affiché dans le menu si l'utilisateur est identifié-->
 		<li><a href="deauth.php"> Déconnexion du compte de <? echo $_SESSION["login"] ?></a></li>
-		<li><a href="profile.php"> Mon Profil </a></li>
+		<li><a href="profil.php"> Mon Profil </a></li>
 
 	<?php if (!empty($_SESSION['bde'])):?>
 		<li><a href='bde.php'> Gestion BDE </a></li>

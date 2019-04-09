@@ -10,7 +10,7 @@ if(empty($_SESSION['login']))
   // Si inexistante ou nulle, on redirige vers le formulaire de login
   header('Location: http://localhost:8080/authentification.php');
   exit();
-
+}
 
   
   //Gros machin copié depuis authentification.php
@@ -23,9 +23,8 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
+$user = $users[$_SESSION['login']];
   // Definition des constantes et variables
-  define('LOGIN','toto');
-  define('PASSWORD','tata');
   $errorMessage = '';
 
 
@@ -36,21 +35,21 @@ $users = $userRepository->fetchAll();
   if(!empty($_POST))
       {
           if(!empty($_POST['OldPW'])&&!empty($_POST['NewPW'])&&!empty($_POST['NewPW2']))
-              { if($_POST['OldPW'] !== $user->getPassword())
+              { if(!password_verify($_POST['OldPW'],$users[$_SESSION['login']]->getPassword()))
                       {
-                          $errorMessage='Mauvais mot de passe!'
+                          $errorMessage='Mauvais mot de passe!';
                       }
                   elseif($_POST['NewPW'] !== $_POST['NewPW2'])
                       {
-                          $errorMessage='Nouveaux mots de passe differents'
+                          $errorMessage='Nouveaux mots de passe differents';
                       }
                   else
                       {
-                          $connection->query('UPDATE users SET password= $_POST['NewPW'] WHERE id=$user->getId()')
+                          $connection->query('UPDATE users SET password='$_POST["NewPW"] ' WHERE id='$user->getId());
                       }
               }
       }
-}
+
 displayHeader();
 ?>
 <header class="header de page">
@@ -62,7 +61,9 @@ displayHeader();
     <tr> <td> Nom</td> <td> <?php echo $user->getLastname() ?></td> </tr>
     <tr> <td> Prénom</td> <td> <?php echo $user->getFirstname() ?></td> </tr>
     <tr> <td> Pseudo</td> <td> <?php echo $user->getPseudo() ?></td> </tr>
-    <tr> <td> Assos</td> <td> <?php echo $user->getAssos() ?></td> </tr>
+<?php
+/*<tr> <td> Assos</td> <td> <?php echo $user->getAssos() ?></td> </tr>*/
+?>
     <tr> <td> Année</td> <td> <?php echo $user->getAnnee() ?></td> </tr>
     </table>
     </p>

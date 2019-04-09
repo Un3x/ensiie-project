@@ -43,7 +43,7 @@ if(!empty($_POST))
 				$_SESSION['president'] = 1;
 			}
 			// On redirige vers le fichier admin.php
-			header('Location: http://localhost:8080/eleve.php');
+			header('Location: eleve.php');
 			exit();
 		}
 	}
