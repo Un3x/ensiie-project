@@ -1,0 +1,19 @@
+.title {
+	text-align: center;
+	color:red;
+}
+
+div { 
+	border: 1px red;
+	margin:15px; 
+}
+
+#conteneur { 
+	overflow: hidden; 
+}
+
+#conteneur div { 
+	margin:5px;
+	width:80%;
+	float:left; 
+}

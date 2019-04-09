@@ -13,31 +13,32 @@ $users = $userRepository->fetchAll();
 
 <html>
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Challenge Centrale Evry</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="index_style.css">
 </head>
+ 
 <body>
-
-<div class="container">
-    <h3><?php echo 'Bienvenue au Challenge Centrale Evry php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
+ 
+  <div>
+        Bienvenue au Challenge Centrale Evry !
+  </div>
+ 
+  <div id="conteneur">
+    <div>
+        INTRO
+    </div>
+    <div>
+        PHOTOS
+    </div>
+    <div>
+DISCOURS
+    </div>
+  </div>
+ 
+  <div>
+FOOTER
+  </div>
+ 
 </body>
 </html>
