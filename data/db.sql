@@ -1,9 +1,10 @@
 CREATE TABLE "user" (
     idUser SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    firstname VARCHAR NOT NULL ,
+    pseudo VARCHAR NOT NULL,
+	firstname VARCHAR NOT NULL ,
     lastname VARCHAR NOT NULL ,
     birthday date,
-    mdp VARCHAR NOT NULL
+    pass_md5 text NOT NULL,
 );
 
 CREATE TABLE "logement" (
