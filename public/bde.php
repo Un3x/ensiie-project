@@ -11,6 +11,7 @@ if(empty($_SESSION['login']) || $_SESSION['bde'])
 }
 displayHeader();
 
+<table>
 <tr>
 <td>Consulter pour associatif</td>
 <td>
@@ -48,7 +49,8 @@ displayHeader();
     <td>
     <input type="submit" value="CSV" name="avoirpoints">
     </td>
-    
+    </tr>
+</table>    
     <input type="submit" value="Rechercher" name="tsub">
     
 ?>
