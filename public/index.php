@@ -18,9 +18,6 @@ aside();
 navigation();
 loginForm();
 //carroussel();
-echo '<section>
-	<a href="signin.php">s'inscrire</a>
-     </section>
 pied();
 ?>
 
