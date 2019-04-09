@@ -1,19 +1,50 @@
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
-    id_photo REFERENCES photo_profil(id)
-    city VARCHAR NOT NULL
-    mdp VARCHAR
-);
+DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS "photo_profil";
+DROP TABLE IF EXISTS "produits";
+DROP TABLE IF EXISTS "categorie";
+DROP TABLE IF EXISTS "assoc_prd_cat";
 
 CREATE TABLE "photo_profil"(
-    id SERIAL PRIMARY KEY,
-    adresse VARCHAR NOT NULL
+    id_photo INTEGER,
+    adresse VARCHAR(200) NOT NULL,
+    CONSTRAINT key_photopro PRIMARY KEY (id_photo)
+);
+
+CREATE TABLE "user" (
+    id INTEGER,
+    firstname VARCHAR(30) NOT NULL ,
+    lastname VARCHAR(30) NOT NULL ,
+    birthday date,
+    loc VARCHAR(100) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
+    mdp VARCHAR(100),
+    photo_id int REFERENCES photo_profil(id_photo),
+    CONSTRAINT key_user PRIMARY KEY (id)
+    
 );
 
 
+CREATE TABLE "produits"(
+    id_produit INTEGER,
+    date_publi date,
+    id_proprio int REFERENCES "user"(id),
+    descript VARCHAR,
+    CONSTRAINT key_prod PRIMARY KEY (id_produit)
+);
+
+
+CREATE TABLE "categorie"(
+    id_cat INTEGER,
+    nom_cat VARCHAR,
+    CONSTRAINT key_cat PRIMARY KEY (id_cat)
+);
+
+
+CREATE TABLE "assoc_prd_cat"(
+    id_cat int REFERENCES categorie(id_cat),
+    id_prod int REFERENCES produits(id_produit),
+    CONSTRAINT key_assoc_prd_cat PRIMARY KEY (id_cat,id_prod)
+);
 
 /*INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
