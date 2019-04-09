@@ -28,11 +28,11 @@ loginForm();
 		Nom <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="nom" required>
 	    Prénom <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="prenom" required>
 	    Pseudo <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="id_user" required>
-	    Adresse mail <span class="red">*</span> : <input class="form_signup" type="text" name="email">
+	    Adresse mail <span class="red">*</span> : <input class="form_signup" type="text" name="email" required>
 	    Mot de passe <span class="red">*</span> : <input class="form_signup" type="password" size="20" name="mdp" required>
-	    Date de naissance <span class="red">*</span> : <input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... -->
-	    Ville <span class="red">*</span> : <input class="form_signup" type="text" name="ville">
-		Photo de profil : <input type="file" name="pp" accept="image/png, image/jpeg">
+	    Date de naissance : <input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... -->
+	    Ville <span class="red">*</span> : <input class="form_signup" type="text" name="ville" required>
+			Photo de profil : <input type="file" name="pp" accept="image/png, image/jpeg">
 		<div class="flexbox">
 			<div class="bouton">
 				<input type="submit" value="Envoyer" name="inscription_bouton">
