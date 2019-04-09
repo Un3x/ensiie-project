@@ -18,7 +18,7 @@ class UserRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "user"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM "User"')->fetchAll(\PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
@@ -33,6 +33,8 @@ class UserRepository
 
         return $users;
     }
+
+    //TODO update
 
 
 }
