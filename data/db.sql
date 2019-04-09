@@ -1,19 +1,63 @@
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+CREATE TABLE "User" (
+    id VARCHAR ,
+    prenom VARCHAR NOT NULL ,
+    nom VARCHAR NOT NULL ,
+    pseudo VARCHAR NOT NULL ,
+    ddn date ,
+    mdp VARCHAR NOT NULL ,
+    mail VARCHAR NOT NULL ,
+    nbLivresEmpruntés int NOT NULL,
+    nbLivresRendus int ,
+    estAdmin boolean ,
+    CONSTRAINT pk_users PRIMARY KEY id ,
+    CONSTRAINT un_users (prenom, nom, pseudo) UNIQUE
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+CREATE TABLE "Livre" (
+    id VARCHAR NOT NULL,
+    titre VARCHAR ,
+    auteur VARCHAR, // multivalué
+    publication date,
+    couverture VARCHAR,
+    edition VARCHAR ,
+    CONSTRAINT pk_livres PRIMARY KEY id
+);
+
+CREATE TABLE "Review" (
+    id VARCHAR NOT NULL ,
+    num int,
+    personne VARCHAR NOT NULL ,
+    texte VARCHAR[400] ,
+    note int,
+    CONSTRAINT pk_review PRIMARY KEY (id, num) ,
+    FOREIGN KEY (id) REFERENCES Livre (id),
+    FOREIGN KEY (personne) REFERENCES User (id)
+);
+
+CREATE TABLE "Empruntes" (
+    id VARCHAR NOT NULL , 
+    emprunter // ,
+    emprunteLe date ,
+    CONSTRAINT pk_empruntes PRIMARY KEY id 
+);
+
+CREATE TABLE "Historique" (
+    id_livre VARCHAR NOT NULL,
+    id_user VARCHAR NOT NULL,
+    date_emprunt date NOT NULL,
+    date_rendu date NOT NULL,
+    id_review VARCHAR,
+    num_review VARCHAR,
+    CONTRAINT pk_historique PRIMARY KEY (id_livre, id_user),
+    FOREIGN KEY id_livre REFERENCES Livre (id),
+    FOREIGN KEY id_user REFERENCES User (id),
+    FOREIGN KEY (id_review, num_review) REFERENCES Review (id, num)
+);
+
+CREATE TABLE "Reservation" (
+    id_livre VARCHAR NOT NULL,
+    id_user VARCHAR NOT NULL,
+    CONTRAINT pk_reservation PRIMARY KEY (id_livre, id_user),
+    FOREIGN KEY id_livre REFERENCES Livre (id),
+    FOREIGN KEY id_user REFERENCES User (id)
+);
