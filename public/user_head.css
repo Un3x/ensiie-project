@@ -18,7 +18,8 @@ header {
 
 nav {
     background-color: whitesmoke;
-    position: fixed;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: line;
     align-items: center;
@@ -50,4 +51,8 @@ aside {
 }
 header a{
     text-align: right;
+}
+
+.red {
+    color : red;
 }
