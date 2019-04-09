@@ -1,5 +1,5 @@
 CREATE TABLE "User" (
-    id VARCHAR ,
+    id SERIAL ,
     prenom VARCHAR NOT NULL ,
     nom VARCHAR NOT NULL ,
     pseudo VARCHAR NOT NULL ,
@@ -7,7 +7,7 @@ CREATE TABLE "User" (
     mdp VARCHAR NOT NULL ,
     mail VARCHAR NOT NULL ,
     nbLivresEmpruntés int NOT NULL,
-    nbLivresRendus int ,
+    nbLivresRendus int NOT NULL,
     estAdmin boolean ,
     CONSTRAINT pk_users PRIMARY KEY id ,
     CONSTRAINT un_users (prenom, nom, pseudo) UNIQUE
@@ -16,28 +16,38 @@ CREATE TABLE "User" (
 CREATE TABLE "Livre" (
     id VARCHAR NOT NULL,
     titre VARCHAR ,
-    auteur VARCHAR, // multivalué
+    auteur VARCHAR, -- multivalué
     publication date,
     couverture VARCHAR,
     edition VARCHAR ,
+    emprunteur VARCHAR,
+    emprunteLe date ,
     CONSTRAINT pk_livres PRIMARY KEY id
+    FOREIGN KEY emprunteur REFERENCES User (id)
+);
+
+CREATE TABLE "Livre_auteur" ( -- auteur pour livre -> composante multivalué
+    id_livre VARCHAR NOT NULL
+    auteur VARCHAR NOT NULL
+    CONTRAINT pk_livre_auteur PRIMARY KEY (id_livre, auteur),
+    FOREIGN KEY id_livre REFERENCES Livre (id)
 );
 
 CREATE TABLE "Review" (
     id VARCHAR NOT NULL ,
-    num int,
+    num SERIAL,
     personne VARCHAR NOT NULL ,
     texte VARCHAR[400] ,
-    note int,
+    note int
     CONSTRAINT pk_review PRIMARY KEY (id, num) ,
     FOREIGN KEY (id) REFERENCES Livre (id),
+    id_livre VARCHAR NOT NULL,
     FOREIGN KEY (personne) REFERENCES User (id)
 );
 
 CREATE TABLE "Empruntes" (
     id VARCHAR NOT NULL , 
-    emprunter // ,
-    emprunteLe date ,
+    
     CONSTRAINT pk_empruntes PRIMARY KEY id 
 );
 
@@ -62,3 +72,9 @@ CREATE TABLE "Reservation" (
     FOREIGN KEY id_user REFERENCES User (id)
 );
 
+
+CREATE TRIGGER increase_nb_user AFTER UPDATE
+ON Livre FOR EACH ROW
+f_increase_nb_emprunte();
+
+CREATE FUNCTION f_increase_nb_emprunte 
