@@ -20,11 +20,11 @@ $users = $userRepository->fetchAll();
 
 $iduser = $users[$_SESSION['login']]->getId();
 
-$events = $this->connection->query('SELECT events.name, association.name FROM events NATURAL JOIN association')->fetchAll(\PDO::FETCH_OBJ);
+$events = $this->connection->query('SELECT id_event, events.name ev_name, association.name assoc_name FROM events NATURAL JOIN association')->fetchAll(\PDO::FETCH_OBJ);
 
 $points = $this->connection->query('SELECT name, notation FROM pointsassos NATURAL JOIN associations WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 
-$participations = $this->connection->query('SELECT notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$participations = $this->connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 ?>
 
 <table>
@@ -37,15 +37,15 @@ $participations = $this->connection->query('SELECT notation FROM score NATURAL J
 <?php
 foreach ($points as $point) : ?>
 <tr>
-<td><?php echo $point->association.name ?></td>
-<td><?php echo $point->events.name ?></td>
+<td><?php echo $point->assoc_name ?></td>
+<td><?php echo $point->ev_name ?></td>
 </tr>
 </table>
 
 <table>
 <caption>Récapitulatif des évènements</caption>
 <tr>
-<th>Assoc</th>
+<th>Association</th>
 <th>Points</th>
 <th>A participé</th>
 </tr>
@@ -53,8 +53,8 @@ foreach ($points as $point) : ?>
 foreach ($events as $event) : ?>
 <tr>
 <td><?php echo $event->name ?></td>
-<td><?php if (aparticipé) echo $event->notation else echo "" ?></td>
-<td><?php if (aparticipé) echo "Oui" else echo "Non" ?></td>
+<td><?php if ($event->id_event == $participation->score_id_ev) echo $event->notation else echo "" ?></td>
+<td><?php if ($event->id_event == $participation->score_id_ev) echo "Oui" else echo "Non" ?></td>
 </tr>
 
 </table>
