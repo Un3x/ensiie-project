@@ -28,6 +28,21 @@ class User
      */
     private $location;
 
+    /** 
+     * @var string
+     */
+    private $mail;
+
+    /**
+     * @var string
+     */
+    private $mdp;
+
+    /**
+     * @var array;
+     */
+    private $photo_id;
+
     /**
      * @return int
      */
@@ -120,19 +135,52 @@ class User
      * @param $location
      * @return User
      */
-    /*public function setLocation($location){
+    public function setLocation($location){
         $this->location=$location;
         return this;
-    }*/
+    }
 
     /**
      * @return string
      * @throws \NoStringException
      */
-    /*public function getLocation(): string 
+    public function getLocation(): string 
     {
         return $this->$location;
-    }*/
+    }
+
+    /** 
+     * @param $mail
+     * @return User
+     */
+    public function setMail(){
+        $this->$mail=$mail;
+        return this;
+    }
+
+    /**
+     * @return string
+     * @throws \NoStringExeception
+     */
+    public function getMail(): string{
+        return $this->$mail;
+    }
     
+    /**
+     * @param string
+     * @return User
+     */
+    public function setMdp(){
+        $this->$mdp=$mdp;
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @throws \NoStringException
+     */
+    public function getMdp():string{
+        return $this->$mdp
+    }
 }
 
