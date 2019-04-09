@@ -3,7 +3,7 @@ normal=$(shell (tput sgr0))
 .DEFAULT_GOAL=help
 DISTRIB:=$(shell lsb_release -is | tr '[:upper:]' '[:lower:]')
 VERSION:=$(shell lsb_release -cs)
-ARCHITECTURE:=$(shell uname -m)
+ARCHITECTURE:=$(shell uname -s)
 
 help:
 	@echo "${bold}install${normal}\n\t Installs the whole appplication.\n"
