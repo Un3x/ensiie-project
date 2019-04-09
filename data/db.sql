@@ -8,10 +8,11 @@ CREATE TABLE "user" (
 
 CREATE TABLE "logement" (
 idLogement SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-idUser SMALLINT UNSIGNED
-departement VARCHAR NOT NULL,
+idUser SMALLINT UNSIGNED 
+departement SMALLINT UNSIGNED,
 ville VARCHAR NOT NULL,
 nb_places_libres SMALLINT,
+prix SMALLINT UNSIGNED,
 CONSTRAINT fk_user
 	   FOREIGN KEY (idUser)
 	   REFERENCES user(idUser)
@@ -32,15 +33,18 @@ PRIMARY KEY (idUser,idLogement)
 
       
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('John', 'Doe', '1967-11-22','john');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Yvette', 'Angel', '1932-01-24','yvette');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Amelia', 'Waters', '1981-12-01','amelia');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Manuel', 'Holloway', '1979-07-25','manuel');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Alonzo', 'Erickson', '1947-11-13','alonzo');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Otis', 'Roberson', '1995-01-09','otis');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Jaime', 'King', '1924-05-30','jaime');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Vicky', 'Pearson', '1982-12-12)','vicky');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Silvia', 'Mcguire', '1971-03-02','silvia');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Brendan', 'Pena', '1950-02-17','brendan');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Jackie', 'Cohen', '1967-01-27','jackie');
+INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Delores', 'Williamson', '1961-07-19','delores');
+
+INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (1, 91 , 'Evry', 2, 400);
+
