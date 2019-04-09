@@ -45,7 +45,7 @@ $user = $users[$_SESSION['login']];
                       }
                   else
                       {
-                          $connection->query('UPDATE users SET password='$_POST["NewPW"] ' WHERE id='$user->getId());
+                          $connection->query('UPDATE users SET password='.password_hash($_POST["NewPW"],PASSWORD_BCRYPT).' WHERE id='.$user->getId());
                       }
               }
       }

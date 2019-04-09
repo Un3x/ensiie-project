@@ -4,9 +4,9 @@ include('./admin/functions.php');
 session_start();
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['login'])) {
-  // Si inexistante ou nulle, on redirige vers le formulaire de login
-  header('Location: http://localhost:8080/authentification.php');
-  exit();
+	// Si inexistante ou nulle, on redirige vers le formulaire de login
+	header('Location: http://localhost:8080/authentification.php');
+	exit();
 }
 displayHeader();
 
@@ -28,34 +28,34 @@ $participations = $this->connection->query('SELECT score.id_event score_id_ev, n
 ?>
 
 <table>
-<caption>Récapitulatif des points association</caption>
-<tr>
-<th>Association</th>
-<th>Points</th>
-</tr>
+	<caption>Récapitulatif des points association</caption>
+	<tr>
+		<th>Association</th>
+		<th>Points</th>
+	</tr>
 
 <?php
 foreach ($points as $point) : ?>
-<tr>
-<td><?php echo $point->assoc_name ?></td>
-<td><?php echo $point->ev_name ?></td>
-</tr>
+	<tr>
+	<td><?php echo $point->assoc_name ?></td>
+	<td><?php echo $point->ev_name ?></td>
+	</tr>
 </table>
 
 <table>
-<caption>Récapitulatif des évènements</caption>
-<tr>
-<th>Association</th>
-<th>Points</th>
-<th>A participé</th>
-</tr>
+	<caption>Récapitulatif des évènements</caption>
+	<tr>
+		<th>Association</th>
+		<th>Points</th>
+		<th>A participé</th>
+	</tr>
 <?php
-foreach ($events as $event) : ?>
-<tr>
-<td><?php echo $event->name ?></td>
-<td><?php if ($event->id_event == $participation->score_id_ev) echo $event->notation else echo "" ?></td>
-<td><?php if ($event->id_event == $participation->score_id_ev) echo "Oui" else echo "Non" ?></td>
-</tr>
+	foreach ($events as $event) : ?>
+	<tr>
+		<td><?php echo $event->name ?></td>
+		<td><?php if ($event->id_event == $participations->score_id_ev) echo $event->notation; else echo ""; ?></td>
+		<td><?php if ($event->id_event == $participations->score_id_ev) echo "Oui"; else echo "Non"; ?></td>
+	</tr>
 
 </table>
 
