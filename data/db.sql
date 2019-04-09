@@ -38,7 +38,7 @@ CREATE TABLE "link_achievement_user" (
 CREATE TABLE "completed" (
   -- the pseudo of the person that completed a story
   pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
-  -- $(end_id).xml to get the file (see scheme)
+  -- step_$(end_id).xml to get the file (see scheme)
   end_id INT NOT NULL,
   -- stats
   ghost INT NOT NULL,
@@ -58,6 +58,7 @@ CREATE TABLE "completed" (
 --- state of a party
 CREATE TABLE "current" (
   pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
+  -- step_$(step).xml to get the file
   step INT NOT NULL,
   date_current DATE NOT NULL,
   -- stats
@@ -82,5 +83,7 @@ INSERT INTO "user"(pseudo, hash, genre) VALUES
 ('Sun', 'x', 'f');
 
 INSERT INTO "achievements"(id, title, text, icon) VALUES
-(1, 'Trou noir', E'Et ça n\'est pas près de s\'arrêter !', NULL),
-();
+(1, 'Trou noir', E'Et ça n\'est pas près de s\'arrêter !', NULL);
+
+INSERT INTO "current"(pseudo, step, date_current, ghost, alohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese, steps) VALUES
+('Polio', 1, '2019-04-09', 0, 0, 0, 50, 10, 0, TRUE, FALSE, FALSE, '{1, 2}');
