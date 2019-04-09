@@ -110,9 +110,10 @@ class User
     /**
      * @return \DateTimeInterface
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getBirthday(): ?\DateTimeInterface
     {
-        return $this->birthday;
+       return $this->birthday;
+        
     }
 
     /**

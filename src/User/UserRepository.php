@@ -68,19 +68,22 @@ class UserRepository
     public function addUser($user) {
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
-        if ($user->getBirthday() != null) {
-        $birthday = $user->getBirthday(); }
+        $birthday = $user->getBirthday();
         $city = $user->getCity();
         $yop = $user->getYop();
         $mail = $user->getMail();
         $password = $user->getPassword();
         $phone = $user->getPhone();
         $current_training = $user->getCurrent_training();
-
+        
         $req = 'INSERT INTO "user" (firstname, lastname, birthday, city, yop, mail, password, phone, current_training)
                 VALUES (:prenom, :nom, :anniv, :ville, :yop, :mail, :mdp, :tel, :curr_train)';
-        $valeurs = ['prenom'=>$firstname];
-        $this->connection->prepare($requete)->execute($valeurs);
+        $valeurs = ['prenom'=>$firstname, 'nom'=>$lastname, 'mail'=>$mail, 'mdp'=>$password,
+                    'anniv'=>date_format($birthday, 'Y-m-d'), 'ville'=>$city, 'yop'=>$yop, 'tel'=>$phone, 'curr_train'=>$current_training];
+        $req_preparee = $this->connection->prepare($req);
+        if (!$req_preparee->execute($valeurs)) {
+            print_r($req_preparee->errorInfo());
+        }
 
     }
 }

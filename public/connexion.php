@@ -24,7 +24,7 @@
 				<input type="text" required="true" name="lastname" placeholder="Nom (*)"></br>
 				<input type="email" required="true" name="mail" placeholder="email (*)"></br>
 				<input type="password" required="true" name="password" placeholder="mot de passe (*)"></br>
-				<input type="date" name="birthdate"></br>
+				<input type="date" name="birthday"></br>
 				<input type="text" name="city" placeholder="Ville"></br>
 				<input type="number" min="0" name="yop" placeholder="années d'expériences"></br>
 				<input type="tel" name="phone" pattern="[0-9]{10}" placeholder="tel : 0123456789"></br>
