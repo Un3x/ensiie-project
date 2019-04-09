@@ -47,4 +47,6 @@ INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Jackie', 'Cohen'
 INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Delores', 'Williamson', '1961-07-19','delores');
 
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (1, 91 , 'Evry', 2, 400);
+INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (2, 91 , 'Evry', 1, 500);
+INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (4, 13 , 'Marseille', 2, 400);
 
