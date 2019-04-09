@@ -22,8 +22,8 @@ loginForm();
 ?>
 
 <section>
-	<h2>Inscription</2>
-	<p>Veuillez compléter les champs suivants.</br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
+	<h2>Inscription</h2>
+	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
 	<form action="" method="post">
 	      Nom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="nom">
 	      Prénom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="prenom">
