@@ -52,3 +52,7 @@ aside {
 header a{
     text-align: right;
 }
+
+.red {
+    color : red;
+}
