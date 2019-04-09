@@ -1,4 +1,5 @@
 <?php
+
 require '../vendor/autoload.php';
 
 //postgres
@@ -17,8 +18,15 @@ enTete("FindYourThing.com");
 aside();
 navigation();
 loginForm();
-//carroussel();
-pied();
+
 ?>
 
+<section>
+	<form action="" method="post">
+	      
+	</form>
+</section>
 
+<?php
+pied();
+?>

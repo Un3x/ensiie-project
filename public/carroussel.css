@@ -1,0 +1,166 @@
+constant{
+    --duration: 450ms;
+    --tileWidth: 250px;
+    --tileHeight: (var(--tileWidth) / (16/9));
+    --iconSize: 50px;
+    --growFactor: 1.5 // 1.5 times the original size;
+
+    --moveLeft: -(var(--tileWidth) * (var(--growFactor) - 1) / 2);
+    --moveRight: var(--tileWidth) * (var(--growFactor) - 1);
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: #0E0F11;
+    color: #ecf0f1;
+    font-family: 'Arial';
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+html{
+    padding: 10px;
+    margin: 0;
+    background: #0E0F11;
+    color: #ecf0f1;
+    font-family: sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+* { box-sizing: border-box }
+
+h1, p{
+  text-align: center;
+}
+p{
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+a:link
+a:hover
+a:active
+a:visited{
+  transition: color 150ms;
+  color: #95a5a6;
+  text-decoration: none;
+}
+a:hover{
+  color: #7f8c8d;
+  text-decoration: underline;
+}
+.contain{
+  width: 100%;
+}
+.row{
+  overflow: scroll;
+  width: 100%;
+}
+.row__inner{
+  transition: var(--duration) transform;
+  font-size: 0;
+  white-space: nowrap;
+  margin: (var(--tileHeight) / 2) 0;
+  padding-bottom: 10px;
+}
+.tile{
+  position: relative;
+  display: inline-block;
+  width: var(--tileWidth);
+  height: var(--tileHeight);
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: var(--duration) all;
+  transform-origin: center left;
+}
+.tile__img{
+  width: var(--tileWidth);
+  height: var(--tileHeight);
+  object-fit: cover;
+}
+.tile__details{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  transition: var(--duration) opacity;
+}
+.tile__details:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: black;  
+}
+
+.tile__details:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: black; 
+}
+.tile__details:after{
+    margin-top: (-(var(--iconSize) / 2));
+    margin-left: (-(var(--iconSize) / 2));
+    width: var(--iconSize);
+    height: var(--iconSize);
+    border: 3px solid #ecf0f1;
+    line-height: var(--iconSize);
+    text-align: center;
+    border-radius: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+.tile__details:before{
+    content: '▶';
+    left: 0;
+    width: 100%;
+    font-size: 30px;
+    margin-left: 7px;
+    margin-top: -18px;
+    text-align: center;
+    z-index: 2;
+}
+  .tile:hover{
+    opacity: 1;
+  }
+.tile__title{
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+
+
+
+/*// We assume when you hover .row, you're also hovering a .tile
+// First, move the whole row towards the left*/
+.row__inner:hover{
+  transform: translate3d(var(--moveLeft), 0, 0);
+}
+.row__inner:hover .tile{
+
+  /*Fade out every tile*/
+  opacity: 0.3;
+}
+  /*// And then grow the current tile and make it opaque again*/
+  .row__inner:hover .tile{
+    transform: scale(var(--growFactor));
+    opacity: 1;
+} 
+/*// And finally move all tiles right of the current tile to the right,
+// so its flush against the hovered tile$*/
+.tile:hover ~ .tile{
+  transform: translate3d(var(--moveRight), 0, 0);
+}
