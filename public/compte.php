@@ -10,6 +10,17 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $userRepository = new \User\UserRepository($connection);
+$user = new \User\User();
+
+$user->setFirstname($_POST['firstname']);
+$user->setLastname($_POST['lastname']);
+//$user->setBirthday($_POST['birthdate']);
+$user->setMail($_POST['mail']);
+$user->setPassword($_POST['password']);
+
+$userRepository->addUser($user);
+$users = $userRepository->fetchAll();
+
 ?>
 
 <html>
@@ -29,7 +40,7 @@ $userRepository = new \User\UserRepository($connection);
 			<div class="flex-container" id="info-content">
 				<!-- informations sur le compte -->
 				<div class="infocomptes">
-					PRENOM
+					<?php echo ($_POST['firstname']); ?>
 				</div>
 				<div class="infocomptes">
 					NOM
@@ -58,6 +69,16 @@ $userRepository = new \User\UserRepository($connection);
 				</div>
 			</div>
 		</div>
+
+		<?php /** @var \User\User $user */
+        foreach ($users as $user) : ?>
+            <tr>
+                <td><?php echo $user->getId() ?></td>
+                <td><?php echo $user->getFirstname() ?></td>
+                <td><?php echo $user->getLastname() ?></td>
+                <td><?php echo $user->getAge() ?> years</td>
+            </tr>
+      <?php endforeach; ?>
 
 	<footer>
 		<?php include ('footer.php'); footer();?>

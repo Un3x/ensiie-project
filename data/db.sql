@@ -18,7 +18,7 @@ CREATE TABLE "user" (
 INSERT INTO "user"(firstname, lastname, birthday, city, yop, mail, password, phone) VALUES ('Thomas', 'GUITTON', '1998-08-31', 'Evry', 2,'guittonthomas41@gmail.com', 'motdepasse','0606426456');
 INSERT INTO "user"(firstname, lastname, birthday, city, yop, mail, password, current_training) VALUES ('Charles', 'Anteunis', '1998-02-26', 'Evry', 3, 'charles.anteunis@gmail.com','motdepasse','Dame du Lac');
 INSERT INTO "user"(firstname, lastname, birthday, mail, password) VALUES ('Amelia', 'Waters', '1981-12-01','mail@mail.mail','motdepasse');
-
+INSERT INTO "user"(firstname, lastname, mail, password, birthday) VALUES ('blabla','blabla','bla@bla.bla','blabla','1998-12-01');
 
 CREATE TABLE "spot"(
        nom VARCHAR PRIMARY KEY,

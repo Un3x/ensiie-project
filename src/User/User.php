@@ -200,7 +200,7 @@ class User
      * @param string $password
      * @return User
      */
-    public function setPassword() {
+    public function setPassword($password) {
         $this->password = $password;
         return $this;
     }
