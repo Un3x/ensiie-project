@@ -19,7 +19,7 @@ displayHeader();
 
 <h1 id="MainTitle"> <label> Bienvenue sur le site où on gratte ses points asso' pour valider le semestre ! </label> </h1>
 
-<?php displayAll($users);?>
+<?php //displayAll($users);?>
 
 
 <footer> Attention ce site n'est pas fait pour les fantômes... </footer>

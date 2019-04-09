@@ -1,4 +1,5 @@
 <?php
+require '../vendor/autoload.php';
 include('./admin/functions.php');
 // On prolonge la session
 session_start();
@@ -8,7 +9,6 @@ if (empty($_SESSION['login'])) {
 	header('Location: http://localhost:8080/authentification.php');
 	exit();
 }
-displayHeader();
 
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -20,11 +20,12 @@ $users = $userRepository->fetchAll();
 
 $iduser = $users[$_SESSION['login']]->getId();
 
-$events = $this->connection->query('SELECT id_event, events.name ev_name, association.name assoc_name FROM events NATURAL JOIN association')->fetchAll(\PDO::FETCH_OBJ);
+$events = $connection->query('SELECT id_event, events.name ev_name, association.name assoc_name FROM events NATURAL JOIN association')->fetchAll(\PDO::FETCH_OBJ);
 
-$points = $this->connection->query('SELECT name, notation FROM pointsassos NATURAL JOIN associations WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$points = $connection->query('SELECT name, notation FROM pointsassos NATURAL JOIN associations WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 
-$participations = $this->connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$participations = $connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+displayHeader();
 ?>
 
 <table>
@@ -40,6 +41,7 @@ foreach ($points as $point) : ?>
 	<td><?php echo $point->assoc_name ?></td>
 	<td><?php echo $point->ev_name ?></td>
 	</tr>
+<?php endforeach;?>
 </table>
 
 <table>
@@ -49,14 +51,13 @@ foreach ($points as $point) : ?>
 		<th>Points</th>
 		<th>A participé</th>
 	</tr>
-<?php
-	foreach ($events as $event) : ?>
+<?php foreach ($events as $event) : ?>
 	<tr>
 		<td><?php echo $event->name ?></td>
-		<td><?php if ($event->id_event == $participations->score_id_ev) echo $event->notation; else echo ""; ?></td>
-		<td><?php if ($event->id_event == $participations->score_id_ev) echo "Oui"; else echo "Non"; ?></td>
+		<td><?php if ($event->id_event == $participations->score_id_ev){ echo $event->notation; } else { echo "";} ?></td>
+		<td><?php if ($event->id_event == $participations->score_id_ev){ echo "Oui"; } else { echo "Non";} ?></td>
 	</tr>
-
+<?php endforeach; ?>
 </table>
 
 
