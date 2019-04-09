@@ -34,14 +34,12 @@ class UserRepository
         return $users;
     }
 
-    public function connexion($login, $password)
+    public function fetchOneByMail($login)
     {
-	$rows = $this->connection->query('SELECT id FROM "user" WHERE mail='.$login.' AND password='.$password)->fetchAll(\PDO::FETCH_OBJ);
-	if ($rows) {
-	    return $rows[0];
-	}
-	else return $rows;
-
+    	$rows = $this->connection->query('SELECT * FROM "user" WHERE mail='.$login)->fetchAll(\PDO::FETCH_OBJ);
+    	if ($rows) {
+	        return $rows[0];
+	    }
+        return null;
     }
-
 }
