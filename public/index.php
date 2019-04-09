@@ -4,6 +4,9 @@ require '../vendor/autoload.php';
 //require '../src/User/User.php';
 include ('view.php');
 
+//démarre une session pour garder l'utilisateur connecté entre les pages
+session_start();
+
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -82,7 +85,9 @@ $users = $userRepository->fetchAll();
             <td>#</td>
             <td>Firstname</td>
             <td>Lastname</td>
-            <td>Age</td>
+			<td>Age</td>
+			<td>passws</td>
+			<td>mail</td>
         </thead>
       <?php /** @var \User\User $user */
         foreach ($users as $user) : ?>
@@ -90,7 +95,9 @@ $users = $userRepository->fetchAll();
                 <td><?php echo $user->getId() ?></td>
                 <td><?php echo $user->getFirstname() ?></td>
                 <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
+				<td><?php echo $user->getAge() ?> years</td>
+				<td><?php echo $user->getPassword() ?></td>
+				<td><?php echo $user->getMail()  ?></td>
             </tr>
       <?php endforeach; ?>
 

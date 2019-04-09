@@ -120,7 +120,7 @@ class User
      * @param \DateTimeInterface $birthday
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setBirthday(?\DateTimeInterface $birthday)
     {
         $this->birthday = $birthday;
         return $this;

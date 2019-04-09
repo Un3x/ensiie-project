@@ -26,7 +26,9 @@ class UserRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setMail($row->mail)
+                ->setPassword($row->password);
 
             $users[] = $user;
         }
@@ -41,22 +43,22 @@ class UserRepository
      */
     public function fetchOneByMail($login)
     {
-    	$rows = $this->connection->query('SELECT * FROM "user" WHERE mail='.$login)->fetchAll(\PDO::FETCH_OBJ);
-    	if ($rows) {
-            $user = new User();
+        $user = new User();
+        $req = 'SELECT * FROM "user" WHERE mail='.$this->connection->quote($login);
+        $rows = $this->connection->query($req)->fetch();
             $user
-                ->setId($rows[0]->id)
-                ->setFirstname($rows[0]->firstname)
-                ->setLastname($rows[0]->lastname)
-                ->setBirthday($rows[0]->birthday)
-                ->setCity($rows[0]->city)
-                ->setYop($rows[0]->yop)
-                ->setMail($rows[0]->mail)
-                ->setPassword($rows[0]->password)
-                ->setPhone($rows[0]->phone)
-                ->setCurrent_training($rows[0]->current_training);
+                ->setId($rows['id'])
+                ->setFirstname($rows['firstname'])
+                ->setLastname($rows['lastname'])
+                ->setBirthday(new \DateTimeImmutable($rows['birthday']))
+                ->setCity($rows['city']==null ? "" : $rows['city'])
+                ->setYop($rows['yop']==null ? 0 : $rows['yop'])
+                ->setMail($rows['mail'])
+                ->setPassword($rows['password'])
+                ->setPhone($rows['phone'])
+                ->setCurrent_training($rows['current_training']);
 	        return $user;
-	    }
+	    
         return null;
     }
 
@@ -70,12 +72,14 @@ class UserRepository
         $lastname = $user->getLastname();
         $birthday = $user->getBirthday();
         $city = $user->getCity();
-        $yop = $user->getYop();
+        if ($user->getYop() == null)
+            $yop = 0;
+        else $yop = $user->getYop();
         $mail = $user->getMail();
         $password = $user->getPassword();
         $phone = $user->getPhone();
         $current_training = $user->getCurrent_training();
-        
+
         $req = 'INSERT INTO "user" (firstname, lastname, birthday, city, yop, mail, password, phone, current_training)
                 VALUES (:prenom, :nom, :anniv, :ville, :yop, :mail, :mdp, :tel, :curr_train)';
         $valeurs = ['prenom'=>$firstname, 'nom'=>$lastname, 'mail'=>$mail, 'mdp'=>$password,

@@ -10,16 +10,18 @@
 		<?php header_login(); ?>
 		<div class="flex-container" id="login-content">
 			<div style="margin-right:20px">
-			Sign In
+			Connectez-vous !
 			<form action="compte.php" method="post">
-				<input type="text" name="login" placeholder="mail"></br>
-				<input type="password" name="password" placeholder="mot de passe"></br>
+				<input type="text" required="true" name="login" placeholder="mail"></br>
+				<input type="password" required="true" name="password" placeholder="mot de passe"></br>
+				<input type="hidden" name="signin" value="true">
 				<button class="bouton" type="submit" style="margin-top:8px">envoyer</button>
 			</form>
 			</div>
 			<div>
-			Sign Up
+			Vous êtes nouveau ? Créez un compte !
 			<form action="compte.php" method="post">
+				<input type="hidden" name="signup" value="true">
 				<input type="text" required="true" name="firstname" placeholder="Prénom (*)"></br>
 				<input type="text" required="true" name="lastname" placeholder="Nom (*)"></br>
 				<input type="email" required="true" name="mail" placeholder="email (*)"></br>
