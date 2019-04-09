@@ -13,6 +13,7 @@ class User
      */
     private $firstname;
 	private $password;
+	private $president;
 
     /**
      * @var string
@@ -28,6 +29,7 @@ class User
 	 *  @var string
 	 */
 	private $pseudo;
+	private $bde;
 
     /**
      * @return int
@@ -137,5 +139,21 @@ class User
 		}
 		return $age;
     }
+
+	public function setBde($bde) {
+		$this->bde=$bde;
+		return $this;
+	}
+	public function getBde() {
+		return $this->bde;
+	}
+
+	public function setPresident($president) {
+		$this->president = $president;
+		return $this;
+	}
+	public function getPresident(){
+		return $this->president;
+	}
 }
 

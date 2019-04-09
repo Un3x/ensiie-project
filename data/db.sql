@@ -27,7 +27,8 @@ create table users (
 	pseudo varchar unique not null,
 	year int not null,
 	password varchar default 'default',
-	role varchar 
+	bde int default 0 check(bde=0 or bde=1),
+	president int default 0 check(president=0 or president=1)
 );
 
 create table associations (
@@ -40,6 +41,7 @@ create table associations (
 create table events (
 	id_event serial primary key,
 	name varchar not null,
+	description_event varchar,
 	id_asso int references associations(id_asso),
 	coeff_event int default 100 check (coeff_event<=100 and coeff_event>0)
 );
@@ -47,6 +49,7 @@ create table events (
 create table score (
 	id_user int references users(id_user),
 	id_event int references events(id_event),
+	description_score varchar,
 	notation int not null check(notation<=10 and notation>0),
 	primary key (id_user,id_event)
 );
@@ -64,13 +67,13 @@ create view pointsassos_prop as select id_user,id_asso,sum(a.point)/sum(a.coeffi
 from (select id_asso,id_event,id_user, notation*coeff_event point, coeff_event coefficient from score join events using (id_event)) a 
 group by id_asso,id_user;
 
-create view leaderboard as select id_user,sum(a.point)/sum(a.coefficient) moyenne 
+create view leaderboard as select id_user,sum(a.point) moyenne 
 from (select id_user,id_asso, moyenne*coeff_asso point, coeff_asso coefficient from pointsassos_prop join associations using (id_asso)) a
 group by a.id_user
 order by moyenne asc;
 
-insert into users (firstname,lastname,pseudo,year) values ('Loïc','Dubard','Wikle',2018);
-insert into users(firstname,lastname,pseudo,year) values ('Quentin','Japhet','Samuh',2018);
+insert into users (firstname,lastname,pseudo,year,president) values ('Loïc','Dubard','Wikle',2018,1);
+insert into users(firstname,lastname,pseudo,year,bde) values ('Quentin','Japhet','Samuh',2018,1);
 insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
 insert into associations(name,president,coeff_asso) values ('Securitiie',1,50);
 insert into events(name,id_asso,coeff_event) values ('reu',1,1); 

@@ -23,7 +23,7 @@ class UserRepository
         foreach ($rows as $row) {
             $user = new User();
 			if ($row->password == 'default') {
-				$row->password = password_hash('default');
+				$row->password = password_hash('default',PASSWORD_BCRYPT);
 			}
             $user
                 ->setId($row->id_user)
@@ -31,7 +31,10 @@ class UserRepository
                 ->setLastname($row->lastname)
 				->setPseudo($row->pseudo)
 				->setPassword($row->password)
-                ->setPromo($row->year);
+				->setPromo($row->year)
+				->setPresident($row->president)
+				->setBde($row->bde);
+				
 
             $users[$user->getPseudo()] = $user;
         }
