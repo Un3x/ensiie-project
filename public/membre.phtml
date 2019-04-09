@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION['pseudo'])) {
    header ('Location: index.php');
    exit();
 }
@@ -12,7 +12,7 @@ if (!isset($_SESSION['login'])) {
 </head>
 
 <body>
-Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> !<br />
+Bienvenue <?php echo htmlentities(trim($_SESSION['pseudo'])); ?> !<br />
 <a href="deconnexion.php">Déconnexion</a>
 </body>
 </html>
