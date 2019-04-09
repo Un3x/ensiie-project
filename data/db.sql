@@ -1,9 +1,36 @@
 CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
+    idUser SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     firstname VARCHAR NOT NULL ,
     lastname VARCHAR NOT NULL ,
-    birthday date
+    birthday date,
+    mdp VARCHAR NOT NULL
 );
+
+CREATE TABLE "logement" (
+idLogement SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+idUser SMALLINT UNSIGNED
+departement VARCHAR NOT NULL,
+ville VARCHAR NOT NULL,
+nb_places_libres SMALLINT,
+CONSTRAINT fk_user
+	   FOREIGN KEY (idUser)
+	   REFERENCES user(idUser)
+);
+
+CREATE TABLE "favoris" (
+idUser SMALLINT UNSIGNED
+idLogement SMALLINT UNSIGNED
+CONSTRAINT fk_user2
+	   FOREIGN KEY (idUser)
+	   REFERENCES user(idUser)
+CONSTRAINT fk_logement
+	   FOREIGN KEY (idLogement)
+	   REFERENCES logement(idLogement)
+PRIMARY KEY (idUser,idLogement)
+);
+
+
+      
 
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
