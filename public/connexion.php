@@ -10,7 +10,7 @@
 
 include("../inc/session.php");
 
-if(isset($_SESSION['pseudo'])){ //si connectÃ©, redirection vers la page d'acceuil
+if(isset($_SESSION['pseudo'])){ //si connecté, redirection vers la page d'acceuil
 	header("location: index.php");
 }
 
@@ -27,7 +27,7 @@ if (!isset($_POST['pseudo'])) { //pour l'instant on affiche tout le temps
 	</div>
 	<?php
 }else{ //connexion
-	if(isset($_SESSION['pseudo'])){ //si connectÃ©, redirection vers la page d'acceuil
+	if(isset($_SESSION['pseudo'])){ //si connecté, redirection vers la page d'acceuil
 		header("location: index.php");
 	}else if(!$_GET['c']){ // si compte non reconnu
 		?><p class="error">Pseudo ou Mot de passe incorrect</p><?php
