@@ -24,7 +24,7 @@ if (!isset($_POST['pseudo'])) { //pour l'instant on affiche tout le temps
 			  <input type="submit" value="Connexion" />
 			</form>
 	  	</div>
-	<div>
+	</div>
 	<?php
 }else{ //connexion
 	if(isset($_SESSION['pseudo'])){ //si connecté, redirection vers la page d'acceuil

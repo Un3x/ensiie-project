@@ -6,7 +6,7 @@ function create_session($pseudo, $mdp){
 	$role = null;
     foreach ($rows as $row) {
         $id = $row->id;
-        $role = $row->role
+        $role = $row->role;
     }
 
     if(id == -1){
