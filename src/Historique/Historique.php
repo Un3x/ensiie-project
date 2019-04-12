@@ -69,77 +69,75 @@ class Historique;
     }
 
 
-//TODO la suite
     /**
-     * @return string
+     * @return \DateTimeInterface
      */
-    public function getNum()
+    public function getDateEmprunt()
     {
-        return $this->num;
+        return $this->date_emprunt;
     }
 
     /**
-     * @param int $num
+     * @param \DateTimeInterface $date_emprunt
      * @return User
      */
-    public function setNum($num): int
+    public function setDateEmprunt($date_emprunt)
     {
-        $this->num = $num;
+        $this->date_emprunt = $date_emprunt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getDateRendu()
+    {
+        return $this->date_rendu;
+    }
+
+    /**
+     * @param \DateTimeInterface $date_rendu
+     * @return User
+     */
+    public function setDateRendu($date_rendu)
+    {
+        $this->date_rendu = $date_rendu;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getPersonne()
+    public function getIdReview()
     {
-        return $this->personne;
+        return $this->id_review;
     }
 
     /**
-     * @param string $persenne
+     * @param string $id_review
      * @return User
      */
-    public function setPersonne($personne)
+    public function setPersonne($id_review)
     {
-        $this->personne = $personne;
+        $this->id_review = $id_review;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getTexte(): 
+    public function getNumReview(): 
     {
-        return $this->texte;
+        return $this->num_review;
     }
 
     /**
-     * @param string $texte
+     * @param string $num_review
      * @return User
      */
-    public function setTexte($texte)
+    public function setTexte($num_review)
     {
-        $this->texte = $texte;
-        return $this;
-    }
-
-
-    /**
-     * @return int
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
-     * @param string $note
-     * @return User
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
+        $this->num_review = $num_review;
         return $this;
     }
 

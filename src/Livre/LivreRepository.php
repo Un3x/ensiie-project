@@ -33,7 +33,7 @@ class LivreRepository
             $livres[] = $livre;
         }
 
-        return $users;
+        return $livres;
     }
 
 //TODO update
