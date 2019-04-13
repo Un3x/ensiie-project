@@ -1,6 +1,8 @@
 <?php
 namespace Article;
 
+use Membre\Membre;
+
 class Article
 {
     /**
@@ -17,6 +19,11 @@ class Article
      * @var string
      */
     private $text;
+    
+    /**
+     * @var Membre
+     */
+    private $auteur;
 
     /**
      * @var \DateTimeInterface
@@ -50,7 +57,7 @@ class Article
     }
 
     /**
-     * @param string $firstname
+     * @param string $Titre
      * @return Article
      */
     public function setTitre($titre)
@@ -68,12 +75,30 @@ class Article
     }
 
     /**
-     * @param string $lastname
+     * @param string $Texte
      * @return Article
      */
-    public function setTitre($texte)
+    public function setTexte($texte)
     {
         $this->texte = $texte;
+        return $this;
+    }
+    
+    /**
+     * @return Membre
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+    
+    /**
+     * @param Membre $auteur
+     * @return Article
+     */
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
         return $this;
     }
 
@@ -86,10 +111,10 @@ class Article
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param \DateTimeInterface $date
      * @return Article
      */
-    public function setBirthday(\DateTimeInterface $date)
+    public function setDate(\DateTimeInterface $date)
     {
         $this->date = $date;
         return $this;
