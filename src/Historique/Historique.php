@@ -117,7 +117,7 @@ class Historique;
      * @param string $id_review
      * @return User
      */
-    public function setPersonne($id_review)
+    public function setIdReview($id_review)
     {
         $this->id_review = $id_review;
         return $this;
@@ -135,7 +135,7 @@ class Historique;
      * @param string $num_review
      * @return User
      */
-    public function setTexte($num_review)
+    public function setNumReview($num_review)
     {
         $this->num_review = $num_review;
         return $this;

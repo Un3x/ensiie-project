@@ -13,9 +13,10 @@ class Livre;
     private $titre;
 
     /**
-     * @var string[]
+     * @var string
+     (auteurs est une clef vers des éléments de la table Auteur)
      */
-    private $auteurs;
+    private $auteur;
 
     /**
      * @var \DateTimeInterface
@@ -31,6 +32,16 @@ class Livre;
     *@var string
     */
     private $edition
+
+    /**
+    *@var string
+    */
+    private $emprunteur
+
+    /**
+    *@var \DateTimeInterface
+    */
+    private $date_emprunt
 
     /**
      * @return int
@@ -59,8 +70,8 @@ class Livre;
     }
 
     /**
-     * @param string $firstname
-     * @return User
+     * @param string $titre
+     * @return Livre
      */
     public function setTitre($titre)
     {
@@ -69,21 +80,20 @@ class Livre;
     }
 
     /**
-     * @return string[]
+     * @return string
      */
-    public function getAuteurs()
-    {//TODO ALED le multivalué au secours
-        res=
-        return $this->;
+    public function getAuteur()
+    {
+        return $this->auteur;
     }
 
     /**
-     * @param string $lastname
-     * @return User
+     * @param string $ref_auteur
+     * @return Livre
      */
-    public function setAuteurs($auteurs)
+    public function setAuteur($auteur)
     {
-        $this->auteurs = $auteurs;
+        $this->auteur = $auteur;
         return $this;
     }
 
@@ -97,7 +107,7 @@ class Livre;
 
     /**
      * @param \DateTimeInterface $publication
-     * @return User
+     * @return Livre
      */
     public function setPublication(\DateTimeInterface $publication)
     {
@@ -116,7 +126,7 @@ class Livre;
 
     /**
      * @param string $image
-     * @return User
+     * @return Livre
      */
     public function setImage($image)
     {
@@ -136,7 +146,7 @@ class Livre;
 
     /**
     * @param string $image
-    * @return User
+    * @return Livre
     */
     public function setEdition($edition)
     {
@@ -144,6 +154,42 @@ class Livre;
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getEmprunteur()
+    {
+        return $this->emprunteur;
+    }
+
+    /**
+    * @param string $emprunteur
+    * @return Livre
+    */
+    public function setEmprunteur($emprunteur)
+    {
+        $this->emprunteur = $emprunteur;
+        return $this;
+    }
+
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getDateEmprunt(): \DateTimeInterface
+    {
+        return $this->date_emprunt;
+    }
+
+    /**
+     * @param \DateTimeInterface $date_emprunt
+     * @return Livre
+     */
+    public function setPublication(\DateTimeInterface $date_emprunt)
+    {
+        $this->date_emprunt = $date_emprunt;
+        return $this;
+    }
 
 
 }

@@ -24,9 +24,15 @@ class UserRepository
             $user = new User();
             $user
                 ->setId($row->id)
-                ->setFirstname($row->firstname)
-                ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setPrenom($row->prenom)
+                ->setNom($row->nom)
+                ->setPseudo($row->pseudo)
+                ->setDdn(new \DateTimeImmutable($row->ddn))
+                ->setMdp($row->mdp)
+                ->setMail($row->mail)
+                ->setNbLivresEmpruntes($row->nb_livres_empruntes)
+                ->setNbLivresRendus($row->nb_livres_rendus)
+                ->setAdmin($row->est_admin);
 
             $users[] = $user;
         }

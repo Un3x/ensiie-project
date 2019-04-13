@@ -6,9 +6,9 @@ CREATE TABLE "User" (
     ddn date ,
     mdp VARCHAR NOT NULL ,
     mail VARCHAR NOT NULL ,
-    nbLivresEmpruntés int NOT NULL,
-    nbLivresRendus int NOT NULL,
-    estAdmin boolean ,
+    nb_livres_empruntes int NOT NULL,
+    nb_livres_rendus int NOT NULL,
+    est_admin boolean ,
     CONSTRAINT pk_users PRIMARY KEY id ,
     CONSTRAINT un_users (prenom, nom, pseudo) UNIQUE
 );
@@ -21,15 +21,15 @@ CREATE TABLE "Livre" (
     couverture VARCHAR,
     edition VARCHAR ,
     emprunteur VARCHAR,
-    emprunteLe date ,
+    date_emprunt date ,
     CONSTRAINT pk_livres PRIMARY KEY id
     FOREIGN KEY emprunteur REFERENCES User (id)
 );
 
-CREATE TABLE "Livre_auteur" ( -- auteur pour livre -> composante multivalué
+CREATE TABLE "Auteur" ( -- auteur pour livre -> composante multivalué
     id_livre VARCHAR NOT NULL
     auteur VARCHAR NOT NULL
-    CONTRAINT pk_livre_auteur PRIMARY KEY (id_livre, auteur),
+    CONTRAINT pk_auteur PRIMARY KEY (id_livre, auteur),
     FOREIGN KEY id_livre REFERENCES Livre (id)
 );
 
