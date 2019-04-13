@@ -85,7 +85,7 @@ select moyenne from leaderboard where id_user=$iduser; --la moyenne totale
 select name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user=$iduser; --par assos
 select name,association,notation from (score natural join events using (id_event) join associations using (id_asso)) where iduser=$iduser; --par evenements
 */
-
+select moyenne from leaderboard where id_user=1;
 /*pour qu'un élève modifie sa participation a un évènement
  
  */

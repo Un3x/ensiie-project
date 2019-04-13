@@ -14,14 +14,14 @@ function displayHeader(){
 </head>
 <body>
 <nav>
-	<ul>
+	<ul class="topnav">
 		<li><a href="/"> Accueil </a></li>
 
 <?php if (empty($_SESSION['login'])): ?>
 		<li><a href='http://localhost:8080/authentification.php'> Connexion </a></li>
 <?php else: ?>
 	<!--tout ce qui est affiché dans le menu si l'utilisateur est identifié-->
-		<li><a href="deauth.php"> Déconnexion du compte de <? echo $_SESSION["login"] ?></a></li>
+		<li><a href="deauth.php"> Déconnexion <? echo $_SESSION["login"] ?></a></li>
 		<li><a href="profil.php"> Mon profil </a></li>
         <li><a href="eleve.php"> Mes points </a></li>
 

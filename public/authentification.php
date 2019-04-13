@@ -1,4 +1,5 @@
 <?php
+include('./admin/functions.php');
 require '../vendor/autoload.php';
 //postgres
 $dbName = getenv('DB_NAME');
@@ -52,13 +53,8 @@ if(!empty($_POST))
 		$errorMessage = 'Veuillez inscrire vos identifiants svp !';
 	}
 }
+displayHeader();
 ?>
-<!DOCTYPE html PUBLIC>
-<html lang="fr">
-  <head>
-	<title>Formulaire d'authentification</title>
-  </head>
-  <body>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 	  <fieldset>
 		<legend>Identifiez-vous</legend>

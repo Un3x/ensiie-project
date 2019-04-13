@@ -45,7 +45,7 @@ $user = $users[$_SESSION['login']];
                       }
                   else
                       {
-                          $connection->query('UPDATE users SET password='.password_hash($_POST["NewPW"],PASSWORD_BCRYPT).' WHERE id='.$user->getId());
+                          $connection->query('UPDATE users SET password="'.password_hash($_POST["NewPW"],PASSWORD_BCRYPT).'" WHERE id='.$user->getId());
                       }
               }
       }
@@ -56,7 +56,7 @@ displayHeader();
     
     <h1 id = "PagePerso"> <label> Infos personnelles: </label> </h1></header>
     <p>
-    <table id="Resume">
+    <table id="Resume" class="table table-bordered table-hover table-striped">
     <caption> Infos personnelles</caption>
     <tr> <td> Nom</td> <td> <?php echo $user->getLastname() ?></td> </tr>
     <tr> <td> Prénom</td> <td> <?php echo $user->getFirstname() ?></td> </tr>

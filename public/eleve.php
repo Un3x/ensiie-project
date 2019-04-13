@@ -20,15 +20,14 @@ $users = $userRepository->fetchAll();
 
 $iduser = $users[$_SESSION['login']]->getId();
 
-$events = $connection->query('SELECT id_event, events.name ev_name, association.name assoc_name FROM events NATURAL JOIN association')->fetchAll(\PDO::FETCH_OBJ);
 
-$points = $connection->query('SELECT name, notation FROM pointsassos NATURAL JOIN associations WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
-
+$points = $connection->query('SELECT name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$events = $connection->query('select e.name name_event,a.name name_asso,notation from ((select name,notation,id_asso,id_user from score join events using (id_event)) e join associations a using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$moyenne = $connection->query('select moyenne from leaderboard where id_user='.$iduser)->fetch(\PDO::FETCH_OBJ);
 $participations = $connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 displayHeader();
 ?>
-
-<table>
+<table class="table table-bordered table-hover table-striped">
 	<caption>Récapitulatif des points association</caption>
 	<tr>
 		<th>Association</th>
@@ -38,24 +37,28 @@ displayHeader();
 <?php
 foreach ($points as $point) : ?>
 	<tr>
-	<td><?php echo $point->assoc_name ?></td>
-	<td><?php echo $point->ev_name ?></td>
+	<td><?php echo $point->name ?></td>
+	<td><?php echo $point->moyenne ?></td>
 	</tr>
 <?php endforeach;?>
+	<tr id="moyenne">
+		<td> Moyenne </td>
+		<td> <?php echo $moyenne->moyenne ?> </td>
+	</tr>
 </table>
 
-<table>
+<table class="table table-bordered table-hover table-striped">
 	<caption>Récapitulatif des évènements</caption>
 	<tr>
+		<th>Evenement</th>
 		<th>Association</th>
 		<th>Points</th>
-		<th>A participé</th>
 	</tr>
 <?php foreach ($events as $event) : ?>
 	<tr>
-		<td><?php echo $event->name ?></td>
-		<td><?php if ($event->id_event == $participations->score_id_ev){ echo $event->notation; } else { echo "";} ?></td>
-		<td><?php if ($event->id_event == $participations->score_id_ev){ echo "Oui"; } else { echo "Non";} ?></td>
+		<td><?php echo $event->name_event ?></td>
+		<td><?php echo $event->name_asso ?></td>
+		<td><?php echo $event->notation ?></td>
 	</tr>
 <?php endforeach; ?>
 </table>
