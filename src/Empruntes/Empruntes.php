@@ -1,7 +1,7 @@
 <?php
-namespace Review;
+namespace Empruntes;
 
-class Review;
+class Empruntes;
     /**
      * @var string
      */
@@ -26,7 +26,6 @@ class Review;
         return $this;
     }
 
-    
 
 
 }
