@@ -137,7 +137,7 @@ class User
      */
     public function setLocation($location){
         $this->location=$location;
-        return this;
+        return $this;
     }
 
     /**
@@ -153,9 +153,9 @@ class User
      * @param $mail
      * @return User
      */
-    public function setMail(){
+    public function setMail($mail){
         $this->$mail=$mail;
-        return this;
+        return $this;
     }
 
     /**
@@ -170,7 +170,7 @@ class User
      * @param string
      * @return User
      */
-    public function setMdp(){
+    public function setMdp($mdp){
         $this->$mdp=$mdp;
         return $this;
     }
@@ -180,7 +180,7 @@ class User
      * @throws \NoStringException
      */
     public function getMdp():string{
-        return $this->$mdp
+        return $this->$mdp;
     }
 }
 

@@ -26,11 +26,11 @@ class UserRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
-                ->setLocation($row->location);
-                ->setMail($row->mail);
-                ->setPassword($row->mdp);
-                ->setProfilePicture($row->pp);
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp);
+                //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
 
             $users[] = $user;
         }
