@@ -11,6 +11,10 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
+$livreRepository = new \Livre\LivreRepository($connection);
+$livres = $livreRepository->fetchAll();
+$auteurRepository = new \Auteur\AuteurRepository($connection);
+$auteurs = $auteurRepository->fetchAll();
 ?>
 
 <html>
@@ -22,7 +26,7 @@ $users = $userRepository->fetchAll();
 <body>
     <h1> Recherche de livre</h1>
     <nav>
-         <!-- TODO recopier le nav>
+         <!-- TODO recopier le nav-->
     </nav>
     <h2>Recherche</h2>
     <form>

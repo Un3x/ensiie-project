@@ -9,12 +9,16 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
+$livreRepository = new \Livre\LivreRepository($connection);
+$livres = $livreRepository->fetchAll();
+$auteurRepository = new \Auteur\AuteurRepository($connection);
+$auteurs = $auteurRepository->fetchAll();
 ?>
 
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href=".css">
     <title>Page dajoutdelivre</title>
     </head>
     <body>

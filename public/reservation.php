@@ -11,6 +11,10 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
+$livreRepository = new \Livre\LivreRepository($connection);
+$livres = $livreRepository->fetchAll();
+$reservationRepository = new \Resrvation\ReservationRepository($connection);
+$reservations = $reservationRepository->fetchAll();
 ?>
 
 <html>

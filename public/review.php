@@ -23,7 +23,7 @@ $users = $userRepository->fetchAll();
     <h1> Reservation de livre</h1>
     <p>Attention une réservation n\'équivaut pas à un emprunt</p>
     <nav>
-         <!-- TODO recopier le nav>
+         <!-- TODO recopier le nav-->
     </nav>
     <h2>Réservation</h2>
     <form>
