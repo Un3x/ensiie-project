@@ -36,7 +36,10 @@ $articles = $articleRepository->fetchWithoutTexte();
     	<tr><td>TOP 10 des raisons pour laquelle la tarentelle est un super danse, la 8ème va vous surprendre!</td><td>Altreon</td><td>0</td><td>12/04/2019</td></tr>
     	<?php 
     	foreach ($articles as $article) {
-    	    echo '<tr><td>'.$article->getTitre().'</td><td>'.$article->getAuteur()->getSurnom().'</td><td>0</td><td>'.$article->getDate()->format('d/m/y').'</td></tr>';
+    	    echo 
+    	    '<tr><td>
+                <a href="articleModification.php?id='.$article->getId().'">'.$article->getTitre().'</a></td><td>'.$article->getAuteur()->getSurnom().'</td><td>0</td><td>'.$article->getDate()->format('d/m/y').'
+             </td></tr>';
     	}
     	?>
     </table>

@@ -39,24 +39,25 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
     echo '<h1>Modification de l\'article n°'.$article->getId().'</h1>';
     
     ?>
-    
-    <form action="">
-    
-    	<label>Titre : </label><input id="titre" type="text" value="<?php echo $article->getTitre() ?>"/>
-    	<br/>
-    	<label>Texte : </label><textarea id="texte" rows="5" cols="40"><?php echo $article->getTexte() ?></textarea>
-    	<br/>
-    	<label>Auteur : </label>
-    	<select>
-    		<?php
-    		foreach ($membres as $membre){
-    		    echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
-    		}
-    		?>
-    	</select>
-    	<br/>
-    	<input type="submit" value="Envoyer"/>
-    </form>
+    <div class="modifContainer">
+        <form action="">
+        
+        	<label>Titre : </label><input id="titre" type="text" value="<?php echo $article->getTitre() ?>"/>
+        	<br/>
+        	<label>Texte : </label><textarea id="texte" rows="5" cols="40"><?php echo $article->getTexte() ?></textarea>
+        	<br/>
+        	<label>Auteur : </label>
+        	<select>
+        		<?php
+        		foreach ($membres as $membre){
+        		    echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
+        		}
+        		?>
+        	</select>
+        	<br/>
+        	<input type="submit" value="Envoyer"/>
+        </form>
+    </div>
     
     <form action=""><input type="submit" class="moins" value="Supprimer l'article"/></form>
  
