@@ -95,10 +95,8 @@ echo '
             <input class="signin" type="password" placeholder="Enter Password" name="psw" required>
                 
             <button type="submit">Login</button> </br>
-            <button type="link">Sign In</button></br>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+            <label for="remember">Remember me</label>
+            <input type="checkbox" checked="checked" name="remember">
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
