@@ -51,7 +51,8 @@ class ArticleRepository
     public function fetchWithoutTexte()
     {
         $rows = $this->connection->query('SELECT id_article, titre, date, id_membre, nom, prenom, surnom, promo, role
-                                          FROM "article" NATURAL JOIN "membre"')->fetchAll(\PDO::FETCH_OBJ);
+                                          FROM "article" NATURAL JOIN "membre"
+                                          ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
         $articles = [];
         foreach ($rows as $row) {
             $article = new Article();
@@ -78,8 +79,8 @@ class ArticleRepository
     public function getArticle($id)
     {
         $row = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
-                                          FROM "article" NATURAL JOIN "membre"
-                                          WHERE id_article = '.$id)->fetchAll(\PDO::FETCH_OBJ);
+                                         FROM "article" NATURAL JOIN "membre"
+                                         WHERE id_article = '.$id)->fetchAll(\PDO::FETCH_OBJ);
         if(count($row) == 0){
             return NULL;
         }
@@ -101,5 +102,24 @@ class ArticleRepository
             ->setDate(new \DateTimeImmutable($row->date));
         
         return $article;
+    }
+    
+    public function setArticle($id, $titre, $texte, $auteur, $date)
+    {
+        $sql = "UPDATE article
+                SET titre = ?, texte = ?, id_membre = ?, date = ?
+                WHERE id_article = ?";
+        $req = $this->connection->prepare($sql);
+        $status = $req->execute(array($titre, $texte, $auteur, $date, $id));
+        return $status;
+    }
+    
+    public function deleteArticle($id)
+    {
+        $sql = "DELETE FROM article
+                WHERE id_article = ?";
+        $req = $this->connection->prepare($sql);
+        $status = $req->execute(array($id));
+        return $status;
     }
 }

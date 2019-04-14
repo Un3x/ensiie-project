@@ -38,7 +38,7 @@ $articles = $articleRepository->fetchWithoutTexte();
     	foreach ($articles as $article) {
     	    echo 
     	    '<tr><td>
-                <a href="articleModification.php?id='.$article->getId().'">'.$article->getTitre().'</a></td><td>'.$article->getAuteur()->getSurnom().'</td><td>0</td><td>'.$article->getDate()->format('d/m/y').'
+                <a href="articleModification.php?id='.$article->getId().'">'.$article->getTitre().'</a></td><td>'.$article->getAuteur()->getSurnom().'</td><td>0</td><td>'.$article->getDate()->format('d/m/Y').'
              </td></tr>';
     	}
     	?>
