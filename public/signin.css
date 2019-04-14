@@ -123,13 +123,14 @@ input[type=submit]:hover {
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input.signin, input.signin {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  background-color: white;
 }
 
 /* Set a style for all buttons */
@@ -196,6 +197,7 @@ span.psw {
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  padding-bottom: 20px;
 }
 
 /* The Close Button (x) */

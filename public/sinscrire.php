@@ -25,14 +25,14 @@ loginForm();
 	<h2>Inscription</h2>
 	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
 	<form action="verificationsignup.php" method="post">
-		Nom <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="nom" required>
-	    Prénom <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="prenom" required>
-	    Pseudo <span class="red">*</span> : <input class="form_signup" type="text" size="20" maxlenght="30" name="id_user" required>
-	    Adresse mail <span class="red">*</span> : <input class="form_signup" type="text" name="email" required>
-	    Mot de passe <span class="red">*</span> : <input class="form_signup" type="password" size="20" name="mdp" required>
-	    Date de naissance : <input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... -->
-	    Ville <span class="red">*</span> : <input class="form_signup" type="text" name="ville" required>
-			Photo de profil : <input type="file" name="pp" accept="image/png, image/jpeg">
+		Nom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="nom" placeholder="Nom" required>
+	  Prénom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="prenom" placeholder="Prénom" required>
+	  Pseudo <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="id_user" placeholder="Pseudo" required>
+	  Adresse mail <span class="red">*</span> : <input type="text" name="email" placeholder="Email" required>
+	  Mot de passe <span class="red">*</span> : <input type="password" size="20" name="mdp" placeholder="Mot de passe" required>
+	  Date de naissance : <input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... -->
+	  Ville <span class="red">*</span> : <input type="text" name="ville" placeholder="Ville" required>
+		Photo de profil : <input type="file" name="pp" accept="image/png, image/jpeg">
 		<div class="flexbox">
 			<div class="bouton">
 				<input type="submit" value="Envoyer" name="inscription_bouton">

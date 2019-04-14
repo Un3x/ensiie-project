@@ -17,7 +17,9 @@ enTete("FindYourThing.com");
 aside();
 navigation();
 loginForm();
-//carroussel();
+?>
+
+<?php
 pied();
 ?>
 
