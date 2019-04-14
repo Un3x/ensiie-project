@@ -122,4 +122,13 @@ class ArticleRepository
         $status = $req->execute(array($id));
         return $status;
     }
+    
+    public function createArticle($titre, $texte, $auteur, $date)
+    {
+        $sql = "INSERT INTO article
+                (titre, texte, id_membre, date) VALUES (?, ?, ?, ?);";
+        $req = $this->connection->prepare($sql);
+        $status = $req->execute(array($titre, $texte, $auteur, $date));
+        return $status;
+    }
 }

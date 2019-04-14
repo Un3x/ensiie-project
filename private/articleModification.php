@@ -86,7 +86,7 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
         </form>
     </div>
     
-    <form action="" method="post"><input name ="supression" type="submit" class="moins" value="Supprimer l'article"/></form>
+    <form action="" method="POST"><input name ="supression" type="submit" class="moins" value="Supprimer l'article"/></form>
  
 <?php
 }
