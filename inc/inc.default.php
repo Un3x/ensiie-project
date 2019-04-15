@@ -8,6 +8,7 @@
 		echo "\t<meta charset=\"UTF-8\" />\n";
 		echo "\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
 		echo "\t<link rel=\"stylesheet\" href=\"../CSS/style.css\" type=\"text/css\" />\n";
+		echo "\t<link rel=\"stylesheet\" href=\"../CSS/cadre.css\">\n";
 		echo "\t<link rel=\"shortcut icon\" href=\"../img/badassChicken.ico\">\n";
 		echo "</head>\n";
 		echo "<body>\n";

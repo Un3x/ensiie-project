@@ -1,14 +1,9 @@
 <?php
-
+	require( "../inc/inc.default.php" );
+	require( "../inc/inc.nav.php" );
+	entete( "Accueil" );
+	navAccueil();
 ?>
-
-<html>
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../CSS/cadre.css">
-	<link rel="stylesheet" href="../CSS/style.css">
-</head>
-<body>
 
 
 <h2>NOS ACTIVITES</h2>
@@ -61,5 +56,6 @@ vous même les installer et y jouer. On vous invite donc à les tester et
 
 
 
-</body>
-</html>
+<?php
+	pied();
+?>
