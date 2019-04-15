@@ -62,7 +62,7 @@ article
 {
 	margin-right    : 15%;
 	margin-left     : 15%;
-	text-align      : justify;
+	/*text-align      : justify; CASSE COUILLE*/
 	background-color: rgba(213, 239, 62, 0.5);
 	padding         : 10px; 
 }

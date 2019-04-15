@@ -9,6 +9,10 @@ require '../src/Article/Article.php';
 require '../src/Article/ArticleRepository.php';
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
+require( "../inc/inc.default.php" );
+require( "../inc/inc.nav.php" );
+entete( "Accueil" );
+navAccueil();
 
 if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
     header("location: ../public/connexion.php");
@@ -93,3 +97,7 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 ?>
 
 </body>
+
+<?php
+	pied();
+?>
