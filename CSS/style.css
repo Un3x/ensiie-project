@@ -1,0 +1,78 @@
+#menu
+{
+	background-color: black;
+	width           : 70%;
+	padding-top     : 5px;
+	padding-bottom  : 5px;
+	height          : 25px;
+	box-sizing      : initial;
+	font-size       : 18px;
+	padding-right   : 15%;
+	padding-left    : 15%;
+}
+
+#menu div:first-child
+{
+	border-left: 1px white solid;
+}
+
+#menu div
+{
+	display      : inline;
+	padding-left : 5px;
+	padding-right: 5px;
+	font-size    : 1.75vw;
+	border-right : 1px white solid;
+}
+
+#menu div a
+{
+	color          :white;
+	text-decoration: none;
+}
+
+#menu div a:hover
+{
+	color          :red;
+	text-decoration: none;
+}
+
+body
+{
+	margin: 0px;
+}
+table, td, th
+{
+	border-collapse: collapse;
+	border         : 2px solid black;
+}
+
+nav
+{
+	background-color: rgba(107, 92, 92, 0.07);
+	width           : fit-content;
+	position        : fixed;
+	padding-right   : 25px;
+	margin-left     : 5px;
+	margin-top      : 5px;
+	border          : greenyellow 1px solid;
+	border-radius   : 32%;
+}
+
+article
+{
+	margin-right    : 15%;
+	margin-left     : 15%;
+	text-align      : justify;
+	background-color: rgba(213, 239, 62, 0.5);
+	padding         : 10px; 
+}
+
+footer
+{
+	height          : 15%;
+	font-size       : 70px;
+	text-align      : center;
+	color           : white;
+	background-color: black;
+}
