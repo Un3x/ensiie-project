@@ -26,7 +26,7 @@ function displayHeader(){
         <li><a href="eleve.php"> Mes points </a></li>
 
 	<?php if (!empty($_SESSION['bde'])):?>
-		<li><a href='bde.html'> Gestion BDE </a></li>
+		<li><a href='bde.php'> Gestion BDE </a></li>
 	<? endif; ?>
 	<?php if (!empty($_SESSION['president'])):?>
 		<li><a href='president.php'> Gestion président </a></li>
