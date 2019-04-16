@@ -1,9 +1,9 @@
 <?php
-
+require '../vendor/autoload.php';
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
-$connect = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $query = "SELECT * FROM associations";
 
@@ -22,14 +22,15 @@ $data = json_encode($data);
 echo $data;
 */
 
-/*
-echo '<pre>';
-var_dump($data);
-echo '</pre>';
-*/
-
 //var_dump($query);
 
 $data = $connection->query($query)->fetchAll(\PDO::FETCH_OBJ);
 $data = json_encode($data);
+/*
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+ */
+
 echo $data;
+
