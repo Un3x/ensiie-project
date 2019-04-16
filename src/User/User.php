@@ -14,6 +14,7 @@ class User
     private $firstname;
 	private $password;
 	private $president;
+	private $mail;
 
     /**
      * @var string
@@ -47,7 +48,16 @@ class User
     {
         $this->id = $id;
         return $this;
-    }
+	}
+	public function setMail($mail)
+	{
+		$this->mail = $mail;
+		return $this;
+	}
+	public function getMail()
+	{
+		return $this->mail;	
+	}
 
     /**
      * @return string

@@ -33,6 +33,7 @@ class UserRepository
 				->setPassword($row->password)
 				->setPromo($row->year)
 				->setPresident($row->president)
+				->setMail($row->mail)
 				->setBde($row->bde);
 				
 

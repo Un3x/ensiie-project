@@ -24,9 +24,9 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 $user = $users[$_SESSION['login']];
-  // Definition des constantes et variables
-  $errorMessage = '';
-
+// Definition des constantes et variables
+$errorMessage = '';
+$errorMessageMail = ''; 
 
 
 
@@ -45,9 +45,37 @@ $user = $users[$_SESSION['login']];
                       }
                   else
                       {
-                          $connection->query('UPDATE users SET password="'.password_hash($_POST["NewPW"],PASSWORD_BCRYPT).'" WHERE id='.$user->getId());
+                          $connection->query("UPDATE users SET password='".password_hash($_POST["NewPW"],PASSWORD_BCRYPT)."' WHERE id_user=".$user->getId());
+						  $errorMessage='Le mot de passe a été changé !';
                       }
               }
+		  if(!empty($_POST['NewMail'])&&!empty($_POST['NewMail2']))
+		  {
+			if (!empty($_POST['OldMail'])){
+		  	if ($_POST['OldMail'] != $user->getMail())
+			{
+				$errorMessageMail = 'Mauvais mail !';
+			} 
+			else if ($_POST['NewMail'] != $_POST['NewMail2']) 
+			{
+				$errorMessageMail='Nouveaux mails différents !';
+			}
+			else {
+				$connection->query("update users set mail='".$_POST['NewMail']."' where id_user=".$user->getId());
+				$errorMessageMail = 'Le mail de récupération a été changé !';
+			}
+			} else {
+				if ($_POST['NewMail'] != $_POST['NewMail2']) 
+				{
+					$errorMessageMail='Nouveaux mails différents !';
+				}
+				else {
+					$connection->query("update users set mail='".$_POST['NewMail']."' where id_user=".$user->getId());
+					$errorMessageMail = 'Le mail de récupération a été changé !';
+				}
+	
+			}
+		  }
       }
 
 displayHeader();
@@ -64,7 +92,7 @@ displayHeader();
 <?php
 /*<tr> <td> Assos</td> <td> <?php echo $user->getAssos() ?></td> </tr>*/
 ?>
-    <tr> <td> Année</td> <td> <?php echo $user->getAnnee() ?></td> </tr>
+    <tr> <td> Année</td> <td> <?php echo $user->getAnnee() ?>A</td> </tr>
     </table>
     </p>
 
@@ -80,7 +108,7 @@ displayHeader();
           }
         ?>
        <p>
-          <label for="AncienPW">Mot de passe:</label> 
+          <label for="AncienPW">Mot de passe actuel :</label> 
           <input type="password" name="OldPW" id="password" value="" />
         </p>
         <p>
@@ -91,7 +119,31 @@ displayHeader();
           <input type="submit" name="submit" value="Appliquer" />
         </p>
       </fieldset>
+	  <fieldset>
+	  <legend>Modifier son email de récupération </legend>
+		<?php
+			if (!empty($errorMessageMail))
+			{
+				echo '<p>', htmlspecialchars($errorMessageMail), '</p>';
+			}
+			if ($user->getMail() != "null"):
+?>
+		<p>
+			<label for="OldMail"> Email actuel :</label>
+			<input type="text" name="OldMail" id="OldMail" value=""/>   
+		</P>
+<?php else:?>
+	<p class="pasDeMail">Fortement recommandé car vous n'avez actuellement pas de mail de récupération de mot de passe</p>			
+
+<?php endif;?>
+		<label for="mail">Nouveau mail :</label>
+		<input type="text" name="NewMail" id="NewMail" value=""/>
+		<label for="mail">Confirmer :</label>
+		<input type="text" name="NewMail2" id="NewMail" value=""/>
+		<input type="submit" name="submit" value="Appliquer"/>
+      </fieldset>
     </form>
+
     </p>
 </body>
 </html>

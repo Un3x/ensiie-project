@@ -27,6 +27,7 @@ create table users (
 	pseudo varchar unique not null,
 	year int not null,
 	password varchar default 'default',
+	mail varchar not null default 'null',
 	bde int default 0 check(bde=0 or bde=1),
 	president int default 0 check(president=0 or president=1)
 );
@@ -35,7 +36,7 @@ create table associations (
 	id_asso serial primary key,
 	name varchar not null,
 	president int references users(id_user),
-	coeff_asso int not null default 50 check (coeff_asso<=100 and coeff_asso>0)
+	coeff_asso int not null default 1 check (coeff_asso<=100 and coeff_asso>0)
 );
 
 create table events (
@@ -43,7 +44,7 @@ create table events (
 	name varchar not null,
 	description_event varchar,
 	id_asso int references associations(id_asso),
-	coeff_event int default 100 check (coeff_event<=100 and coeff_event>0)
+	coeff_event int default 1 check (coeff_event<=100 and coeff_event>0)
 );
 
 create table score (

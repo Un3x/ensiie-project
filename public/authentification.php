@@ -76,5 +76,6 @@ if(!empty($errorMessage))
 		</p>
 	  </fieldset>
 	</form>
+	<a href="forgotten.php"> J'ai oublié mon mot de passe </a>
   </body>
 </html>
