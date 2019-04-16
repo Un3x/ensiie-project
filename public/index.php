@@ -37,48 +37,10 @@ $users = $userRepository->fetchAll();
 		</form>
 	</div>
 
-	<div class="article-container">
-		<div class="article">
-			<h3>Titre de l'article n°1</h3>
-			<p>
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-			</p>
-		</div>
-		<div class="article">
-			<h3>Titre de l'article n°2</h3>
-			<p>
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-				Ceci est du texte pour remplir. Ceci est du texte pour remplir.
-			</p>
-		</div>
-	</div>
+
+	<?php if (!isset($_SESSION['mail'])) articles(); 
+			else followed($_SESSION['mail']);?>
+
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
