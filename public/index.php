@@ -18,17 +18,39 @@ if( isset($_GET['action']))
     {
         require('../src/View/clientsView.php');
     }
+    
     if($_GET['action']=='connexion')
     {
-        require('../src/View/connexionView.php');
+        require('../src/Controller/inscriptionClientController.php');
+        if( isset($_GET[‘login’]) && isset($_GET['password']))
+        {
+            tentativeConnexion();
+        }
+        else
+        {
+            connexionDebut();
+        }
     }
+
     if($_GET['action']=='creatures')
     {
         require('../src/View/creaturesView.php');
     }
     if($_GET['action']=='inscriptionClient')
     {
-        require('../src/View/inscriptionClientView.php');
+        require('../src/Controller/inscriptionClientController.php');
+        if(isset($_GET['pseudo']) && isset($_GET['password'])
+        && isset($_GET['password2']) && isset($_GET['prenom'])
+        && isset($_GET['nom']) && isset($_GET['age'])
+        && isset($_GET['mail']) && isset($_GET['age'])
+        && isset($_GET['description']))
+        {
+            inscriptionClient();
+        }
+        else
+        {
+            inscriptionClientDebut();
+        }
     }
 }
 else
