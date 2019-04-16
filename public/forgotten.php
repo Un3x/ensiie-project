@@ -2,8 +2,6 @@
 <?php
 require '../vendor/autoload.php';
 include('./admin/functions.php');
-// On prolonge la session
-session_start();
 
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -14,6 +12,21 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 $errorMessage = '';
 displayHeader();
+
+if (!empty($_POST['login'])&&!empty($_POST['mail']))
+{
+	if (!array_key_exists($_POST['login'],$users))
+	{
+		$errorMessage = 'Mauvais login !';
+	}
+	else if ($users[$_POST['login']]->getMail() != $_POST['mail']){
+		$errorMessage = 'Mauvais mail !';
+	}
+	else 
+	{
+		$errorMessage = 'Mdp réinitialisé !';
+	}
+}
 ?>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
   <fieldset>
