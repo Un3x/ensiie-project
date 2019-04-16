@@ -115,7 +115,7 @@ $users = $userRepository->fetchAll();
       <?php endforeach; ?>
 
 	<footer>
-		<?php include ('footer.php'); footer();?>
+		<?php footer();?>
 	</footer>
 	</body>
 </html>

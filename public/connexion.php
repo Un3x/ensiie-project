@@ -36,7 +36,7 @@
 		</div>
 
 	<footer>
-		<?php include ('footer.php'); footer();?>
+		<?php footer();?>
 	</footer>
 	</body>
 </html>
