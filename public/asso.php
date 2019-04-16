@@ -6,7 +6,7 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $query = "SELECT * FROM associations";
-
+/*
 $result = mysql_query($query,$connect);
 
 $data = [];
@@ -19,12 +19,13 @@ header('Content-type:text/javascript;charset=utf-8');
 
 $data = json_encode($data);
 echo $data;
-
+ */
 /*
 echo '<pre>';
 var_dump($data);
 echo '</pre>';
 */
 
-
 //var_dump($query);
+
+echo $connection->query($query)->fetchAll();
