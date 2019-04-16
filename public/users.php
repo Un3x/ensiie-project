@@ -1,4 +1,5 @@
 <?php
+require '../vendor/autoload.php';
 
 function csv_encode($v) {
     return '"' . $v . '"';
@@ -7,9 +8,9 @@ function csv_encode($v) {
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
-$connect = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$query = "SELECT * FROM users"; //SELECT * FROM users LEFT NATURAL JOIN pointsassos
+$query = "SELECT * FROM users LEFT NATURAL JOIN pointsassos";
 $search = [];
 foreach($_REQUEST['year'] as $y) {
     $search[] = "year='$y'";
@@ -22,6 +23,7 @@ if ($order) {
     $query .= ' ORDER BY ' . $order;
 }
 
+/*
 $result = mysql_query($query,$connect);
 
 $data = [];
@@ -29,6 +31,8 @@ while ($row = mysql_fetch_assoc($result)) {
     $data[] = $row;
 }
 mysql_free_result($result);
+*/
+$data = $connection->query($query)->fetchAll(\PDO::FETCH_OBJ);
 
 if ($_REQUEST['export']) {
     header('Content-type:application/vnd.ms-excel');

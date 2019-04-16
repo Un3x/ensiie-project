@@ -83,9 +83,10 @@ displayHeader();
 
     function action_aff() {
       $(".choix").removeClass("hide");
-      var year = $("#promoAnnee").val(),
+    var year = $("#promoAnnee").val(),
+    asso = $("#association").val(),
         ordre = $("#ordre").val();
-      $.get("users.php", { "year": year, "order": ordre }, function (users) {
+      $.get("users.php", { "year": year, "asso": asso, "order": ordre }, function (users) {
         console.log(users);
         $("#res tbody tr").remove();
         $.each(users, function (i, u) {
