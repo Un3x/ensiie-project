@@ -10,7 +10,7 @@ $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$query = "SELECT * FROM users LEFT NATURAL JOIN pointsassos";
+$query = "SELECT * FROM users"; // LEFT NATURAL JOIN pointsassos";
 $search = [];
 foreach($_REQUEST['year'] as $y) {
     $search[] = "year='$y'";
