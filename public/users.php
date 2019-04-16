@@ -7,7 +7,7 @@ function csv_encode($v) {
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
-$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+$connect = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $query = "SELECT * FROM users"; //SELECT * FROM users LEFT NATURAL JOIN pointsassos
 $search = [];
