@@ -19,7 +19,15 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $reps = $connection->query('SELECT firstname, lastname, pseudo, moyenne FROM users NATURAL JOIN leaderboard')->fetchAll(\PDO::FETCH_OBJ);
 */
 ?>
-
+<html>
+<head>
+<style>
+.hide {
+  display: none;
+}
+</style>
+</head>
+<boby>
 <table>
 <tr>
 <td>Consulter pour associatif</td>
@@ -31,19 +39,17 @@ $reps = $connection->query('SELECT firstname, lastname, pseudo, moyenne FROM use
     <option value="2018">4A (Promo 2018)</option>
     </select>
     </td>
-    <span id="choix" style="display:none">
-    <td>ordonner par:</td>
-    <td>
+    <td class="choix hide">ordonner par:</td>
+    <td class="choix hide">
     <select name="ordre">
     <option value="nom">nom</option>
     <option value="pseudo">pseudo</option>
     <option value="point">points associatif</option>
     </select>
     </td>
-    <td>
+    <td class="choix hide">
     <input type="submit" value="CSV" name="avoirpoints">
     </td>
-    <span>
     </tr>
 </table>    
     <input type="submit" value="Rechercher" name="tsub" onclick="document.getElementById('choix').style.display='table-cell'">
