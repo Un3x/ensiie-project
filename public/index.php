@@ -1,6 +1,5 @@
 <?php
 require '../vendor/autoload.php';
-//dizjdjekdjekcaca
 
 //postgres
 $dbName = getenv('DB_NAME');
