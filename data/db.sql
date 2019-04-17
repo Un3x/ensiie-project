@@ -1,19 +1,60 @@
--- INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+--- `make db.install` to update the database
 
---- `make reinstall` to update the database
-
---- drop if exists, comme ça pas de problèmes, pas besoin mais ça coute rien
-DROP TABLE IF EXISTS "user";
+--- drop if exists
 DROP TABLE IF EXISTS "current";
-DROP TABLE IF EXISTS "achievements";
 DROP TABLE IF EXISTS "completed";
+DROP TABLE IF EXISTS "story_node";
 DROP TABLE IF EXISTS "link_achievement_user";
+DROP TABLE IF EXISTS "achievements";
+DROP TABLE IF EXISTS "user";
+
+DROP TYPE IF EXISTS REQUIREMENT;
+
+DROP TABLE IF EXISTS "choice";
 
 --- user, the person that will connect
 CREATE TABLE "user" (
   pseudo VARCHAR NOT NULL PRIMARY KEY,
   hash VARCHAR NOT NULL,
   genre VARCHAR NOT NULL
+);
+
+-- types for a story node
+CREATE TYPE REQUIREMENT AS (
+  minimum INT,
+  maximum INT
+);
+
+--- next SERIAL is the primary key of a "story_node",
+--- but we drop security here because of circular dependency
+CREATE TABLE "choice" (
+  id SERIAL PRIMARY KEY,
+  content VARCHAR,
+  next SERIAL
+);
+
+-- the story node
+CREATE TABLE "story_node" (
+  id SERIAL PRIMARY KEY,
+  -- requirements
+  require_alcohol REQUIREMENT,
+  require_attendance REQUIREMENT,
+  require_ghost REQUIREMENT,
+  is_bar REQUIREMENT,
+  is_baka REQUIREMENT,
+  is_diese REQUIREMENT,
+  likeness_bar REQUIREMENT,
+  likeness_baka REQUIREMENT,
+  likeness_diese REQUIREMENT,
+  -- the content of the story
+  content VARCHAR NOT NULL,
+  bg_picture VARCHAR NOT NULL,
+  fg_picture VARCHAR,
+  -- the choices for the next step,
+  -- everything at NULL for an end
+  choice_1 SERIAL REFERENCES "choice"(id),
+  choice_2 SERIAL REFERENCES "choice"(id),
+  choice_3 SERIAL REFERENCES "choice"(id)
 );
 
 --- achivements, like in games
@@ -38,11 +79,11 @@ CREATE TABLE "link_achievement_user" (
 CREATE TABLE "completed" (
   -- the pseudo of the person that completed a story
   pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
-  -- step_$(end_id).xml to get the file (see scheme)
-  end_id INT NOT NULL,
+  -- the end reached in the story, a final step
+  end_id SERIAL REFERENCES "story_node"(id),
   -- stats
   ghost INT NOT NULL,
-  alohol INT NOT NULL,
+  alcohol INT NOT NULL,
   attendance INT NOT NULL,
   bar INT NOT NULL,
   baka INT NOT NULL,
@@ -52,18 +93,18 @@ CREATE TABLE "completed" (
   is_diese BOOLEAN NOT NULL,
   -- the date
   date_end DATE NOT NULL,
-  PRIMARY KEY (pseudo, end_id, ghost, alohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese)
+  PRIMARY KEY (pseudo, end_id, ghost, alcohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese)
 );
 
 --- state of a party
 CREATE TABLE "current" (
   pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
-  -- step_$(step).xml to get the file
-  step INT NOT NULL,
+  -- step in the story
+  step SERIAL REFERENCES "story_node"(id),
   date_current DATE NOT NULL,
   -- stats
   ghost INT NOT NULL,
-  alohol INT NOT NULL,
+  alcohol INT NOT NULL,
   attendance INT NOT NULL,
   bar INT NOT NULL,
   baka INT NOT NULL,
@@ -80,10 +121,7 @@ CREATE TABLE "current" (
 --- INSERTS
 INSERT INTO "user"(pseudo, hash, genre) VALUES
 ('Polio', 'x', 'm'),
-('Sun', 'x', 'f');
-
-INSERT INTO "achievements"(id, title, text, icon) VALUES
-(1, 'Trou noir', E'Et ça n\'est pas près de s\'arrêter !', NULL);
-
-INSERT INTO "current"(pseudo, step, date_current, ghost, alohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese, steps) VALUES
-('Polio', 1, '2019-04-09', 0, 0, 0, 50, 10, 0, TRUE, FALSE, FALSE, '{1, 2}');
+('Sun', 'x', 'f'),
+('Kat', 'x', 'f'),
+('Kubat', 'x', 'm'),
+('Bob', 'x', 'Hélicoptère Apache');
