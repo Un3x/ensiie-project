@@ -87,7 +87,7 @@ CREATE TABLE public.article (
     id_article integer NOT NULL,
     titre character varying(100) NOT NULL,
     texte character varying(10000) NOT NULL,
-    id_membre integer NOT NULL,
+    auteur integer NOT NULL,
     date date NOT NULL
 );
 
@@ -209,7 +209,7 @@ CREATE TABLE public.membre (
     nom character varying(50),
     prenom character varying(50),
     surnom character varying(50) NOT NULL,
-    password character varying(20) NOT NULL,
+    password character varying(100) NOT NULL,
     promo integer,
     role character(1)
 );
@@ -515,7 +515,7 @@ ALTER TABLE ONLY public.tuto
 --
 
 ALTER TABLE ONLY public.article
-    ADD CONSTRAINT article_id_membre_fkey FOREIGN KEY (id_membre) REFERENCES public.membre(id_membre);
+    ADD CONSTRAINT article_id_membre_fkey FOREIGN KEY (auteur) REFERENCES public.membre(id_membre);
 
 
 --
