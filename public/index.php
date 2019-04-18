@@ -9,18 +9,12 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();   
-include '../src/affichage/user_head.php';
-include '../src/User/signin.php';
-include '../src/affichage/carroussel.php';
 
-enTete("FindYourThing.com");
-aside();
-navigation();
-loginForm();
-?>
 
-<?php
-pied();
+require("header.php");
+require("aside.php");
+require("footer.php");
+
 ?>
 
 

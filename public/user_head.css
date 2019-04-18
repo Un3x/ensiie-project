@@ -19,7 +19,6 @@ header {
     align-items: center;
     width: 100%;
     position: flex;
-    
 }
 
 nav {
@@ -43,11 +42,10 @@ nav a:hover {
 
 aside {
     background-color: #009925;
-    position: sticky;
     top: 0;
     display: flex;
     flex-direction: column;
-    float: right;
+    flex: 20%;
     padding: 10px;
     height: 10%;
     width: 10%;
@@ -55,17 +53,31 @@ aside {
 
 section {
     padding: 20px;
+    flex: 80%;
+}
+
+.flexbox_sect_asi {
+    display: flex;
 }
 
 header a{
     text-align: right;
+    text-decoration: none;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    background-color: #009925;
+    color: white;
+    padding: 20px;
 }
 
 .red {
     color : red;
 }
 
-.flexbox {
+.flexbox_boutton {
     display: flex;
 }
 
@@ -73,6 +85,12 @@ header a{
     padding: 20px;
     flex: 50%;
 }
+
+/*.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}*/
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -102,5 +120,18 @@ input[type=reset] {
 
     nav a {
         border-bottom: 1px solid #009925;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+    }
+
+    .flexbox_boutton {
+        flex-direction: column;
+    }
+
+    .bouton {
+        width: 100%;
+        padding: 10px;
     }
   }

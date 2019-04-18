@@ -10,30 +10,25 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();   
-include '../src/affichage/user_head.php';
-include '../src/User/signin.php';
-include '../src/affichage/carroussel.php';
 
-enTete("FindYourThing.com");
-aside();
-navigation();
-loginForm();
+require("header.php");
 
 ?>
 
 <section>
+	<div class="form">
 	<h2>Inscription</h2>
 	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
-	<form action="verificationsignup.php" method="post">
-		Nom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="nom" placeholder="Nom" required>
-	  Prénom <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="prenom" placeholder="Prénom" required>
-	  Pseudo <span class="red">*</span> : <input type="text" size="20" maxlenght="30" name="id_user" placeholder="Pseudo" required>
-	  Adresse mail <span class="red">*</span> : <input type="text" name="email" placeholder="Email" required>
-	  Mot de passe <span class="red">*</span> : <input type="password" size="20" name="mdp" placeholder="Mot de passe" required>
-	  Date de naissance : <input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... -->
-	  Ville <span class="red">*</span> : <input type="text" name="ville" placeholder="Ville" required>
-		Photo de profil : <input type="file" name="pp" accept="image/png, image/jpeg">
-		<div class="flexbox">
+	<form action="verificationsignup.php" method="post" class="form">
+		Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="nom" placeholder="Nom" required> <br/>
+	  	Prénom <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="prenom" placeholder="Prénom" required> <br/>
+	  	Pseudo <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="id_user" placeholder="Pseudo" required> <br/>
+	  	Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" placeholder="Email" required> <br/>
+	  	Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" placeholder="Mot de passe" required> <br/>
+	  	Date de naissance : <br/><input type="date" name="bday"> <!-- ne fonctionne pas sur safari ou explorer... --> <br/>
+	  	Ville <span class="red">*</span> : <br/><input type="text" name="ville" placeholder="Ville" required> <br/>
+		Photo de profil : <br/><input type="file" name="pp" accept="image/png, image/jpeg">
+		<div class="flexbox_boutton">
 			<div class="bouton">
 				<input type="submit" value="Envoyer" name="inscription_bouton">
 			</div>
@@ -42,8 +37,10 @@ loginForm();
 			</div>
 		  </div>
 	</form>
+	</div>
 </section>
 
 <?php
-pied();
+require("aside.php");
+require("footer.php");
 ?>
