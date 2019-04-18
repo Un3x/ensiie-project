@@ -48,6 +48,9 @@
 		echo "\t\t\t<a href=\"projets.php\">Projets</a>\n";
 		echo "\t\t</div>\n";
 		echo "\t\t<div>\n";
+		echo "\t\t\t<a href=\"laval.php\">Laval</a>\n";
+		echo "\t\t</div>\n";
+		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"ressources.php\">Ressources</a>\n";
 		echo "\t\t</div>\n";
 		echo "\t\t<div>\n";

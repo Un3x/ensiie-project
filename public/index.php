@@ -25,7 +25,7 @@ ont à leur actif plusieurs projets. </p>
 à tous le matériel qui s'y touve(ou presque). Pour ceux qui sont intéréssés
 par la VR, le VIVE est accés vous invitons à nous rejoindre. Dans l'association
 vous aurez l'occasion de vous familiariser avec l'environnement
-de travail des amateurs comme pour  les pros, nous avons notamment
+de travail des amateurs comme pour les pros, nous avons notamment
 dans nos ssible aux étudiants, que se soit pour tester leurs
 propres projets, ou pour améliorer son propre score sur Beatsaber.</p>
 </div>
