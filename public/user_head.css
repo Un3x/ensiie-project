@@ -16,7 +16,6 @@ header {
     border-bottom: 1px whitesmoke;
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
     position: flex;
 }
@@ -29,26 +28,48 @@ nav {
     z-index: 9999;
 }
 
+nav .lien {
+    flex : 40%;
+}
+
 nav a {
-    padding : 10px 20px;
     color: darkgreen;
-    text-decoration: none;
-    text-align: center;
+    text-decoration : none;
+    padding : 10px 20px;
+    text-align : center;
+    transition: 0.3s;
 }
 
 nav a:hover {
     background-color: #D3D3D3;
 }
 
+nav .search-container {
+    display: flex;
+    padding: 10px 20px;
+}
+
+nav input[type=text] {
+    padding: 10px 20px;
+    font-size: 17px;
+    border: solid 1px darkgray;
+    background-color: white;
+}
+
+nav .search-container button {
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
 aside {
-    background-color: #009925;
+    background-color: #e6e6e6;
     top: 0;
     display: flex;
     flex-direction: column;
     flex: 20%;
     padding: 10px;
-    height: 10%;
-    width: 10%;
 }
 
 section {
@@ -92,7 +113,7 @@ footer {
     flex-direction: column;
 }*/
 
-input[type=text], input[type=password] {
+.form input[type=text], .form input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -101,7 +122,7 @@ input[type=text], input[type=password] {
     background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+.form input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -122,7 +143,7 @@ input[type=reset] {
         border-bottom: 1px solid #009925;
     }
 
-    input[type=text], input[type=password] {
+    .form input[type=text], .form input[type=password] {
         width: 100%;
     }
 

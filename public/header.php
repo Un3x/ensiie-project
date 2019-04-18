@@ -11,13 +11,17 @@
             <header><h1><a href="index.php">"Find Your Thing"</a></h1></header>
 
             <nav>
-                <a href="index.php"> Home </a>
-                <a href="cat1.php"> Cat_1 </a>
-                <a href="cat2.php"> Cat_2 </a>
-                <a href="cat3.php"> Cat_3 </a>
-                <a href="contact.php"> Contact </a>
-                <a href="aboutus.php"> About Us </a>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+                <a href="index.php">Accueil</a>
+                <a href="cat1.php">Cat_1</a>
+                <a href="cat2.php">Cat_2</a>
+                <a href="cat3.php">Cat_3</a>
+                <a href="contact.php">Contact</a>
+                <a href="aboutus.php">A propos</a>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Connexion</button>
+                <form action="" class="search-container">
+                    <input type="text" placeholder="Rechercher.." name="search">
+                    <button type="submit">OK</button>
+                </form>
             </nav>
 
             <div id="id01" class="modal">
@@ -29,9 +33,9 @@
             </div>
 
             <div class="row">
-                    <h2 style="text-align:center">Login with Social Media or Manually</h2>
+                    <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
                 <div class="vl">
-                     <span class="vl-innertext">or</span>
+                     <span class="vl-innertext">ou</span>
                 </div>
   
                 <div class="col">
@@ -52,28 +56,28 @@
                 </div>
 
             <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input class="signin" type="text" placeholder="Enter Username" name="uname" required>
+            <label for="uname"><b>Pseudo</b></label>
+            <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input class="signin" type="password" placeholder="Enter Password" name="psw" required>
+            <label for="psw"><b>Mot de passe</b></label>
+            <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" required>
                 
-            <button type="submit">Login</button> <br/>
-            <label for="remember">Remember me</label>
+            <button type="submit">Se connecter</button> <br/>
+            <label for="remember">Se souvenir de moi</label>
             <input type="checkbox" checked="checked" name="remember">
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
             <div class="bottom-container">
             <div class="row">
             <div class="col">
-                <a href="sinscrire.php" style="color:white" class="btn">Sign up</a>
+                <a href="sinscrire.php" style="color:white" class="btn">S'inscrire</a>
             </div>
             <div class="col">
-                <a href="#" style="color:white" class="btn">Forgot password?</a>
+                <a href="#" style="color:white" class="btn">Mot de passe oublié ?</a>
             </div>
             </div>
         </div>
@@ -83,6 +87,6 @@
         </div>
         <script src=”signin.js”>
         
-        </script><br/>
+        </script>
 
         <div class="flexbox_sect_asi">
