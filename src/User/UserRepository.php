@@ -40,7 +40,15 @@ class UserRepository
         return $users;
     }
 
-    //TODO update
+    //TODO update je sais pas si ça marche lol ALED
+
+    public function updateUser($user) {
+        $this->connection->querry('UPDATE "User" SET "prenom"=$user->getPrenom(), "nom"=$user->getNom(), "pseudo"=$user->getPseudo(), "ddn"=$user->detDdn(), "mdp"=$user->getMdp(), "mail"=$user->getMail(), "nb_livres_empruntes"=$user->getNbLivresEmpruntes, "nb_livres_rendus"=$user->getNbLivresRendus, "est_admin"=$user->getAdmin() WHERE "id"=$user->getId()')
+    }
+
+    public function insertUser($user) {
+        $this->connection->querry('INSERT INTO "User" VALUES ($user->getId(), $user->getPrenom(), $user->getNom(), $user->getPseudo(), $user->detDdn(), $user->getMdp(), $user->getMail(), $user->getNbLivresEmpruntes, $user->getNbLivresRendus, $user->getAdmin())')
+    }
 
 
 }

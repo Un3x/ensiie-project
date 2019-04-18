@@ -4,7 +4,13 @@
     },
     "autoload": {
         "psr-4": {
-            "User\\": "src/User/"
+            "User\\": "src/User/",
+            "Auteur\\": "src/Auteur",
+            "Empruntes\\": "src/Empruntes",
+            "Historique\\": "src/Historique",
+            "Livre\\": "src/Livre",
+            "Reservation\\": "src/Reservation",
+            "Review\\": "src/Review"
         }
     },
     "autoload-dev": {
