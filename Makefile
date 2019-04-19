@@ -14,7 +14,7 @@ help:
 
 start:
 	docker-compose up --build -d
-	sleep 3
+	sleep 10
 
 stop:
 	docker-compose down -v
@@ -23,7 +23,7 @@ stop:
 install: uninstall start composer.install db.install
 
 uninstall: stop
-	@sudo rm -rf postgres-data
+	@rm -rf postgres-data
 
 reinstall: install
 
