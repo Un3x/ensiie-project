@@ -1,4 +1,5 @@
 <?php
+
 require('../src/db.php');
 $co = new DataBase();
 $connection = $co->dbConnect();
