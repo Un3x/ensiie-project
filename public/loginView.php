@@ -14,7 +14,7 @@ echo $css_link;
          <input type="password" name="password" placeholder="Mot de passe" size="35"required><br/>
          <input type="submit" value="Login" onClick="clear_form()"><br/>
          </form><br>
-         <a href="mdp_oublie.php">Mot de passe oublié ?</a><br/>
+         <a href="pwdForgottenView.php">Mot de passe oublié ?</a><br/>
          <a href="signup.php" title="Découvrez de nouveaux iiens">Créer un compte</a><br>
          </div>
 <?php $content = ob_get_clean(); ?>
