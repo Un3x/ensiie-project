@@ -2,4 +2,3 @@ postgres-data
 .idea/
 vendor
 composer.lock
-.env
