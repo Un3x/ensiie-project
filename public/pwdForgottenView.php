@@ -4,8 +4,8 @@ $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.cs
 
 echo $css_link;
 
-require('../src/db.php');
-$co = new DataBase();
+require('../src/model.php');
+$co = new Model();
 $connection = $co->dbConnect();
 
 if(isset($_POST['send_message_btn']))
