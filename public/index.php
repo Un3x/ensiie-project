@@ -1,7 +1,7 @@
 <?php
 
-require('../src/db.php');
-$co = new DataBase();
+require('../src/model.php');
+$co = new Model();
 $connection = $co->dbConnect();
 
 $userRepository = new \User\UserRepository($connection);

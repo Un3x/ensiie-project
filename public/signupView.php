@@ -2,8 +2,8 @@
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>";
 echo $css_link;
 
-require('../src/db.php');
-$co = new DataBase();
+require('../src/model.php');
+$co = new Model();
 $connection = $co->dbConnect();
 
 // If form submitted, insert values into the database.
@@ -46,7 +46,7 @@ if (isset($_POST['submit_btn']))
 <div class="connexion">
 
         <h1>Meetiie</h1>
-        <span id="conn">Créer votre compte Meetiie !</span><br/><br/>
+        <span id="conn">Créez votre compte Meetiie !</span><br/><br/>
 
     <form role="form" method="POST" enctype="multipart/form-data">
         <input type="text" name="firstName" placeholder="Prénom" size="15" required>

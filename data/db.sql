@@ -22,7 +22,7 @@ CREATE TABLE "user" (
     firstname VARCHAR NOT NULL ,
     lastname VARCHAR NOT NULL ,
     birthday date
-);
+);*/
 
 /*INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
