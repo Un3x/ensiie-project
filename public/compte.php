@@ -51,8 +51,8 @@ else if (isset($_POST['login'])) {
 		exit();
 	}
 	if ($_POST['password'] !== $user->getPassword()) {
-		echo '<script>alert("Erreur d\'authentification")</script>';
-		//header('Location: connexion.php');
+		//echo '<script>alert("Erreur d\'authentification")</script>';
+		header('Location: connexion.php');
 		//exit();
 	}
 	else {
@@ -65,7 +65,7 @@ else if (isset($_SESSION['mail'])) {
 }
 
 if(!isset($_SESSION['mail'])) {
-	header('Location: connexion.php');
+	header('location:connexion.php');
 	exit();
 }
 

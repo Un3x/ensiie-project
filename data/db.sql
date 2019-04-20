@@ -1,4 +1,8 @@
 /*TODO FINIR LES DB*/
+
+/* table utilisateur -------------------------------------------------------- */
+DROP TABLE IF EXISTS "user";
+
 CREATE TABLE "user" (
     id SERIAL NOT NULL,
     firstname VARCHAR NOT NULL,
@@ -20,23 +24,64 @@ INSERT INTO "user"(firstname, lastname, birthday, city, yop, mail, password, cur
 INSERT INTO "user"(firstname, lastname, birthday, mail, password) VALUES ('Amelia', 'Waters', '1981-12-01','mail@mail.mail','motdepasse');
 INSERT INTO "user"(firstname, lastname, mail, password, birthday) VALUES ('blabla','blabla','bla@bla.bla','blabla','1998-12-01');
 
+/* table spot --------------------------------------------------------------- */
+DROP TABLE IF EXISTS "spot";
+
 CREATE TABLE "spot"(
-       nom VARCHAR PRIMARY KEY,
-       latitude VARCHAR NOT NULL,
-       longitude VARCHAR NOT NULL
+    id integer unsigned NOT NULL auto_increment PRIMARY KEY,
+    nom VARCHAR NOT NULL,
+    latitude VARCHAR NOT NULL,
+    longitude VARCHAR NOT NULL,
+    note INT,
+
+    CHECK (note BETWEEN 0 AND 5)
 );
 
 INSERT INTO "spot"(nom, latitude, longitude) VALUES ('cathe','48.623169575973634', '2.4283207872682624');
 INSERT INTO "spot"(nom, latitude, longitude) VALUES ('mini cathe','47.21167517573434','-1.5615792589997');
 
-CREATE TABLE "move"(
-       nom VARCHAR NOT NULL,
-       difficulte INT,
+/* table move --------------------------------------------------------------- */
+DROP TABLE IF EXISTS "move";
 
-       PRIMARY KEY (nom),
-       CHECK (difficulte BETWEEN 0 AND 5)
+CREATE TABLE "move"(
+    id integer unsigned NOT NULL auto_increment PRIMARY KEY,
+    nom VARCHAR NOT NULL,
+    difficulte INT NOT NULL,
+
+    CHECK (difficulte BETWEEN 0 AND 5)
 );
 
+INSERT INTO "move"(nom, difficulte) VALUES ('salto avant','3');
+INSERT INTO "move"(nom, difficulte) VALUES ('salto arriere','3');
+INSERT INTO "move"(nom, difficulte) VALUES ('saut de chat','1');
+
+/* jointure n n entre des spots et des moves -------------------------------- */
+DROP TABLE IF EXISTS "spotXmove";
+
 CREATE TABLE "spotXmove"(
-       
+    idSpot integer unsigned NOT NULL,
+    idMove integer unsigned NOT NULL,
+
+    PRIMARY KEY(idSpot, idMove),
+    CONSTRAINT 'FK_spot' FOREIGN KEY (idSpot) REFERENCES 'spot' (id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT 'FK_move' FOREIGN KEY (idMove) REFERENCES 'move' (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO "spotXmove"(idSpot,idMove) VALUES (1,1),(1,2),(2,2);
+
+/* jointure n n pour des utilisateurs qui follow des spots ------------------ */
+DROP TABLE IF EXISTS "userXspot";
+
+CREATE TABLE "userXspot" (
+
+);
+
+/* jointure n n pour les follows entre utilisateurs */
+/* TODO problème d'unicité d'une clé couple ? */
+DROP TABLE IF EXISTS "userXuser";
+
+CREATE TABLE "userXuser" (
+
 );
