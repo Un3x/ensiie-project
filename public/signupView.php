@@ -16,18 +16,21 @@ if (isset($_POST['submit_btn']))
     $email = stripslashes($_REQUEST['email']);
     $password = stripslashes($_REQUEST['password']);
 
-    $sql_verify = "SELECT SQL_CALC_FOUND_ROWS email FROM member WHERE email='$email';";
+    $sql_verify = "SELECT * FROM member WHERE email='$email';";
     $result_verify = $connection->prepare($sql_verify);
     $result_verify->execute();
-    $result_verify = $connection->prepare("SELECT FOUND_ROWS()");
+
+    $count = $result_verify->rowCount();
+    /*$result_verify = $connection->prepare("SELECT FOUND_ROWS()");
     $result_verify->execute();
-    $row_count =$result_verify->fetchColumn();
-    if($row_count!=0)
+    $row_count =$result_verify->fetchColumn();*/
+    echo "valeur de count : $count";
+    if($count!=0)
     {
         echo "Email déjà utilisé";
     }
     else {
-        $query = "INSERT into `member` (lastName, firstName, email, password) VALUES ('$lastNameTmp', '$firstNameTmp', '$email', '".md5($password)."')";
+        $query = "INSERT INTO member(firstName, lastName, email, password) VALUES ('$firstNameTmp', '$lastNameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
 

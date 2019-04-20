@@ -6,7 +6,7 @@ CREATE TABLE "member" (
     password VARCHAR NOT NULL
 );
 
-INSERT INTO "member"(firstname, lastname, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+INSERT INTO "member"(firstName, lastName, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
 
 /*
 CREATE TABLE "member" (
