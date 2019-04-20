@@ -27,7 +27,7 @@ if (isset($_POST['submit_btn']))
         echo "Email déjà utilisé";
     }
     else {
-        $query = "INSERT into `member` (lastName, firstName, email, password) VALUES ('$lastNameTmp', '$firstNameTmp', '$email', '".md5($password)."')";
+        $query = 'INSERT into "member" (lastName, firstName, email, password) VALUES ('$lastNameTmp', '$firstNameTmp', '$email', '".md5($password)."')';
         $result=$connection->prepare($query);
         $result->execute();
 
