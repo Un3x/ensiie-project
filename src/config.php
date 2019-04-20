@@ -1,5 +1,5 @@
 <?php
-
+$email = "";
 $hostName = "localhost";
 $baseName = "meetiie";
 $userName = "root";

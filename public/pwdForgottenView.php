@@ -1,8 +1,6 @@
 <?php
 $title = "Meetiie - Reset Password";
-$css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>";
-
-echo $css_link;
+$css_link = '<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>';
 
 require('../src/model.php');
 $co = new Model();

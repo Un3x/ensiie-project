@@ -2,8 +2,6 @@
 
 class Model
 {
-    
-    
     public function dbConnect()
     {
         require '../vendor/autoload.php';
@@ -21,7 +19,7 @@ class Model
     {
         //Get values passed from form in login.php file
         $email = $email_form;
-        $password = md5($mdp);
+        $password = $mdp;
 
         //To prevent mysql injection
         $email = stripcslashes($email);
@@ -33,17 +31,23 @@ class Model
         //Query the database for user
         $result = $connection->query("SELECT * FROM member WHERE email='$email' and password='$password'");
         $row = $result->fetch();		//change with prepare and execute like in registration2.php
-        if(($row['email']==$email) && ($row['password']==$password))	{return true;}	else {return false;}
+        if(($row['email']==$email) && ($row['password']==$password)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    function config()
+    function config($email)
     {
+        //session_start();
         global $hostName, $baseName, $userName, $pwd;	//Rappel : $nom_user est son email, il n'y a pas de colonnes username dans la BDD
+        $_SESSION['email'] = $email;
         $_SESSION['nomhote'] = $hostName;
         $_SESSION['nombase'] = $baseName;
         $_SESSION['nomuser'] = $userName;
         $_SESSION['mdp'] = $pwd;
     }
-
 
 }

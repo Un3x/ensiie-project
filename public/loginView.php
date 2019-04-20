@@ -1,6 +1,5 @@
 <?php $title = "Meetiie - Login"; 
-$css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>";
-echo $css_link;
+$css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>';
 
 require('../src/model.php');
 $model = new Model();
@@ -20,13 +19,12 @@ if(isset($_POST['submit_button']))
     if($model->verif_mdp($email_form, $mdp))
     {
         //Il faut decrypter le password avant de le passer a verif_mdp
-        session_start();
-        $_SESSION['email'] = $email_form;
+
 
         //Appel de config() pour sauvegarder le mot de passe dans la variable de session
-        $model->config();
+        $model->config($email_form);
         //header("Location:index_layout.php");
-        header("Location:accueil.php");
+        header('Location: accueil.php');
         exit();
     }
     else
@@ -54,9 +52,10 @@ if(isset($_POST['submit_button']))
          <input type="submit" name="submit_button" value="Login"><br/>
     </form><br>
 
-    <a href="mdp_oublie.php">Mot de passe oublié ?</a><br/>
+    <a href="pwdForgottenView.php">Mot de passe oublié ?</a><br/>
     <a href="signupView.php" title="Découvrez de nouveaux iiens">Créer un compte</a><br>
 </div>
 
 <?php $content = ob_get_clean();
+
 require('template.php'); ?>
