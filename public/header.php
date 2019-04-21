@@ -5,6 +5,7 @@
             <title>FindYourThing</title>
             <link rel="stylesheet" type="text/css" href="user_head.css"/>
             <link rel="stylesheet" type="text/css" href="signin.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
   
         <body>
@@ -12,12 +13,17 @@
 
             <nav>
                 <a href="index.php">Accueil</a>
-                <a href="cat1.php">Cat_1</a>
-                <a href="cat2.php">Cat_2</a>
-                <a href="cat3.php">Cat_3</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Catégories</button>
+                    <div class="dropdown-content">
+                        <a href="cat1.php">Cat_1</a>
+                        <a href="cat2.php">Cat_2</a>
+                        <a href="cat3.php">Cat_3</a>
+                    </div>
+                </div>
                 <a href="contact.php">Contact</a>
                 <a href="aboutus.php">A propos</a>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Connexion</button>
+                <button class="boutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Connexion</button>
                 <form action="" class="search-container">
                     <input type="text" placeholder="Rechercher.." name="search">
                     <button type="submit">OK</button>
@@ -95,15 +101,9 @@
             <label for="psw"><b>Mot de passe</b></label>
             <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" required>
                 
-            <button type="submit">Se connecter</button> <br/>
-            <label for="remember">Se souvenir de moi</label>
-            <input type="checkbox" checked="checked" name="remember">
+            <button class="boutton" type="submit">Se connecter</button> <br/>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
             <div class="bottom-container">
             <div class="row">
             <div class="col">
