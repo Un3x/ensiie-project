@@ -21,7 +21,7 @@ header {
 }
 
 nav {
-    background-color: whitesmoke;
+    background-color: #333;
     position: sticky;
     top: 0;
     display: flex;
@@ -30,7 +30,7 @@ nav {
 
 
 nav a {
-    color: darkgreen;
+    color: white;
     text-decoration : none;
     padding : 10px 20px;
     text-align : center;
@@ -38,7 +38,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #D3D3D3;
+    background-color: #555555;
 }
 
 .dropdown {
@@ -49,14 +49,14 @@ nav a:hover {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: darkgreen;
+  color: white;
   padding: 14px 16px;
   background-color: inherit;
   margin: 0;
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #D3D3D3;
+  background-color: #555555;
 }
 
 .dropdown-content {
@@ -81,9 +81,12 @@ nav a:hover {
   display: block;
 }
 
+.dropdown-content a:hover {
+  background-color: lightgray;
+}
+
 nav .search-container {
     display: flex;
-    float: right;
     padding-left: 10px;
 }
 
@@ -94,10 +97,13 @@ nav input[type=text] {
 }
 
 nav .search-container button {
-    background: #ddd;
-    font-size: 17px;
+    background-color: #ddd;
+    color: #333333;
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
     cursor: pointer;
+    width: 100%;
 }
 
  /*
@@ -220,16 +226,14 @@ input[type=reset] {
       position: static;
     }
 
-    nav a {
-        border-bottom: 1px solid #009925;
-    }
-
     .dropdown .dropbtn {
       width: 100%;
+      display: block;
     }
 
     .dropdown-content {
       width: 100%;
+      position: relative;
     }
 
     .dropdown-content a {
@@ -237,11 +241,11 @@ input[type=reset] {
     }
 
     nav .search-container input[type=text] {
-        flex : 80%;
+        flex : 90%;
     }
 
     nav .search-container button {
-        flex : 20%;
+        flex : 10%;
     }
 
     aside {
