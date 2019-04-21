@@ -1,7 +1,14 @@
 <?php
 require '../vendor/autoload.php';
-//require '../src/User/UserRepository.php';
-//require '../src/User/User.php';
+require '../src/User/UserRepository.php';
+require '../src/User/User.php';
+require_once('../src/Move/MoveRepository.php');
+require_once('../src/Move/Move.php');
+require_once('../src/Spot/SpotRepository.php');
+require_once('../src/Spot/Spot.php');
+require_once('../src/SpotXmove/SpotXmoveRepository.php');
+require_once('../src/SpotXmove/SpotXmove.php');
+
 include ('view.php');
 
 //démarre une session pour garder l'utilisateur connecté entre les pages
@@ -15,6 +22,11 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
+$moveRepository = new \Move\MoveRepository($connection);
+$moves = $moveRepository->fetchAll();
+$spotRepository = new \Spot\SpotRepository($connection);
+$spots = $spotRepository->fetchAll();
+
 ?>
 
 <html>
@@ -64,6 +76,45 @@ $users = $userRepository->fetchAll();
       <?php endforeach; ?>
 
     </table>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead style="font-weight: bold">
+            <td>#</td>
+            <td>nom</td>
+            <td>difficulte</td>
+        </thead>
+      <?php /** @var \Move\Move $move */
+        foreach ($moves as $move) : ?>
+            <tr>
+                <td><?php echo $move->getId() ?></td>
+                <td><?php echo $move->getNom() ?></td>
+                <td><?php echo $move->getDifficulte() ?></td>
+            </tr>
+      <?php endforeach; ?>
+
+    </table>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead style="font-weight: bold">
+            <td>#</td>
+            <td>nom</td>
+            <td>latitude</td>
+            <td>longitude</td>
+            <td>note</td>
+        </thead>
+      <?php /** @var \Spot\Spot $spot */
+        foreach ($spots as $spot) : ?>
+            <tr>
+                <td><?php echo $spot->getId() ?></td>
+                <td><?php echo $spot->getNom() ?></td>
+                <td><?php echo $spot->getlatitude() ?></td>
+                <td><?php echo $spot->getLongitude() ?></td>
+                <td><?php echo $spot->getNote() ?></td>
+            </tr>
+      <?php endforeach; ?>
+
+    </table>
+
 </div>
 <footer>
 <?php footer();?>

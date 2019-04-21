@@ -71,22 +71,5 @@ class Move
         $this->difficulte = $difficulte;
         return $this;
     }
-
-    /**
-     * @return int
-     * @throws \OutOfRangeException
-     */
-    /*
-    public function getAge(): int
-    {
-        $now = new \DateTime();
-
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
-
-        return $now->diff($this->getBirthday())->y;
-    }
-    */
 }
 

@@ -1,10 +1,8 @@
 <?php
-
+namespace Move;
 namespace SpotXmove;
-require '../Move/MoveRepository.php';
-require '../Spot/SpotRepository.php';
-
-class SpotXmoveRepository {
+class SpotXmoveRepository
+{
 	/**
      * @var \PDO
      */
@@ -18,21 +16,21 @@ class SpotXmoveRepository {
     {
         $this->connection = $connection;
 	}
-	
 
     /**
      * fetch every move from a spot in the database
-     * @param string $spot
+     * @param int $spot
 	 * @return array
      */
     public function fetchAllMove($spot)
     {
-        $rows = $this->connection->query('SELECT idMove FROM "spotXmove" WHERE idSpot='.$this->connection->quote($spot))->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM "spotXmove" WHERE idSpot='.$this->connection->quote($spot))->fetchAll(\PDO::FETCH_OBJ);
 		$moves = [];
 		$moveRepository = new \Move\MoveRepository($this->connection);
         foreach ($rows as $row) {
-            $move = new Move();
-            $move = $moveRepository->fetchOneById($row['idMove']);
+            include_once("../src/Move/Move.php");
+            $move = new \Move\Move();
+            $move = $moveRepository->fetchOneById($row->idSpot);
 
             $moves[] = $move;
         }
@@ -42,7 +40,7 @@ class SpotXmoveRepository {
 	
 	/**
      * fetch every spot from a move in the database
-     * @param string $move
+     * @param int $move
 	 * @return array
      */
     public function fetchAllSpot($move)

@@ -25,10 +25,10 @@ INSERT INTO "user"(firstname, lastname, birthday, mail, password) VALUES ('Ameli
 INSERT INTO "user"(firstname, lastname, mail, password, birthday) VALUES ('blabla','blabla','bla@bla.bla','blabla','1998-12-01');
 
 /* table spot --------------------------------------------------------------- */
-DROP TABLE IF EXISTS "spot";
+DROP TABLE IF EXISTS "spot" CASCADE;
 
 CREATE TABLE "spot"(
-    id integer unsigned NOT NULL auto_increment PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     nom VARCHAR NOT NULL,
     latitude VARCHAR NOT NULL,
     longitude VARCHAR NOT NULL,
@@ -41,10 +41,10 @@ INSERT INTO "spot"(nom, latitude, longitude) VALUES ('cathe','48.623169575973634
 INSERT INTO "spot"(nom, latitude, longitude) VALUES ('mini cathe','47.21167517573434','-1.5615792589997');
 
 /* table move --------------------------------------------------------------- */
-DROP TABLE IF EXISTS "move";
+DROP TABLE IF EXISTS "move" CASCADE;
 
 CREATE TABLE "move"(
-    id integer unsigned NOT NULL auto_increment PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     nom VARCHAR NOT NULL,
     difficulte INT NOT NULL,
 
@@ -59,13 +59,13 @@ INSERT INTO "move"(nom, difficulte) VALUES ('saut de chat','1');
 DROP TABLE IF EXISTS "spotXmove";
 
 CREATE TABLE "spotXmove"(
-    idSpot integer unsigned NOT NULL,
-    idMove integer unsigned NOT NULL,
+    idSpot INT NOT NULL,
+    idMove INT NOT NULL,
 
     PRIMARY KEY(idSpot, idMove),
-    CONSTRAINT 'FK_spot' FOREIGN KEY (idSpot) REFERENCES 'spot' (id)
+    CONSTRAINT "FK_spot" FOREIGN KEY (idSpot) REFERENCES "spot" (id)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT 'FK_move' FOREIGN KEY (idMove) REFERENCES 'move' (id)
+    CONSTRAINT "FK_move" FOREIGN KEY (idMove) REFERENCES "move" (id)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
