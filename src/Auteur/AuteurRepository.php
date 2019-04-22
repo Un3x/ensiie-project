@@ -32,4 +32,12 @@ class AuteurRepository
     }
 
 //TODO update
+
+    /*public function updateAuteur($auteur) {
+        $this->connection->query('UPDATE "Auteur" SET "id_livre"=$auteur->getIdLivre(), "auteur"=$auteur->getAuteur(), WHERE "id_livre"=$auteur->getIdLivre()');
+    } pas nécessaire*/
+
+    public function insertAuteur($auteur) {
+        $this->connection->query('INSERT INTO "Auteur" VALUES ($auteur->getIdLivre(), $auteur->getAuteur())');
+    }
 }
