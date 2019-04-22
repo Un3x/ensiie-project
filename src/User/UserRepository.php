@@ -43,11 +43,11 @@ class UserRepository
     //TODO update je sais pas si ça marche lol ALED
 
     public function updateUser($user) {
-        //$this->connection->query('UPDATE "User" SET "prenom"=$user->getPrenom(), "nom"=$user->getNom(), "pseudo"=$user->getPseudo(), "ddn"=$user->detDdn(), "mdp"=$user->getMdp(), "mail"=$user->getMail(), "nb_livres_empruntes"=$user->getNbLivresEmpruntes, "nb_livres_rendus"=$user->getNbLivresRendus, "est_admin"=$user->getAdmin() WHERE "id"=$user->getId()')
+        $this->connection->query('UPDATE "User" SET "prenom"=$user->getPrenom(), "nom"=$user->getNom(), "pseudo"=$user->getPseudo(), "ddn"=$user->getDdn(), "mdp"=$user->getMdp(), "mail"=$user->getMail(), "nb_livres_empruntes"=$user->getNbLivresEmpruntes(), "nb_livres_rendus"=$user->getNbLivresRendus(), "est_admin"=$user->getAdmin() WHERE "id"=$user->getId()');
     }
 
     public function insertUser($user) {
-        //$this->connection->query('INSERT INTO "User" VALUES ($user->getId(), $user->getPrenom(), $user->getNom(), $user->getPseudo(), $user->detDdn(), $user->getMdp(), $user->getMail(), $user->getNbLivresEmpruntes, $user->getNbLivresRendus, $user->getAdmin())')
+        $this->connection->query('INSERT INTO "User" VALUES ($user->getId(), $user->getPrenom(), $user->getNom(), $user->getPseudo(), $user->getDdn(), $user->getMdp(), $user->getMail(), $user->getNbLivresEmpruntes(), $user->getNbLivresRendus(), $user->getAdmin())');
     }
 
 

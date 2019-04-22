@@ -55,18 +55,18 @@ CREATE TABLE "Historique" (
     date_rendu date NOT NULL,
     id_review VARCHAR(50),
     num_review VARCHAR(50),
-    CONsTRAINT pk_historique PRIMARY KEY(id_livre, id_user),
-    FOREIGN KEY id_livre REFERENCES Livre(id),
-    FOREIGN KEY id_user REFERENCES User(id),
-    FOREIGN KEY (id_review, num_review) REFERENCES Review(id, num)
+    CONSTRAINT pk_historique PRIMARY KEY (id_livre, id_user),
+    FOREIGN KEY id_livre REFERENCES Livre (id),
+    FOREIGN KEY id_user REFERENCES User (id),
+    FOREIGN KEY (id_review, num_review) REFERENCES Review (id, num)
 );
 
 CREATE TABLE "Reservation" (
     id_livre VARCHAR(13) NOT NULL,
     id_user VARCHAR(50) NOT NULL,
-    CONSTRAINT pk_reservation PRIMARY KEY(id_livre, id_user),
-    CONSTRAINT fk_reservation_livre FOREIGN KEY id_livre REFERENCES Livre (id),
-    CONSTRAINT fk_reservation_user FOREIGN KEY id_user REFERENCES User(id)
+    CONSTRAINT pk_reservation PRIMARY KEY (id_livre, id_user),
+    FOREIGN KEY id_livre REFERENCES Livre (id),
+    FOREIGN KEY id_user REFERENCES User (id)
 );
 
 
