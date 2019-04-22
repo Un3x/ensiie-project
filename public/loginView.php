@@ -24,7 +24,7 @@ if(isset($_POST['submit_button']))
         //Appel de config() pour sauvegarder le mot de passe dans la variable de session
         $model->config($email_form);
         //header("Location:index_layout.php");
-        header('Location: accueil.php');
+        header('Location: ACCUEILTEST.html');
         exit();
     }
     else
