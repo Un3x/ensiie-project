@@ -45,5 +45,6 @@ $articles = $articleRepository->fetchWithoutTexte();
     </table>
 </div>
 <form action="articleCreation.php"><input type="submit" class="plus" value="Écrire un Article"/></form>
+<form action="admin.php"><input type="submit" class="moins" value="Revenir à l'espace d'administration"/></form>
 
 </body>

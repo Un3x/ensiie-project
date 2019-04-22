@@ -44,7 +44,7 @@ class Jeu
     /**
      * @return string
      */
-    public function getTtire()
+    public function getTitre()
     {
         return $this->titre;
     }
