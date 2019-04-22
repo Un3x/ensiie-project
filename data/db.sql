@@ -2,14 +2,14 @@ CREATE TABLE "User" (
     id SERIAL ,
     prenom VARCHAR(50) NOT NULL ,
     nom VARCHAR(50) NOT NULL ,
-    pseudo(50) VARCHAR NOT NULL ,
+    pseudo VARCHAR(50) NOT NULL ,
     ddn date ,
     mdp VARCHAR(50) NOT NULL ,
     mail VARCHAR(50) NOT NULL ,
     nb_livres_empruntes int NOT NULL,
     nb_livres_rendus int NOT NULL,
     est_admin boolean ,
-    CONSTRAINT pk_users PRIMARY KEY id ,
+    CONSTRAINT pk_users PRIMARY KEY id,
     CONSTRAINT un_users (prenom, nom, pseudo) UNIQUE
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE "Livre" (
     editeur VARCHAR(50) ,
     emprunteur VARCHAR(50),
     date_emprunt date ,
-    CONSTRAINT pk_livres PRIMARY KEY id
+    CONSTRAINT pk_livres PRIMARY KEY id,
     FOREIGN KEY emprunteur REFERENCES User (id)
 );
 
