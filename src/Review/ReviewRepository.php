@@ -36,4 +36,12 @@ class ReviewRepository
     }
 
 //TODO update
+
+    public function updateReview($review) {
+        $this->connection->query('UPDATE "Review" SET "num"=$review->getNum(), "personne"=$review->getPersonne(), "texte"=$review->getTexte(), "note"=$review->getNote() WHERE "id"=$review->getId()');
+    }
+
+    public function insertReview($review) {
+        $this->connection->query('INSERT INTO "Review" VALUES ($review->getId(), $review->getNum(), $review->getPersonne(), $review->getTexte(), $review->getNote())');
+    }
 }
