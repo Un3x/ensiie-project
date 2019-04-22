@@ -1,0 +1,80 @@
+.corps
+{
+    text-align: center;
+    background-image: url("Rainbow_blue.jpg");
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+/*.row
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 8px;
+}
+
+.column
+{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}*/
+
+.message
+{
+    width: 96%;
+}
+
+#logout_btn
+{
+    position : absolute;
+    top : 8px;
+    right : 7px;
+    width : auto;
+
+}
+
+#lancer_discu
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#chat
+{
+    /*width: 100%;
+    margin-top: 2px;
+    margin-right: 14px;
+    align-content: center*/
+    padding-right: 2px;
+    /*position: relative;
+    width: calc(100% - 45px);*/
+    width:100%;
+    position: relative;
+    place-content:;
+}
+
+#chat_column
+{
+    width: 100%;
+}
+
+#send_msg_form
+{
+    padding-right: 2px;
+    position: relative;
+}
+
+textarea
+{
+    resize: none;
+}
