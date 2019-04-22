@@ -49,5 +49,4 @@ class Model
         $_SESSION['nomuser'] = $userName;
         $_SESSION['mdp'] = $pwd;
     }
-
 }

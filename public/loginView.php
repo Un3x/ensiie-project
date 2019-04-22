@@ -24,13 +24,15 @@ if(isset($_POST['submit_button']))
         //Appel de config() pour sauvegarder le mot de passe dans la variable de session
         $model->config($email_form);
         //header("Location:index_layout.php");
-        header('Location: ACCUEILTEST.html');
+        header('Location: accueil.php');
         exit();
     }
     else
-    {	echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
+    {	//echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
         //echo "Email/Mot de passe incorrect !";
-        exit();
+        //exit();
+
+        print "<div class='form'><h3>Email or password incorrect !</h3></div>";
 
         /*Il faut essayer de l'afficher en-dessous du champ de password dans la page login, voir favori (log out user de awa)*/
     }
