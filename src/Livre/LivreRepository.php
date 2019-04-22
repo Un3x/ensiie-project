@@ -39,7 +39,7 @@ class LivreRepository
 //TODO update
 
     public function updateLivre($livre) {
-        $this->connection->query('UPDATE "Livre" SET "titre"=$livre->getTitre(), "auteur"=$livre->getAuteur(), "publication"=$livre->getPublication(), "couverture"=$livre->getImage(), "editeur"=$livre->getEditeur(), "emprunteur"=$livre->getEmprunteur(), "date_emprunt"=$livre->getDateEmprunt() WHERE "id"=$livre->getId()');
+        $this->connection->query('UPDATE "Livre" SET "titre"=$livre->getTitre(), "auteur"=$livre->getAuteur(), "publication"=$livre->getPublication(), "couverture"=$livre->getImage(), "editeur"=$livre->getEditeur(), "emprunteur"=$livre->getEmprunteur(), "date_emprunt"=$livre->getDateEmprunt() WHERE "id_livre"=$livre->getId()');
     }
 
     public function insertLivre($livre) {

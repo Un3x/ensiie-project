@@ -1,3 +1,7 @@
+--SVT ne modifiez pas les noms des attibuts sinon je doit refaire
+--toutes les fonctions PHP et je serai pas content
+
+
 CREATE TABLE "User" (
     id_user VARCHAR(50),
     prenom VARCHAR(50) NOT NULL ,

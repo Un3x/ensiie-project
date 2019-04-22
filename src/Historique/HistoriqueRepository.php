@@ -37,4 +37,14 @@ class HistoriqueRepository
     }
     //TODO update
 
+
+    public function updateHistorique($historique) {
+        $this->connection->query('UPDATE "Historique" SET "date_emprunt"=$historique->getDateEmprunt(), "date_rendu"=$historique->getDateRendu(), "id_review"=$historique->getIdReview(), "num_review"=$historique->getNumReview() WHERE "id_livre"=$historique->getIdLivre() AND "id_user"=$historique->getIdUser()');
+    }
+
+
+    public function insertHistorique($historique) {
+        $this->connection->query('INSERT INTO "Historique" VALUES ($historique->getIdLivre(), $historique->getIdUser(), $historique->getDateEmprunt(), $historique->getDateRendu(), $historique->getIdReview(), $historique->getNumReview())');
+    }
+
 }
