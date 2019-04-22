@@ -1,5 +1,5 @@
 CREATE TABLE "User" (
-    id SERIAL ,
+    id_user SERIAL,
     prenom VARCHAR(50) NOT NULL ,
     nom VARCHAR(50) NOT NULL ,
     pseudo VARCHAR(50) NOT NULL ,
@@ -7,30 +7,32 @@ CREATE TABLE "User" (
     mdp VARCHAR(50) NOT NULL ,
     mail VARCHAR(50) NOT NULL ,
     nb_livres_empruntes int NOT NULL,
-    nb_livres_rendus int NOT NULL,
+    nb_livres_rendus int NOT NULL ,
     est_admin boolean ,
-    CONSTRAINT pk_users PRIMARY KEY id,
-    CONSTRAINT un_users (prenom, nom, pseudo) UNIQUE
+    CONSTRAINT pk_users PRIMARY KEY(id_user),
+    CONSTRAINT un_users UNIQUE(prenom, nom, pseudo)
 );
 
 CREATE TABLE "Livre" (
-    id VARCHAR(13) NOT NULL,
+    id_livre VARCHAR(13) NOT NULL,
     titre VARCHAR(50) ,
-    auteur VARCHAR(50), -- multivalué
-    publication date,
-    couverture VARCHAR(100), 
+    auteur VARCHAR(50) , -- multivalué -> cf. Auteur
+    publication date ,
+    couverture VARCHAR(100) , 
     editeur VARCHAR(50) ,
-    emprunteur VARCHAR(50),
+    emprunteur VARCHAR(50) ,
     date_emprunt date ,
-    CONSTRAINT pk_livres PRIMARY KEY id,
-    FOREIGN KEY emprunteur REFERENCES User (id)
+    CONSTRAINT pk_livres PRIMARY KEY(id_livre) ,
+    CONSTRAINT fk_livre_emprunteur 
+        FOREIGN KEY(emprunteur) 
+        REFERENCES User(id_user)
 );
 
 CREATE TABLE "Auteur" ( -- auteur pour livre -> composante multivalué
-    id_livre VARCHAR(50) NOT NULL
-    auteur VARCHAR(50) NOT NULL
-    CONTRAINT pk_auteur PRIMARY KEY (id_livre, auteur),
-    FOREIGN KEY id_livre REFERENCES Livre (id)
+    id_livre VARCHAR(50) NOT NULL ,
+    auteur VARCHAR(50) NOT NULL ,
+    CONSTRAINT pk_auteur PRIMARY KEY(id_livre, auteur),
+    FOREIGN KEY id_livre REFERENCES Livre(id)
 );
 
 CREATE TABLE "Review" (
@@ -39,10 +41,10 @@ CREATE TABLE "Review" (
     personne VARCHAR(50) NOT NULL ,
     texte VARCHAR(400) ,
     note int
-    CONSTRAINT pk_review PRIMARY KEY (id, num) ,
-    FOREIGN KEY (id) REFERENCES Livre (id),
-    FOREIGN KEY (personne) REFERENCES User (id),
-    CONSTRAINT check_note CHECK (note between 0 and 10)
+    CONSTRAINT pk_review PRIMARY KEY(id, num) ,
+    FOREIGN KEY (id) REFERENCES Livre(id) ,
+    FOREIGN KEY (personne) REFERENCES User(id) ,
+    CONSTRAINT check_note CHECK(note between 0 and 10)
 );
 
 
@@ -53,18 +55,18 @@ CREATE TABLE "Historique" (
     date_rendu date NOT NULL,
     id_review VARCHAR(50),
     num_review VARCHAR(50),
-    CONTRAINT pk_historique PRIMARY KEY (id_livre, id_user),
-    FOREIGN KEY id_livre REFERENCES Livre (id),
-    FOREIGN KEY id_user REFERENCES User (id),
-    FOREIGN KEY (id_review, num_review) REFERENCES Review (id, num)
+    CONsTRAINT pk_historique PRIMARY KEY(id_livre, id_user),
+    FOREIGN KEY id_livre REFERENCES Livre(id),
+    FOREIGN KEY id_user REFERENCES User(id),
+    FOREIGN KEY (id_review, num_review) REFERENCES Review(id, num)
 );
 
 CREATE TABLE "Reservation" (
     id_livre VARCHAR(13) NOT NULL,
     id_user VARCHAR(50) NOT NULL,
-    CONTRAINT pk_reservation PRIMARY KEY (id_livre, id_user),
-    FOREIGN KEY id_livre REFERENCES Livre (id),
-    FOREIGN KEY id_user REFERENCES User (id)
+    CONSTRAINT pk_reservation PRIMARY KEY(id_livre, id_user),
+    CONSTRAINT fk_reservation_livre FOREIGN KEY id_livre REFERENCES Livre (id),
+    CONSTRAINT fk_reservation_user FOREIGN KEY id_user REFERENCES User(id)
 );
 
 
