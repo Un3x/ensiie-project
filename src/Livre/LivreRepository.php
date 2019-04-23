@@ -38,11 +38,50 @@ class LivreRepository
 
 //TODO update
 
+    public function creeLivre($id, $titre, $auteur, $publication, $couverture, $editeur, $emprunteur, $date_emprunt) {
+        $ret = new Livre();
+        $ret->setId($id);
+        $ret->setTitre($titre);
+        $ret->setAuteur($auteur);
+        $ret->setPublication(new \DateTimeImmutable($publication));
+        $ret->setImage($couverture);
+        $ret->setEditeur($editeur);
+        $ret->setEmprunteur($emprunteur);
+        $ret->setDateEmprunt(new \DateTimeImmutable($date_emprunt));
+
+        return $ret;
+    }
+
     public function updateLivre($livre) {
-        $this->connection->query('UPDATE "Livre" SET "titre"=$livre->getTitre(), "auteur"=$livre->getAuteur(), "publication"=$livre->getPublication(), "couverture"=$livre->getImage(), "editeur"=$livre->getEditeur(), "emprunteur"=$livre->getEmprunteur(), "date_emprunt"=$livre->getDateEmprunt() WHERE "id_livre"=$livre->getId()');
+        $id=getId();
+        $titre=getTitre();
+        $auteur=getAuteur();
+        $publication=getPublication();
+        $couverture=getImage();
+        $editeur=getEditeur();
+        $emprunteur=getEmprunteur();
+        $date_emprunt=getDateEmprunt();
+
+        $query="UPDATE \"Livre\" SET titre='$titre', auteur='$auteur', publication='$publication', couverture='$couverture', editeur='$editeur', emprunteur='$emprunteur', date_emprunt='$date_emprunt' WHERE id_livre='$id';";
+        $this->connection->query("$query");
+
+        return $query;
     }
 
     public function insertLivre($livre) {
-        $this->connection->query('INSERT INTO "Livre" VALUES ($livre->getId(), $livre->getTitre(), $livre->getAuteur(), $livre->getPublication(), $livre->Image(), $livre->getEditeur(), $livre->getEmprunteur(), $livre->getDateEmprunt())');
+        $id=getId();
+        $titre=getTitre();
+        $auteur=getAuteur();
+        $publication=getPublication();
+        $couverture=getImage();
+        $editeur=getEditeur();
+        $emprunteur=getEmprunteur();
+        $date_emprunt=getDateEmprunt();
+
+        $query="INSERT INTO \"Livre\" VALUES ('$id', '$titre', '$auteur', $publication, '$couverture', '$editeur', '$emprunteur', $date_emprunt);";
+
+        $this->connection->query("$query");
+
+        return $query;
     }
 }

@@ -37,14 +37,52 @@ class HistoriqueRepository
     }
     //TODO update
 
+    public function creeHistorique($id_livre, $id_user, $date_emprunt, $date_rendu, $id_review, $num_review) {
+
+        $ret = new Histprique();
+        $ret->setIdLivre($id_livre);
+        $ret->setIdUser($id_user);
+        $ret->setDateEmprunt($date_emprunt);
+        $ret->setDateRendu($date_rendu);
+        $ret->setIdReview($id_review);
+        $ret->setNumReview($num_review);
+
+        return $ret;
+    }
+
 
     public function updateHistorique($historique) {
-        $this->connection->query('UPDATE "Historique" SET "date_emprunt"=$historique->getDateEmprunt(), "date_rendu"=$historique->getDateRendu(), "id_review"=$historique->getIdReview(), "num_review"=$historique->getNumReview() WHERE "id_livre"=$historique->getIdLivre() AND "id_user"=$historique->getIdUser()');
+        $id_livre=$historique->getIdLivre();
+        $id_user=$historique->getIdUser();
+        $date_emprunt=$historique->getDateEmprunt();
+        $date_rendu=$historique->getDateRendu();
+        $id_review=$historique->getIdReview();
+        $num_review=$historique->getNumReview();
+
+        $query="UPDATE \"Historique\" SET date_emprunt='$date_emprunt', date_rendu='$date_rendu', id_review='$id_review', num_review='$num_review' WHERE id_livre='$id_livre' AND id_user='$id_user';";
+
+
+        $this->connection->query("$query");
+
+        return $query;
     }
 
 
     public function insertHistorique($historique) {
-        $this->connection->query('INSERT INTO "Historique" VALUES ($historique->getIdLivre(), $historique->getIdUser(), $historique->getDateEmprunt(), $historique->getDateRendu(), $historique->getIdReview(), $historique->getNumReview())');
+        $id_livre=$historique->getIdLivre();
+        $id_user=$historique->getIdUser();
+        $date_emprunt=$historique->getDateEmprunt();
+        $date_rendu=$historique->getDateRendu();
+        $id_review=$historique->getIdReview();
+        $num_review=$historique->getNumReview();
+
+        $query="INSERT INTO \"Historique\" VALUES ('$id_livre', '$id_user', '$date_emprunt', '$date_rendu', '$id_review', '$num_review');";
+
+
+        $this->connection->query("$query");
+
+
+        return $query;
     }
 
 }

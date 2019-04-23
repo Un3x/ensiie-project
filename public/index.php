@@ -25,17 +25,7 @@ $userRepository = new \User\UserRepository($connection);
 
 <!-- test d'ajout d'un membre -->
 <?php
-/*$tmp=new \User\User();
 
-$tmp->setId('54');
-$tmp->setNom('rien');
-$tmp->setPrenom('pas plus');
-$tmp->setPseudo('pas d idee');
-$tmp->setMdp('0');
-$tmp->setMail('0');
-$tmp->setNbLivresEmpruntes('5');
-$tmp->setNbLivresRendus('5');
-*/
 
 $tmp = $userRepository->creeUser('4','ca mahe', 'hesre', 'fwdf', 4, '12', '@dfd', '1', '1', True);
 

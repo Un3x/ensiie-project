@@ -1,4 +1,4 @@
---SVT ne modifiez pas les noms des attibuts sinon je doit refaire
+--SVP ne modifiez pas les noms des attibuts sinon je doit refaire
 --toutes les fonctions PHP et je serai pas content
 
 

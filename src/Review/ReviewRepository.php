@@ -37,11 +37,56 @@ class ReviewRepository
 
 //TODO update
 
-    public function updateReview($review) {
-        $this->connection->query('UPDATE "Review" SET "num"=$review->getNum(), "personne"=$review->getPersonne(), "texte"=$review->getTexte(), "note"=$review->getNote() WHERE "id"=$review->getId()');
+    public function creeReview($id, $num, $personne, $texte, $note) {
+        $ret = new Review();
+        $ret->setId($id);
+        $ret->setNum($num);
+        $ret->setPersonne($personne);
+        $ret->setTexte($texte);
+        $ret->setNote($note);
+
+        return $ret;
     }
 
+
+    public function updateReview($review) {
+        $id=$review->getId();
+        $num=$review->getNum();
+        $personne=$review->getPersonne();
+        $texte=$review->getTexte();
+        $note=$review->getNote();
+
+
+        $query="UPDATE \"Review\" SET num='$num', personne='$personne', texte='$texte', note='$note' WHERE id='$id';";
+
+        $this->connection->query("$query");
+
+        return $query;
+    }
+
+
+
     public function insertReview($review) {
-        $this->connection->query('INSERT INTO "Review" VALUES ($review->getId(), $review->getNum(), $review->getPersonne(), $review->getTexte(), $review->getNote())');
+        $id=$review->getId();
+        $num=$review->getNum();
+        $personne=$review->getPersonne();
+        $texte=$review->getTexte();
+        $note=$review->getNote();
+
+        $query="INSERT INTO \"Review\" VALUES ('$id', '$num', '$personne', '$texte', '$note');";
+
+        $this->connection->query("$query");
+
+        return $query;
+    }
+
+    public function deleteReview($review) {
+        $id=$review->getId();
+
+        $query="DELETE FROM \"Review\" WHERE id='$id';";
+
+        $this->connection->query("$query");
+
+        return $query;
     }
 }

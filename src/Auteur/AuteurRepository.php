@@ -31,13 +31,37 @@ class AuteurRepository
         return $auteur;
     }
 
-//TODO update
+
+    public function creeAuteur($id_livre, $id_auteur) {
+        $ret = new Auteur();
+        $ret->setIdLivre($id_livre);
+        $ret->setIdAuteur($id_auteur);
+
+        return $ret;
+    }
 
     /*public function updateAuteur($auteur) {
         $this->connection->query('UPDATE "Auteur" SET "id_livre"=$auteur->getIdLivre(), "auteur"=$auteur->getAuteur(), WHERE "id_livre"=$auteur->getIdLivre()');
     } pas nécessaire*/
 
     public function insertAuteur($auteur) {
-        $this->connection->query('INSERT INTO "Auteur" VALUES ($auteur->getIdLivre(), $auteur->getAuteur())');
+        $id_livre=$auteur->getIdLivre();
+        $id_auteur=$auteur->getIdAuteur();
+
+        $query="INSERT INTO \"Auteur\" VALUES ('$id_livre', '$id_auteur');";
+        $this->connection->query("$query");
+
+        return $query;
+    }
+
+    public function deleteAuteur($auteur) {
+        $id_livre=$auteur->getIdLivre();
+        $id_auteur=$auteur->getIdAuteur();
+
+        $query="DELETE FROM \"Auteur\" WHERE id_livre='$id_livre' AND id_auteur='$id_auteur';";
+
+        $this->connection->query("$query");
+
+        return $query;
     }
 }
