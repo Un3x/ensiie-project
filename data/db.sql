@@ -19,7 +19,7 @@ create table "message" (
   id SERIAL PRIMARY KEY,
   sender integer references member(id),
   chat integer references chat(id),
-  send datetime not null,
+  sendTime datetime not null,
   message VARCHAR(255) NOT NULL DEFAULT ''
 );
 

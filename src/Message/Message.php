@@ -23,7 +23,7 @@ class Message
     /**
      * @var datetime
      */
-    private $send;
+    private $sendTime;
 
     /**
      * @var string
@@ -87,18 +87,18 @@ class Message
     /**
      * @return datetime
      */
-    public function getSend()
+    public function getSendTime()
     {
-        return $this->send;
+        return $this->sendTime;
     }
 
     /**
-     * @param datetime $send
+     * @param datetime $sendTime
      * @return Message
      */
-    public function setSend($send)
+    public function setSendTime($sendTime)
     {
-        $this->send = $send;
+        $this->sendTime = $sendTime;
         return $this;
     }
 
