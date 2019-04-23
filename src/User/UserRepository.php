@@ -27,7 +27,7 @@ class UserRepository
                 ->setPrenom($row->prenom)
                 ->setNom($row->nom)
                 ->setPseudo($row->pseudo)
-                ->setDdn(new \DateTimeImmutable($row->ddn))
+                ->setDdn($row->ddn)
                 ->setMdp($row->mdp)
                 ->setMail($row->mail)
                 ->setNbLivresEmpruntes($row->nb_livres_empruntes)
@@ -47,7 +47,7 @@ class UserRepository
         $ret->setPrenom($prenom);
         $ret->setNom($nom);
         $ret->setPseudo($pseudo);
-                /*->setDdn(new \DateTimeImmutable($ddn))*/
+        $ret->setDdn($ddn);
         $ret->setMdp($mdp);
         $ret->setMail($mail);
         $ret->setNbLivresEmpruntes($nb_livres_empruntes);
@@ -61,14 +61,14 @@ class UserRepository
         $prenom=$user->getPrenom();
         $nom=$user->getNom();
         $pseudo=$user->getPseudo();
-        /*$ddn=$user->getDdn();*/
+        $ddn=$user->getDdn();
         $mdp=$user->getMdp();
         $mail=$user->getMail();
         $nb_livres_empruntes=$user->getNbLivresEmpruntes();
         $nb_livres_rendus=$user->getNbLivresRendus();
         $est_admin=$user->getAdmin();
 
-        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mdp='$mdp', mail='$mail', nb_livres_empruntes='$nb_livres_empruntes', nb_livres_rendus='$nb_livres_rendus', est_admin='$est_admin' WHERE id_user='$id';";
+        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mdp='$mdp', mail='$mail', nb_livres_empruntes='$nb_livres_empruntes', nb_livres_rendus='$nb_livres_rendus', est_admin='$est_admin', ddn='$ddn' WHERE id_user='$id';";
 
         $this->connection->query("$query");
 
@@ -80,7 +80,7 @@ class UserRepository
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $pseudo = $user->getPseudo();
-        /*$ddn = $user->getDdn();*/
+        $ddn = $user->getDdn();
         $mdp = $user->getMdp();
         $mail = $user->getMail();
         $nb_livres_empruntes = $user->getNbLivresEmpruntes();

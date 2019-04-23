@@ -2,6 +2,11 @@
 
 require '../vendor/autoload.php';
 
+
+session_start();
+
+
+
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -27,7 +32,7 @@ $userRepository = new \User\UserRepository($connection);
 <?php
 
 
-$tmp = $userRepository->creeUser('4','ca mahe', 'hesre', 'fwdf', 4, '12', '@dfd', '1', '1', True);
+$tmp = $userRepository->creeUser('4','ca mahe', 'hesre', 'fwdf', '2004-03-01', '12', '@dfd', '1', '1', True);
 
 
 
@@ -36,12 +41,16 @@ echo $userRepository->updateUser($tmp);
 $users = $userRepository->fetchAll();
 
 ?>
+
+<p><a href="connexion.php">lien vers la connexion</a></p>
+
 <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
     <td>#</td>
     <td>Prenom</td>
     <td>Nom</td>
     <td>Pseudo</td>
+    <td>DDN</td>
     </thead>
 <?php /** @var \User\User $user */
     foreach ($users as $user) : ?>
@@ -50,6 +59,7 @@ $users = $userRepository->fetchAll();
     <td><?php echo $user->getPrenom() ?></td>
     <td><?php echo $user->getNom() ?></td>
     <td><?php echo $user->getPseudo() ?></td>
+    <td><?php echo $user->getDdn() ?></td>
     </tr>
 <?php endforeach; ?>
     </table>

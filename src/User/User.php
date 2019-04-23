@@ -24,7 +24,7 @@ class User
     private $pseudo;
 
     /**
-     * @var \DateTimeInterface
+     * @var string
      */
     private $ddn;
 
@@ -129,18 +129,18 @@ class User
 
 
     /**
-     * @return \DateTimeInterface
+     * @return string
      */
-    public function getDdn(): \DateTimeInterface
+    public function getDdn()
     {
         return $this->ddn;
     }
 
     /**
-     * @param \DateTimeInterface $ddn
+     * @param string $ddn
      * @return User
      */
-    public function setDdn(\DateTimeInterface $ddn)
+    public function setDdn($ddn)
     {
         $this->ddn = $ddn;
         return $this;
