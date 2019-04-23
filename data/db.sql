@@ -1,12 +1,27 @@
 CREATE TABLE "member" (
-    id SERIAL PRIMARY KEY ,
-    lastName VARCHAR NOT NULL ,
-    firstName VARCHAR NOT NULL ,
-    email VARCHAR NOT NULL ,
-    password VARCHAR NOT NULL
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    searchUser boolean not null default false,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(40) NOT NULL
+);
+INSERT INTO "member"(firstName, lastName, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+
+create table "chat" (
+  id SERIAL PRIMARY KEY,
+  member1 integer references member(id),
+  member2 integer references member(id),
+  startDate datetime
 );
 
-INSERT INTO "member"(firstName, lastName, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+create table "message" (
+  id SERIAL PRIMARY KEY,
+  sender integer references member(id),
+  chat integer references chat(id),
+  send datetime not null,
+  message VARCHAR(255) NOT NULL DEFAULT ''
+);
 
 /*
 CREATE TABLE "member" (

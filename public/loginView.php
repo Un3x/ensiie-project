@@ -28,9 +28,11 @@ if(isset($_POST['submit_button']))
         exit();
     }
     else
-    {	echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
+    {	//echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
         //echo "Email/Mot de passe incorrect !";
-        exit();
+        //exit();
+
+        print "<div class='form'><h3>Email or password incorrect !</h3></div>";
 
         /*Il faut essayer de l'afficher en-dessous du champ de password dans la page login, voir favori (log out user de awa)*/
     }

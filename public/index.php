@@ -1,8 +1,8 @@
 <?php
 
 require('../src/model.php');
-$co = new Model();
-$connection = $co->dbConnect();
+$model = new Model();
+$connection = $model->dbConnect();
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();

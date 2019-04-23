@@ -3,8 +3,8 @@ $title = "Meetiie - Reset Password";
 $css_link = '<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>';
 
 require('../src/model.php');
-$co = new Model();
-$connection = $co->dbConnect();
+$model = new Model();
+$connection = $model->dbConnect();
 
 if(isset($_POST['send_message_btn']))
 {

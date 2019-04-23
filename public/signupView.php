@@ -3,8 +3,8 @@ $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.cs
 echo $css_link;
 
 require('../src/model.php');
-$co = new Model();
-$connection = $co->dbConnect();
+$model = new Model();
+$connection = $model->dbConnect();
 
 // If form submitted, insert values into the database.
 if (isset($_POST['submit_btn']))
