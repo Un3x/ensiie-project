@@ -1,4 +1,7 @@
 <?php
+
+use Member\MemberRepository;
+
 session_start();
 $title = "Accueil";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/accueilLayout.css\"/>";
@@ -6,10 +9,13 @@ echo $css_link;
 
 
 require('../src/model.php');
+include('../src/Member/Member.php');
+include('../src/Member/MemberRepository.php');
+
 $model = new Model();
 $connection = $model->dbConnect();
 
-$memberRepository = new \Member\MemberRepository($connection);
+$memberRepository = new MemberRepository($connection);
 $members = $memberRepository->fetchAll();
 
 foreach ($members as $member) {
