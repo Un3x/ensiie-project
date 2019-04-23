@@ -28,7 +28,6 @@ else {
 		if ($user->getPseudo() == $pseudo) {
 			if ($user->getMdp() == $mdp) {
 				$_SESSION["id_user"] = $user->getId();
-				$_SESSION["pseudo"] = $user->getPseudo();
 				header("Location:index.php");
 			}
 		}
@@ -39,10 +38,5 @@ else {
 
 ?>
 </div>
-
-<p id="test">
-</p>
-
 </body>
 
-<!-- c'est n'importe quoi, je suis paumé-->
