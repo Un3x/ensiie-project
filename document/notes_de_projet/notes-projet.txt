@@ -1,0 +1,66 @@
+notes
+
+data/db.sql
+mettre les bdd
+make install remplit
+make uninstall vide
+
+public
+    dossier accessible à l'utilisateur
+    index.php   -> init db connec
+                -> récup users list -> Repository -> données brutes into classe User
+                -> afficher html
+
+    Repository  -> Pattern object 
+                -> lie le code à un stockage
+
+    users       -> Modèle ( !!! différent du modèle de MVC !!! )
+                -> Pattern object - ensemble de données
+
+
+
+##tuto MVC php openclassrooms ?
+
+Point MVC
+    - Modèle : fait (coeur de l'appli)
+    - Contrôleur : Point d'entrée dans l'appli, vérifie les données, prépare les structures de données
+    - Vue ;
+
+requête http -> controler -> model -> controler -> view
+
+Fonctionnement à peu près du MVC du site attendu
+    - rediriger toutes les requêtes vers index.php
+    - parser l'url
+    - deduire le controler
+    - passer les params
+    - "YOLO"
+->> évite de séparer le MVC de manière trop violente en fichiers
+
+
+Injection de dépendance
+
+
+src
+    partie privée
+
+
+    soutenance
+
+    8 minutes
+    répéter
+    vérifier le câble
+    vérifier qu'on sait gérer les écrans :)
+    obligé d'être là
+    objectif : 
+        - pas trop de technique (pas de schema de bdd)
+        - vendre du rêve
+        - montrer et manipuler le site
+        - pitcher le projet de façon vendable (ne pas mettre les schemas de BDD)
+        - mettre les features qui ne marchent pas encore aussi (bouton paiement qui part sur rien et tout et tout)
+        - avoir un prototype relativement fonctionnel
+        - PIPOTER
+        - avoir une présentation dynamique !
+        - rapport : ficher rapport.pdf à la racine du projet
+        - être concis, taper dans les détails techniques, structures, BDD, comment on a galéré
+    rendu : push une branche sur le depot du responsable
+        - verifier assez tôt qu'on est ajouté sur le github

@@ -1,0 +1,50 @@
+Site : 
+	Aider les PACES, et uniquement les PACES.
+	tsps.fr
+
+ETQ Admin [Respo Tout]
+	- Bloquer des comtpes
+	- Modifier le site
+	- Changer le profil des utilisateurs
+	- Accéder à l'interface admin
+	- Appuyer sur le gros bouton "Passer à l'année suivante" -> archiver les machins
+	- Voir les logs du site
+	- Changer le logo / thème du site
+	
+ETQ Tuteur
+	- Fermer une question
+	- Répondre aux questions
+	- Créer un QCM
+	- Modifier un QCM
+	- Hautvoter / Basvoter les questions et réponses
+	- Valider la réponse d'un étudiant (donner un statut verified)
+	
+ETQ Tuteur Spécial Respo Carnet
+	- Mettre en ligne un carnet
+	- Modifier les carnets
+	
+ETQ Tuteur Spécial Respo Tutorat
+	- Etre un admin sans pouvoir modifier le site ni passer le site à l'année suivante
+	- Gérer les tuteurs
+
+ETQ Tuteur Spécial Respo Module
+	- Ajouter ou supprimer des modules
+		
+ETQ Etudiant
+	- Visionner mon profil
+	- Editer mon profil
+	- Me connecter
+	- Poser une question - Ajouter des tags
+	- Répondre
+	- Visionner mes résultats
+	- Accéder aux carnets
+	- Upvoter / Basvoter les questions et réponses ?
+	
+	
+	
+A FAIRE
+	Contacter les RT pour avoir les rôles
+	DU HTTPS
+	Compatibilité sur tel optionnelle
+	Mettre le agreugreu je suis un serpent
+	Consulter le réglement du tutorat, 
