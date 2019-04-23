@@ -10,7 +10,7 @@ CREATE TABLE "photo_profil"(
     CONSTRAINT key_photopro PRIMARY KEY (id_photo)
 );
 
-CREATE TABLE "user" (
+CREATE TABLE "user"(
     id VARCHAR(50) NOT NULL,
     firstname VARCHAR(30) NOT NULL ,
     lastname VARCHAR(30) NOT NULL ,
@@ -18,8 +18,10 @@ CREATE TABLE "user" (
     loc VARCHAR(100) NOT NULL,
     mail VARCHAR(100) NOT NULL,
     mdp VARCHAR(100),
-    photo_id int REFERENCES photo_profil(id_photo),
-    CONSTRAINT key_user PRIMARY KEY (id)
+    /*photo_id INTEGER REFERENCES photo_profil(id_photo),*/
+    photo_id INTEGER,
+    CONSTRAINT key_user PRIMARY KEY (id),
+    CONSTRAINT fk_photo FOREIGN KEY (photo_id) REFERENCES photo_profil(id_photo)
     
 );
 
@@ -27,9 +29,10 @@ CREATE TABLE "user" (
 CREATE TABLE "produits"(
     id_produit INTEGER,
     date_publi date,
-    id_proprio VARCHAR(50) REFERENCES "user"(id),
+    id_proprio VARCHAR(50) /*REFERENCES "user"(id)*/,
     descript VARCHAR,
-    CONSTRAINT key_prod PRIMARY KEY (id_produit)
+    CONSTRAINT key_prod PRIMARY KEY (id_produit),
+    CONSTRAINT fk_proprio FOREIGN KEY (id_proprio) REFERENCES "user"(id)
 );
 
 
@@ -41,9 +44,10 @@ CREATE TABLE "categorie"(
 
 
 CREATE TABLE "assoc_prd_cat"(
-    id_cat int REFERENCES categorie(id_cat),
-    id_prod int REFERENCES produits(id_produit),
-    CONSTRAINT key_assoc_prd_cat PRIMARY KEY (id_cat,id_prod)
+    id_cat INTEGER /*REFERENCES categorie(id_cat)*/,
+    id_prod INTEGER /*REFERENCES produits(id_produit)*/,
+    CONSTRAINT key_assoc_prd_cat PRIMARY KEY (id_cat,id_prod),
+    CONSTRAINT fk_cat FOREIGN KEY (id_cat) REFERENCES categorie(id_cat)
 );
 
 /*INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
