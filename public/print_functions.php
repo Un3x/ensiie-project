@@ -179,4 +179,3 @@
 				window.location.replace(\"php_accueil.php\");
 			</script>";
 	}
-?>

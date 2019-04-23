@@ -1,36 +1,21 @@
 <?php
-	session_start();
-?>
+require ('print_functions.php');
+session_start();
+echo "<!DOCTYPE html>";
+echo "<html>";
 
-<!DOCTYPE html>
-<?php require ('print_functions.php');?>
+# le header
+echo '<head><title>Accueil - Test php</title><meta-charset = "utf-8"/><link rel = "stylesheet" type = "text/css" href = "stylesheet.css"/><link rel = "stylesheet" type = "text/css" href = "stylesheet2.css"/></head>';
 
-<html>
+# le body
+echo '<body class = "bg">';
+printHeader();
 
-	<head>
-		<title>Accueil - Test php</title>
-		<meta-charset = "utf-8"/>
-		<link rel = "stylesheet" type = "text/css" href = "stylesheet.css"/>
-		<link rel = "stylesheet" type = "text/css" href = "stylesheet2.css"/>
-	</head>
+echo '<main>';
+checkLogin();
+printMain();
+printSidebar();
+echo '</main>';
 
-	<body class = "bg">
-		<?php
-			printHeader();
-		?>
-
-		<main>
-			<?php
-				checkLogin();
-
-				printMain();
-				printSidebar();
-			?>
-		</main>
-
-		<?php
-			printFooter();
-		?>
-	</body>
-
-</html>
+printFooter();
+echo '</body></html>';
