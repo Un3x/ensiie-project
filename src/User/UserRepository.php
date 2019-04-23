@@ -7,7 +7,9 @@ class UserRepository
      */
     private $connection;
 
-    /**
+    /**"require": {
+    "ext-mongodb": "*"
+  }
      * UserRepository constructor.
      * @param \PDO $connection
      */

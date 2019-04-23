@@ -26,7 +26,7 @@ class ChatRepository
                 ->setId($row->id)
                 ->setMember1($row->member1)
                 ->setMember2($row->member2)
-                ->setStartDate($row->startDate);
+                ->setStartDate(new \DateTimeImmutable($row->startDate));
 
             $chats[] = $chat;
         }

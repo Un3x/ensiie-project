@@ -26,7 +26,7 @@ class MessageRepository
                 ->setId($row->id)
                 ->setSender($row->sender)
                 ->setChat($row->chat)
-                ->setSend($row->send)
+                ->setSendTime(new \DateTimeImmutable($row->send))
                 ->setMessage($row->message);
 
             $messages[] = $message;

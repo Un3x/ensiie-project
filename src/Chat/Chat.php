@@ -80,18 +80,18 @@ class Chat
     }
 
     /**
-     * @return timestamp
+     * @return \DateTimeInterface
      */
-    public function getStartDate()
+    public function getStartDate(): \DateTimeInterface
     {
         return $this->startDate;
     }
 
     /**
-     * @param timestamp $startDate
+     * @param \DateTimeInterface $startDate
      * @return Chat
      */
-    public function setStartDate($startDate)
+    public function setStartDate(\DateTimeInterface $startDate)
     {
         $this->startDate = $startDate;
         return $this;

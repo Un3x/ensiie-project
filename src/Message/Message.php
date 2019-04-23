@@ -23,7 +23,7 @@ class Message
     /**
      * @var timestamp
      */
-    private $send;
+    private $sendTime;
 
     /**
      * @var string
@@ -85,20 +85,24 @@ class Message
     }
 
     /**
-     * @return timestamp
+     * @return \DateTimeInterface
      */
-    public function getSend()
+    public function getSendTime(): \DateTimeInterface
     {
-        return $this->send;
+        return $this->sendTime;
     }
 
     /**
+<<<<<<< HEAD
      * @param timestamp $send
+=======
+     * @param datetime $sendTime
+>>>>>>> a595368e1e3da7441f27c5e7855b487397f72a10
      * @return Message
      */
-    public function setSend($send)
+    public function setSendTime(\DateTimeInterface $sendTime)
     {
-        $this->send = $send;
+        $this->sendTime = $sendTime;
         return $this;
     }
 

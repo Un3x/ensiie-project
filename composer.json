@@ -11,8 +11,5 @@
         "psr-4": {
             "User\\": "test/unit/User/"
         }
-    },
-  "require": {
-    "ext-mongodb": "*"
-  }
+    }
 }

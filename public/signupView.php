@@ -11,8 +11,8 @@ if (isset($_POST['submit_btn']))
 {
 
     // removes backslashes
-    $lastNameTmp = stripslashes($_REQUEST['lastName']);
-    $firstNameTmp = stripslashes($_REQUEST['firstName']);
+    $lastnameTmp = stripslashes($_REQUEST['lastname']);
+    $firstnameTmp = stripslashes($_REQUEST['firstname']);
     $email = stripslashes($_REQUEST['email']);
     $password = stripslashes($_REQUEST['password']);
 
@@ -29,7 +29,7 @@ if (isset($_POST['submit_btn']))
         echo "Email déjà utilisé";
     }
     else {
-        $query = "INSERT INTO member(firstName, lastName, email, password) VALUES ('$firstNameTmp', '$lastNameTmp', '$email', '$password')";
+        $query = "INSERT INTO member(firstname, lastname, email, password) VALUES ('$firstnameTmp', '$lastnameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
 
@@ -51,8 +51,8 @@ if (isset($_POST['submit_btn']))
         <span id="conn">Créez votre compte Meetiie !</span><br/><br/>
 
     <form role="form" method="POST" enctype="multipart/form-data">
-        <input type="text" name="firstName" placeholder="Prénom" size="15" required>
-        <input type="text" name="lastName" placeholder="Nom" size="15" required><br/><br/>
+        <input type="text" name="firstname" placeholder="Prénom" size="15" required>
+        <input type="text" name="lastname" placeholder="Nom" size="15" required><br/><br/>
         <input type="email" name="email" placeholder="Username@ensiie.fr" size="38" required><br><br>
         <input type="password" name="password" placeholder="Mot de passe" size="38" required><br><br>
         <input type="submit" name="submit_btn" value="S'inscrire"><br/>
