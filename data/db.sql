@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS "user";
-DROP TABLE IF EXISTS "photo_profil";
-DROP TABLE IF EXISTS "produits";
-DROP TABLE IF EXISTS "categorie";
-DROP TABLE IF EXISTS "assoc_prd_cat";
+DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS "photo_profil" CASCADE;
+DROP TABLE IF EXISTS "produits" CASCADE;
+DROP TABLE IF EXISTS "categorie" CASCADE;
+DROP TABLE IF EXISTS "assoc_prd_cat" CASCADE;
 
 CREATE TABLE "photo_profil"(
     id_photo INTEGER,
@@ -11,7 +11,7 @@ CREATE TABLE "photo_profil"(
 );
 
 CREATE TABLE "user" (
-    id INTEGER,
+    id VARCHAR(50) NOT NULL,
     firstname VARCHAR(30) NOT NULL ,
     lastname VARCHAR(30) NOT NULL ,
     birthday date,
@@ -27,7 +27,7 @@ CREATE TABLE "user" (
 CREATE TABLE "produits"(
     id_produit INTEGER,
     date_publi date,
-    id_proprio int REFERENCES "user"(id),
+    id_proprio VARCHAR(50) REFERENCES "user"(id),
     descript VARCHAR,
     CONSTRAINT key_prod PRIMARY KEY (id_produit)
 );
@@ -58,3 +58,5 @@ INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
 INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');*/
+
+INSERT INTO "user"(id, firstname, lastname, birthday, loc, mail, mdp) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azerty');
