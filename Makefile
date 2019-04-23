@@ -23,7 +23,7 @@ stop:
 install: uninstall start composer.install db.install
 
 uninstall: stop
-	@rm -rf postgres-data
+	@sudo rm -rf postgres-data
 
 reinstall: install
 
