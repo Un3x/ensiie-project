@@ -4,7 +4,7 @@
 
 CREATE TABLE "User" (
     id_user VARCHAR(50),
-    prenom VARCHAR(50) NOT NULL ,
+    prenom VARCHAR(50) NOT NULL,
     nom VARCHAR(50) NOT NULL ,
     pseudo VARCHAR(50) NOT NULL ,
     ddn date ,

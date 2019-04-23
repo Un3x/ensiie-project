@@ -40,25 +40,39 @@ class UserRepository
         return $users;
     }
 
-    //TODO update je sais pas si ça marche lol ALED
 
     public function creeUser($id, $nom, $prenom, $pseudo, $ddn, $mdp, $mail, $nb_livres_empruntes, $nb_livres_rendus, $est_admin) {
         $ret = new User();
-        $ret->setId($id)
-                ->setPrenom($prenom)
-                ->setNom($nom)
-                ->setPseudo($pseudo)
+        $ret->setId($id);
+        $ret->setPrenom($prenom);
+        $ret->setNom($nom);
+        $ret->setPseudo($pseudo);
                 /*->setDdn(new \DateTimeImmutable($ddn))*/
-                ->setMdp($mdp)
-                ->setMail($mail)
-                ->setNbLivresEmpruntes($nb_livres_empruntes)
-                ->setNbLivresRendus($nb_livres_rendus)
-                ->setAdmin($est_admin);
+        $ret->setMdp($mdp);
+        $ret->setMail($mail);
+        $ret->setNbLivresEmpruntes($nb_livres_empruntes);
+        $ret->setNbLivresRendus($nb_livres_rendus);
+        $ret->setAdmin($est_admin);
         return $ret;
     }
 
     public function updateUser($user) {
-        $this->connection->query("UPDATE \"User\" SET prenom=$user->getPrenom(), nom=$user->getNom(), pseudo=$user->getPseudo(), ddn=$user->getDdn(), mdp=$user->getMdp(), mail=$user->getMail(), nb_livres_empruntes=$user->getNbLivresEmpruntes(), nb_livres_rendus=$user->getNbLivresRendus(), est_admin=$user->getAdmin() WHERE id_user=$user->getId();");
+        $id=$user->getId();
+        $prenom=$user->getPrenom();
+        $nom=$user->getNom();
+        $pseudo=$user->getPseudo();
+        /*$ddn=$user->getDdn();*/
+        $mdp=$user->getMdp();
+        $mail=$user->getMail();
+        $nb_livres_empruntes=$user->getNbLivresEmpruntes();
+        $nb_livres_rendus=$user->getNbLivresRendus();
+        $est_admin=$user->getAdmin();
+
+        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mdp='$mdp', mail='$mail', nb_livres_empruntes='$nb_livres_empruntes', nb_livres_rendus='$nb_livres_rendus', est_admin='$est_admin' WHERE id_user='$id';";
+
+        $this->connection->query("$query");
+
+        return $query;
     }
 
     public function insertUser($user) {
@@ -66,11 +80,18 @@ class UserRepository
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $pseudo = $user->getPseudo();
+        /*$ddn = $user->getDdn();*/
+        $mdp = $user->getMdp();
+        $mail = $user->getMail();
+        $nb_livres_empruntes = $user->getNbLivresEmpruntes();
+        $nb_livres_rendus = $user->getNbLivresRendus();
+        $est_admin= $user->getAdmin();
         /*test mais ne sert plus a rien*/
-        $this->connection->query("INSERT INTO \"User\"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ($id, $nom, 'Tangu0y7', 'An0syth7', '0', '0', '0', '0');");
+        $query="INSERT INTO \"User\"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('$id', '$nom', '$prenom', '$pseudo', '$mdp', '$mail', '$nb_livres_empruntes', '$nb_livres_rendus');";
+        $this->connection->query("$query");
         
-        /*$this->connection->query("INSERT INTO \"User\"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ($id, $nom, $prenom, $pseudo, '0', '0', '0', '0');");*/
-        return $nom;
+        
+        return $query;
 
     }
 

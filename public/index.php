@@ -27,21 +27,21 @@ $userRepository = new \User\UserRepository($connection);
 <?php
 /*$tmp=new \User\User();
 
-$tmp->setId('5');
+$tmp->setId('54');
 $tmp->setNom('rien');
 $tmp->setPrenom('pas plus');
 $tmp->setPseudo('pas d idee');
 $tmp->setMdp('0');
 $tmp->setMail('0');
 $tmp->setNbLivresEmpruntes('5');
-$tmp->setNbLivresRendus('5');*/
+$tmp->setNbLivresRendus('5');
+*/
 
-$tmp = $userRepository->creeUser('533','zdsdf', 'jfhgjb', 'qdfdd', 0, '0', '0', '0', '0', True);
-
-echo $tmp->getID();
+$tmp = $userRepository->creeUser('4','ca mahe', 'hesre', 'fwdf', 4, '12', '@dfd', '1', '1', True);
 
 
-echo $userRepository->insertUser($tmp);
+
+echo $userRepository->updateUser($tmp);
 
 $users = $userRepository->fetchAll();
 

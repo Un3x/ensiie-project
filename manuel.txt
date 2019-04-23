@@ -1,0 +1,42 @@
+Bon déjà c'est la merde et tout marche pas correctement,
+dites moi si vous trouvez des erreurs pour que je souffre encore plus.
+
+
+Alors, pour gérer les entrées de la table "truc" par exemple il y a plusieurs fonctions
+
+chaque entrée est un objet vu pas php donc pour récupérer les informations d'un objet il faut utiliser :
+
+$truc->getMachin(); (selon les fonctions get qu'il possède qui sont dans le fichier truc.php dans src)
+
+
+
+@  pour récupérer la liste des éléments d'une table on récupère une liste d'objets :
+
+$listetrucs = $trucRepository->fetchAll();
+(si vous insérez ou modifiez la table il faut actualiser la liste en refaisant un $listetrucs = $trucRepository->fetchAll(); )
+
+
+
+@  pour modifier un objet il faut utiliser les $truc->setMachin(parametre);
+(les fonctions sont dans le truc.php dans src)
+
+
+@  pour update un objet que vous avez modifié dans la table SQL il faut faire :
+
+$trucRepository->updateTruc($truc);
+/!\ il ne faut pas avoir modifié l'id qui doit rester unique
+
+
+@  pour créer un nouvel objet "truc" il faut utiliser :
+
+$lenomquevousvoulez = $trucRepository->creeTruc(parametres);
+(avec les parametres en fonction de l'objet à voir dans src/trucRepository)
+
+
+@  enfin pour insérer un nouvel objet que vous avez créé (avec la ligne juste au dessus) il faut utiliser :
+
+$trucRepository->insertTruc($$lenomquevousvoulez);
+
+
+
+voilà c'est à peut près les seules fonction dont on a besoin je penses (pour l'instant ça marche que pour user mais je ferai les autres apres)
