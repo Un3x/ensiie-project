@@ -1,8 +1,8 @@
 CREATE TABLE "member" (
     id SERIAL PRIMARY KEY,
-    searchUser boolean not null default false,
-    lastname VARCHAR(30) NOT NULL,
     firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    searchUser boolean not null default false,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(40) NOT NULL
 );

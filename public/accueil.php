@@ -8,6 +8,13 @@ echo $css_link;
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
+
+$memberRepository = new \Member\MemberRepository($connection);
+$members = $memberRepository->fetchAll();
+
+foreach ($members as $member) {
+    if ($member->getEmail()==$_POST['email']) $currentMember = $member;
+}
 ?>
 
 <?php ob_start(); ?>
