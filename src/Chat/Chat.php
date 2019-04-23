@@ -1,7 +1,7 @@
 <?php
 namespace Chat;
 
-use DateTime;
+use MongoDB\BSON\Timestamp;
 
 class Chat
 {
@@ -21,7 +21,7 @@ class Chat
     private $member2;
 
     /**
-     * @var datetime
+     * @var timestamp
      */
     private $startDate;
 
@@ -80,7 +80,7 @@ class Chat
     }
 
     /**
-     * @return datetime
+     * @return timestamp
      */
     public function getStartDate()
     {
@@ -88,7 +88,7 @@ class Chat
     }
 
     /**
-     * @param datetime $startDate
+     * @param timestamp $startDate
      * @return Chat
      */
     public function setStartDate($startDate)

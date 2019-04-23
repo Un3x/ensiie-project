@@ -9,7 +9,8 @@ require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
 
-$memberRepository = new \Member\MemberRepository($connection);
+//$memberRepository = new \Member\MemberRepository($connection);
+$memberRepository = new ../src/Member/MemberRepository($connection);
 $members = $memberRepository->fetchAll();
 
 foreach ($members as $member) {

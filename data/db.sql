@@ -12,14 +12,14 @@ create table "chat" (
   id SERIAL PRIMARY KEY,
   member1 integer references member(id),
   member2 integer references member(id),
-  startDate datetime
+  startDate timestamp
 );
 
 create table "message" (
   id SERIAL PRIMARY KEY,
   sender integer references member(id),
   chat integer references chat(id),
-  send datetime not null,
+  send timestamp not null,
   message VARCHAR(255) NOT NULL DEFAULT ''
 );
 

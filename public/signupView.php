@@ -24,7 +24,6 @@ if (isset($_POST['submit_btn']))
     /*$result_verify = $connection->prepare("SELECT FOUND_ROWS()");
     $result_verify->execute();
     $row_count =$result_verify->fetchColumn();*/
-    echo "valeur de count : $count";
     if($count!=0)
     {
         echo "Email déjà utilisé";

@@ -1,7 +1,7 @@
 <?php
 namespace Message;
 
-use DateTime;
+use MongoDB\BSON\Timestamp;
 
 class Message
 {
@@ -21,7 +21,7 @@ class Message
     private $chat;
 
     /**
-     * @var datetime
+     * @var timestamp
      */
     private $send;
 
@@ -60,7 +60,7 @@ class Message
      * @param int $sender
      * @return Message
      */
-    public function setMember1($sender)
+    public function setSender($sender)
     {
         $this->sender = $sender;
         return $this;
@@ -85,7 +85,7 @@ class Message
     }
 
     /**
-     * @return datetime
+     * @return timestamp
      */
     public function getSend()
     {
@@ -93,7 +93,7 @@ class Message
     }
 
     /**
-     * @param datetime $send
+     * @param timestamp $send
      * @return Message
      */
     public function setSend($send)
