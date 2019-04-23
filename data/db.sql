@@ -1,12 +1,12 @@
 CREATE TABLE "member" (
     id SERIAL PRIMARY KEY,
     searchUser boolean not null default false,
-    lastName VARCHAR(30) NOT NULL,
-    firstName VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    firstname VARCHAR(30) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(40) NOT NULL
 );
-INSERT INTO "member"(firstName, lastName, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+INSERT INTO "member"(firstname, lastname, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
 
 create table "chat" (
   id SERIAL PRIMARY KEY,
@@ -24,14 +24,6 @@ create table "message" (
 );
 
 /*
-CREATE TABLE "member" (
-    id SERIAL PRIMARY KEY ,
-    lastName VARCHAR NOT NULL ,
-    firstName VARCHAR NOT NULL ,
-    email VARCHAR NOT NULL ,
-    password VARCHAR NOT NULL
-);
-
 CREATE TABLE "user" (
     id SERIAL PRIMARY KEY ,
     firstname VARCHAR NOT NULL ,
