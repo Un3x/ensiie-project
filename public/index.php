@@ -13,21 +13,21 @@
 		<link rel = "stylesheet" type = "text/css" href = "stylesheet.css"/>
 		<link rel = "stylesheet" type = "text/css" href = "stylesheet2.css"/>
 	</head>
-	
+
 	<body class = "bg">
-		<?php 
+		<?php
 			printHeader();
 		?>
-		
+
 		<main>
-			<?php 
+			<?php
 				checkLogin();
-		
+
 				printMain();
 				printSidebar();
 			?>
 		</main>
-		
+
 		<?php
 			printFooter();
 		?>
