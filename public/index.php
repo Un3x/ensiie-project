@@ -1,4 +1,5 @@
 <?php
+
 require '../vendor/autoload.php';
 
 //postgres
@@ -8,7 +9,7 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
+#$users = $userRepository->fetchAll();
 ?>
 
 <html>
@@ -21,12 +22,36 @@ $users = $userRepository->fetchAll();
     <div class="container">
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
 
+
+<!-- test d'ajout d'un membre -->
+<?php
+/*$tmp=new \User\User();
+
+$tmp->setId('5');
+$tmp->setNom('rien');
+$tmp->setPrenom('pas plus');
+$tmp->setPseudo('pas d idee');
+$tmp->setMdp('0');
+$tmp->setMail('0');
+$tmp->setNbLivresEmpruntes('5');
+$tmp->setNbLivresRendus('5');*/
+
+$tmp = $userRepository->creeUser('533','zdsdf', 'jfhgjb', 'qdfdd', 0, '0', '0', '0', '0', True);
+
+echo $tmp->getID();
+
+
+echo $userRepository->insertUser($tmp);
+
+$users = $userRepository->fetchAll();
+
+?>
 <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
     <td>#</td>
-    <td>Firstname</td>
-    <td>Lastname</td>
-    <td>Age</td>
+    <td>Prenom</td>
+    <td>Nom</td>
+    <td>Pseudo</td>
     </thead>
 <?php /** @var \User\User $user */
     foreach ($users as $user) : ?>
@@ -34,6 +59,7 @@ $users = $userRepository->fetchAll();
     <td><?php echo $user->getId() ?></td>
     <td><?php echo $user->getPrenom() ?></td>
     <td><?php echo $user->getNom() ?></td>
+    <td><?php echo $user->getPseudo() ?></td>
     </tr>
 <?php endforeach; ?>
     </table>

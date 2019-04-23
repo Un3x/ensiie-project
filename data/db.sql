@@ -72,7 +72,7 @@ CREATE TABLE "Reservation" (
 );
 
 
-
+/*
 CREATE TRIGGER increase_nb_user AFTER UPDATE
 ON "Livre" FOR EACH ROW
 f_update_nb_emprunte();
@@ -129,10 +129,11 @@ BEGIN
     SET emprunteur = NULL, date_emprunt = NULL
     WHERE id = NEW.id;
 END
+*/
 
 
 
-INSERT INTO "User"(nom, prenom, pseudo) VALUES ('Charles', 'Tanguy', 'Ansyth');
-INSERT INTO "User"(nom, prenom, pseudo) VALUES ('Fleurance', 'Paul', 'Deluxe');
-INSERT INTO "User"(nom, prenom, pseudo) VALUES ('Fourcade', 'Louis', 'Gofer');
-INSERT INTO "User"(nom, prenom, pseudo) VALUES ('Gauthier', 'Louis', 'Ofeeling');
+INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('1', 'Charles', 'Tanguy', 'Ansyth', '0', '0', '0', '0');
+INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('2', 'Fleurance', 'Paul', 'Deluxe', '0', '0', '0', '0');
+INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('3', 'Fourcade', 'Louis', 'Gofer', '0', '0', '0', '0');
+INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('4', 'Gauthier', 'Louis', 'Ofeeling', '0', '0', '0', '0');
