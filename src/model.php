@@ -39,14 +39,15 @@ class Model
         }
     }
 
-    function config($email)
+    function config($email, $lastname, $firstname, $pwd)
     {
         //session_start();
-        global $hostName, $baseName, $userName, $pwd;	//Rappel : $nom_user est son email, il n'y a pas de colonnes username dans la BDD
+        //global $hostName, $baseName, $userName, $pwd;	//Rappel : $nom_user est son email, il n'y a pas de colonnes username dans la BDD
         $_SESSION['email'] = $email;
-        $_SESSION['nomhote'] = $hostName;
-        $_SESSION['nombase'] = $baseName;
-        $_SESSION['nomuser'] = $userName;
-        $_SESSION['mdp'] = $pwd;
+        //$_SESSION['nomhote'] = $hostName;
+        //$_SESSION['nombase'] = $baseName;
+        $_SESSION['lastname'] = $lastname;
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['pwd'] = $pwd;
     }
 }

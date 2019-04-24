@@ -3,27 +3,40 @@ $css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>'
 
 require('../src/model.php');
 $model = new Model();
+$connection = $model->dbConnect();
 
 if(isset($_POST['submit_button']))
 {
 
+    //Retrieve email and password values in $email_form and $mdp
     $email_form = $_POST['email'];
-    $mdp = $_POST['password'];
+    $pwd = $_POST['password'];
+
+    //Retrieve firstname and lastname corresponding the email above, from the database
+    $requete = "SELECT firstname, lastname FROM member WHERE email='$email_form'";
+    $q = $connection->query($requete);
+    $row = $q->fetch();
+    $firstname_form=$row['firstname'];
+    $lastname_form=$row['lastname'];
+
+    //Il faut utiliser le commentaire en-dessous au lieu de $connection->query
+    /*$q = $connection->prepare($requete);
+    $q->execute();*/
 
     //Vérifier si le mot de passe est bien saisi pour éviter le SQL-Injection
-    if(!isset($mdp))
+    if(!isset($pwd))
     {die("Veuillez entrer votre mot de passe !");}
 
     //Vérifier que le hashage correspond au mot de passe saisi
 
-    if($model->verif_mdp($email_form, $mdp))
+    if($model->verif_mdp($email_form, $pwd))
     {
         //Il faut decrypter le password avant de le passer a verif_mdp
 
 
         //Appel de config() pour sauvegarder le mot de passe dans la variable de session
-        $model->config($email_form);
-        //header("Location:index_layout.php");
+        $model->config($email_form, $lastname_form, $firstname_form, $pwd);
+        //header("Location:accueil.php");
         header('Location: accueil.php');
         exit();
     }

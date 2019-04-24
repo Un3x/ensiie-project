@@ -4,9 +4,11 @@ CREATE TABLE "member" (
     lastname VARCHAR(30) NOT NULL,
     searchUser boolean not null default false,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(40) NOT NULL
+    password VARCHAR(40) NOT NULL,
+    admin boolean not null default false,
+    banned boolean not null default false
 );
-INSERT INTO "member"(firstname, lastname, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+INSERT INTO "member"(firstname, lastname, email, password, admin, banned) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar', false, false);
 
 create table "chat" (
   id SERIAL PRIMARY KEY,

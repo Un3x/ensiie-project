@@ -34,6 +34,16 @@ class Member
     private $password;
 
     /**
+     * @var boolean
+     */
+    private $admin;
+
+    /**
+     * @var boolean
+     */
+    private $banned;
+
+    /**
      * @return int
      */
     public function getId()
@@ -138,6 +148,42 @@ class Member
     public function setPassword($password)
     {
         $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * @param boolean $admin
+     * @return Member
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getBanned()
+    {
+        return $this->banned;
+    }
+
+    /**
+     * @param boolean $banned
+     * @return Member
+     */
+    public function setBanned($banned)
+    {
+        $this->banned = $banned;
         return $this;
     }
 }
