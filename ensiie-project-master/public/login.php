@@ -11,7 +11,7 @@
     <?php include("header.php"); ?>
     <?php include("menu.php"); ?>
     <div id="form_sign_in" class="middle">
-    	<form action="MACHIN.php" method="POST">
+    	<form action="process.php" method="POST">
     		<p>
     			<br/><br/>
     			<label>Username :</label>
