@@ -13,8 +13,11 @@
     <div id="middle" class="middle">
         <p>
             <br/>
-            Bienvenue sur le site du CCE !<br />
-            Le CCE est un évènement phare et reconnu dans le monde entier !
+            FAQ :<br />
+            Q :
+            R :
+            Q :
+            R :
         </p>
     </div>
 

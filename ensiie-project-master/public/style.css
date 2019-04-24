@@ -4,6 +4,20 @@ header {
 	top: 0px;
 }
 
+#form_sign_in {
+	text-align: center;
+}
+
+.menu_one {
+	height: 17px;
+}
+
+.middle{
+	background-color: black;
+	height: 1000px;
+	color: white;
+}
+
 .logo {
 	width: 15%;
 	float: left;
@@ -12,6 +26,18 @@ header {
 .title {
 	color: yellow;
 	text-align: center;
+}
+
+.connexion {
+	display:block;
+	text-align: right;
+	color: white;
+}
+
+.footer{
+	background-color: black;
+	height: 20px;
+	color: white;
 }
 
 ul {
@@ -25,14 +51,14 @@ li {
  }
 ul li a {
  display:block;
+ border:2px solid;
+ padding:5px;
  float:left;   
  width:100px;
  background-color:yellow;
  color:black;
  text-decoration:none;
  text-align:center;
- padding:5px;
- border:2px solid;
  /*pour avoir un effet "outset" avec IE :*/
- border-color:#DCDCDC #696969 #696969 #DCDCDC;
+ border-color:black;
  }
