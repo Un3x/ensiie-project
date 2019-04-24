@@ -10,7 +10,8 @@ CREATE TABLE "User" (
     nb_livres_rendus int NOT NULL ,
     est_admin boolean ,
     CONSTRAINT pk_users PRIMARY KEY(id_user),
-    CONSTRAINT un_users UNIQUE(prenom, nom, pseudo)
+    CONSTRAINT un_users UNIQUE(prenom, nom, pseudo),
+    CONSTRAINT un_pseudo UNIQUE(pseudo)
 );
 
 CREATE TABLE "Livre" (

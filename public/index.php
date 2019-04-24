@@ -47,15 +47,17 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <?php
         if ($user_connected) {
             echo "<p>Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</p><p>Lien vers votre <a href=\"espace_perso.php\">espace perso</a></p>";
-        }
-        if ($admin) {
+            if ($admin) {
             echo "<p>Espace admin : </p>";
             echo "<p><a href=\"ajout_livre.php\">Ajout Livre</a> <a href=\"emprunt.php\">Emprunt</a> <a href=\"rendu.php\">Rendu</a>";
         }
+        }
+        
         ?>
     </div>
 
     <div class="container">
+        <a href="inscription.php">TMP</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
