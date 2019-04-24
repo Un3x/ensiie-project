@@ -60,6 +60,9 @@ $errorMessageMail = '';
 			{
 				$errorMessageMail='Nouveaux mails différents !';
 			}
+			else if (! filter_var($_POST['NewMail'],FILTER_VALIDATE_EMAIL)){
+				$errorMessageMail='Nouvelle adresse email invalide !';
+			}
 			else {
 				$connection->query("update users set mail='".$_POST['NewMail']."' where id_user=".$user->getId());
 				$errorMessageMail = 'Le mail de récupération a été changé !';
