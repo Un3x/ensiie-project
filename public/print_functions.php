@@ -164,7 +164,9 @@
 
 	/*Test function checkLogin*/
 	function checkLogin(){
-		$_SESSION["name"] = $_POST["pseudo"];
+    if (isset($_POST["pseudo"])) {
+      $_SESSION["name"] = $_POST["pseudo"];
+    }
 	}
 
 	function logOut(){
