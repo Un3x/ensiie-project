@@ -11,7 +11,7 @@ if(isset($_POST['send_message_btn']))
     $email_tmp=$_POST['email_reset'];
 
     $requete = "SELECT * FROM member WHERE email='$email_tmp'";
-    $q = $connection->query($requete);
+    $q = $connection->query($requete);      //Il faut la remplacer par prepare et execute
     $row = $q->fetch();
     $message=$row['lastname']." ".$row['firstname']." votre mot de passe est : ".$row['password'];
     if(mail($_POST['email_reset'], "Recuperation du mot de passe", $message))

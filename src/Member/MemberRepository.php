@@ -28,7 +28,9 @@ class MemberRepository
                 ->setLastname($row->lastname)
                 ->setSearchUser($row->searchUser)
                 ->setEmail($row->email)
-                ->setPassword($row->password);
+                ->setPassword($row->password)
+                ->setAdmin($row->admin)
+                ->setBanned($row->banned);
 
             $members[] = $member;
         }

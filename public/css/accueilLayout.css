@@ -60,11 +60,6 @@
     width: calc(100% - 45px);*/
     width:100%;
     position: relative;
-<<<<<<< HEAD
-
-=======
-    place-content: ;
->>>>>>> a595368e1e3da7441f27c5e7855b487397f72a10
 }
 
 #chat_column
