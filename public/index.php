@@ -6,6 +6,7 @@
 ?>
 
 
+<div class="background-img">
 <h2>NOS ACTIVITES</h2>
 
 
@@ -54,7 +55,7 @@ vous-même les installer et y jouer. On vous invite donc à les tester et
 </div>
 
 
-
+</div>
 
 <?php
 	pied();
