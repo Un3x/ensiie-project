@@ -1,7 +1,7 @@
 <?php
 namespace Livre;
 
-class Livre;
+class Livre {
     /**
      * @var string
      */
@@ -31,17 +31,17 @@ class Livre;
     /**
     *@var string
     */
-    private $edition
+    private $edition;
 
     /**
     *@var string
     */
-    private $emprunteur
+    private $emprunteur;
 
     /**
     *@var \DateTimeInterface
     */
-    private $date_emprunt
+    private $date_emprunt;
 
     /**
      * @return int
@@ -190,6 +190,5 @@ class Livre;
         $this->date_emprunt = $date_emprunt;
         return $this;
     }
-
-
+    
 }

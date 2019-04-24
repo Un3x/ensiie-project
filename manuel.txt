@@ -4,7 +4,7 @@ dites moi si vous trouvez des erreurs pour que je souffre encore plus.
 
 Alors, pour gérer les entrées de la table "truc" par exemple il y a plusieurs fonctions
 
-chaque entrée est un objet vu pas php donc pour récupérer les informations d'un objet il faut utiliser :
+chaque entrée est un objet vu par php donc pour récupérer les informations d'un objet il faut utiliser :
 
 $truc->getMachin(); (selon les fonctions get qu'il possède qui sont dans le fichier truc.php dans src)
 
@@ -39,4 +39,4 @@ $trucRepository->insertTruc($$lenomquevousvoulez);
 
 
 
-voilà c'est à peut près les seules fonction dont on a besoin je penses (pour l'instant ça marche que pour user mais je ferai les autres apres)
+voilà c'est à peu près les seules fonctions dont on a besoin je pense (pour l'instant ça marche que pour user mais je ferai les autres apres)

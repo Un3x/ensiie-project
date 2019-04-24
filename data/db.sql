@@ -1,5 +1,5 @@
 CREATE TABLE "User" (
-    id_user VARCHAR(50),
+    id_user SERIAL,
     prenom VARCHAR(50) NOT NULL,
     nom VARCHAR(50) NOT NULL ,
     pseudo VARCHAR(50) NOT NULL ,
@@ -20,7 +20,7 @@ CREATE TABLE "Livre" (
     publication date ,
     couverture VARCHAR(100) , 
     editeur VARCHAR(50) ,
-    emprunteur VARCHAR(50) ,
+    emprunteur int ,
     date_emprunt date ,
     CONSTRAINT pk_livres PRIMARY KEY(id_livre) ,
     CONSTRAINT fk_livre_emprunteur FOREIGN KEY (emprunteur) REFERENCES "User"(id_user)
@@ -36,19 +36,19 @@ CREATE TABLE "Auteur" ( -- auteur pour livre -> composante multivalué
 CREATE TABLE "Review" (
     id VARCHAR(50) NOT NULL ,
     num VARCHAR(50),
-    personne VARCHAR(50) NOT NULL ,
+    personne int NOT NULL ,
     texte VARCHAR(400) ,
     note int,
     CONSTRAINT pk_review PRIMARY KEY (id, num),
     CONSTRAINT fk_review_id FOREIGN KEY (id) REFERENCES "Livre"(id_livre) ,
     CONSTRAINT fk_review_user FOREIGN KEY (personne) REFERENCES "User"(id_user) ,
-    CONSTRAINT check_note CHECK (note between 0 and 10)
+    CONSTRAINT check_note CHECK(note between 0 and 10)
 );
 
 
 CREATE TABLE "Historique" (
     id_livre VARCHAR(13) NOT NULL,
-    id_user VARCHAR(50) NOT NULL,
+    id_user int NOT NULL,
     date_emprunt date NOT NULL,
     date_rendu date NOT NULL,
     id_review VARCHAR(50),
@@ -61,7 +61,7 @@ CREATE TABLE "Historique" (
 
 CREATE TABLE "Reservation" (
     id_livre VARCHAR(13) NOT NULL,
-    id_user VARCHAR(50) NOT NULL,
+    id_user int NOT NULL,
     CONSTRAINT pk_reservation PRIMARY KEY (id_livre, id_user),
     CONSTRAINT fk_reservation_livre FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
     CONSTRAINT fk_reservation_user FOREIGN KEY (id_user) REFERENCES "User"(id_user)
@@ -71,7 +71,3 @@ CREATE TABLE "Reservation" (
 
 
 
-INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('1', 'Charles', 'Tanguy', 'Ansyth', '0', '0', '0', '0');
-INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('2', 'Fleurance', 'Paul', 'Deluxe', '0', '0', '0', '0');
-INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('3', 'Fourcade', 'Louis', 'Gofer', '0', '0', '0', '0');
-INSERT INTO "User"(id_user, nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('4', 'Gauthier', 'Louis', 'Ofeeling', '0', '0', '0', '0');

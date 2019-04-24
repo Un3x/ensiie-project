@@ -14,10 +14,13 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $userRepository = new \User\UserRepository($connection);
+$livreRepository = new \Livre\LivreRepository($connection);
 $users = $userRepository->fetchAll();
+$livres = $livreRepository->fetchAll();
 
 $user_connected=isset($_SESSION["id_user"]);
 
+$admin = false;
 
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
     $id_user=$_SESSION["id_user"]; 
@@ -79,6 +82,8 @@ $users = $userRepository->fetchAll();
     <td>Nom</td>
     <td>Pseudo</td>
     <td>DDN</td>
+    <td>Empruntés</td>
+    <td>Rendus</td>
     </thead>
 <?php /** @var \User\User $user */
     foreach ($users as $user) : ?>
@@ -88,9 +93,13 @@ $users = $userRepository->fetchAll();
     <td><?php echo $user->getNom() ?></td>
     <td><?php echo $user->getPseudo() ?></td>
     <td><?php echo $user->getDdn() ?></td>
+    <td><?php echo $user->getNbLivresEmpruntes() ?></td>
+    <td><?php echo $user->getNbLivresRendus() ?></td>
     </tr>
 <?php endforeach; ?>
     </table>
+
+
     </div>
     </body>
     </html>
