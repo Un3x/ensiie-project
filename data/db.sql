@@ -1,7 +1,3 @@
---SVP ne modifiez pas les noms des attibuts sinon je doit refaire
---toutes les fonctions PHP et je serai pas content
-
-
 CREATE TABLE "User" (
     id_user VARCHAR(50),
     prenom VARCHAR(50) NOT NULL,
@@ -44,8 +40,8 @@ CREATE TABLE "Review" (
     texte VARCHAR(400) ,
     note int,
     CONSTRAINT pk_review PRIMARY KEY (id, num),
-    FOREIGN KEY (id) REFERENCES "Livre"(id_livre) ,
-    FOREIGN KEY (personne) REFERENCES "User"(id_user) ,
+    CONSTRAINT fk_review_id FOREIGN KEY (id) REFERENCES "Livre"(id_livre) ,
+    CONSTRAINT fk_review_user FOREIGN KEY (personne) REFERENCES "User"(id_user) ,
     CONSTRAINT check_note CHECK (note between 0 and 10)
 );
 
@@ -58,78 +54,20 @@ CREATE TABLE "Historique" (
     id_review VARCHAR(50),
     num_review VARCHAR(50),
     CONSTRAINT pk_historique PRIMARY KEY (id_livre, id_user),
-    FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
-    FOREIGN KEY (id_user) REFERENCES "User"(id_user),
-    FOREIGN KEY (id_review, num_review) REFERENCES "Review"(id, num)
+    CONSTRAINT fk_historique_livre FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
+    CONSTRAINT fk_historique_user FOREIGN KEY (id_user) REFERENCES "User"(id_user),
+    CONSTRAINT fk_historique_review FOREIGN KEY (id_review, num_review) REFERENCES "Review"(id, num)
 );
 
 CREATE TABLE "Reservation" (
     id_livre VARCHAR(13) NOT NULL,
     id_user VARCHAR(50) NOT NULL,
     CONSTRAINT pk_reservation PRIMARY KEY (id_livre, id_user),
-    FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
-    FOREIGN KEY (id_user) REFERENCES "User"(id_user)
+    CONSTRAINT fk_reservation_livre FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
+    CONSTRAINT fk_reservation_user FOREIGN KEY (id_user) REFERENCES "User"(id_user)
 );
 
 
-/*
-CREATE TRIGGER increase_nb_user AFTER UPDATE
-ON "Livre" FOR EACH ROW
-f_update_nb_emprunte();
-
-
-
-CREATE OR REPLACE FUNCTION f_update_nb_emprunte() RETURNS void AS
-$f_update_nb_emprunte$
-BEGIN 
-    IF OLD.emprunteur == NULL && NEW.emprunteur != NULL 
-    THEN 
-        UPDATE "User" 
-        SET nb_livres_empruntes = nb_livres_empruntes + 1
-        WHERE id = NEW.emprunteur;
-    END IF;
-    IF OLD.emprunteur != NULL && NEW.emprunteur == NULL 
-    THEN 
-        UPDATE "User" 
-        SET nb_livres_rendus = nb_livres_rendus + 1
-        WHERE id = NEW.emprunteur;
-    END IF;
-END;
-$f_update_nb_emprunte$ LANGUAGE plpgsql;
-
-
-
-CREATE TRIGGER initialization_user AFTER INSERT
-ON "User" FOR EACH ROW
-f_init_user();
-
-
-
-CREATE OR REPLACE FUNCTION f_init_user() RETURNS void AS
-$f_init_user$
-BEGIN
-    UPDATE "User" 
-    SET nb_livres_empruntes = 0, nb_livres_rendus = 0
-    WHERE id = NEW.id;
-END
-$f_init_user$ LANGUAGE plpgsql;
-
-
-
-CREATE TRIGGER initialization_livre AFTER INSERT
-ON "Livre" FOR EACH ROW
-f_init_livre();
-
-
-
-CREATE OR REPLACE FUNCTION f_init_livre() RETURNS void AS
-$f_init_livre$
-BEGIN
-    UPDATE Livre 
-    SET emprunteur = NULL, date_emprunt = NULL
-    WHERE id = NEW.id;
-END
-*/
 
 
 
