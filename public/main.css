@@ -34,6 +34,10 @@ main[id="disconnected"]{
 }
 
 @media only screen and (max-width: 768px) { /*tablet for main shape*/
+    @-ms-viewport{
+        width: device-width;
+    }
+
     main[id="disconnected"]{
         height: 570px;
     }
@@ -43,9 +47,12 @@ main[id="disconnected"]{
     }
 }
 
-@media only screen and (max-width: 510px){
+@media only screen and (max-width: 590px){
     main[id="disconnected"]{
         height: 470px;
+    }
+    #curve{
+        max-height: 55px;
     }
 }
 
@@ -99,7 +106,7 @@ main[id="disconnected"]{
 
 #sidebar-nav{
     background-color: white;
-    margin-top: 10vh;
+    margin-top: 12%;
     position: fixed;
     right: 0;
     left: 0;
@@ -179,6 +186,7 @@ main[id="disconnected"]{
 }
 
 #header-text h1{
+    display: inline-block;
     font-weight: 700;
     font-family: 'Ubuntu', sans-serif;
     text-shadow: 0.06em 0.1em gray;
@@ -210,17 +218,23 @@ main[id="disconnected"]{
 
 @media only screen and (max-width: 768px) {
     #logo-img{
-        max-width: 40vw;
+        padding-right: 0;
+        display: inline-block;
+        width: 40vw;
+        transform: translateY(10%);
     }
+
     #header-text h1{
-        font-size: 30px;
+        font-size: 25px;
+        padding: 0;
     }
 }
 
-@media only screen and (max-width: 510px) {/*mobile portrait only for landing page*/
+@media only screen and (max-width: 590px) {/*mobile portrait only for landing page*/
     #logo-img{
         position: static;
         height: 30vh;
+        width: auto;
         display: block;
         margin: 0 auto;
         float: none;
@@ -229,18 +243,23 @@ main[id="disconnected"]{
         padding-left: 0;
         padding-right: 0;
         max-height: 200px;
+        transform: none;
     }
     #header-text{
+        display: block;
+        margin: 0 auto;
         transform: none;
         text-align: center;
     }
     #header-text h1{
-        font-size: 20px;
+        font-size: 25px;
     }
 }
 
 #contact-us-img{
-    width: 350px;
+    width: 20vw;
+    max-width: 350px;
+    min-width: 250px;
     float: left;
     padding-right: 3%;
 }
@@ -250,6 +269,7 @@ footer{
     margin-right: 5%;
     margin-left: 5%;
     color: #424242;
+    transform: translateY(-20px);
 }
 
 .icon{
@@ -258,10 +278,70 @@ footer{
     margin-left: 1vw;
 }
 
-footer > table{
+#footer-text{
+    display: block;
+    width: auto;
+}
+
+footer table{
     padding-top: 2%;
     margin: 0 auto;
     text-align: center;
+    display: block;
+}
+
+footer table img{
+    max-width: 25vw;
+}
+
+@media only screen and (max-width: 768px){
+    #contact-us-img{
+        float: left;
+        display: block;
+        height: 200px;
+        padding-bottom: 10px;
+    }
+
+    footer table{
+        display: block;
+        position: relative;
+    }
+
+    #footer-text h2{
+        font-size: 20px;
+        padding-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 695px){
+    footer table{
+        display: table;
+        width: 60vw;
+        margin: 0 auto;
+    }
+    #footer-text{
+        transform: translateY(30px);
+    }
+}
+
+@media only screen and (max-width: 590px){
+    #contact-us-img{
+        float: none;
+        margin: 0 auto;
+        height: 100px;
+    }
+    footer{
+        text-align: center;
+    }
+    #footer-text{
+        transform: none;
+    }
+    #footer-text h2{
+        font-size:18px;
+    }
+    #footer-text p{
+        font-size: 15px;
+    }
 }
 
 .sign{
@@ -329,10 +409,10 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #signup-container h1{
-    margin-top: 18px;
+    margin-top: 25px;
 }
 
-@media only screen and (max-width: 510px){ /*mobile portrait only for sign forms*/
+@media only screen and (max-width: 590px){ /*mobile portrait only for sign forms*/
     .sign{
         width: 250px;
         padding: 20px 20px;
@@ -362,11 +442,10 @@ input[type=text],input[type=password], input[type=email]{
 
     #signup-container h1{
         display: block;
-        padding-top: 50px;
+        padding-top: 30px;
         padding-bottom: 15px;
         text-align: center;
     }
 }
-
 
 @-ms-viewport{ width: device-width;}

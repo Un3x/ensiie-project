@@ -21,3 +21,21 @@ document.getElementById('nav-toggle').onclick = function(){
         document.getElementById('nav-toggle').style.zIndex = "3";
     }
 }
+
+//Switch footer image responsively
+function footerImgSwitch(){
+    if (window.matchMedia("(min-width: 768px)").matches){
+        $("#contact-us-img").attr("src","img/contact_us.svg");
+    } else {
+        $("#contact-us-img").attr("src","img/questions.svg");
+    }
+}  
+
+$(document).ready(function(){
+    footerImgSwitch();
+})
+
+$(window).resize(function(){
+    footerImgSwitch();
+});
+
