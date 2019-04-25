@@ -1,7 +1,3 @@
-
-<!DOCTYPE html>
-
-
 <?php
 require '../vendor/autoload.php';
 

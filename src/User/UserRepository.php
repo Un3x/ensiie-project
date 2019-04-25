@@ -40,6 +40,26 @@ class UserRepository
         return $users;
     }
 
+    public function fetchId($id_user) {
+        $rows = $this->connection->query("SELECT * FROM \"User\" WHERE id_user='$id_user'")->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id_user)
+                ->setPrenom($row->prenom)
+                ->setNom($row->nom)
+                ->setPseudo($row->pseudo)
+                ->setDdn($row->ddn)
+                ->setMdp($row->mdp)
+                ->setMail($row->mail)
+                ->setNbLivresEmpruntes($row->nb_livres_empruntes)
+                ->setNbLivresRendus($row->nb_livres_rendus)
+                ->setAdmin($row->est_admin);
+        }
+        return $user;
+
+    }
+
 
     public function creeUser($id, $nom, $prenom, $pseudo, $ddn, $mdp, $mail, $nb_livres_empruntes, $nb_livres_rendus, $est_admin) {
         $ret = new User();

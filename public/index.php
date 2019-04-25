@@ -68,6 +68,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     <div class="container">
         <a href="inscription.php">TMPinscription</a>
         <a href="ajout_livre.php">TMPajout_livre</a>
+        <a href="editer.php">TMPediter</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 

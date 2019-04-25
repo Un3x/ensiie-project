@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 require '../vendor/autoload.php';
 
@@ -21,7 +19,7 @@ $users = $userRepository->fetchAll();
 </head>
 <body>
     <h1> Reservation de livre</h1>
-    <p>Attention une réservation n\'équivaut pas à un emprunt</p>
+    <p>Attention une réservation n'équivaut pas à un emprunt</p>
     <nav>
          <!-- TODO recopier le nav-->
     </nav>

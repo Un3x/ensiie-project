@@ -5,6 +5,8 @@ include ("utils.php");
 
 require '../vendor/autoload.php';
 
+session_start();
+
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -16,6 +18,13 @@ $livres = $livreRepository->fetchAll();
 $auteurRepository = new \Auteur\AuteurRepository($connection);
 $auteurs = $auteurRepository->fetchAll();
 
+// ajouter une redirection automatique si l'utilisateur n'est pas admin
+if (!isset($_SESSION["id_user"])) {
+    header("Location: index.php");
+}
+if (!(verifAdmin($_SESSION["id_user"]))) {
+    header("Location: index.php");
+}
 
 
 if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image']) && isset($_POST['edition']) && isset($_POST['auteur1'])) {
@@ -24,7 +33,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         $tmp=$livreRepository->creeLivre($new_idlivre, $_POST['titre'], $_POST['auteur1'], $_POST['datepub'], $_POST['image'], $_POST['edition'], '', '');
         //modifier l'id de l'emprunteur de base non c'est bon je l'ai mis à null dans la fonction d'insertion
 
-        echo $livreRepository->insertLivre($tmp);
+        $livreRepository->insertLivre($tmp);
         $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur1']);
         $auteurRepository->insertAuteur($tmp);
         if ($_POST['auteur2']!='') {

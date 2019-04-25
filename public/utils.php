@@ -3,6 +3,8 @@
 require '../vendor/autoload.php';
 
 
+//fonctions pour les Users
+
 function genereIdUser() {
     $dbName = getenv('DB_NAME');
     $dbUser = getenv('DB_USER');
@@ -62,6 +64,29 @@ function verifNomPrenom($nom, $prenom) {
     return true;
 }
 
+
+function verifAdmin($id_user) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    
+    $userRepository = new \User\UserRepository($connection);
+    $users = $userRepository->fetchAll();
+
+    foreach ($users as $user) {
+        $tmp=$user->getId();
+        if ($tmp==$id_user) {
+            if ($user->getAdmin() == 'true') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
 
 
 
