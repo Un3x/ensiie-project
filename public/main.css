@@ -98,6 +98,8 @@ main[id="disconnected"]{
 }
 
 .sidebar-container{
+    width: 100vw;
+    position: fixed;
     display: none;
     z-index: 1;
     padding-right: 15px;
@@ -142,16 +144,18 @@ main[id="disconnected"]{
 }
 
 .sidebar-container h1{
+    text-shadow: 0.1em 1.6px 3px #161142;
     padding: 8px 0px;
     font-size: 25px;
 }
 
 #nav-toggle{
     color: white;
-    text-shadow: 0.07em 0.08em #656565;
+    text-shadow: 0px 0px 5px #161142;
     font-size: 30px;
-    float: right;
     transition: opacity 0.25s;
+    float: right;
+    transform: translateX(-30px);
 }
 
 #nav-toggle:hover{
@@ -412,7 +416,7 @@ input[type=text],input[type=password], input[type=email]{
     margin-top: 25px;
 }
 
-@media only screen and (max-width: 590px){ /*mobile portrait only for sign forms*/
+@media only screen and (max-width: 595px){ /*mobile portrait only for sign forms*/
     .sign{
         width: 250px;
         padding: 20px 20px;
@@ -434,6 +438,7 @@ input[type=text],input[type=password], input[type=email]{
     .sign-container h1{
         font-size: 25px;
         text-align: center;
+        text-shadow: 0.1em 1.6px 3px #161142;
     }
 
     #signup{
