@@ -58,6 +58,8 @@ CREATE TABLE "story_node" (
   join_bar INT,
   join_baka INT,
   join_diese INT,
+  -- achievement
+  ach_id SERIAL REFERENCES "achievements"(id),
   -- the content of the story
   content VARCHAR NOT NULL,
   bg_picture VARCHAR NOT NULL,
