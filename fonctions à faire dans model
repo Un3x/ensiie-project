@@ -1,0 +1,11 @@
+course :
+    - retourner la liste des trajets possibles entre deux villes à une date et après un horaire donné : (string departure, string arrival, string date, string time) -> course[]
+    - retourner le trajet entre deux villes à une date, un horaire donné et un transporteur donné : (string departure, string arrival, string date, string time, int id) -> course / null
+    - ajouter un trajet dans la base de donnée avec un status en cours de réservation et le renvoyer : (string departure, string arrival, string date, string time, int idTransporteur, int idClient) -> course / null
+    - mettre le statut annulé à un trajet et le renvoyer : (int idTrajet) -> course / null
+    - mettre le statut validé à un trajet et le renvoyer : (int idTrajet) -> course / null
+    - mettre le statut en attente de validation du transporteur à un trajet et le renvoyer : (int idTrajet) -> course / null
+    - mettre le statut effectué à un trajet et le renvoyer : (int idTrajet) -> course / null
+    
+city :
+    -retourner position d'une ville : (string city) -> (float latitude, float longitude) / null
