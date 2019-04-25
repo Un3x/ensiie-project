@@ -28,9 +28,10 @@ CREATE TYPE REQUIREMENT AS (
 --- next SERIAL is the primary key of a "story_node",
 --- but we drop security here because of circular dependency
 CREATE TABLE "choice" (
-  id SERIAL PRIMARY KEY,
+  id SERIAL,
   content VARCHAR,
   next SERIAL
+  PRIMARY KEY (id, next)
 );
 
 -- the story node
@@ -46,6 +47,17 @@ CREATE TABLE "story_node" (
   likeness_bar REQUIREMENT,
   likeness_baka REQUIREMENT,
   likeness_diese REQUIREMENT,
+  -- modifications
+  modif_alcohol INT,
+  modif_attendance INT,
+  modif_ghost INT,
+  modif_bar INT,
+  modif_baka INT,
+  modif_diese INT,
+  -- 0: stay the same, < 0: quit, > 0: join
+  join_bar INT,
+  join_baka INT,
+  join_diese INT,
   -- the content of the story
   content VARCHAR NOT NULL,
   bg_picture VARCHAR NOT NULL,
@@ -72,7 +84,7 @@ CREATE TABLE "link_achievement_user" (
   achievement SERIAL REFERENCES "achievements"(id),
   -- a date, an achievement can be completed many times, this is the date of the last completion
   date_acquired DATE NOT NULL,
-  PRIMARY KEY (pseudo,achievement)
+  PRIMARY KEY (pseudo, achievement)
 );
 
 --- finished stories by a user
