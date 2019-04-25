@@ -12,7 +12,7 @@ class CityManager{
     }
     
     public function getCityAutocompl($name, $number){
-        $res = $this->connection->query("SELECT name FROM cities WHERE name ILIKE '%$name%' ORDER BY population DESC FETCH FIRST $number ROWS ONLY")->fetchAll(\PDO::FETCH_OBJ);;
+        $res = $this->connection->query("SELECT name FROM cities WHERE name ILIKE '$name%' ORDER BY population DESC FETCH FIRST $number ROWS ONLY")->fetchAll(\PDO::FETCH_OBJ);;
 
         $cities = [];
 
