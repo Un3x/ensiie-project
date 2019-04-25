@@ -14,16 +14,13 @@ $lastname_disp=$row['lastname'];*/
 
 if(isset($_POST['valid_signup']))
 {
-    //call js function
-    //echo "<script>envoyer();</script>";
-
     $email_form = $_SESSION['email'];
     $firstname_form = $_POST['firstname'];
     $lastname_form = $_POST['lastname'];
     $pwd_signup_form = $_POST['pwd_signup'];
 
 
-   if(isset($_POST["pwd_signup"]))
+   if(isset($_POST["pwd_signup"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]))
         {
             $query = "UPDATE member SET firstname='$firstname_form', lastname='$lastname_form', password='$pwd_signup_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
@@ -32,10 +29,12 @@ if(isset($_POST['valid_signup']))
         }
    else
         {
-            $query = "UPDATE member SET firstname='$firstname_form',lastname='$lastname_form' WHERE email='$email_form';";
+            /*$query = "UPDATE member SET firstname='$firstname_form',lastname='$lastname_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
-            $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);
+            $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);*/
+            //header("Location:accueil.php");
+            die("Not all the fields are filled !");
         }
 }
 ?>
@@ -49,14 +48,68 @@ if(isset($_POST['valid_signup']))
 
         function envoyer()
         {
-            if((document.getElementById("firstname").value === '') && (document.getElementById("lastname").value === ''))
+            if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value === '') && (document.getElementById('pwd_signup').value ===''))
             {
                 document.getElementById("firstname").style.border='#CC3300 2px solid';
                 document.getElementById("lastname").style.border='#CC3300 2px solid';
+                document.getElementById("pwd_signup").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = 'Le nom, le prénom et le mot de passe ne sont pas indiqués';
+            }
+
+            else if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value === '') && (document.getElementById('pwd_signup').value !==''))
+            {
+                document.getElementById("firstname").style.border='#CC3300 2px solid';
+                document.getElementById("lastname").style.border='#CC3300 2px solid';
+                document.getElementById("pwd_signup").style.border='#000000 2px normal';
                 document.getElementById('message').innerText = 'Le nom et le prénom ne sont pas indiqués';
             }
 
-            else if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value !== ''))
+            else if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value !== '') && (document.getElementById('pwd_signup').value ===''))
+            {
+                document.getElementById("firstname").style.border='#000000 2px normal';
+                document.getElementById("lastname").style.border='#CC3300 2px solid';
+                document.getElementById("pwd_signup").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = 'Le nom et le mot de passe ne sont pas indiqués';
+            }
+
+            else if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value !== '') && (document.getElementById('pwd_signup').value !==''))
+            {
+                document.getElementById("firstname").style.border='#000000 2px normal';
+                document.getElementById("lastname").style.border='#CC3300 2px solid';
+                document.getElementById("pwd_signup").style.border='#000000 2px normal';
+                document.getElementById('message').innerText = 'Le nom n\'est pas indiqué';
+            }
+
+            else if((document.getElementById("lastname").value !== '') && (document.getElementById("firstname").value === '') && (document.getElementById('pwd_signup').value ===''))
+            {
+                document.getElementById("firstname").style.border='#CC3300 2px solid';
+                document.getElementById("lastname").style.border='#000000 2px normal';
+                document.getElementById("pwd_signup").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = 'Le prénom et le mot de passe ne sont pas indiqués';
+            }
+
+            else if((document.getElementById("lastname").value !== '') && (document.getElementById("firstname").value === '') && (document.getElementById('pwd_signup').value !==''))
+            {
+                document.getElementById("firstname").style.border='#CC3300 2px solid';
+                document.getElementById("lastname").style.border='#000000 2px normal';
+                document.getElementById("pwd_signup").style.border='#000000 2px normal';
+                document.getElementById('message').innerText = 'Le prénom n\'est pas indiqué';
+            }
+
+            else if((document.getElementById("lastname").value !== '') && (document.getElementById("firstname").value !== '') && (document.getElementById('pwd_signup').value ===''))
+            {
+                document.getElementById("firstname").style.border='#000000 2px normal';
+                document.getElementById("lastname").style.border='#000000 2px normal';
+                document.getElementById("pwd_signup").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = 'Le mot de passe n\'est pas indiqué';
+            }
+
+            else if((document.getElementById("lastname").value !== '') && (document.getElementById("firstname").value !== '') && (document.getElementById('pwd_signup').value !==''))
+            {
+                document.getElementById('message').innerText = 'Envoi serveur';
+            }
+
+            /*else if((document.getElementById("lastname").value === '') && (document.getElementById("firstname").value !== ''))
             {
                 document.getElementById("firstname").style.border='#000000 2px normal';
                 document.getElementById("lastname").style.border='#CC3300 2px solid';
@@ -68,7 +121,7 @@ if(isset($_POST['valid_signup']))
                 document.getElementById("lastname").style.border='#000000 2px normal';
                 document.getElementById("firstname").style.border='#CC3300 2px solid';
                 document.getElementById('message').innerText = 'Le prénom n\'est pas indiqué';
-            }
+            }*/
 
             /*else if((document.getElementById("pwd_signup").value === '') && (document.getElementById("lastname").value !== ''))
             {
@@ -77,10 +130,10 @@ if(isset($_POST['valid_signup']))
                 document.getElementById('message').innerText = 'Le mot de passe n\'est pas indiqué';
             }*/
 
-            else
+            /*else
             {
                 document.getElementById('message').innerText = 'Envoi serveur';
-            }
+            }*/
         }
     </script>
 </head>
@@ -116,7 +169,7 @@ if(isset($_POST['valid_signup']))
                             </div>
                             <div class="div_input_form">
                                 <!--<input type="submit" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick="envoyer();"/>-->
-                                <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyer();">Valider</button>
+                                <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyer()">Valider</button>
                             </div>
                         </form>
                     </div>

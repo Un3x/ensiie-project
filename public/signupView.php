@@ -54,7 +54,7 @@ if (isset($_POST['submit_btn']))
         <input type="text" name="firstname" placeholder="Prénom" size="15" required>
         <input type="text" name="lastname" placeholder="Nom" size="15" required><br/><br/>
         <input type="email" name="email" placeholder="Username@ensiie.fr" size="38" required><br><br>
-        <input type="password" name="password" placeholder="Mot de passe" size="20" required><br><br>
+        <input type="password" name="password" placeholder="Mot de passe" size="38" required><br><br>
         <input type="submit" name="submit_btn" value="S'inscrire"><br/>
     </form><br>
 </div><br>
