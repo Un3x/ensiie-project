@@ -40,8 +40,15 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 <head>
     <title>Sciience</title>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="rien.css">
 </head>
+<nav>
+        <a href="test.html" class="rubrique">Accueil    </a>
+        <a href="test.html" class="rubrique">|   Bilbiothèque    </a>
+        <a href="test.html" class="rubrique">|   Réservation    </a>
+        <a href="test.html" class="rubrique">|   Recherche    </a>
+        <a href="test.html" class="rubrique">|   Inscription    </a>
+    </nav>
 <body>
     <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -74,7 +81,7 @@ echo $userRepository->updateUser($tmp);
 $users = $userRepository->fetchAll();
 
 ?>
-
+<section>
 <p><a href="connexion.php">lien vers la connexion</a></p>
 
 <table class="table table-bordered table-hover table-striped">
@@ -100,6 +107,7 @@ $users = $userRepository->fetchAll();
     </tr>
 <?php endforeach; ?>
     </table>
+</section>
 
 
     </div>

@@ -185,7 +185,7 @@ class Livre {
      * @param \DateTimeInterface $date_emprunt
      * @return Livre
      */
-    public function setPublication(\DateTimeInterface $date_emprunt)
+    public function setDateEmprunt(\DateTimeInterface $date_emprunt)
     {
         $this->date_emprunt = $date_emprunt;
         return $this;

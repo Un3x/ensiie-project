@@ -36,16 +36,18 @@ if (!(isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&is
         Pseudo (obligatoire) :<br>
         <input type="text" name="pseudo"/><br>
         Mot de passe (obligatoire) :<br>
-        <input type="password" name="mdp"/><br>
+        <input id="m1" type="password" name="mdp"/><br>
         Confirfation (obligatoire) :<br>
-        <input type="password" name="cmdp"/><br>
+        <input id="m2" type="password" name="cmdp"/><br>
         Date de naissance :<br>
         <input type="text" name="ddn"/><br>
         Email :<br>
         <input type="text" name="email"/><br>
         <input type="hidden" name="pass" value="OK">
-        <input type="submit" class="Input" value="Valider"/>
-     </form> 
+        <input type="button" class="input" onclick="testmdp()" value="Valider"/>
+        <input id="valider" style="display:none" type="submit" class="Input" value="Valider"/>
+     </form>
+     <p id="mdp_inc" style="display:none">Mot de passe incorrect</p>
 </body>';// vérifier la validité des champs avec javascript
 }
 
@@ -76,16 +78,18 @@ elseif (!(verifNomPrenom($_POST['nom'], $_POST['prenom'])) || !(verifPseudo($_PO
         Pseudo (obligatoire) :<br>
         <input type="text" name="pseudo"/><br>
         Mot de passe (obligatoire) :<br>
-        <input type="password" name="mdp"/><br>
+        <input id="m1" type="password" name="mdp"/><br>
         Confirfation (obligatoire) :<br>
-        <input type="password" name="cmdp"/><br>
+        <input id="m2" type="password" name="cmdp"/><br>
         Date de naissance :<br>
         <input type="text" name="ddn"/><br>
         Email :<br>
         <input type="text" name="email"/><br>
         <input type="hidden" name="pass" value="OK">
-        <input type="submit" class="Input" value="Valider"/>
-     </form> 
+        <input type="button" class="input" onclick="testmdp()" value="Valider">
+        <input id="valider" style="display:none" type="submit" class="Input" value="Valider"/>
+     </form>
+     <p id="mdp_inc" style="display:none">Mot de passe incorrect</p>
 </body>';// TODO vérifier la validité des champs avec javascript  
 }
 
@@ -96,5 +100,18 @@ else {
     header("Location:index.php");
 }
 ?>
+
+<script>
+    function testmdp() {
+        tmp1=document.getElementById("m1").value;
+        tmp2=document.getElementById("m2").value;
+        if (tmp1!=tmp2 || tmp1=='') {
+            document.getElementById("mdp_inc").style.display="block";
+        }
+        else {
+            document.getElementById("valider").click();
+        }
+    }
+</script>
 
 </html>

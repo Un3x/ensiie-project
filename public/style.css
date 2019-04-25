@@ -1,0 +1,58 @@
+h1{
+	text-align:center;
+	background-color:blue;
+	font-size:90px;
+}
+header{
+	text-align:center;
+}
+nav{
+	text-align:center;
+	font-size:42px;
+	
+}
+.rubrique:hover{
+	background-image:url(https://medialb.digiteka.net/multi/35x5m/5v8pvz-HC.jpg);
+}
+.rubrique:visited{
+	color:white;
+	text-decoration: none;
+}
+a{
+	text-decoration:none;
+}
+body{
+	width:80%;
+	background-image:url(./fond.png);
+	margin-left: auto;
+	margin-right: auto;
+	background-attachment:fixed;
+	font-family:helvetica;
+}
+section{
+	border-style:solid;
+	border-radius:10px;
+	background-color:white;
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:left;
+}
+
+.titre{
+	border-radius:0px;
+	border-style:solid;
+	border-width:1px;
+	background-image:linear-gradient(rgb(217,200,96),rgb(149,112,32));
+	font-size:large;
+}
+.grand-titre{
+	border-radius:0px;
+	border-style:solid;
+	border-width:1px;
+	background-image:linear-gradient(rgb(125,240,219),rgb(78,87,199));
+	font-size: xx-large;
+}
+footer{
+	color:white;
+}

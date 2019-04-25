@@ -63,4 +63,32 @@ function verifNomPrenom($nom, $prenom) {
 }
 
 
+
+
+
+
+
+//fonctions pour les livres
+
+function genereIdLivre() {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $livreRepository = new \Livre\LivreRepository($connection);
+    $livress = $livreRepository->fetchAll();
+
+    $ret=0;
+    foreach ($livress as $livre) {
+        $tmp=$livre->getId();
+        if (strnatcmp ($tmp , "$ret")>=0) {
+            $ret = (int)$tmp;
+            $ret=$ret+1;
+        }
+    }
+    return $ret;
+}
+
+
 ?>

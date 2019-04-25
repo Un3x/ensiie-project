@@ -1,5 +1,6 @@
 <?php
 namespace Livre;
+
 class LivreRepository
 {
     /**
@@ -22,13 +23,12 @@ class LivreRepository
         $livres = [];
         foreach ($rows as $row) {
             $livre = new Livre();
-            $livre
-                ->setId($row->id)
-                ->setTitre($row->titre)
-                ->setAuteurs($row->auteur) //TODO ALED
-                ->setPublication(new \DateTimeImmutable($row->publication))
-                ->setImage($row->couverture)
-                ->setEdition($row->edition);
+            $livre->setId($row->id_livre);
+            $livre->setTitre($row->titre);
+            $livre->setAuteur($row->auteur); //TODO ALED
+            $livre->setPublication(new \DateTimeImmutable($row->publication));
+            $livre->setImage($row->couverture);
+            $livre->setEdition($row->editeur);
 
             $livres[] = $livre;
         }

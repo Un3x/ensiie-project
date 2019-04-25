@@ -23,7 +23,7 @@ $auteurs = $auteurRepository->fetchAll();
     </head>
     <body>
     <div class="container">
-    <h1>Page d\'ajout de livre \(Réservé aux Admins\)</h1>
+    <h2>Page d\'ajout de livre \(Réservé aux Admins\)</h2>
     <form>
     <!--ALED TODO completer avec bd-->
     <input type="text" name="Titre Livre"/>
