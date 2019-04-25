@@ -14,24 +14,28 @@ $lastname_disp=$row['lastname'];*/
 
 if(isset($_POST['valid_signup']))
 {
+    //call js function
+    //echo "<script>envoyer();</script>";
+
     $email_form = $_SESSION['email'];
     $firstname_form = $_POST['firstname'];
     $lastname_form = $_POST['lastname'];
     $pwd_signup_form = $_POST['pwd_signup'];
-    echo "<script>envoyer();</script>";
 
-   if(!isset($_POST["pwd_signup"]))
+
+   if(isset($_POST["pwd_signup"]))
         {
-            header("Location:accueil.php");
-            $query = "UPDATE member SET firstname=$firstname_form,lastname=$lastname_form WHERE email=$email_form;";
+            $query = "UPDATE member SET firstname='$firstname_form', lastname='$lastname_form', password='$pwd_signup_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
+            $model->config($email_form, $lastname_form, $firstname_form, $pwd_signup_form);
         }
-        else
+   else
         {
-            $query = "UPDATE member SET firstname=$firstname_form, lastname=$lastname_form, password=$pwd_signup_form WHERE email=$email_form;";
+            $query = "UPDATE member SET firstname='$firstname_form',lastname='$lastname_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
+            $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);
         }
 }
 ?>
@@ -66,6 +70,13 @@ if(isset($_POST['valid_signup']))
                 document.getElementById('message').innerText = 'Le prénom n\'est pas indiqué';
             }
 
+            /*else if((document.getElementById("pwd_signup").value === '') && (document.getElementById("lastname").value !== ''))
+            {
+                document.getElementById("lastname").style.border='#000000 2px normal';
+                document.getElementById("firstname").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = 'Le mot de passe n\'est pas indiqué';
+            }*/
+
             else
             {
                 document.getElementById('message').innerText = 'Envoi serveur';
@@ -75,12 +86,9 @@ if(isset($_POST['valid_signup']))
 </head>
 <body>
         <div class="titre_page"><h1>Formulaire d'inscription</h1></div>
-
         <div class="div_int_page">
-
             <div class="div_saut_ligne">
             </div>
-
             <div id="n_1"></div>
             <div id="n_2">
                 <div id="GTitre">
@@ -104,10 +112,11 @@ if(isset($_POST['valid_signup']))
                             </div>
                             <div class="div_input_form">
                                 Votre mot de passe :<br />
-                                <input type="password" name="pwd_signup" id="pwd_signup" maxlength="10" class="input_form"/>
+                                <input type="password" name="pwd_signup" id="pwd_signup" maxlength="20" class="input_form"/>
                             </div>
                             <div class="div_input_form">
-                                <input type="button" name="valid_signup" id="valid_signup" class="input_form" value="Valider"/>
+                                <!--<input type="submit" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick="envoyer();"/>-->
+                                <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyer();">Valider</button>
                             </div>
                         </form>
                     </div>
