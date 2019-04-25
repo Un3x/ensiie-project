@@ -42,7 +42,7 @@ if( isset($_GET['action']))
             && isset($_GET['nom']) && isset($_GET['age'])
             && isset($_GET['mail']) && isset($_GET['age'])
             && isset($_GET['description']))
-            {Paradise Valley
+            {
                 inscriptionClient();
             }
             else
