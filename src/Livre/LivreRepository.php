@@ -78,7 +78,7 @@ class LivreRepository
         $emprunteur=$livre->getEmprunteur();
         $date_emprunt=date_format ($livre->getDateEmprunt(), 'Y-m-d');
 
-        $query="INSERT INTO \"Livre\" VALUES ('$id', '$titre', '$auteur', '$publication', '$couverture', '$editeur', '$emprunteur', '$date_emprunt');";
+        $query="INSERT INTO \"Livre\" VALUES ('$id', '$titre', '$auteur', '$publication', '$couverture', '$editeur', NULL, NULL);";
 
         $this->connection->query("$query");
 

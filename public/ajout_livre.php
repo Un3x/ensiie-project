@@ -11,8 +11,6 @@ $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
 $livreRepository = new \Livre\LivreRepository($connection);
 $livres = $livreRepository->fetchAll();
 $auteurRepository = new \Auteur\AuteurRepository($connection);
@@ -24,8 +22,32 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     if (verifTitre($_POST['titre'])) {
         $new_idlivre=genereIdLivre();
         $tmp=$livreRepository->creeLivre($new_idlivre, $_POST['titre'], $_POST['auteur1'], $_POST['datepub'], $_POST['image'], $_POST['edition'], '', '');
+        //modifier l'id de l'emprunteur de base non c'est bon je l'ai mis à null dans la fonction d'insertion
 
-        $livreRepository->insertLivre($tmp);
+        echo $livreRepository->insertLivre($tmp);
+        $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur1']);
+        $auteurRepository->insertAuteur($tmp);
+        if ($_POST['auteur2']!='') {
+            $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur2']);
+            $auteurRepository->insertAuteur($tmp);
+        }
+        if ($_POST['auteur3']!='') {
+            $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur3']);
+            $auteurRepository->insertAuteur($tmp);
+        }
+        if ($_POST['auteur4']!='') {
+            $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur4']);
+            $auteurRepository->insertAuteur($tmp);
+        }
+        if ($_POST['auteur5']!='') {
+            $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur5']);
+            $auteurRepository->insertAuteur($tmp);
+        }
+        if ($_POST['auteur6']!='') {
+            $tmp=$auteurRepository->creeAuteur($new_idlivre, $_POST['auteur6']);
+            $auteurRepository->insertAuteur($tmp);
+        }
+
         header("Location: index.php");
     }
 }
