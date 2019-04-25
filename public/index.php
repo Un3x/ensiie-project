@@ -1,56 +1,79 @@
 
-<?php 
-session_start();
+<?php
+//session_start(); -> il faut faire les ob_start() avant de commencer la session
 
 require_once('../src/config.php');
 
 if( isset($_GET['action']))
 {
-    if($_GET['action']=='informations')
-    {
-        require('../src/View/informationsView.php');
-    }
-    if($_GET['action']=='choixInscription')
-    {
-        require('../src/View/choixInscriptionView.php');
-    }
-    if($_GET['action']=='clients')
-    {
-        require('../src/View/clientsView.php');
-    }
-    
-    if($_GET['action']=='connexion')
-    {
-        require('../src/Controller/inscriptionClientController.php');
-        if( isset($_GET[‘login’]) && isset($_GET['password']))
-        {
-            tentativeConnexion();
-        }
-        else
-        {
-            connexionDebut();
-        }
-    }
+    switch($_GET['action']){
+        case 'informations':
+            require('../src/View/informationsView.php');
+            break;
 
-    if($_GET['action']=='creatures')
-    {
-        require('../src/View/creaturesView.php');
-    }
-    if($_GET['action']=='inscriptionClient')
-    {
-        require('../src/Controller/inscriptionClientController.php');
-        if(isset($_GET['pseudo']) && isset($_GET['password'])
-        && isset($_GET['password2']) && isset($_GET['prenom'])
-        && isset($_GET['nom']) && isset($_GET['age'])
-        && isset($_GET['mail']) && isset($_GET['age'])
-        && isset($_GET['description']))
-        {
-            inscriptionClient();
-        }
-        else
-        {
-            inscriptionClientDebut();
-        }
+        case 'choixInscription':
+            require('../src/View/choixInscriptionView.php');
+            break;
+
+        case 'clients':
+            require('../src/View/clientsView.php');
+            break;
+        
+        case 'connexion':
+            require('../src/Controller/inscriptionClientController.php');
+            if( isset($_GET[‘login’]) && isset($_GET['password']))
+            {
+                tentativeConnexion();
+            }
+            else
+            {
+                connexionDebut();
+            }
+            break;
+
+        case 'creatures':
+            require('../src/View/creaturesView.php');
+            break;
+
+        case 'inscriptionClient':
+            require('../src/Controller/inscriptionClientController.php');
+            if(isset($_GET['pseudo']) && isset($_GET['password'])
+            && isset($_GET['password2']) && isset($_GET['prenom'])
+            && isset($_GET['nom']) && isset($_GET['age'])
+            && isset($_GET['mail']) && isset($_GET['age'])
+            && isset($_GET['description']))
+            {
+                inscriptionClient();
+            }
+            else
+            {
+                inscriptionClientDebut();
+            }
+            break;
+        
+        case 'searchCourse':
+            require('../src/Controller/course/searchCourse.php');
+            break;
+
+        case 'getCities' :
+            require('../src/Controller/course/getCities.php');
+            break;
+
+        case 'getCourses' :
+            require('../src/Controller/course/getCourses.php');
+            break;
+
+        case 'infoCourse' :
+            require('../src/Controller/course/infoCourse.php');
+            break;
+
+        case 'payment' :
+            require('../src/Controller/course/payment.php');
+            break;
+        
+        default:
+            require('../src/Controller/404.php');
+            break;
     }
 }
 else
