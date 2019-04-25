@@ -1,6 +1,14 @@
-# Formats des étapes et des achievements
+# == Utilisation ==
 #
-# ---> fichiers "nodeXXXX"
+# `$ python3 parser.py [files]`
+#
+# [files]: fichiers respectants l'un des formats décrit ci-dessous
+#
+# Le résultat est affiché dans le terminal, il peut être redirigé vers un fichier si nécessaire
+#
+# == Formats des étapes et des achievements ==
+#
+# ---> fichiers "nodeXXXX.csv"
 #
 # 01         content
 # 02         bg-picture
@@ -31,7 +39,7 @@
 # 27  <opt>  choice-3
 # 28  <opt>  choice-3-text
 #
-# ---> fichiers "achXXX"
+# ---> fichiers "achXXX.csv"
 #
 # 1         achievement-title
 # 2         achievement-text
