@@ -121,7 +121,7 @@ CREATE TABLE "current" (
 --- INSERTS
 INSERT INTO "user"(pseudo, hash, genre) VALUES
 ('Polio', 'x', 'm'),
-('Sun', 'x', 'f'),
+('Sun', 'x', 'Hélicoptère Apache'),
 ('Kat', 'x', 'f'),
 ('Kubat', 'x', 'm'),
 ('Bob', 'x', 'Hélicoptère Apache');
