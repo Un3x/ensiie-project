@@ -41,7 +41,8 @@ class Model
 
     function config($email, $lastname, $firstname, $pwd)
     {
-        //session_start();
+        //global $_SESSION['email'], $_SESSION['lastname'], $_SESSION['firstname'], $_SESSION['pwd'];
+
         //global $hostName, $baseName, $userName, $pwd;	//Rappel : $nom_user est son email, il n'y a pas de colonnes username dans la BDD
         $_SESSION['email'] = $email;
         //$_SESSION['nomhote'] = $hostName;

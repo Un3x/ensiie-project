@@ -1,4 +1,6 @@
-<?php $title = "Meetiie - Login"; 
+<?php
+session_start();
+$title = "Meetiie - Login";
 $css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>';
 
 require('../src/model.php');
@@ -36,6 +38,10 @@ if(isset($_POST['submit_button']))
 
         //Appel de config() pour sauvegarder le mot de passe dans la variable de session
         $model->config($email_form, $lastname_form, $firstname_form, $pwd);
+        $_SESSION['email']=$email_form;                 //essayer de supprimer ces 4 lignes si c'est possible
+        $_SESSION['lastname']=$lastname_form;
+        $_SESSION['firstname']=$firstname_form;
+        $_SESSION['password']=$pwd;
         //header("Location:accueil.php");
         header('Location: accueil.php');
         exit();
