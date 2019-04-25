@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 use Member\MemberRepository;
 
-session_start();
+
 $title = "Accueil";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/accueilLayout.css\"/>";
 echo $css_link;
@@ -25,6 +25,11 @@ foreach ($members as $member) {
 
 <?php ob_start(); ?>
     <div class='corps'>
+        <?php
+        $firstname_tmp=$_SESSION['firstname'];
+        $lastname_tmp=$_SESSION['lastname'];
+        echo "$firstname_tmp ";
+        echo $lastname_tmp;;?>
         <form action="logout.php" method="POST" id="logout_btn">
             <input type="submit" name="Logout" value="Logout">
         </form>

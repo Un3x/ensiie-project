@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();

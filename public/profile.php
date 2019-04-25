@@ -4,29 +4,32 @@
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
-$email_session = $_SESSION['email'];
+/*$email_session = $_SESSION['email'];
 
 $requete = "SELECT firstname, lastname FROM member WHERE email='$email_session';";
 $q = $connection->query($requete);
 $row = $q->fetch();
 $firstname_disp=$row['firstname'];
-$lastname_disp=$row['lastname'];
+$lastname_disp=$row['lastname'];*/
 
-if(isset($_POST['submit_button']))
+if(isset($_POST['valid_signup']))
 {
+    $email_form = $_SESSION['email'];
     $firstname_form = $_POST['firstname'];
     $lastname_form = $_POST['lastname'];
     $pwd_signup_form = $_POST['pwd_signup'];
+    echo "<script>envoyer();</script>";
 
    if(!isset($_POST["pwd_signup"]))
         {
-            $query = "UPDATE member SET firstname = $firstname_form, lastname = $lastname_form;";
+            header("Location:accueil.php");
+            $query = "UPDATE member SET firstname=$firstname_form,lastname=$lastname_form WHERE email=$email_form;";
             $result=$connection->prepare($query);
             $result->execute();
         }
         else
         {
-            $query = "UPDATE member SET firstname = firstname_form, lastname = lastname_form, password = $pwd_signup_form;";
+            $query = "UPDATE member SET firstname=$firstname_form, lastname=$lastname_form, password=$pwd_signup_form WHERE email=$email_form;";
             $result=$connection->prepare($query);
             $result->execute();
         }
@@ -92,19 +95,19 @@ if(isset($_POST['submit_button']))
                         <div id="message">
                             Tous les champs sont obligatoires
                         </div>
-                        <form id="signup" name="signup" method="post" target="_self">
+                        <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
                             <div class="div_input_form">
-                                <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $firstname_disp?>  />
+                                <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $_SESSION['firstname']?>  />
                             </div>
                             <div class="div_input_form">
-                                <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $lastname_disp ?>/>
+                                <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $_SESSION['lastname']?>  />
                             </div>
                             <div class="div_input_form">
                                 Votre mot de passe :<br />
                                 <input type="password" name="pwd_signup" id="pwd_signup" maxlength="10" class="input_form"/>
                             </div>
                             <div class="div_input_form">
-                                <input type="button" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick='envoyer()'/>
+                                <input type="button" name="valid_signup" id="valid_signup" class="input_form" value="Valider"/>
                             </div>
                         </form>
                     </div>
