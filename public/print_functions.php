@@ -15,7 +15,7 @@
 
 	/*Print functions for the sidebar. Different outcomes depending on if the user logged in or not*/
 	function printSidebar(){
-		if($_SESSION["name"] != NULL){
+		if(isset($_SESSION["name"])&&$_SESSION["name"]!=NULL){
 			printSidebarLogIn();
 		}
 		else{
@@ -24,6 +24,8 @@
 	}
 
 	function printSidebarLogIn(){
+		if (!isset($_POST["pseudo"]))
+			$_POST["pseudo"]=" ";
 		echo "
 			<aside id = \"side_bar\" class = \"round_rect\"> <!-- Bloc de droite. Contient le panthéon.-->
 				<div id = \"profile_summary\">
@@ -40,7 +42,7 @@
 		echo "<aside id = \"side_bar\" class = \"round_rect\"> <!-- Bloc de droite. Contient le panthéon.-->
 
 				<div id = \"login_form\">
-					<form action = \"php_accueil.php\" target = \"_self\" method = \"post\">
+					<form action = \"index.php\" target = \"_self\" method = \"post\">
 						<div class = \"champs\">
 							<input type = \"text\" name = \"pseudo\" value = \"Pseudo\">
 							<input type = \"password\" name = \"password\" value = \"superbigpassword\">
@@ -85,7 +87,7 @@
 	/*Print functions for the main content div. Different outcomes depending on if the user logged in or not*/
 
 	function printMain(){
-		if($_SESSION["name"] != ""){
+		if(isset($_SESSION["name"])&&$_SESSION["name"] != ""){
 			printMainLogIn();
 		}
 		else{
@@ -174,10 +176,10 @@
 		/*echo " <div class = \"round_rect\" style = \"padding: 20px;\">
 			<p class = \"grey\"> Déconnexion réussie ! Cliquez <a href = \"php_accueil.php\">ici</a> pour revenir à la page d'accueil </p>
 			<script>
-				window.location.replace(\"php_accueil.php\");
+				window.location.replace(\"index.php\");
 			</script>
 		</div>";*/
 		echo "<script>
-				window.location.replace(\"php_accueil.php\");
+				window.location.replace(\"index.php\");
 			</script>";
 	}
