@@ -71,6 +71,10 @@ if( isset($_GET['action']))
             require('../src/Controller/course/payment.php');
             break;
         
+        case 'confirmationCourse' :
+            require('../src/Controller/course/confirmationCourse.php');
+            break;
+
         default:
             require('../src/Controller/404.php');
             break;
