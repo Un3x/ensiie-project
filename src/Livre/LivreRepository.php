@@ -45,7 +45,7 @@ class LivreRepository
         $ret->setAuteur($auteur);
         $ret->setPublication(new \DateTimeImmutable($publication));
         $ret->setImage($couverture);
-        $ret->setEditeur($editeur);
+        $ret->setEdition($editeur);
         $ret->setEmprunteur($emprunteur);
         $ret->setDateEmprunt(new \DateTimeImmutable($date_emprunt));
 
@@ -69,16 +69,16 @@ class LivreRepository
     }
 
     public function insertLivre($livre) {
-        $id=getId();
-        $titre=getTitre();
-        $auteur=getAuteur();
-        $publication=getPublication();
-        $couverture=getImage();
-        $editeur=getEditeur();
-        $emprunteur=getEmprunteur();
-        $date_emprunt=getDateEmprunt();
+        $id=$livre->getId();
+        $titre=$livre->getTitre();
+        $auteur=$livre->getAuteur();
+        $publication=date_format($livre->getPublication(), 'Y-m-d');
+        $couverture=$livre->getImage();
+        $editeur=$livre->getEdition();
+        $emprunteur=$livre->getEmprunteur();
+        $date_emprunt=date_format ($livre->getDateEmprunt(), 'Y-m-d');
 
-        $query="INSERT INTO \"Livre\" VALUES ('$id', '$titre', '$auteur', $publication, '$couverture', '$editeur', '$emprunteur', $date_emprunt);";
+        $query="INSERT INTO \"Livre\" VALUES ('$id', '$titre', '$auteur', '$publication', '$couverture', '$editeur', '$emprunteur', '$date_emprunt');";
 
         $this->connection->query("$query");
 

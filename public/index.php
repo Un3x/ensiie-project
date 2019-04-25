@@ -15,8 +15,10 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
+$auteurRepository = new \Auteur\AuteurRepository($connection);
 $users = $userRepository->fetchAll();
 $livres = $livreRepository->fetchAll();
+$auteurs = $auteurRepository->fetchall();
 
 $user_connected=isset($_SESSION["id_user"]);
 
@@ -64,7 +66,8 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </div>
 
     <div class="container">
-        <a href="inscription.php">TMP</a>
+        <a href="inscription.php">TMPinscription</a>
+        <a href="ajout_livre.php">TMPajout_livre</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
@@ -108,6 +111,65 @@ $users = $userRepository->fetchAll();
 <?php endforeach; ?>
     </table>
 </section>
+
+<?php //test d'insertion de livre
+$tmp=$livreRepository->creeLivre('5', 'titre', 'jsb', '1990-02-03', 'toto', 'leseditionsquidechirent', '3', '2001-10-23');
+echo $livreRepository->insertLivre($tmp);
+
+$livres = $livreRepository->fetchAll();
+
+?>
+
+<section>
+    <h3> test sur les livres</h3>
+    <table class="table table-bordered table-hover table-striped">
+    <thead style="font-weight: bold">
+    <td>#</td>
+    <td>titre</td>
+    <td>publication</td>
+    <td>couverture</td>
+    <td>editeur</td>
+    <td>emprunteur</td>
+    </thead>
+<?php /** @var \User\User $user */
+    foreach ($livres as $livre) : ?>
+    <tr>
+    <td><?php echo $livre->getId() ?></td>
+    <td><?php echo $livre->getTitre() ?></td>
+    <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
+    <td><?php echo $livre->getImage() ?></td>
+    <td><?php echo $livre->getEdition() ?></td>
+    <td><?php echo $livre->getEmprunteur() ?></td>
+    </tr>
+<?php endforeach; ?>
+    </table>
+</section>
+
+<?php
+//test d'insertion d'auteur
+$tmp = $auteurRepository->creeAuteur('chocapic1', 'mario');
+$auteurRepository->insertAuteur($tmp);
+$auteurs = $auteurRepository->fetchall();
+?>
+
+
+<section>
+    <h3> test sur les auteurs</h3>
+    <table class="table table-bordered table-hover table-striped">
+    <thead style="font-weight: bold">
+    <td>id_livre</td>
+    <td>auteur</td>
+    </thead>
+<?php /** @var \User\User $user */
+    foreach ($auteurs as $auteur) : ?>
+    <tr>
+    <td><?php echo $auteur->getIdLivre() ?></td>
+    <td><?php echo $auteur->getAuteur() ?></td>
+    </tr>
+<?php endforeach; ?>
+    </table>
+</section>
+
 
 
     </div>

@@ -1,7 +1,7 @@
 <?php
 namespace Auteur;
 
-class Auteur;
+class Auteur {
     /**
      * @var string
      */

@@ -91,4 +91,22 @@ function genereIdLivre() {
 }
 
 
+function verifTitre($titre) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    
+    $livreRepository = new \Livre\LivreRepository($connection);
+    $livres = $livreRepository->fetchAll();
+
+    foreach ($livres as $livre) {
+        $tmptitre=$livre->getTitre();
+        if ($titre==$tmptitre) {
+            return false;
+        }
+    }
+    return true;
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 namespace Review;
 
-class Review;
+class Review {
     /**
      * @var string
      */

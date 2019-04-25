@@ -1,7 +1,7 @@
 <?php
 namespace Historique;
 
-class Historique;
+class Historique {
     /**
      * @var string
      */

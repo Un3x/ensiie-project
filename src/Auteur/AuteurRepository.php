@@ -28,14 +28,14 @@ class AuteurRepository
             $auteurs[] = $auteur;
         }
 
-        return $auteur;
+        return $auteurs;
     }
 
 
     public function creeAuteur($id_livre, $id_auteur) {
         $ret = new Auteur();
         $ret->setIdLivre($id_livre);
-        $ret->setIdAuteur($id_auteur);
+        $ret->setAuteur($id_auteur);
 
         return $ret;
     }
@@ -46,7 +46,7 @@ class AuteurRepository
 
     public function insertAuteur($auteur) {
         $id_livre=$auteur->getIdLivre();
-        $id_auteur=$auteur->getIdAuteur();
+        $id_auteur=$auteur->getAuteur();
 
         $query="INSERT INTO \"Auteur\" VALUES ('$id_livre', '$id_auteur');";
         $this->connection->query("$query");

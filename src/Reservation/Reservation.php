@@ -1,7 +1,7 @@
 <?php
 namespace Reservation;
 
-class Reservation;
+class Reservation {
     /**
      * @var string
      */
