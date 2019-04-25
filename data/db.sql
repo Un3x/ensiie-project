@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS "choice";
 CREATE TABLE "user" (
   pseudo VARCHAR NOT NULL PRIMARY KEY,
   hash VARCHAR NOT NULL,
-  genre VARCHAR NOT NULL
+  gender VARCHAR NOT NULL
 );
 
 -- types for a story node
@@ -119,7 +119,7 @@ CREATE TABLE "current" (
 );
 
 --- INSERTS
-INSERT INTO "user"(pseudo, hash, genre) VALUES
+INSERT INTO "user"(pseudo, hash, gender) VALUES
 ('Polio', 'x', 'm'),
 ('Sun', 'x', 'Hélicoptère Apache'),
 ('Kat', 'x', 'f'),
