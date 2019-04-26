@@ -17,7 +17,6 @@ $connection = $model->dbConnect();
 
 $memberRepository = new \Member\MemberRepository($connection);
 $members = $memberRepository->fetchAll();
-
 $member = new \Member\Member();
 
 foreach ($members as $m) {
@@ -25,9 +24,7 @@ foreach ($members as $m) {
         $member = $m;
     }
 }
-
 ?>
-
 <?php ob_start(); ?>
     <div class='corps'>
         <?php /** @var \Member\Member $member */
@@ -45,10 +42,9 @@ foreach ($members as $m) {
         <form role="form" method="POST" enctype="multipart/form-data">
             <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
         </form>
-        <form action="<?php if($member->getAdmin() && $member!=null) {echo "profil_admin.php";} else if($member!=null) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
+        <form action="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
             <input type="submit" name="Profile" value="Profil">
         </form>
-
         <div class='row'>
             <div class='column'>
                 <table>
@@ -72,15 +68,12 @@ foreach ($members as $m) {
                                     </td>
                                 </tr>
                             </table>
-
                             <form role="form" method="POST" enctype="multipart/form-data">
                                 <input type="text" name="message_envoyé" placeholder="Ecrivez un message" class="message">
                             </form><br>
-
                             <form role="form" method="POST" enctype="multipart/form-data">
                                 <input type="submit" name="quitter_discu_btn" value="Quitter la discussion">
                             </form><br>
-
                         </td>
                     </tr>
                     <tr>

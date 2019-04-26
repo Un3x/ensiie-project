@@ -140,13 +140,19 @@ if(isset($_POST['valid_deban_email']))
     </form><br>
 
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+        Utilisateur à supprimer :<br />
+        <input type="text" name="del_email" id="del_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
+        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button>
+    </form><br>
+
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
         Utilisateur à bannir :<br />
-        <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form"/><br>
+        <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_ban_email" id="valid_ban_email" class="input_form">Bannir</button>
     </form><br>
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
         Utilisateur à débannir :<br />
-        <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form"/><br>
+        <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_deban_email" id="valid_deban_email" class="input_form">Débannir</button>
     </form>
 
