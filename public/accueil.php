@@ -44,7 +44,7 @@ foreach ($members as $member) {
         <form role="form" method="POST" enctype="multipart/form-data">
             <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
         </form>
-        <form action="<?php if($admin_form) {echo "profil_admin.php";} else {echo "profil.php";}?>" method="POST" id="profile_btn">
+        <form action="<?php if($admin_form && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
             <input type="submit" name="Profile" value="Profil">
         </form>
 

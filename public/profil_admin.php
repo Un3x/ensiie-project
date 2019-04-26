@@ -54,6 +54,7 @@ if(isset($_POST['valid_signup']))
         $firstname_form=$row['firstname'];
         $lastname_form=$row['lastname'];
         $model->config($email_form, $lastname_form, $firstname_form, $password);
+        header("Location:accueil.php");
     }
 }
 
@@ -76,6 +77,7 @@ if(isset($_POST['valid_mdp']))
             $result=$connection->prepare($query);
             $result->execute();
             $model->config($email_form, $lastname_form, $firstname_form, $pwd_new);
+            header("Location:accueil.php");
         }
     }
 }
@@ -86,6 +88,25 @@ if(isset($_POST['valid_del_email']))
     $query = "DELETE FROM member WHERE email='$del_email'";
     $result=$connection->prepare($query);
     $result->execute();
+    header("Location:accueil.php");
+}
+
+if(isset($_POST['valid_ban_email']))
+{
+    $ban_email = $_POST['ban_email'];
+    $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    header("Location:accueil.php");
+}
+
+if(isset($_POST['valid_deban_email']))
+{
+    $deban_email = $_POST['deban_email'];
+    $query = "UPDATE member SET banned='false' WHERE email='$deban_email'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    header("Location:accueil.php");
 }
 ?>
 
@@ -96,29 +117,36 @@ if(isset($_POST['valid_del_email']))
 </div>
 
 <div class="connexion">
-    <h1>Profil utilisateur</h1>
+    <h1>Profil Administrateur</h1>
 
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
-        <span id="conn">Remplir les champs ci-dessous pour changer votre nom et prénom</span><br/><br>
         Prénom:
         <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $_SESSION['firstname']?>  /><br>
-        Nom:
+        Nom &nbsp;&nbsp;&nbsp;&nbsp;:
         <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $_SESSION['lastname']?>  /><br>
-        <button type="submit" name="valid_signup" id="valid_signup" class="input_form">Valider</button><br><br>
-    </form>
+        <button type="submit" name="valid_signup" id="valid_signup" class="input_form">Valider</button><br>
+    </form><br>
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
-        <span id="conn"> Remplir les champs ci-dessous pour changer votre mot de passe</span><br/>
         Votre mot de passe actuel:<br />
         <input type="password" name="pwd_old" id="pwd_old" maxlength="20" class="input_form"/><br>
         Votre nouveau mot de passe:<br />
         <input type="password" name="pwd_new" id="pwd_new" maxlength="20" class="input_form"/><br>
         <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
-    </form>
+    </form><br>
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
-        <span id="conn"> Taper l'email de l'utilisateur à supprimer</span><br/><br>
         Utilisateur à supprimer :<br />
         <input type="text" name="del_email" id="del_email" maxlength="38" class="input_form"/><br>
         <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button>
+    </form><br>
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+        Utilisateur à bannir :<br />
+        <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form"/><br>
+        <button type="submit" name="valid_ban_email" id="valid_ban_email" class="input_form">Bannir</button>
+    </form><br>
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+        Utilisateur à débannir :<br />
+        <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form"/><br>
+        <button type="submit" name="valid_deban_email" id="valid_deban_email" class="input_form">Débannir</button>
     </form>
 </div>
 
