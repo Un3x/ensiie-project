@@ -2,15 +2,16 @@
 session_start();
 use Member\MemberRepository;
 
-
 $title = "Accueil";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/accueilLayout.css\"/>";
 echo $css_link;
 
-
 require('../src/model.php');
 include('../src/Member/Member.php');
 include('../src/Member/MemberRepository.php');
+
+$firstname_tmp=$_SESSION['firstname'];
+$lastname_tmp=$_SESSION['lastname'];
 
 $model = new Model();
 $connection = $model->dbConnect();
@@ -26,8 +27,15 @@ foreach ($members as $member) {
 <?php ob_start(); ?>
     <div class='corps'>
         <?php
-        $firstname_tmp=$_SESSION['firstname'];
-        $lastname_tmp=$_SESSION['lastname'];
+
+        //Retrieve admin status corresponding the email above, from the database
+        $requete = "SELECT admin FROM member WHERE firstname='$firstname_tmp' AND lastname='$lastname_tmp'";
+        $q = $connection->query($requete);
+        $row = $q->fetch();
+        $admin_form=$row['admin'];
+
+        if($admin_form) echo "Admin : ";
+        else{echo "Utilisateur : ";}
         echo "$firstname_tmp ";
         echo $lastname_tmp;;?>
         <form action="logout.php" method="POST" id="logout_btn">
@@ -36,7 +44,7 @@ foreach ($members as $member) {
         <form role="form" method="POST" enctype="multipart/form-data">
             <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
         </form>
-        <form action="profile.php" method="POST" id="profile_btn">
+        <form action="<?php if($admin_form) {echo "profil_admin.php";} else {echo "profil.php";}?>" method="POST" id="profile_btn">
             <input type="submit" name="Profile" value="Profil">
         </form>
 
