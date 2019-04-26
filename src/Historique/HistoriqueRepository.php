@@ -30,7 +30,7 @@ class HistoriqueRepository
                 ->setIdReview($row->id_review)
                 ->setNumReview($row->num_review);
 
-            $historiques[] = $historique;
+            $historiques[] = $hist;
         }
 
         return $historiques;
@@ -39,7 +39,7 @@ class HistoriqueRepository
 
     public function creeHistorique($id_livre, $id_user, $date_emprunt, $date_rendu, $id_review, $num_review) {
 
-        $ret = new Histprique();
+        $ret = new Historique();
         $ret->setIdLivre($id_livre);
         $ret->setIdUser($id_user);
         $ret->setDateEmprunt($date_emprunt);
@@ -71,12 +71,13 @@ class HistoriqueRepository
     public function insertHistorique($historique) {
         $id_livre=$historique->getIdLivre();
         $id_user=$historique->getIdUser();
-        $date_emprunt=$historique->getDateEmprunt();
-        $date_rendu=$historique->getDateRendu();
+        $date_emprunt=date_format ($historique->getDateEmprunt(), 'Y-m-d');
+        $date_rendu=date_format ($historique->getDateRendu(), 'Y-m-d');
         $id_review=$historique->getIdReview();
         $num_review=$historique->getNumReview();
 
-        $query="INSERT INTO \"Historique\" VALUES ('$id_livre', '$id_user', '$date_emprunt', '$date_rendu', '$id_review', '$num_review');";
+        $query="INSERT INTO \"Historique\" VALUES ('$id_livre', '$id_user', '$date_emprunt', '$date_rendu', NULL, NULL);";
+        //TODO mouais
 
 
         $this->connection->query("$query");

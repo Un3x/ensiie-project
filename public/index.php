@@ -17,10 +17,15 @@ $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
 $auteurRepository = new \Auteur\AuteurRepository($connection);
 $reservationRepository = new \Reservation\ReservationRepository($connection);
+$historiqueRepository = new \Historique\HistoriqueRepository($connection);
+
+
 $users = $userRepository->fetchAll();
 $livres = $livreRepository->fetchAll();
 $auteurs = $auteurRepository->fetchall();
 $reservations = $reservationRepository->fetchAll();
+$historiques = $historiqueRepository->fetchAll();
+
 
 $user_connected=isset($_SESSION["id_user"]);
 
@@ -72,6 +77,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <a href="ajout_livre.php">TMPajout_livre</a>
         <a href="editer.php">TMPediter</a>
         <a href="emprunt.php">TMPemprunt</a>
+        <a href="rendu.php">TMPrendu</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
@@ -134,6 +140,7 @@ $livres = $livreRepository->fetchAll();
     <td>couverture</td>
     <td>editeur</td>
     <td>emprunteur</td>
+    <td>date emprunt</td>
     </thead>
 <?php /** @var \User\User $user */
     foreach ($livres as $livre) : ?>
@@ -144,6 +151,7 @@ $livres = $livreRepository->fetchAll();
     <td><?php echo $livre->getImage() ?></td>
     <td><?php echo $livre->getEdition() ?></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
+    <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>
     </tr>
 <?php endforeach; ?>
     </table>
@@ -194,6 +202,27 @@ $auteurs = $auteurRepository->fetchall();
 </section>
 
 
+
+<section>
+    <h3> test sur les historiques</h3>
+    <table class="table table-bordered table-hover table-striped">
+    <thead style="font-weight: bold">
+    <td>id_livre</td>
+    <td>id_user</td>
+    <td>date emprunt</td>
+    <td>date rendu</td>
+    </thead>
+<?php /** @var \User\User $user */
+    foreach ($historiques as $historique) : ?>
+    <tr>
+    <td><?php echo $historique->getIdLivre() ?></td>
+    <td><?php echo $historique->getIdUser() ?></td>
+    <td><?php echo date_format($historique->getDateEmprunt(), 'Y-m-d') ?></td>
+    <td><?php echo date_format($historique->getDateRendu(), 'Y-m-d') ?></td>
+    </tr>
+<?php endforeach; ?>
+    </table>
+</section>
     </div>
     </body>
     </html>

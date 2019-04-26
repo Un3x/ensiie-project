@@ -25,7 +25,32 @@ if (!isset($_SESSION["id_user"])) {
 if (!(verifAdmin($_SESSION["id_user"]))) {
     header("Location: index.php");
 }
+
+if (isset($_POST['pseudo'])) {
+    $okpseudo = !(verifPseudo($_POST['pseudo']));
+}
+
+
+
+//si tout est bon on effectue le rendu
+//ajouter la transaction à l'historique
+//retirer la référece à l'utilisateur du livre en question
+if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre($_POST['id_livre']))) {
+    $date = new DateTime();
+    $tmplivre=$livreRepository->fetchId($_POST['id_livre']);
+    $tmphist=$historiqueRepository->creeHistorique($_POST['id_livre'], PseudoToId($_POST['pseudo']), $tmplivre->getDateEmprunt(), $date, '', '');
+    $historiqueRepository->insertHistorique($tmphist);
+
+    $tmplivre->setEmprunteur(NULL);
+    $livreRepository->updateLivreRendu($tmplivre);
+}
+
+
+
 ?>
+
+
+
 
 <html>
 <head>
@@ -34,36 +59,72 @@ if (!(verifAdmin($_SESSION["id_user"]))) {
     <link rel="stylesheet" href=".css">
 </head>
 <body>
-    <h1> Page de rendu  des livres</h1>
-    <p>Cette page est réservé aux administrateurs de la bibliothèque de ScIIEnce, si vous ne l\'êtes pas merci de quitter cette page</p>
+    <h2> Page de rendu  des livres (réservé aux admins)</h2>
     <nav>
-         <!-- TODO recopier le nav>
+         <!-- TODO recopier le nav-->
     </nav>
+    <a href="index.php">TMPretour</a>
     <h2>Rendu des livres</h2>
-    <form>
-    <!--Un seul champ nécessaire : complétion automatique des autres-->
-         <!--TODO proposition de complétion-->
-         <input type="text" size="20" maxlength=”18” name="Titre_livre" />
-         <input type="text" size="20" maxlength=”18” name="Auteur_livre" />
-         <input type="Date"  name="Publication_livre" />
-         <input type="text" size="20" maxlength=”18” name="Edition_livre" />
-         <input type="text" size="20" maxlength=”18” name="Pseudo_emprunteur" />
-         <input type="text" size="20" maxlength=”18” name="Nom_emprunteur" />
-         <input type="text" size="20" maxlength=”18” name="Prénom_emprunteur" />
-         <label for="N">Neuf</label>
-         <input type="radio" name="Etat" value="N"/>
-         <label for="B">Bon</label>
-         <input type="radio" name="Etat" value="B"/>
-         <label for="M">Moyen</label>
-         <input type="radio" name="Etat" value="M"/>
-         <label for="Ma">Mauvais</label>
-         <input type="radio" name="Etat" value="Ma" />
-         <label for="I">Inutilisable</label>
-         <input type="radio" name="Etat" value="I" />
-    
-         <input type="hidden" name="Date" />
-         <input type="hidden" name="Pseudo_Admin" />
-         <input type="submit" value="Rendu" name="sub" />
+
+    <?php 
+    if (isset($okpseudo) && !($okpseudo)) {
+        echo "<p>Pseudo invalide</p>";
+    }
+    ?>
+
+    <form action="rendu.php" method="POST">
+        Pseudo :<br>
+        <input id="f1pseudo" type="text" name="pseudo"><br>
+        <input type="button" class="input" onclick="valide_pseudo()" value="Valider">
+        <input id="validerf1" style="display:none" type="submit" name="Envoyer">
     </form>
+    <p id="f1error" style="display:none">Veuillez remplir le champ</p>
+
     <!--TODO mettre à jour "livre emprunt", "histo", "Livre", "User"-->
+    <?php if (isset($okpseudo) && $okpseudo) : ?>
+        <p id="displaytable">
+            <h3>Liste des livres empruntés par <?php echo $_POST['pseudo']; ?></h3>
+            <table class="table table-bordered table-hover table-striped">
+                <thead style="font-weight: bold">
+                    <td>#</td>
+                    <td>titre</td>
+                    <td>emprunteur</td>
+                    <td>rendre</td>
+                </thead>
+        <?php 
+        $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo']));
+        foreach ($livresarendre as $livre) : ?>
+            <tr>
+                <td><?php echo $livre->getId() ?></td>
+                <td><?php echo $livre->getTitre() ?></td>
+                <td><?php if ($livre->getEmprunteur() !='') echo IdToPseudo($livre->getEmprunteur()) ?></td>
+                <td>
+
+                    <form action="rendu.php" method="POST">
+                        <input style="display:none" type="text" name="pseudo" value=<?php echo $_POST['pseudo'] ?>>
+                        <input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>>
+                        <input type="submit" name="Valider" value="Valider">
+                    </form>
+        <? endforeach; ?>
+    </table>
+</p>
+    <?php endif; ?>
 </body>
+
+<script>
+
+
+    function valide_pseudo() {
+        tmp=document.getElementById("f1pseudo").value;
+        if (tmp=='') {
+            document.getElementById("f1error").style.display="block";
+        }
+        else {
+            document.getElementById("validerf1").click();
+        }
+    }
+
+
+</script>
+
+</html>

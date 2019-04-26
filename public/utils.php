@@ -161,7 +161,7 @@ function genereIdLivre() {
     return $ret;
 }
 
-function verifId($id) {
+function verifIdLivre($id) {
     $dbName = getenv('DB_NAME');
     $dbUser = getenv('DB_USER');
     $dbPassword = getenv('DB_PASSWORD');

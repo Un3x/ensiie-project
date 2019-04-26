@@ -37,7 +37,7 @@ if (isset($_POST['pseudo'])) {
     }
 }
 if (isset($_POST['id_livre'])) {
-    $okid= !(verifId($_POST['id_livre']));
+    $okid= !(verifIdLivre($_POST['id_livre']));
     if (estreservLivre($_POST['id_livre']) && (areservLivre($_POST['id_livre']) != PseudoToId($_POST['pseudo']))) {
         $dejareserv=true;
     }

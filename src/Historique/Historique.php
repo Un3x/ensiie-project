@@ -126,7 +126,7 @@ class Historique {
     /**
      * @return string
      */
-    public function getNumReview(): 
+    public function getNumReview()
     {
         return $this->num_review;
     }
