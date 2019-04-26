@@ -1,4 +1,3 @@
-
 <?php
 //session_start(); -> il faut faire les ob_start() avant de commencer la session
 
@@ -53,14 +52,6 @@ if( isset($_GET['action']))
         
         case 'searchCourse':
             require('../src/Controller/course/searchCourse.php');
-            break;
-
-        case 'getCities' :
-            require('../src/Controller/course/getCities.php');
-            break;
-
-        case 'getCourses' :
-            require('../src/Controller/course/getCourses.php');
             break;
 
         case 'infoCourse' :

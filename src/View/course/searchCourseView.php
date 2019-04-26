@@ -32,7 +32,7 @@ function autoSuggestLieu(element, value){
         }
     };
 
-    xhttp.open('GET', 'index.php?action=getCities&n=5&name='+name, true);
+    xhttp.open('GET', 'api.php?action=getCities&n=5&name='+name, true);
     xhttp.timeout=1000;
     xhttp.send();
 }
@@ -72,7 +72,7 @@ function searchCourse(){
         }
     }
 
-    xhttp.open('GET', 'index.php?action=getCourses&departure='+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse, true);
+    xhttp.open('GET', 'api.php?action=getCourses&departure='+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse, true);
     xhttp.send();
 
 }
