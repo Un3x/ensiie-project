@@ -24,7 +24,7 @@ class ReservationRepository
             $reservation = new Reservation();
             $reservation
                 ->setIdLivre($row->id_livre)
-                ->setIdUser($row->id_user)
+                ->setIdUser($row->id_user);
             $reservations[] = $reservation;
         }
 

@@ -72,7 +72,6 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     <div class="container">
     <h2>Page d'ajout de livre (Réservé aux Admins)</h2>
     <form action="ajout_livre.php" method="POST">
-    <!--ALED TODO completer avec bd-->
     Titre<br>
     <input id="titre" type="text" name="titre"/><br>
     Auteur<br>

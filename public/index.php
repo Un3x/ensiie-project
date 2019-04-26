@@ -16,9 +16,11 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
 $auteurRepository = new \Auteur\AuteurRepository($connection);
+$reservationRepository = new \Reservation\ReservationRepository($connection);
 $users = $userRepository->fetchAll();
 $livres = $livreRepository->fetchAll();
 $auteurs = $auteurRepository->fetchall();
+$reservations = $reservationRepository->fetchAll();
 
 $user_connected=isset($_SESSION["id_user"]);
 
@@ -69,6 +71,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <a href="inscription.php">TMPinscription</a>
         <a href="ajout_livre.php">TMPajout_livre</a>
         <a href="editer.php">TMPediter</a>
+        <a href="emprunt.php">TMPemprunt</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
@@ -171,6 +174,24 @@ $auteurs = $auteurRepository->fetchall();
     </table>
 </section>
 
+
+
+<section>
+    <h3> test sur les réservations</h3>
+    <table class="table table-bordered table-hover table-striped">
+    <thead style="font-weight: bold">
+    <td>id_livre</td>
+    <td>id_user</td>
+    </thead>
+<?php /** @var \User\User $user */
+    foreach ($reservations as $reservation) : ?>
+    <tr>
+    <td><?php echo $reservation->getIdLivre() ?></td>
+    <td><?php echo $reservation->getIdUser() ?></td>
+    </tr>
+<?php endforeach; ?>
+    </table>
+</section>
 
 
     </div>

@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-
 <?php
+
+include ("utils.php");
+
+
 require '../vendor/autoload.php';
+
+session_start();
+
 
 //postgres
 $dbName = getenv('DB_NAME');
@@ -9,12 +14,17 @@ $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
 $historiqueRepository = new \Historique\HistoriqueRepository($connection);
-$historiques = $historiqueRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
-$livres = $livreRepository->fetchAll();
+
+
+// ajouter une redirection automatique si l'utilisateur n'est pas admin
+if (!isset($_SESSION["id_user"])) {
+    header("Location: index.php");
+}
+if (!(verifAdmin($_SESSION["id_user"]))) {
+    header("Location: index.php");
+}
 ?>
 
 <html>

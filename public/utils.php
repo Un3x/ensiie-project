@@ -3,6 +3,13 @@
 require '../vendor/autoload.php';
 
 
+
+
+
+
+
+
+
 //fonctions pour les Users
 
 function genereIdUser() {
@@ -89,6 +96,45 @@ function verifAdmin($id_user) {
 }
 
 
+function PseudoToId($pseudo) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    $userRepository = new \User\UserRepository($connection);
+    $tmpuser=$userRepository->fetchPseudo($pseudo);
+
+    $tmp=$tmpuser->getId();
+
+    return $tmp;
+}
+
+function IdToPseudo($id_user) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    $userRepository = new \User\UserRepository($connection);
+    $tmpuser=$userRepository->fetchId($id_user);
+
+    $tmp=$tmpuser->getPseudo();
+
+    return $tmp;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -115,6 +161,23 @@ function genereIdLivre() {
     return $ret;
 }
 
+function verifId($id) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    
+    $livreRepository = new \Livre\LivreRepository($connection);
+    $livres = $livreRepository->fetchAll();
+
+    foreach ($livres as $livre) {
+        $tmpid=$livre->getId();
+        if ($id==$tmpid) {
+            return false;
+        }
+    }
+    return true;
+}
 
 function verifTitre($titre) {
     $dbName = getenv('DB_NAME');
@@ -132,6 +195,127 @@ function verifTitre($titre) {
         }
     }
     return true;
+}
+
+function estEmprunte($id_livre) {
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    
+    $livreRepository = new \Livre\LivreRepository($connection);
+    $livres = $livreRepository->fetchAll();
+
+    foreach ($livres as $livre) {
+        $tmpid=$livre->getId();
+        if ($id_livre==$tmpid) {
+            $tmp=$livre->getEmprunteur();
+            if ($tmp != '') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
+
+
+function IdToTitre($id_livre){
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    
+    $livreRepository = new \Livre\LivreRepository($connection);
+    $livres = $livreRepository->fetchAll();
+
+    foreach ($livres as $livre) {
+        $tmpid=$livre->getId();
+        if ($id_livre==$tmpid) {
+            $tmp=$livre->getTitre();
+            return $tmp;
+        }
+    }
+    return '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//fonctions sur les réservations
+
+function estreservLivre($id_livre){
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $reservationRepository=new \Reservation\ReservationRepository($connection);
+
+    $reservations = $reservationRepository->fetchAll();
+
+    foreach ($reservations as $reservation) {
+        $tmpid=$reservation->getIdLivre();
+        if ($id_livre==$tmpid) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function areservLivre($id_livre) {//retourne l'id de l'utilisateur ayant réservé ce livre
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $reservationRepository=new \Reservation\ReservationRepository($connection);
+
+    $reservations = $reservationRepository->fetchAll();
+
+    foreach ($reservations as $reservation) {
+        $tmpid=$reservation->getIdLivre();
+        if ($id_livre==$tmpid) {
+            return $reservation->getIdUser();
+        }
+    }
+}
+
+
+
+function livreReserve($id_user) {//retourne l'id du livre réservé par l'utilisateur
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $reservationRepository=new \Reservation\ReservationRepository($connection);
+
+    $reservations = $reservationRepository->fetchAll();
+
+    foreach ($reservations as $reservation) {
+        $tmpuser=$reservation->getIdUser();
+        if ($id_user==$tmpuser) {
+            return $reservation->getIdLivre();
+        }
+    }
+    return '';
 }
 
 ?>

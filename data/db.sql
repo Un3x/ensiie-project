@@ -16,7 +16,7 @@ CREATE TABLE "User" (
 
 CREATE TABLE "Livre" (
     id_livre VARCHAR(13) NOT NULL,
-    titre VARCHAR(50) ,
+    titre VARCHAR(70) ,
     auteur VARCHAR(50) , -- multivalué -> cf. Auteur
     publication date ,
     couverture VARCHAR(100) , 
