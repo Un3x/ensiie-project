@@ -79,6 +79,17 @@ if(isset($_POST['valid_mdp']))
         }
     }
 }
+
+
+if(isset($_POST['valid_del_email']))
+{
+    $email = $_SESSION['email'];
+    $query = "DELETE FROM member WHERE email='$email'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    session_destroy();
+    header("Location:loginView.php");
+}
 ?>
 
 
@@ -117,6 +128,10 @@ if(isset($_POST['valid_mdp']))
 
         <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
     </form>
+
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data"><br />
+        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Supprimer le compte</button>
+    </form><br>
 </div>
 
 <?php $content = ob_get_clean();

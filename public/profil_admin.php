@@ -84,11 +84,14 @@ if(isset($_POST['valid_mdp']))
 
 if(isset($_POST['valid_del_email']))
 {
-    $del_email = $_POST['del_email'];
-    $query = "DELETE FROM member WHERE email='$del_email'";
+    //
+    //echo "p".$_SESSION['email']/"p";
+    $email = $_SESSION['email'];
+    $query = "DELETE FROM member WHERE email='$email'";
     $result=$connection->prepare($query);
     $result->execute();
-    header("Location:accueil.php");
+    session_destroy();
+    header("Location:loginView.php");
 }
 
 if(isset($_POST['valid_ban_email']))
@@ -135,11 +138,7 @@ if(isset($_POST['valid_deban_email']))
         <input type="password" name="pwd_new" id="pwd_new" maxlength="20" class="input_form"/><br>
         <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
     </form><br>
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
-        Utilisateur à supprimer :<br />
-        <input type="text" name="del_email" id="del_email" maxlength="38" class="input_form"/><br>
-        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button>
-    </form><br>
+
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
         Utilisateur à bannir :<br />
         <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form"/><br>
@@ -150,6 +149,10 @@ if(isset($_POST['valid_deban_email']))
         <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form"/><br>
         <button type="submit" name="valid_deban_email" id="valid_deban_email" class="input_form">Débannir</button>
     </form>
+
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data"><br />
+        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Supprimer le compte</button>
+    </form><br>
 </div>
 
 <?php $content = ob_get_clean();

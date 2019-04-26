@@ -8,6 +8,8 @@ session_unset ();
 // On détruit notre session
 session_destroy ();
 
+$member = null;
+
 // On redirige le visiteur vers la page d'accueil
 header ('location: loginView.php');
 ?>
