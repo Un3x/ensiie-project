@@ -1,5 +1,5 @@
 <?php
-//session_start(); -> il faut faire les ob_start() avant de commencer la session
+session_start();
 
 require_once('../src/config.php');
 
@@ -20,7 +20,7 @@ if( isset($_GET['action']))
         
         case 'connexion':
             require('../src/Controller/inscriptionClientController.php');
-            if( isset($_GET[‘login’]) && isset($_GET['password']))
+            if( isset($_GET['login']) && isset($_GET['password']))
             {
                 tentativeConnexion();
             }

@@ -20,8 +20,10 @@
 	$departure = ['cityName' => $_POST['departure'], 'latitude' => 49.420318, 'longitude' => 8.687872];
 	$arrival = ['cityName' => $_POST['arrival'], 'latitude' => 49.41461, 'longitude' => 8.681495];
 
-
-	if($course != null){
+	if(false && !(isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'])){
+		require("../src/View/connexionView.php");
+	}
+	else if($course != null){
 
 		$date=$course['date'];
 		$name=$carrier['name'];

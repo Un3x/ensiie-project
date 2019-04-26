@@ -3,7 +3,7 @@
 function inscriptionClientDebut()
 {
     $messageErreur= "";
-    require('../View/inscriptionClient.php')
+    require('../View/inscriptionClient.php');
 }
 
 function inscriptionClient()
@@ -17,7 +17,7 @@ function inscriptionClient()
     }
     else
     {
-        require('../View/inscriptionValideView.php')
+        require('../View/inscriptionValideView.php');
         return;
     }
 
@@ -28,7 +28,7 @@ function inscriptionClient()
     }
     else
     {
-        require('../View/inscriptionValideView.php')
+        require('../View/inscriptionValideView.php');
         return;
     }
 
@@ -39,7 +39,7 @@ function inscriptionClient()
     }
     else
     {
-        require('../View/inscriptionValideView.php')
+        require('../View/inscriptionValideView.php');
         return;
     }
 
@@ -52,12 +52,12 @@ function inscriptionClient()
     }
     else
     {
-        require('../View/inscriptionValideView.php')
+        require('../View/inscriptionValideView.php');
         return;
     }
 
 
     $messageErreur+= " </span>";
 
-    require('../View/inscriptionClientView.php')
+    require('../View/inscriptionClientView.php');
 }

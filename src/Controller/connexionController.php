@@ -1,12 +1,12 @@
 <?php 
 
-connexionDebut()
+function connexionDebut()
 {
     $messageErreur ="";
     require("connexionView.php");
 }
 
-tentativeConnexion()
+function tentativeConnexion()
 {
     $bdd = PDO(null, null, null, null);
     $userManager = new UserMangager($bdd);
