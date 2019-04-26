@@ -4,7 +4,8 @@
 #
 # [files]: fichiers respectants l'un des formats décrit ci-dessous
 #
-# Le résultat est affiché dans le terminal, il peut être redirigé vers un fichier si nécessaire
+# Le résultat est affiché dans le terminal,
+# il peut être redirigé vers un fichier si nécessaire
 #
 # == Formats des étapes et des achievements ==
 #
