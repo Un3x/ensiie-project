@@ -1,53 +1,50 @@
 <?php
 session_start();
-use Member\MemberRepository;
 
 $title = "Accueil";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/accueilLayout.css\"/>";
 echo $css_link;
 
-require('../src/model.php');
-include('../src/Member/Member.php');
-include('../src/Member/MemberRepository.php');
-
-$model = new Model();
-$connection = $model->dbConnect();
+include_once('../src/Member/Member.php');
+include_once('../src/Member/MemberRepository.php');
 
 $firstname_tmp=$_SESSION['firstname'];
 $lastname_tmp=$_SESSION['lastname'];
 
-$memberRepository = new MemberRepository($connection);
-$members = $memberRepository->fetchAll();
+require('../src/model.php');
+$model = new Model();
+$connection = $model->dbConnect();
 
-foreach ($members as $member) {
-    if ($member->getEmail()==$_POST['email']) $currentMember = $member;
+$memberRepository = new \Member\MemberRepository($connection);
+$members = $memberRepository->fetchAll();
+$member = new \Member\Member();
+
+foreach ($members as $m) {
+    if ($m->getEmail()==$_SESSION['email']) {
+        $member = $m;
+    }
 }
 ?>
-
 <?php ob_start(); ?>
     <div class='corps'>
-        <?php
+        <?php /** @var \Member\Member $member */
 
-        //Retrieve admin status corresponding the email above, from the database
-        $requete = "SELECT admin FROM member WHERE firstname='$firstname_tmp' AND lastname='$lastname_tmp'";
-        $q = $connection->query($requete);
-        $row = $q->fetch();
-        $admin_form=$row['admin'];
-
-        if($admin_form) echo "Admin : ";
+        if($member->getAdmin()) {echo "Admin : ";}
         else{echo "Utilisateur : ";}
-        echo "$firstname_tmp ";
-        echo $lastname_tmp;;?>
+        echo $member->getFirstname() . " ";
+        echo $member->getLastname();
+
+        ?>
+
         <form action="logout.php" method="POST" id="logout_btn">
             <input type="submit" name="Logout" value="Logout">
         </form>
         <form role="form" method="POST" enctype="multipart/form-data">
             <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
         </form>
-        <form action="<?php if($admin_form && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
+        <form action="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
             <input type="submit" name="Profile" value="Profil">
         </form>
-
         <div class='row'>
             <div class='column'>
                 <table>
@@ -71,15 +68,12 @@ foreach ($members as $member) {
                                     </td>
                                 </tr>
                             </table>
-
                             <form role="form" method="POST" enctype="multipart/form-data">
                                 <input type="text" name="message_envoyé" placeholder="Ecrivez un message" class="message">
                             </form><br>
-
                             <form role="form" method="POST" enctype="multipart/form-data">
                                 <input type="submit" name="quitter_discu_btn" value="Quitter la discussion">
                             </form><br>
-
                         </td>
                     </tr>
                     <tr>
