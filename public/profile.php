@@ -25,16 +25,19 @@ if(isset($_POST['valid_signup']))
             $query = "UPDATE member SET firstname='$firstname_form', lastname='$lastname_form', password='$pwd_signup_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
-            $model->config($email_form, $lastname_form, $firstname_form, $pwd_signup_form);
+            //$model->config($email_form, $lastname_form, $firstname_form, $pwd_signup_form);
         }
    else
         {
-            /*$query = "UPDATE member SET firstname='$firstname_form',lastname='$lastname_form' WHERE email='$email_form';";
+            $firstname_form = $_SESSION['firstname'];
+            $lastname_form = $_SESSION['lastname'];
+            $pwd_signup_form = $_SESSION['pwd'];
+            $query = "UPDATE member SET firstname='$firstname_form',lastname='$lastname_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
-            $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);*/
-            //header("Location:accueil.php");
-            die("Not all the fields are filled !");
+           /* $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);
+            header("Location:accueil.php");
+            $model->config($email_form, $_SESSION['lastname'], $_SESSION['firstname'], $_SESSION['pwd']);*/
         }
 }
 ?>
@@ -165,7 +168,7 @@ if(isset($_POST['valid_signup']))
                             </div>
                             <div class="div_input_form">
                                 Votre mot de passe :<br />
-                                <input type="password" name="pwd_signup" id="pwd_signup" maxlength="20" class="input_form"/>
+                                <input type="password" name="pwd_signup" id="pwd_signup" maxlength="20" class="input_form" value=<?= $_SESSION['pwd']?>  />
                             </div>
                             <div class="div_input_form">
                                 <!--<input type="submit" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick="envoyer();"/>-->
