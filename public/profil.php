@@ -86,7 +86,9 @@ if(isset($_POST['valid_mdp']))
 <div id="message">
     Tous les champs sont obligatoires
 </div>
-
+<form action="accueil.php">
+    <button type="submit" >Retour Accueil</button><br><br>
+</form>
 <div class="connexion">
     <h1>Profil utilisateur</h1>
 
