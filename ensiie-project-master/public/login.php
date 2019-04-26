@@ -1,4 +1,7 @@
-
+<?php
+    include("ini_session.php");
+    require_once ('config.php');
+?>
 
 <html>
 <head>
@@ -15,11 +18,11 @@
     		<p>
     			<br/><br/>
     			<label>Username :</label>
-    			<input type="text" name="user" />
+    			<input type="text" name="username" />
         	</p>
         	<p>
         		<label>Password :</label>
-        		<input type="password" name="pass" />
+        		<input type="password" name="password" />
         	</p>
         	<p>
         		<input type="submit" id="btn" value="Login" />

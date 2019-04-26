@@ -11,12 +11,37 @@ class User
     /**
      * @var string
      */
-    private $firstname;
+    private $prenom;
 
     /**
      * @var string
      */
-    private $lastname;
+    private $nom;
+
+   /**
+     * @var string
+     */
+    private $email;
+
+       /**
+     * @var string
+     */
+    private $password;
+
+   /**
+     * @var int
+     */
+    private $tel;
+
+   /**
+     * @var char
+     */
+    private $genre;
+
+   /**
+     * @var string
+     */
+    private $sport;
 
     /**
      * @var \DateTimeInterface
@@ -44,36 +69,36 @@ class User
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getPrenom()
     {
-        return $this->firstname;
+        return $this->prenom;
     }
 
     /**
-     * @param string $firstname
+     * @param string $prenom
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setPrenom($prenom)
     {
-        $this->firstname = $firstname;
+        $this->prenom = $prenom;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLastname()
+    public function getNom()
     {
-        return $this->lastname;
+        return $this->nom;
     }
 
     /**
-     * @param string $lastname
+     * @param string $nom
      * @return User
      */
-    public function setLastname($lastname)
+    public function setNom($nom)
     {
-        $this->lastname = $lastname;
+        $this->nom = $nom;
         return $this;
     }
 
@@ -92,6 +117,97 @@ class User
     public function setBirthday(\DateTimeInterface $birthday)
     {
         $this->birthday = $birthday;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+        /**
+     * @return string
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * @param int $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * @param char $genre
+     * @return User
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * @param string $sport
+     * @return User
+     */
+    public function setSport($sport)
+    {
+        $this->sport = $sport;
         return $this;
     }
 

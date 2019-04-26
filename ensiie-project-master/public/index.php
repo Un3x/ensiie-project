@@ -1,4 +1,6 @@
-
+<?php
+    include("ini_session.php");
+?>
 
 <html>
 <head>
