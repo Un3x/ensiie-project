@@ -118,10 +118,12 @@ if(isset($_POST['valid_del_email']))
         <span id="conn"> Taper l'email de l'utilisateur à supprimer</span><br/><br>
         Utilisateur à supprimer :<br />
         <input type="text" name="del_email" id="del_email" maxlength="38" class="input_form"/><br>
-        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button>
+        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button><br><br>
     </form>
 </div>
-
+<form action="accueil.php">
+    <button type="submit" >Retour Accueil</button>
+</form>
 <?php $content = ob_get_clean();
 
 require('templateScript.php'); ?>

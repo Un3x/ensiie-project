@@ -113,9 +113,14 @@ if(isset($_POST['valid_mdp']))
         Votre nouveau mot de passe:<br />
         <input type="password" name="pwd_new" id="pwd_new" maxlength="20" class="input_form"/><br><br>
 
-        <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
+        <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button><br><br>
     </form>
 </div>
+
+
+<form action="accueil.php">
+    <button type="submit" >Retour Accueil</button>
+</form>
 
 <?php $content = ob_get_clean();
 
