@@ -12,20 +12,26 @@ $row = $q->fetch();
 $firstname_disp=$row['firstname'];
 $lastname_disp=$row['lastname'];*/
 
+
 if(isset($_POST['valid_signup']))
 {
     $email_form = $_SESSION['email'];
     $firstname_form = $_POST['firstname'];
     $lastname_form = $_POST['lastname'];
-    $pwd_signup_form = $_POST['pwd_signup'];
 
-
-   if(isset($_POST["pwd_signup"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]))
+   if($_POST["firstname"]!="" && $_POST["lastname"]!="")
         {
-            $query = "UPDATE member SET firstname='$firstname_form', lastname='$lastname_form', password='$pwd_signup_form' WHERE email='$email_form';";
+            $query = "UPDATE member SET firstname='$firstname_form', lastname='$lastname_form' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
-            $model->config($email_form, $lastname_form, $firstname_form, $pwd_signup_form);
+
+            $requete = "SELECT firstname, lastname, password FROM member WHERE email='$email_form'";
+            $q = $connection->query($requete);
+            $row = $q->fetch();
+            $password=$row['password'];
+            $firstname_form=$row['firstname'];
+            $lastname_form=$row['lastname'];
+            $model->config($email_form, $lastname_form, $firstname_form, $password);
         }
    else
         {
@@ -34,8 +40,32 @@ if(isset($_POST['valid_signup']))
             $result->execute();
             $model->config($email_form, $lastname_form, $firstname_form, $_SESSION['pwd']);*/
             //header("Location:accueil.php");
-            die("Not all the fields are filled !");
+            //die("Not all the fields are filled !");
         }
+}
+
+if(isset($_POST['valid_mdp']))
+{
+    $email_form = $_SESSION['email'];
+    $pwd_old = $_POST['pwd_old'];
+    $pwd_new = $_POST['pwd_new'];
+
+    if ($_POST["pwd_old"]!="" && $_POST["pwd_new"]!=""){
+        $requete = "SELECT firstname, lastname, password FROM member WHERE email='$email_form'";
+        $q = $connection->query($requete);
+        $row = $q->fetch();
+        $password=$row['password'];
+        $firstname_form=$row['firstname'];
+        $lastname_form=$row['lastname'];
+
+        if ($pwd_old == $password) {
+            $query = "UPDATE member SET password='$pwd_new' WHERE email='$email_form';";
+            $result=$connection->prepare($query);
+            $result->execute();
+            $model->config($email_form, $lastname_form, $firstname_form, $pwd_new);
+        }
+    }
+    //else { die("Not all the fields are filled !"); }
 }
 ?>
 <!DOCTYPE html>
@@ -138,7 +168,7 @@ if(isset($_POST['valid_signup']))
     </script>
 </head>
 <body>
-        <div class="titre_page"><h1>Formulaire d'inscription</h1></div>
+        <div class="titre_page"><!--<h1>Formulaire d'inscription</h1>--></div>
         <div class="div_int_page">
             <div class="div_saut_ligne">
             </div>
@@ -156,7 +186,7 @@ if(isset($_POST['valid_signup']))
                         <div id="message">
                             Tous les champs sont obligatoires
                         </div>
-                        <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+                        <form id="signup" name="signup" action="" method="POST" enctype="multipart/form-data">
                             <div class="div_input_form">
                                 <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $_SESSION['firstname']?>  />
                             </div>
@@ -164,12 +194,22 @@ if(isset($_POST['valid_signup']))
                                 <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $_SESSION['lastname']?>  />
                             </div>
                             <div class="div_input_form">
-                                Votre mot de passe :<br />
-                                <input type="password" name="pwd_signup" id="pwd_signup" maxlength="20" class="input_form"/>
-                            </div>
-                            <div class="div_input_form">
                                 <!--<input type="submit" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick="envoyer();"/>-->
                                 <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyer()">Valider</button>
+                            </div>
+
+
+                            <div class="div_input_form">
+                                Remplir les champs ci-dessous pour changer le mot de passe.<br /><br />
+                                Votre mot de passe actuel:<br />
+                                <input type="password" name="pwd_old" id="pwd_old" maxlength="20" class="input_form"/>
+                            </div>
+                            <div class="div_input_form">
+                                Votre nouveau mot de passe:<br />
+                                <input type="password" name="pwd_new" id="pwd_new" maxlength="20" class="input_form"/>
+                            </div>
+                            <div class="div_input_form">
+                                <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form" onclick="envoyerMdp()">Valider</button>
                             </div>
                         </form>
                     </div>
