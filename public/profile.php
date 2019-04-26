@@ -59,6 +59,7 @@ if(isset($_POST['valid_mdp']))
         $lastname_form=$row['lastname'];
 
         if ($pwd_old == $password) {
+            echo "jkjbkjb";
             $query = "UPDATE member SET password='$pwd_new' WHERE email='$email_form';";
             $result=$connection->prepare($query);
             $result->execute();
@@ -75,6 +76,26 @@ if(isset($_POST['valid_mdp']))
     <title>Profil</title>
     <link rel="stylesheet" type="text/css" href="css/profile.css"/>
     <script language="javascript" type="text/javascript">
+
+        function envoyerForm() {
+            if ((document.getElementById("lastname").value === '') || (document.getElementById("firstname").value === '')){
+                document.getElementById("firstname").style.border='#CC3300 2px solid';
+                document.getElementById("lastname").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = "Le nom ou le prénom n'est pas indiqués";
+            }
+            else {
+                document.getElementById('message').innerText = 'Envoi serveur';
+
+            }
+        }
+
+        function envoyerMdp() {
+            if ((document.getElementById('pwd_old').value ==='' ) || (document.getElementById('pwd_new').value ==='' )){
+                document.getElementById("pwd_old").style.border='#CC3300 2px solid';
+                document.getElementById("pwd_new").style.border='#CC3300 2px solid';
+                document.getElementById('message').innerText = "Le nouveau ou l'ancien n'est pas indiqués";
+            }
+        }
 
         function envoyer()
         {
@@ -186,7 +207,7 @@ if(isset($_POST['valid_mdp']))
                         <div id="message">
                             Tous les champs sont obligatoires
                         </div>
-                        <form id="signup" name="signup" action="" method="POST" enctype="multipart/form-data">
+                        <form>
                             <div class="div_input_form">
                                 <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $_SESSION['firstname']?>  />
                             </div>
@@ -195,10 +216,10 @@ if(isset($_POST['valid_mdp']))
                             </div>
                             <div class="div_input_form">
                                 <!--<input type="submit" name="valid_signup" id="valid_signup" class="input_form" value="Valider" onclick="envoyer();"/>-->
-                                <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyer()">Valider</button>
+                                <button type="submit" name="valid_signup" id="valid_signup" class="input_form" onclick="envoyerForm()">Valider</button>
                             </div>
-
-
+                        </form>
+                        <form>
                             <div class="div_input_form">
                                 Remplir les champs ci-dessous pour changer le mot de passe.<br /><br />
                                 Votre mot de passe actuel:<br />

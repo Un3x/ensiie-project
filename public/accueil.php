@@ -36,7 +36,7 @@ foreach ($members as $member) {
         <form role="form" method="POST" enctype="multipart/form-data">
             <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
         </form>
-        <form action="profile.php" method="POST" id="profile_btn">
+        <form action="profil.php" method="POST" id="profile_btn">
             <input type="submit" name="Profile" value="Profil">
         </form>
 
