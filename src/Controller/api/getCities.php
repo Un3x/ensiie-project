@@ -18,7 +18,7 @@ if(isset($_GET['n']) && isset($_GET['name'])){
 
     $cities = $CityManager->getCityAutocompl($_GET['name'], $_GET['n']);
 
-    echo '{"status" : "succes", "data" : '.json_encode($cities).'}';
+    echo '{"status" : "success", "data" : '.json_encode($cities).'}';
 }
 else{
     echo '{"status" : "fail"}';

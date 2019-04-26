@@ -5,6 +5,10 @@ function searchCourse(departureId, arrivalId, dateId, timeId, resultId){
     var dateCourse = document.getElementById(dateId).value;
     var timeCourse = document.getElementById(timeId).value;
 
+    if(!departureCourse || !arrivalCourse || !dateCourse || !timeCourse){ 
+        return;
+    }
+
     var xhttp;
     xhttp = new XMLHttpRequest();
 
@@ -15,7 +19,7 @@ function searchCourse(departureId, arrivalId, dateId, timeId, resultId){
 
             var res = JSON.parse(this.responseText);
 
-            if (res["status"]=="succes"){
+            if (res["status"]=="success"){
                 for (var ligne of res["data"]){
                     resDiv.innerHTML += "<div>nom : "+ligne['carrierName'] + "<br/>";
                     resDiv.innerHTML += "prix : "+ligne['price'] + " €<br/>";

@@ -3,7 +3,7 @@
 	require '../vendor/autoload.php';
 	require '../src/model/course/CourseManager.php';
 
-	//postgres
+	//GETgres
 	$dbName = getenv('DB_NAME');
 	$dbUser = getenv('DB_USER');
 	$dbPassword = getenv('DB_PASSWORD');
@@ -15,18 +15,31 @@
 	$courses = $CourseManager->searchCourses();
 	*/
 
-	$date=$_GET['date'];
-	$name="aa";
-	$price=20;
-	$departure=$_GET['departure'];
-	$departureTime="15-48";
-	$arrival=$_GET['arrival'];
-	$arrivalTime="17-23";
+	$course = ['carrierId' => $_GET['carrierId'], 'date' => $_GET['date'], 'price' => 20, 'departureId' => 2373465, 'departureTime' => "15-48", 'arrivalId' => 686326, 'arrivalTime' => "17-23", 'idCourse' => 63958462529];
+	$carrier = ['name' => "aa"];
+	$departure = ['cityName' => $_GET['departure'], 'latitude' => 49.420318, 'longitude' => 8.687872];
+	$arrival = ['cityName' => $_GET['arrival'], 'latitude' => 49.41461, 'longitude' => 8.681495];
 
-	$key = "5b3ce3597851110001cf6248c6e87f2691cf4b8aad0d91e3fa3f3de1";
-	$departureLat = 49.41461;
-	$departureLong = 8.681495;
-	$arrivalLat = 49.420318;
-	$arrivalLong = 8.687872;
+	if($course && $carrier && $departure && $arrival){
 
-	require('../src/View/course/infoCourseView.php');
+		$date=$course['date'];
+		$name=$carrier['name'];
+		$carrierId=$course['carrierId'];
+		$price=$course['price'];
+		$departureName=$departure['cityName'];
+		$departureTime=$course['departureTime'];
+		$arrivalName=$arrival['cityName'];
+		$arrivalTime=$course['arrivalTime'];
+
+		$key = "5b3ce3597851110001cf6248c6e87f2691cf4b8aad0d91e3fa3f3de1";
+		$departureLat = $departure['latitude'];
+		$departureLong = $departure['longitude'];
+		$arrivalLat = $arrival['latitude'];
+		$arrivalLong = $arrival['longitude'];
+
+		require('../src/View/course/infoCourseView.php');
+	}
+	else{
+		$content = "trajet non trouvé";
+		require('../src/View/template.php');
+	}

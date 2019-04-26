@@ -6,18 +6,18 @@
 	date : <?=$date ?> <br/> 
 	nom : <?=$name ?> <br/>
 	prix : <?=$price ?> €<br/>
-	lieu de départ : <?=$departure ?> <br/>
+	lieu de départ : <?=$departureName ?> <br/>
 	heure de départ : <?=$departureTime ?> <br/>
-	lieu d'arrivée : <?=$arrival ?> <br/>
+	lieu d'arrivée : <?=$arrivalName ?> <br/>
 	heure d'arrivée : <?=$arrivalTime ?> <br/>
 </div>
 
 <div id='mapId' style='width: 600px; height: 400px;'></div>
 
 <form action="index.php?action=payment" method="POST">
-	<input type=hidden name=nom value=<?=$name?> />
-	<input type=hidden name=departure value=<?=$departure?> />
-	<input type=hidden name=arrival value=<?=$arrival?> />
+	<input type=hidden name=carrierId value=<?=$carrierId?> />
+	<input type=hidden name=departure value=<?=$departureName?> />
+	<input type=hidden name=arrival value=<?=$arrivalName?> />
 	<input type=hidden name=date value=<?=$date?> />
 	<input type=hidden name=departureTime value=<?=$departureTime?> />
 	<input type=submit id=search value=Réserver />

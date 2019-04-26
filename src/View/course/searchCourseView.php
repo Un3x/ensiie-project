@@ -2,25 +2,27 @@
 
 <?php ob_start(); ?>
 
+
 ville de départ :
-<input type=text id=departure oninput="setTimeout(suggestCity, 150, this, this.value, 'departureSuggestCity')" list="departureSuggestCity" autocomplete="off" value="<?=$departure?>" />
+<input type=text id=departure oninput="setTimeout(suggestCity, 150, this, this.value, 'departureSuggestCity')" list="departureSuggestCity" autocomplete="off" value="<?=$departure?>" required />
 <datalist id="departureSuggestCity"></datalist>
 <br/>
 
 ville d'arrivée :
-<input type=text id=arrival oninput="setTimeout(suggestCity, 150, this, this.value, 'arrivalSuggestCity')" list="arrivalSuggestCity" autocomplete="off" value="<?=$arrival?>" />
+<input type=text id=arrival oninput="setTimeout(suggestCity, 150, this, this.value, 'arrivalSuggestCity')" list="arrivalSuggestCity" autocomplete="off" value="<?=$arrival?>" required />
 <datalist id="arrivalSuggestCity"></datalist>
 <br/>
 
 date :
-<input type=date id=date min= <?=date('Y-m-d')?> value="<?=$date?>" />
+<input type=date id=date min= <?=date('Y-m-d')?> value="<?=$date?>" required />
 <br/>
 
 heure :
-<input type=time id=time value="<?=$time?>" />
+<input type=time id=time value="<?=$time?>" required />
 <br/>
 
 <input type=button id=search value=Rechercher onclick="searchCourse('departure', 'arrival', 'date', 'time', 'resDiv')" />
+
 
 <div id=resDiv></div>    
 

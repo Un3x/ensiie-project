@@ -17,7 +17,7 @@ function suggestCity(element, value, datalistId){
 
             var res = JSON.parse(this.responseText);
 
-            if (res["status"]=="succes"){
+            if (res["status"]=="success"){
                 for (var ligne of res["data"]){
                     datalist.innerHTML += "<option>"+ligne+"</option>";
                 }

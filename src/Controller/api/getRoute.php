@@ -20,7 +20,7 @@ if(isset($_GET['departureLat']) && isset($_GET['departureLong']) && isset($_GET[
     }
 
 
-    echo '{"status" : "succes", "data" : '.json_encode($lCoord).'}';
+    echo '{"status" : "success", "data" : '.json_encode($lCoord).'}';
 
 }
 else{
