@@ -10,11 +10,11 @@ require('../src/model.php');
 include('../src/Member/Member.php');
 include('../src/Member/MemberRepository.php');
 
-$firstname_tmp=$_SESSION['firstname'];
-$lastname_tmp=$_SESSION['lastname'];
-
 $model = new Model();
 $connection = $model->dbConnect();
+
+$firstname_tmp=$_SESSION['firstname'];
+$lastname_tmp=$_SESSION['lastname'];
 
 $memberRepository = new MemberRepository($connection);
 $members = $memberRepository->fetchAll();

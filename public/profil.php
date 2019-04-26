@@ -79,6 +79,16 @@ if(isset($_POST['valid_mdp']))
         }
     }
 }
+
+if(isset($_POST['del_acc']))
+{
+    $del_account = $_SESSION['email'];
+    $query = "DELETE FROM member WHERE email='$del_account'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    session_destroy();
+    header("Location:loginView.php");
+}
 ?>
 
 
@@ -99,7 +109,7 @@ if(isset($_POST['valid_mdp']))
         Nom:
         <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $_SESSION['lastname']?>  /><br><br>
 
-        <button type="submit" name="valid_signup" id="valid_signup" class="input_form">Valider</button><br><br>
+        <button type="submit" name="valid_signup" id="valid_signup" class="input_form">Modifier</button><br><br>
     </form>
 
     <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
@@ -113,7 +123,10 @@ if(isset($_POST['valid_mdp']))
         Votre nouveau mot de passe:<br />
         <input type="password" name="pwd_new" id="pwd_new" maxlength="20" class="input_form"/><br><br>
 
-        <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
+        <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Modifier</button>
+    </form>
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+        <button type="submit" name="del_acc" id="del_acc" class="input_form">Supprimer mon compte</button>
     </form>
 </div>
 
