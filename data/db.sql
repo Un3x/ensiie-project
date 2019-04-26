@@ -9,6 +9,7 @@ CREATE TABLE "member" (
     banned boolean not null default false
 );
 INSERT INTO "member"(firstname, lastname, email, password, admin, banned) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar', false, false);
+INSERT INTO "member"(firstname, lastname, email, password, admin, banned) VALUES ('test', 'test', 'test.test@ensiie.fr', 'testtest', true, false);
 
 create table "chat" (
   id SERIAL PRIMARY KEY,
