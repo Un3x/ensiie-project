@@ -34,7 +34,7 @@ function genereIdUser() {
 
 
 
-function verifPseudo($pseudo) {
+function verifPseudo($pseudo) {//returne true si le pseudo n'existe pas et false sinon
     $dbName = getenv('DB_NAME');
     $dbUser = getenv('DB_USER');
     $dbPassword = getenv('DB_PASSWORD');

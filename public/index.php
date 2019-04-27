@@ -73,27 +73,16 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </div>
 
     <div class="container">
-        <a href="inscription.php">TMPinscription</a>
-        <a href="ajout_livre.php">TMPajout_livre</a>
-        <a href="editer.php">TMPediter</a>
-        <a href="emprunt.php">TMPemprunt</a>
-        <a href="rendu.php">TMPrendu</a>
+        <a href="inscription.php">TMPinscription</a><br>
+        <a href="ajout_livre.php">TMPajout_livre</a><br>
+        <a href="editer.php">TMPediter</a><br>
+        <a href="emprunt.php">TMPemprunt</a><br>
+        <a href="rendu.php">TMPrendu</a><br>
+        <a href="bibliotheque.php">TMPbibliotheque</a><br>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
-<!-- test d'ajout d'un membre -->
-<?php
 
-
-$tmp = $userRepository->creeUser('4','ca mahe', 'hesre', 'fwdf', '2004-03-01', '12', '@dfd', '1', '1', True);
-
-
-
-echo $userRepository->updateUser($tmp);
-
-$users = $userRepository->fetchAll();
-
-?>
 <section>
 <p><a href="connexion.php">lien vers la connexion</a></p>
 
@@ -123,7 +112,7 @@ $users = $userRepository->fetchAll();
 </section>
 
 <?php //test d'insertion de livre
-$tmp=$livreRepository->creeLivre('5', 'titre', 'jsb', '1990-02-03', 'toto', 'leseditionsquidechirent', '3', '2001-10-23');
+$tmp=$livreRepository->creeLivre('13', 'titre', 'jsb', '1990-02-03', 'toto', 'leseditionsquidechirent', '3', '2001-10-23');
 echo $livreRepository->insertLivre($tmp);
 
 $livres = $livreRepository->fetchAll();

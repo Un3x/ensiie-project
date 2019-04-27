@@ -31,6 +31,16 @@ class ReservationRepository
         return $reservations;
     }
 
+
+    public function okReservation($id_livre) {//retourne true si le livre peut être (réservé pas déjà réservé) et false sinon
+        $rows = $this->connection->query("SELECT * FROM \"Reservation\" WHERE id_livre='$id_livre';")->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($rows as $row) {
+            return false;
+        }
+
+        return true;
+    }
+
 //TODO update
 
     public function creeReservation($id_livre, $id_user) {
@@ -47,7 +57,7 @@ class ReservationRepository
         $id_user=$reservation->getIdUser();
         $id_livre=$reservation->getIdLivre();
 
-        $query="INSERT INTO \"Reservation\" VALUES ('$id_livre', $id_user');";
+        $query="INSERT INTO \"Reservation\" VALUES ('$id_livre', '$id_user');";
 
 
         $this->connection->query("$query");

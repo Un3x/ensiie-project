@@ -60,7 +60,7 @@ class UserRepository
 
     }
 
-    public function fetchPseudo($pseudo_user) {
+    public function fetchPseudo($pseudo_user) {//retourne l'utilisateur dont le pseudo est $pseudo_user /!\le pseudo doit exister dans la base
         $rows = $this->connection->query("SELECT * FROM \"User\" WHERE pseudo='$pseudo_user'")->fetchAll(\PDO::FETCH_OBJ);
         foreach ($rows as $row) {
             $user = new User();

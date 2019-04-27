@@ -18,12 +18,12 @@ $users = $userRepository->fetchAll();
     <link rel="stylesheet" href=".css">
 </head>
 <body>
-    <h1> Reservation de livre</h1>
-    <p>Attention une réservation n'équivaut pas à un emprunt</p>
+    <h2>Review</h2>
     <nav>
          <!-- TODO recopier le nav-->
     </nav>
-    <h2>Réservation</h2>
+    <div class="container">
+    <h2>liste des review</h2>
     <form>
          <!--Un seul champ nécessaire : complétion automatique des autres-->
          <!--TODO proposition de complétion en fonction de ce l\'utilisateur a emprunté-->
@@ -39,5 +39,6 @@ $users = $userRepository->fetchAll();
          <input type="hidden" name="Date" />
          <input type="submit" value="Poster" name="sub" />
     </form>
+</div>
     <!--TODO mettre à jour "Review" -->
 </body>

@@ -56,7 +56,7 @@ class LivreRepository
         return $livre;
     }
 
-    public function fetchByUser($id_user) {
+    public function fetchByUser($id_user) {//retourne les livres empruntés par $id_user
         $rows = $this->connection->query("SELECT * FROM \"Livre\" WHERE emprunteur='$id_user';")->fetchAll(\PDO::FETCH_OBJ);
         $livres = [];
         foreach ($rows as $row) {
@@ -68,6 +68,50 @@ class LivreRepository
             $livre->setImage($row->couverture);
             $livre->setEdition($row->editeur);
             $livre->setEmprunteur($row->emprunteur);
+            $livre->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt));
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
+    }
+
+
+    public function fetchReserved($id_user) {
+        $rows = $this->connection->query("SELECT * FROM \"Livre\" NATURAL JOIN \"Reservation\" WHERE \"Reservation\".id_user = '$id_user';")->fetchAll(\PDO::FETCH_OBJ);
+        $livres = [];
+        foreach ($rows as $row) {
+            $livre = new Livre();
+            $livre->setId($row->id_livre);
+            $livre->setTitre($row->titre);
+            $livre->setAuteur($row->auteur); //TODO ALED
+            $livre->setPublication(new \DateTimeImmutable($row->publication));
+            $livre->setImage($row->couverture);
+            $livre->setEdition($row->editeur);
+            $livre->setEmprunteur($row->emprunteur);
+            $livre->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt));
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
+    }
+
+
+    public function fetchRechercheTitre($titre) {
+        $tmp='%'."$titre".'%';
+        $rows = $this->connection->query("SELECT * FROM \"Livre\" WHERE titre LIKE '$tmp';")->fetchAll(\PDO::FETCH_OBJ);
+        $livres = [];
+        foreach ($rows as $row) {
+            $livre = new Livre();
+            $livre->setId($row->id_livre);
+            $livre->setTitre($row->titre);
+            $livre->setAuteur($row->auteur); //TODO ALED
+            $livre->setPublication(new \DateTimeImmutable($row->publication));
+            $livre->setImage($row->couverture);
+            $livre->setEdition($row->editeur);
+            $livre->setEmprunteur($row->emprunteur);
+            $livre->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt));
 
             $livres[] = $livre;
         }

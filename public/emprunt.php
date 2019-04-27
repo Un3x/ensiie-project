@@ -38,7 +38,7 @@ if (isset($_POST['pseudo'])) {
 }
 if (isset($_POST['id_livre'])) {
     $okid= !(verifIdLivre($_POST['id_livre']));
-    if (estreservLivre($_POST['id_livre']) && (areservLivre($_POST['id_livre']) != PseudoToId($_POST['pseudo']))) {
+    if ($okpseudo && estreservLivre($_POST['id_livre']) && (areservLivre($_POST['id_livre']) != PseudoToId($_POST['pseudo']))) {
         $dejareserv=true;
     }
     else {
@@ -130,19 +130,40 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 
 
     <!-- second formulaire déjà prérempli si le premier à été validé-->
-    <h4>Champs de réservation</h4>
-    <form action="emprunt.php" method="POST">
-        Id Livre :<br>
-        <input id="f2idlivre" type="text" name="id_livre" value=<?php if (isset($aunereserv) && $aunereserv) echo livreReserve(PseudoToId($_POST['pseudo']))?>><br>
-        Titre :<br>
-        <input id="f2titre" type="text" name="titre" value=<?php if (isset($aunereserv) && $aunereserv) echo IdToTitre(livreReserve(PseudoToId($_POST['pseudo'])))?>><br>
-        Pseudo emprunteur :<br>
-        <input id="f2pseudo" type="text" name="pseudo" value=<?php if (isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>><br>
-        <input type="button" class="input" onclick="valide_formulaire()" value="Valider">
-        <input id="validerf2" style="display:none" type="submit" name="Emprunter">
+    <?php if (isset($okpseudo) && $okpseudo) : ?>
+    <h4>Livres réservés par cet utilisateur :</h4>
+    <?php 
+    $livresreserved = $livreRepository->fetchReserved(PseudoToId($_POST['pseudo']));
+    ?>
+    <table class="table table-bordered table-hover table-striped">
+    <thead style="font-weight: bold">
+    <td>#</td>
+    <td>titre</td>
+    <td>emprunteur</td>
+    <td>emprunter</td>
+    </thead>
+<?php 
+    foreach ($livresreserved as $livre) : ?>
+    <tr>
+    <td><?php echo $livre->getId() ?></td>
+    <td><?php echo $livre->getTitre() ?></td>
+    <td><?php if ($livre->getEmprunteur() !='') echo IdToPseudo($livre->getEmprunteur()) ?></td>
+    <td>
+
+        <form action="emprunt.php" method="POST">
+        <input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId() ?>>
+        <input style="display:none" type="text" name="titre" value=<?php echo $livre->getTitre() ?>>
+        Pseudo :<input type="text" name="pseudo" value=<?php if (isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>>
+        <input type="submit" name="Valider" value="Valider">
     </form>
 
+
+    </tr>
+<?php endforeach; ?>
+    </table>
+
     <p id="f2error" style="display:none">Veuillez remplir correctement tous les champs</p>
+    <?php endif; ?>
 
     <?php
     if (isset($okid) && !($okid)) {
