@@ -8,6 +8,10 @@
 require '../src/Article/Article.php';
 require '../src/Article/ArticleRepository.php';
 require '../src/Membre/Membre.php';
+require( "../inc/inc.default.php" );
+require( "../inc/inc.nav.php" );
+entete( "Accueil" );
+navAccueil();
 
 if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
     header("location: connexion.php");
@@ -48,3 +52,7 @@ $articles = $articleRepository->fetchWithoutTexte();
 <form action="admin.php"><input type="submit" class="moins" value="Revenir à l'espace d'administration"/></form>
 
 </body>
+
+<?php
+	pied();
+?>

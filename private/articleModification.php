@@ -74,7 +74,6 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
         	<label>Auteur : </label>
         	<select name="auteur" required>
         		<?php
-        		//if($membre->getId() = $article->getAuteur()->getId()){echo "selected";}
         		foreach ($membres as $membre){
         		    if($membre->getId() == $article->getAuteur()->getId()){ //Selectionne l'auteur de l'article
                         echo '<option value="'.$membre->getId().'" selected>'.$membre->getSurnom().'</option>';

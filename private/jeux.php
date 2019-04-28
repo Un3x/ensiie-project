@@ -7,6 +7,10 @@
 <?php
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
+require( "../inc/inc.default.php" );
+require( "../inc/inc.nav.php" );
+entete( "Accueil" );
+navAccueil();
 
 if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
     header("location: connexion.php");
@@ -42,3 +46,7 @@ $jeux = $jeuRepository->fetchAll();
 <form action="admin.php"><input type="submit" class="moins" value="Revenir à l'espace d'administration"/></form>
 
 </body>
+
+<?php
+	pied();
+?>
