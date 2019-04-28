@@ -2,7 +2,7 @@
 -- ***************************
 -- * Création tables
 -- ***************************
-CREATE TABLE "Utilisateur" (
+CREATE TABLE Utilisateur (
        id SERIAL PRIMARY KEY,
        nom VARCHAR(50) NOT NULL ,
        prenom VARCHAR(50) NOT NULL ,
@@ -13,21 +13,21 @@ CREATE TABLE "Utilisateur" (
        sport VARCHAR(50) NOT NULL );
        
 
-INSERT INTO "Utilisateur"(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'John', 'Doe', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
+INSERT INTO Utilisateur(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'John', 'Doe', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
 
 -- Héritage (Classe Mère)
 
-CREATE TABLE "Jury" ( ) INHERITS ("Utilisateur");
-CREATE TABLE "Organisateur" ( ) INHERITS ("Utilisateur");
-CREATE TABLE "Participant" ( ) INHERITS ("Utilisateur");
+CREATE TABLE Jury ( ) INHERITS (Utilisateur);
+CREATE TABLE Organisateur ( ) INHERITS (Utilisateur);
+CREATE TABLE Participant ( ) INHERITS (Utilisateur);
 
-CREATE TABLE "Sport" (
+CREATE TABLE Sport (
        nom VARCHAR(50) PRIMARY KEY ,
        lieu VARCHAR(50) NOT NULL ,
        equipe VARCHAR(50) ,
        genre CHAR(1) NOT NULL );
 
-CREATE TABLE "Logement" (
+CREATE TABLE Logement (
        adresse VARCHAR(100) NOT NULL,
        numero INTEGER,
        num_lit INTEGER,

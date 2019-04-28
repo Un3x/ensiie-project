@@ -1,6 +1,7 @@
 <?php
     include("ini_session.php");
     require_once ('config.php');
+    if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 ?>
 
 <html>
@@ -18,11 +19,11 @@
     		<p>
     			<br/><br/>
     			<label>Username :</label>
-    			<input type="text" name="username" />
+    			<input type="text" name="login" />
         	</p>
         	<p>
         		<label>Password :</label>
-        		<input type="password" name="password" />
+        		<input type="password" name="pwd" />
         	</p>
         	<p>
         		<input type="submit" id="btn" value="Login" />

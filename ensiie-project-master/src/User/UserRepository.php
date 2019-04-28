@@ -18,7 +18,7 @@ class UserRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "Utilisateur"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM Utilisateur')->fetchAll(\PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
