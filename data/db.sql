@@ -1,33 +1,33 @@
 CREATE TABLE "user" (
-    idUser SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    idUser SERIAL PRIMARY KEY,
     pseudo VARCHAR NOT NULL,
 	firstname VARCHAR NOT NULL ,
     lastname VARCHAR NOT NULL ,
     birthday date,
-    pass_md5 text NOT NULL,
+    mdp VARCHAR NOT NULL,
 );
 
 CREATE TABLE "logement" (
-idLogement SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-idUser SMALLINT UNSIGNED 
-departement SMALLINT UNSIGNED,
+idLogement SERIAL PRIMARY KEY,
+idUser INT UNSIGNED,
+departement INT UNSIGNED,
 ville VARCHAR NOT NULL,
-nb_places_libres SMALLINT,
-prix SMALLINT UNSIGNED,
+nb_places_libres INT,
+prix INT UNSIGNED,
 CONSTRAINT fk_user
 	   FOREIGN KEY (idUser)
 	   REFERENCES user(idUser)
 );
 
 CREATE TABLE "favoris" (
-idUser SMALLINT UNSIGNED
-idLogement SMALLINT UNSIGNED
+idUser INT UNSIGNED,
+idLogement INT UNSIGNED,
 CONSTRAINT fk_user2
 	   FOREIGN KEY (idUser)
-	   REFERENCES user(idUser)
+	   REFERENCES user(idUser),
 CONSTRAINT fk_logement
 	   FOREIGN KEY (idLogement)
-	   REFERENCES logement(idLogement)
+	   REFERENCES logement(idLogement),
 PRIMARY KEY (idUser,idLogement)
 );
 
@@ -50,4 +50,7 @@ INSERT INTO "user"(firstname, lastname, birthday, mdp) VALUES ('Delores', 'Willi
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (1, 91 , 'Evry', 2, 400);
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (2, 91 , 'Evry', 1, 500);
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (4, 13 , 'Marseille', 2, 400);
+INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (34, 13 , 'Marseille', 3, 350);
+
+INSERT INTO "favoris"(idUser, idLogement) VALUES (1,2);
 
