@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-$title = "Accueil";
+$title = "Meetiie - Accueil";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/accueilLayout.css\"/>";
 echo $css_link;
+
 
 include_once('../src/Member/Member.php');
 include_once('../src/Member/MemberRepository.php');
@@ -26,71 +27,45 @@ foreach ($members as $m) {
 }
 ?>
 <?php ob_start(); ?>
-    <div class='corps'>
-        <?php /** @var \Member\Member $member */
 
-        if($member->getAdmin()) {echo "Admin : ";}
-        else{echo "Utilisateur : ";}
-        echo $member->getFirstname() . " ";
-        echo $member->getLastname();
+        <!-- NEW COOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODE -->
 
-        ?>
+    <header>
+        <h1>MEETIIE</h1>
+        <div id="userName">
+            <?php /** @var \Member\Member $member */
 
-        <form action="logout.php" method="POST" id="logout_btn">
-            <input type="submit" name="Logout" value="Logout">
+            if($member->getAdmin()) {echo "Admin : ";}
+            else{echo "Utilisateur : ";}
+            echo $member->getFirstname() . " ";
+            echo $member->getLastname();
+            ?><br></div>
+    </header>
+
+    <nav>
+        <form target="_self" method="POST" style="display:inline-block;">
+            <input type="text" name="chatRoom" id="chatRoom" size="20" placeholder="Nom du salon">
+            <input type="submit" name="createRoom" id="createRoom" value="Créer le salon">
         </form>
-        <form role="form" method="POST" enctype="multipart/form-data">
-            <input type="submit" name="lancer_discu_btn" value="Lancer une discussion">
-        </form>
-        <form action="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>" method="POST" id="profile_btn">
-            <input type="submit" name="Profile" value="Profil">
-        </form>
-        <div class='row'>
-            <div class='column'>
-                <table>
-                    <tr>
-                        <td>
-                            <table>
-                                <caption>Historique</caption>
-                                <tr>
-                                    <td>
-                                        <textarea rows="10%" cols="50%" name="histo">Appeler la fonction php affichant l'historique</textarea>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td rowspan="2">
-                            <table id="chat">
-                                <caption>Chat en cours..</caption>
-                                <tr>
-                                    <td>
-                                        <textarea rows="30%" cols="100%" name="conversation">Appeler la fonction php affichant les messages envoyés</textarea>
-                                    </td>
-                                </tr>
-                            </table>
-                            <form role="form" method="POST" enctype="multipart/form-data">
-                                <input type="text" name="message_envoyé" placeholder="Ecrivez un message" class="message">
-                            </form><br>
-                            <form role="form" method="POST" enctype="multipart/form-data">
-                                <input type="submit" name="quitter_discu_btn" value="Quitter la discussion">
-                            </form><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <caption>Salon en cours</caption>
-                                <tr>
-                                    <td>
-                                        <textarea rows="15" cols="50%" name="salon">Appeler la fonction php affichant les salons</textarea>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+        <div class="top-bar-left" style="display:inline-block;float:right;">
+            <div class="menu">
+                <button type="button">Lancer une discussion</button>
+                <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>
+                <a href="logout.php" ><button type="button">Logout</button></a>
             </div>
         </div>
+    </nav><br>
+
+    <div id="right_col">
+        <div class="chatbox_right"></div>
+        <form name="message" action="">
+            <div class="field_and_button"><input name="usermsg" type="text" id="usermsg" size="100" placeholder="Entrer votre message" />
+                <input name="submitmsg" type="submit"  id="submitmsg" value="Send" /></div>
+        </form>
+    </div>
+    <div id="left_col">
+        <div class="chatbox_left"></div><br>
+        <div class="chatbox_left"></div>
     </div>
 <?php $content = ob_get_clean();
 

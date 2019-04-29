@@ -1,79 +1,74 @@
-.corps
-{
-    text-align: center;
-    background-image: url("Rainbow_blue.jpg");
-    position: fixed;
-    width: 100%;
+@font-face {
+    font-family: myFont;
+    src: url(InterconnectedDemo-Bold.ttf);
+}
+
+html, body {
     height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 10;
+    background-image: url('Rainbow_blue.jpg');
 }
 
-/*.row
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-left: 8px;
+h1 {
+    text-align: center;
+    color: #C70039;
+    /*font-family: "OCR A Std", "monospace";*/
+    font-family: "myFont", "Times New Roman";
+    font-style: italic;
+    font-size: 40px;
 }
 
-.column
-{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}*/
-
-.message
-{
-    width: 96%;
+#userName {
+    text-align: center;
 }
 
-#logout_btn
-{
-    position : absolute;
-    top : 8px;
-    right : 7px;
-    width : auto;
+.chatbox_right {
+    text-align:right;
+    float: right;
+    margin:0 auto;
+    margin-bottom:20px;
+    background:#fff;
+    height:60%;
+    width:98%;
+    border:1px solid #ACD8F0;
+    /*overflow:auto;*/
+    overflow-x: hidden;}
 
+.chatbox_left {
+    text-align:left;
+    float: left;
+    margin:0 auto;
+    margin-bottom:5px;
+    /*padding:10px;*/
+    background:#fff;
+    height:30%;
+    width:88%;
+    border:1px solid #ACD8F0;
+    overflow:auto;
+    overflow-x: hidden;
 }
 
-#lancer_discu
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+#usermsg {
+    width: 89%;
+    font-size: 20px;
+    margin-left: 2%;
+    border:1px solid #ACD8F0;
+    /*padding-left: 22px;*/
+    overflow-x: hidden;
 }
 
-#chat
-{
-    /*width: 100%;
-    margin-top: 2px;
-    margin-right: 14px;
-    align-content: center*/
-    padding-right: 2px;
-    /*position: relative;
-    width: calc(100% - 45px);*/
-    width:100%;
-    position: relative;
-}
+#submitmsg {
+    width: 7%;
+    height: 29px;
+    border-radius: 15%; }
 
-#chat_column
-{
-    width: 100%;
-}
+#left_col {
+    float:right;
+    width:35%;
+    height: 100%;
+    display: inline-block;}
 
-#send_msg_form
-{
-    padding-right: 2px;
-    position: relative;
-}
-
-textarea
-{
-    resize: none;
-}
+#right_col {
+    float:right;
+    width:65%;
+    height: 100%;
+    display: inline-block;}
