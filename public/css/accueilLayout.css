@@ -19,6 +19,8 @@ h1 {
 
 #userName {
     text-align: center;
+    font-weight: bold;
+    font-size: large;
 }
 
 .chatbox_right {
@@ -72,3 +74,10 @@ h1 {
     width:65%;
     height: 100%;
     display: inline-block;}
+
+#exception_msg {
+    padding-top: 8%;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}

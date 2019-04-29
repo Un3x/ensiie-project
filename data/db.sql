@@ -26,6 +26,12 @@ create table "message" (
   message VARCHAR(255) NOT NULL DEFAULT ''
 );
 
+/*create table "salon" (
+    id SERIAL PRIMARY KEY,
+    chatRoomName VARCHAR(30) NOT NULL,
+    member integer references member(id)
+);*/
+
 /*
 CREATE TABLE "user" (
     id SERIAL PRIMARY KEY ,

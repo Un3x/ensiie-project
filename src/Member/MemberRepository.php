@@ -26,7 +26,7 @@ class MemberRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setSearchUser($row->searchUser)
+                ->setSearchUser($row->searchuser)
                 ->setEmail($row->email)
                 ->setPassword($row->password)
                 ->setAdmin($row->admin)
