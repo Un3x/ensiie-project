@@ -8,8 +8,8 @@ CREATE TABLE "member" (
     admin boolean not null default false,
     banned boolean not null default false
 );
-INSERT INTO "member"(firstname, lastname, email, password, admin, banned) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar', false, false);
-INSERT INTO "member"(firstname, lastname, email, password, admin, banned) VALUES ('test', 'test', 'test.test@ensiie.fr', 'testtest', true, false);
+INSERT INTO "member"(firstname, lastname, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+INSERT INTO "member"(firstname, lastname, email, password) VALUES ('test', 'test', 'test.test@ensiie.fr', 'testtest');
 
 create table "chat" (
   id SERIAL PRIMARY KEY,

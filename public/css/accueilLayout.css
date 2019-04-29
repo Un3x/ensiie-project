@@ -17,12 +17,12 @@ h1 {
     font-size: 40px;
 }
 
-#userName {
+#role, #username {
     text-align: center;
 }
 
-.chatbox_right {
-    text-align:right;
+#chatroom {
+    text-align:left;
     float: right;
     margin:0 auto;
     margin-bottom:20px;
