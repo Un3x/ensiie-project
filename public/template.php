@@ -10,4 +10,4 @@
     <body>
         <?= $content ?>
     </body>
-</html>
+</html>,
