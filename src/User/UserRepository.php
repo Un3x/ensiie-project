@@ -38,6 +38,15 @@ class UserRepository
         return $users;
     }
 
+    public function listCat(){
+        $rows = $this->connection->query('SELECT * FROM "categorie"')->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($rows as $row){
+            echo"
+            <a href=$row->nom_cat.php>$row->nom_cat</a>";
+        }
+
+    }
+
 
 }
 ?>
