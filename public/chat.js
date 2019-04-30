@@ -9,7 +9,7 @@ $(function(){
     var feedback = $("#feedback")
 
     //make connection
-    var socket = io.connect(username.val(), 'http://localhost:3000')
+    var socket = io.connect('http://localhost:3000')
 
     //Emit message
     send_message.click(function(){
@@ -20,7 +20,7 @@ $(function(){
     socket.on("new_message", (data) => {
         feedback.html('');
         message.val('');
-        chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+        chatroom.append("<p class='message'>" . data.username + "caca: " + data.message + "</p>")
     })
 
     //Emit a username

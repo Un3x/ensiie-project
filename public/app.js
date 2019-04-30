@@ -23,7 +23,7 @@ const io = require("socket.io")(server)
 
 
 //listen on every connection
-io.on('connection', username, (socket) => {
+io.on('connection', (socket) => {
     console.log('New user connected')
 
     //default username
