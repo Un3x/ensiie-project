@@ -16,9 +16,16 @@
                 <div class="dropdown">
                     <button class="dropbtn">Catégories</button>
                     <div class="dropdown-content">
-                        <a href="cat1.php">Cat_1</a>
-                        <a href="cat2.php">Cat_2</a>
-                        <a href="cat3.php">Cat_3</a>
+                    <?php 
+                    foreach ($cats as $cat) : ?>
+                        <a href="<?php echo $cat->getLinkCat(); ?>"><?php
+                        if ($cat->getNomCat()=="BONS PLANS"){ 
+                            echo "<span class=\"red\">"; 
+                            echo $cat->getNomCat(); 
+                            echo "</span>";
+                        }
+                        else echo $cat->getNomCat() ?></a>
+                    <?php endforeach; ?>
                     </div>
                 </div>
                 <a href="contact.php">Contact</a>
@@ -73,10 +80,7 @@
 
             <div class="row">
                     <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
-                <div class="vl">
-                     <span class="vl-innertext">ou</span>
-                </div>
-  
+                
                 <div class="col">
                 <a href="#" class="fb btn">
                     <i class="fa fa-facebook fa-fw"></i> Login with Facebook

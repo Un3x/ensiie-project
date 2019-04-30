@@ -42,6 +42,7 @@ CREATE TABLE "produits"(
 CREATE TABLE "categorie"(
     id_cat INTEGER,
     nom_cat VARCHAR,
+    link VARCHAR,
     CONSTRAINT key_cat PRIMARY KEY (id_cat)
 );
 
@@ -69,16 +70,16 @@ INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Wil
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azerty');
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678');
 INSERT INTO "photo_profil"(id_photo,adresse) VALUES (0,'~/matthieu.gosset/hugo.png');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(0,'Auto/Moto');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(1,'Immobilier');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(2,'Maison');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(3,'Mode');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES (4,'Multimédia');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(5,'Loisirs');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(6,'Matériel Pro');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(7,'Services');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(8,'Emploi');
-INSERT INTO "categorie"(id_cat,nom_cat) VALUES(9,'BONS PLANS');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(0,'Auto/Moto', 'automoto.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(1,'Immobilier','immobilier.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(2,'Maison','maison.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(3,'Mode','mode.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(4,'Multimédia','multimedia.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(5,'Loisirs','loisirs.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(6,'Matériel Pro','materielpro.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(7,'Services','services.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(8,'Emploi','emploi.php');
+INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(9,'BONS PLANS','bonsplans.php');
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (0,'2019-04-30','matth91000','Trotinette en très bon état','XIAOMI M365',40000);
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (1,'2019-04-30','matth91000','Cours de maths de première à 1ère année de prépa','Cherche prof particulier mathématiques sur Evry',0);
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (2,'2019-04-30','matth91000','Le salon aura lieu le 7 mai prochain. Rémuneration : 200€','Cherche animateur pour salon du jeu vidéo',0);
@@ -94,5 +95,5 @@ COMMANDE POUR RECUPERER LES TITRES DES PRODUITS DE CATEGORIE N
 SELECT title FROM produits JOIN assoc_prd_cat ON id_produit=id_prod JOIN categorie ON categorie.id_cat=assoc_prd_cat.id_cat WHERE categorie.id_cat=N;
 
 COMMANDE POUR RECUPER LES TITRES DES CATEGORIES DU PRODUIT N
-SELECT nom_cat FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE id_produit=N;*/
+SELECT nom_cat, link FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE id_produit=N;*/
 
