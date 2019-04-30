@@ -60,11 +60,13 @@ foreach ($members as $m) {
 </header>
 
 <nav>
-    <form target="_self" method="POST" style="display:inline-block;">
+    <div class="top-bar-right">
+    <form target="_self" method="POST">
         <input type="text" name="chatRoom" id="chatRoom" size="20" placeholder="Nom du salon">
         <input type="submit" name="createRoom" id="createRoom" value="Créer le salon">
     </form>
-    <div class="top-bar-left" style="display:inline-block;float:right;">
+    </div>
+    <div class="top-bar-left">
         <div class="menu">
             <button type="button">Lancer une discussion</button>
             <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>

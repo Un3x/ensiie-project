@@ -116,10 +116,10 @@ if(isset($_POST['valid_deban_email']))
 
 <?php ob_start(); ?>
 <div id="message">
-    Tous les champs sont obligatoires
+    Tous les champs sont obligatoires<br><br>
 </div>
 <form action="accueil.php">
-    <button type="submit" >Retour Accueil</button><br><br>
+    <button type="submit" >Retour Accueil</button>
 </form>
 <div class="connexion">
     <h1>Profil Administrateur</h1>

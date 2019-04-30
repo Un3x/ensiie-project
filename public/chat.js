@@ -13,7 +13,7 @@ $(function(){
 
     //Emit message
     send_message.click(function(){
-        socket.emit('new_message', {message : message.val()})
+        socket.emit("new_message", {message : message.val()})
     })
 
     //Listen on new_message
