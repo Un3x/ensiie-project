@@ -57,7 +57,7 @@ class Review {
      * @param int $num
      * @return User
      */
-    public function setNum($num): int
+    public function setNum($num)
     {
         $this->num = $num;
         return $this;
@@ -84,7 +84,7 @@ class Review {
     /**
      * @return string
      */
-    public function getTexte(): 
+    public function getTexte()
     {
         return $this->texte;
     }

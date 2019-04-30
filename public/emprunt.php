@@ -59,7 +59,7 @@ if (isset($_POST['id_livre'])) {
 //Si tout est ok on réalise l'emprunt
 //retirer de la table réservation si nécessaire
 //update le livre dans sa table
-if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid && !($dejareserv)     && !($dejaemprunte)) {
+if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid && !($dejareserv) && !($dejaemprunte)) {
     $tmpres=$reservationRepository->creeReservation($_POST['id_livre'], PseudoToId($_POST['pseudo']));
     $reservationRepository->deleteReservation($tmpres);
 

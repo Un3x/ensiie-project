@@ -32,7 +32,22 @@ class ReservationRepository
     }
 
 
-    public function okReservation($id_livre) {//retourne true si le livre peut être (réservé pas déjà réservé) et false sinon
+    public function fetchByUser($id_user) {//retourne la liste des réservations d'un utilisateur
+        $rows = $this->connection->query("SELECT * FROM \"Reservation\" WHERE id_user='$id_user';")->fetchAll(\PDO::FETCH_OBJ);
+        $reservations = [];
+        foreach ($rows as $row) {
+            $reservation = new Reservation();
+            $reservation
+                ->setIdLivre($row->id_livre)
+                ->setIdUser($row->id_user);
+            $reservations[] = $reservation;
+        }
+
+        return $reservations;
+    }
+
+
+    public function okReservation($id_livre) {//retourne true si le livre peut être réservé (pas déjà réservé) et false sinon
         $rows = $this->connection->query("SELECT * FROM \"Reservation\" WHERE id_livre='$id_livre';")->fetchAll(\PDO::FETCH_OBJ);
         foreach ($rows as $row) {
             return false;

@@ -23,6 +23,9 @@ INSERT INTO "Historique"(id_livre, id_user, date_emprunt, date_rendu) VALUES('ch
 INSERT INTO "Reservation"(id_livre, id_user) VALUES ('chocapic1', '3');
 
 
+INSERT INTO "Review"(id, num, personne, texte, note) VALUES ('chocapic1', '4', '3', 'ce livre est vraiment trop bien', '5');
+
+
 
 
 

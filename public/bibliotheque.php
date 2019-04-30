@@ -92,7 +92,7 @@ else {
     </table></div><input type="button" onclick="aff_auteurs(<?php echo "$ID";?>)" value="Afficher les auteurs" id=<?php echo "$ID"."butt";?>></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
     <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>
-    <td><form action="review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
+    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
     <?php if ($user_connected) : ?>
     	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input type="submit" name="Réserver" value="Réserver"></form></td>
     <?php endif; ?>

@@ -35,6 +35,24 @@ class ReviewRepository
         return $reviews;
     }
 
+    public function fetchByLivre($id_livre) {//la fonction retourne la liste des review concernant le livre $id_livre
+        $rows = $this->connection->query("SELECT * FROM \"Review\" WHERE id='$id_livre';")->fetchAll(\PDO::FETCH_OBJ);
+        $reviews = [];
+        foreach ($rows as $row) {
+            $review = new Review();
+            $review
+                ->setId($row->id)
+                ->setNum($row->num)
+                ->setPersonne($row->personne)
+                ->setTexte($row->texte)
+                ->setNote($row->note);
+
+            $reviews[] = $review;
+        }
+
+        return $reviews;
+    }
+
 //TODO update
 
     public function creeReview($id, $num, $personne, $texte, $note) {
