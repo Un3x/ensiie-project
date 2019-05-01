@@ -139,6 +139,7 @@ else {
     </table>
     </div>
   </section>
+  <footer>On est vraiment trop style regardez ce quon a fait</footer>
    </body>
 
    <script>
