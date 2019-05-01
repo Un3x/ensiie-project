@@ -30,7 +30,7 @@ if (!(verifAdmin($_SESSION["id_user"]))) {
 if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image']) && isset($_POST['edition']) && isset($_POST['auteur1'])) {
     if (verifTitre($_POST['titre'])) {
         $new_idlivre=genereIdLivre();
-        $tmp=$livreRepository->creeLivre($new_idlivre, $_POST['titre'], $_POST['auteur1'], $_POST['datepub'], $_POST['image'], $_POST['edition'], '', '');
+        $tmp=$livreRepository->creeLivre($new_idlivre, htmlspecialchars($_POST['titre'], $flags = ENT_QUOTES), $_POST['auteur1'], $_POST['datepub'], $_POST['image'], $_POST['edition'], '', '');
         //modifier l'id de l'emprunteur de base non c'est bon je l'ai mis à null dans la fonction d'insertion
 
         $livreRepository->insertLivre($tmp);
@@ -65,51 +65,61 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href=".css">
+    <link rel="stylesheet" href="style.css">
     <title>Page d'ajout de livre</title>
 </head>
-    <body>
-    <div class="container">
-    <h2>Page d'ajout de livre (Réservé aux Admins)</h2>
-    <form action="ajout_livre.php" method="POST">
+<body>
+<section>
+<div class="container">
+<h2>Page d'ajout de livre (Réservé aux Admins)</h2>
+<form id="form_ajout_livre" action="ajout_livre.php" method="POST">
     Titre<br>
-    
-    <input id="titre" type="text" name="titre"/>
-    <a class=nobr id="error_titre" style="display:none" style="white-space: nowrap"  > Erreur </a>
+    <input id="titre" type="text" name="titre" required pattern="[a-zA-Z0-9']*" maxlength="70"/>
+    <a id="error_titre" style="display:none"> Erreur </a>
     <br>Auteur<br>
-    <input id="auteur" type="text" name="auteur1"/><br>
-
-    <a id="1" style="display:none">Auteur 2<br>
+    <input id="auteur" type="text" name="auteur1" required pattern="[a-zA-Z0-9']*" maxlength="50"/>
+    <a id="error_auteur" style="display:none"> Erreur </a>
+    
+    <br>
+    <a id="1" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 2<br>
     <input type="text" name="auteur2"/><br></a>
 
-    <a id="2" style="display:none">Auteur 3<br>
+    <a id="2" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 3<br>
     <input type="text" name="auteur3"/><br></a>
 
-    <a id="3" style="display:none">Auteur 4<br>
+    <a id="3" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 4<br>
     <input type="text" name="auteur4"/><br></a>
 
-    <a id="4" style="display:none">Auteur 5<br>
+    <a id="4" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 5<br>
     <input type="text" name="auteur5"/><br></a>
 
-    <a id="5" style="display:none">Auteur 6<br>
+    <a id="5" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 6<br>
     <input type="text" name="auteur6"/><br></a>
 
-    <input id="butt" type="button" class="input" onclick="ajoute_aut()" value="+"><br>
-    Date de publication<br>
-    <input id="date" type="date" name="datepub"/><br>
-    Image de couverture<br>
-    <input id="img" type="text" name="image"/><br>
-    Edition<br>
-    <input id="edition" type="text" name="edition"/><br>
-    <input type="button" class="input" onclick="test_valid()" value="Valider">
-    <input id="valider" style="display:none" type="submit" class="Input" value="Valider"/>
+    <input id="butt" type="button" class="input" onclick="ajoute_aut()" value="+">
+    <br>Date de publication<br>
+    <input id="date" type="date" name="datepub" required/>
+    <a id="error_date" style="display:none"> Erreur </a>
+    <br>Image de couverture<br>
+    <input id="img" type="text" name="image"/ required maxlength="200">
+    <a id="error_img" style="display:none"> Erreur </a>
+    <br>Edition<br>
+    <input id="edition" type="text" name="edition" required pattern="[a-zA-Z0-9']*" maxlength="50"/>
+    <a id="error_edition" style="display:none"> Erreur </a>
+    <br>
+    <input type="submit" value="Valider"/>
 </form>
 <p id="incomplet" style="display:none">Veuillez remplir correctement tous les champs</p>
+</section>
 </body>
 </html>
     
-<script>
+<script type="text/javascript">
     var nb_click=1;
+
+    function afficher(frm){
+        alert("Vous avez tapé : " + frm.elements['auteur'].value)
+    }
 
     function ajoute_aut() {
         document.getElementById(nb_click.toString()).style.display="block";
@@ -119,22 +129,91 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         nb_click=nb_click+1;
     }
 
-    function test_valid() {
-        tmptitre=document.getElementById("titre").value;
-        tmpauteur=document.getElementById("auteur").value;
-        tmpdate=document.getElementById("date").value;
-        tmpimg=document.getElementById("img").value;
-        tmpedition=document.getElementById("edition").value;
-        if (tmptitre=='' || tmpauteur=='' || tmpdate=='' || tmpimg=='' || tmpedition=='') {
-            document.getElementById("incomplet").style.display="block";
-            document.getElementById("error_titre").style.display="block";
-            document.getElementById("error_titre").innerHTML="Choucroute";
+    function form_valid() {
+        valide = true;
+        alert("controle en cours");
+        regex = /[^a-zA-Z0-9]/
+        form = document.forms['form_ajout_livre']; 
+        titre = form.elements['titre'].value;
+        auteur = form.elements['auteur'].value;
+        date = form.elements['date'].value;
+        img = form.elements['img'].value;
+        edition = form.elements['edition'].value;
+
+        if (titre=='') {
+            valide = false;
+            document.getElementById("error_titre").style.display="inline";
+            document.getElementById("error_titre").innerHTML="Le champ doit être non vide.";
+        } 
+        else if (titre.length > 70) {
+            valide = false;
+            document.getElementById("error_titre").style.display="inline";
+            document.getElementById("error_titre").innerHTML="La saisie ne doit excéder 70 caractères.";
+        } 
+        else if (regex.test(titre)) {
+            valide = false;
+            document.getElementById("error_titre").style.display="inline";
+            document.getElementById("error_titre").innerHTML="La saisie comporte des caractères spéciaux.";
+            alert("Niktarace");
+       }
+        if (auteur=="") {
+            valide = false;
+            alert("Niktarace");
         }
-        else {
-            document.getElementById("valider").click();
+        if (titre=='' || auteur=='' || date=='' || img=='' || edition=='') {
+            valide = false;
+            document.getElementById("incomplet").style.display="block";           
+            document.getElementById("error_auteur").style.display="inline";
+            document.getElementById("error_date").style.display="inline";
+            document.getElementById("error_img").style.display="inline";
+            document.getElementById("error_edition").style.display="inline";
         }
+        return valide;
     }
 
 </script>
     
-    
+<style>
+
+:invalid { 
+  background-color: #F0DDDD;
+  border-color: #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  box-shadow:0 0 5px rgba(255, 0, 0, .8);
+}
+
+:required {
+  border-color: black;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+}
+
+form {
+  width:300px;
+  margin: 20px auto;
+}
+
+input {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border:1px solid #ccc;
+  font-size:20px;
+  width:300px;
+  min-height:30px;
+  display:block;
+  margin-bottom:15px;
+  margin-top:5px;
+  outline: none;
+
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px;
+}
+</style>

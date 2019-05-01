@@ -19,7 +19,7 @@ CREATE TABLE "Livre" (
     titre VARCHAR(70) ,
     auteur VARCHAR(50) , -- multivalué -> cf. Auteur
     publication date ,
-    couverture VARCHAR(100) , 
+    couverture VARCHAR(200) , 
     editeur VARCHAR(50) ,
     emprunteur int ,
     date_emprunt date ,
