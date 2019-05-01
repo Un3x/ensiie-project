@@ -1,4 +1,3 @@
-Test
 Bon déjà c'est la merde et tout marche pas correctement,
 dites moi si vous trouvez des erreurs pour que je souffre encore plus.
 
