@@ -5,8 +5,6 @@ header{
 	color:white;
 	width:100%;
 	text-align:left;
-	margin:0px;
-	border-radius:10px;
 }
 nav{
 	text-align:center;
@@ -54,7 +52,7 @@ section{
 	font-size:large;
 }
 .grand-titre{
-	border-radius:0px;
+	top-right-border-radius:10px;
 	border-style:solid;
 	border-width:1px;
 	background-image:linear-gradient(rgb(125,240,219),rgb(78,87,199));

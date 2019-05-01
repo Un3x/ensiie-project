@@ -116,7 +116,7 @@ else {
 <?php
     foreach ($livres as $livre) : ?>
     <tr><?php $ID=$livre->getId(); ?>
-    <td><img src=<?php echo $livre->getImage() ?>/></td>
+    <td><img height="160" width="100" src=<?php echo $livre->getImage() ?>/></td>
     <td><?php echo $livre->getTitre() ?></td>
     <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
     <td><?php echo $livre->getEdition() ?></td>
@@ -125,7 +125,7 @@ else {
     	<?php
     	$auteurs = $auteurRepository->fetchByLivre($livre->getId());
     	foreach ($auteurs as $auteur) : ?>
-    		<tr><td><?php echo $auteur->getAuteur(); ?></td></tr>
+    		<tr><td style="height:50px;border:none"><?php echo $auteur->getAuteur(); ?></td></tr>
     	<?php endforeach; ?>
     </table></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
