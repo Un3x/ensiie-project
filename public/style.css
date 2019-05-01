@@ -1,17 +1,12 @@
-h1{
-	text-align:center;
-	background-color:blue;
-	font-size:90px;
-}
 header{
 	text-align:center;
 }
 .top{
-	background-color:blue;
 	color:white;
 	width:100%;
 	text-align:left;
 	margin:0px;
+	border-radius:10px;
 }
 nav{
 	text-align:center;
@@ -68,7 +63,35 @@ section{
 footer{
 	color:white;
 }
-th, td {
+td {
   border-bottom: 1px solid #ddd;
   color:black;
+  height:100px;
+}
+.bande1{
+	color:white;
+	height:30px;
+	border-radius:10px;
+	border-color:black;
+}
+.bande2{
+	color:white;
+	height:30px;
+	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	border-radius:10px;
+	border-color:black;
+}
+table{
+	border-collapse:collapse;
+	width:100%;
+}
+th{
+	background-color:red;
+}
+.butval{
+	color:white;
+	height:30px;
+	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	border-radius:10px;
+	border-color:black;
 }

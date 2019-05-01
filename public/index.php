@@ -54,8 +54,8 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         if ($user_connected) {
             echo "    <TABLE >
       <TR>
-        <TD align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD align=\"right\"> Deconection</TD>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
+        <TD class=\"bande2\" align=\"right\"> Deconnection</TD>
       </TR>
     </TABLE>";
 

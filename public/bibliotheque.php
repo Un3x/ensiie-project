@@ -17,7 +17,15 @@ $auteurRepository = new \Auteur\AuteurRepository($connection);
 
 
 $user_connected=isset($_SESSION["id_user"]);
-
+if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
+//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
+    $id_user=$_SESSION["id_user"];
+    $user=$userRepository->fetchId($id_user);
+    $admin=$user->getAdmin();
+    $nom=$user->getNom();
+    $prenom=$user->getPrenom();
+    $pseudo=$user->getPseudo();
+}
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
     $id_user=$_SESSION["id_user"];
 }
@@ -37,6 +45,22 @@ else {
     <title>Bilbiothèque</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
+        <?php
+        if ($user_connected) {
+            echo "    <table>
+      <tr>
+        <td class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</td>
+        <td class=\"bande2\" align=\"right\"> Deconnection</td>
+      </tr>
+    </table>";
+
+            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
+
+        }
+        
+        ?>
+    </div>
 <body>
   <header>
         <img src="./titre.png"/>
@@ -66,7 +90,7 @@ else {
 		<form action="bibliotheque.php" method="POST">
 			Titre :<br>
 			<input id="ftitre" type="text" name="titre"><br>
-			<input type="button" class="input" onclick="valide_ftitre()" value="Valider">
+			<input type="button" class="butval" onclick="valide_ftitre()" value="Valider">
 			<input id="validerftitre" style="display:none" type="submit" name="Valider">
 		</form>
 		<p id="ftitreerror" style="display:none">Veuillez remplir le champ</p>
@@ -75,18 +99,19 @@ else {
     <div class="contenu">
     	<table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
-      <td>Couverture</td>
-    <td>titre</td>
-    <td>publication</td>
-    <td>editeur</td>
-    <td>auteurs</td>
-    <td>emprunteur</td>
-    <td>date emprunt</td>
-    <td>review</td>
+      <tr>
+      <th>Couverture</th>
+    <th>titre</th>
+    <th>publication</th>
+    <th>editeur</th>
+    <th>auteurs</th>
+    <th>emprunteur</th>
+    <th>date emprunt</th>
+    <th>review</th>
     <?php if ($user_connected) {
-    	echo "<td>reserver";
+    	echo "<th>reserver</th>";
     }
-    ?>
+    ?></tr>
     </thead>
 <?php
     foreach ($livres as $livre) : ?>
