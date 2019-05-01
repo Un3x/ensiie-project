@@ -65,6 +65,7 @@ section{
 footer{
 	color:white;
 }
-.nobr{
-	white-space: nowrap;
+a.nobr{
+	display: inline;
+	white-space: no-wrap;
 }
