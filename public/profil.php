@@ -50,8 +50,7 @@ $css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>'
 
         function wrongPwd()
         {
-            document.getElementById("pwd_old").style.border='red 2px solid';
-            document.getElementById("message").innerText = "Le mot de passe actuel est erroné !";
+            alert("Le mot de passe actuel est incorrect !");
             return false;
         }
 </script>
@@ -110,7 +109,7 @@ if(isset($_POST['valid_mdp']))
             $model->config($email_form, $lastname_form, $firstname_form, $pwd_new);
         }
         else {
-            echo "<script>wrongPwd()</script>";
+            echo"<script>wrongPwd()</script>";
         }
     }
 }
@@ -129,10 +128,10 @@ if(isset($_POST['del_acc']))
 
 <?php ob_start(); ?>
 <div id="message">
-    Tous les champs sont obligatoires
+    Tous les champs sont obligatoires !
 </div><br>
 <form action="accueil.php">
-    <button type="submit" >Retour Accueil</button><br><br>
+    <button type="submit" >Retour Accueil</button><br>
 </form>
 <div class="connexion">
     <h1>Profil utilisateur</h1>

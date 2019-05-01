@@ -10,8 +10,26 @@ echo $css_link;
             alert("Email invalide ! ");
             return false;
         }
-        else {return true;}
+        return true;
     }
+
+    function checkFields() {
+        if((document.getElementById("firstname").value == "")) {
+            alert("Prénom non indiqué !");
+            return false;
+        }
+        else if((document.getElementById("lastname").value == "")) {
+            alert("Nom non indiqué !");
+            return false;
+        }
+        else if((document.getElementById("email").value == "")) {
+            alert("Email non indiqué !");
+            return false;
+        }
+        else if((document.getElementById("password").value == "")) {
+            alert("Mot de passe non indiqué !");
+            return false;
+        }}
 </script>
 <?php
 require('../src/model.php');
@@ -21,7 +39,9 @@ $connection = $model->dbConnect();
 // If form submitted, insert values into the database.
 if (isset($_POST['submit_btn']))
 {
-    echo "<script>updateNames()</script>";
+    if (($_POST['firstname']=="") || ($_POST['lastname']=="") || ($_POST['email']=="") || ($_POST['password']=="")) {
+        echo "<script>checkFields()</script>";
+    } else{
     // removes backslashes
     $lastnameTmp = stripslashes($_REQUEST['lastname']);
     $firstnameTmp = stripslashes($_REQUEST['firstname']);
@@ -38,11 +58,11 @@ if (isset($_POST['submit_btn']))
     $row_count =$result_verify->fetchColumn();*/
     if($count!=0)
     {
-        echo "Email déjà utilisé";
+        print "<div class='form'><h4>Email déjà utilisé !</h4></div>";
     }
     else {
 
-        if("<script>validateEmail()</script>"){
+        if(!("<script>checkFields()</script>")){
         $query = "INSERT INTO member(firstname, lastname, email, password) VALUES ('$firstnameTmp', '$lastnameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
@@ -52,7 +72,7 @@ if (isset($_POST['submit_btn']))
             <h3>You are registered successfully.</h3>
              <br/>Click here to <a href='loginView.php'>Login</a></div>";
         }}
-    }
+    }}
 }
 ?>
 
@@ -64,12 +84,12 @@ if (isset($_POST['submit_btn']))
         <h1>Meetiie</h1>
         <span id="conn">Créez votre compte Meetiie !</span><br/><br/>
 
-    <form role="form" method="POST" enctype="multipart/form-data" onSubmit="return validateEmail()">
-        <input type="text" name="firstname" placeholder="Prénom" size="15" required>
-        <input type="text" name="lastname" placeholder="Nom" size="15" required><br/><br/>
-        <input type="email" name="email" placeholder="Username@ensiie.fr" size="38" required><br><br>
-        <input type="password" name="password" placeholder="Mot de passe" size="38" required><br><br>
-        <input type="submit" name="submit_btn" value="S'inscrire"><br/>
+    <form role="form" method="POST" enctype="multipart/form-data" onSubmit="return checkFields()">
+        <input type="text" name="firstname" id="firstname" placeholder="Prénom" size="15">
+        <input type="text" name="lastname" id="lastname" placeholder="Nom" size="15"><br/><br/>
+        <input type="email" name="email" id="email" placeholder="Username@ensiie.fr" size="38"><br><br>
+        <input type="password" name="password" id="password" placeholder="Mot de passe" size="38"><br><br>
+        <input type="submit" name="submit_btn" value="S'inscrire" onclick="validateEmail()"><br/>
     </form><br>
 </div><br>
 
