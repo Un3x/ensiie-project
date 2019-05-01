@@ -41,7 +41,8 @@ if (isset($_POST['submit_btn']))
 {
     if (($_POST['firstname']=="") || ($_POST['lastname']=="") || ($_POST['email']=="") || ($_POST['password']=="")) {
         echo "<script>checkFields()</script>";
-    } else{
+    }
+    else{
     // removes backslashes
     $lastnameTmp = stripslashes($_REQUEST['lastname']);
     $firstnameTmp = stripslashes($_REQUEST['firstname']);
@@ -62,7 +63,7 @@ if (isset($_POST['submit_btn']))
     }
     else {
 
-        if(!("<script>checkFields()</script>")){
+        echo"<script>validateEmail()</script>";
         $query = "INSERT INTO member(firstname, lastname, email, password) VALUES ('$firstnameTmp', '$lastnameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
@@ -72,7 +73,7 @@ if (isset($_POST['submit_btn']))
             <h3>You are registered successfully.</h3>
              <br/>Click here to <a href='loginView.php'>Login</a></div>";
         }}
-    }}
+    }
 }
 ?>
 
@@ -89,7 +90,7 @@ if (isset($_POST['submit_btn']))
         <input type="text" name="lastname" id="lastname" placeholder="Nom" size="15"><br/><br/>
         <input type="email" name="email" id="email" placeholder="Username@ensiie.fr" size="38"><br><br>
         <input type="password" name="password" id="password" placeholder="Mot de passe" size="38"><br><br>
-        <input type="submit" name="submit_btn" value="S'inscrire" onclick="validateEmail()"><br/>
+        <input type="submit" name="submit_btn" value="S'inscrire"><br/>
     </form><br>
 </div><br>
 

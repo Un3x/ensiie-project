@@ -3,37 +3,59 @@ session_start();
 $title = "Profil";
 $css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>';
 
-$script = '
-
-    <script language="javascript" type="text/javascript">
-        function envoyerForm() {
-            if ((document.getElementById("lastname").value === "") || (document.getElementById("firstname").value === "")){
-                document.getElementById("firstname").style.border=\'#CC3300 2px solid\';
-                document.getElementById("lastname").style.border=\'#CC3300 2px solid\';
-                document.getElementById("message").innerText = "Le nom ou le prénom n\'est pas indiqués";
-            }
-            else {
-                document.getElementById("message").innerText = "Envoi serveur";
-
-            }
-        }
-
-        function envoyerMdp() {
-            if ((document.getElementById("pwd_old").value === "" ) || (document.getElementById("pwd_new").value === "" )){
-                document.getElementById("pwd_old").style.border=\'#CC3300 2px solid\';
-                document.getElementById("pwd_new").style.border=\'#CC3300 2px solid\';
-                document.getElementById("message").innerText = "Le nouveau ou l\'ancien n\'est pas indiqués";
-            }
-        }
-    </script>
-    
-    ';
-
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
 
+if(isset($_POST['valid_del_email']))
+{
+    //
+    //echo "p".$_SESSION['email']/"p";
+    $email = $_SESSION['email'];
+    $query = "DELETE FROM member WHERE email='$email'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    session_destroy();
+    header("Location:loginView.php");
+}
 
+if(isset($_POST['valid_deban_email']))
+{
+    $deban_email = $_POST['deban_email'];
+$sql_verify = "SELECT * FROM member WHERE email='$ban_email';";
+$result_verify = $connection->prepare($sql_verify);
+$result_verify->execute();
+
+$count = $result_verify->rowCount();
+if($count!=0) {
+    $query = "UPDATE member SET banned='false' WHERE email='$deban_email'";
+    $result = $connection->prepare($query);
+    $result->execute();
+    //header("Location:accueil.php");
+}else {        echo"<script>wrongEmail()</script>";
+}
+}
+
+if(isset($_POST['valid_ban_email']))
+{
+    $ban_email = $_POST['ban_email'];
+    $sql_verify = "SELECT * FROM member WHERE email='$ban_email';";
+    $result_verify = $connection->prepare($sql_verify);
+    $result_verify->execute();
+
+    $count = $result_verify->rowCount();
+    if($count!=0) {
+        $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
+        $result = $connection->prepare($query);
+        $result->execute();
+        //header("Location:accueil.php");
+    }
+    else
+    {
+        echo"<script>wrongEmail()</script>";
+    }
+
+}
 
 if(isset($_POST['valid_signup']))
 {
@@ -54,7 +76,10 @@ if(isset($_POST['valid_signup']))
         $firstname_form=$row['firstname'];
         $lastname_form=$row['lastname'];
         $model->config($email_form, $lastname_form, $firstname_form, $password);
-        header("Location:accueil.php");
+        //header("Location:accueil.php");
+    }
+    else if($_POST["firstname"]=="" || $_POST["lastname"]==""){
+        echo "<script>updateNames()</script>";
     }
 }
 
@@ -77,42 +102,74 @@ if(isset($_POST['valid_mdp']))
             $result=$connection->prepare($query);
             $result->execute();
             $model->config($email_form, $lastname_form, $firstname_form, $pwd_new);
-            header("Location:accueil.php");
+            //header("Location:accueil.php");
+        }
+        else {
+            echo"<script>wrongPwd()</script>";
         }
     }
 }
 
-if(isset($_POST['valid_del_email']))
-{
-    //
-    //echo "p".$_SESSION['email']/"p";
-    $email = $_SESSION['email'];
-    $query = "DELETE FROM member WHERE email='$email'";
-    $result=$connection->prepare($query);
-    $result->execute();
-    session_destroy();
-    header("Location:loginView.php");
-}
 
-if(isset($_POST['valid_ban_email']))
-{
-    $ban_email = $_POST['ban_email'];
-    $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
-    $result=$connection->prepare($query);
-    $result->execute();
-    header("Location:accueil.php");
-}
-
-if(isset($_POST['valid_deban_email']))
-{
-    $deban_email = $_POST['deban_email'];
-    $query = "UPDATE member SET banned='false' WHERE email='$deban_email'";
-    $result=$connection->prepare($query);
-    $result->execute();
-    header("Location:accueil.php");
-}
 ?>
 
+<script>
+
+    function updateNames() {
+        if((document.getElementById("firstname").value == "") && (document.getElementById("lastname").value == "")){
+            document.getElementById("firstname").style.border='red 2px solid';
+            document.getElementById("lastname").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nom et le prénom ne sont pas indiqués !";
+            return false;
+        }
+        else if((document.getElementById("lastname").value == "")){
+            document.getElementById("firstname").style.border='black 2px solid';
+            document.getElementById("lastname").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nom n\'est pas indiqué !";
+            return false;
+        }
+        else if((document.getElementById("firstname").value == "")){
+            document.getElementById("firstname").style.border='red 2px solid';
+            document.getElementById("lastname").style.border='black 2px solid';
+            document.getElementById("message").innerText = "Le prénom n\'est pas indiqué !";
+            return false;
+        }
+    }
+
+    function updatePwd() {
+
+        if((document.getElementById("pwd_old").value == "") && (document.getElementById("pwd_new").value == "")){
+            document.getElementById("pwd_old").style.border='red 2px solid';
+            document.getElementById("pwd_new").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Aucun des mots de passe n\'est indiqué !";
+            return false;
+        }
+        else if((document.getElementById("pwd_new").value == "")){
+            document.getElementById("pwd_old").style.border='black 2px solid';
+            document.getElementById("pwd_new").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nouveau mot de passe n\'est pas indiqué !";
+            return false;
+        }
+        else if((document.getElementById("pwd_old").value == "")){
+            document.getElementById("pwd_old").style.border='red 2px solid';
+            document.getElementById("pwd_new").style.border='black 2px solid';
+            document.getElementById("message").innerText = "L\'ancien mot de passe n\'est pas indiqué !";
+            return false;
+        }
+    }
+
+    function wrongPwd()
+    {
+        alert("Le mot de passe actuel est incorrect !");
+        return false;
+    }
+
+    function wrongEmail()
+    {
+        alert("Cet email n\'existe pas !");
+        return false;
+    }
+</script>
 
 <?php ob_start(); ?>
 <div id="message">
@@ -124,14 +181,14 @@ if(isset($_POST['valid_deban_email']))
 <div class="connexion">
     <h1>Profil Administrateur</h1>
 
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" onSubmit="return updateNames()">
         Prénom:
         <input type="text" name="firstname" id="firstname" maxlength="15" class="input_form" value=<?= $_SESSION['firstname']?>  /><br>
         Nom &nbsp;&nbsp;&nbsp;&nbsp;:
         <input type="text" name="lastname" id="lastname" maxlength="15" class="input_form" value=<?= $_SESSION['lastname']?>  /><br>
         <button type="submit" name="valid_signup" id="valid_signup" class="input_form">Valider</button><br>
     </form><br>
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" onSubmit="return updatePwd()">
         Votre mot de passe actuel:<br />
         <input type="password" name="pwd_old" id="pwd_old" maxlength="20" class="input_form"/><br>
         Votre nouveau mot de passe:<br />
@@ -139,18 +196,12 @@ if(isset($_POST['valid_deban_email']))
         <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
     </form><br>
 
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
-        Utilisateur à supprimer :<br />
-        <input type="text" name="del_email" id="del_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
-        <button type="submit" name="valid_del_email" id="valid_del_email" class="input_form">Valider</button>
-    </form><br>
-
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" onSubmit="return wrongEmail()">
         Utilisateur à bannir :<br />
         <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_ban_email" id="valid_ban_email" class="input_form">Bannir</button>
     </form><br>
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" onSubmit="return wrongEmail()">
         Utilisateur à débannir :<br />
         <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_deban_email" id="valid_deban_email" class="input_form">Débannir</button>
@@ -163,4 +214,4 @@ if(isset($_POST['valid_deban_email']))
 
 <?php $content = ob_get_clean();
 
-require('templateScript.php'); ?>
+require('template.php'); ?>

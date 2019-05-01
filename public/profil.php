@@ -3,64 +3,19 @@ session_start();
 $title = "Profil";
 $css_link = '<link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>';
 
-?>
-<script>
-        function updateNames() {
-            if((document.getElementById("firstname").value == "") && (document.getElementById("lastname").value == "")){
-                document.getElementById("firstname").style.border='red 2px solid';
-                document.getElementById("lastname").style.border='red 2px solid';
-                document.getElementById("message").innerText = "Le nom et le prénom ne sont pas indiqués";
-                return false;
-            }
-            else if((document.getElementById("lastname").value == "")){
-                document.getElementById("firstname").style.border='black 2px solid';
-                document.getElementById("lastname").style.border='red 2px solid';
-                document.getElementById("message").innerText = "Le nom n\'est pas indiqué";
-                return false;
-            }
-            else if((document.getElementById("firstname").value == "")){
-                document.getElementById("firstname").style.border='red 2px solid';
-                document.getElementById("lastname").style.border='black 2px solid';
-                document.getElementById("message").innerText = "Le prénom n\'est pas indiqué";
-                return false;
-            }
-        }
-
-        function updatePwd() {
-
-            if((document.getElementById("pwd_old").value == "") && (document.getElementById("pwd_new").value == "")){
-                document.getElementById("pwd_old").style.border='red 2px solid';
-                document.getElementById("pwd_new").style.border='red 2px solid';
-                document.getElementById("message").innerText = "Aucun des mots de passe n\'est indiqué !";
-                return false;
-            }
-            else if((document.getElementById("pwd_new").value == "")){
-                document.getElementById("pwd_old").style.border='black 2px solid';
-                document.getElementById("pwd_new").style.border='red 2px solid';
-                document.getElementById("message").innerText = "Le nouveau mot de passe n\'est pas indiqué";
-                return false;
-            }
-            else if((document.getElementById("pwd_old").value == "")){
-                document.getElementById("pwd_old").style.border='red 2px solid';
-                document.getElementById("pwd_new").style.border='black 2px solid';
-                document.getElementById("message").innerText = "L\'ancien mot de passe n\'est pas indiqué";
-                return false;
-            }
-        }
-
-        function wrongPwd()
-        {
-            alert("Le mot de passe actuel est incorrect !");
-            return false;
-        }
-</script>
-
-<?php
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
 
-
+if(isset($_POST['del_acc']))
+{
+    $del_account = $_SESSION['email'];
+    $query = "DELETE FROM member WHERE email='$del_account'";
+    $result=$connection->prepare($query);
+    $result->execute();
+    session_destroy();
+    header("Location:loginView.php");
+}
 
 if(isset($_POST['valid_signup']))
 {
@@ -85,6 +40,7 @@ if(isset($_POST['valid_signup']))
         $firstname_form=$row['firstname'];
         $lastname_form=$row['lastname'];
         $model->config($email_form, $lastname_form, $firstname_form, $password);
+
     }
 }
 
@@ -114,17 +70,58 @@ if(isset($_POST['valid_mdp']))
     }
 }
 
-if(isset($_POST['del_acc']))
-{
-    $del_account = $_SESSION['email'];
-    $query = "DELETE FROM member WHERE email='$del_account'";
-    $result=$connection->prepare($query);
-    $result->execute();
-    session_destroy();
-    header("Location:loginView.php");
-}
 ?>
 
+<script>
+    function updateNames() {
+        if((document.getElementById("firstname").value == "") && (document.getElementById("lastname").value == "")){
+            document.getElementById("firstname").style.border='red 2px solid';
+            document.getElementById("lastname").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nom et le prénom ne sont pas indiqués !";
+            return false;
+        }
+        else if((document.getElementById("lastname").value == "")){
+            document.getElementById("firstname").style.border='black 2px solid';
+            document.getElementById("lastname").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nom n\'est pas indiqué !";
+            return false;
+        }
+        else if((document.getElementById("firstname").value == "")){
+            document.getElementById("firstname").style.border='red 2px solid';
+            document.getElementById("lastname").style.border='black 2px solid';
+            document.getElementById("message").innerText = "Le prénom n\'est pas indiqué !";
+            return false;
+        }
+    }
+
+    function updatePwd() {
+
+        if((document.getElementById("pwd_old").value == "") && (document.getElementById("pwd_new").value == "")){
+            document.getElementById("pwd_old").style.border='red 2px solid';
+            document.getElementById("pwd_new").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Aucun des mots de passe n\'est indiqué !";
+            return false;
+        }
+        else if((document.getElementById("pwd_new").value == "")){
+            document.getElementById("pwd_old").style.border='black 2px solid';
+            document.getElementById("pwd_new").style.border='red 2px solid';
+            document.getElementById("message").innerText = "Le nouveau mot de passe n\'est pas indiqué !";
+            return false;
+        }
+        else if((document.getElementById("pwd_old").value == "")){
+            document.getElementById("pwd_old").style.border='red 2px solid';
+            document.getElementById("pwd_new").style.border='black 2px solid';
+            document.getElementById("message").innerText = "L\'ancien mot de passe n\'est pas indiqué !";
+            return false;
+        }
+    }
+
+    function wrongPwd()
+    {
+        alert("Le mot de passe actuel est incorrect !");
+        return false;
+    }
+</script>
 
 <?php ob_start(); ?>
 <div id="message">
