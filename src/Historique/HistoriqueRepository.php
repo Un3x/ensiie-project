@@ -35,6 +35,26 @@ class HistoriqueRepository
 
         return $historiques;
     }
+
+
+    public function fetchByUser($id_user) {
+        $rows = $this->connection->query("SELECT * FROM \"Historique\" WHERE id_user='$id_user';")->fetchAll(\PDO::FETCH_OBJ);
+        $historiques = [];
+        foreach ($rows as $row) {
+            $hist = new Historique();
+            $hist
+                ->setIdLivre($row->id_livre)
+                ->setIdUser($row->id_user)
+                ->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt))
+                ->setDateRendu(new \DateTimeImmutable($row->date_rendu))
+                ->setIdReview($row->id_review)
+                ->setNumReview($row->num_review);
+
+            $historiques[] = $hist;
+        }
+
+        return $historiques;
+    }
     //TODO update
 
     public function creeHistorique($id_livre, $id_user, $date_emprunt, $date_rendu, $id_review, $num_review) {

@@ -49,37 +49,37 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 <head>
     <title>Sciience</title>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="rien.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<nav>
-        <a href="test.html" class="rubrique">Accueil    </a>
-        <a href="test.html" class="rubrique">|   Bilbiothèque    </a>
-        <a href="test.html" class="rubrique">|   Réservation    </a>
-        <a href="test.html" class="rubrique">|   Recherche    </a>
-        <a href="test.html" class="rubrique">|   Inscription    </a>
-    </nav>
-<body>
-    <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
+<div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
         if ($user_connected) {
-            echo "<p>Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</p><p>Lien vers votre <a href=\"espace_perso.php\">espace perso</a></p>";
-            if ($admin) {
-            echo "<p>Espace admin : </p>";
-            echo "<p><a href=\"ajout_livre.php\">Ajout Livre</a> <a href=\"emprunt.php\">Emprunt</a> <a href=\"rendu.php\">Rendu</a>";
-        }
+            echo "<p>Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</p>";
         }
         
         ?>
     </div>
+<body>
+    <header>
+        <img src="./titre.png"/>
+    </header>
+     <nav>
+        <a href="test.html" class="rubrique">Accueil    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
+        <?php if ($user_connected): ?>
+            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
+            <a href="review.php" class="rubrique">|   Review    </a>
+            <a href="editer.php" class="rubrique">|   Editer   </a>
+            <?php endif; ?>
+        <?php if ($user_connected && $admin): ?>
+            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
+            <a href="rendu.php" class="rubrique">|   Retour   </a>
+            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
+        <?php endif; ?>
+    </nav>
 
     <div class="container">
-        <a href="inscription.php">TMPinscription</a><br>
-        <a href="ajout_livre.php">TMPajout_livre</a><br>
-        <a href="editer.php">TMPediter</a><br>
-        <a href="emprunt.php">TMPemprunt</a><br>
-        <a href="rendu.php">TMPrendu</a><br>
-        <a href="bibliotheque.php">TMPbibliotheque</a><br>
-    <h2>Bienvenu sur le site de Sciience</h2>
+    <h2>Bienvenue sur le site de Sciience</h2>
 
 
 
