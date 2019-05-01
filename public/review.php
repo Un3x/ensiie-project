@@ -1,6 +1,8 @@
 <?php
 require '../vendor/autoload.php';
 
+include "utils.php";
+
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -13,7 +15,7 @@ session_start();
 $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
 $historiqueRepository = new \Historique\HistoriqueRepository($connection);
-$reviewRepository = new \Review\
+$reviewRepository = new \Review\ReviewRepository($connection);
 
 $users = $userRepository->fetchAll();
 
@@ -43,7 +45,12 @@ else {
 
 //si toutes les variables postées sont ok et postées, on effectue la mise à jour de review
 if (isset($_POST['id_livre']) && isset($_POST['id_user']) && isset($_POST['note']) && isset($_POST['review'])) {
-    $review = 
+    $tmp = $reviewRepository->creeReview($_POST['id_livre'], '1', $_POST['id_user'], htmlspecialchars($_POST['review'], $flags = ENT_QUOTES), $_POST['note']);
+/*
+    $tmphistorique = $historiqueRepository->fetchByUserAndLivre($_POST['id_user'], $_POST['id_livre']);
+*/
+    $reviewRepository->insertReview($tmp);
+    header("Location: index.php");
 }
 
 
@@ -74,7 +81,10 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
                 <td>Rédiger une review</td>
             </thead>
             <?php foreach ($historiques as $historique): ?>
-                <?php $livre = $livreRepository->fetchId($historique->getIdLivre()); ?>
+                <?php $livre = $livreRepository->fetchId($historique->getIdLivre()); 
+                $reviewtest = [];
+                $reviewtest = $reviewRepository->fetchByUserAndLivre($_SESSION['id_user'], $historique->getIdLivre()); ?>
+                <?php if ($reviewtest == []): ?>
                 <tr>
                     <td><?php echo $livre->getTitre(); ?></td>
                     <td><?php echo $livre->getImage(); ?></td>
@@ -93,6 +103,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
                     </form>
                     </td>
                 </tr>
+            <?php endif; ?>
             <?php endforeach; ?>
         </table>
 

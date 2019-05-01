@@ -55,6 +55,24 @@ class HistoriqueRepository
 
         return $historiques;
     }
+
+
+
+    public function fetchByUserAndLivre($id_user, $id_livre) {
+        $rows = $this->connection->query("SELECT * FROM \"Historique\" WHERE id_user='$id_user' AND id_livre='$id_livre';")->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($rows as $row) {
+            $hist = new Historique();
+            $hist
+                ->setIdLivre($row->id_livre)
+                ->setIdUser($row->id_user)
+                ->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt))
+                ->setDateRendu(new \DateTimeImmutable($row->date_rendu))
+                ->setIdReview($row->id_review)
+                ->setNumReview($row->num_review);
+        }
+
+        return $hist;
+    }
     //TODO update
 
     public function creeHistorique($id_livre, $id_user, $date_emprunt, $date_rendu, $id_review, $num_review) {
@@ -96,7 +114,7 @@ class HistoriqueRepository
         $id_review=$historique->getIdReview();
         $num_review=$historique->getNumReview();
 
-        $query="INSERT INTO \"Historique\" VALUES ('$id_livre', '$id_user', '$date_emprunt', '$date_rendu', NULL, NULL);";
+        $query="INSERT INTO \"Historique\"(id_livre, id_user, date_emprunt, date_rendu) VALUES ('$id_livre', '$id_user', '$date_emprunt', '$date_rendu');";
         //TODO mouais
 
 
