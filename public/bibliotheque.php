@@ -42,7 +42,7 @@ else {
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Bilbiothèque</title>
+    <title>Bibliothèque</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -74,7 +74,7 @@ else {
         <img src="./titre.png"/>
     </header>
     <nav>
-        <a href="test.html" class="rubrique">Accueil    </a>
+        <a href="index.php" class="rubrique">Accueil    </a>
         <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
         <?php if ($user_connected): ?>
             <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
@@ -88,7 +88,7 @@ else {
         <?php endif; ?>
     </nav>
 	<?php if (!($user_connected)) {
-		echo "<p>Vous devez êtres connecté pour effectuer une réservation</p>";
+		echo "<p>Vous devez être connecté pour effectuer une réservation</p>";
 	}
 	?>
   <section>
@@ -147,6 +147,7 @@ else {
     </table>
     </div>
   </section>
+  <footer>On est vraiment trop style regardez ce quon a fait</footer>
    </body>
 
    <script>

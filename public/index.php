@@ -78,7 +78,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <img src="./titre.png"/>
     </header>
      <nav>
-        <a href="test.html" class="rubrique">Accueil    </a>
+        <a href="index.php" class="rubrique">Accueil    </a>
         <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
         <?php if ($user_connected): ?>
             <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
