@@ -64,9 +64,9 @@ section#chatroom {
     border-radius: 15%; }
 
 #left_col {
-    float:right;
+    float:left;
     width:35%;
-    height: fit-content;
+    height: 100%;
     display: inline-block;}
 
 #right_col {
@@ -80,13 +80,4 @@ section#chatroom {
     text-align: center;
     font-size: x-large;
     font-weight: bold;
-}
-
-.top-bar-left {
-    display:inline-block;
-    float:right;
-}
-
-.top-bar-right {
-    display:inline-block;
 }

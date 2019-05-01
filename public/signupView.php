@@ -1,7 +1,19 @@
 <?php $title = "Meetiie - Signup";
 $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.css\"/>";
 echo $css_link;
-
+?>
+<script>
+    function validateEmail()
+    {
+        if(!(document.getElementsByTagName('email').value == /^[a-zA-Z0-9_.+-]+@ensiie.fr$/g))
+        {
+            alert("Email invalide ! ");
+            return false;
+        }
+        else {return true;}
+    }
+</script>
+<?php
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
@@ -9,7 +21,7 @@ $connection = $model->dbConnect();
 // If form submitted, insert values into the database.
 if (isset($_POST['submit_btn']))
 {
-
+    echo "<script>updateNames()</script>";
     // removes backslashes
     $lastnameTmp = stripslashes($_REQUEST['lastname']);
     $firstnameTmp = stripslashes($_REQUEST['firstname']);
@@ -29,6 +41,8 @@ if (isset($_POST['submit_btn']))
         echo "Email déjà utilisé";
     }
     else {
+
+        if("<script>validateEmail()</script>"){
         $query = "INSERT INTO member(firstname, lastname, email, password) VALUES ('$firstnameTmp', '$lastnameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
@@ -37,7 +51,7 @@ if (isset($_POST['submit_btn']))
             print "<div class='form'>
             <h3>You are registered successfully.</h3>
              <br/>Click here to <a href='loginView.php'>Login</a></div>";
-        }
+        }}
     }
 }
 ?>
@@ -50,7 +64,7 @@ if (isset($_POST['submit_btn']))
         <h1>Meetiie</h1>
         <span id="conn">Créez votre compte Meetiie !</span><br/><br/>
 
-    <form role="form" method="POST" enctype="multipart/form-data">
+    <form role="form" method="POST" enctype="multipart/form-data" onSubmit="return validateEmail()">
         <input type="text" name="firstname" placeholder="Prénom" size="15" required>
         <input type="text" name="lastname" placeholder="Nom" size="15" required><br/><br/>
         <input type="email" name="email" placeholder="Username@ensiie.fr" size="38" required><br><br>

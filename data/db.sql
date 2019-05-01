@@ -26,7 +26,7 @@ create table "message" (
   message VARCHAR(255) NOT NULL DEFAULT ''
 );
 
-/*create table "salon" (
+/*create table "chatRoom" (
     id SERIAL PRIMARY KEY,
     chatRoomName VARCHAR(30) NOT NULL,
     member integer references member(id)

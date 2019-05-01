@@ -26,11 +26,11 @@ if(isset($_POST['submit_button']))
     $q->execute();*/
 
     //Vérifier si le mot de passe est bien saisi pour éviter le SQL-Injection
-    if(!isset($pwd))
-    {die("Veuillez entrer votre mot de passe !");}
+    /*if(!isset($pwd))
+    {die("Veuillez entrer votre mot de passe !");}*/
 
     //Vérifier que le hashage correspond au mot de passe saisi
-
+    if ($_POST["email"]!="" && $_POST["password"]!=""){
     if($model->verif_mdp($email_form, $pwd))
     {
         //Il faut decrypter le password avant de le passer a verif_mdp
@@ -45,6 +45,10 @@ if(isset($_POST['submit_button']))
         //header("Location:accueil.php");
         header('Location: accueil.php');
         exit();
+    }}
+    else if ($_POST["email"]=="" || $_POST["password"]=="")
+    {
+        echo "<script>checkFields()</script>";
     }
     else
     {	//echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
@@ -57,9 +61,33 @@ if(isset($_POST['submit_button']))
     }
 }
 ?>
-
+<script>
+    function checkFields() {
+        if((document.getElementById("email").value == "") && (document.getElementById("password").value == "")){
+            document.getElementById("email").style.border='red 2px solid';
+            document.getElementById("password").style.border='red 2px solid';
+            document.getElementById("field_check").innerText = "Aucun des champs n\'est indiqué !";
+            return false;
+        }
+        else if((document.getElementById("email").value == "")){
+            document.getElementById("password").style.border='black 2px solid';
+            document.getElementById("email").style.border='red 2px solid';
+            document.getElementById("field_check").innerText = "L\'email n\'est pas indiqué !";
+            return false;
+        }
+        else if((document.getElementById("password").value == "")){
+            document.getElementById("password").style.border='red 2px solid';
+            document.getElementById("email").style.border='black 2px solid';
+            document.getElementById("field_check").innerText = "Le mot de passe n\'est pas indiqué !";
+            return false;
+        }
+    }
+</script>
 
 <?php ob_start(); ?>
+
+<div id="field_check">
+</div><br>
 
 <div class="connexion">
 
@@ -67,9 +95,9 @@ if(isset($_POST['submit_button']))
 
         <span id="conn">Connexion</span><br/><br>
 
-    <form role="form" method="POST" enctype="multipart/form-data">
-         <input type="email" name="email" placeholder="Adresse e-mail" size="30" required><br/>
-         <input type="password" name="password" placeholder="Mot de passe" size="30" required><br/>
+    <form role="form" method="POST" enctype="multipart/form-data" onSubmit="return checkFields()">
+         <input type="email" name="email" id="email" placeholder="Adresse e-mail" size="30" ><br/>
+         <input type="password" name="password" id="password" placeholder="Mot de passe" size="30" ><br/>
          <input type="submit" name="submit_button" value="Login"><br/>
     </form><br>
 

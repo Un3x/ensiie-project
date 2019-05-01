@@ -27,6 +27,14 @@ foreach ($members as $m) {
         $member = $m;
     }
 }
+
+/*if(isset($_POST['createRoom']))
+{
+    $chatRoomForm = $_POST['chatRoom'];
+    $query = "INSERT INTO chatRoom (chatRoomName) VALUES ('$chatRoomForm')";
+    $result=$connection->prepare($query);
+    $result->execute();
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +45,11 @@ foreach ($members as $m) {
     <title>Meetiie - Accueil</title>
     <link rel="stylesheet" type="text/css" href="css/accueilLayout.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        function displayHistory() {
+
+        }
+    </script>
 </head>
 
 <body>
@@ -60,13 +73,11 @@ foreach ($members as $m) {
 </header>
 
 <nav>
-    <div class="top-bar-right">
-    <form target="_self" method="POST">
+    <form target="_self" method="POST" style="display:inline-block;">
         <input type="text" name="chatRoom" id="chatRoom" size="20" placeholder="Nom du salon">
         <input type="submit" name="createRoom" id="createRoom" value="Créer le salon">
     </form>
-    </div>
-    <div class="top-bar-left">
+    <div class="top-bar-left" style="display:inline-block;float:right;">
         <div class="menu">
             <button type="button">Lancer une discussion</button>
             <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>
@@ -100,7 +111,7 @@ foreach ($members as $m) {
 
 <div id="left_col">
 
-    <div class="chatbox_left"></div><br>
+    <div class="chatbox_left" onload="displayHistory()"></div><br>
     <div class="chatbox_left"></div>
 
 </div>

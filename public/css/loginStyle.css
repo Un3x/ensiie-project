@@ -3,12 +3,27 @@ body {
         background-image: url("Rainbow_blue.jpg");
      }
 
+h1 {
+    text-align: center;
+    color: #C70039;
+    /*font-family: "OCR A Std", "monospace";*/
+    font-family: "myFont", "Times New Roman";
+    font-style: italic;
+    font-size: 40px;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(InterconnectedDemo-Bold.ttf);
+}
+
 .connexion  {
-            margin-top: 40px;
-            padding: 4px 12px 2px 12px;
+            margin-top: 5%;
+            padding: 4px 12px 16px 12px;
             border: 8px solid black;
             display: inline-block;
             border-style: double;
+
             }
 
 form input  {
@@ -49,4 +64,28 @@ input[type=button] {
     color: #FF0000;
     text-align: center;
     padding-top: 10px;
+}
+
+#pwd_update_1 {
+    text-align: left;
+    margin: 0 auto;
+}
+
+#pwd_update_2 {
+    text-align: left;
+    padding-left: 1%;
+}
+
+#field_check
+{
+    width:auto;
+    /*border:#333 1px solid;*/
+    height:30px;
+    text-align:left;
+    font-size:15px;
+    padding-left:10px;
+    padding-top:12px;
+    border-radius: 5px;
+    margin-bottom:20px;
+    text-align: center;
 }
