@@ -80,14 +80,14 @@ else {
     <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
     <td><?php echo $livre->getImage() ?></td>
     <td><?php echo $livre->getEdition() ?></td>
-    <td><div  style="display:none" id=<?php echo "$ID"; ?>>
+    <td>
     	<table>
     	<?php
     	$auteurs = $auteurRepository->fetchByLivre($livre->getId());
     	foreach ($auteurs as $auteur) : ?>
-    		<tr><?php echo $auteur->getAuteur(); ?></tr>
+    		<tr><td><?php echo $auteur->getAuteur(); ?></td></tr>
     	<?php endforeach; ?>
-    </table></div><input type="button" onclick="aff_auteurs(<?php echo "$ID";?>)" value="Afficher les auteurs" id=<?php echo "$ID"."butt";?>></td>
+    </table></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
     <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>
     <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
