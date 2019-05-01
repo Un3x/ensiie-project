@@ -97,13 +97,11 @@ else {
     <td><?php echo $livre->getEdition() ?></td>
     <td><div  style="display:none" id=<?php echo "$ID"; ?>>
     	<table>
-    		<tr>
     	<?php
     	$auteurs = $auteurRepository->fetchByLivre($livre->getId());
     	foreach ($auteurs as $auteur) : ?>
-    		<td><?php echo $auteur->getAuteur(); ?></td>
+    		<tr><?php echo $auteur->getAuteur(); ?></tr>
     	<?php endforeach; ?>
-    </tr>
     </table></div><input type="button" onclick="aff_auteurs(<?php echo "$ID";?>)" value="Afficher les auteurs" id=<?php echo "$ID"."butt";?>></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
     <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>

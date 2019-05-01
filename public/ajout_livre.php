@@ -73,8 +73,10 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     <h2>Page d'ajout de livre (Réservé aux Admins)</h2>
     <form action="ajout_livre.php" method="POST">
     Titre<br>
-    <input id="titre" type="text" name="titre"/><br>
-    Auteur<br>
+    
+    <input id="titre" type="text" name="titre"/>
+    <a class=nobr id="error_titre" style="display:none" style="white-space: nowrap"  > Erreur </a>
+    <br>Auteur<br>
     <input id="auteur" type="text" name="auteur1"/><br>
 
     <a id="1" style="display:none">Auteur 2<br>
@@ -94,7 +96,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 
     <input id="butt" type="button" class="input" onclick="ajoute_aut()" value="+"><br>
     Date de publication<br>
-    <input id="date" type="text" name="datepub"/><br>
+    <input id="date" type="date" name="datepub"/><br>
     Image de couverture<br>
     <input id="img" type="text" name="image"/><br>
     Edition<br>
@@ -125,6 +127,8 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         tmpedition=document.getElementById("edition").value;
         if (tmptitre=='' || tmpauteur=='' || tmpdate=='' || tmpimg=='' || tmpedition=='') {
             document.getElementById("incomplet").style.display="block";
+            document.getElementById("error_titre").style.display="block";
+            document.getElementById("error_titre").innerHTML="Choucroute";
         }
         else {
             document.getElementById("valider").click();

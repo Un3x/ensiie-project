@@ -1,4 +1,4 @@
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes) VALUES ('Charles', 'Tanguy', 'Ansyth', '0', '0','7');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admin) VALUES ('Charles', 'Tanguy', 'Ansyth', '0', '0','7', 'true');
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '0', '0', '2', '0');
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '0', '0', '0', '0', 'true');
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '0', '0', '0', '0');
