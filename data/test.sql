@@ -29,10 +29,10 @@ INSERT INTO "Review"(id, num, personne, texte, note) VALUES ('chocapic1', '4', '
 
 
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('1', 'Formulaire technique de mécanique générale', 'Jacques Muller', '1999-1-1', 'couverture', 'editeur');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('1', 'Formulaire technique de mécanique générale', 'Jacques Muller', '1996-1-1', 'http://www.images-chapitre.com/ima3/original/926/1458926_1414618.jpg', 'PAILLART');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('1', 'Jacques Muller');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('2', 'La formule du savoir', 'Lé Nguyên Hoang', '1999-1-1', 'couverture', 'Ecosciences');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('2', 'La formule du savoir', 'Lé Nguyên Hoang', '2018-06-14', 'https://www.echosciences-sud.fr/uploads/article/image/attachment/1005425680/xl_9782759822607-FormuleSavoir_couv-sofedis.jpg', 'Ecosciences');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('2', 'Lé Nguyên Hoang');
 
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('3', 'Introduction à l’étude des phénomênes économiques', 'François MOREAU', '1999-1-1', 'couverture', 'editeur');
