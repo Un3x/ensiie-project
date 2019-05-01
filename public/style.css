@@ -6,6 +6,12 @@ h1{
 header{
 	text-align:center;
 }
+.top{
+	background-color:blue;
+	color:white;
+	width:100%;
+	text-align:left;
+}
 nav{
 	text-align:center;
 	font-size:42px;
@@ -13,6 +19,9 @@ nav{
 }
 .rubrique:hover{
 	background-image:url(https://medialb.digiteka.net/multi/35x5m/5v8pvz-HC.jpg);
+}
+.rubrique{
+	color:white;
 }
 .rubrique:visited{
 	color:white;
@@ -55,4 +64,7 @@ section{
 }
 footer{
 	color:white;
+}
+.nobr{
+	white-space: nowrap;
 }
