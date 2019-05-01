@@ -32,7 +32,7 @@ else {
 			}
 		}
 	}
-	echo '<p>Mot de passe erronné ou pseudo invalide, veuillez réessayer</p>';
+	echo '<p>Mot de passe erroné ou pseudo invalide, veuillez réessayer</p>';
 	echo '<p><a href=connexion.php>Cliquez ici</a> pour réessayer</p>';
 }
 

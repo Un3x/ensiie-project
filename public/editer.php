@@ -73,21 +73,21 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
     ?>
      <form action="editer.php" method="POST">
         Nom :<br>
-        <input id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?>><br>
+        <input id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?> required pattern="[a-zA-Z0-9']*" maxlength="50"/><br>
         Prenom :<br>
-        <input id="2" type="text" name="prenom" value=<?php echo $curr_user->getPrenom() ?>><br>
+        <input id="2" type="text" name="prenom" value=<?php echo $curr_user->getPrenom() ?> required pattern="[a-zA-Z0-9']*" maxlength="50" /><br>
         Pseudo :<br>
-        <input id="3" type="text" name="pseudo" value=<?php echo $curr_user->getPseudo() ?>><br>
+        <input id="3" type="text" name="pseudo" value=<?php echo $curr_user->getPseudo() ?> required pattern="[a-zA-Z0-9']*" maxlength="50"><br>
         Nouveau mot de passe :<br>
         <input id="4" type="password" name="mdp"><br>
         Confirmation du nouveau mot de passe :<br>
         <input id="5" type="password" name="cmdp"><br>
         Date de naissance :<br>
-        <input id="6" type="text" name="ddn" value=<?php echo $curr_user->getDdn() ?>><br>
+        <input id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
         Email :<br>
-        <input id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?>><br>
-        <input type="button" class="input" onclick="verif()" value="Valider">
-        <input id="valider" style="display:none" type="submit" name="Envoyer">
+        <input id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?> required /><br>
+        <!-- <input type="button" class="input" onclick="verif()" value="Valider"> -->
+        <input id="valider" type="submit" name="Envoyer">
      </form>
 
      <p id="mdp_invalide" style="display:none">Mot de passe invalide</p>
