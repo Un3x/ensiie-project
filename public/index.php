@@ -79,6 +79,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <a href="emprunt.php">TMPemprunt</a><br>
         <a href="rendu.php">TMPrendu</a><br>
         <a href="bibliotheque.php">TMPbibliotheque</a><br>
+        <a href="review.php">TMPreview</a>
     <h2>Bienvenu sur le site de Sciience</h2>
 
 
