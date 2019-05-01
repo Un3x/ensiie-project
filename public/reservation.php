@@ -19,7 +19,9 @@ if (!(isset($_POST['id_user']) && isset($_POST['id_livre']))) {
 
 $okreserv=$reservationRepository->okReservation($_POST['id_livre']);
 
-if ($okreserv) {
+$nbres = nbReservation($_POST['id_user']);
+
+if ($okreserv && ($nbres <= 3)) {
     $tmpreserv=$reservationRepository->creeReservation($_POST['id_livre'], $_POST['id_user']);
     $reservationRepository->insertReservation($tmpreserv);
     header("Location: index.php");
@@ -38,5 +40,10 @@ if ($okreserv) {
     <nav>
          <!-- TODO recopier le nav-->
     </nav>
-    <p>Désolé, ce livre a déjà été réservé</p>
+    <?php if (!($okreserv)): ?>
+        <p>Désolé, ce livre a déjà été réservé</p>
+    <?php endif; ?>
+    <?php if ($nbres > 3): ?>
+        <p>Désolé, vous ne pouvez pas réserver plus de trois livres à la fois</p>
+    <?php endif; ?>
 </body>
