@@ -42,7 +42,7 @@ else {
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Bilbiothèque</title>
+    <title>Bibliothèque</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -80,7 +80,7 @@ else {
         <?php endif; ?>
     </nav>
 	<?php if (!($user_connected)) {
-		echo "<p>Vous devez êtres connecté pour effectuer une réservation</p>";
+		echo "<p>Vous devez être connecté pour effectuer une réservation</p>";
 	}
 	?>
   <section>
