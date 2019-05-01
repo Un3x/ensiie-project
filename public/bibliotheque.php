@@ -35,14 +35,32 @@ else {
 <head>
 	<meta charset="utf-8">
     <title>Bilbiothèque</title>
-    <link rel="stylesheet" href=".css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+        <img src="./titre.png"/>
+    </header>
+    <nav>
+        <a href="test.html" class="rubrique">Accueil    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
+        <?php if ($user_connected): ?>
+            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
+            <a href="review.php" class="rubrique">|   Review    </a>
+            <a href="editer.php" class="rubrique">|   Editer   </a>
+            <?php endif; ?>
+        <?php if ($user_connected && $admin): ?>
+            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
+            <a href="rendu.php" class="rubrique">|   Retour   </a>
+            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
+        <?php endif; ?>
+    </nav>
 	<?php if (!($user_connected)) {
 		echo "<p>Vous devez êtres connecté pour effectuer une réservation</p>";
 	}
 	?>
-	<h2>Bilbiothèque</h2>
+  <section>
+	<div class="grand-titre">Bibliothèque</div>
 	<div class="champ recherche">
 		<h4>Rechercher un livre par titre</h4>
 		<form action="bibliotheque.php" method="POST">
@@ -53,16 +71,13 @@ else {
 		</form>
 		<p id="ftitreerror" style="display:none">Veuillez remplir le champ</p>
 	</div>
-	<nav>
-       <!-- ALED TODO recopier le nav-->
-    </nav>
     <p>Vous pouvez parcourir notre bilbiothèque</p>
     <div class="contenu">
     	<table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
+      <td>Couverture</td>
     <td>titre</td>
     <td>publication</td>
-    <td>couverture</td>
     <td>editeur</td>
     <td>auteurs</td>
     <td>emprunteur</td>
@@ -76,9 +91,9 @@ else {
 <?php
     foreach ($livres as $livre) : ?>
     <tr><?php $ID=$livre->getId(); ?>
+    <td><img src=<?php echo $livre->getImage() ?>/></td>
     <td><?php echo $livre->getTitre() ?></td>
     <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
-    <td><?php echo $livre->getImage() ?></td>
     <td><?php echo $livre->getEdition() ?></td>
     <td>
     	<table>
@@ -98,6 +113,7 @@ else {
 <?php endforeach; ?>
     </table>
     </div>
+  </section>
    </body>
 
    <script>
