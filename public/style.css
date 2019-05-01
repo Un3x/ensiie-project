@@ -1,13 +1,7 @@
-h1{
-	text-align:center;
-	background-color:blue;
-	font-size:90px;
-}
 header{
 	text-align:center;
 }
 .top{
-	background-color:blue;
 	color:white;
 	width:100%;
 	text-align:left;
@@ -37,6 +31,7 @@ body{
 	margin-right: auto;
 	background-attachment:fixed;
 	font-family:helvetica;
+	color:white;
 }
 section{
 	border-style:solid;
@@ -46,6 +41,7 @@ section{
 	margin-left: auto;
 	margin-right: auto;
 	text-align:left;
+	color:black;
 }
 
 .titre{
@@ -56,7 +52,7 @@ section{
 	font-size:large;
 }
 .grand-titre{
-	border-radius:0px;
+	top-right-border-radius:10px;
 	border-style:solid;
 	border-width:1px;
 	background-image:linear-gradient(rgb(125,240,219),rgb(78,87,199));
@@ -65,7 +61,35 @@ section{
 footer{
 	color:white;
 }
-a.nobr{
-	display: inline;
-	white-space: no-wrap;
+td {
+  border-bottom: 1px solid #ddd;
+  color:black;
+  height:100px;
+}
+.bande1{
+	color:white;
+	height:30px;
+	border-radius:10px;
+	border-color:black;
+}
+.bande2{
+	color:white;
+	height:30px;
+	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	border-radius:10px;
+	border-color:black;
+}
+table{
+	border-collapse:collapse;
+	width:100%;
+}
+th{
+	background-color:red;
+}
+.butval{
+	color:white;
+	height:30px;
+	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	border-radius:10px;
+	border-color:black;
 }

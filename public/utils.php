@@ -318,4 +318,28 @@ function livreReserve($id_user) {//retourne l'id du livre réservé par l'utilis
     return '';
 }
 
+function nbReservation($id_user) {//retourne le nombre de livres réservés par l'utilisateur
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $reservationRepository=new \Reservation\ReservationRepository($connection);
+
+    $reservations = $reservationRepository->fetchByUser($id_user);
+
+    $nb = 0;
+
+    foreach ($reservations as $reservation) {
+        $nb = $nb+1;
+    }
+    return $nb;
+}
+
+
+
+
+
+
+
 ?>

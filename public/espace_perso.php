@@ -26,17 +26,14 @@ $users = $userRepository->fetchAll();
 $user_connected=isset($_SESSION["id_user"]);
 
 $admin = false;
-
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
-    $id_user=$_SESSION["id_user"]; 
-    foreach ($users as $user) {
-        if ($user->getId() == $id_user) {
-            $admin=$user->getAdmin();
-            $nom=$user->getNom();
-            $prenom=$user->getPrenom();
-            $pseudo=$user->getPseudo();
-        }
-    }
+//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut et la ligne $admin = false;
+    $id_user=$_SESSION["id_user"];
+    $user=$userRepository->fetchId($id_user);
+    $admin=$user->getAdmin();
+    $nom=$user->getNom();
+    $prenom=$user->getPrenom();
+    $pseudo=$user->getPseudo();
 }
 
 
@@ -87,6 +84,10 @@ else {
         </div>
         <div class="Mes réservations">
             <h4>Mes réservations</h4>
+            <?php if ($reservations == []): ?>
+                <p>Vous n'avez pas de réservations</p>
+            <?php endif; ?>
+            <?php if ($reservations != []): ?>
             <table>
                 <thead>
                     <td>Titre</td>
@@ -102,9 +103,14 @@ else {
                 </tr>
             <?php endforeach; ?>
             </table>
+        <?php endif; ?>
         </div>
         <div class="Mes emprunts">
             <h4>Mes emprunts</h4>
+            <?php if ($empruntés == []): ?>
+                <p>Vous n'avez pas d'emprunts en cours</p>
+            <?php endif; ?>
+            <?php if ($empruntés != []): ?>
             <table>
                 <thead>
                     <td>Titre</td>
@@ -117,6 +123,7 @@ else {
                     </tr>
                 <?php endforeach; ?>
             </table>
+        <?php endif; ?>
         </div>
     </div>
 <?php endif; ?>

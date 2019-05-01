@@ -39,7 +39,7 @@ CREATE TABLE "Review" (
     id VARCHAR(50) NOT NULL ,
     num VARCHAR(50),
     personne int NOT NULL ,
-    texte VARCHAR(400) ,
+    texte TEXT ,
     note int,
     CONSTRAINT pk_review PRIMARY KEY (id_review) ,
     CONSTRAINT fk_review_id FOREIGN KEY (id) REFERENCES "Livre"(id_livre) ,
@@ -49,13 +49,14 @@ CREATE TABLE "Review" (
 
 
 CREATE TABLE "Historique" (
+    id_hist SERIAL,
     id_livre VARCHAR(13) NOT NULL,
     id_user int NOT NULL,
     date_emprunt date NOT NULL,
     date_rendu date NOT NULL,
     id_review int,
     num_review int,
-    CONSTRAINT pk_historique PRIMARY KEY (id_livre, id_user),
+    CONSTRAINT pk_historique PRIMARY KEY (id_hist),
     CONSTRAINT fk_historique_livre FOREIGN KEY (id_livre) REFERENCES "Livre"(id_livre),
     CONSTRAINT fk_historique_user FOREIGN KEY (id_user) REFERENCES "User"(id_user),
     CONSTRAINT fk_historique_review FOREIGN KEY (id_review) REFERENCES "Review"(id_review)

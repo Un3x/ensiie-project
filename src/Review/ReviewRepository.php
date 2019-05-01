@@ -53,6 +53,25 @@ class ReviewRepository
         return $reviews;
     }
 
+
+    public function fetchByUserAndLivre($id_user, $id_livre) {
+        $rows = $this->connection->query("SELECT * FROM \"Review\" WHERE id='$id_livre' AND personne='$id_user';")->fetchAll(\PDO::FETCH_OBJ);
+        $reviews = [];
+        foreach ($rows as $row) {
+            $review = new Review();
+            $review
+                ->setId($row->id)
+                ->setNum($row->num)
+                ->setPersonne($row->personne)
+                ->setTexte($row->texte)
+                ->setNote($row->note);
+
+            $reviews[] = $review;
+        }
+
+        return $reviews;
+    }
+
 //TODO update
 
     public function creeReview($id, $num, $personne, $texte, $note) {
@@ -91,7 +110,7 @@ class ReviewRepository
         $texte=$review->getTexte();
         $note=$review->getNote();
 
-        $query="INSERT INTO \"Review\" VALUES ('$id', '$num', '$personne', '$texte', '$note');";
+        $query="INSERT INTO \"Review\"(id, num, personne, texte, note) VALUES ('$id', '$num', '$personne', '$texte', '$note');";
 
         $this->connection->query("$query");
 

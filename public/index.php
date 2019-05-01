@@ -32,15 +32,13 @@ $user_connected=isset($_SESSION["id_user"]);
 $admin = false;
 
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
-    $id_user=$_SESSION["id_user"]; 
-    foreach ($users as $user) {
-        if ($user->getId() == $id_user) {
-            $admin=$user->getAdmin();
-            $nom=$user->getNom();
-            $prenom=$user->getPrenom();
-            $pseudo=$user->getPseudo();
-        }
-    }
+//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
+    $id_user=$_SESSION["id_user"];
+    $user=$userRepository->fetchId($id_user);
+    $admin=$user->getAdmin();
+    $nom=$user->getNom();
+    $prenom=$user->getPrenom();
+    $pseudo=$user->getPseudo();
 }
 
 ?>
@@ -54,7 +52,15 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
         if ($user_connected) {
-            echo "<p>Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</p>";
+            echo "    <TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
+        <TD class=\"bande2\" align=\"right\"> Deconnection</TD>
+      </TR>
+    </TABLE>";
+
+            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
+
         }
         
         ?>
@@ -79,12 +85,12 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </nav>
 
     <div class="container">
-    <h2>Bienvenue sur le site de Sciience</h2>
+        <section>
+    <div class="grand-titre">Bienvenue sur le site de Sciience</div>
 
 
 
-<section>
-<p><a href="connexion.php">lien vers la connexion</a></p>
+
 
 <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
@@ -109,7 +115,6 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </tr>
 <?php endforeach; ?>
     </table>
-</section>
 
 <?php //test d'insertion de livre
 $tmp=$livreRepository->creeLivre('13', 'titre', 'jsb', '1990-02-03', 'toto', 'leseditionsquidechirent', '3', '2001-10-23');
@@ -119,7 +124,6 @@ $livres = $livreRepository->fetchAll();
 
 ?>
 
-<section>
     <h3> test sur les livres</h3>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
@@ -144,7 +148,6 @@ $livres = $livreRepository->fetchAll();
     </tr>
 <?php endforeach; ?>
     </table>
-</section>
 
 <?php
 //test d'insertion d'auteur
@@ -154,7 +157,6 @@ $auteurs = $auteurRepository->fetchall();
 ?>
 
 
-<section>
     <h3> test sur les auteurs</h3>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
@@ -169,11 +171,11 @@ $auteurs = $auteurRepository->fetchall();
     </tr>
 <?php endforeach; ?>
     </table>
-</section>
 
 
 
-<section>
+
+
     <h3> test sur les réservations</h3>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
@@ -188,11 +190,11 @@ $auteurs = $auteurRepository->fetchall();
     </tr>
 <?php endforeach; ?>
     </table>
-</section>
 
 
 
-<section>
+
+
     <h3> test sur les historiques</h3>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
@@ -211,7 +213,8 @@ $auteurs = $auteurRepository->fetchall();
     </tr>
 <?php endforeach; ?>
     </table>
-</section>
+
     </div>
+    </section>
     </body>
     </html>
