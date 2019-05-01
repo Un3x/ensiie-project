@@ -8,7 +8,7 @@ header{
 }
 nav{
 	text-align:center;
-	font-size:42px;
+	font-size:xx-large;
 	
 }
 .rubrique:hover{
@@ -35,7 +35,7 @@ body{
 }
 section{
 	border-style:solid;
-	border-radius:10px;
+	border-radius:20px;
 	background-color:white;
 	width:80%;
 	margin-left: auto;
@@ -73,7 +73,6 @@ td {
 .bande1{
 	color:white;
 	height:30px;
-	border-radius:10px;
 	border-color:black;
 }
 .bande2{
