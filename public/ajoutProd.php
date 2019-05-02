@@ -20,7 +20,7 @@ require("header.php");
 
 <section>
     <h1 class="section">Ajouter un produit</h1>
-    <h2 class="annonce">Votre annonce</h2>
+    <h2 class="sous_titre">Votre annonce</h2>
     <p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
     <form action="" method="post" class="form">
         <p>Catégories<span class="red">*</span> :</p>
