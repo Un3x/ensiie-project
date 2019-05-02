@@ -20,7 +20,7 @@ require("header.php");
 
 <section>
 	<div class="form">
-	<h1 class="inscription">Inscription</h1>
+	<h1 class="section">Inscription</h1>
 	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
 	<form action="verificationsignup.php" method="post" class="form">
 		Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="nom" placeholder="Nom" required> <br/>
