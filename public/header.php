@@ -9,7 +9,7 @@
         </head>
   
         <body>
-            <header><h1><a href="index.php">"Find Your Thing"</a></h1></header>
+            <header><h1><a href="index.php">"Trouve Ton Truc"</a></h1></header>
 
             <nav>
                 <a href="index.php">Accueil</a>
@@ -35,40 +35,8 @@
                     <input type="text" placeholder="Rechercher.." name="search">
                     <button type="submit">OK</button>
                 </form>
+                <button class="boutton" onclick="window.location.href='ajoutProd.php'" style="width:auto;">Ajouter un produit</button>
             </nav>
-
-            <!--<nav>
-                <div class="topnav" id="myTopnav">
-                    <a href="index.php" class="active">Accueil</a>
-                    <div class="dropdown">
-                        <button class="dropbtn">Catégories 
-                        <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#">Cat 1</a>
-                            <a href="#">Cat 2</a>
-                            <a href="#">Cat 3</a>
-                        </div>
-                    </div> 
-                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Connexion</button>
-                    <form action="" class="search-container">
-                        <input type="text" placeholder="Rechercher.." name="search">
-                        <button type="submit">OK</button>
-                    </form>
-                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="menuDeroulant()">&#9776;</a>
-                </div>
-            </nav> 
-
-            <script>
-                function menuDeroulant() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                x.className = "topnav";
-                }
-                }
-            </script> -->
 
             <div id="id01" class="modal">
         

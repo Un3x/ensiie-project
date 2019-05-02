@@ -149,6 +149,11 @@ footer {
     flex: 50%;
 }
 
+h1.inscription {
+  color : black;
+  font-size: 40px;
+}
+
 .form input[type=text], .form input[type=password] {
     width: 100%;
     padding: 15px;
