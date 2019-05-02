@@ -19,7 +19,7 @@
 	{
 		echo "</article>\n";
 		echo "<footer>\n";
-		echo "ouai le footer";
+		echo "<p class=\"texteBas\">mail de contact : <a href=\"mailto:random@ensiie.fr\">random@ensiie.fr</a> . addresse  : 1 place de la résistance 91025 Evry</p>\n";
 		echo "</footer>\n";
 		echo "</body>\n";
 		echo "</html>";
