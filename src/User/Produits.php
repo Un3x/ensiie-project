@@ -21,6 +21,8 @@ class Produits
 
     private $price;
 
+    /*PHOTOS*/
+
     /**
      * @return int
      */
