@@ -20,11 +20,14 @@ require("header.php");
 
 <section>
     <form action="" method="post">
-        <?php 
-        foreach ($cats as $cat) : ?>
-        <label for="<?php echo $cat->getId(); ?>"><?php echo $cat->getNomCat() ?></label>
-        <input type="checkbox" name="categories" value="<?php echo $cat->getId(); ?>" id="<?php echo $cat->getId(); ?>"/>
-        <?php endforeach; ?>
+        <div class="checkboxes">
+            <?php 
+            foreach ($cats as $cat) : ?>
+            <label for="<?php echo $cat->getId(); ?>"><?php echo $cat->getNomCat() ?></label>
+            <input type="checkbox" name="categories" value="<?php echo $cat->getId(); ?>" id="<?php echo $cat->getId(); ?>"/>
+            <?php endforeach; ?>
+        </div>
+        
     </form>
 </section>
 

@@ -183,6 +183,11 @@ form img {
   order: 1;
 }
 
+/* s'inscrire */
+
+.checkboxes {
+  display: flex;
+}
 
 /* Affichage petit écrans */
 
