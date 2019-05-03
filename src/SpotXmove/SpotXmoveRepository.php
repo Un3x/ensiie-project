@@ -57,4 +57,6 @@ class SpotXmoveRepository
 
         return $spots;
     }
+
+    // TODO setters
 }

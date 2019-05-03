@@ -12,8 +12,7 @@ function header_login() {
 			<button class=\"bouton\">Mon compte</button>
 				<div class=\"dropdown-content\">
 					<a href=\"compte.php\">Mon profil</a>
-					<a href=\"#\">Mes spots</a>
-					<a href=\"#\">Mes follows</a>
+					<a href=\"follows.php\">Mes follows</a>
 				</div>
 			</div>
 			<div id=\"connexion\">

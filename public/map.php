@@ -1,5 +1,6 @@
 <?php include ('view.php');
  $ville = $_GET['ville'];
+ session_start();
 ?>
 
 <html>

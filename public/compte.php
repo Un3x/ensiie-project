@@ -17,7 +17,6 @@ $user = new \User\User();
 
 //si on a un nouvel utilisateur
 if (isset($_POST['firstname'])) {
-	echo "LE SIGNUP MARCHE ";
 	// génération des attributs de l'objet User
 	$user->setFirstname($_POST['firstname']);
 	$user->setLastname($_POST['lastname']);
