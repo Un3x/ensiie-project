@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS "utilisateur" CASCADE;
 DROP TABLE IF EXISTS "photo_profil" CASCADE;
 DROP TABLE IF EXISTS "produits" CASCADE;
+DROP TABLE IF EXISTS "photo_produit" CASCADE;
 DROP TABLE IF EXISTS "categorie" CASCADE;
 DROP TABLE IF EXISTS "assoc_prd_cat" CASCADE;
 
@@ -25,6 +25,11 @@ CREATE TABLE "utilisateur"(
     
 );
 
+CREATE TABLE "photo_produit"(
+    id_photo INTEGER,
+    adresse VARCHAR(200) NOT NULL,
+    CONSTRAINT key_photoproduit PRIMARY KEY (id_photo)
+);
 
 CREATE TABLE "produits"(
     id_produit INTEGER,
@@ -33,6 +38,9 @@ CREATE TABLE "produits"(
     descript VARCHAR,
     title VARCHAR,
     price INTEGER,
+    photo1 INTEGER REFERENCES photo_produit(id_photo),
+    photo2 INTEGER REFERENCES photo_produit(id_photo),
+    photo3 INTEGER REFERENCES photo_produit(id_photo),
     CONSTRAINT key_prod PRIMARY KEY (id_produit)
     /*CONSTRAINT fk_proprio FOREIGN KEY (id_proprio) REFERENCES "utilisateur
 "(id)*/
