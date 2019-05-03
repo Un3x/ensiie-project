@@ -21,7 +21,15 @@ class Produits
 
     private $price;
 
-    /*PHOTOS*/
+    /**
+     * @var int ??
+     */
+
+    private $photo1;
+
+    private $photo2;
+
+    private $photo3;
 
     /**
      * @return int
@@ -92,7 +100,38 @@ class Produits
         return $this;
     }
 
+    public function getPhoto1()
+    {
+        return $this->photo1;
+    }
 
+    public function setPhoto1($photo)
+    {
+        $this->photo1=$photo;
+        return $this;
+    }
+
+    public function getPhoto2()
+    {
+        return $this->photo2;
+    }
+
+    public function setPhoto2($photo)
+    {
+        $this->photo2=$photo;
+        return $this;
+    }
+
+    public function getPhoto3()
+    {
+        return $this->photo3;
+    }
+
+    public function setPhoto3($photo)
+    {
+        $this->photo3=$photo;
+        return $this;
+    }
 
 }
 
