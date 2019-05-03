@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html>
+    <html lang="fr">
         <head>
             <meta charset="utf-8" />
             <title>FindYourThing</title>
@@ -69,9 +69,9 @@
                     </div>
                     <div class="container">
                         <label for="uname"><b>Pseudo</b></label>
-                        <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" required>
+                        <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" id="uname" required>
                         <label for="psw"><b>Mot de passe</b></label>
-                        <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" required>
+                        <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" id="psw" required>
                         <button class="boutton" type="submit">Se connecter</button> <br/>
                     </div>
                     <div class="bottom-container">

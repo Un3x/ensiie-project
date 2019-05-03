@@ -17,7 +17,7 @@
                 </div>
                 <div class="columnF">
                     <h4>Nos locaux</h4>
-                    <div id="googleMap" style="width:100%;height:px;"></div>
+                    <div id="googleMap" style="width:100%;height:300px;"></div>
                 </div>
                 <div class="columnF">
                 </div>

@@ -24,9 +24,9 @@ require("header.php");
 	<h2 class="sous_titre">Création de votre profil</h2>
 	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
 	<form action="verificationsignup.php" method="post" class="form">
-		Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="nom" placeholder="Nom" required> <br/>
-	  	Prénom <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="prenom" placeholder="Prénom" required> <br/>
-	  	Pseudo <span class="red">*</span> : <br/><input type="text" size="20" maxlenght="30" name="id_user" placeholder="Pseudo" required> <br/>
+		Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="nom" placeholder="Nom" required> <br/>
+	  	Prénom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="prenom" placeholder="Prénom" required> <br/>
+	  	Pseudo <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="id_user" placeholder="Pseudo" required> <br/>
 	  	Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" placeholder="Email" required> <br/>
 	  	Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" placeholder="Mot de passe" required> <br/>
 	  	Date de naissance : <br/><input type="date" name="bday"> <br/>
