@@ -11,7 +11,10 @@
         </head>
   
         <body>
-            <header><h1><a href="index.php">"Trouve Ton Truc"</a></h1></header>
+            <header>
+                <h1 class="pc"><a href="index.php">"Trouve Ton Truc"</a></h1>
+                <a href="index.php" class="mobile"><img src="TTT_green.png"></a>
+            </header>
 
             <nav>
                 <a href="index.php">Accueil</a>
@@ -32,11 +35,8 @@
                 </div>
                 <a href="contact.php">Contact</a>
                 <a href="aboutus.php">A propos</a>
+                <a href="search.php"></span class="loupe">&#128269;</span> Rechercher</a>
                 <button class="boutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Connexion</button>
-                <form action="" class="search-container">
-                    <input type="text" placeholder="Rechercher.." name="search">
-                    <button type="submit">OK</button>
-                </form>
                 <button class="boutton" onclick="window.location.href='ajoutProd.php'" style="width:auto;">Ajouter un produit</button>
             </nav>
 

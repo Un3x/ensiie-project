@@ -19,6 +19,10 @@ header {
     width: 100%;
 }
 
+header .mobile {
+  display : none;
+}
+
 nav {
     background-color: #333;
     position: sticky;
@@ -89,21 +93,6 @@ nav .search-container {
     padding-left: 10px;
 }
 
-nav input[type=text] {
-    padding: 10px;
-    border: solid 1px darkgray;
-    background-color: white;
-}
-
-nav .search-container button {
-    background-color: #ddd;
-    color: #333333;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
 
 aside {
     background-color: #e6e6e6;
@@ -148,6 +137,11 @@ footer a {
 footer a:hover {
   letter-spacing: 1.5px;
   transition-duration: 0.2s;
+}
+
+footer .googleMap {
+  width: 100%;
+  height: 300px;
 }
 
 .columnF {
@@ -304,6 +298,19 @@ form > p {
 /* Affichage petit écrans */
 
 @media screen and (max-width: 768px) {
+    header .pc {
+      display: none;
+    }
+
+    header .mobile {
+      display: flex;
+      padding: 14px 20px;
+    }
+
+    header img {
+      height: 70px;
+    }
+
     nav {   
       flex-direction: column;
       position: static;
