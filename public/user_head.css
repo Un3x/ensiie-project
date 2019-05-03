@@ -130,11 +130,37 @@ header a{
     color: white;
 }
 
+/* Footer */
+
 footer {
     text-align: center;
     background-color: #009925;
     color: white;
     padding: 20px;
+}
+
+footer a {
+  text-align: right;
+  text-decoration: none;
+  color: white;
+  font-weight: bold
+}
+
+footer a:hover {
+  letter-spacing: 1.5px;
+  transition-duration: 0.2s;
+}
+
+.columnF {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.rowF:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .red {
@@ -321,6 +347,10 @@ form > p {
     .bouton {
         width: 100%;
         padding: 10px;
+    }
+
+    .columnF {
+      width: 100%;
     }
 
   }

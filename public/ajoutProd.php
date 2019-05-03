@@ -51,7 +51,6 @@ require("header.php");
 			</div>
 		  </div>
 	</form>
-    </form>
 </section>
 
 <script>

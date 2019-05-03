@@ -44,56 +44,60 @@
         
         <form class="modal-content animate" action="/action_page.php">
             <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="img_avatar2.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="row">
-                    <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
+                <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
                 
                 <div class="col">
-                <a href="#" class="fb btn">
+                    <a href="#" class="fb btn">
                     <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                </a>
-                <a href="#" class="twitter btn">
+                    </a>
+                    <a href="#" class="twitter btn">
                     <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                </a>
-                <a href="#" class="google btn">
+                    </a>
+                    <a href="#" class="google btn">
                     <i class="fa fa-google fa-fw"></i> Login with Google+
-                </a>
+                    </a>
                 </div>
         
                 <div class="col">
-                <div class="hide-md-lg">
-                    <p>Or sign in manually:</p>
+                    <div class="hide-md-lg">
+                        <p>Or sign in manually:</p>
+                    </div>
+                    <div class="container">
+                        <label for="uname"><b>Pseudo</b></label>
+                        <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" required>
+                        <label for="psw"><b>Mot de passe</b></label>
+                        <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" required>
+                        <button class="boutton" type="submit">Se connecter</button> <br/>
+                    </div>
+                    <div class="bottom-container">
+                        <div class="row">
+                            <div class="col">
+                                <a href="sinscrire.php" style="color:white" class="btn">S'inscrire</a>
+                            </div>
+                            <div class="col">
+                                <a href="#" style="color:white" class="btn">Mot de passe oublié ?</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            <div class="container">
-            <label for="uname"><b>Pseudo</b></label>
-            <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" required>
-
-            <label for="psw"><b>Mot de passe</b></label>
-            <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" required>
-                
-            <button class="boutton" type="submit">Se connecter</button> <br/>
             </div>
-
-            <div class="bottom-container">
-            <div class="row">
-            <div class="col">
-                <a href="sinscrire.php" style="color:white" class="btn">S'inscrire</a>
-            </div>
-            <div class="col">
-                <a href="#" style="color:white" class="btn">Mot de passe oublié ?</a>
-            </div>
-            </div>
-        </div>
         </form>
         </div>
-        </div>
-        </div>
-        <script src=”signin.js”>
-        
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
 
         <div class="flexbox_sect_asi">
