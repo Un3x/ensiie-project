@@ -19,7 +19,7 @@
 	{
 		echo "</article>\n";
 		echo "<footer>\n";
-		echo "<p class=\"texteBas\">mail de contact : <a href=\"mailto:random@ensiie.fr\">random@ensiie.fr</a> . addresse  : 1 place de la résistance 91025 Evry</p>\n";
+		echo "<p class=\"texteBas\">mail de contact : <a href=\"mailto:random@ensiie.fr\">random@ensiie.fr</a> . adresse  : 1 place de la résistance 91025 Evry</p>\n";
 		echo "</footer>\n";
 		echo "</body>\n";
 		echo "</html>";
@@ -29,33 +29,43 @@
 	{
 		echo "<header>\n";
 		echo "\t<div id=\"menu\">\n";
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"index.php\">Realitiie</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"index.php\">Accueil</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"equipe.php\">Equipe</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"medias.php\">Medias</a>\n";
+		echo "\t\t\t<a href=\"article.php\">Articles</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"debrief.php\">debrief?????</a>\n";
+		echo "\t\t\t<a href=\"debrief.php\">Comptes rendu</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"projets.php\">Projets</a>\n";
+		echo "\t\t\t<a href=\"projet.php\">Projets</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"laval.php\">Laval</a>\n";
 		echo "\t\t</div>\n";
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"ressources.php\">Ressources</a>\n";
 		echo "\t\t</div>\n";
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"exercices.php\">Exercices</a>\n";
-		echo "\t\t</div>\n";
+		
+		//echo "\t\t<div>\n";
+		//echo "\t\t\t<a href=\"exercices.php\">Exercices</a>\n";
+		//echo "\t\t</div>\n";
+		
 		echo "\t</div>\n";
 		echo "</header>\n";
 	}

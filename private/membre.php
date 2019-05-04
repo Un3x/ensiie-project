@@ -24,7 +24,7 @@ $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password
 $membreRepository = new \Membre\MembreRepository($connection);;
 $membres = $membreRepository->fetchAll();
 
-$roles = array('a' => "Administrateur", 'r' => "Membre"); // à compléter si ajout de nouveaux rôles
+$roles = array('a' => "Administrateur", 'r' => "Membre", 'p' => "Président"); // à compléter si ajout de nouveaux rôles
 ?>
 
 <h1>Administration des membres</h1>

@@ -13,7 +13,7 @@
 		Laval Virtual est le plus grand salon d'Europe (??) sur la Réalitée Virtuelle (VR), 
 		Réalitée Augmentée (AR) et les techniques immersives. Il se déroule tous les ans en Avril
 		à Laval et propose un salon avec plus de 300 exposants et plus de 200 conférenciers.
-		Pour plus d'inforamtion : <a href="www.laval-virtual.com/fr/accueil/"> Laval-virtual.com</a>.
+		Pour plus d'information : <a href="www.laval-virtual.com/fr/accueil/"> Laval-virtual.com</a>.
 	</p>
 	
 	
@@ -32,8 +32,9 @@
 
 <div>
 	<h3>Les jeux de Laval</h3>
-	<p>Retrouver ici tous les jeux VR qui ont été réalisés pendant cette évènement : </p>
-	<p>Available soon!</p> <p>fIIEts</p>
+	<p>Available soon!</p>
+	<p>Vous retrouverez ici tous les jeux VR qui ont été réalisés pendant cette évènement </p>
+	<p>fIIEts</p>
 	<?php
 	/*
 		require("../src/Jeux/Jeux.php");

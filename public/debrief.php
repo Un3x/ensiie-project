@@ -5,6 +5,6 @@
 	navAccueil();
 ?>
 
-<p>Vous retrouverez ici les articles sur un peu tout et nimp</p>
+<p>Vous retrouverez ici les rapports et compte rendu des réunions une fois connecté.</p>
 
 <?php pied(); ?>
