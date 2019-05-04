@@ -1,4 +1,2 @@
-<?php include('../src/View/404View.php'); ?>
-
-
+<?php include('../src/View/404View.php');
 

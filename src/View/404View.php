@@ -7,7 +7,6 @@
     <p>Cette page n'existe pas</p>
 </section>
 
-    
 
 <?php $content = ob_get_clean(); ?>
 
