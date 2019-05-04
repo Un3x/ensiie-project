@@ -18,7 +18,7 @@
 <form method="POST" action="index.php?action=confirmationCourse" >
 	paiement : (NE SOYEZ PAS CONS NE METTEZ PAS DE VRAIS INFOS DE CB !!!!) <br/>
 	numéro de carte : 
-	<input type=text name=nCard onchange='checkNumero()' pattern='^[0-9]{16}$' required/> <br/>
+	<input type=text name=nCard pattern='^[0-9]{16}$' required/> <br/>
 	
     date d'expiration
     <select name=monthCard required>
@@ -35,7 +35,7 @@
     </select> <br/>
 
     cryptogramme visuel
-	<input type=text name=codeCard onchange='checkCode()' pattern='^[0-9]{3}$' required/> <br/>
+	<input type=text name=codeCard pattern='^[0-9]{3}$' required/> <br/>
 	
     <input type=submit name=sendInfoCard value="Valider" />
 	<input type=hidden value=$idCourse />
