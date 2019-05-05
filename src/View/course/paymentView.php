@@ -15,7 +15,7 @@
 
  <br/>
 
-<form method="POST" action="index.php?action=confirmationCourse" >
+<form method="POST" action="/course/confirmation" >
 	paiement : (NE SOYEZ PAS CONS NE METTEZ PAS DE VRAIS INFOS DE CB !!!!) <br/>
 	numéro de carte : 
 	<input type=text name=nCard pattern='^[0-9]{16}$' required/> <br/>

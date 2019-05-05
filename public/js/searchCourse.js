@@ -25,18 +25,18 @@ function searchCourse(departureId, arrivalId, dateId, timeId, resultId){
                     resDiv.innerHTML += "prix : "+ligne['price'] + " €<br/>";
                     resDiv.innerHTML += "heure de départ : "+ligne['departureTime'] + "<br/>";
                     resDiv.innerHTML += "heure d'arrivée : "+ligne['arrivalTime'] + "<br/>";
-                    resDiv.innerHTML += "<a href='index.php?action=infoCourse&departure="+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse+"&carrierId="+ligne['carrierId']+"' >infos</a></div><br/><br/>";
+                    resDiv.innerHTML += "<a href='/course/"+departureCourse+'_'+arrivalCourse+'_'+dateCourse+'_'+timeCourse+"_"+ligne['carrierId']+"' >infos</a></div><br/><br/>";
                 }
             }
             else{
                 resDiv.innerHTML = "aucun trajet trouvé"
             }
 
-            history.pushState("aa", "titre", "index.php?action=searchCourse&departure="+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse);
+            history.pushState("aa", "titre", "/searchCourse?departure="+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse);
         }
     }
 
-    xhttp.open('GET', 'api.php?action=getCourses&departure='+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse, true);
+    xhttp.open('GET', '/api/course/'+departureCourse+'/'+arrivalCourse+'/'+dateCourse+'/'+timeCourse, true);
     xhttp.send();
 
 }

@@ -65,6 +65,10 @@ if( isset($_GET['action']))
         case 'confirmationCourse' :
             require('../src/Controller/course/confirmationCourse.php');
             break;
+        
+        case '' :
+            require('../src/View/accueilView.php');
+            break;
 
         default:
             require('../src/Controller/404.php');

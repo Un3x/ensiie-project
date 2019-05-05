@@ -31,6 +31,6 @@ heure :
 <?php require('../src/View/template.php'); ?>
 
 
-<script src="js/suggestCity.js"></script>
-<script src="js/searchCourse.js"></script>
+<script src="/js/suggestCity.js"></script>
+<script src="/js/searchCourse.js"></script>
 <?=$showResult?>

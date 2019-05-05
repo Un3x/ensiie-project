@@ -3,9 +3,7 @@
 <?php ob_start(); ?>
 
 <div>
-<form method="GET" action="index.php">
-    <input type=hidden name=action value=searchCourse />
-
+<form method="GET" action="searchCourse">
     ville de départ :
     <input type=text name=departure id=departure oninput="setTimeout(suggestCity, 150, this, this.value, 'departureSuggestCity')" list="departureSuggestCity" autocomplete="off" required />
     <datalist id="departureSuggestCity"></datalist>
@@ -35,5 +33,5 @@
 
 <?php require('template.php'); ?>
 
-<script src="js/suggestCity.js"></script>
+<script src="/js/suggestCity.js"></script>
 

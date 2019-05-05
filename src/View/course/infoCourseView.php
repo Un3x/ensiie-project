@@ -17,7 +17,7 @@
 
 <?php switch($userType) {
 	case null :?>
-<form action="index.php?action=payment" method="POST">
+<form action="/course/payment" method="POST">
 	<input type=hidden name=carrierId value=<?=$carrierId?> />
 	<input type=hidden name=departure value=<?=$departureName?> />
 	<input type=hidden name=arrival value=<?=$arrivalName?> />
@@ -29,18 +29,18 @@
 <?php break; case "carrier": ?>
 <?php switch($courseStatus){ 
 		case "booked": ?>
-	<form action="index.php?action=acceptCourse" method="POST">
+	<form action="/course/accept" method="POST">
 	<input type=hidden name=courseId value=<?=$courseId?> />
 	<input type=submit id=accept value="Accepter la réservation" />
 	</form>
 
-	<form action="index.php?action=refuseCourse" method="POST">
+	<form action="/course/refuse" method="POST">
 	<input type=hidden name=courseId value=<?=$courseId?> />
 	<input type=submit id=refuse value="Refuser la réservation" />
 	</form>
 
 	<?php break; case "confirmed": ?>
-	<form action="index.php?action=cancelCourse" method="POST">
+	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value=<?=$courseId?> />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
@@ -54,13 +54,13 @@
 <?php break; case "client": ?>
 	<?php switch($courseStatus){ 
 		case "booked": ?>
-	<form action="index.php?action=cancelCourse" method="POST">
+	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value=<?=$courseId?> />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
 	<?php break; case "confirmed": ?>
-	<form action="index.php?action=cancelCourse" method="POST">
+	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value=<?=$courseId?> />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
@@ -77,8 +77,8 @@
 
 <?php require('../src/View/template.php'); ?>
 
-<link rel="stylesheet" href="js/leaflet/leaflet.css" />
-<script src="js/leaflet/leaflet.js" ></script>
+<link rel="stylesheet" href="/js/leaflet/leaflet.css" />
+<script src="/js/leaflet/leaflet.js" ></script>
 
 <script>
 	var request = new XMLHttpRequest();

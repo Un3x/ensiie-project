@@ -15,7 +15,7 @@ détails du trajet :
 	heure d'arrivée : <?=$arrivalTime ?> <br/>
 </div>
 
-<a href="http://localhost:8080/index.php?action=infoCourse&courseId=<?=$courseId ?>">plus d'infos</a>
+<a href="http://localhost:8080/course/<?=$courseId ?>">plus d'infos</a>
 
 </section>
 
