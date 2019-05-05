@@ -38,7 +38,7 @@ class LivreRepository
         return $livres;
     }
 
-    public function fetchId($id_livre)
+    public function fetchId($id_livre) //retourne le livre dont l'id est $id_livre
     {
         $rows = $this->connection->query("SELECT * FROM \"Livre\" WHERE id_livre='$id_livre';")->fetchAll(\PDO::FETCH_OBJ);
         foreach ($rows as $row) {
@@ -118,6 +118,32 @@ class LivreRepository
 
         return $livres;
     }
+
+
+
+
+    function fetchEmprunted() {//retourne l'ensemble des livres empruntés
+        $rows = $this->connection->query("SELECT * FROM \"Livre\" WHERE emprunteur != 0;")->fetchAll(\PDO::FETCH_OBJ);
+        $livres = [];
+        foreach ($rows as $row) {
+            $livre = new Livre();
+            $livre->setId($row->id_livre);
+            $livre->setTitre($row->titre);
+            $livre->setAuteur($row->auteur); //TODO ALED
+            $livre->setPublication(new \DateTimeImmutable($row->publication));
+            $livre->setImage($row->couverture);
+            $livre->setEdition($row->editeur);
+            $livre->setEmprunteur($row->emprunteur);
+            $livre->setDateEmprunt(new \DateTimeImmutable($row->date_emprunt));
+
+            $livres[] = $livre;
+        }
+
+        return $livres;
+    }
+
+
+    
 
 //TODO update
 

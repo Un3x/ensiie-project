@@ -342,4 +342,26 @@ function nbReservation($id_user) {//retourne le nombre de livres réservés par 
 
 
 
+
+
+//fonctions autres
+
+function format_chemin_SQL($string) {
+    $ret="";
+    $last='';
+    foreach ((array)$string as $lettre) {
+        $ret=$ret.$last;
+        $last='';
+        if ($lettre == '/') {
+            $last='/';
+        }
+        else {
+            $ret=$ret.$lettre;
+        }
+    }
+    return $ret;
+}
+
+
+
 ?>

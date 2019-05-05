@@ -134,7 +134,7 @@ else {
             <?php foreach ($reservations as $reservation) : ?>
                 <?php $livre=$livreRepository->fetchId($reservation->getIdUser()); ?>
                 <tr>
-                    <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage(); ?>/></td>
+                    <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage(); ?>></td>
                     <td><?php echo $livre->getTitre(); ?></td>
                     <td><form action="espace_perso.php" method="POST"><input style="display:none" type="text" name="id_rendre" value=<?php $tmp=$reservation->getIdLivre(); echo "$tmp"; ?>><input type="submit" value="Annuler"></form></td>
                 </tr>
