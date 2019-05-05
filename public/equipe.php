@@ -19,33 +19,42 @@
 
 <h2>NOTRE EQUIPE</h2>
 <div>
-	<h3>Le président</h3>
-		Plou, règnant en tyrant est là pour nous montrer la voie à suivre.
-	
-	<h4>Son bureau</h4>
-		<p>Trésorié : Jalik, ayant pour unique objectif de partir avec la caisse.</p>
+    <div class="bloc-bord"> 
+		<h3>Le président</h3>
+			<p>Plou, règnant en tyrant est là pour nous montrer la voie à suivre. Fort de sa dernière participation
+			au Laval virtual il sera chargé d'organiser les tutos et vous entrainer pour pouvoir profiter vous même de l'expérience.</p>
 		
-		<p>Secrétaire Général : DBA3, du moins quand il n'est pas entrain de mettre des B-coté sur smash bros ultimate.</p>
-		
-	<h5>Ainsi que le reste des membres</h5>
-	<table>
-    	<tr><th>Surnom</th><th>Prénom</th><th>Nom</th></tr>
-		
-		<!-- A retirer : à titre d'exemple-->
-		<tr><td>Plou</td><td>Jean-Loup</td><td>MACARIT</td></tr>
-		<tr><td>Altreon</td><td>Matteo</td><td>BRANDI</td></tr>
-		<tr><td>fIIEts</td><td>Rémi</td><td>VAN DER LEE</td></tr>
-    	<?php // A TESTER
-    	/*foreach ($membres as $membre) {
-    	    echo 
-    	    '<tr>
-				<td>'.$membre->getSurnom().'</td>
-				<td>'.$membre->getPrenom().'</td>
-				<td>'.¤membre->getNom().'</td>
-			</tr>';
-    	}
-    	*/?>
-    </table>
+		<h4>Son bureau</h4>
+			<p> Vice président : Altréon, très actif dans l'association et à son compte plusieurs projets (même s'il totalise que des echecs),
+			se fera un plaisir de vous aiderà réaliser le jeu de vos rêves. Il suffit comme lui de ne pas avoir de scrupules et de savoir
+			voler avec impunité le travail des autres.</p>
+			<p>Trésorié : Jalik, ayant pour unique objectif de partir avec la caisse, mais pas avant de l'avoir entièrement dépensée en matériel
+			pour l'association. Le budget de l'association est à dépenser et c'est à vous de proposer ce qu'il faut acheter.</p>
+			
+			<p>Secrétaire Général : DBA3, du moins quand il n'est pas entrain de mettre des B-coté sur smash bros ultimate, vous pouvez compter sur lui pour
+			recevoir les compte-rendus des réunions.</p>
+	</div>
+	<div>		
+		<h5>Ainsi que le reste des membres</h5>
+		<table>
+			<tr><th>Surnom</th><th>Prénom</th><th>Nom</th></tr>
+			
+			<!-- A retirer : à titre d'exemple-->
+			<tr><td>Plou</td><td>Jean-Loup</td><td>MACARIT</td></tr>
+			<tr><td>Altreon</td><td>Matteo</td><td>BRANDI</td></tr>
+			<tr><td>fIIEts</td><td>Rémi</td><td>VAN DER LEE</td></tr>
+			<?php // A TESTER
+			/*foreach ($membres as $membre) {
+				echo 
+				'<tr>
+					<td>'.$membre->getSurnom().'</td>
+					<td>'.$membre->getPrenom().'</td>
+					<td>'.¤membre->getNom().'</td>
+				</tr>';
+			}
+			*/?>
+		</table>
+	</div>
 </div>
 
 
