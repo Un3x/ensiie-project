@@ -78,6 +78,7 @@ td {
 	color:white;
 	height:30px;
 	border-color:black;
+	text-align:left
 }
 .bande2{
 	color:white;
@@ -91,19 +92,19 @@ table{
 	width:100%;
 }
 th{
-	background-color:red;
+	background-color:rgb(20,56,96);
 }
 .butval{
 	color:white;
 	height:30px;
-	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	background-image:linear-gradient(rgb(100,200,294),rgb(58,67,179));
 	border-radius:10px;
 	border-color:black;
 }
 .butcon{
 	color:white;
 	height:30px;
-	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	background-image:linear-gradient(rgb(100,200,294),rgb(58,67,179));
 	border-radius:0px;
 	border-color:black;
 	width:230px;
@@ -117,4 +118,20 @@ th{
 	margin-right: auto;
 	text-align:center;
 	color:black;
+}
+.toptab{
+	text-align:center;
+}
+.res{
+	height:50px;
+	background-image:linear-gradient(rgb(58,67,179),rgb(20,56,96));
+	font-size:x-large;
+	text-align:center;
+	color:white;
+}
+.butcan{
+	height:30px;
+	border-radius:0px;
+	background-color:rgb(40,112,192);
+	color:white;
 }
