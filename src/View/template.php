@@ -16,6 +16,9 @@
 
 <nav>
     <ul>
+    <li>  
+        <a href="index.php" > Accueil  </a>
+    </li>
 
     <li>  
         <a href="index.php?action=clients" > Clients  </a>

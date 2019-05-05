@@ -2,7 +2,7 @@
 
 
 <section>
-<h2>Votre demande a bien été enregistrée</h2>
+<h2>Un trajet vous est demandé</h2>
 
 détails du trajet : 
 <div>

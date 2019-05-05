@@ -14,6 +14,9 @@
 
 <div id='mapId' style='width: 600px; height: 400px;'></div>
 
+
+<?php switch($userType) {
+	case null :?>
 <form action="index.php?action=payment" method="POST">
 	<input type=hidden name=carrierId value=<?=$carrierId?> />
 	<input type=hidden name=departure value=<?=$departureName?> />
@@ -22,7 +25,53 @@
 	<input type=hidden name=departureTime value=<?=$departureTime?> />
 	<input type=submit id=search value=Réserver />
 </form>
-    
+
+<?php break; case "carrier": ?>
+<?php switch($courseStatus){ 
+		case "booked": ?>
+	<form action="index.php?action=acceptCourse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=accept value="Accepter la réservation" />
+	</form>
+
+	<form action="index.php?action=refuseCourse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=refuse value="Refuser la réservation" />
+	</form>
+
+	<?php break; case "confirmed": ?>
+	<form action="index.php?action=cancelCourse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "finished": ?>
+
+	<?php break; case "cancelled": ?>
+
+	<?php break; } ?>
+
+<?php break; case "client": ?>
+	<?php switch($courseStatus){ 
+		case "booked": ?>
+	<form action="index.php?action=cancelCourse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "confirmed": ?>
+	<form action="index.php?action=cancelCourse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "finished": ?>
+
+	<?php break; case "cancelled": ?>
+
+	<?php break; } ?>
+
+<?php break; } ?>  
 
 <?php $content = ob_get_clean(); ?>
 
