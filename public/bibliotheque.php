@@ -124,7 +124,7 @@ else {
 <?php
     foreach ($livres as $livre) : ?>
     <tr><?php $ID=$livre->getId(); ?>
-    <td><img height="160" width="100" src=<?php echo $livre->getImage() ?>/></td>
+    <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage() ?>/></td>
     <td><?php echo $livre->getTitre() ?></td>
     <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
     <td><?php echo $livre->getEdition() ?></td>

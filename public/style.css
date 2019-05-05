@@ -12,7 +12,7 @@ nav{
 	
 }
 .rubrique:hover{
-	background-image:url(https://medialb.digiteka.net/multi/35x5m/5v8pvz-HC.jpg);
+	background-image:url(soleil.jpg);
 }
 .rubrique{
 	color:white;
@@ -68,7 +68,11 @@ footer{
 td {
   border-bottom: 1px solid #ddd;
   color:black;
+  text-align:center;
   height:100px;
+}
+.couv{
+	text-align:left;
 }
 .bande1{
 	color:white;
@@ -95,4 +99,22 @@ th{
 	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
 	border-radius:10px;
 	border-color:black;
+}
+.butcon{
+	color:white;
+	height:30px;
+	background-image:linear-gradient(rgb(100,200,2194),rgb(58,67,179));
+	border-radius:0px;
+	border-color:black;
+	width:230px;
+}
+.connect{
+	border-style:solid;
+	border-radius:20px;
+	background-color:white;
+	width:40%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	color:black;
 }

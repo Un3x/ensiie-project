@@ -13,13 +13,15 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 
 if (!isset($_POST['mdp'])) {
-	echo '<html><head><title>Page de connexion de Sciience</title><link rel="stylesheet" href=""></head><body><div class="container"><h2>Bienvenue sur la page de connexion de Sciience</h2>';
+	echo '<html><head><title>Page de connexion de Sciience</title><link rel="stylesheet" href="style.css"></head><body><header>
+        <a href="index.php"><img src="./titre.png"/></a>
+    </header><section class="connect"><div class="container"><div class="grand-titre">Bienvenue sur la page de connexion de Sciience</div>';
 	echo '<form action="connexion.php" method="Post">
 	Pseudo :<br>
 	<input type="text" name="pseudo"><br>
 	Mot de Passe :<br>
 	<input type="password" name="mdp"><br>
-	<input type="submit" class="Input" value="Valider"></form>';
+	<input type="submit" class="butcon" value="Valider"></form>';
 }
 else {
 	$pseudo=$_POST['pseudo'];
@@ -38,5 +40,7 @@ else {
 
 ?>
 </div>
+</section>
 </body>
+</html>
 
