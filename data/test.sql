@@ -29,13 +29,13 @@ INSERT INTO "Review"(id, num, personne, texte, note) VALUES ('chocapic1', '4', '
 
 
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('1', 'Formulaire technique de mécanique générale', 'Jacques Muller', '1996-1-1', './titre.png', 'PAILLART');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('1', 'Formulaire technique de mécanique générale', 'Jacques Muller', '1996-1-1', './cvlivres/9782853140010_internet_w290.png', 'PAILLART');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('1', 'Jacques Muller');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('2', 'La formule du savoir', 'Lé Nguyên Hoang', '2018-06-14', 'https://www.echosciences-sud.fr/uploads/article/image/attachment/1005425680/xl_9782759822607-FormuleSavoir_couv-sofedis.jpg', 'Ecosciences');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('2', 'La formule du savoir', 'Lé Nguyên Hoang', '2018-06-14', './cvlivres/xl_9782759822607-FormuleSavoir_couv-sofedis.jpg', 'Ecosciences');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('2', 'Lé Nguyên Hoang');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('3', 'Introduction à l’étude des phénomênes économiques', 'François MOREAU', '1999-1-1', './titre.png', 'editeur');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('3', 'Introduction à l’étude des phénomênes économiques', 'François MOREAU', '1999-1-1', 'couverture', 'editeur');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('3', 'François MOREAU');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('3', 'Gilles DESVILLES');
 
@@ -44,17 +44,17 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Jean-Claude ARRESTIER');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Alain AUTIN');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Pierre CLAUDÉ');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('5', 'Construction mécanique – Tome 1', 'M. Dejans', '2006-5-1', 'couverture', 'Nathan');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('5', 'Construction mécanique – Tome 1', 'M. Dejans', '2006-5-1', './cvlivres/9782091795799.JPG', 'Nathan');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'M. Dejans');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'H. Lehu');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'R. Quatremer');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'J.-P. Trotignon');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('6', 'Guide du technicien en électronique', 'C. Cimelli', '2007-5-9', 'couverture', 'Hachette');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('6', 'Guide du technicien en électronique', 'C. Cimelli', '2007-5-9', './cvlivres/000972379.jpg', 'Hachette');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('6', 'C. Cimelli');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('6', 'R. Bourgeron');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('7', 'Guide du dessinateur industriel', 'A. Chevalier', '2003-6-25', 'couverture', 'Hachette');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('7', 'Guide du dessinateur industriel', 'A. Chevalier', '2003-6-25', './cvlivres/515lJficFfL._SX326_BO1,204,203,200_.jpg', 'Hachette');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('7', 'A. Chevalier');
 
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', 'couverture', 'Raisonance');

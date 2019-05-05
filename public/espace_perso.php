@@ -99,7 +99,7 @@ else {
     </header>
     <nav>
         <a href="index.php" class="rubrique">Accueil    </a>
-        <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
         <?php if ($user_connected): ?>
             <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
             <a href="review.php" class="rubrique">|   Review    </a>
@@ -155,7 +155,7 @@ else {
                 </thead>
                 <?php foreach ($empruntés as $emprunté) : ?>
                     <tr>
-                        <td class="couv"><img height="160" width="100" src=<?php echo $emprunté->getImage(); ?>/></td>
+                        <td class="couv"><img height="160" width="100" src=<?php echo $emprunté->getImage(); ?>></td>
                         <td><?php echo $emprunté->getTitre(); ?></td>
                     </tr>
                 <?php endforeach; ?>

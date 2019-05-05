@@ -94,7 +94,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
     </header>
      <nav>
         <a href="index.php" class="rubrique">Accueil    </a>
-        <a href="bibliotheque.php" class="rubrique">|   Bilbiothèque    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
         <?php if ($user_connected): ?>
             <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
             <a href="review.php" class="rubrique">|   Review    </a>
