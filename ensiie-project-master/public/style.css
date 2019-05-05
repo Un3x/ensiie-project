@@ -8,6 +8,10 @@ header {
 	text-align: center;
 }
 
+#form_account {
+	text-align: center;
+}
+
 .menu_one {
 	height: 17px;
 }
@@ -32,6 +36,18 @@ header {
 	display:block;
 	text-align: right;
 	color: white;
+}
+
+.your_account {
+	display:block;
+	text-align: right;
+	color: white;
+}
+
+.hello {
+	text-align: center;
+	font-weight: bold;;
+
 }
 
 .footer{

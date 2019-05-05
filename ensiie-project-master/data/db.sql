@@ -8,12 +8,12 @@ CREATE TABLE Utilisateur (
        prenom VARCHAR(50) NOT NULL ,
        email VARCHAR(50) NOT NULL ,
        password VARCHAR(50) UNIQUE NOT NULL ,
-       tel INTEGER ,
+       tel VARCHAR(10) ,
        genre CHAR(1),
        sport VARCHAR(50) NOT NULL );
        
 
-INSERT INTO Utilisateur(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'John', 'Doe', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
+INSERT INTO Utilisateur(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'Doe', 'Prenom', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
 
 -- Héritage (Classe Mère)
 

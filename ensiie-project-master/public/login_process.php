@@ -12,16 +12,29 @@
 	$users = $userRepository->fetchAll();
 
 	foreach ($users as $user) :
+		$id = $user->getId();
 		$login_valide = $user->getEmail();
 		$pwd_valide = $user->getPassword();
+		$prenom = $user->getPrenom();
+		$nom = $user->getNom();
+		$sport = $user->getSport();
+		$genre = $user->getGenre();
+		$tel = $user->getTel();
 		$login_valide = stripslashes($login_valide);
 		$pwd_valide = stripslashes($pwd_valide);
 
 		if (isset($_POST['login']) && isset($_POST['pwd'])) {
 			if ($login_valide == $_POST['login'] && $pwd_valide == $_POST['pwd']) {
 				session_start ();
-				$_SESSION['login'] = $_POST['login'];
+				$_SESSION['active'] = true;
+				$_SESSION['id'] = $id;
+				$_SESSION['email'] = $_POST['login'];
 				$_SESSION['pwd'] = $_POST['pwd'];
+				$_SESSION['prenom'] = $prenom;
+				$_SESSION['nom'] = $nom;
+				$_SESSION['sport'] = $sport;
+				$_SESSION['genre'] = $genre;
+				$_SESSION['tel'] = $tel;
 				header ('Location: index.php');
 			}
 			else {

@@ -1,6 +1,6 @@
 <?php
     include("ini_session.php");
-    if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) echo '<meta http-equiv="refresh" content="0;URL=index.php">';
+    if (isset($_SESSION['active']) && $_SESSION['active']) echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 ?>
 
 <html>
@@ -14,7 +14,7 @@
     <?php include("header.php"); ?>
     <?php include("menu.php"); ?>
     <div id="form_sign_in" class="middle">
-    	<form action="process.php" method="POST">
+    	<form action="login_process.php" method="POST">
     		<p>
     			<br/><br/>
     			<label>Username :</label>

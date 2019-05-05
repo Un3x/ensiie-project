@@ -3,8 +3,16 @@
 		<a href="index.html" alt="logoCCE"><img src="images/header.png" class="logo" /></a>
 		
 		<?php
-			if (!isset($_SESSION['login']) && !isset($_SESSION['pwd'])) echo '<h3 class="connexion"> <a href="login.php" >Connexion</a></h3>';
-			else echo '<h3 class="connexion"> <a href="logout.php" > Se deconnecter </a></h3>';
+			if (!isset($_SESSION['login']) && !isset($_SESSION['pwd'])) {
+				echo '<h4 class="connexion"> <a href="login.php" >Connexion</a>
+				<br/>
+				<a href="register.php" > Inscription </a></h4>';;
+			}
+			else {
+				echo '<h4 class="connexion"> <a href="logout.php" > Se deconnecter </a>
+				<br/>
+				<a href="your_account.php" > Votre compte </a></h4>';
+			}
 		?>
 
 		<h1 class="title"><br/>Challenge Centrale Evry</h1>
