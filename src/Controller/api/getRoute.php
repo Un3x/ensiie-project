@@ -25,6 +25,4 @@ if(isset($_GET['departureLat']) && isset($_GET['departureLong']) && isset($_GET[
 }
 else{
     echo '{"status" : "fail"}';
-
-
 }
