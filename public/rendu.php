@@ -133,8 +133,9 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     <?php if (isset($okpseudo) && $okpseudo) : ?>
         <p id="displaytable">
             <h3>Liste des livres empruntés par <?php echo $_POST['pseudo']; ?></h3>
+            <?php $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo']));
+            if ($livresarendre != []): ?>
             <table class="table table-bordered table-hover table-striped">
-                <?php $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo'])); ?>
                 <thead style="font-weight: bold">
                     <th>#</th>
                     <th>titre</th>
@@ -156,6 +157,10 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
                     </form>
         <? endforeach; ?>
     </table>
+<?php endif; ?>
+<?php if ($livresarendre == []): ?>
+    <p>Cet utilisateur n'a pas de livres à rendre</p>
+<?php endif; ?>
 </p>
     <?php endif; ?>
 </section>
