@@ -101,6 +101,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
             <a href="editer.php" class="rubrique">|   Editer   </a>
             <?php endif; ?>
         <?php if ($user_connected && $admin): ?>
+            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
             <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
             <a href="rendu.php" class="rubrique">|   Retour   </a>
             <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
@@ -109,6 +110,14 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
     <section>
     <div class="grand-titre">Review</div>
     <div class="container">
+        <?php 
+        $test = true;
+        foreach ($historiques as $historique) {
+            if ($reviewRepository->fetchByUserAndLivre($_SESSION['id_user'], $historique->getIdLivre()) == []) {
+                $test=($test && false);
+            }
+        }
+        if (!($test)): ?>
         <div class="res">Voici les livres pour lesquels vous pouvez écrire une review</div>
         <table>
             <thead>
@@ -142,7 +151,10 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
             <?php endif; ?>
             <?php endforeach; ?>
         </table>
-
+    <?php endif; ?>
+    <?php if ($test): ?>
+        <div class="res">Vous ne pouvez pas écrire de review pour le moment car vous n'avez pas rendu de livre</div>
+    <?php endif; ?>
     </div>
 </section>
 </body>

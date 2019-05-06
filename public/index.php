@@ -86,6 +86,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
             <a href="editer.php" class="rubrique">|   Editer   </a>
             <?php endif; ?>
         <?php if ($user_connected && $admin): ?>
+            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
             <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
             <a href="rendu.php" class="rubrique">|   Retour   </a>
             <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
