@@ -39,9 +39,14 @@ class User
     private $mdp;
 
     /**
-     * @var array;
+     * @var array
      */
     private $photo_id;
+
+    /**
+     * @var int
+     */
+    private $administrateur;
 
     /**
      * @return int
@@ -181,6 +186,22 @@ class User
      */
     public function getMdp():string{
         return $this->$mdp;
+    }
+
+    /**
+     * @param int
+     * @return User
+     */
+    public function setAdministrateur($ad) {
+        $this->$administrateur = $ad;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAdministrateur() {
+        return $this->$administrateur;
     }
 }
 
