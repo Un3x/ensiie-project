@@ -16,7 +16,17 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $historiqueRepository = new \Historique\HistoriqueRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
-
+$userRepository = new \User\UserRepository($connection);
+$user_connected=isset($_SESSION["id_user"]);
+if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
+//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
+    $id_user=$_SESSION["id_user"];
+    $user=$userRepository->fetchId($id_user);
+    $admin=$user->getAdmin();
+    $nom=$user->getNom();
+    $prenom=$user->getPrenom();
+    $pseudo=$user->getPseudo();
+}
 
 // ajouter une redirection automatique si l'utilisateur n'est pas admin
 if (!isset($_SESSION["id_user"])) {
@@ -56,13 +66,52 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
 <head>
     <meta charset="utf-8">
     <title>Validation de rendu</title>
-    <link rel="stylesheet" href=".css">
+    <link rel="stylesheet" href="style.css">
 </head>
+<div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
+        <?php
+        if ($user_connected) {
+            echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnection\"></form></TD>
+      </TR>
+    </TABLE>";
+
+            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
+
+        }
+        else {
+            echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connection\"></form></TD>
+      </TR>
+    </TABLE>";
+        }
+        
+        ?>
+    </div>
 <body>
-    <h2> Page de rendu  des livres (réservé aux admins)</h2>
+    <header>
+        <img src="./titre.png"/>
+    </header>
     <nav>
-         <!-- TODO recopier le nav-->
+        <a href="index.php" class="rubrique">Accueil    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
+        <?php if ($user_connected): ?>
+            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
+            <a href="review.php" class="rubrique">|   Review    </a>
+            <a href="editer.php" class="rubrique">|   Editer   </a>
+            <?php endif; ?>
+        <?php if ($user_connected && $admin): ?>
+            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
+            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
+            <a href="rendu.php" class="rubrique">|   Retour   </a>
+            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
+        <?php endif; ?>
     </nav>
+    <section>
     <a href="index.php">TMPretour</a>
     <h2>Rendu des livres</h2>
 
@@ -87,10 +136,10 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
             <table class="table table-bordered table-hover table-striped">
                 <?php $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo'])); ?>
                 <thead style="font-weight: bold">
-                    <td>#</td>
-                    <td>titre</td>
-                    <td>emprunteur</td>
-                    <td>rendre</td>
+                    <th>#</th>
+                    <th>titre</th>
+                    <th>emprunteur</th>
+                    <th>rendre</th>
                 </thead>
         
         <?phpforeach ($livresarendre as $livre) : ?>
@@ -109,6 +158,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     </table>
 </p>
     <?php endif; ?>
+</section>
 </body>
 
 <script>

@@ -97,7 +97,7 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
         <?php endif; ?>
     </nav>
 	<section>
-		<div class="grand-titre">page listant les emprunts (réservée aux admins)</div>
+		<div class="grand-titre">page listant les emprunts</div>
 		<nav>
          <!-- TODO recopier le nav-->
          	
@@ -111,10 +111,10 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
       <?php if ($listeEmprunts != []): ?>
        <table>
        	<thead style="font-weight: bold">
-       		<td>#</td>
-       		<td>Titre</td>
-       		<td>Emprunteur</td>
-       		<td>Date_emprunt</td>
+       		<th>#</th>
+       		<th>Titre</th>
+       		<th>Emprunteur</th>
+       		<th>Date_emprunt</th>
        	</thead>
        	<?php foreach ($listeEmprunts as $emprunt): ?>
        	<tr>
