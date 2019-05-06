@@ -141,6 +141,7 @@ else {
                 </tr>
             <?php endforeach; ?>
             </table>
+            <p></p>
         <?php endif; ?>
         </div>
         <div class="Mes emprunts">
@@ -161,6 +162,7 @@ else {
                     </tr>
                 <?php endforeach; ?>
             </table>
+            <p></p>
         <?php endif; ?>
         </div>
     </div>

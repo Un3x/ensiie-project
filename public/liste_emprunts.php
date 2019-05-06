@@ -53,6 +53,10 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
 
        <!--on affiche direct la table on se fait pas chier-->
 
+      <?php if ($listeEmprunts == []): ?>
+        <p>Aucun livre n'est actuellement emprunté</p>
+      <?php endif; ?>
+      <?php if ($listeEmprunts != []): ?>
        <table>
        	<thead style="font-weight: bold">
        		<td>#</td>
@@ -69,6 +73,8 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
        	</tr>
        <?php endforeach; ?>
    </table>
+   <p></p>
+ <?php endif; ?>
 </div>
 </body>
 </html>

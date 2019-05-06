@@ -98,6 +98,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 				</tr>
 			<?php endforeach; ?>
 		</table>
+        <p></p>
 	<?php endif; ?>
 	</div>
 </section>
