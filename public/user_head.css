@@ -299,6 +299,12 @@ form > p {
   flex-wrap: wrap;
 }
 
+/* Page Profil */
+
+img.photo_profil  {
+  height: 350px;
+}
+
 /* Affichage petit écrans */
 
 @media screen and (max-width: 768px) {

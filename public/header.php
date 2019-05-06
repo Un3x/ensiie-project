@@ -13,7 +13,7 @@
         <body>
             <header>
                 <h1 class="pc"><a href="index.php">"Trouve Ton Truc"</a></h1>
-                <a href="index.php" class="mobile"><img src="TTT_green.png"></a>
+                <a href="index.php" class="mobile"><img src="TTT_green.png" alt="Logo du site TTT"/></a>
             </header>
 
             <nav>
