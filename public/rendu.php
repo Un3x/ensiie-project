@@ -131,7 +131,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     <!--TODO mettre à jour "livre emprunt", "histo", "Livre", "User"-->
     <?php if (isset($okpseudo) && $okpseudo) : ?>
         <p id="displaytable">
-            <h3>Liste des livres empruntés par <?php echo $_POST['pseudo']; ?></h3>
+            <div class="res">Liste des livres empruntés par <?php echo $_POST['pseudo']; ?></div>
             <?php $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo']));
             if ($livresarendre != []): ?>
             <table class="table table-bordered table-hover table-striped">
