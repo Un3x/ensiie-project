@@ -93,12 +93,12 @@ INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(10,'BONS PLANS','bonsplans.
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (0,'2019-04-30','matth91000','Trotinette en très bon état','XIAOMI M365',40000);
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (1,'2019-04-30','matth91000','Cours de maths de première à 1ère année de prépa','Cherche prof particulier mathématiques sur Evry',0);
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price) VALUES (2,'2019-04-30','matth91000','Le salon aura lieu le 7 mai prochain. Rémuneration : 200€','Cherche animateur pour salon du jeu vidéo',0);
-INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (5,0);
-INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (0,0);
-INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (7,1);
+INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (6,0);
+INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (1,0);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (8,1);
-INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (5,2);
-INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (8,2);
+INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (9,1);
+INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (6,2);
+INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (9,2);
 
 /*
 COMMANDE POUR RECUPERER LES TITRES DES PRODUITS DE CATEGORIE N
