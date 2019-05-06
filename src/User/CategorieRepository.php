@@ -61,6 +61,22 @@ public function getCatofP($produit)
 
     return $cats;
 }
+
+public function getCatofId($Id)
+{
+    $rows = $this->connection->query('SELECT * FROM categorie WHERE id_cat='.$Id)->fetchAll(\PDO::FETCH_OBJ);
+    $cats=[];
+    foreach ($rows as $row){
+        $cat=new Categorie();
+        $cat
+                ->setId($row->id_cat)
+                ->setNomCat($row->nom_cat)
+                ->setLinkCat($row->link);
+        $cats[]=$cat;
+    }
+
+    return $cats;
+}
 }
 
 
