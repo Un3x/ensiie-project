@@ -133,7 +133,7 @@ else {
                     <th>Annuler la réservation</th>
                 </thead>
             <?php foreach ($reservations as $reservation) : ?>
-                <?php $livre=$livreRepository->fetchId($reservation->getIdUser()); ?>
+                <?php $livre=$livreRepository->fetchId($reservation->getIdLivre()); ?>
                 <tr>
                     <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage(); ?>></td>
                     <td><?php echo $livre->getTitre(); ?></td>

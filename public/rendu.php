@@ -85,15 +85,15 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
         <p id="displaytable">
             <h3>Liste des livres empruntés par <?php echo $_POST['pseudo']; ?></h3>
             <table class="table table-bordered table-hover table-striped">
+                <?php $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo'])); ?>
                 <thead style="font-weight: bold">
                     <td>#</td>
                     <td>titre</td>
                     <td>emprunteur</td>
                     <td>rendre</td>
                 </thead>
-        <?php 
-        $livresarendre=$livreRepository->fetchByUser(PseudoToId($_POST['pseudo']));
-        foreach ($livresarendre as $livre) : ?>
+        
+        <?phpforeach ($livresarendre as $livre) : ?>
             <tr>
                 <td><?php echo $livre->getId() ?></td>
                 <td><?php echo $livre->getTitre() ?></td>
