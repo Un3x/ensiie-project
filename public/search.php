@@ -26,7 +26,7 @@ function showCat(etat){
 </script>
 
     <h2>Recherchez un produit, une catégorie, un vendeur...</h2>
-    <form action="search.php" class="search-container" method="get">
+    <form action="search.php" class="form" method="get">
         <input type="text" placeholder="Rechercher.." name="search">
         Votre recherche concerne : 
         Produit<input type="radio" name="typerec" value="Prod" checked="checked" onclick="showCat('block');"/><label for="prd">Produits</label>
