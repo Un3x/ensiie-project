@@ -29,8 +29,9 @@ class UserRepository
                 ->setBirthday(new \DateTimeImmutable($row->birthday))
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
-                ->setMdp($row->mdp);
+                ->setMdp($row->mdp)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
+                ->setAdministrateur($row->administrateur);
 
             $users[] = $user;
         }

@@ -42,6 +42,7 @@ CREATE TABLE "produits"(
     photo1 INTEGER REFERENCES photo_produit(id_photo),
     photo2 INTEGER REFERENCES photo_produit(id_photo),
     photo3 INTEGER REFERENCES photo_produit(id_photo),
+    valide INTEGER,
     CONSTRAINT key_prod PRIMARY KEY (id_produit)
     /*CONSTRAINT fk_proprio FOREIGN KEY (id_proprio) REFERENCES "utilisateur
 "(id)*/

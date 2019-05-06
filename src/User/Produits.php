@@ -31,6 +31,8 @@ class Produits
 
     private $photo3;
 
+    Private $valide;
+
     /**
      * @return int
      */
@@ -130,6 +132,17 @@ class Produits
     public function setPhoto3($photo)
     {
         $this->photo3=$photo;
+        return $this;
+    }
+
+    public function getValide()
+    {
+        return $this->valide;
+    }
+
+    public function setValide($v)
+    {
+        $this->valide=$v;
         return $this;
     }
 

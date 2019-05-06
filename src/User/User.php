@@ -193,7 +193,7 @@ class User
      * @return User
      */
     public function setAdministrateur($ad) {
-        $this->$administrateur = $ad;
+        $this->administrateur = $ad;
         return $this;
     }
 
@@ -201,7 +201,7 @@ class User
      * @return int
      */
     public function getAdministrateur() {
-        return $this->$administrateur;
+        return $this->administrateur;
     }
 }
 
