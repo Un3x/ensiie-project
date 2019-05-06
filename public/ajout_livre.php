@@ -16,7 +16,18 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $livreRepository = new \Livre\LivreRepository($connection);
 $livres = $livreRepository->fetchAll();
 $auteurRepository = new \Auteur\AuteurRepository($connection);
+$userRepository = new \User\UserRepository($connection);
 $auteurs = $auteurRepository->fetchAll();
+$user_connected=isset($_SESSION["id_user"]);
+if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
+//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
+    $id_user=$_SESSION["id_user"];
+    $user=$userRepository->fetchId($id_user);
+    $admin=$user->getAdmin();
+    $nom=$user->getNom();
+    $prenom=$user->getPrenom();
+    $pseudo=$user->getPseudo();
+}
 
 // ajouter une redirection automatique si l'utilisateur n'est pas admin
 if (!isset($_SESSION["id_user"])) {
@@ -68,10 +79,52 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     <link rel="stylesheet" href="style.css">
     <title>Page d'ajout de livre</title>
 </head>
+<div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
+        <?php
+        if ($user_connected) {
+            echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnection\"></form></TD>
+      </TR>
+    </TABLE>";
+
+            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
+
+        }
+        else {
+            echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connection\"></form></TD>
+      </TR>
+    </TABLE>";
+        }
+        
+        ?>
+    </div>
 <body>
-<section>
+  <header>
+        <img src="./titre.png"/>
+    </header>
+    <nav>
+        <a href="index.php" class="rubrique">Accueil    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
+        <?php if ($user_connected): ?>
+            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
+            <a href="review.php" class="rubrique">|   Review    </a>
+            <a href="editer.php" class="rubrique">|   Editer   </a>
+            <?php endif; ?>
+        <?php if ($user_connected && $admin): ?>
+            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
+            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
+            <a href="rendu.php" class="rubrique">|   Retour   </a>
+            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
+        <?php endif; ?>
+    </nav>
+<section class="connect">
 <div class="container">
-<h2>Page d'ajout de livre (Réservé aux Admins)</h2>
+<div class="grand-titre">Page d'ajout de livre (Réservé aux Admins)</div>
 <form id="form_ajout_livre" action="ajout_livre.php" method="POST">
     Titre<br>
     <input id="titre" type="text" name="titre" required pattern="[a-zA-Z0-9']*" maxlength="70"/>
@@ -107,7 +160,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     <input id="edition" type="text" name="edition" required pattern="[a-zA-Z0-9']*" maxlength="50"/>
     <a id="error_edition" style="display:none"> Erreur </a>
     <br>
-    <input type="submit" value="Valider"/>
+    <input type="submit" class="butcon" value="Valider"/>
 </form>
 <p id="incomplet" style="display:none">Veuillez remplir correctement tous les champs</p>
 </section>
@@ -173,47 +226,3 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 
 </script>
     
-<style>
-
-:invalid { 
-  background-color: #F0DDDD;
-  border-color: #e88;
-  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
-  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  box-shadow:0 0 5px rgba(255, 0, 0, .8);
-}
-
-:required {
-  border-color: black;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-}
-
-form {
-  width:300px;
-  margin: 20px auto;
-}
-
-input {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border:1px solid #ccc;
-  font-size:20px;
-  width:300px;
-  min-height:30px;
-  display:block;
-  margin-bottom:15px;
-  margin-top:5px;
-  outline: none;
-
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  -o-border-radius:5px;
-  -ms-border-radius:5px;
-  border-radius:5px;
-}
-</style>

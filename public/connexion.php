@@ -34,7 +34,10 @@ else {
 			}
 		}
 	}
-	echo '<p>Mot de passe erroné ou pseudo invalide, veuillez réessayer</p>';
+	echo '<html><head><title>Page de connexion de Sciience</title><link rel="stylesheet" href="style.css"></head><body><header>
+        <a href="index.php"><img src="./titre.png"/></a>
+    </header><section class="connect"><div class="container"><div class="grand-titre">Bienvenue sur la page de connexion de Sciience</div>';
+	echo '<p>Mot de passe erroné ou pseudo invalide</p>';
 	echo '<p><a href=connexion.php>Cliquez ici</a> pour réessayer</p>';
 }
 
