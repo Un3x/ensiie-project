@@ -27,9 +27,9 @@ function showCat(etat){
 
     <h2>Recherchez un produit, une catégorie, un vendeur...</h2>
     <form action="search.php" class="form" method="get">
-        <input type="text" placeholder="Rechercher.." name="search">
+        <input type="text" placeholder="Rechercher.." name="search" required>
         Votre recherche concerne : 
-        Produit<input type="radio" name="typerec" value="Prod" checked="checked" onclick="showCat('block');"/><label for="prd">Produits</label>
+        <input type="radio" name="typerec" value="prod" checked="checked" onclick="showCat('block');"/><label for="prd">Produits</label>
         <input type="radio" name="typerec" value="util" onclick="showCat('none');"/>
 <br /> <label for="util">Utilisateurs</label>
 <div id="categorie">
@@ -50,7 +50,33 @@ function showCat(etat){
         <br><br>
         <?php 
         if (isset($_GET['search']) AND isset($_GET['cat']) AND isset($_GET['typerec'])){
-            echo 'Votre recherche : '.htmlspecialchars($_GET['search']);
+
+            echo 'Votre recherche : '.htmlspecialchars($_GET['search']).' ';
+            if ($_GET['cat'] != "all"){
+                $_GET['cat']=(int) $_GET['cat'];
+                $catact=$catRepository->getCatofId($_GET['cat']);
+            }
+
+            if ($_GET['typerec'] == "prod"){
+                if ($_GET['cat'] != "all"){
+                foreach($catact as $cat) :
+                echo 'dans la catégorie '.$cat->getNomCat(); endforeach;
+                }
+
+                else{
+                    echo 'dans toutes les catégories';
+
+                }
+            }
+
+            if ($_GET['typerec'] == "util"){
+                echo 'dans les Utilisateurs';
+                $resultsearch=$userRepository->searchUser($_GET['search']);
+                echo '<br/><br/>';
+                $compt=1;
+                foreach ($resultsearch as $res) :
+                    echo 'Pseudo '.$res->getId().' Nom '.$res->getLastname().' Prenom '.$res->getFirstname().'<br/>'; endforeach;
+            }
         }
 
         ?>

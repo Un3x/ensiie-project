@@ -38,6 +38,25 @@ class UserRepository
         return $users;
     }
 
+    public function searchUser($search){
+        $rows=$this->connection->query("SELECT * FROM \"utilisateur\" WHERE id LIKE '%".$search."%' OR firstname LIKE '%".$search."%' OR lastname LIKE '%".$search."%' ")->fetchAll(\PDO::FETCH_OBJ);
+        $users=[];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp);
+            $users[] = $user;
+        }
+        return $users;
+
+    }
+
 
 }
 ?>
