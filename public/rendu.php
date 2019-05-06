@@ -112,8 +112,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
         <?php endif; ?>
     </nav>
     <section>
-    <a href="index.php">TMPretour</a>
-    <h2>Rendu des livres</h2>
+    <div class="grand-titre">Rendu des livres</div class="grand-titre">
 
     <?php 
     if (isset($okpseudo) && !($okpseudo)) {
