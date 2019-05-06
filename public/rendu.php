@@ -142,7 +142,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
                     <th>rendre</th>
                 </thead>
         
-        <?phpforeach ($livresarendre as $livre) : ?>
+        <?php foreach ($livresarendre as $livre) : ?>
             <tr>
                 <td><?php echo $livre->getId() ?></td>
                 <td><?php echo $livre->getTitre() ?></td>
