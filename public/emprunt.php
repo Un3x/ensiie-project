@@ -94,7 +94,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 <head>
     <meta charset="utf-8">
     <title>Emprunt</title>
-    <link rel="stylesheet" href=".css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -102,7 +102,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnection\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnexion\"></form></TD>
       </TR>
     </TABLE>";
 
@@ -113,7 +113,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connection\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
       </TR>
     </TABLE>";
         }
@@ -121,8 +121,26 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
         ?>
     </div>
 <body>
-    <div class="container">
-    <h2>Page d'emprunt de livre (réservé aux admins)</h2>
+    <header>
+        <img src="./titre.png"/>
+    </header>
+    <nav>
+        <a href="index.php" class="rubrique">Accueil    </a>
+        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
+        <?php if ($user_connected): ?>
+            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
+            <a href="review.php" class="rubrique">|   Review    </a>
+            <a href="editer.php" class="rubrique">|   Editer   </a>
+            <?php endif; ?>
+        <?php if ($user_connected && $admin): ?>
+            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
+            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
+            <a href="rendu.php" class="rubrique">|   Retour   </a>
+            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
+        <?php endif; ?>
+    </nav>
+    <section>
+    <div class="grand-titre">Page d'emprunt de livre (réservé aux admins)</div>
     <nav>
          <!-- TODO recopier le nav-->
     </nav>
@@ -171,10 +189,10 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     ?>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
-    <td>#</td>
-    <td>titre</td>
-    <td>emprunteur</td>
-    <td>emprunter</td>
+    <th>#</th>
+    <th>titre</th>
+    <th>emprunteur</th>
+    <th>emprunter</th>
     </thead>
 <?php 
     foreach ($livresreserved as $livre) : ?>
@@ -204,7 +222,6 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
         echo "<p>Id de Livre invalide</p>";
     }
     ?>
-</div>
 
 
 <h4>Affichage de la liste des livres disponibles</h4>
@@ -213,10 +230,10 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 <p id="displaytable" style="display:none">
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
-    <td>#</td>
-    <td>titre</td>
-    <td>emprunteur</td>
-    <td>emprunter</td>
+    <th>#</th>
+    <th>titre</th>
+    <th>emprunteur</th>
+    <th>emprunter</th>
     </thead>
 <?php 
     foreach ($livres as $livre) : ?>
@@ -230,7 +247,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
         <input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId() ?>>
         <input style="display:none" type="text" name="titre" value=<?php echo $livre->getTitre() ?>>
         Pseudo :<input type="text" name="pseudo" value=<?php if (isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>>
-        <input type="submit" name="Valider" value="Valider">
+        <input type="submit" name="Valider" class="butcan" value="Valider">
     </form>
 
 
@@ -238,6 +255,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 <?php endforeach; ?>
     </table>
 </p>
+</section>
 </body>
 
 

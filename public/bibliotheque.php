@@ -51,7 +51,7 @@ else {
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnection\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnexion\"></form></TD>
       </TR>
     </TABLE>";
 
@@ -62,7 +62,7 @@ else {
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connection\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
       </TR>
     </TABLE>";
         }
@@ -139,9 +139,9 @@ else {
     </table></td>
     <td><?php echo $livre->getEmprunteur() ?></td>
     <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>
-    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
+    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" class="butcan" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" class="butcan" name="Voir les reviews" value="Voir les reviews"></form></td>
     <?php if ($user_connected) : ?>
-    	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input type="submit" name="Réserver" value="Réserver"></form></td>
+    	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input type="submit" name="Réserver" class="butcan" value="Réserver"></form></td>
     <?php endif; ?>
     </tr>
 <?php endforeach; ?>
