@@ -14,6 +14,8 @@ $users = $userRepository->fetchAll();
 $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
+$prodRepository= new \User\ProduitRepository($connection);
+
 require("header.php");
 ?>
 
@@ -50,32 +52,45 @@ function showCat(etat){
         <br><br>
         <?php 
         if (isset($_GET['search']) AND isset($_GET['cat']) AND isset($_GET['typerec'])){
+            if ($_GET['cat']>10) $_GET['cat']=0;
 
             echo 'Votre recherche : '.htmlspecialchars($_GET['search']).' ';
             if ($_GET['cat'] != "all"){
                 $_GET['cat']=(int) $_GET['cat'];
-                $catact=$catRepository->getCatofId($_GET['cat']);
+                $catact=$catRepository->getCatofId(htmlspecialchars($_GET['cat']));
             }
 
             if ($_GET['typerec'] == "prod"){
-                if ($_GET['cat'] != "all"){
+                if ($_GET['cat'] != "all" ){
                 foreach($catact as $cat) :
-                echo 'dans la catégorie '.$cat->getNomCat(); endforeach;
+                echo 'dans la catégorie '.$cat->getNomCat();
+                $resultsearch=$prodRepository->searchProdonCat(htmlspecialchars($_GET['search']),$cat->getId());
+                endforeach;
+                echo '<br/><br/>';
+                foreach ($resultsearch as $res) :
+                    echo 'Titre '.$res->getTitle().' Description '.$res->getDescription().' Prix '.$res->getPrice().'<br/>'; endforeach;
+                if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
                 }
 
                 else{
                     echo 'dans toutes les catégories';
+                    $resultsearch=$prodRepository->searchProd(htmlspecialchars($_GET['search']));
+                    echo '<br/><br/>';
+                    foreach ($resultsearch as $res) :
+                        echo 'Titre '.$res->getTitle().' Description '.$res->getDescription().' Prix '.$res->getPrice().'<br/>'; endforeach;
+                    if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
 
                 }
             }
 
             if ($_GET['typerec'] == "util"){
                 echo 'dans les Utilisateurs';
-                $resultsearch=$userRepository->searchUser($_GET['search']);
+                $resultsearch=$userRepository->searchUser(htmlspecialchars($_GET['search']));
                 echo '<br/><br/>';
                 $compt=1;
                 foreach ($resultsearch as $res) :
                     echo 'Pseudo '.$res->getId().' Nom '.$res->getLastname().' Prenom '.$res->getFirstname().'<br/>'; endforeach;
+                if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
             }
         }
 

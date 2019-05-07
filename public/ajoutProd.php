@@ -107,6 +107,6 @@ require("header.php");
 </script>
 
 <?php
-require("aside.php");
+//require("aside.php");
 require("footer.php");
 ?>

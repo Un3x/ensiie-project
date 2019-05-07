@@ -48,6 +48,8 @@ class User
      */
     private $administrateur;
 
+    private $valid;
+
     /**
      * @return int
      */
@@ -202,6 +204,17 @@ class User
      */
     public function getAdministrateur() {
         return $this->administrateur;
+    }
+
+    public function setValid($val){
+        if ($val == 1){
+            $this->valid=1;
+        }
+        return $this;
+    }
+
+    public function getValid(){
+        return $this->valid;
     }
 }
 

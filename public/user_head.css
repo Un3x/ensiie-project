@@ -305,6 +305,10 @@ img.photo_profil  {
   height: 350px;
 }
 
+/* Recherche */
+
+
+
 /* Affichage petit écrans */
 
 @media screen and (max-width: 768px) {

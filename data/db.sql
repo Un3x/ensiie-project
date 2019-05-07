@@ -21,6 +21,7 @@ CREATE TABLE "utilisateur"(
     mdp VARCHAR(100),
     photo_id INTEGER REFERENCES photo_profil(id_photo),
     administrateur INTEGER /*CHECK (administrateur = 1 || administrateur = 0)*/,
+    valid INTEGER,
     CONSTRAINT key_user PRIMARY KEY (id)
     /*CONSTRAINT fk_photo FOREIGN KEY (photo_id) REFERENCES photo_profil(id_photo)*/
     
@@ -77,8 +78,8 @@ INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Brendan', 'Pen
 INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
 INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');*/
 
-INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azerty', 1);
-INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678', 1);
+INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azerty', 1,1);
+INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678', 1,1);
 INSERT INTO "photo_profil"(id_photo,adresse) VALUES (0,'~/matthieu.gosset/hugo.png');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(1,'Auto/Moto', 'automoto.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(2,'Immobilier','immobilier.php');

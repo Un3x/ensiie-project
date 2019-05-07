@@ -58,6 +58,44 @@ class UserRepository
 
     }
 
+    public function testmail($mailtest){
+        $rows=$this->connection->query("SELECT * FROM \"utilisateur\" WHERE mail='".$mailtest."';")->fetchAll(\PDO::FETCH_OBJ);
+        $users=[];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp);
+            $users[] = $user;
+        }
+        return $users;
+
+    }
+
+    public function testpseudo($pseudotest){
+        $rows=$this->connection->query("SELECT * FROM utilisateur WHERE id='".$pseudotest."';")->fetchAll(\PDO::FETCH_OBJ);
+        $users=[];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp);
+            $users[] = $user;
+        }
+        return $users;
+
+    }
+
 
 }
 ?>
