@@ -30,6 +30,12 @@
 		echo "<header>\n";
 		echo "\t<div id=\"menu\">\n";
 		
+		
+		echo "\t\t<a href=\"index.php\">";
+		echo "\t\t\t<img src=\"../img/logo_realitiie.png\" ";
+		echo "alt=\"Accueil\" /></a>"; 
+		
+		
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"index.php\">Realitiie</a>\n";
 		echo "\t\t</div>\n";
@@ -62,9 +68,13 @@
 		echo "\t\t\t<a href=\"ressources.php\">Ressources</a>\n";
 		echo "\t\t</div>\n";
 		
+		
+		
 		//echo "\t\t<div>\n";
 		//echo "\t\t\t<a href=\"exercices.php\">Exercices</a>\n";
 		//echo "\t\t</div>\n";
+		
+		
 		
 		echo "\t</div>\n";
 		echo "</header>\n";

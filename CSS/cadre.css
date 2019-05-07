@@ -43,6 +43,13 @@
 	margin-right: 10px;
 }
 
+.round-border {
+	border-radius: 0px 35px;
+	background: #99BBBB;
+	padding: 20px;
+
+}
+
 
 
 #conteneur
