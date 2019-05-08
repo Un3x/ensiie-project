@@ -107,6 +107,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     <td>Prenom</td>
     <td>Nom</td>
     <td>Pseudo</td>
+    <td>MDP</td>
     <td>DDN</td>
     <td>Empruntés</td>
     <td>Rendus</td>
@@ -118,6 +119,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     <td><?php echo $user->getPrenom() ?></td>
     <td><?php echo $user->getNom() ?></td>
     <td><?php echo $user->getPseudo() ?></td>
+    <td><?php echo $user->getMdp() ?></td>
     <td><?php echo $user->getDdn() ?></td>
     <td><?php echo $user->getNbLivresEmpruntes() ?></td>
     <td><?php echo $user->getNbLivresRendus() ?></td>

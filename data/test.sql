@@ -1,7 +1,7 @@
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admin) VALUES ('Charles', 'Tanguy', 'Ansyth', '0', '0','7', 'true');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '0', '0', '2', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '0', '0', '0', '0', 'true');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '0', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admin) VALUES ('Charles', 'Tanguy', 'Ansyth', '$2y$10$5IKRZ9DBUX4tBy93jhKk6.w/uMrL8hwjzS/w/DbFx.WRLHzwPBNGO', '0','7', 'true');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '2', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0', 'true');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
 
 
 

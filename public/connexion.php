@@ -28,7 +28,7 @@ else {
 	$mdp=$_POST['mdp'];
 	foreach ($users as $user) {
 		if ($user->getPseudo() == $pseudo) {
-			if ($user->getMdp() == $mdp) {
+			if (password_verify($mdp, $user->getMdp())) /*password_verify($user->getMdp(), $mdp) $user->getMdp() == $mdp */{
 				$_SESSION["id_user"] = $user->getId();
 				header("Location:index.php");
 			}

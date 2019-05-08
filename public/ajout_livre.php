@@ -77,6 +77,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <head>
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="formulaire.css">
     <title>Page d'ajout de livre</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -127,42 +128,39 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <div class="grand-titre">Page d'ajout de livre</div>
 <form id="form_ajout_livre" action="ajout_livre.php" method="POST">
     Titre<br>
-    <input id="titre" type="text" name="titre" required pattern="[a-zA-Z0-9']*" maxlength="70"/>
-    <a id="error_titre" style="display:none"> Erreur </a>
+    <input class="formulaire" id="titre" type="text" name="titre" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="70"/>
     <br>Auteur<br>
-    <input id="auteur" type="text" name="auteur1" required pattern="[a-zA-Z0-9']*" maxlength="50"/>
-    <a id="error_auteur" style="display:none"> Erreur </a>
-    
+    <input class="formulaire" id="auteur" type="text" name="auteur1" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
+        
     <br>
-    <a id="1" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 2<br>
-    <input type="text" name="auteur2"/><br></a>
+    <a id="1" style="display:none">Auteur 2<br>
+    <input class="formulaire" type="text" name="auteur2" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
 
-    <a id="2" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 3<br>
-    <input type="text" name="auteur3"/><br></a>
+    <a id="2" style="display:none" >Auteur 3<br>
+    <input class="formulaire" type="text" name="auteur3" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
 
-    <a id="3" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 4<br>
-    <input type="text" name="auteur4"/><br></a>
+    <a id="3" style="display:none" >Auteur 4<br>
+    <input class="formulaire" type="text" name="auteur4" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
 
-    <a id="4" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 5<br>
-    <input type="text" name="auteur5"/><br></a>
+    <a id="4" style="display:none" >Auteur 5<br>
+    <input class="formulaire" type="text" name="auteur5" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
 
-    <a id="5" style="display:none" pattern="[a-zA-Z0-9']*" maxlength="50">Auteur 6<br>
-    <input type="text" name="auteur6"/><br></a>
+    <a id="5" style="display:none" >Auteur 6<br>
+    <input class="formulaire" type="text" name="auteur6" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
 
-    <input id="butt" type="button" class="input" onclick="ajoute_aut()" value="+">
+    <input class="formulaire" id="butt" type="button" class="input" onclick="ajoute_aut()" value="+">
+
     <br>Date de publication<br>
-    <input id="date" type="date" name="datepub" required/>
-    <a id="error_date" style="display:none"> Erreur </a>
+    <input class="formulaire" id="date" type="date" name="datepub" required/>
+    
     <br>Image de couverture<br>
-    <input id="img" type="text" name="image"/ required maxlength="200">
-    <a id="error_img" style="display:none"> Erreur </a>
+    <input class="formulaire" id="img" type="text" name="image"/ required maxlength="200">
+   
     <br>Edition<br>
-    <input id="edition" type="text" name="edition" required pattern="[a-zA-Z0-9']*" maxlength="50"/>
-    <a id="error_edition" style="display:none"> Erreur </a>
+    <input class="formulaire" id="edition" type="text" name="edition" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
     <br>
-    <input type="submit" class="butcon" value="Valider"/>
+    <input class="formulaire" id="formSubmit" type="submit" class="butcon" value="Valider"/>
 </form>
-<p id="incomplet" style="display:none">Veuillez remplir correctement tous les champs</p>
 </section>
 </body>
 </html>
@@ -182,47 +180,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         nb_click=nb_click+1;
     }
 
-    function form_valid() {
-        valide = true;
-        alert("controle en cours");
-        regex = /[^a-zA-Z0-9]/
-        form = document.forms['form_ajout_livre']; 
-        titre = form.elements['titre'].value;
-        auteur = form.elements['auteur'].value;
-        date = form.elements['date'].value;
-        img = form.elements['img'].value;
-        edition = form.elements['edition'].value;
-
-        if (titre=='') {
-            valide = false;
-            document.getElementById("error_titre").style.display="inline";
-            document.getElementById("error_titre").innerHTML="Le champ doit être non vide.";
-        } 
-        else if (titre.length > 70) {
-            valide = false;
-            document.getElementById("error_titre").style.display="inline";
-            document.getElementById("error_titre").innerHTML="La saisie ne doit excéder 70 caractères.";
-        } 
-        else if (regex.test(titre)) {
-            valide = false;
-            document.getElementById("error_titre").style.display="inline";
-            document.getElementById("error_titre").innerHTML="La saisie comporte des caractères spéciaux.";
-            alert("Niktarace");
-       }
-        if (auteur=="") {
-            valide = false;
-            alert("Niktarace");
-        }
-        if (titre=='' || auteur=='' || date=='' || img=='' || edition=='') {
-            valide = false;
-            document.getElementById("incomplet").style.display="block";           
-            document.getElementById("error_auteur").style.display="inline";
-            document.getElementById("error_date").style.display="inline";
-            document.getElementById("error_img").style.display="inline";
-            document.getElementById("error_edition").style.display="inline";
-        }
-        return valide;
-    }
+    
 
 </script>
     

@@ -14,7 +14,7 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $user_connected=isset($_SESSION["id_user"]);
-if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
+if ($user_connected) {//on récupère les info sur l'utilisateur courant (si il est identifié)
 //!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
     $id_user=$_SESSION["id_user"];
     $user=$userRepository->fetchId($id_user);
@@ -38,6 +38,7 @@ $ok_pseudo=true;
 $ok_nom=true;
 
 if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isset($_POST['mdp'])&&isset($_POST['cmdp'])) {
+    
     if (!verifPseudo($_POST['pseudo']) && !($_POST['pseudo']==$curr_user->getPseudo())) {
         $ok_pseudo=false;
     }
@@ -64,6 +65,7 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 <meta charset="utf-8">
     <title>Sciience</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="formulaire.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -88,12 +90,12 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
         }
         
         ?>
-    </div>
-     <body>
-        <header>
+</div>
+<body>
+    <header>
         <img src="./titre.png"/>
     </header>
-     <nav>
+    <nav>
         <a href="index.php" class="rubrique">Accueil    </a>
         <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
         <?php if ($user_connected): ?>
@@ -108,10 +110,10 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
             <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
         <?php endif; ?>
     </nav>
-        <section class="connect">
+    <section class="connect">
      <!--ALED TODO mettre le logo de sciience comme dans toutes les autres pages ainsi qu\'une petite page de garde sympathique-->
-     <div class="grand-titre">Page d'édition du profil</div>
-     <nav>
+    <div class="grand-titre">Page d'édition du profil</div>
+    <nav>
          <!-- ALED TODO recopier le nav-->
     </nav>
     <?php
@@ -123,51 +125,39 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
         echo "<p>Pseudo déjà utilisé</p>";
     }
     ?>
-     <form action="editer.php" method="POST">
+     <form id="form_editer" action="editer.php" method="POST">
         Nom :<br>
-        <input id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?> required pattern="[a-zA-Z0-9']*" maxlength="50"/><br>
+        <input class="formulaire" id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br>
         Prenom :<br>
-        <input id="2" type="text" name="prenom" value=<?php echo $curr_user->getPrenom() ?> required pattern="[a-zA-Z0-9']*" maxlength="50" /><br>
+        <input class="formulaire" id="2" type="text" name="prenom" value=<?php echo $curr_user->getPrenom() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50" /><br>
         Pseudo :<br>
-        <input id="3" type="text" name="pseudo" value=<?php echo $curr_user->getPseudo() ?> required pattern="[a-zA-Z0-9']*" maxlength="50"><br>
+        <input class="formulaire" id="3" type="text" name="pseudo" value=<?php echo $curr_user->getPseudo() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"><br>
         Nouveau mot de passe :<br>
-        <input id="4" type="password" name="mdp"><br>
+        <input class="formulaire" id="4" type="password" name="mdp" ><br>
         Confirmation du nouveau mot de passe :<br>
-        <input id="5" type="password" name="cmdp"><br>
+        <input class="formulaire" id="5" type="password" name="cmdp" oninput="check(this)"><br>
         Date de naissance :<br>
-        <input id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
+        <input class="formulaire" id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
         Email :<br>
-        <input id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?> required /><br>
-        <!-- <input type="button" class="input" onclick="verif()" value="Valider"> -->
-        <input id="valider" type="submit" name="Envoyer">
+        <input class="formulaire" id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?> required pattern="[a-zA-Z0-9._-]*@[a-zA-Z0-9-]*.[a-zA-Z]*" maxlength="50"/><br>
+        <input class="formulaire" id="valider" type="submit" name="Envoyer">
      </form>
+
+     
+     
 
      <p id="mdp_invalide" style="display:none">Mot de passe invalide</p>
      <p id="err" style="display:none">Veuillez remplir tous les champs</p>
- </section>
+    </section>
      </body>
 
      <script>
-        function verif() {
-            document.getElementById("mdp_invalide").style.display="none";
-            document.getElementById("err").style.display="none";
-            tmpnom=document.getElementById("1").value;
-            tmpprenom=document.getElementById("2").value;
-            tmppseudo=document.getElementById("3").value;
-            tmpmdp=document.getElementById("4").value;
-            tmpcmdp=document.getElementById("5").value;
-            tmpddn=document.getElementById("6").value;
-            tmpemail=document.getElementById("7").value;
-            if (tmpnom=='' || tmpprenom=='' || tmppseudo=='' || tmpmdp=='' || tmpddn=='' || tmpemail=='') {
-                document.getElementById("err").style.display="block";
-            }
-            else if (tmpmdp!=tmpcmdp) {
-                document.getElementById("mdp_invalide").style.display="block";
-            }
-            else {
-                document.getElementById("valider").click();
+        function check(input) {
+            if (input.value != document.getElementById('4').value) {
+                input.setCustomValidity('Les deux mots de passe doivent être identiques.');
+            } else {
+                input.setCustomValidity('');
             }
         }
-
     </script>
 </html>

@@ -4,7 +4,7 @@ CREATE TABLE "User" (
     nom VARCHAR(50) NOT NULL ,
     pseudo VARCHAR(50) NOT NULL ,
     ddn date ,
-    mdp VARCHAR(50) NOT NULL ,
+    mdp VARCHAR(100) NOT NULL ,
     mail VARCHAR(50) NOT NULL ,
     nb_livres_empruntes int NOT NULL,
     nb_livres_rendus int NOT NULL ,

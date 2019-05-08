@@ -1,0 +1,41 @@
+/* partie pour les formulaire */
+
+form:invalid { 
+	color: rgb(250, 94, 94);
+	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	
+}
+
+form:valid {
+	color: rgba(99, 190, 99, 0.986);
+	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	
+}
+
+form {
+	width:300px;
+	margin: 20px auto;
+}
+
+.formulaire {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border:1px solid #ccc;
+	font-size: large;
+	width:300px;
+	min-height:30px;
+	display:block;
+	margin-bottom:15px;
+	margin-top:5px;
+	outline: none;
+
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+}
+
