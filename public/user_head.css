@@ -404,7 +404,7 @@ img.photo_profil  {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  /*background: white;*/
+  background: white;
 } 
 
 /* Affichage petit écrans */
