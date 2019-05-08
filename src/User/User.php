@@ -187,7 +187,7 @@ class User
      * @throws \NoStringException
      */
     public function getMdp(): string{
-        return $this->$mdp;
+        return $this->mdp;
     }
 
     /**
