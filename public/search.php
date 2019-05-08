@@ -35,10 +35,21 @@ function showCat(etat){
     <h2>Recherchez un produit, une catégorie, un vendeur...</h2>
     <form action="search.php" class="form" method="get">
         <input type="text" placeholder="Rechercher.." name="search" required>
-        Votre recherche concerne : 
-        <input type="radio" name="typerec" value="prod" checked="checked" onclick="showCat('block');"/><label for="prd">Produits</label>
-        <input type="radio" name="typerec" value="util" onclick="showCat('none');"/>
-<br /> <label for="util">Utilisateurs</label>
+        <p>Votre recherche concerne :</p>
+        <div class="radioboxes">
+            <div class="radio">
+            <label for="prd" class="radiobox">Produits
+                <input type="radio" name="typerec" value="prod" checked="checked" onclick="showCat('block');"/>
+                <span class="radiomark"></span>
+            </label>
+            </div>
+            <div class="radio">
+            <label for="util" class="radiobox">Utilisateur
+                <input type="radio" name="typerec" value="util" onclick="showCat('none');"/>
+                <span class="radiomark"></span>
+            </label>
+            </div>
+        </div>
 <div id="categorie">
         <br>Catégorie :
         <select name="cat">

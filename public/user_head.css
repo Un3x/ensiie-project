@@ -307,6 +307,8 @@ form > p {
 
 .columnPP {
   flex: 25%;
+  display: flex;
+  justify-content: center;
 }
 
 .columnInfo {
@@ -322,7 +324,88 @@ img.photo_profil  {
 
 /* Recherche */
 
+.radioboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.radio {
+  border: #555555 solid 1px;
+  border-radius: 20px;
+  padding: 15px;
+  margin-left: 15px;
+}
+
+.radio:hover {
+  background-color: #ccc;
+}
+
+  /* Customize the label (the container) */
+.radiobox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radiobox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  left: 0px;
+}
+
+/* Create a custom radio button */
+.radiomark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  /*background-color: #eee;*/
+  border-radius: 50%;
+}
+
+.radiobox input:hover {
+  opacity: 0;
+}
+
+/* On mouse-over, add a grey background color */
+.radiobox:hover input ~ .radiomark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radiobox input:checked ~ .radiomark {
+  background-color: #009925;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiomark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radiobox input:checked ~ .radiomark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radiobox .radiomark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /*background: white;*/
+} 
 
 /* Affichage petit écrans */
 
@@ -398,10 +481,8 @@ img.photo_profil  {
     }
 
     img.photo_profil {
-      display : flex;
       width: 50%;
       height : auto;
-      justify-content: center;
     }
 
     .columnInfo {
