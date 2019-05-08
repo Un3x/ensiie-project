@@ -127,7 +127,7 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 	  	Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" placeholder="Email" required> <br/>
 		Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" placeholder="Mot de passe" required> <br/>
 		Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" placeholder="Mot de passe" required> <br/>
-	  	Date de naissance : <br/><input type="date" name="bday" value=<?php echo (new DateTime())->format('Y-m-d'); ?> <br/>
+	  	Date de naissance : <br/><input type="date" name="bday" value=<?php echo (new DateTime())->format('Y-m-d'); ?>> <br/>
 	  	Ville <span class="red">*</span> : <br/><input type="text" name="ville" placeholder="Ville" required> <br/>
 		Photo de profil : <br/><input type="file" id="image_uploads" name="pp">
 		<div class="preview">

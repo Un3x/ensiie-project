@@ -20,6 +20,7 @@ require("header.php");
 <section>
     <h1 class="section">Mon Profil</h1>
     <h2 class="sous_titre">?/?/ PSEUDO ?/?/</h2>
+    <!-- FAIRE DES COLONES -->
     <img class="photo_profil" src="hugo.JPG" alt="Photo de profil"/>
 </section>
 

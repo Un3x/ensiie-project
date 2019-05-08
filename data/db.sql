@@ -1,14 +1,13 @@
 DROP TABLE IF EXISTS "utilisateur" CASCADE;
-DROP TABLE IF EXISTS "photo_profil" CASCADE;
+DROP TABLE IF EXISTS "photo" CASCADE;
 DROP TABLE IF EXISTS "produits" CASCADE;
-DROP TABLE IF EXISTS "photo_produit" CASCADE;
 DROP TABLE IF EXISTS "categorie" CASCADE;
 DROP TABLE IF EXISTS "assoc_prd_cat" CASCADE;
 
-CREATE TABLE "photo_profil"(
+CREATE TABLE "photo"(
     id_photo INTEGER,
     adresse VARCHAR(200) NOT NULL,
-    CONSTRAINT key_photopro PRIMARY KEY (id_photo)
+    CONSTRAINT key_photo PRIMARY KEY (id_photo)
 );
 
 CREATE TABLE "utilisateur"(
@@ -19,7 +18,7 @@ CREATE TABLE "utilisateur"(
     loc VARCHAR(100) NOT NULL,
     mail VARCHAR(100) NOT NULL,
     mdp VARCHAR(100),
-    photo_id INTEGER REFERENCES photo_profil(id_photo),
+    photo_id INTEGER REFERENCES photo(id_photo),
     administrateur INTEGER /*CHECK (administrateur = 1 || administrateur = 0)*/,
     valid INTEGER,
     CONSTRAINT key_user PRIMARY KEY (id)
@@ -27,11 +26,6 @@ CREATE TABLE "utilisateur"(
     
 );
 
-CREATE TABLE "photo_produit"(
-    id_photo INTEGER,
-    adresse VARCHAR(200) NOT NULL,
-    CONSTRAINT key_photoproduit PRIMARY KEY (id_photo)
-);
 
 CREATE TABLE "produits"(
     id_produit INTEGER,
@@ -40,9 +34,9 @@ CREATE TABLE "produits"(
     descript VARCHAR,
     title VARCHAR,
     price INTEGER,
-    photo1 INTEGER REFERENCES photo_produit(id_photo),
-    photo2 INTEGER REFERENCES photo_produit(id_photo),
-    photo3 INTEGER REFERENCES photo_produit(id_photo),
+    photo1 INTEGER REFERENCES photo(id_photo),
+    photo2 INTEGER REFERENCES photo(id_photo),
+    photo3 INTEGER REFERENCES photo(id_photo),
     valide INTEGER,
     CONSTRAINT key_prod PRIMARY KEY (id_produit)
     /*CONSTRAINT fk_proprio FOREIGN KEY (id_proprio) REFERENCES "utilisateur
@@ -80,7 +74,7 @@ INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Wil
 
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azerty', 1,1);
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678', 1,1);
-INSERT INTO "photo_profil"(id_photo,adresse) VALUES (0,'~/matthieu.gosset/hugo.png');
+INSERT INTO "photo"(id_photo,adresse) VALUES (0,'~/matthieu.gosset/hugo.png');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(1,'Auto/Moto', 'automoto.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(2,'Immobilier','immobilier.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(3,'Maison','maison.php');
