@@ -82,8 +82,9 @@
 
 <script>
 	var request = new XMLHttpRequest();
+	var request2 = new XMLHttpRequest();
 
-	request.open('GET', 'https://api.openrouteservice.org/v2/directions/driving-car?api_key=<?=$key?>&start=<?=$departureLong?>,<?=$departureLat?>&end=<?=$arrivalLong?>,<?=$arrivalLat?>');
+	request.open('GET', '/api/routing/departureLat=<?=$departureLat?>&departureLong=<?=$departureLong?>&arrivalLat=<?=$arrivalLat?>&arrivalLong=<?=$arrivalLong?>');
 
 	//request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
 
@@ -91,9 +92,9 @@
 		if (this.readyState === 4) {
 			var pointList = [];
 
-			for (coord of JSON.parse(this.responseText)['features']['0']['geometry']['coordinates']){
-				pointList.push(coord.reverse());
-			}
+			pointList = JSON.parse(this.responseText)['data'];
+
+			console.log(pointList);
 
 			var polyline = new L.Polyline(pointList, {color: 'blue'});
 
@@ -101,8 +102,6 @@
 			mymap.fitBounds(polyline.getBounds());
 		}
 	};
-
-
 
 	request.send();
 

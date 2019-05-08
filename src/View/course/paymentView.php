@@ -13,34 +13,11 @@
 	heure d'arrivée : <?=$arrivalTime ?>
 </div>
 
- <br/>
+<br/>
 
 <form method="POST" action="/course/confirmation" >
-	paiement : (NE SOYEZ PAS CONS NE METTEZ PAS DE VRAIS INFOS DE CB !!!!) <br/>
-	numéro de carte : 
-	<input type=text name=nCard pattern='^[0-9]{16}$' required/> <br/>
-	
-    date d'expiration
-    <select name=monthCard required>
-        <?php for($i=1; $i<=12; $i++){
-            echo "<option>".sprintf("%02d" ,$i)."\n";
-            }
-        ?>
-    </select>
-    <select name=yearCard required>
-        <?php for($i=0; $i<=20; $i++){
-            echo "<option>".($i + date("Y"))."\n";
-            }
-        ?>
-    </select> <br/>
-
-    cryptogramme visuel
-	<input type=text name=codeCard pattern='^[0-9]{3}$' required/> <br/>
-	
-    <input type=submit name=sendInfoCard value="Valider" />
-	<input type=hidden value=$idCourse />
+<?php require('../src/View/payment/entryPayment.php'); ?>
 </form>
-
 
 <?php $content = ob_get_clean(); ?>
 
