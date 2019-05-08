@@ -6,12 +6,16 @@ require_once('../src/config.php');
 if( isset($_GET['action']))
 {
     switch($_GET['action']){
-        case 'getCities' :
-            require('../src/Controller/api/getCities.php');
+        case 'cityNameAPI' :
+            require('../src/Controller/api/cityNameAPI.php');
             break;
 
-        case 'getCourses' :
-            require('../src/Controller/api/getCourses.php');
+        case 'searchCourseAPI' :
+            require('../src/Controller/api/searchCourseAPI.php');
+            break;
+        
+        case 'routingAPI' :
+            require('../src/Controller/api/routingAPI.php');
             break;
     
         default:

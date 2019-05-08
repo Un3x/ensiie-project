@@ -1,11 +1,11 @@
 <?php
-if(isset($_GET['departureLat']) && isset($_GET['departureLong']) && isset($_GET['arrivalLat']) && isset($_GET['arrivalLong'])){
+if(true || isset($_GET['departureLat']) && isset($_GET['departureLong']) && isset($_GET['arrivalLat']) && isset($_GET['arrivalLong'])){
     $key = "5b3ce3597851110001cf6248c6e87f2691cf4b8aad0d91e3fa3f3de1";
     
-    $departureLat = 49.41461;
-    $departureLong = 8.681495;
-    $arrivalLat = 49.420318;
-    $arrivalLong = 8.687872;
+    $departureLat = $_GET['departureLat'];
+    $departureLong = $_GET['departureLong'];
+    $arrivalLat = $_GET['arrivalLat'];
+    $arrivalLong = $_GET['arrivalLong'];
 
     $curl = curl_init("https://api.openrouteservice.org/v2/directions/driving-car?api_key=$key&start=$departureLong,$departureLat&end=$arrivalLong,$arrivalLat");
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -24,5 +24,5 @@ if(isset($_GET['departureLat']) && isset($_GET['departureLong']) && isset($_GET[
 
 }
 else{
-    echo '{"status" : "fail"}';
+    echo '{"status" : "invalid args"}';
 }
