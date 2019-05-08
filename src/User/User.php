@@ -153,7 +153,7 @@ class User
      */
     public function getLocation(): string 
     {
-        return $this->$location;
+        return $this->location;
     }
 
     /** 
@@ -161,7 +161,7 @@ class User
      * @return User
      */
     public function setMail($mail){
-        $this->$mail=$mail;
+        $this->mail=$mail;
         return $this;
     }
 
@@ -170,7 +170,7 @@ class User
      * @throws \NoStringExeception
      */
     public function getMail(): string{
-        return $this->$mail;
+        return $this->mail;
     }
     
     /**
@@ -178,7 +178,7 @@ class User
      * @return User
      */
     public function setMdp($psw){
-        $this->$mdp=$psw;
+        $this->mdp=$psw;
         return $this;
     }
 

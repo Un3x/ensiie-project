@@ -301,6 +301,23 @@ form > p {
 
 /* Page Profil */
 
+.columnPP {
+  float: left;
+  width: 25%;
+}
+
+.columnInfo {
+  float : left;
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.rowInfo:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 img.photo_profil  {
   height: 350px;
 }

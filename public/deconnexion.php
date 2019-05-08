@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$_SESSION['authent'] = 0;
 session_destroy();
 ?>
 

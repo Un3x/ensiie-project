@@ -19,14 +19,34 @@ $cats = $catRepository->fetchAll();
 
 require 'connexion.php';
 
+if ($_SESSION['authent'] == 0) {
+    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+	exit();
+}
+
 require("header.php");
 ?>
 
 <section>
+    <?php
+        $CurrUser = $userRepository->testpseudo($_SESSION['pseudo']);
+    ?>
     <h1 class="section">Mon Profil</h1>
-    <h2 class="sous_titre"><?php $_SESSION['pseudo'] ?></h2>
+    <h2 class="sous_titre"><?php echo $CurrUser[0]->getId(); ?></h2>
     <!-- FAIRE DES COLONES -->
-    <img class="photo_profil" src="hugo.JPG" alt="Photo de profil"/>
+    <div class="rowInfo">
+        <div class="columnPP">
+            <img class="photo_profil" src="hugo.JPG" alt="Photo de profil"/>
+        </div>
+        <div class="columnInfo">
+            <p>Pseudo : <?php echo $CurrUser[0]->getId(); ?></p>
+            <p>Prénom : <?php echo $CurrUser[0]->getFirstname(); ?> </p>
+            <p>Nom : <?php echo $CurrUser[0]->getLastname(); ?> </p>
+            <p>E-mail : <?php echo $CurrUser[0]->getMail(); ?> </p>
+            <p>Ville : <?php echo $CurrUser[0]->getLocation(); ?> </p>
+            <p>Date de naissance : <?php echo date_format($CurrUser[0]->getBirthday(), 'd-m-Y'); ?> </p>
+        </div>
+    </div>
 </section>
 
 <?php
