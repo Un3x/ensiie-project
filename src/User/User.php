@@ -177,8 +177,8 @@ class User
      * @param string
      * @return User
      */
-    public function setMdp($mdp){
-        $this->$mdp=$mdp;
+    public function setMdp($psw){
+        $this->$mdp=$psw;
         return $this;
     }
 
@@ -186,7 +186,7 @@ class User
      * @return string
      * @throws \NoStringException
      */
-    public function getMdp():string{
+    public function getMdp(): string{
         return $this->$mdp;
     }
 

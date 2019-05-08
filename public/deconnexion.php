@@ -1,10 +1,11 @@
-<?php
+<?php 
 session_start();
-if (!isset($_SESSION['authent'])) {
-    $_SESSION['authent'] = 0;
-}
-require '../vendor/autoload.php';
+session_destroy();
+?>
 
+<?php
+
+require '../vendor/autoload.php';
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -12,24 +13,25 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll(); 
+$users = $userRepository->fetchAll();
 
 $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
-require 'connexion.php';
 
 require("header.php");
+
+
 ?>
-
 <section>
-    <h1 class="section">Mon Profil</h1>
-    <h2 class="sous_titre"><?php $_SESSION['pseudo'] ?></h2>
-    <!-- FAIRE DES COLONES -->
-    <img class="photo_profil" src="hugo.JPG" alt="Photo de profil"/>
-</section>
+<h1 class="section">Vous êtes bien déconnectés !</h1>
 
+<br/><br/>
+
+<button class="boutton" onclick="window.location.href='index.php'" style="width:auto;">Cliquez ici pour revenir à l'accueil</button>
+
+</section>
 <?php
-require("aside.php");
+//require("aside.php");
 require("footer.php");
 ?>

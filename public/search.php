@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['authent'])) {
+    $_SESSION['authent'] = 0;
+}
 require '../vendor/autoload.php';
 
 //postgres
@@ -15,6 +18,8 @@ $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
 $prodRepository= new \User\ProduitRepository($connection);
+
+require 'connexion.php';
 
 require("header.php");
 ?>
