@@ -29,6 +29,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     $prenom=$user->getPrenom();
     $pseudo=$user->getPseudo();
 }
+
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
     $id_user=$_SESSION["id_user"];
 }
@@ -54,7 +55,7 @@ else {
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnexion\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnection\"></form></TD>
       </TR>
     </TABLE>";
 
@@ -65,7 +66,7 @@ else {
             echo "<TABLE >
       <TR>
         <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connection\"></form></TD>
       </TR>
     </TABLE>";
         }
@@ -107,23 +108,21 @@ else {
 		</form>
 		<p id="ftitreerror" style="display:none">Veuillez remplir le champ</p>
 	</div>
-    <p>Vous pouvez parcourir notre bilbiothèque</p>
     <div class="contenu">
+      <div class="res">Livres</div>
     	<table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
-      <tr>
       <th>Couverture</th>
     <th>titre</th>
     <th>publication</th>
     <th>editeur</th>
     <th>auteurs</th>
     <th>emprunteur</th>
-    <th>date emprunt</th>
     <th>review</th>
     <?php if ($user_connected) {
     	echo "<th>reserver</th>";
     }
-    ?></tr>
+    ?>
     </thead>
 <?php
     foreach ($livres as $livre) : ?>
@@ -140,11 +139,12 @@ else {
     		<tr><td style="height:50px;border:none"><?php echo $auteur->getAuteur(); ?></td></tr>
     	<?php endforeach; ?>
     </table></td>
-    <td><?php echo $livre->getEmprunteur() ?></td>
-    <td><?php echo date_format($livre->getDateEmprunt(), 'Y-m-d') ?></td>
-    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" class="butcan" name="id_livre" value=<?php echo $livre->getId(); ?>><input type="submit" class="butcan" name="Voir les reviews" value="Voir les reviews"></form></td>
+    <td><?php if ($livre->getEmprunteur() != '') {
+      echo IdToPseudo($livre->getEmprunteur());
+    } ?></td>
+    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input class="butcan" type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
     <?php if ($user_connected) : ?>
-    	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input type="submit" name="Réserver" class="butcan" value="Réserver"></form></td>
+    	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input class="butcan" type="submit" name="Réserver" value="Réserver"></form></td>
     <?php endif; ?>
     </tr>
 <?php endforeach; ?>

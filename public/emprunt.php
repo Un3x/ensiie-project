@@ -140,7 +140,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
         <?php endif; ?>
     </nav>
     <section>
-    <div class="grand-titre">Page d'emprunt de livre (réservé aux admins)</div>
+    <div class="grand-titre">Page d'emprunt de livre</div>
     <nav>
          <!-- TODO recopier le nav-->
     </nav>
@@ -161,11 +161,10 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 
 
     <!-- premier formulaire où l'admin peut saisir un utilisateur non obligatoire-->
-    <h4>identification directe de l'emprunteur</h4>
     <form action="emprunt.php" method="POST">
-        Pseudo de l'emprunteur :<br>
+        <br>Pseudo de l'emprunteur :<br>
         <input id="f1pseudo" type="text" name="pseudo"><br>
-        <input type="button" class="input" onclick="valide_emprunteur()" value="Valider">
+        <input type="button" class="butcan" onclick="valide_emprunteur()" value="Valider">
         <input id="validerf1" style="display:none" type="submit" name="Envoyer">
     </form>
 
@@ -182,11 +181,13 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 
 
     <!-- second formulaire déjà prérempli si le premier à été validé-->
-    <?php if (isset($okpseudo) && $okpseudo) : ?>
-    <h4>Livres réservés par cet utilisateur :</h4>
     <?php 
-    $livresreserved = $livreRepository->fetchReserved(PseudoToId($_POST['pseudo']));
-    ?>
+    
+
+    if (isset($okpseudo) && $okpseudo) : ?>
+        <?php $livresreserved = $livreRepository->fetchReserved(PseudoToId($_POST['pseudo'])); ?>
+        <?php if ($livresreserved != []): ?>
+    <div class="res">Livres réservés par cet utilisateur :</div>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
     <th>#</th>
@@ -206,7 +207,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
         <input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId() ?>>
         <input style="display:none" type="text" name="titre" value=<?php echo $livre->getTitre() ?>>
         Pseudo :<input type="text" name="pseudo" value=<?php if (isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>>
-        <input type="submit" name="Valider" value="Valider">
+        <input type="submit" class="butcan" name="Valider" value="Valider">
     </form>
 
 
@@ -217,17 +218,25 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     <p id="f2error" style="display:none">Veuillez remplir correctement tous les champs</p>
     <?php endif; ?>
 
+    <?php if ($livresreserved == []): ?>
+    <h4>Cet utilisateur n'a pas réservé de livres</h4>
+    <?php endif; ?>
+    <?php endif; ?>
+
     <?php
     if (isset($okid) && !($okid)) {
         echo "<p>Id de Livre invalide</p>";
     }
     ?>
+    <br>
 
 
-<h4>Affichage de la liste des livres disponibles</h4>
 <input type="button" onclick="affichetable()" value="Afficher la liste des livres">
+<p></p>
 
-<p id="displaytable" style="display:none">
+<div id="displaytable" style="display:none">
+
+    <div class="res">Liste des livres disponibles</div>
     <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
     <th>#</th>
@@ -254,7 +263,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     </tr>
 <?php endforeach; ?>
     </table>
-</p>
+</div>
 </section>
 </body>
 

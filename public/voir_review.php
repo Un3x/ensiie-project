@@ -76,30 +76,28 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     	<a href="bibliotheque.php" class="rubrique">Retour vers la bibliothèque</a>
     </nav>
 	<section>
-	<div class="container">
 		<div class="grand-titre">Liste des review pour le livre : <?php echo IdToTitre($_POST['id_livre']); ?></div>
 		<?php if ($reviews == []): ?>
 			<p>Désolé, aucune review n'est disponible pour ce livre</p>
 		<?php endif; ?>
 		<?php if ($reviews != []): ?>
-		<table>
-			<thead>
-				<th>Livre</th>
+            <div class="contenu">
+		<table class="table table-bordered table-hover table-striped">
+			<thead style="font-weight: bold">
 				<th>Utilisateur</th>
 				<th>Note</th>
 				<th>Review</th>
 			</thead>
 			<?php foreach ($reviews as $review): ?>
 				<tr>
-					<td><?php echo IdToTitre($_POST['id_livre']); ?></td>
 					<td><?php echo IdToPseudo($review->getPersonne()); ?></td>
 					<td><?php echo $review->getNote(); ?></td>
 					<td><?php echo $review->getTexte(); ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
+    </div>
         <p></p>
 	<?php endif; ?>
-	</div>
 </section>
 </body>

@@ -121,8 +121,8 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
         <div class="res">Voici les livres pour lesquels vous pouvez écrire une review</div>
         <table>
             <thead>
-                <th>Titre</th>
                 <th>Couverture</th>
+                <th>Titre</th>
                 <th>Rédiger une review</th>
             </thead>
             <?php foreach ($historiques as $historique): ?>
@@ -131,8 +131,8 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
                 $reviewtest = $reviewRepository->fetchByUserAndLivre($_SESSION['id_user'], $historique->getIdLivre()); ?>
                 <?php if ($reviewtest == []): ?>
                 <tr>
+                    <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage() ?>></td>
                     <td><?php echo $livre->getTitre(); ?></td>
-                    <td><?php echo $livre->getImage(); ?></td>
                     <td><?php $ID = $livre->getId(); ?>
                         <form action="review.php" method="POST" oninput="x.value=parseInt(note.value)">
                         <div style="display:none" id=<?php echo "$ID"."disp"; ?>>
@@ -141,16 +141,17 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
                         Note :
                         <input type="range" min=0 max=10 name="note"><output name="x"></output>
                         | Review :
-                        <input type="text" name="review">
-                        <input type="submit" value="valider">
+                        <textarea name="review" rows="3" cols="50"></textarea>
+                        <input class="butcan" type="submit" value="valider">
                         </div> 
-                        <input type="button" onclick="aff_form(<?php echo "'$ID'"; ?>)" value="rédiger une review" id=<?php echo "$ID"."butt"; ?>>
+                        <input class="butcan" type="button" onclick="aff_form(<?php echo "'$ID'"; ?>)" value="rédiger une review" id=<?php echo "$ID"."butt"; ?>>
                     </form>
                     </td>
                 </tr>
             <?php endif; ?>
             <?php endforeach; ?>
         </table>
+        <br>
     <?php endif; ?>
     <?php if ($test): ?>
         <div class="res">Vous ne pouvez pas écrire de review pour le moment car vous n'avez pas rendu de livre</div>

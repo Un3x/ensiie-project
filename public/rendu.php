@@ -119,11 +119,12 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
         echo "<p>Pseudo invalide</p>";
     }
     ?>
+    <br>
 
     <form action="rendu.php" method="POST">
         Pseudo :<br>
         <input id="f1pseudo" type="text" name="pseudo"><br>
-        <input type="button" class="input" onclick="valide_pseudo()" value="Valider">
+        <input class="bande2" type="button" class="input" onclick="valide_pseudo()" value="Valider">
         <input id="validerf1" style="display:none" type="submit" name="Envoyer">
     </form>
     <p id="f1error" style="display:none">Veuillez remplir le champ</p>
@@ -152,7 +153,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
                     <form action="rendu.php" method="POST">
                         <input style="display:none" type="text" name="pseudo" value=<?php echo $_POST['pseudo'] ?>>
                         <input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>>
-                        <input type="submit" name="Valider" value="Valider">
+                        <input class="butcan" type="submit" name="Valider" value="Valider">
                     </form>
         <? endforeach; ?>
     </table>
