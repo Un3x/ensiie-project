@@ -17,6 +17,9 @@ $auteurRepository = new \Auteur\AuteurRepository($connection);
 
 
 $user_connected=isset($_SESSION["id_user"]);
+
+$admin=false;
+
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
 //!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
     $id_user=$_SESSION["id_user"];
