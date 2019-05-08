@@ -301,25 +301,23 @@ form > p {
 
 /* Page Profil */
 
+.rowInfo {
+  display: flex;
+}
+
 .columnPP {
-  float: left;
-  width: 25%;
+  flex: 25%;
 }
 
 .columnInfo {
-  float : left;
-  width: 75%;
+  flex: 75%;
+  padding: 14px 20px;
 }
 
-/* Clear floats after the columns */
-.rowInfo:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 img.photo_profil  {
-  height: 350px;
+  width: 90%;
+  height : auto;
 }
 
 /* Recherche */
@@ -389,6 +387,25 @@ img.photo_profil  {
 
     .columnF {
       width: 100%;
+    }
+
+    .rowInfo {
+      flex-direction: column;
+    }
+
+    .columnPP {
+      flex: 100%;
+    }
+
+    img.photo_profil {
+      display : flex;
+      width: 50%;
+      height : auto;
+      justify-content: center;
+    }
+
+    .columnInfo {
+      flex: 100%;
     }
 
   }
