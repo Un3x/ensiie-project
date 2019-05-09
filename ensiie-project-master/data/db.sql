@@ -13,7 +13,7 @@ CREATE TABLE Utilisateur (
        sport VARCHAR(50) NOT NULL );
        
 
-INSERT INTO Utilisateur(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'Doe', 'Prenom', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
+INSERT INTO Utilisateur(id, nom, prenom, email, password, tel, genre, sport) VALUES ('123', 'Doe', 'John', 'john.doe@gmail.com', 'mdp', '0636754809', 'm', 'Basket');
 
 -- Héritage (Classe Mère)
 

@@ -22,11 +22,11 @@
 				$user->setTel($_POST['tel_modifier']);
 				$new_pwd = $user->getPassword();
 				$new_tel = $user->getTel();
-				$_SESSION['pwd'] = $_POST['pwd_modifier'];
-				$_SESSION['tel'] = $_POST['tel_modifier'];
+				$_SESSION['pwd'] = $new_pwd;
+				$_SESSION['tel'] = $new_tel;
 
-				$sql ='UPDATE Utilisateur SET tel="'.$_POST['tel_modifier'].'", password="'.$_POST['pwd_modifier'].'" WHERE id="'.$_SESSION['id'].'"';
-				$connection->prepare($sql)->execute(); /* TODO */
+				$sql ='UPDATE Utilisateur SET tel=:ntel, password=:npwd WHERE id=:nid';
+				$connection->prepare($sql)->execute(array('ntel' => ''.$new_tel, 'npwd'=>''.$new_pwd, 'nid'=>''.$id));
 
 				
 				header ('Location: index.php');
