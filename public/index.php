@@ -18,6 +18,8 @@ $users = $userRepository->fetchAll();
 $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
+$phoRepository=new \User\PhotoRepository($connection);
+
 require 'connexion.php';
 
 
@@ -34,6 +36,7 @@ require("header.php");
         if ($_SESSION['authent'] == 0) {
             echo "<p>PAS CONNECTE !</p>";
         }
+
     ?>
 
 

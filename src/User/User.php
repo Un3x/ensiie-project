@@ -199,6 +199,11 @@ class User
         return $this;
     }
 
+    public function getPhoto(){
+        return $this->id_photo;
+    }
+
+
     /**
      * @return int
      */

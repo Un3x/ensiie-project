@@ -30,13 +30,14 @@ require("header.php");
 <section>
     <?php
         $CurrUser = $userRepository->testpseudo($_SESSION['pseudo']);
+        $cheminphoto=$userRepository->getPhoto($_SESSION['pseudo']);
     ?>
     <h1 class="section">Mon Profil</h1>
     <h2 class="sous_titre"><?php echo $CurrUser[0]->getId(); ?></h2>
     <!-- FAIRE DES COLONES -->
     <div class="rowInfo">
         <div class="columnPP">
-            <img class="photo_profil" src="hugo.JPG" alt="Photo de profil"/>
+            <img class="photo_profil" src=<?php echo $cheminphoto;?> alt="Photo de profil"/>
         </div>
         <div class="columnInfo">
             <p>Pseudo : <?php echo $CurrUser[0]->getId(); ?></p>

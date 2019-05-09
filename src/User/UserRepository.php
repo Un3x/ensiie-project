@@ -96,6 +96,13 @@ class UserRepository
 
     }
 
+    public function getPhoto($pseudo){
+        $rows=$this->connection->query("SELECT * FROM photo JOIN utilisateur ON photo_id=id_photo WHERE id='".$pseudo."';")->fetchAll(\PDO::FETCH_OBJ);
+        $chemin="/uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
+        return $chemin;
+        
+    }
+
 
 }
 ?>

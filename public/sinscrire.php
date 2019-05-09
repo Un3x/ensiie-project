@@ -17,6 +17,8 @@ $users = $userRepository->fetchAll();
 $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
+$phoRepository=new \User\PhotoRepository($connection);
+
 require 'connexion.php';
 
 require("header.php");
@@ -40,6 +42,8 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 		$annee=$date[0];
 		$now=new \DateTime();
 		$verif=1;
+		$photoon=0; /*0 si l'utilisateur met pas de photo 1 si oui*/
+		$id_photo=0;
 		if ($now < $datetime && $verif==1){
 			 echo "<span class=\"red\">Vous n'êtes pas encore né</span><br/>";
 			 $verif=0;
@@ -87,7 +91,9 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 				$extension_autorisees=array('jpg','jpeg','gif','png','JPG','PNG','GIF','JPEG');
 				if ((in_array($extension_upload,$extension_autorisees) && $verif==1))
 				{
-					move_uploaded_file($_FILES['pp']['tmp_name'],'uploads/'.basename($_FILES['pp']['name']));
+					$id_photo=($phoRepository->getMax()+1);
+					move_uploaded_file($_FILES['pp']['tmp_name'],'uploads/'.$id_photo.".".$extension_upload);
+					$photoon=1;
 				}
 
 				else{
@@ -104,7 +110,15 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 
 		if ($verif==1){
 			echo "Please wait..";
-			$req=$connection->prepare("INSERT INTO utilisateur (id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES (:id, :prenom, :nom, :date_naissance, :loc, :mail, :motdepasse, 0,0)");
+			if ($photoon == 1){
+				$reqphoto=$connection->prepare("INSERT INTO photo (id_photo, extension) VALUES (:id_p,:ext)");
+				$paramsphoto=array(
+					'id_p' => $id_photo,
+					'ext' => $extension_upload
+				);
+				$reqphoto->execute($paramsphoto);
+			}
+			$req=$connection->prepare("INSERT INTO utilisateur (id, firstname, lastname, birthday, loc, mail, mdp,photo_id, administrateur,valid) VALUES (:id, :prenom, :nom, :date_naissance, :loc, :mail, :motdepasse,:id_p, 0,0)");
 			$params = array(
 				'id' => $_POST['id_user'],
 				'prenom' => $_POST['prenom'],
@@ -112,7 +126,8 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 				'date_naissance' => $_POST['bday'],
 				'loc' => $_POST['ville'],
 				'mail' => $_POST['email'],
-				'motdepasse' => $_POST['mdp']
+				'motdepasse' => $_POST['mdp'],
+				'id_p' => $id_photo
 			);
 			$req->execute($params);
 			echo "<meta http-equiv=\"Refresh\" content=\"2;url=inscriptionsuccess.php\">";

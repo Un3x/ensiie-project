@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS "assoc_prd_cat" CASCADE;
 
 CREATE TABLE "photo"(
     id_photo INTEGER,
-    adresse VARCHAR(200) NOT NULL,
+    extension VARCHAR(200) NOT NULL,
     CONSTRAINT key_photo PRIMARY KEY (id_photo)
 );
 
@@ -72,9 +72,11 @@ INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Brendan', 'Pen
 INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
 INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');*/
 
-INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azertyui', 1,1);
-INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, administrateur,valid) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678', 1,1);
-INSERT INTO "photo"(id_photo,adresse) VALUES (0,'~/matthieu.gosset/hugo.png');
+INSERT INTO "photo" (id_photo,extension) VALUES (0,'png');
+INSERT INTO "photo" (id_photo,extension) VALUES (1,'JPG');
+INSERT INTO "photo" (id_photo,extension) VALUES (2,'jpg');
+INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, photo_id, administrateur,valid) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azertyui',1,1,1);
+INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, photo_id, administrateur,valid) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678',2,1,1);
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(1,'Auto/Moto', 'automoto.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(2,'Immobilier','immobilier.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(3,'Maison','maison.php');
