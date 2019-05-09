@@ -29,16 +29,14 @@ require("header.php");
 <section>
     <?php
         if ($_SESSION['authent'] == 1) {
-            echo "<p>Vous êtes connectés !</p>";
+            echo "<p class=\"accueil\">Coucou "; 
             echo $_SESSION['pseudo'];
-            echo $_SESSION['statut'];
-        }
-        if ($_SESSION['authent'] == 0) {
-            echo "<p>PAS CONNECTE !</p>";
+            echo ", comment tu vas ? <br/> Regarde un peu les nouvelles annonces &#128516;</p>";
         }
 
     ?>
 
+    <h2 class="sous_titre">Les Dernières annonces ajoutée sur TTT</h2>
     <div class="produits">
         <a href="">
         <div class="produit">

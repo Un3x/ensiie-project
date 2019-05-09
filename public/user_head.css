@@ -320,6 +320,7 @@ form > p {
 img.photo_profil  {
   width: 100%;
   height : auto;
+  object-fit: cover;
 }
 
 /* Recherche */
@@ -465,6 +466,11 @@ img.preview {
   font-size : 15px;
 }
 
+/* Acceuil */
+
+.accueil {
+  font-size: 20px;
+}
 
 /* Affichage petit écrans */
 
