@@ -101,6 +101,18 @@ class ProduitRepository
         return $prods;
     }
 
+    public function getMax()
+{
+    $rows=$this->connection->query("SELECT MAX(id_produit) FROM produits;")->fetchAll(\PDO::FETCH_OBJ);
+    $c=0;
+    foreach($rows as $row){
+        $c=$c+($row->max);
+    }
+
+    return $c;
+
+}
+
 
 }
 
