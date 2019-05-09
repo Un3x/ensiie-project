@@ -124,7 +124,9 @@
 		$link = dbConnect();
 		$pseudo = $_SESSION['name'];
 
-		$request->bind_result($variable, $min, $max);
+    $request->bindColumn(1, $variable);
+    $request->bindColumn(2, $min);
+    $request->bindColumn(3, $max);
 
 		while($request->fetch()){
 			$userStat = $userStats["$variable"];
