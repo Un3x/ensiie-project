@@ -1,141 +1,126 @@
---- `make db.install` to update the database
+--- "make db.install" to update the database
 
---- drop if exists
-DROP TABLE IF EXISTS "current";
-DROP TABLE IF EXISTS "completed";
+DROP TABLE IF EXISTS "user_bis";
 DROP TABLE IF EXISTS "story_node";
+DROP TABLE IF EXISTS "requirement";
 DROP TABLE IF EXISTS "link_achievement_user";
-DROP TABLE IF EXISTS "achievements";
-DROP TABLE IF EXISTS "user";
-
-DROP TYPE IF EXISTS REQUIREMENT;
-
+DROP TABLE IF EXISTS "current_story";
+DROP TABLE IF EXISTS "completed";
 DROP TABLE IF EXISTS "choice";
+DROP TABLE IF EXISTS "achievements";
 
---- user, the person that will connect
-CREATE TABLE "user" (
-  pseudo VARCHAR NOT NULL PRIMARY KEY,
-  hash VARCHAR NOT NULL,
-  gender VARCHAR NOT NULL
-);
+DROP TYPE IF EXISTS req_type;
 
--- types for a story node
-CREATE TYPE REQUIREMENT AS (
-  minimum INT,
-  maximum INT
-);
+CREATE TYPE req_type AS ENUM('alcohol','ghost','attendance','bar','baka','diese','is_bar','is_baka','is_diese');
 
---- next SERIAL is the primary key of a "story_node",
---- but we drop security here because of circular dependency
-CREATE TABLE "choice" (
-  id SERIAL,
-  content VARCHAR,
-  next SERIAL
-  PRIMARY KEY (id, next)
-);
-
--- the story node
-CREATE TABLE "story_node" (
-  id SERIAL PRIMARY KEY,
-  -- requirements
-  require_alcohol REQUIREMENT,
-  require_attendance REQUIREMENT,
-  require_ghost REQUIREMENT,
-  is_bar REQUIREMENT,
-  is_baka REQUIREMENT,
-  is_diese REQUIREMENT,
-  likeness_bar REQUIREMENT,
-  likeness_baka REQUIREMENT,
-  likeness_diese REQUIREMENT,
-  -- modifications
-  modif_alcohol INT,
-  modif_attendance INT,
-  modif_ghost INT,
-  modif_bar INT,
-  modif_baka INT,
-  modif_diese INT,
-  -- 0: stay the same, < 0: quit, > 0: join
-  join_bar INT,
-  join_baka INT,
-  join_diese INT,
-  -- achievement
-  ach_id SERIAL REFERENCES "achievements"(id),
-  -- the content of the story
-  content VARCHAR NOT NULL,
-  bg_picture VARCHAR NOT NULL,
-  fg_picture VARCHAR,
-  -- the choices for the next step,
-  -- everything at NULL for an end
-  choice_1 SERIAL REFERENCES "choice"(id),
-  choice_2 SERIAL REFERENCES "choice"(id),
-  choice_3 SERIAL REFERENCES "choice"(id)
-);
-
---- achivements, like in games
 CREATE TABLE "achievements" (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR NOT NULL,
-  text VARCHAR NOT NULL,
-  icon VARCHAR
+  "id" int NOT NULL,
+  "title" varchar NOT NULL,
+  "text" varchar NOT NULL,
+  "icon" varchar DEFAULT NULL,
+  PRIMARY KEY ("id")
 );
 
---- link table: user <-> achivement
-CREATE TABLE "link_achievement_user" (
-  -- link table, need the keys of the 2 tables we want to link
-  pseudo VARCHAR REFERENCES "user"(pseudo),
-  achievement SERIAL REFERENCES "achievements"(id),
-  -- a date, an achievement can be completed many times, this is the date of the last completion
-  date_acquired DATE NOT NULL,
-  PRIMARY KEY (pseudo, achievement)
+CREATE TABLE "choice" (
+  "id" int NOT NULL,
+  "content" varchar DEFAULT NULL,
+  "next_node" serial NOT NULL,
+  PRIMARY KEY("id","next_node")
 );
 
---- finished stories by a user
 CREATE TABLE "completed" (
-  -- the pseudo of the person that completed a story
-  pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
-  -- the end reached in the story, a final step
-  end_id SERIAL REFERENCES "story_node"(id),
-  -- stats
-  ghost INT NOT NULL,
-  alcohol INT NOT NULL,
-  attendance INT NOT NULL,
-  bar INT NOT NULL,
-  baka INT NOT NULL,
-  diese INT NOT NULL,
-  is_bar BOOLEAN NOT NULL,
-  is_baka BOOLEAN NOT NULL,
-  is_diese BOOLEAN NOT NULL,
-  -- the date
-  date_end DATE NOT NULL,
-  PRIMARY KEY (pseudo, end_id, ghost, alcohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese)
+  "pseudo" varchar NOT NULL,
+  "end_id" serial NOT NULL,
+  "ghost" int NOT NULL,
+  "alcohol" int NOT NULL,
+  "attendance" int NOT NULL,
+  "bar" int NOT NULL,
+  "baka" int NOT NULL,
+  "diese" int NOT NULL,
+  "is_bar" int NOT NULL,
+  "is_baka" int NOT NULL,
+  "is_diese" int NOT NULL,
+  "date_end" date NOT NULL,
+  PRIMARY KEY ("pseudo","end_id","ghost","alcohol","attendance","bar","baka","diese","is_bar","is_baka","is_diese")
 );
 
---- state of a party
-CREATE TABLE "current" (
-  pseudo VARCHAR NOT NULL REFERENCES "user"(pseudo),
-  -- step in the story
-  step SERIAL REFERENCES "story_node"(id),
-  date_current DATE NOT NULL,
-  -- stats
-  ghost INT NOT NULL,
-  alcohol INT NOT NULL,
-  attendance INT NOT NULL,
-  bar INT NOT NULL,
-  baka INT NOT NULL,
-  diese INT NOT NULL,
-  is_bar BOOLEAN NOT NULL,
-  is_baka BOOLEAN NOT NULL,
-  is_diese BOOLEAN NOT NULL,
-  -- table of steps to get to this point
-  steps INT[] NOT NULL,
-  -- primary key
-  PRIMARY KEY (pseudo)
+CREATE TABLE "current_story" (
+  "pseudo" varchar(300) NOT NULL,
+  "step" int NOT NULL,
+  "date_current" date NOT NULL,
+  "ghost" int NOT NULL,
+  "alcohol" int NOT NULL,
+  "attendance" int NOT NULL,
+  "bar" int NOT NULL,
+  "baka" int NOT NULL,
+  "diese" int NOT NULL,
+  "is_bar" int NOT NULL,
+  "is_baka" int NOT NULL,
+  "is_diese" int NOT NULL,
+  PRIMARY KEY ("pseudo")
 );
 
---- INSERTS
-INSERT INTO "user"(pseudo, hash, gender) VALUES
-('Polio', 'x', 'm'),
-('Sun', 'x', 'Hélicoptère Apache'),
-('Kat', 'x', 'f'),
+CREATE TABLE "link_achievement_user" (
+  "pseudo" varchar NOT NULL,
+  "achievement" int NOT NULL,
+  "date_acquired" date NOT NULL,
+  PRIMARY KEY ("pseudo","achievement")
+);
+
+CREATE TABLE "requirement" (
+  "node_id" int NOT NULL,
+  "variable" req_type NOT NULL,
+  "min" int DEFAULT NULL,
+  "max" int DEFAULT NULL,
+  PRIMARY KEY ("node_id","variable")
+);
+
+CREATE TABLE "story_node" (
+  "id" serial NOT NULL,
+  "modif_alcohol" int DEFAULT NULL,
+  "modif_attendance" int DEFAULT NULL,
+  "modif_ghost" int DEFAULT NULL,
+  "modif_bar" int DEFAULT NULL,
+  "modif_baka" int DEFAULT NULL,
+  "modif_diese" int DEFAULT NULL,
+  "join_bar" int DEFAULT NULL,
+  "join_baka" int DEFAULT NULL,
+  "join_diese" int DEFAULT NULL,
+  "ach_id" int DEFAULT NULL,
+  "content" varchar NOT NULL,
+  "bg_picture" varchar NOT NULL,
+  "fg_picture" varchar DEFAULT NULL,
+  PRIMARY KEY ("id")
+);
+
+CREATE TABLE "user_bis" (
+  "pseudo" varchar NOT NULL,
+  "hash_bis" varchar NOT NULL,
+  "gender" varchar NOT NULL,
+  PRIMARY KEY ("pseudo")
+);
+
+INSERT INTO "choice" ("id", "content", "next_node") VALUES
+(1, 'Oui ! ', 2),
+(1, 'Non !', 3),
+(2, 'Bon ben salut alors !', 1);
+
+INSERT INTO "current_story" ("pseudo", "step", "date_current", "ghost", "alcohol", "attendance", "bar", "baka", "diese", "is_bar", "is_baka", "is_diese") VALUES
+('Kat', 2, '2019-04-28', 50, 50, 50, 60, 50, 50, 0, 0, 0),
+('Polio', 1, '2019-04-28', 50, 50, 50, 50, 50, 50, 0, 0, 0);
+
+INSERT INTO "story_node" ("id", "modif_alcohol", "modif_attendance", "modif_ghost", "modif_bar", "modif_baka", "modif_diese", "join_bar", "join_baka", "join_diese", "ach_id", "content", "bg_picture", "fg_picture") VALUES
+(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 'Veux-tu rejoindre Le Bar (c) ?', 'facade.png', 'chara-test.png'),
+(2, 0, 0, -20, 30, 0, -20, 1, 0, 0, 1, 'Bienvenue !', 'bar_encours.png', NULL);
+
+INSERT INTO "user_bis" ("pseudo", "hash_bis", "gender") VALUES
+('Bob', 'x', 'Hélicoptère Apache'),
+('Kat', 'motdepasse', 'f'),
 ('Kubat', 'x', 'm'),
-('Bob', 'x', 'Hélicoptère Apache');
+('Polio', 'x', 'm'),
+('Sun', 'x', 'Hélicoptère Apache');
+
+-- dépendances circulaires
+-- ALTER TABLE "completed" ADD UNIQUE KEY "end_id" ("end_id");
+-- ALTER TABLE "story_node" ADD UNIQUE KEY "id" ("id");
+-- ALTER TABLE "choice" ADD UNIQUE KEY "next_node" ("next_node");
