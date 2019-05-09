@@ -318,7 +318,7 @@ form > p {
 
 
 img.photo_profil  {
-  width: 90%;
+  width: 100%;
   height : auto;
 }
 
@@ -421,7 +421,7 @@ a {
 
 .produit {
   display : flex;
-  background-color: #ccc;
+  background-color: #eee;
   border-radius: 10px;
   border: 1px none;
   margin-bottom: 15px;
@@ -546,9 +546,6 @@ img.preview {
 
     .columnInfo {
       flex: 100%;
-    }
-
-    .produits {
     }
 
     .produit {
