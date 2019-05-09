@@ -31,12 +31,12 @@ class Course
     /**
      * @var DateTime
      */
-    //private $departureDateTime;
+    private $departureDateTime;
 
     /**
-     * @var int ???? ou autres
+     * @var int
      */
-    //private $travelDuration
+    private $state
 
 
 
@@ -50,7 +50,7 @@ class Course
 
     /**
      * @param int $id
-     * @return User
+     * @return Course
      */
     public function setId($id)
     {
@@ -112,7 +112,41 @@ class Course
         return $this;
     }
 
+    /**
+     * @return DateTime
+     */
+    public function getDepartureDateTIme()
+    {
+        return $this->departureDateTime;
+    }
 
+    /**
+     * @param DateTime $departureDateTime
+     * @return Course
+     */
+    public function setCarrier($departureDateTime)
+    {
+        $this->departureDateTime = new DateTime($departureDateTime);
+        return $this;
+    }
+
+        /**
+     * @return int
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param int $state
+     * @return Course
+     */
+    public function setCarrier($state)
+    {
+        $this->state = $state;
+        return $this;
+    }
 
 
 }
