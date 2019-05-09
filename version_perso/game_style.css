@@ -1,0 +1,55 @@
+#game{
+	width: 50%;
+	padding: 20px;
+	
+}
+
+#side_info{
+	width: 12%;
+	margin-right: 20px;
+}
+
+#placeholder_protag{
+	background-color: #f5cf47;
+	font-family: 'amavos';
+	color: white;
+	text-align: center;
+	font-size: 2em;
+	margin: 10px;
+	margin-top: 20px;
+	height: 60%;
+}
+
+#visuel{
+	width: 100%;
+	margin: auto;
+}
+
+#visuel img{
+	width: 100%;
+}
+
+#choices{
+	margin-top: 15px;
+}
+
+#choices .choice{
+	border: none;
+	shadow-box: none;
+	text-align: left;
+	width: 100%;
+	background-color: #f5cf47;
+	color: white;
+	font-size: 1.5em;
+	font-family: 'bahn';
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#choices .choice:hover{
+	background-color: #ed9a00;
+}
+
+#choices .choice:focus{
+	outline: none;
+}
