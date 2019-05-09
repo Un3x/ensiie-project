@@ -33,7 +33,7 @@ require("header.php");
             <?php 
             foreach ($cats as $cat) : ?>
             <label class="checkbox"><?php echo $cat->getNomCat() ?>
-                <input type="checkbox" name="categories" value="<?php echo $cat->getId(); ?>" id="<?php echo $cat->getId(); ?>" required/>
+                <input type="checkbox" name="categories" value="<?php echo $cat->getId(); ?>" id="<?php echo $cat->getId(); ?>"/>
                 <span class="checkmark"></span>
             </label>
             <?php endforeach; ?>
