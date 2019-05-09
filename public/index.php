@@ -39,6 +39,33 @@ require("header.php");
 
     ?>
 
+    <div class="produits">
+        <div class="produit">
+            <div class="photo_prod">
+                <img class="preview" src="voiture.jpg" alt="photo du produit"/>
+            </div>
+            <div class="text_prod">
+                <h2>Titre de l'annonce</h2>
+                <h3>67 €</h3>
+                <div class="details">
+                    <p>Auto/Moto<br/>Evry</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="produit">
+            <div class="photo_prod">
+                <img class="preview" src="voiture.jpg" alt="photo du produit"/>
+            </div>
+            <div class="text_prod">
+                <h2>Très très très long Titre de l'annonce</h2>
+                <h3>67 €</h3>
+                <div class="details">
+                    <p>Auto/Moto<br/>Evry</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 

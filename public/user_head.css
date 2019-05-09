@@ -407,6 +407,54 @@ img.photo_profil  {
   background: white;
 } 
 
+/* Annonce apercu*/
+
+.produits {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px;
+}
+
+.produit {
+  display : flex;
+  background-color: #ccc;
+  border-radius: 10px;
+  border: 1px none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 15px;
+}
+
+.photo_prod {
+  flex : 20%;
+  object-fit: fill;
+}
+
+img.preview {
+  width : 250px;
+  height: auto;
+  object-fit: fill;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius:10px;
+}
+
+.text_prod {
+  flex : 80%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.titre_prod {
+  font-size: 30px;
+}
+
+.prix_prod {
+  font-size : 25px;
+}
+
+.details {
+  bottom: 0;
+}
+
 /* Affichage petit écrans */
 
 @media screen and (max-width: 768px) {
@@ -487,6 +535,18 @@ img.photo_profil  {
 
     .columnInfo {
       flex: 100%;
+    }
+
+    img.preview {
+      width : 150px;
+    }
+
+    .titre_prod {
+      font-size: initial;
+    }
+
+    .prix_prod {
+      font-size: initial;
     }
 
   }
