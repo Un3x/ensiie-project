@@ -3,7 +3,8 @@
 	/*Print functions for the header and footer*/
 	function printHeader(){
 		echo "<header>
-			<img class = \"logo\" src = \"logo_site.png\" alt = \"le logo du site (My New LIIfE)\"/>
+			<a href = \"php_accueil.php\">
+			<img class = \"logo\" src = \"logo_site.png\" alt = \"le logo du site (My New LIIfE)\" /></a>
 		</header>";
 	}
 
@@ -15,7 +16,7 @@
 
 	/*Print functions for the sidebar. Different outcomes depending on if the user logged in or not*/
 	function printSidebar(){
-		if(isset($_SESSION["name"])&&$_SESSION["name"]!=NULL){
+		if(isset($_SESSION["name"])){
 			printSidebarLogIn();
 		}
 		else{
@@ -24,12 +25,10 @@
 	}
 
 	function printSidebarLogIn(){
-		if (!isset($_POST["pseudo"]))
-			$_POST["pseudo"]=" ";
 		echo "
 			<aside id = \"side_bar\" class = \"round_rect\"> <!-- Bloc de droite. Contient le panthéon.-->
 				<div id = \"profile_summary\">
-					<span style = \"font-size: 3em; margin: auto;\" class = \"orange\">".$_POST["pseudo"]."</span>
+					<span style = \"font-size: 3em; margin: auto;\" class = \"orange\">".$_SESSION['name']."</span>
 					<span class = \"grey\" style = \"align-self: center;\">Mon profil</span>
 					<button type=\"button\" onclick=\"window.location.href = 'logout.php';\">Deconnexion</button>
 				</div>
@@ -42,7 +41,7 @@
 		echo "<aside id = \"side_bar\" class = \"round_rect\"> <!-- Bloc de droite. Contient le panthéon.-->
 
 				<div id = \"login_form\">
-					<form action = \"index.php\" target = \"_self\" method = \"post\">
+					<form action = \"login.php\" target = \"_self\" method = \"post\">
 						<div class = \"champs\">
 							<input type = \"text\" name = \"pseudo\" value = \"Pseudo\">
 							<input type = \"password\" name = \"password\" value = \"superbigpassword\">
@@ -87,7 +86,7 @@
 	/*Print functions for the main content div. Different outcomes depending on if the user logged in or not*/
 
 	function printMain(){
-		if(isset($_SESSION["name"])&&$_SESSION["name"] != ""){
+		if(isset ($_SESSION["name"])){
 			printMainLogIn();
 		}
 		else{
@@ -101,7 +100,7 @@
 
 				<div id = \"main_header\">
 					<p>
-						<span class = \"brown\"><span style = \"font-family: iLoveGlitter;\">Vis ou revis</span></span> <br />
+						<span class = \"brown\"><span style = \"font-family: iLoveGlitter;\">Vis ou revis</span></span> <br /> 
 						<span class = \"orange\"><span style = \"font-family:amavos\">ta 1A a l<span style = \"font-family:sans-serif\">'</span>ENSIIE </span> <span style = \"font-family:amavos\"><span style = \"font-family:sans-serif\">!</span></span>
 					</p>
 				</div>
@@ -163,23 +162,18 @@
 			</div>
 		";
 	}
+	
 
-	/*Test function checkLogin*/
-	function checkLogin(){
-    if (isset($_POST["pseudo"])) {
-      $_SESSION["name"] = $_POST["pseudo"];
-    }
-	}
-
+	
 	function logOut(){
 		session_destroy();
 		/*echo " <div class = \"round_rect\" style = \"padding: 20px;\">
 			<p class = \"grey\"> Déconnexion réussie ! Cliquez <a href = \"php_accueil.php\">ici</a> pour revenir à la page d'accueil </p>
 			<script>
-				window.location.replace(\"index.php\");
+				window.location.replace(\"php_accueil.php\");
 			</script>
 		</div>";*/
 		echo "<script>
-				window.location.replace(\"index.php\");
+				window.location.replace(\"php_accueil.php\");
 			</script>";
 	}

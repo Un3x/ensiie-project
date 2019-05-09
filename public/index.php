@@ -1,26 +1,31 @@
 <?php
-require ('print_functions.php');
-session_start();
-echo "<!DOCTYPE html>";
-echo "<html>";
+  require ('print_functions.php');
 
-# le header
-echo '<head>
+	// Create connection
+	$conn = new PDO("pgsql:host=postgres dbname=ensiie user=ensiie password=ensiie");
+
+	// Check connection
+	if (!$conn) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	echo "Connected successfully";
+
+echo "<!DOCTYPE html>
+<html>
+<head>
   <title>Accueil - Test php</title>
-  <meta-charset = "utf-8"/>
-  <link rel = "stylesheet" type = "text/css" href = "stylesheet.css"/>
-  <link rel = "stylesheet" type = "text/css" href = "stylesheet2.css"/>
-</head>';
+  <meta-charset = \"utf-8\"/>
+  <link rel = \"stylesheet\" type = \"text/css\" href = \"stylesheet.css\"/>
+</head>
 
-# le body
-echo '<body class = "bg">';
-printHeader();
+<body class = \"bg\">";
+  printHeader();
 
-echo '<main>';
-checkLogin();
-printMain();
-printSidebar();
-echo '</main>';
+  echo "<main>";
+    #checkLogin();
+    printMain();
+    printSidebar();
+  echo "</main>";
 
-printFooter();
-echo '</body></html>';
+  printFooter();
+echo "</body></html>";
