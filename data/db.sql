@@ -75,6 +75,7 @@ INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Wil
 INSERT INTO "photo" (id_photo,extension) VALUES (0,'png');
 INSERT INTO "photo" (id_photo,extension) VALUES (1,'JPG');
 INSERT INTO "photo" (id_photo,extension) VALUES (2,'jpg');
+INSERT INTO "photo" (id_photo,extension) VALUES (3,'png');
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, photo_id, administrateur,valid) VALUES ('hugo91600', 'Hugo', 'Sellambin', '1998-02-27', 'Savigny', 'hugo@gmail.com', 'azertyui',1,1,1);
 INSERT INTO "utilisateur"(id, firstname, lastname, birthday, loc, mail, mdp, photo_id, administrateur,valid) VALUES ('matth91000', 'Matthieu', 'Gosset', '1998-04-25', 'Evry', 'matthieu.gosset@ensiie.fr', '12345678',2,1,1);
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(1,'Auto/Moto', 'automoto.php');
