@@ -148,6 +148,21 @@ button.boutton:hover {
   opacity: 0.8;
 }
 
+/* Set a style for all buttons */
+button.supp {
+  background-color: #dd4b39;
+  color: white;
+  padding: 14px;
+  margin: 14px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+}
+
+button.supp:hover {
+  opacity: 0.8;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
   width: auto;

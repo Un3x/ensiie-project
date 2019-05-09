@@ -67,7 +67,7 @@ require("header.php");
             </div>
         </div>
         </a>
-        <button class="boutton" onclick="" style="width:20%;">Supprimer</button>
+        <button class="supp" onclick="">&#128465; Supprimer</button>
 
         <a href="">
         <div class="produit">
@@ -83,6 +83,7 @@ require("header.php");
             </div>
         </div>
         </a>
+        <button class="supp" onclick="">&#128465; Supprimer</button>
 
         <a href="">
         <div class="produit">
@@ -98,6 +99,7 @@ require("header.php");
             </div>
         </div>
         </a>
+        <button class="supp" onclick="">&#128465; Supprimer</button>
     </div>
 </section>
 
