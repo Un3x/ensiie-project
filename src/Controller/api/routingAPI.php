@@ -24,5 +24,6 @@ if(true || isset($_GET['departureLat']) && isset($_GET['departureLong']) && isse
 
 }
 else{
-    echo '{"status" : "invalid args"}';
+    header("HTTP/1.1 400 Bad Request");
+    echo '{"status" : "fail"}';
 }

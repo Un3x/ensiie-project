@@ -21,6 +21,7 @@ if(isset($_GET['n']) && isset($_GET['name'])){
     echo '{"status" : "success", "data" : '.json_encode($cities).'}';
 }
 else{
+    header("HTTP/1.1 400 Bad Request");
     echo '{"status" : "fail"}';
 
 

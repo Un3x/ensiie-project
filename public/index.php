@@ -71,6 +71,7 @@ if( isset($_GET['action']))
             break;
 
         default:
+            header("HTTP/1.1 404 Not Found");
             require('../src/Controller/404.php');
             break;
     }

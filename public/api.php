@@ -1,5 +1,4 @@
 <?php
-//session_start(); -> il faut faire les ob_start() avant de commencer la session
 
 require_once('../src/config.php');
 
@@ -19,12 +18,14 @@ if( isset($_GET['action']))
             break;
     
         default:
+            header("HTTP/1.1 404 Not Found");
             echo '{"status" : "fail"}';
             break;
     }
 }
 else
 {
-     echo '{"status" : "fail"}';
+    header("HTTP/1.1 400 Bad Request");
+    echo '{"status" : "fail"}';
 
 }
