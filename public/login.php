@@ -2,7 +2,7 @@
 <html>
     <?php require('../src/components/head.php');?>
     <body>
-        <main id="disconnected">
+        <header id="disconnected">
             <div class="container">
                 <?php require('../src/components/navbar_connection.php');?>
             </div>
@@ -26,7 +26,7 @@
                     </form>
                 </div>
             </div>
-        </main>
+        </header>
         <?php require('../src/components/footer.php'); ?>
     </body>
 </html>

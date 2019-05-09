@@ -48,7 +48,7 @@ $users = $userRepository->fetchAll();
 
 <?php require '../src/components/head.php';?>
     <body>
-        <main id="disconnected">
+        <header id="disconnected">
             <div class="container">
                 <?php require('../src/components/navbar_connection.php');?>
                 <img id="logo-img" src="img/logo_tsps_2019.png" alt="Logo de promo"/>
@@ -64,7 +64,7 @@ $users = $userRepository->fetchAll();
                 <path d="M 0 160L 0 0C 552.762 3.38469e-14 829.144 157.977 1450 157.977L 1450 160L 0 160Z"/>
                 </g>
             </svg>
-        </main>
+        </header>
         <?php require('../src/components/footer.php'); ?>
     </body>
 </html>
