@@ -105,7 +105,7 @@ class UserRepository
 
     public function afficheUser($user){
         $chemin=$this->getPhoto($user->getId());
-        echo "<a href=\"pageprofil.php?pseudo=".$user->getId()."\">
+        echo "<a href=\"pageProfil.php?pseudo=".$user->getId()."\">
         <div class=\"produit\">
         <div class=\"photo_prod\">
         <img class =\"preview\" src=\"".$chemin."\" alt=\"photo de profil\"/>
