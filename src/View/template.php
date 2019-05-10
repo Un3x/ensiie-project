@@ -6,7 +6,7 @@
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <title> <?= $title ?> </title>
 
 </head>
@@ -15,17 +15,20 @@
 
 <nav>
     <ul>
+    <li>  
+        <a href="/" > Accueil  </a>
+    </li>
 
     <li>  
-        <a href="index.php?action=clients" > Clients  </a>
+        <a href="/clients" > Clients  </a>
     </li>
 
     <li> 
-        <a href="index.php?action=creatures"> Créatures/Transporteurs </a> 
+        <a href="/creatures"> Créatures/Transporteurs </a> 
     </li>
 
     <li> 
-        <a href="index.php?action=informations"> Plus d'informations </a>
+        <a href="/informations"> Plus d'informations </a>
      </li>
 
 <?php 

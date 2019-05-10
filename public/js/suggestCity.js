@@ -25,7 +25,7 @@ function suggestCity(element, value, datalistId){
         }
     };
 
-    xhttp.open('GET', 'api.php?action=getCities&n=5&name='+name, true);
+    xhttp.open('GET', '/api/city/names/name='+name+'&n='+'5', true);
     xhttp.timeout=1000;
     xhttp.send();
 }

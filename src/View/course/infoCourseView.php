@@ -14,7 +14,10 @@
 
 <div id='mapId' style='width: 600px; height: 400px;'></div>
 
-<form action="index.php?action=payment" method="POST">
+
+<?php switch($userType) {
+	case null :?>
+<form action="/course/payment" method="POST">
 	<input type=hidden name=carrierId value=<?=$carrierId?> />
 	<input type=hidden name=departure value=<?=$departureName?> />
 	<input type=hidden name=arrival value=<?=$arrivalName?> />
@@ -22,19 +25,66 @@
 	<input type=hidden name=departureTime value=<?=$departureTime?> />
 	<input type=submit id=search value=Réserver />
 </form>
-    
+
+<?php break; case "carrier": ?>
+<?php switch($courseStatus){ 
+		case "booked": ?>
+	<form action="/course/accept" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=accept value="Accepter la réservation" />
+	</form>
+
+	<form action="/course/refuse" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=refuse value="Refuser la réservation" />
+	</form>
+
+	<?php break; case "confirmed": ?>
+	<form action="/course/cancel" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "finished": ?>
+
+	<?php break; case "cancelled": ?>
+
+	<?php break; } ?>
+
+<?php break; case "client": ?>
+	<?php switch($courseStatus){ 
+		case "booked": ?>
+	<form action="/course/cancel" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "confirmed": ?>
+	<form action="/course/cancel" method="POST">
+	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=submit id=cancel value="Annuler la réservation" />
+	</form>
+
+	<?php break; case "finished": ?>
+
+	<?php break; case "cancelled": ?>
+
+	<?php break; } ?>
+
+<?php break; } ?>  
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require('../src/View/template.php'); ?>
 
-<link rel="stylesheet" href="js/leaflet/leaflet.css" />
-<script src="js/leaflet/leaflet.js" ></script>
+<link rel="stylesheet" href="/js/leaflet/leaflet.css" />
+<script src="/js/leaflet/leaflet.js" ></script>
 
 <script>
 	var request = new XMLHttpRequest();
+	var request2 = new XMLHttpRequest();
 
-	request.open('GET', 'https://api.openrouteservice.org/v2/directions/driving-car?api_key=<?=$key?>&start=<?=$departureLong?>,<?=$departureLat?>&end=<?=$arrivalLong?>,<?=$arrivalLat?>');
+	request.open('GET', '/api/routing/departureLat=<?=$departureLat?>&departureLong=<?=$departureLong?>&arrivalLat=<?=$arrivalLat?>&arrivalLong=<?=$arrivalLong?>');
 
 	//request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
 
@@ -42,9 +92,9 @@
 		if (this.readyState === 4) {
 			var pointList = [];
 
-			for (coord of JSON.parse(this.responseText)['features']['0']['geometry']['coordinates']){
-				pointList.push(coord.reverse());
-			}
+			pointList = JSON.parse(this.responseText)['data'];
+
+			console.log(pointList);
 
 			var polyline = new L.Polyline(pointList, {color: 'blue'});
 
@@ -52,8 +102,6 @@
 			mymap.fitBounds(polyline.getBounds());
 		}
 	};
-
-
 
 	request.send();
 

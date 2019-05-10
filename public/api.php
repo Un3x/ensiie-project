@@ -1,26 +1,31 @@
 <?php
-//session_start(); -> il faut faire les ob_start() avant de commencer la session
 
 require_once('../src/config.php');
 
 if( isset($_GET['action']))
 {
     switch($_GET['action']){
-        case 'getCities' :
-            require('../src/Controller/api/getCities.php');
+        case 'cityNameAPI' :
+            require('../src/Controller/api/cityNameAPI.php');
             break;
 
-        case 'getCourses' :
-            require('../src/Controller/api/getCourses.php');
+        case 'searchCourseAPI' :
+            require('../src/Controller/api/searchCourseAPI.php');
+            break;
+        
+        case 'routingAPI' :
+            require('../src/Controller/api/routingAPI.php');
             break;
     
         default:
+            header("HTTP/1.1 404 Not Found");
             echo '{"status" : "fail"}';
             break;
     }
 }
 else
 {
-     echo '{"status" : "fail"}';
+    header("HTTP/1.1 400 Bad Request");
+    echo '{"status" : "fail"}';
 
 }

@@ -65,8 +65,13 @@ if( isset($_GET['action']))
         case 'confirmationCourse' :
             require('../src/Controller/course/confirmationCourse.php');
             break;
+        
+        case '' :
+            require('../src/View/accueilView.php');
+            break;
 
         default:
+            header("HTTP/1.1 404 Not Found");
             require('../src/Controller/404.php');
             break;
     }
