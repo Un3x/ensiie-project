@@ -31,8 +31,8 @@ class ProduitRepository
                 ->setPhoto1($row->photo1)
                 ->setPhoto2($row->photo2)
                 ->setPhoto3($row->photo3)
-                ->setValide($row->valide);
-
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
             $cats[]=$cat;
         }
         return $cats;
@@ -53,7 +53,8 @@ class ProduitRepository
                 ->setPhoto1($row->photo1)
                 ->setPhoto2($row->photo2)
                 ->setPhoto3($row->photo3)
-                ->setValide($row->valide);
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
             $prods[]=$prod;
         }
         return $prods;
@@ -74,7 +75,8 @@ class ProduitRepository
                 ->setPhoto1($row->photo1)
                 ->setPhoto2($row->photo2)
                 ->setPhoto3($row->photo3)
-                ->setValide($row->valide);
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
             $prods[]=$prod;
         }
         return $prods;
@@ -95,7 +97,8 @@ class ProduitRepository
                 ->setPhoto1($row->photo1)
                 ->setPhoto2($row->photo2)
                 ->setPhoto3($row->photo3)
-                ->setValide($row->valide);
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
             $prods[]=$prod;
         }
         return $prods;
@@ -116,7 +119,8 @@ class ProduitRepository
                 ->setPhoto1($row->photo1)
                 ->setPhoto2($row->photo2)
                 ->setPhoto3($row->photo3)
-                ->setValide($row->valide);
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
             $prods[]=$prod;
         }
         return $prods;
@@ -178,7 +182,7 @@ public function getPhoto3($idprod){
         else{
             $prix="Gratuit";
         }
-        echo "<a href=\"\">
+        echo "<a href=\"produit.php?produit=".$produit->getIdProd()."&pseudo=".$produit->getIdProprio()."\">
         <div class=\"produit\">
         <div class=\"photo_prod\">
         <img class =\"preview\" src=\"".$chemin."\" alt=\"photo du produit\"/>
@@ -194,6 +198,27 @@ public function getPhoto3($idprod){
         </a>";
     }
 
+    public function getSpecificProd($idproduit)
+    {
+        $rows = $this->connection->query("SELECT * FROM produits WHERE id_produit = '".$idproduit."';")->fetchAll(\PDO::FETCH_OBJ);
+        $prods=[];
+        foreach ($rows as $row){
+            $prod=new Produits();
+            $prod
+                ->setId($row->id_produit)
+                ->setDatePubli(new \DateTimeImmutable ($row->date_publi))
+                ->setDescription($row->descript)
+                ->setPrice($row->price)
+                ->setTitle($row->title)
+                ->setPhoto1($row->photo1)
+                ->setPhoto2($row->photo2)
+                ->setPhoto3($row->photo3)
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
+            $prods[]=$prod;
+        }
+        return $prods;
+    }
 
 }
 

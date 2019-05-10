@@ -146,6 +146,16 @@ class Produits
         return $this;
     }
 
+    public function getIdProprio()
+    {
+        return $this->id_proprio;
+    }
+
+    public function setIdProprio($idProprio)
+    {
+        $this->id_proprio=$idProprio;
+        return $this;
+    }
 }
 
 ?>

@@ -21,15 +21,22 @@ $cats = $catRepository->fetchAll();
 $phoRepository=new \User\PhotoRepository($connection);
 $ProdRepository=new \User\ProduitRepository($connection);
 
+
 require 'connexion.php';
 
 
 require("header.php");
 ?>
 
+<?php
+  $CurrUser = $userRepository->testpseudo($_GET['pseudo']);
+  $cheminphoto = $userRepository->getPhoto($_GET['pseudo']);
+  $CurrProduit = $ProdRepository->getSpecificProd($_GET['produit']);
+?>
+
 <section>
 
-<h2 class="sous_titre">Mon annonce</h2>
+<h2 class="sous_titre"><?php $CurrProduit[0]->getTitle(); ?></h2>
 
 <!-- Photos -->
 <div class="containerImages">
@@ -78,7 +85,7 @@ require("header.php");
 <div class="information">
 <div id="myDIV">
   <button class="btnInfo activeBtn">Description</button>
-  <button class="btnInfo">hugo91600</button>
+  <button class="btnInfo"><?php echo $CurrUser[0]->getId();?></button>
   <button class="btnInfo">D'Autres annonces du vendeur</button>
 </div> 
 
@@ -86,46 +93,39 @@ require("header.php");
 
   <div class="showInfo activeInfo">
     <div class="description">
-      <h3>500 €</h3>
-      <h4>Ville</h4>
-      <p>Bonjour, je vends ma Peugeot 207<br/>
-      <br/>
-Marque : peugeot<br/>
-Modèle : 207<br/>
-Finition : Exécutive
-Motorisation : 1.4 HDI<br/>
-<br/>
-Contrôle technique avec contre visite rotule avant droite à changer avec ressort.<br/>
-<br/>
-Courroie de distribution faite à 159000km facture à l'appuie.<br/>
-Et révision à jour.<br/>
-parcours toute distance.<br/>
-<br/>
-Options :<br/>
-<br/>
-- Ordinateur de bord<br/>
-- Poste d'origine<br/>
-- Fermeture centralisée ( double des clés )<br/>
-- Commande au volant<br/>
-- Climatisation<br/>
-- Direction assistée<br/>
-- vitres électriques<br/>
-- Abs<br/>
-- Airbag<br/>
-
-Le véhicule est dans un bon état intérieur comme extérieur</p>
+      <h3><?php $CurrProduit[0]->getPrice(); ?></h3>
+      <h4><?php $CurrUser[0]->getLocation(); ?></h4>
+      <p><?php $CurrProduit[0]->getDescription(); ?></p>
+      <p><?php $CurrProduit[0]->getDatePubli()->format('Y-m-d'); ?></p>
     </div>
   </div>
 
   <div class="showInfo">
     <div class="infoVendeur">
-      <p> Bonjour comment ca va</p>
+    <div class="rowInfo">
+        <div class="columnPP">
+            <img class="photo_profil" src=<?php echo $cheminphoto;?> alt="Photo de profil"/>
+        </div>
+        <div class="columnInfo" id="infos">
+            <p>Pseudo : <?php echo $CurrUser[0]->getId(); ?></p>
+            <p>Prénom : <?php echo $CurrUser[0]->getFirstname(); ?> </p>
+            <p>Nom : <?php echo $CurrUser[0]->getLastname(); ?> </p>
+            <p>E-mail : <?php echo $CurrUser[0]->getMail(); ?> </p>
+            <p>Ville : <?php echo $CurrUser[0]->getLocation(); ?> </p>
+            <p>Date de naissance : <?php echo date_format($CurrUser[0]->getBirthday(), 'd-m-Y'); ?> </p>
+        </div>
+    </div>
     </div>
   </div>
 
   <div class="showInfo">
     <div class="otherProd">
-      <p>caca</p>
+    <?php
+    $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
+        foreach ($prods as $prod){
+                $ProdRepository->afficheProd($prod);
+        }
+    ?>
     </div>
   </div>
 
