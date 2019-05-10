@@ -36,7 +36,7 @@ function searchCourse(departureId, arrivalId, dateId, timeId, resultId){
         }
     }
 
-    xhttp.open('GET', '/api/course/search/departure='+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse+'&n='+'5', true);
+    xhttp.open('GET', '/api/course/search/?departure='+departureCourse+'&arrival='+arrivalCourse+'&date='+dateCourse+'&time='+timeCourse+'&n='+'5', true);
     xhttp.send();
 
 }

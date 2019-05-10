@@ -84,7 +84,7 @@
 	var request = new XMLHttpRequest();
 	var request2 = new XMLHttpRequest();
 
-	request.open('GET', '/api/routing/departureLat=<?=$departureLat?>&departureLong=<?=$departureLong?>&arrivalLat=<?=$arrivalLat?>&arrivalLong=<?=$arrivalLong?>');
+	request.open('GET', '/api/routing/?departureLat=<?=$departureLat?>&departureLong=<?=$departureLong?>&arrivalLat=<?=$arrivalLat?>&arrivalLong=<?=$arrivalLong?>');
 
 	//request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
 
@@ -105,7 +105,7 @@
 
 	request.send();
 
-	var mymap = L.map('mapId').setView([28.63, 77.22], 13);
+	var mymap = L.map('mapId');
 
 
 	L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {

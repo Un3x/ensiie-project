@@ -2,7 +2,6 @@
 
 require '../vendor/autoload.php';
 require '../src/model/City/CityManager.php';
-
 if(isset($_GET['n']) && isset($_GET['name'])){
 
 
