@@ -32,11 +32,25 @@ require("header.php");
   $CurrUser = $userRepository->testpseudo($_GET['pseudo']);
   $cheminphoto = $userRepository->getPhoto($_GET['pseudo']);
   $CurrProduit = $ProdRepository->getSpecificProd($_GET['produit']);
+
+  $photo1 = $ProdRepository->getPhoto1($CurrProduit[0]->getIdProd());
+  $photo2 = $ProdRepository->getPhoto2($CurrProduit[0]->getIdProd());
+  $photo3 = $ProdRepository->getPhoto3($CurrProduit[0]->getIdProd());
+
+  if ($photo1 == null) {
+    $photo1 = "/upload/3.png";
+  }
+  if ($photo2 == null) {
+    $photo2 = "/upload/3.png";
+  }
+  if ($photo3 == null) {
+    $photo3 = "/upload/3.png";
+  }
 ?>
 
 <section>
 
-<h2 class="sous_titre"><?php $CurrProduit[0]->getTitle(); ?></h2>
+<h2 class="sous_titre"><?php echo $CurrProduit[0]->getTitle(); ?></h2>
 
 <!-- Photos -->
 <div class="containerImages">
@@ -44,17 +58,17 @@ require("header.php");
 <!-- Full-width images with number text -->
 <div class="mySlides">
   <div class="numbertext">1 / 3</div>
-    <img class="big" src="voiture.jpg" style="width:100%">
+    <img class="big" src="<?php echo $photo1 ?>" style="width:100%">
 </div>
 
 <div class="mySlides">
   <div class="numbertext">2 / 3</div>
-    <img class="big" src="hugo.JPG" style="width:100%">
+    <img class="big" src="<?php echo $photo2 ?>" style="width:100%">
 </div>
 
 <div class="mySlides">
   <div class="numbertext">3 / 3</div>
-    <img class="big" src="TTT_green.png" style="width:100%">
+    <img class="big" src="<?php echo $photo3 ?>" style="width:100%">
 </div>
 
 <!-- Next and previous buttons -->
@@ -69,13 +83,13 @@ require("header.php");
 <!-- Thumbnail images -->
 <div class="row">
   <div class="column">
-    <img class="demo cursor" src="voiture.jpg" style="width:100%" onclick="currentSlide(1)" alt="photo1">
+    <img class="demo cursor" src="<?php echo $photo1 ?>" style="width:100%" onclick="currentSlide(1)" alt="photo1">
   </div>
   <div class="column">
-    <img class="demo cursor" src="hugo.JPG" style="width:100%" onclick="currentSlide(2)" alt="photo2">
+    <img class="demo cursor" src="<?php echo $photo2 ?>" style="width:100%" onclick="currentSlide(2)" alt="photo2">
   </div>
   <div class="column">
-    <img class="demo cursor" src="TTT_green.png" style="width:100%" onclick="currentSlide(3)" alt="photo3">
+    <img class="demo cursor" src="<?php echo $photo3 ?>" style="width:100%" onclick="currentSlide(3)" alt="photo3">
   </div>
 </div>
 
@@ -93,28 +107,16 @@ require("header.php");
 
   <div class="showInfo activeInfo">
     <div class="description">
-      <h3><?php $CurrProduit[0]->getPrice(); ?></h3>
-      <h4><?php $CurrUser[0]->getLocation(); ?></h4>
-      <p><?php $CurrProduit[0]->getDescription(); ?></p>
-      <p><?php $CurrProduit[0]->getDatePubli()->format('Y-m-d'); ?></p>
+      <h3><?php echo $CurrProduit[0]->getPrice(); ?> €</h3>
+      <h4><?php echo $CurrUser[0]->getLocation(); ?></h4>
+      <p><?php echo $CurrProduit[0]->getDescription(); ?></p>
+      <p><?php echo $CurrProduit[0]->getDatePubli()->format('Y-m-d'); ?></p>
     </div>
   </div>
 
   <div class="showInfo">
     <div class="infoVendeur">
-    <div class="rowInfo">
-        <div class="columnPP">
-            <img class="photo_profil" src=<?php echo $cheminphoto;?> alt="Photo de profil"/>
-        </div>
-        <div class="columnInfo" id="infos">
-            <p>Pseudo : <?php echo $CurrUser[0]->getId(); ?></p>
-            <p>Prénom : <?php echo $CurrUser[0]->getFirstname(); ?> </p>
-            <p>Nom : <?php echo $CurrUser[0]->getLastname(); ?> </p>
-            <p>E-mail : <?php echo $CurrUser[0]->getMail(); ?> </p>
-            <p>Ville : <?php echo $CurrUser[0]->getLocation(); ?> </p>
-            <p>Date de naissance : <?php echo date_format($CurrUser[0]->getBirthday(), 'd-m-Y'); ?> </p>
-        </div>
-    </div>
+      <?php $userRepository->afficheUser($CurrUser[0]); ?>
     </div>
   </div>
 
