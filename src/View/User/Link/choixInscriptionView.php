@@ -2,6 +2,7 @@
 
 <?php $title = "Un merveilleux site pour réserver des licornes ! " ?>
 
+
 <?php ob_start(); ?>
 
 <section>
@@ -13,12 +14,14 @@
 <br/>
 
 <p>
-    Vous voulez vendre votre corps ? : <a href="inscription-vendeur.php"> inscrivez-vous ici </a>
+    Vous voulez vendre votre corps ? : <a href="index.php?action=inscriptionCarrier"> inscrivez-vous ici </a>
 </p>
 
 </section>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
 
+<?php require("../src/View/template.php"); ?>
+
+<?php echo "O" ?>

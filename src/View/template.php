@@ -13,7 +13,6 @@
 <body>
 
 
-
 <nav>
     <ul>
 
@@ -31,8 +30,11 @@
 
 <?php 
     if( $connecte) 
-    {
-
+    { ?>
+        <li>
+            <a href="index.php?action=deconnexion" > Deconnexion </a>
+        </li>
+        <?php
     }
     else
     {
@@ -51,9 +53,14 @@
 
 </nav>
 
-<?= $content?>
+<?php if($connecte)
+    {
+        require("../src/View/User/Profil/menu_membre.php");
+    }
+    ?>
 
 
+<?=$content?>
 
 <footer>
     Ceci est un pied de page. 
@@ -64,6 +71,9 @@
         <li> Nos conditions d'utilisations</li>
         <li> Cliquez ici pour vendre votre âme </li>
     </ul>
+
+    <?=$script?>
+
 </footer>
 </body>
 </html>
