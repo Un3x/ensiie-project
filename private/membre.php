@@ -12,8 +12,9 @@ require( "../inc/inc.nav.php" );
 entete( "Accueil" );
 navAccueil();
 
-if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
-    header("location: connexion.php");
+if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
+    require( "../inc/connexionForm.php" );
+    exit();
 }
 
 $dbName = 'realitiie';
@@ -21,7 +22,7 @@ $dbUser = 'postgres';
 $dbPassword = 'postgres';
 $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
-$membreRepository = new \Membre\MembreRepository($connection);;
+$membreRepository = new \Membre\MembreRepository($connection);
 $membres = $membreRepository->fetchAll();
 
 $roles = array('a' => "Administrateur", 'r' => "Membre", 'p' => "Président"); // à compléter si ajout de nouveaux rôles

@@ -12,8 +12,9 @@ require( "../inc/inc.nav.php" );
 entete( "Accueil" );
 navAccueil();
 
-if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
-    header("location: connexion.php");
+if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
+    require( "../inc/connexionForm.php" );
+    exit();
 }
 
 $dbName = 'realitiie';

@@ -10,7 +10,7 @@
 	$dbName = 'realitiie';
 	$dbUser = 'postgres';
 	$dbPassword = 'postgres';
-	$connection = new PDO("pgsql:host=localhost, user=$dbUser, dbname=$dbName, password=$dbPassword");
+	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 	$JeuRepository = new \Jeu\JeuRepository($connection);
 	$Jeu = new \Jeu\Jeu($connection);
