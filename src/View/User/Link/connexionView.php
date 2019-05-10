@@ -3,18 +3,19 @@
 
 <?php ob_start(); ?>
 
-<?= $messageErreur ?>
 
 <section>
-    <p> 
+    <p>
         <h3> Connexion  : </h3>
-        <form method="POST" action="index.php?action=connexion"> 
+        <form method="POST" action="index.php?action=connexion">
+            <?=$messageErreur?>
             <label> login: </label>
-            
-                 <input type="text" name="login"/> 
+
+                 <input type="text" name="login"/>
                 <br/>
-            <label> Mot de passe : </label> 
+            <label> Mot de passe : </label>
             <input type="password" name="password"/>
+            <br/>
             <input type="submit" value="Connectez-vous"/>
         </form>
 </section>
@@ -22,5 +23,5 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('../src/View/template.php'); ?>
 
