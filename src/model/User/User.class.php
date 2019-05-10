@@ -1,6 +1,6 @@
 <?php
 
-require_once('Race.class.php');
+require_once('../src/Model/Race/Race.class.php');
 
 /**
  * Classe représentant le compte d'un utilisateur
