@@ -3,6 +3,8 @@ session_start();
 
 require_once('../src/config.php');
 
+
+
 if( isset($_GET['action']))
 {
     switch($_GET['action']){
@@ -19,8 +21,8 @@ if( isset($_GET['action']))
             break;
         
         case 'connexion':
-            require('../src/Controller/inscriptionClientController.php');
-            if( isset($_GET['login']) && isset($_GET['password']))
+            require('../src/Controller/User/Link/connexionController.php');
+            if( isset($_POST['login']) && isset($_POST['password']))
             {
                 tentativeConnexion();
             }
@@ -28,6 +30,10 @@ if( isset($_GET['action']))
             {
                 connexionDebut();
             }
+            break;
+        
+        case 'deconnexion':
+            require('../src/Controller/User/Link/deconnexionController.php');
             break;
 
         case 'creatures':

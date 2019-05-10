@@ -12,10 +12,10 @@
 
 <section>
 
-    <!-- Insérer ici la moyenne des avis--!>
+    <!-- Insérer ici la moyenne des avis-->
     <p>
         <?=($valeurDefaut['prenom']." ".$valeurDefaut['nom']) ?> : <?= $valeurDefaut['note']?> (en moyenne) <br/>
-        <!-- insérer image  --!>
+        <!-- insérer image  -->
 
     </p>
 
@@ -57,9 +57,9 @@
         <?php
         if($transporteur)
         { ?>
-        <label for="vitesse"/> Vitesse : </label>
+        <label for="vitesse"> Vitesse : </label>
             <br/>
-            <label for="nb_max"/> Capacité de charge : </label>
+            <label for="nb_max"> Capacité de charge : </label>
 
 
         <?php } ?>

@@ -9,7 +9,6 @@ function connexionDebut()
 
 function tentativeConnexion()
 {
-
     $bdd = 0;
     $userManager = new UserManager($bdd);
     if(filter_var($_POST['login'], FILTER_VALIDATE_EMAIL))
@@ -19,7 +18,7 @@ function tentativeConnexion()
         {
             $_SESSION['id_utilisateur'] = $id;
             //appeler plutôt le contrôleur correspondant ou header en repassant par index.php
-            $connecte=true;
+            $GLOBALS['connecte']=true;
             //conexion/
             require("../src/Controller/User/Profil/profilController.php");
             profilDebut();
@@ -29,7 +28,7 @@ function tentativeConnexion()
             $messageErreur =  "<div class='warning'>
             Erreur de connexion. <br/>
             Le login ou le mot de passe est incorrecte </div>";
-            require("../src/View/User/Profil/profilView.php");
+            require("../src/View/User/Link/connexionView.php");
         }
     }
     else

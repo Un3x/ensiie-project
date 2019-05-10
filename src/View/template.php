@@ -44,7 +44,7 @@
      </li>
 
 <?php 
-    if( $connecte) 
+    if($GLOBALS['connecte']) 
     { ?>
         <li>
             <a href="index.php?action=deconnexion" > Deconnexion </a>
@@ -68,9 +68,9 @@
 
 </nav>
 
-<?php if($connecte)
+<?php if($GLOBALS['connecte'])
     {
-        require("../src/View/User/Profil/menu_membre.php");
+        //require("../src/View/User/Profil/menu_membre.php");
     }
     ?>
 
@@ -87,7 +87,6 @@
         <li> Cliquez ici pour vendre votre âme </li>
     </ul>
 
-    <?=$script?>
 
 </footer>
 </body>
