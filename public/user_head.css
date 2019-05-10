@@ -570,20 +570,36 @@ img.big {
 
 /* description */
 
+.information {
+  position : relative;
+  width : 100%;
+}
+
  /* Style the buttons */
  .btnInfo {
   border: none;
   outline: none;
-  padding: 10px 16px;
-  background-color: #f1f1f1;
+  padding: 14px 20px;
+  background-color: #333;
   cursor: pointer;
+  color : white;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 /* Style the active class (and buttons on mouse-over) */
-.activeInfo, .btnInfo:hover {
-  background-color: #666;
-  color: white;
+.activeBtn, .btnInfo:hover {
+  background-color: #eee;
+  color : #333;
 } 
+
+.infoBOX {
+  background-color: #eee;
+  margin-top: 0px;
+  border: #eee solid 10px;
+  position: relative;
+  padding : 14px 20px;
+}
 
 /* Affichage petit écrans */
 
