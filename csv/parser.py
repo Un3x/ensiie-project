@@ -61,23 +61,36 @@ def handle_str(in_s: str) -> str:
     return f"'{res}'"
 
 
-def handle_req(req: str) -> str:
+def handle_req(node_id: int, var: str, req: str) -> str:
     match = re_req.fullmatch(req)
     if match is None:
-        return 'NULL'
-
-    min_ = match.group(1)
-    try:
-        min_ = int(min_)
-    except ValueError:
         min_ = 'NULL'
-    max_ = match.group(2)
-    try:
-        max_ = int(max_)
-    except ValueError:
         max_ = 'NULL'
+    else:
+        min_ = match.group(1)
+        try:
+            min_ = int(min_)
+        except ValueError:
+            min_ = 'NULL'
+        max_ = match.group(2)
+        try:
+            max_ = int(max_)
+        except ValueError:
+            max_ = 'NULL'
 
-    return f'({min_}, {max_})'
+    if max_ == 'NULL' and min_ == 'NULL':
+        return ''
+
+    return re.sub(' +', ' ', f'INSERT INTO "requirements" \
+            ("node_id", \
+            "variable", \
+            "min", \
+            "max" \
+            ) VALUES \
+            ({node_id}, \
+            \'{var}\', \
+            {min_}, \
+            {max_});')
 
 
 def handle_int(poss_int: str) -> str:
@@ -116,15 +129,6 @@ def handle_node(filename: str):
 
     node_base = re.sub(' +', ' ', 'INSERT INTO "story_node"\
             (id, \
-            require_alcohol, \
-            require_attendance, \
-            require_ghost, \
-            is_bar, \
-            is_baka, \
-            is_diese, \
-            likeness_bar, \
-            likeness_baka, \
-            likeness_diese, \
             modif_alchol, \
             modif_attendance, \
             modif_ghost, \
@@ -137,21 +141,9 @@ def handle_node(filename: str):
             ach_id, \
             content, \
             bg_picture, \
-            fg_picture, \
-            choice_1, \
-            choice_2, \
-            choice_3) \
-            VALUES \
+            fg_picture) \
+            VALUES\
             \n({id}, \
-            {req_alcohol}, \
-            {req_attendance}, \
-            {req_ghost}, \
-            {is_bar}, \
-            {is_baka}, \
-            {is_diese}, \
-            {like_bar}, \
-            {like_baka}, \
-            {like_diese}, \
             {modif_alcohol}, \
             {modif_attendance}, \
             {modif_ghost}, \
@@ -164,17 +156,14 @@ def handle_node(filename: str):
             {ach_id}, \
             {content}, \
             {bg_picture}, \
-            {fg_picture}, \
-            {choice_1}, \
-            {choice_2}, \
-            {choice_3});')
+            {fg_picture});')
 
     choice_base = re.sub(' +', ' ', 'INSERT INTO "choice"\
             (id, \
             content, \
             next) \
-            VALUES\
-            \n({id}, \
+            VALUES \
+            ({id}, \
             {content},\
             {next});')
 
@@ -183,11 +172,8 @@ def handle_node(filename: str):
     node_values = {
             'fg_picture': 'NULL',
             'ach_id': 'NULL',
-            'choice_1': 'NULL',
-            'choice_2': 'NULL',
-            'choice_3': 'NULL'
             }
-
+    requirements = []
     choices = []
 
     with open(filename, 'r', encoding='utf-8') as fl:
@@ -209,15 +195,16 @@ def handle_node(filename: str):
         node_values['fg_picture'] = handle_str(lines[2])
 
     # Requirements
-    node_values['req_alcohol'] = handle_req(lines[3])
-    node_values['req_attendance'] = handle_req(lines[5])
-    node_values['req_ghost'] = handle_req(lines[5])
-    node_values['is_bar'] = handle_req(lines[6])
-    node_values['is_baka'] = handle_req(lines[7])
-    node_values['is_diese'] = handle_req(lines[8])
-    node_values['like_bar'] = handle_req(lines[9])
-    node_values['like_baka'] = handle_req(lines[10])
-    node_values['like_diese'] = handle_req(lines[11])
+    requirements.append(handle_req(current_id, 'alcohol', lines[3]))
+    requirements.append(handle_req(current_id, 'attendance', lines[4]))
+    requirements.append(handle_req(current_id, 'ghost', lines[5]))
+    requirements.append(handle_req(current_id, 'is_bar', lines[6]))
+    requirements.append(handle_req(current_id, 'is_baka', lines[7]))
+    requirements.append(handle_req(current_id, 'is_diese', lines[8]))
+    requirements.append(handle_req(current_id, 'bar', lines[9]))
+    requirements.append(handle_req(current_id, 'baka', lines[10]))
+    requirements.append(handle_req(current_id, 'diese', lines[11]))
+    requirements = [req for req in requirements if req != '']
     # Integers values
     node_values['modif_alcohol'] = handle_int(lines[12])
     node_values['modif_attendance'] = handle_int(lines[13])
@@ -235,7 +222,6 @@ def handle_node(filename: str):
     for i in range(1, 4):
         line_i = 20 + i * 2
         if lines[line_i] != '':
-            node_values[f'choice_{i}'] = int(lines[line_i])
             res = dict()
             res['id'] = current_id
             res['content'] = handle_str(lines[line_i + 1])
@@ -244,9 +230,19 @@ def handle_node(filename: str):
 
     print(f"\n--- Node {current_id} ---")
     print(node_base.format(**node_values))
-    for choice in choices:
-        print(f"-- ==> {choice['next']}")
-        print(choice_base.format(**choice))
+    if requirements != []:
+        print(f"--- Requirements for node {current_id} ---")
+        for req in requirements:
+            print(req)
+    else:
+        print("--- No requirements ---")
+    if choices != []:
+        print(f"--- Choices for node {current_id} ---")
+        for choice in choices:
+            print(f"-- ==> {choice['next']}")
+            print(choice_base.format(**choice))
+    else:
+        print("--- No choices: this node is and ending ---")
     print("\n")
 
 
