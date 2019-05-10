@@ -40,7 +40,28 @@ class ProduitRepository
 
     public function getProdofC($categorie)
     {
-        $rows = $this->connection->query('SELECT * FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE id_produit='.$produit)->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE categorie.id_cat='.$categorie)->fetchAll(\PDO::FETCH_OBJ);
+        $prods=[];
+        foreach ($rows as $row){
+            $prod=new Produits();
+            $prod
+                ->setId($row->id_produit)
+                ->setDatePubli(new \DateTimeImmutable ($row->date_publi))
+                ->setDescription($row->descript)
+                ->setPrice($row->price)
+                ->setTitle($row->title)
+                ->setPhoto1($row->photo1)
+                ->setPhoto2($row->photo2)
+                ->setPhoto3($row->photo3)
+                ->setValide($row->valide);
+            $prods[]=$prod;
+        }
+        return $prods;
+    }
+
+    public function getProdofUser($id_user)
+    {
+        $rows = $this->connection->query("SELECT * FROM produits JOIN utilisateur ON utilisateur.id=produits.id_proprio WHERE id='".$id_user."';")->fetchAll(\PDO::FETCH_OBJ);
         $prods=[];
         foreach ($rows as $row){
             $prod=new Produits();
@@ -112,6 +133,66 @@ class ProduitRepository
     return $c;
 
 }
+public function getPhoto1($idprod){
+    $rows=$this->connection->query("SELECT * FROM photo JOIN produits ON photo1=id_photo WHERE id_produit='".$idprod."';")->fetchAll(\PDO::FETCH_OBJ);
+    $chemin="uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
+    return $chemin;
+    
+}
+
+public function getPhoto2($idprod){
+    $rows=$this->connection->query("SELECT * FROM photo JOIN produits ON photo2=id_photo WHERE id_produit='".$idprod."';")->fetchAll(\PDO::FETCH_OBJ);
+    $chemin="/uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
+    return $chemin;
+    
+}
+
+public function getPhoto3($idprod){
+    $rows=$this->connection->query("SELECT * FROM photo JOIN produits ON photo3=id_photo WHERE id_produit='".$idprod."';")->fetchAll(\PDO::FETCH_OBJ);
+    $chemin="/uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
+    return $chemin;
+    
+}
+
+    public function afficheProd($produit){
+        $chemin=$this->getPhoto1($produit->getIdProd());
+        $prix=$produit->getPrice();
+        $rows = $this->connection->query("SELECT nom_cat FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat WHERE assoc_prd_cat.id_prod=".$produit->getIdProd().";")->fetchAll(\PDO::FETCH_OBJ);
+        $categories="";
+        $taille=count($rows);
+        $c=1;
+        foreach ($rows as $row){
+            if ($c<$taille){
+                $categories=$categories.($row->nom_cat).", ";
+                $c=$c+1;
+            }
+
+            else{
+                $categories=$categories.($row->nom_cat);
+            }
+
+        }
+        if ($prix!=0){
+            $prix=$prix." €";
+        }
+        else{
+            $prix="Gratuit";
+        }
+        echo "<a href=\"\">
+        <div class=\"produit\">
+        <div class=\"photo_prod\">
+        <img class =\"preview\" src=\"".$chemin."\" alt=\"photo du produit\"/>
+        </div>
+        <div class=\"text_prod\">
+        <p>
+        <span class=\"titre_prod\">".$produit->getTitle()."</span><br/><br/>
+        <span class=\"prix_prod\">".$prix."</span><br/><br/>
+        <span class=\"details\">".$categories."<br/>".$produit->getDatePubli()->format('Y-m-d')."</span>
+        </p>
+        </div>
+        </div>
+        </a>";
+    }
 
 
 }

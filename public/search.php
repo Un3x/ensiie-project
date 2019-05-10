@@ -80,20 +80,20 @@ function showCat(etat){
                 if ($_GET['cat'] != "all" ){
                 foreach($catact as $cat) :
                 echo 'dans la catégorie '.$cat->getNomCat();
-                $resultsearch=$prodRepository->searchProdonCat(htmlspecialchars($_GET['search']),$cat->getId());
+                $resultsearch=array_reverse($prodRepository->searchProdonCat(htmlspecialchars($_GET['search']),$cat->getId()));
                 endforeach;
                 echo '<br/><br/>';
                 foreach ($resultsearch as $res) :
-                    echo 'Titre '.$res->getTitle().' Description '.$res->getDescription().' Prix '.$res->getPrice().'<br/>'; endforeach;
+                    $prodRepository->afficheProd($res); endforeach;
                 if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
                 }
 
                 else{
                     echo 'dans toutes les catégories';
-                    $resultsearch=$prodRepository->searchProd(htmlspecialchars($_GET['search']));
+                    $resultsearch=array_reverse($prodRepository->searchProd(htmlspecialchars($_GET['search'])));
                     echo '<br/><br/>';
                     foreach ($resultsearch as $res) :
-                        echo 'Titre '.$res->getTitle().' Description '.$res->getDescription().' Prix '.$res->getPrice().'<br/>'; endforeach;
+                        $prodRepository->afficheProd($res); endforeach;
                     if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
 
                 }

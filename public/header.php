@@ -23,7 +23,7 @@
                     <div class="dropdown-content">
                     <?php 
                     foreach ($cats as $cat) : ?>
-                        <a href="<?php echo $cat->getLinkCat(); ?>"><?php
+                        <a href="<?php echo "cat.php?id=".$cat->getId(); ?>"><?php
                         if ($cat->getNomCat()=="BONS PLANS"){ 
                             echo "<span class=\"red\">"; 
                             echo $cat->getNomCat(); 
@@ -36,7 +36,7 @@
                 <a href="contact.php">Contact</a>
                 <a href="aboutus.php">A propos</a>
                 <a href="search.php"></span class="loupe">&#128269;</span> Rechercher</a>
-                <button class="boutton" onclick="window.location.href='ajoutProd.php'" style="width:auto;">+ Ajouter un produit</button>
+                <!-- <button class="boutton" onclick="window.location.href='ajoutProd.php'" style="width:auto;">+ Ajouter un produit</button> -->
                 <?php
                 if ($_SESSION['authent'] == 0) {
                     echo "<button class=\"boutton\" onclick=\"document.getElementById('id01').style.display='block'\" style=\"width:auto;\">Connexion</button>";
@@ -44,6 +44,7 @@
                 ?>
                 <?php
                 if ($_SESSION['authent'] == 1) {
+                    echo "<button class=\"boutton\" onclick=\"window.location.href='ajoutProd.php'\" style=\"width:auto;\">+ Ajouter un produit</button>";
                     echo "<button class=\"boutton\" onclick=\"window.location.href='pageProfil.php'\" style=\"width:auto;\">Mon profil</button>";
                     echo "<button class=\"boutton\" onclick=\"window.location.href='deconnexion.php'\" style=\"width:auto;\">Déconnexion</button>";
                 }
@@ -53,10 +54,10 @@
             <div id="id01" class="modal">
         
         <form class="modal-content animate" action="" method="post">
-            <div class="imgcontainer">
+            <!-- <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
+                <img src="TTT_green.png" alt="logo TTT" width="100" height="50">
+            </div> -->
 
             <div class="row">
                 <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>

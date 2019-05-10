@@ -77,6 +77,13 @@ public function getCatofId($Id)
 
     return $cats;
 }
+
+public function getMax()
+{
+    $rows=$this->connection->query("SELECT MAX(id_cat) FROM categorie;")->fetchAll(\PDO::FETCH_OBJ);
+    $c=$rows[0]->max;
+    return $c;
+}
 }
 
 

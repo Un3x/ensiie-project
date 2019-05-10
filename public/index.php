@@ -19,6 +19,7 @@ $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
 $phoRepository=new \User\PhotoRepository($connection);
+$ProdRepository=new \User\ProduitRepository($connection);
 
 require 'connexion.php';
 
@@ -36,8 +37,40 @@ require("header.php");
 
     ?>
 
-    <h2 class="sous_titre">Les Dernières annonces ajoutée sur TTT</h2>
-    <div class="produits">
+    <h2 class="sous_titre">Dernières annonces ajoutées sur TTT</h2>
+    <?php 
+        $prods=array_reverse($ProdRepository->fetchAll());
+        $max=5;
+        $c=0;
+        foreach ($prods as $prod){
+            if ($c<$max){
+                $ProdRepository->afficheProd($prod);
+                $c=$c+1;
+            }
+        }
+
+        if ($_SESSION['authent'] == 1) {
+            echo "<h2 class=\"sous_titre\">Tes dernières annonces sur TTT</h2>"; 
+            $prods=array_reverse($ProdRepository->getProdofUser($_SESSION['pseudo']));
+            $max=5;
+            $c=0;
+            foreach ($prods as $prod){
+                if ($c<$max){
+                    $ProdRepository->afficheProd($prod);
+                    $c=$c+1;
+                }
+            }
+
+            if ($prods==[]){
+                echo "<h4>Tu n'as posté aucune annonce ! <a href=\"ajoutProd.php\">Qu'attends-tu ?</a> &#x1F448</h4>";
+            }
+        }
+
+        if ($_SESSION['authent'] == 0){
+            echo "<a href=\"sinscrire.php\"><h2 class=\"sous_titre\">Inscrivez vous pour pouvoir poster votre annonce !</h2></a>";
+        }
+        ?>
+    <!-- <div class="produits">
         <a href="">
         <div class="produit">
             <div class="photo_prod">
@@ -97,7 +130,7 @@ require("header.php");
             </div>
         </div>
         </a>
-    </div>
+    </div> -->
 
 </section>
 
