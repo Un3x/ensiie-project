@@ -103,6 +103,24 @@ class UserRepository
         
     }
 
+    public function afficheUser($user){
+        $chemin=$this->getPhoto($user->getId());
+        echo "<a href=\"pageprofil.php?pseudo=".$user->getId()."\">
+        <div class=\"produit\">
+        <div class=\"photo_prod\">
+        <img class =\"preview\" src=\"".$chemin."\" alt=\"photo de profil\"/>
+        </div>
+        <div class=\"text_prod\">
+        <p>
+        <span class=\"titre_prod\">".$user->getId()."</span><br/><br/>
+        <span class=\"prix_prod\">".$user->getAge()." ans</span><br/><br/>
+        <span class=\"details\">".$user->getLocation()."</span>
+        </p>
+        </div>
+        </div>
+        </a>";
+    }
+
 
 }
 ?>

@@ -67,7 +67,7 @@ require("header.php");
         }
 
         if ($_SESSION['authent'] == 0){
-            echo "<a href=\"sinscrire.php\"><h2 class=\"sous_titre\">Inscrivez vous pour pouvoir poster votre annonce !</h2></a>";
+            echo "<a href=\"sinscrire.php\"><h2 class=\"sous_titre\">Inscrivez-vous pour pouvoir poster votre annonce !</h2></a>";
         }
         ?>
     <!-- <div class="produits">

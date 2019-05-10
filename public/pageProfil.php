@@ -17,22 +17,47 @@ $users = $userRepository->fetchAll();
 $catRepository = new \User\CategorieRepository($connection);
 $cats = $catRepository->fetchAll();
 
+$phoRepository=new \User\PhotoRepository($connection);
+$ProdRepository=new \User\ProduitRepository($connection);
+
 require 'connexion.php';
 
-if ($_SESSION['authent'] == 0) {
-    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
-	exit();
-}
 
 require("header.php");
 ?>
 
 <section>
     <?php
-        $CurrUser = $userRepository->testpseudo($_SESSION['pseudo']);
-        $cheminphoto=$userRepository->getPhoto($_SESSION['pseudo']);
+        if (!isset($_GET['pseudo'])){
+            if ($_SESSION['authent'] == 0) {
+                echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+                exit();
+            }
+
+            else{
+                $_GET['pseudo']=$_SESSION['pseudo'];
+            }
+        }
+
+        if ($_SESSION['authent']==0){
+            echo "Vous devez être connecté pour voir le contenu d'un profil";
+            exit();
+        }
+        $CurrUser = $userRepository->testpseudo($_GET['pseudo']);
+        if ($CurrUser==[]){
+            echo "Ce profil n'existe pas.<br/>Redirection en cours...";
+            echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+            exit();
+        }
+        $cheminphoto=$userRepository->getPhoto($_GET['pseudo']);
+        if ($_GET['pseudo']==$_SESSION['pseudo']){
+            echo "<h1 class=\"section\">Mon Profil</h1>";
+        }
+
+        else{
+            echo "<h1 class=\"section\">Profil de ".$_GET['pseudo']."</h1>";
+        }
     ?>
-    <h1 class="section">Mon Profil</h1>
     <h2 class="sous_titre"><?php echo $CurrUser[0]->getId(); ?></h2>
     <!-- FAIRE DES COLONES -->
     <div class="rowInfo">
@@ -46,7 +71,11 @@ require("header.php");
             <p>E-mail : <?php echo $CurrUser[0]->getMail(); ?> </p>
             <p>Ville : <?php echo $CurrUser[0]->getLocation(); ?> </p>
             <p>Date de naissance : <?php echo date_format($CurrUser[0]->getBirthday(), 'd-m-Y'); ?> </p>
-            <button class="boutton" onclick="showform()" style="width:auto;">Modifier mes infos</button>
+            <?php
+            if ($_GET['pseudo']==$_SESSION['pseudo']){
+                echo "<button class=\"boutton\" onclick=\"showform()\" style=\"width:auto;\">Modifier mes infos</button>";
+            }
+            ?>
         </div>
         <div class="columnInfo" id="formulaire" style="display: none;">
             <form action="" method="post" class="form" enctype="multipart/form-data">
@@ -86,57 +115,30 @@ require("header.php");
         } 
     </script>
 
-    <h2 class="sous_titre">Mes annonces</h2>
+    <?php
+    if ($_GET['pseudo']==$_SESSION['pseudo']){
+        echo "<h2 class=\"sous_titre\">Mes annonces</h2>";
+    }
+    else{
+        echo "<h2 class=\"sous_titre\">Les annonces de ".$_GET['pseudo'] ."</h2>";
+    }
+    ?>
     <div class="produits">
-        
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="voiture.jpg" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-        <button class="supp" onclick="">&#128465; Supprimer</button>
+    <?php 
+        $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
+        foreach ($prods as $prod){
+                $ProdRepository->afficheProd($prod);
+                if ($_GET['pseudo']==$_SESSION['pseudo']) echo "<button class=\"supp\" onclick=\"\">&#128465; Supprimer</button>";
+        }
 
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="hugo.JPG" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-        <button class="supp" onclick="">&#128465; Supprimer</button>
+        if ($prods==[]){
+            if ($_GET['pseudo']==$_SESSION['pseudo']) echo "Vous n'avez posté aucune annonce";
+            else {
+                echo $_GET['pseudo']." n'a posté aucune annonce";
+            }
+        }
+    ?>
 
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="TTT_green.png" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-        <button class="supp" onclick="">&#128465; Supprimer</button>
-    </div>
 </section>
 
 <script>

@@ -105,7 +105,7 @@ function showCat(etat){
                 echo '<br/><br/>';
                 $compt=1;
                 foreach ($resultsearch as $res) :
-                    echo 'Pseudo '.$res->getId().' Nom '.$res->getLastname().' Prenom '.$res->getFirstname().'<br/>'; endforeach;
+                    $userRepository->afficheUser($res); endforeach;
                 if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
             }
         }

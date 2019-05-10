@@ -54,10 +54,9 @@
             <div id="id01" class="modal">
         
         <form class="modal-content animate" action="" method="post">
-            <!-- <div class="imgcontainer">
+            <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="TTT_green.png" alt="logo TTT" width="100" height="50">
-            </div> -->
+            </div>
 
             <div class="row">
                 <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
