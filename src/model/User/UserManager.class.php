@@ -1,6 +1,6 @@
 <?php
 
-require_once('raceManager.class.php');
+require_once('../src/Model/Race/RaceManager.class.php');
 require_once('User.class.php');
 
 /**
