@@ -25,7 +25,7 @@ require("header.php");
 
 ?>
 <section>
-<h1 class="section">Vous êtes bien déconnectés !</h1>
+<h1 class="section">Vous avez été déconnecté !</h1>
 
 <br/><br/>
 

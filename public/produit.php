@@ -36,14 +36,25 @@ require("header.php");
 
 <?php
 
+if(isset($_POST['id'],$_POST['delete'])){
+  if($_POST['delete']==1){
+      $connection->query("UPDATE produits SET valide='2' WHERE id_produit='".$_POST['id']."';");
+      echo "Produit bien supprimé<br/>";
+      $_POST['id']=null;
+      $_POST['delete']=null;
+      echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+      exit();
+  }
+}
+
   if (!isset($_GET['produit'])){
-    echo "Ce produit n'existe pastest";
+    echo "Ce produit n'existe pas";
     echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
     exit();
   }
 
   if (!ctype_digit($_GET['produit'])){
-    echo "Ce produit n'existe pastest1";
+    echo "Ce produit n'existe pas";
     echo "test";
     echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
     exit();
@@ -53,7 +64,7 @@ require("header.php");
   $_GET['produit']= (int) $_GET['produit'];
   $CurrProduit = $ProdRepository->getSpecificProd($_GET['produit']);
   if ($CurrProduit==[]){
-    echo "Ce produit n'existe pastest2";
+    echo "Ce produit n'existe pas";
     echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
     exit();
   }
@@ -66,6 +77,7 @@ require("header.php");
   }
 
   $pseudo_priprio=$CurrProduit[0]->getIdProprio();
+  $iduser=$CurrProduit[0]->getIdProd();
   $CurrUser = $userRepository->testpseudo($pseudo_priprio);
   $cheminphoto = $userRepository->getPhoto($pseudo_priprio);
 
@@ -129,6 +141,42 @@ require("header.php");
 </div>
 
 </div> 
+
+<script>
+  function show(etat,id)
+  {
+     document.getElementById(id).style.display=etat;
+  }
+</script>
+
+<?php
+if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
+ echo 
+ "<form method=\"post\" action=\"\">
+     <div class=\"flexbox_button\">
+         <div class=\"bouton\">
+             <input type=\"reset\" onclick=\"show('block','".$iduser."')\" value=\"&#128465; Supprimer\" name=\"supprimer\">
+         </div>
+     </div>
+ </form>
+ <div id=\"".$iduser."\">
+ Êtes-vous sur de vouloir supprimer ce produit ?
+ <form method=\"post\" action=\"\">
+     <input type=\"hidden\" name=\"id\" value=\"".$iduser."\">
+     <input type=\"hidden\" name=\"delete\" value=\"1\">
+     <div class=\"flexbox_boutton\">
+         <div class=\"bouton\">
+             <input type=\"submit\" value=\"Oui\" name=\"Oui\">
+         </div>
+         <div class=\"bouton\">
+             <input type=\"reset\" onclick=\"show('none','".$iduser."')\" value=\"Non\" name=\"Non\">
+         </div>
+     </div>
+ </form>
+ </div>
+ <script type=\"text/javascript\">show('none','".$iduser."');</script>";
+}
+?>
 
 <!-- Description -->
 <div class="information">

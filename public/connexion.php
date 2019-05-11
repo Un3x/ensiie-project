@@ -9,7 +9,14 @@ if (isset($_SESSION['authent'])) {
                 $_SESSION['statut'] = $utilisateur->getAdministrateur();
                 $_SESSION['pseudo'] = $utilisateur->getId();
             }
+
+            if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password) {
+                $_SESSION['authent'] = 1;
+                $_SESSION['statut'] = $utilisateur->getAdministrateur();
+                $_SESSION['pseudo'] = $utilisateur->getId();
+            }
         }
+
     }
 }
 ?>

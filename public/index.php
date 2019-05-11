@@ -4,6 +4,10 @@ if (!isset($_SESSION['authent'])) {
     $_SESSION['authent'] = 0;
 }
 
+if (!isset($_SESSION['statut'])) {
+    $_SESSION['statut'] = 0;
+}
+
 require '../vendor/autoload.php';
 
 //postgres
@@ -32,7 +36,38 @@ require("header.php");
         if ($_SESSION['authent'] == 1) {
             echo "<p class=\"accueil\">Coucou "; 
             echo $_SESSION['pseudo'];
-            echo ", comment tu vas ? <br/> Regarde un peu les nouvelles annonces &#128516;</p>";
+            echo ", comment vas-tu ? <br/> Regarde un peu les nouvelles annonces &#128516;</p>";
+        }
+
+        if ($_SESSION['statut']== 1){
+            $prods=sizeof($ProdRepository->getProdNonValid());
+            $us=sizeof($userRepository->fetchAllUnvalid());
+            echo "Vous êtes administrateur :<br/>
+            Il y a <strong>".$prods."</strong> annonce(s) à traiter<br/>
+            Il y a <strong>".$us."</strong> profil(s) à traiter<br/>";
+        }
+
+        if (isset($_SESSION['authent'])) {
+            if (isset($_POST['uname'], $_POST['psw'])) {
+                $peusdo = htmlspecialchars($_POST['uname']);
+                $password = htmlspecialchars($_POST['psw']);
+                $c=0;
+                foreach ($users as $utilisateur) {
+                    if ($utilisateur->getId() == $peusdo && $utilisateur->getMdp() == $password) {
+                        $c=$c+1;
+                    }
+
+                    if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password) {
+                        $c=$c+1;
+                    }
+
+                }
+
+                if ($c==0){
+                    echo "<span class=\"red\">Identifiant et/ou mot de passe incorrect(s)</span><br/>";
+                }
+        
+            }
         }
 
     ?>

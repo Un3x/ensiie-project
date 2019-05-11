@@ -72,7 +72,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
 ?>
 <h2 class="sous_titre">Les annonces pas encore validées :</h2>
 <?php 
-    $prods=$ProdRepository->getProdNonValid();
+    $prods=array_reverse($ProdRepository->getProdNonValid());
     if ($prods!=[]){
         foreach ($prods as $prod){
             $ProdRepository->afficheProdEvenUnvalid($prod);
@@ -118,7 +118,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
 
 <h2 class="sous_titre">Les utilisateurs pas encore validés :</h2>
 <?php 
-    $users=$userRepository->fetchAllUnvalid();
+    $users=array_reverse($userRepository->fetchAllUnvalid());
     if ($users!=[]){
         foreach ($users as $user){
             $userRepository->afficheUserEvenUnvalid($user);
@@ -164,7 +164,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
 
 <h2 class="sous_titre">Les produits supprimés par les administrateurs :</h2>
 <?php 
-    $prods=$ProdRepository->fetchAllDeleteByAdmin();
+    $prods=array_reverse($ProdRepository->fetchAllDeleteByAdmin());
     if ($prods!=[]){
         foreach ($prods as $prod){
             $ProdRepository->afficheProdEvenUnvalid($prod);
@@ -177,7 +177,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
 
 <h2 class="sous_titre">Les utilisateurs supprimés par les administrateurs :</h2>
 <?php 
-    $users=$userRepository->fetchAllDeleteByAdmin();
+    $users=array_reverse($userRepository->fetchAllDeleteByAdmin());
     if ($users!=[]){
         foreach ($users as $user){
             $userRepository->afficheUserEvenUnvalid($user);
@@ -190,7 +190,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
 
 <h2 class="sous_titre">Les produits supprimés par leurs prorpriétaires :</h2>
 <?php 
-    $prods=$ProdRepository->fetchAllDeleteByUser();
+    $prods=array_reverse($ProdRepository->fetchAllDeleteByUser());
     if ($prods!=[]){
         foreach ($prods as $prod){
             $ProdRepository->afficheProdEvenUnvalid($prod);
