@@ -73,6 +73,20 @@ function inscriptionCarrier()
         }
     }
     $messageErreur=$messageErreur." </span>";
-    
+
+    // il faut re-generer la liste des races :
+
+    $tabRace = getListeRace();
+    $optionRace = "";
+    for ($i = 0; $i < count($tabRace); $i++) {
+        $optionRace = $optionRace . " <option> " . $tabRace[$i]->getNom() . "  </option>";
+    }
+
+    $caracRace = "<p> ";
+    for ($i = 0; $i < count($tabRace); $i++) {
+        $caracRace = $caracRace . '<span class="info" id ='.$i.'> Vitesse : ' . $tabRace[$i]->getVitesse() . '<br\> Nombre maximum : ' . $tabRace[$i]->getnb() . "</span>";
+        $caracRace = $caracRace . "</p>";
+    }
+
     require('../src/View/User/Link/inscriptionCarrierView.php');
 }
