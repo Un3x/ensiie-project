@@ -235,7 +235,7 @@ else {
                         <input class="formulaire" id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
                         Email :<br>
                         <input class="formulaire" id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?> required pattern="[a-zA-Z0-9._-]*@[a-zA-Z0-9-]*.[a-zA-Z]*" maxlength="50"/><br>
-                        <input class="formulaire" id="valider" type="submit" name="Envoyer">
+                        <input class="formulaire" id="valider" type="submit" value="Envoyer">
                     </form>
                 </div>
 
@@ -247,7 +247,7 @@ else {
                         Confirmation du nouveau mot de passe :<br>
                         <input class="formulaire" id="5" type="password" name="cmdp" oninput="check(this)" required><br>
 
-                        <input class="formulaire" id="valider" type="submit" name="Envoyer">
+                        <input class="formulaire" id="valider" type="submit" value="Envoyer">
                     </form>
                 </div>
             </div>
@@ -255,7 +255,7 @@ else {
         
         </div>
         <?php endif; ?>
-            </p>
+        
     </section>
 </body>
 
