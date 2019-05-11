@@ -12,10 +12,10 @@
 
 <section>
 
-    <!-- Insérer ici la moyenne des avis-->
+    <!-- Insérer ici la moyenne des avis--!>
     <p>
         <?=($valeurDefaut['prenom']." ".$valeurDefaut['nom']) ?> : <?= $valeurDefaut['note']?> (en moyenne) <br/>
-        <!-- insérer image  -->
+        <!-- insérer image  --!>
 
     </p>
 
@@ -54,25 +54,23 @@
         <br/>
 
 
-        <?php
-        if($transporteur)
-        { ?>
-        <label for="vitesse"> Vitesse : </label>
+        <?php if($transporteur)  { ?>
+
+
+        <label for="vitesse"/> Vitesse : </label>
             <br/>
-            <label for="nb_max"> Capacité de charge : </label>
+            <label for="nb_max"/> Capacité de charge : </label>
 
 
         <?php } ?>
 
 
-        <?php
-                if($modif)
-        {
-        ?>
+        <?php if($modif)  { ?>
 
-        <input type="submit" value="Appliquez les changements"/>
-        <input type="reset" value="Reinitialiser aux valeurs initiale"/>
-            <input type="submit" value="annuler"/>
+            <input type="submit" value="Appliquez les changements" name="valider" />
+            <input type="reset" value="Reinitialiser aux valeurs initiale"/>
+            <input type="submit" value="Annulation" name="annuler" />
+
             <br/>
 
 
@@ -80,7 +78,7 @@
         }
                 else
         {
-        ?>
+            ?>
         <input type="submit" value="Modifier votre profil"/>
             <br/>
 

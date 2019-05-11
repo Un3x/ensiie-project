@@ -1,10 +1,35 @@
 <?php
 
 require_once('test.php');
+function initChampsPost()
+{
+    $valeurDefaut['age'] = $_POST['age'];
+    $valeurDefaut['prenom'] = $_POST['prenom'];
+    $valeurDefaut['nom'] = $_POST['nom'];
+    $valeurDefaut['mail'] = $_POST['mail'];
+    $valeurDefaut['password'] = $_POST['password'];
+    $valeurDefaut['password2'] = $_POST['password2'];
+    $valeurDefaut['description'] = $_POST['description'];
+    return $valeurDefaut;
+}
+
+function initChamps()
+{
+    $valeurDefaut['age'] = 20;
+    $valeurDefaut['prenom'] = "";
+    $valeurDefaut['nom'] = "";
+    $valeurDefaut['password'] = "";
+    $valeurDefaut['password2'] = "";
+    $valeurDefaut['mail'] ="";
+    $valeurDefaut['description'] ="";
+    return $valeurDefaut;
+}
+
 
 function inscriptionClientDebut()
 {
     $messageErreur= "";
+    $valeurDefaut=initChamps();
 
     require('../src/View/User/Link/inscriptionClientView.php');
 }
@@ -12,6 +37,9 @@ function inscriptionClientDebut()
 function inscriptionClient()
 {
     $messageErreur =  '<span class="warning">';
+    $valeurDefaut=initChampsPost();
+
+
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
         || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["age"]))
     {

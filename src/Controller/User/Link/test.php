@@ -13,7 +13,7 @@ class UserManager
 
     public function tryConnect($login, $password)
     {
-        if(strcmp($password,"azer") and strcmp($login,"azathoth@nyarla.com"))
+        if(strcmp($password,"azer") && strcmp($login,"azathoth@nyarla.com"))
         {
             return 1;
         }

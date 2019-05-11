@@ -9,3 +9,4 @@ course :
     
 city :
     -retourner position d'une ville : (string city) -> (float latitude, float longitude) / null
+
