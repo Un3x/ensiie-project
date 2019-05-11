@@ -78,9 +78,6 @@ else {
 }
 
 
-
-
-
 ?>
 
 <script>   
@@ -88,7 +85,6 @@ else {
 
   function change_onglet(name)
   {
-    //alert("ok"); 
     if(name == curr_onglet) { 
         // on ferme l'onglet si on clique dessus alors qu'il est déjà ouvert
         //document.getElementById('onglet_'+name).className = 'onglet_0 onglet';
@@ -121,6 +117,7 @@ else {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="formulaire_large.css">
     <link rel="stylesheet" href="espace_perso.css">
+    <script type="text/javascript" src="./script_espace_perso.js"></script>
 
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -222,9 +219,9 @@ else {
                     <?php endif; ?>
                 </div>
                 
-                <span class="res onglet" id="onglet_info" onclick="javascript:change_onglet('info');">Modifier mes informations</span> <!-- onclick="javascript:change_onglet('');" -->
+                <span class="res onglet" id="onglet_info" onclick="change_onglet('info');">Modifier mes informations</span> <!-- onclick="javascript:change_onglet('');" -->
                 <div class="contenu" id="contenu_onglet_info">
-                    <form id="form_editer" action="editer.php" method="POST">
+                    <form class="form" id="form_editer" action="editer.php" method="POST">
                         Nom :<br>
                         <input class="formulaire" id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br>
                         Prenom :<br>
@@ -239,13 +236,13 @@ else {
                     </form>
                 </div>
 
-                <div class="res onglet" id="onglet_mdp" onclick="javascript:change_onglet('mdp');">Changer mon mot de passe</div> <!-- onclick="javascript:change_onglet('');" -->
+                <div class="res onglet" id="onglet_mdp" onclick="change_onglet('mdp');">Changer mon mot de passe</div> <!-- onclick="javascript:change_onglet('');" -->
                 <div class="contenu" id="contenu_onglet_mdp">
-                    <form id="form_editer_mdp" action="editer.php" method="POST">
+                    <form class="form" id="form_editer_mdp" action="editer.php" method="POST">
                         Nouveau mot de passe :<br>
                         <input class="formulaire" id="4" type="password" name="mdp" required><br>
                         Confirmation du nouveau mot de passe :<br>
-                        <input class="formulaire" id="5" type="password" name="cmdp" oninput="check(this)" required><br>
+                        <input class="formulaire" id="5" type="password" name="cmdp" oninput="check_mdp(this)" required><br>
 
                         <input class="formulaire" id="valider" type="submit" value="Envoyer">
                     </form>
@@ -261,13 +258,5 @@ else {
 
 
 
-<script>
-        function check(input) {
-            if (input.value != document.getElementById('4').value) {
-                input.setCustomValidity('Les deux mots de passe doivent être identiques.');
-            } else {
-                input.setCustomValidity('');
-            }
-        }
-</script>
+
 </html>   

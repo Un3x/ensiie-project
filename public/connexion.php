@@ -94,7 +94,6 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 					<?php 
 						if($echec_co) 
 							echo '<span class="invalid_submit">Pseudo ou mot de passe invalide !</span>';
-							echo $echec_co;
 					?>
 					<form class="form_connexion" action="connexion.php" method="Post">
 						<!-- champs caché pour savoir si on vient de connexion ou inscription -->
