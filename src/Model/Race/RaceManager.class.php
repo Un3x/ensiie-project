@@ -96,5 +96,18 @@ class RaceManager
 	{
 		$this->connection=$connection;
 	}
+	
+	public function getList()
+	{
+		$req=$this->connection->query("SELECT * from Race")->fetchAll();
+		if($req===false)
+			return false;
+		return array_map(function ($v) 
+		{
+			$race=new Race();
+			$race->hydrate2($v);
+			return $race;
+		},req);
+	}
 
 }
