@@ -120,9 +120,9 @@ class CourseManager
     }
 
     /**
-     * get the client history
+     * get the carrier history
      */
-    public function getCourseClient($carrier)
+    public function getCourseCarrier($carrier)
     {
         $statement = $this->connection->prepare("SELECT * FROM course where carrier = :carrier AND state = 2");
         $rows = $statement->execute(array("carrier" => $carrier))->fetchAll();
