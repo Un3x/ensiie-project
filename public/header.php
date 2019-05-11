@@ -62,9 +62,9 @@
             </div>
 
             <div class="row">
-                <h2 style="text-align:center">Connectez-vous avec les réseaux sociaux ou Manuellement</h2>
+                <h2 style="text-align:center">Connectez-vous</h2>
                 
-                <div class="col">
+                <!-- <div class="col">
                     <a href="#" class="fb btn">
                     <i class="fa fa-facebook fa-fw"></i> Login with Facebook
                     </a>
@@ -75,24 +75,24 @@
                     <i class="fa fa-google fa-fw"></i> Login with Google+
                     </a>
                 </div>
-        
+         -->
                 <div class="col">
                     <div class="hide-md-lg">
                         <p>Or sign in manually:</p>
                     </div>
                     <div class="container">
-                        <label for="uname"><b>Pseudo</b></label>
-                        <input class="signin" type="text" placeholder="Entrez votre Pseudo" name="uname" id="uname" required>
+                        <label for="uname"><b>Pseudo ou Email</b></label>
+                        <input class="signin" type="text" placeholder="Entrez votre Pseudo ou votre Email" name="uname" id="uname" required>
                         <label for="psw"><b>Mot de passe</b></label>
                         <input class="signin" type="password" placeholder="Entrez votre Mot de passe" name="psw" id="psw" required>
                         <button class="boutton" type="submit">Se connecter</button> <br/>
                     </div>
                     <div class="bottom-container">
                         <div class="row">
-                            <div class="col">
+                            <div class="col1">
                                 <a href="sinscrire.php" style="color:white" class="btn">S'inscrire</a>
                             </div>
-                            <div class="col">
+                            <div class="col1">
                                 <a href="#" style="color:white" class="btn">Mot de passe oublié ?</a>
                             </div>
                         </div>
