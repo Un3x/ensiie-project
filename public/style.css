@@ -21,6 +21,11 @@
 	right: 10px;
 }
 
+#mapid {
+    width: 425px;
+    height: 250px;
+}
+
 #connexion-link {
 	color:white;
 	display: block;
@@ -82,9 +87,9 @@
 }
 
 #banniere {
-	height: 200px;
+	height: 350px;
 	background-position: 0px 50px;
-	background-image: url("banniere3.jpg");
+	background-image: url("banniere4.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 
