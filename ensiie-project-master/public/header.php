@@ -11,7 +11,11 @@
 			else {
 				echo '<h4 class="connexion"> <a href="logout.php" > Se deconnecter </a>
 				<br/>
-				<a href="your_account.php" > Votre compte </a></h4>';
+				<a href="your_account.php" > Votre compte </a>';
+				if (isset($_SESSION['type']) && $_SESSION['type'] == "Organisateur") {
+					echo '<br/><a href="modify_other.php" > Modifier un autre compte </a>';
+				}
+				echo '</h4>';
 			}
 		?>
 
