@@ -119,11 +119,7 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp']) && ($_POST['mdp'] == isset($_P
         <?php endif; ?>
     </nav>
     <section class="connect">
-     <!--ALED TODO mettre le logo de sciience comme dans toutes les autres pages ainsi qu\'une petite page de garde sympathique-->
     <div class="grand-titre">Page d'édition du profil</div>
-    <nav>
-         <!-- ALED TODO recopier le nav-->
-    </nav>
     <?php
     if (!$ok_nom) {
         echo "<p>couple (nom, prenom) invalide</p>";
