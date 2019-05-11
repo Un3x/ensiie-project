@@ -31,7 +31,8 @@ class SpotRepository
                 ->setNom($row->nom)
                 ->setLatitude($row->latitude)
                 ->setLongitude($row->longitude)
-                ->setNote($row->note);
+                ->setNote($row->note)
+                ->setVille($row->ville);
 
             $spots[] = $spot;
         }
@@ -54,7 +55,8 @@ class SpotRepository
                 ->setNom($rows['nom'])
                 ->setLatitude($rows['latitude'])
                 ->setLongitude($rows['longitude'])
-                ->setNote($rows['note']==null ? 0 : $rows['note']);
+                ->setNote($rows['note']==null ? 0 : $rows['note'])
+                ->setVille($rows['ville']);
 	        return $spot;
 	    
         return null;
@@ -75,10 +77,36 @@ class SpotRepository
                 ->setNom($rows['nom'])
                 ->setLatitude($rows['latitude'])
                 ->setLongitude($rows['longitude'])
-                ->setNote($rows['note']==null ? 0 : $rows['note']);
+                ->setNote($rows['note']==null ? 0 : $rows['note'])
+                ->setVille($rows['ville']);
 	        return $spot;
 	    
         return null;
+    }
+
+    /**
+     * Gives every spot found in a city
+     * @param string $ville
+     * @return array
+     */
+    public function fetchAllByCity($ville) {
+        $req = 'SELECT * FROM "spot" WHERE ville='.$this->connection->quote($ville);
+        $rows = $this->connection->query($req)->fetchAll(\PDO::FETCH_OBJ);
+        $spots = [];
+        foreach ($rows as $row) {
+            $spot = new Spot();
+            $spot
+                ->setId($row->id)
+                ->setNom($row->nom)
+                ->setLatitude($row->latitude)
+                ->setLongitude($row->longitude)
+                ->setNote($row->note)
+                ->setVille($row->ville);
+
+            $spots[] = $spot;
+        }
+
+        return $spots;
     }
 
     /**
@@ -93,10 +121,11 @@ class SpotRepository
         if ($spot->getNote() == null)
             $note = 0;
         else $note = $spot->getNote();
+        $ville = $spot->getVille();
         
-        $req = 'INSERT INTO "spot" (nom, latitude, longitude, note)
-                VALUES (:nom, :lat, :long, :note)';
-        $valeurs = ['nom'=>$nom, 'lat'=>$latitude, 'long'=>$longitude, 'note'=>$note];
+        $req = 'INSERT INTO "spot" (nom, latitude, longitude, note, ville)
+                VALUES (:nom, :lat, :long, :note, :ville)';
+        $valeurs = ['nom'=>$nom, 'lat'=>$latitude, 'long'=>$longitude, 'note'=>$note, 'ville'=>$ville];
         $req_preparee = $this->connection->prepare($req);
         if (!$req_preparee->execute($valeurs)) {
             print_r($req_preparee->errorInfo());

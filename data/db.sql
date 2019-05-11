@@ -33,12 +33,13 @@ CREATE TABLE "spot"(
     latitude VARCHAR NOT NULL,
     longitude VARCHAR NOT NULL,
     note INT,
+    ville VARCHAR NOT NULL,
 
     CHECK (note BETWEEN 0 AND 5)
 );
 
-INSERT INTO "spot"(nom, latitude, longitude) VALUES ('cathe','48.623169575973634', '2.4283207872682624');
-INSERT INTO "spot"(nom, latitude, longitude) VALUES ('mini cathe','47.21167517573434','-1.5615792589997');
+INSERT INTO "spot"(nom, latitude, longitude, ville) VALUES ('cathe','48.623169575973634', '2.4283207872682624', 'EVRY');
+INSERT INTO "spot"(nom, latitude, longitude, ville) VALUES ('mini cathe','47.21167517573434','-1.5615792589997', 'EVRY');
 
 /* table move --------------------------------------------------------------- */
 DROP TABLE IF EXISTS "move" CASCADE;

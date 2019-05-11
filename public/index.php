@@ -101,6 +101,7 @@ $spots = $spotRepository->fetchAll();
             <td>latitude</td>
             <td>longitude</td>
             <td>note</td>
+            <td>ville</td>
         </thead>
       <?php /** @var \Spot\Spot $spot */
         foreach ($spots as $spot) : ?>
@@ -110,6 +111,7 @@ $spots = $spotRepository->fetchAll();
                 <td><?php echo $spot->getlatitude() ?></td>
                 <td><?php echo $spot->getLongitude() ?></td>
                 <td><?php echo $spot->getNote() ?></td>
+                <td><?php echo $spot->getVille() ?></td>
             </tr>
       <?php endforeach; ?>
 

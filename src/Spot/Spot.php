@@ -29,6 +29,11 @@ class Spot
     private $note;
 
     /**
+     * @var string
+     */
+    private $ville;
+
+    /**
      * @return int
      */
     public function getId()
@@ -111,6 +116,22 @@ class Spot
      */
     public function setNote($note) {
         $this->note = $note;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVille() {
+        return $this->ville;
+    }
+
+    /**
+     * @param string $ville
+     * @return Spot
+     */
+    public function setVille($ville) {
+        $this->ville = $ville;
         return $this;
     }
 
