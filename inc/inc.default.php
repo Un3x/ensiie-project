@@ -22,6 +22,7 @@
 		echo "\t<link rel=\"shortcut icon\" href=\"../img/badassChicken.ico\">\n";
 		echo "</head>\n";
 		echo "<body>\n";
+		initialisation();
 		menu();
 	}
 
@@ -41,9 +42,9 @@
 		echo "\t<div id=\"menu\">\n";
 		
 		
-		echo "\t\t<a href=\"index.php\">";
+	/*	echo "\t\t<a href=\"index.php\">";
 		echo "\t\t\t<img src=\"../img/logo_realitiie.png\" ";
-		echo "alt=\"Accueil\" /></a>"; 
+		echo "alt=\"Accueil\" /></a>"; */
 		
 		
 		echo "\t\t<div>\n";

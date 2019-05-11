@@ -1,7 +1,6 @@
 #menu
 {
 	background-color: #343A50;
-	width           : 100%;
 	padding-top     : 15px;
 	padding-bottom  : 15px;
 	height          : 25px;
@@ -75,6 +74,13 @@ footer
 	bottom: 0;
 	left: 0;
 	width: 100%;
+}
+
+.bDecoCo
+{
+	background-color: rgba(213, 239, 230, 0.75);
+	border-radius   : 5px;
+	border: rgba(135, 151, 146, 0.75) 1px solid;
 }
 
 .texteBas
