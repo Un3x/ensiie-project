@@ -77,9 +77,6 @@
                 </div>
          -->
                 <div class="col">
-                    <div class="hide-md-lg">
-                        <p>Or sign in manually:</p>
-                    </div>
                     <div class="container">
                         <label for="uname"><b>Pseudo ou Email</b></label>
                         <input class="signin" type="text" placeholder="Entrez votre Pseudo ou votre Email" name="uname" id="uname" required>
