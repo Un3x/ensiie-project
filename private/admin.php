@@ -5,9 +5,11 @@
 <body>
 
 <?php
+require '../src/Membre/Membre.php';
+require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" );
+entete( "Administration" );
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
@@ -15,15 +17,24 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     exit();
 }
 
-if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification de la bdd puis rechargement de la page de d'administration
-    echo '<h4>blablablabla</h4>';
-    $dbName = 'realitiie';
-    $dbUser = 'postgres';
-    $dbPassword = 'postgres';
-    $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
+$membreRepository = new \Membre\MembreRepository($connection);
+$membre = $membreRepository->getMembre($_SESSION['id']);
+
+$roles = array('a' => "Administrateur", 'r' => "Membre"); // à compléter si ajout de nouveaux rôles
+
+if(isset($_POST['modification'])){ //Si membre est modfifié, modification de la bdd puis renvoie vers la page de d'administration
+    $status = $membreRepository->setMembre($_SESSION['id'], $_POST['nom'], $_POST['prenom'], $_POST['surnom'], "", $_POST['promo'], $_POST['role']);
     
-    $membreRepository = new \Membre\MembreRepository($connection);
+    if($status){
+        echo '<h4>Vous informations ont bien été modifiées</h4>';
+    }else{
+        echo '<h4>Erreur: la modification de vos informations a échoué!</h4>';
+    }
     
+    echo '<h4>Redirection vers la page d\'administration...</h4>';
+    header( "refresh:3;url=admin.php" );
+    
+}else if(isset($_POST['modificationMdp'])){ //Si mot de passe est modifié, modification de la bdd puis rechargement de la page de d'administration  
     if($_POST['password'] == $_POST['conf_password']){
         $status = $membreRepository->setMembrePassword($_SESSION['id'], $_POST['password']);
         
@@ -59,11 +70,51 @@ if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification 
     <?php } ?>
     
     <br/><br/><br/>
-    <h3>Vous pouvez changer votre mot de passe ici :</h3>
-    <form action="">
+    <h3>Vous pouvez changer vos information ici :</h3>
+    
+    <div class="modifContainer">
+    	<form action="" method="POST">
+        	<label>Nom : </label><input name="nom" type="text" value="<?php echo $membre->getNom() ?>" required/>
+        	<br/>
+        	<label>Prénom : </label><input name="prenom" type="text" value="<?php echo $membre->getPrenom() ?>" required/>
+        	<br/>
+        	<label>Surnon : </label><input name="surnom" type="text" value="<?php echo $membre->getSurnom() ?>" required/>
+        	<br/>
+        	<label>promo : </label>
+        	<select name="promo" required>
+        		<?php
+        		foreach (range(date("Y") + 3, 1968, 1) as $promo){
+        		    if($promo == $membre->getPromo()){
+        		        echo '<option value="'.$promo.'" selected>'.$promo.'</option>';
+        		    }else{
+        		        echo '<option value="'.$promo.'">'.$promo.'</option>';
+        		    }
+        		}
+        		?>
+        	</select>
+        	<br/>
+        	<label>role : </label>
+        	<select name="role" required>
+        		<?php
+        		foreach ($roles as $roleChar => $roleName){
+        		    if($roleChar == $membre->getRole()){
+        		        echo '<option value="'.$roleChar.'" selected>'.$roleName.'</option>';
+        		    }else{
+        		        echo '<option value="'.$roleChar.'">'.$roleName.'</option>';
+        		    }
+        		}
+        		?>
+        	</select>
+        	<input type="submit" name="modification" value="Envoyer"/>
+        </form>
+    </div>
+    
+    <br><br>
+    
+    <form action="" method="POST">
     	<label>Nouveau mot de passe : </label><input name="password" type="password" required/>
     	<label>Confirmer nouveau mot de passe : </label><input name="conf_password" type="password" required/>
-    	<input type="submit" name="modification" value="Envoyer"/>
+    	<input type="submit" name="modificationMdp" value="Envoyer"/>
     </form>
     
     <?php

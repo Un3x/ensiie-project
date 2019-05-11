@@ -3,8 +3,6 @@
 </head>
 
 <?php
-require '../src/Membre/Membre.php';
-require '../src/Membre/MembreRepository.php';
 include("../inc/session.php");
 
 if (!isset($_POST['connexion'])) {

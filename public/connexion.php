@@ -5,6 +5,8 @@
 <body>
 
 <?php
+require '../src/Membre/Membre.php';
+require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
 entete( "Accueil" );
