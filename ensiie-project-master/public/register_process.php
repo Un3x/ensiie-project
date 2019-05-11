@@ -8,6 +8,8 @@
 	$dbPassword = getenv('DB_PASSWORD');
 	$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$compteur = ($connection->query('SELECT COUNT(*) FROM Participant')->fetchColumn()) + 1;
+
 
 	if (isset($_POST['email']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['sport']) && isset($_POST['genre']) && isset($_POST['pwd'])) {
 
@@ -23,7 +25,7 @@
 		$state->bindParam(':ngenre', $ngenre);
 		$state->bindParam(':nsport', $nsport);
 
-		$nid = '10';
+		$nid = ''.$compteur;
 		$nnom = ''.$_POST['nom'];
 		$nprenom = ''.$_POST['prenom'];
 		$nemail = ''.$_POST['email'];
