@@ -26,6 +26,11 @@ class Course
      */
     private $carrier
 
+    /**
+     * @var int
+     * id of the client
+     */
+    private $client
 
 
     /**
@@ -109,6 +114,24 @@ class Course
     public function setCarrier($carrier)
     {
         $this->carrier = $carrier;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param int $client
+     * @return Course
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
         return $this;
     }
 

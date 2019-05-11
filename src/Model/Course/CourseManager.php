@@ -68,14 +68,21 @@ class CourseManager
         return $courses;
     }
 
-    
-    public function bookCourse($id_course)
+    /**
+     * work only if the course exist in the db
+     * change the state and the id of the client
+     */
+    public function changeCourse($id_course,$state,$client)
     {
-        $statement = $this->connection->prepare("UPDATE course SET state = 1 WHERE id_course = :id");
-        $statement->execute(array("id" => $id_course));
+        $statement = $this->connection->prepare("UPDATE course SET state = :state AND client = :client WHERE id_course = :id");
+        $statement->execute(array("id" => $id_course,
+                                  "state" => $state,
+                                  "client" => $client));
+        
         $statement = $this->connection->prepare("SELECT * FROM course WHERE id_course = :id");
         $rows = $statement->execute(array("id" => $id_course))->fetchAll();
-        foreach($rows as $row) {
+        foreach($rows as $row) 
+        {
             $course = new Course();
             $course
                 ->setId($row->id_course)
@@ -89,6 +96,51 @@ class CourseManager
         return $course;
     }
 
+    /**
+     * get the client history
+     */
+    public function getCourseClient($client)
+    {
+        $statement = $this->connection->prepare("SELECT * FROM course where client = :client AND state = 2");
+        $rows = $statement->execute(array("client" => $client))->fetchAll();
+        $courses = [];
+        foreach ($rows as $row) {
+            $course = new Course();
+            $course
+                ->setId($row->id_course)
+                ->setDeparture($row->departure)
+                ->setArrival($row->arrival)
+                ->setCarrier($row->carrier)
+                ->setDepartureDateTime($row->departureDateTime)
+                ->setState($row->state);
+            $courses[] = $course;
+        }
+
+        return $courses;
+    }
+
+    /**
+     * get the client history
+     */
+    public function getCourseClient($carrier)
+    {
+        $statement = $this->connection->prepare("SELECT * FROM course where carrier = :carrier AND state = 2");
+        $rows = $statement->execute(array("carrier" => $carrier))->fetchAll();
+        $courses = [];
+        foreach ($rows as $row) {
+            $course = new Course();
+            $course
+                ->setId($row->id_course)
+                ->setDeparture($row->departure)
+                ->setArrival($row->arrival)
+                ->setCarrier($row->carrier)
+                ->setDepartureDateTime($row->departureDateTime)
+                ->setState($row->state);
+            $courses[] = $course;
+        }
+
+        return $courses;
+    }
     
     public function fetchThisCourse($departure,$arrival,$departureDateTime,$carrier)
     {
