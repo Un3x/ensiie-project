@@ -1,4 +1,14 @@
 <?php
+	function initialisation()
+	{
+		global $connection;
+		session_start();
+		$dbName = 'realitiie';
+		$dbUser = 'postgres';
+		$dbPassword = 'postgres';
+		$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
+	}
+
 	function entete( $titre = "" )
 	{
 		echo "<!DOCTYPE HTML>\n";
@@ -30,41 +40,51 @@
 		echo "<header>\n";
 		echo "\t<div id=\"menu\">\n";
 		
+		
+		echo "\t\t<a href=\"index.php\">";
+		echo "\t\t\t<img src=\"../img/logo_realitiie.png\" ";
+		echo "alt=\"Accueil\" /></a>"; 
+		
+		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"index.php\">Realitiie</a>\n";
+		echo "\t\t\t<a href=\"../public/index.php\">Realitiie</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"index.php\">Accueil</a>\n";
+		echo "\t\t\t<a href=\"../public/index.php\">Accueil</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"equipe.php\">Equipe</a>\n";
+		echo "\t\t\t<a href=\"../public/equipe.php\">Equipe</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"article.php\">Articles</a>\n";
+		echo "\t\t\t<a href=\"../public/article.php\">Articles</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"debrief.php\">Comptes rendu</a>\n";
+		echo "\t\t\t<a href=\"../public/debrief.php\">Comptes rendu</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"projet.php\">Projets</a>\n";
+		echo "\t\t\t<a href=\"../public/projet.php\">Projets</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"laval.php\">Laval</a>\n";
+		echo "\t\t\t<a href=\"../public/laval.php\">Laval</a>\n";
 		echo "\t\t</div>\n";
 		
 		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"ressources.php\">Ressources</a>\n";
+		echo "\t\t\t<a href=\"../public/ressources.php\">Ressources</a>\n";
 		echo "\t\t</div>\n";
+		
+		
 		
 		//echo "\t\t<div>\n";
 		//echo "\t\t\t<a href=\"exercices.php\">Exercices</a>\n";
 		//echo "\t\t</div>\n";
+		
+		
 		
 		echo "\t</div>\n";
 		echo "</header>\n";

@@ -5,13 +5,16 @@
 <body>
 
 <?php
+require '../src/Membre/Membre.php';
+require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
 entete( "Accueil" );
 navAccueil();
 
-if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
-    header("location: connexion.php");
+if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
+    require( "../inc/connexionForm.php" );
+    exit();
 }
 
 if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification de la bdd puis rechargement de la page de d'administration
@@ -51,11 +54,14 @@ if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification 
     
     <form action="article.php"><input type="submit" class="admin" value="Articles"/></form>
     <form action="jeux.php"><input class="admin" type="submit" value="Projets"/></form>
-    <form action="membre.php"><input class="admin" type="submit" value="Membres"/></form>
+    
+    <?php if($_SESSION['role'] == 'a'){?>
+    	<form action="membre.php"><input class="admin" type="submit" value="Membres"/></form>
+    <?php } ?>
     
     <br/><br/><br/>
     <h3>Vous pouvez changer votre mot de passe ici :</h3>
-    <form action="">
+    <form action="" method="POST">
     	<label>Nouveau mot de passe : </label><input name="password" type="password" required/>
     	<label>Confirmer nouveau mot de passe : </label><input name="conf_password" type="password" required/>
     	<input type="submit" name="modification" value="Envoyer"/>

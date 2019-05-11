@@ -14,8 +14,9 @@ require( "../inc/inc.nav.php" );
 entete( "Accueil" );
 navAccueil();
 
-if(isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
-    header("location: ../public/connexion.php");
+if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
+    require( "../inc/connexionForm.php" );
+    exit();
 }
 
 if(!isset($_GET['id'])){ //Si aucun article selectionné, renvoie vers la page de d'administration des articles

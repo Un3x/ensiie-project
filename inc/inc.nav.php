@@ -2,6 +2,7 @@
 
 function navAccueil()
 {
+    session_start(); //Temporaire!!!
 	echo "\t<nav>\n";
 	$date = date( "d/m/Y" );
 	echo "<p>Date : $date</p>";

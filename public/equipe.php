@@ -9,16 +9,19 @@
 	$dbName = 'realitiie';
 	$dbUser = 'postgres';
 	$dbPassword = 'postgres';
-	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword ");
+	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
-	$membreRepository = new \Membre\MembreRepository($connection);;
+	$membreRepository = new \Membre\MembreRepository($connection);
 	$membres = $membreRepository->fetchAll();
+	
 ?>
 
 <h2>NOTRE EQUIPE</h2>
 <div>
-    <div class="bloc-bord"> 
+    <div class="round-border"> 
+	
 		<h3>Le président</h3>
+
 			<p><b>Plou</b>, règnant en tyrant est là pour nous montrer la voie à suivre. Fort de sa dernière participation
 			au Laval virtual il sera chargé d'organiser les tutos et vous entrainer pour pouvoir profiter vous même de l'expérience.</p>
 		
@@ -31,9 +34,11 @@
 			
 			<p><b>Secrétaire Général : DBA3</b>, du moins quand il n'est pas entrain de mettre des B-coté sur smash bros ultimate, vous pouvez compter sur lui pour
 			recevoir les compte-rendus des réunions.</p>
+
 	</div>
+	
 	<div>		
-		<h5>Ainsi que le reste des membres</h5>
+		<h3>Ainsi que le reste des membres</h3>
 		<table>
 			<tr><th></th><th>Surnom</th><th>Prénom</th><th>Nom</th></tr>
 			
