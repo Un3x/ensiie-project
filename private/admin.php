@@ -5,6 +5,8 @@
 <body>
 
 <?php
+require '../src/Membre/Membre.php';
+require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
 entete( "Accueil" );
@@ -16,7 +18,6 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
 }
 
 if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification de la bdd puis rechargement de la page de d'administration
-    echo '<h4>blablablabla</h4>';
     $dbName = 'realitiie';
     $dbUser = 'postgres';
     $dbPassword = 'postgres';
@@ -60,7 +61,7 @@ if(isset($_POST['modification'])){ //Si mot de passe est modifié, modification 
     
     <br/><br/><br/>
     <h3>Vous pouvez changer votre mot de passe ici :</h3>
-    <form action="">
+    <form action="" method="POST">
     	<label>Nouveau mot de passe : </label><input name="password" type="password" required/>
     	<label>Confirmer nouveau mot de passe : </label><input name="conf_password" type="password" required/>
     	<input type="submit" name="modification" value="Envoyer"/>
