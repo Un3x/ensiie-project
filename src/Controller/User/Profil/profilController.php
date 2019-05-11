@@ -42,13 +42,16 @@ function validationProfil()
 
     $valeurDefaut=initChamps();
     $message = "<span class='warning' >";
-    if(! preg_match("#^\w{1,15}$#"   ,$_POST['prenom']))
+    $erreur = false;
+    if(!preg_match("#^\w{1,15}$#"   ,$_POST['prenom']))
     {
         $message = $message."Le prenom doit être composé de caractère standard.";
+        $erreur = true;
     }
-    if(! preg_match("#^\w{1,15}$#"   ,$_POST['enom']))
+    if(!preg_match("#^\w{1,15}$#"   ,$_POST['nom']))
     {
         $message = $message."Le nom doit être composé de caractère standard.";
+        $erreur=true;
     }
 
     //verification des données

@@ -29,7 +29,7 @@ function tentativeConnexion()
             $messageErreur =  "<div class='warning'>
             Erreur de connexion. <br/>
             Le login ou le mot de passe est incorrecte </div>";
-            require("../src/View/User/Profil/profilView.php");
+            require("../src/View/User/Link/connexionView.php");
         }
     }
     else

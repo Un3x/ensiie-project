@@ -11,7 +11,7 @@ if( isset($_GET['action']))
             break;
 
         case 'choixInscription':
-            require('../src/View/choixInscriptionView.php');
+            require('../src/View/User/Link/choixInscriptionView.php');
             break;
 
         case 'clients':
@@ -19,7 +19,7 @@ if( isset($_GET['action']))
             break;
         
         case 'connexion':
-            require('../src/Controller/inscriptionClientController.php');
+            require('../src/Controller/User/Link/connexionController.php');
             if( isset($_GET['login']) && isset($_GET['password']))
             {
                 tentativeConnexion();
@@ -35,7 +35,7 @@ if( isset($_GET['action']))
             break;
 
         case 'inscriptionClient':
-            require('../src/Controller/inscriptionClientController.php');
+            require('../src/Controller/User/Link/inscriptionClientController.php');
             if(isset($_GET['pseudo']) && isset($_GET['password'])
             && isset($_GET['password2']) && isset($_GET['prenom'])
             && isset($_GET['nom']) && isset($_GET['age'])
@@ -49,7 +49,47 @@ if( isset($_GET['action']))
                 inscriptionClientDebut();
             }
             break;
-        
+
+        case 'trajets':
+            require('../src/View/User/Profil/mesTrajetsView.php');
+            break;
+        case 'inscriptionCarrier':
+            require('../src/Controller/User/Link/inscriptionCarrierController.php');
+            inscriptionCarrierDebut();
+            break;
+
+        case 'profil' :
+            require('../src/Controller/User/Profil/profilController.php');
+            profilDebut();
+            break;
+        case 'changementProfil':
+            require('../src/Controller/User/Profil/profilController.php');
+            profilModifEnCours();
+            break;
+        case 'validationProfil':
+            require('../src/Controller/User/Profil/profilController.php');
+            if(isset($_POST["annuler"]))
+            {
+                echo "AA";
+                profilDebut();
+            }
+            else if (isset($_POST["valider"]))
+            {
+                validationProfil();
+            }
+            else
+            {
+                require("../src/View/404View.php");
+            }
+            break;
+        case 'parametre' :
+            require('../src/Controller/User/Profil/parametreController.php');
+            parametreDebut();
+            break;
+        case 'modifPassword':
+            require('../src/Controller/User/Profil/parametreController.php');
+            parametreModifPassword();
+            break;
         case 'searchCourse':
             require('../src/Controller/course/searchCourse.php');
             break;

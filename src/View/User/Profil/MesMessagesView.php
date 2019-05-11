@@ -4,6 +4,27 @@
 
 
 
+    <table>
+        <thead>
+        <tr>
+            <th>  n° </th>
+            <th> Date </th>
+            <th> Heure  </th>
+            <th> Objet </th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php  for($i = 0; $i < sizeof($mesMessages); $i++) {  ?>
+            <tr>
+                <td> <?=$mesMessages[$i]['date']?> </td>
+                <td> <?=$mesMessages[$i]['heure']?> </td>
+
+            </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+
 
 
 
