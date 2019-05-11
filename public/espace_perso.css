@@ -1,0 +1,11 @@
+.onglet
+{
+        display:block;
+        
+        cursor:pointer;
+}
+
+.contenu
+{
+        display:none;
+}

@@ -161,7 +161,7 @@ class UserRepository
         $prenom = $user->getPrenom();
         $pseudo = $user->getPseudo();
         $ddn = $user->getDdn();
-        $mdp = $user->getMdp();
+        $mdp = password_hash($user->getMdp(), PASSWORD_DEFAULT);
         $mail = $user->getMail();
         $nb_livres_empruntes = $user->getNbLivresEmpruntes();
         $nb_livres_rendus = $user->getNbLivresRendus();

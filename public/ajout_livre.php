@@ -114,7 +114,6 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         <?php if ($user_connected): ?>
             <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
             <a href="review.php" class="rubrique">|   Review    </a>
-            <a href="editer.php" class="rubrique">|   Editer   </a>
             <?php endif; ?>
         <?php if ($user_connected && $admin): ?>
             <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
