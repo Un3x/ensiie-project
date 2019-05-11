@@ -12,10 +12,27 @@ nav{
 	
 }
 .rubrique:hover{
-	background-image:url(../images/soleil.jpg);
+	/*background-image:url(../images/soleil.jpg);*/
+	background: #f00;
+	color: #fff;
+	width: 20%;
+	
 }
 .rubrique{
-	color:white;
+	display: inline-block;
+	margin-left: 1%;
+	margin-right: 1%;
+	color: #fff;
+	width: 16%;
+	padding: 0%;
+	text-decoration: none;
+	font-family: Arial, Helvetica;
+	text-align: center;
+
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
 }
 .rubrique:visited{
 	color:white;

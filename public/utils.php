@@ -122,6 +122,22 @@ function IdToPseudo($id_user) {
     return $tmp;
 }
 
+function affiche_nav($user_connected, $admin) {
+  echo '<a href="index.php" class="rubrique">Accueil</a>';
+  echo '<a href="bibliotheque.php" class="rubrique">Bibliothèque</a>';
+  if ($user_connected) {
+    echo '<a href="espace_perso.php" class="rubrique">Espace perso</a>';
+    echo '<a href="review.php" class="rubrique">Review</a>';
+  }
+  if ($user_connected && $admin) {
+    echo '<br>';
+    echo '<a href="liste_emprunts.php" class="rubrique">Liste</a>';
+    echo '<a href="ajout_livre.php" class="rubrique">Ajout livre</a>';
+    echo '<a href="rendu.php" class="rubrique">Retour</a>';
+    echo '<a href="emprunt.php" class="rubrique">Emprunt</a>';
+  }
+}
+
 
 
 

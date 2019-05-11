@@ -140,18 +140,7 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
             <img src="../images/sciience.png"/>
         </header>
     <nav>
-        <a href="index.php" class="rubrique">Accueil    </a>
-        <a href="bibliotheque.php" class="rubrique">|   Bibliothèque    </a>
-        <?php if ($user_connected): ?>
-            <a href="espace_perso.php" class="rubrique">|   Espace perso    </a>
-            <a href="review.php" class="rubrique">|   Review    </a>
-            <?php endif; ?>
-        <?php if ($user_connected && $admin): ?>
-            <a href="liste_emprunts.php" class="rubrique">|   Liste   </a>
-            <a href="ajout_livre.php" class="rubrique">|   Ajout livre   </a>
-            <a href="rendu.php" class="rubrique">|   Retour   </a>
-            <a href="emprunt.php" class="rubrique">|   Emprunt   </a>
-        <?php endif; ?>
+        <?php affiche_nav($user_connected, $admin) ?> <!-- dans utils.php -->
     </nav>
     <section>
         <div class="grand-titre">Bienvenue sur la page perso de <?php echo"$pseudo"; ?></div>
