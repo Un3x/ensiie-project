@@ -26,10 +26,10 @@
 			au Laval virtual il sera chargé d'organiser les tutos et vous entrainer pour pouvoir profiter vous même de l'expérience.</p>
 		
 		<h4>Son bureau</h4>
-			<p><b> Vice président : Altréon</b>, très actif dans l'association et à son compte plusieurs projets (même s'il totalise que des échecs),
+			<p><b> Vice président : Altréon</b>, très actif dans l'association et à son compte plusieurs projets (même s'il ne totalise que des échecs),
 			se fera un plaisir de vous aider à réaliser le jeu de vos rêves. Il suffit, comme lui, de ne pas avoir de scrupules et de savoir
 			voler avec impunité le travail des autres.</p>
-			<p><b>Trésorié : Jalik</b>, ayant pour unique objectif de partir avec la caisse, mais pas avant de l'avoir entièrement dépensée en matériel
+			<p><b>Trésorier : Jalik</b>, ayant pour unique objectif de partir avec la caisse, mais pas avant de l'avoir entièrement dépensée en matériel
 			pour l'association. Le budget de l'association est à dépenser et c'est à vous de proposer ce qu'il faut acheter.</p>
 			
 			<p><b>Secrétaire Général : DBA3</b>, du moins quand il n'est pas entrain de mettre des B-coté sur smash bros ultimate, vous pouvez compter sur lui pour
@@ -42,12 +42,7 @@
 		<table>
 			<tr><th></th><th>Surnom</th><th>Prénom</th><th>Nom</th></tr>
 			
-			<!-- A retirer : à titre d'exemple
-			<tr> <td><img src="../img/membres/Plou.png" alt="l'homme invisible" width="100" height="100"/></td> <td>Plou</td> <td>Jean-Loup</td> <td>MACARIT</td> </tr>
-			<tr> <td><img src="../img/membres/Altreon.png" alt="l'homme invisible" width="100" height="100"/></td> <td>Altreon</td><td>Matteo</td><td>BRANDI</td></tr>
-			<tr> <td><img src="../img/badassChicken.png" alt="l'homme invisible" width="100" height="100"/></td> <td>fIIEts</td><td>Rémi</td><td>VAN DER LEE</td></tr>
-			-->
-			<?php // A TESTER
+			<?php
 			foreach ($membres as $membre) {
 				$img = $membre->getSurnom();
 				$img = "../img/membres/".$img.".png";
@@ -57,7 +52,7 @@
 					
 				echo 
 				'<tr>
-					<td><img src='.$img.' alt="404 : people not found" width="150" height="150"/>
+					<td><img src='.$img.' alt="404 : people not found" width="150" height="150"/></td>
 					<td>'.$membre->getSurnom().'</td>
 					<td>'.$membre->getPrenom().'</td>
 					<td>'.$membre->getNom().'</td>
