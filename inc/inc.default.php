@@ -22,6 +22,7 @@
 		echo "\t<link rel=\"shortcut icon\" href=\"../img/badassChicken.ico\">\n";
 		echo "</head>\n";
 		echo "<body>\n";
+		initialisation();
 		menu();
 	}
 
@@ -77,6 +78,12 @@
 		echo "\t\t<div>\n";
 		echo "\t\t\t<a href=\"../public/ressources.php\">Ressources</a>\n";
 		echo "\t\t</div>\n";
+		
+		if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
+		    echo "\t\t<div>\n";
+		    echo "\t\t\t<a href=\"../private/admin.php\">Administration</a>\n";
+		    echo "\t\t</div>\n";
+		}
 		
 		
 		
