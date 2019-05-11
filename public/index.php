@@ -95,11 +95,23 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     <div class="container">
         <section>
     <div class="grand-titre">Bienvenue sur le site de Sciience</div>
+    <div class="res"> News scientifique</div>
+    <h2>On a marché sur la lune !</h2>
+
+    <p><div>Et oui, ce 21 juillet 1969, Neil Armstrong a foulé le sol de notre bon vieux satellite naturel. Incroyable me direz-vous. Quoi ? C'était il y a 50ans ??? Wow le temps passe beaucoup trop vite</div>C'est en effet il y a presque 50 ans jour pour jour que Apollo 11 s'est posé sur la lune, le 21 juillet 1969 à 2h56 heure française. Vous voulez en savoir plus ? C'est pas mon problème débrouillez vous tout seul. Ou alors cliquez <a href="https://fr.wikipedia.org/wiki/Apollo_11">ici</a>.
+    D'ailleurs si vous voulez contempler la lune sous toute les coutures n'hésitez pas à regarder cette vidéo:
+</p>
+
+<div class="res"> Mode d'emploi</div>
+<p>
+    Ce site est principalement fait pour que vous puissiez accéder aux livres appartenant à ScIIEnce GRATUITEMENT. Pour récupérer un livre, c'est très simple. Il suffit de vous rendre sur la page Bibliothèque. Cherchez le livre dont vous avez besoin ou parcourez l'ensemble de notre collection. Cliquez sur le bouton réserver. Ensuite, il vous suffit de venir voir Tanguy "Ansyth" Charles qui vous prêtera volontier le livre que vous avez réservé. Si par mégarde vous avez réservé un livre dont vous n'avez pas besoin, il vous sufft de vous rendre sur mon espace perso, puis mes réservations et d'annuler la réservation effectuée.
+    
 
 
 
 
 
+<!--
 <table class="table table-bordered table-hover table-striped">
     <thead style="font-weight: bold">
     <td>#</td>
@@ -225,6 +237,7 @@ $auteurs = $auteurRepository->fetchall();
     </table>
 
     </div>
+-->
     </section>
     </body>
     </html>
