@@ -5,8 +5,15 @@
     <meta charset="UTF-8"/>
     
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style.css" />
+    
+    <?= isset($_COOKIE['lang']) && $_COOKIE['lang']=='elf' ?
+
+        '<link rel="stylesheet" href="/css/elfStyle.css" />' :
+
+        '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">'
+
+    ?>
+    
     <title> <?= $title ?> </title>
 
 </head>
@@ -15,6 +22,11 @@
 
 <nav>
     <ul>
+    <li>
+        <a href='' onclick="document.cookie = 'lang=fr'" >fr</a>
+        /
+        <a href='' onclick="document.cookie = 'lang=elf'" >elf</a>
+    </li>
     <li>  
         <a href="/" > Accueil  </a>
     </li>
@@ -32,7 +44,7 @@
      </li>
 
 <?php 
-    if( $connecte) 
+    if($GLOBALS['connecte']) 
     { ?>
         <li>
             <a href="index.php?action=deconnexion" > Deconnexion </a>
@@ -56,9 +68,9 @@
 
 </nav>
 
-<?php if($connecte)
+<?php if($GLOBALS['connecte'])
     {
-        require("../src/View/User/Profil/menu_membre.php");
+        //require("../src/View/User/Profil/menu_membre.php");
     }
     ?>
 
@@ -75,7 +87,6 @@
         <li> Cliquez ici pour vendre votre âme </li>
     </ul>
 
-    <?=$script?>
 
 </footer>
 </body>

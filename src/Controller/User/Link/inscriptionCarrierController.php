@@ -24,12 +24,6 @@ function inscriptionCarrierDebut()
         $caracRace = $caracRace . '<span class="info" id ='.$i.'> Vitesse : ' . $tabRace[$i]->getVitesse() . '<br\> Nombre maximum : ' . $tabRace[$i]->getnb() . "</span>";
         $caracRace = $caracRace . "</p>";
     }
-    ob_start();
-    echo '<script src="../public/js/verificationFormulaireClient.js">';
-    echo "</script>";
-    echo '<script src="../public/js/changementCaracRace.js">';
-    echo "</script>";
-    $script = ob_get_clean();
 
     require('../src/View/User/Link/inscriptionCarrierView.php');
 }
@@ -72,11 +66,6 @@ function inscriptionCarrier()
         }
     }
     $messageErreur=$messageErreur." </span>";
-    ob_start();
-    echo '<script src="../public/js/verificationFormulaireClient.js">';
-    echo "</script>";
-    echo '<script src="../public/js/changementCaracRace.js">';
-    echo "</script>";
-    $script = ob_get_clean();
+    
     require('../src/View/User/Link/inscriptionClientView.php');
 }

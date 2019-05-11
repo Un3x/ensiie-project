@@ -34,4 +34,3 @@
 <?php require('template.php'); ?>
 
 <script src="/js/suggestCity.js"></script>
-

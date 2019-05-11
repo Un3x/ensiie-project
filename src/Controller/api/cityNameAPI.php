@@ -1,8 +1,7 @@
 <?php
 
 require '../vendor/autoload.php';
-require '../src/model/City/CityManager.php';
-
+require '../src/Model/City/CityManager.php';
 if(isset($_GET['n']) && isset($_GET['name'])){
 
 
@@ -14,7 +13,7 @@ if(isset($_GET['n']) && isset($_GET['name'])){
     $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 
-    $CityManager = new \City\CityManager($connection);
+    $CityManager = new CityManager($connection);
 
     $cities = $CityManager->getCityAutocompl($_GET['name'], $_GET['n']);
 

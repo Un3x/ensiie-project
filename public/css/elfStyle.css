@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'tngan';
+    font-size: larger;
+    src: url("tngan.ttf");
+}
+
+html {
+    font-family: 'tngan';
+}

@@ -6,11 +6,6 @@ function inscriptionClientDebut()
 {
     $messageErreur= "";
 
-    ob_start();
-    echo '<script src="../public/js/verificationFormulaireClient.js">';
-    echo "</script>";
-    $script = ob_get_clean();
-
     require('../src/View/User/Link/inscriptionClientView.php');
 }
 
@@ -56,11 +51,6 @@ function inscriptionClient()
 
         }
     $messageErreur=$messageErreur." </span>";
-
-    ob_start();
-    echo '<script src="../public/js/verificationFormulaireClient.js">';
-    echo "</script>";
-    $script = ob_get_clean();
 
     require('../src/View/User/Link/inscriptionClientView.php');
 

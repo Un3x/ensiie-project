@@ -16,7 +16,6 @@ $courses = $CourseManager->searchCourses(,10);
 
 echo json_encode($courses);*/
 
-
 $courses = [["carrierId" => 3512, "price" => 30, "departureTime" => "12h", "arrivalTime" => "00h16"],
 ["carrierId" => 1365, "price" => 45.3, "departureTime" => "13h16", "arrivalTime" => "04h36"],
 ["carrierId" => 1348, "price" => 12, "departureTime" => "09h25", "arrivalTime" => "17h48"],
