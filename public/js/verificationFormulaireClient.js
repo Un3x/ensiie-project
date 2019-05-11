@@ -48,13 +48,22 @@ check['nom'] = function ( )
 {
     var nom = document.getElementById("nom");
     var regex = /^\w{0,15}$/g;
-    if(regex.test(nom.value))
-    {
-        return true;
-    }
-    return false;
+    return regex.test(nom.value);
 }
+check['phoneNumber'] = function()
+{
+    var phone = document.getElementById("phoneNumber");
+    var regex =  /^(\d){10}$/g ;
+    return regex.test(phone.value);
 
+}
+check['birthDate'] = function()
+{
+    var birth = document.getElementById("birthDate");
+    var regex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/g;
+    return regex.test(birth.value);
+}
+/*
 check['age'] = function ( )
 {
     var age = document.getElementById("age");
@@ -64,7 +73,7 @@ check['age'] = function ( )
     }
     return true;
 }
-
+*/
 check['password'] = function()
 {
     return true;

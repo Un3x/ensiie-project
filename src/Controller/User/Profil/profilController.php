@@ -34,9 +34,6 @@ function profilModifEnCours()
     require("../src/View/User/Profil/profilView.php");
 }
 
-
-
-
 function validationProfil()
 {
 
@@ -53,11 +50,13 @@ function validationProfil()
         $message = $message."Le nom doit être composé de caractère standard.<br/>";
         $erreur=true;
     }
+    /*
     if($_POST['age'] >= 0)
     {
         $message = $message."L'age doit être positif.<br/>";
         $erreur=true;
     }
+    */
 
     // modification des données
 

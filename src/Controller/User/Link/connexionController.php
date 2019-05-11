@@ -1,5 +1,6 @@
 <?php
-require_once('test.php');
+require('../src/model/User/UserManager.class.php');
+require('../verif.php');
 
 function connexionDebut()
 {
@@ -9,17 +10,16 @@ function connexionDebut()
 
 function tentativeConnexion()
 {
-    $bdd = 0;
-    $userManager = new UserManager($bdd);
+    $userManager = new UserManager(bdd());
     if(filter_var($_POST['login'], FILTER_VALIDATE_EMAIL))
     {
-        $id = $userManager->tryConnect($_POST['login'], $_POST['password']);
-        if($id != 0)
+        $user = $userManager->get2($_POST['login'], hasherPassword($_POST['password']));
+        if($user != false)
         {
             $_SESSION['id_utilisateur'] = $id;
-            //appeler plutôt le contrôleur correspondant ou header en repassant par index.php
+            $_SESSION['user'] =  $user;
+            //appeler plutôt le contrôleur correspondant ou header en repassant par index.php ?
             $GLOBALS['connecte']=true;
-            //conexion/
             require("../src/Controller/User/Profil/profilController.php");
             profilDebut();
         }

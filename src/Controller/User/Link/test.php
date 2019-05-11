@@ -1,7 +1,7 @@
 <?php
 
 
-
+/*
 class UserManager
 {
     private $connection;
@@ -77,3 +77,4 @@ class RaceManager
         return($retour);
     }
 }
+*/

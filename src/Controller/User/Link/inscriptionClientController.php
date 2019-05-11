@@ -1,6 +1,6 @@
 <?php
 
-require_once('test.php');
+require('../src/model/User/ClientManager.class.php');
 function initChampsPost()
 {
     $valeurDefaut['age'] = $_POST['age'];
@@ -41,7 +41,7 @@ function inscriptionClient()
 
 
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
-        || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["age"]))
+        || empty($_POST["prenom"]) || empty($_POST["nom"]))
     {
 
         $messageErreur= $messageErreur."Certains champs indispensable sont vide  <br/>";
@@ -59,8 +59,8 @@ function inscriptionClient()
             }
 
             // vérifier que le pseudo n'est pas déja dans la base
-            $bdd = 0;
-            $userManager = new UserManager($bdd);
+
+            $userManager = new UserManager(bdd());
             if ($userManager->existe($_POST['mail']))
             {
                 $messageErreur = $messageErreur . "Cet adresse mail est déjà utilisé pour un compte.<br/>
@@ -76,7 +76,6 @@ function inscriptionClient()
                 require('../src/View/User/Link/inscriptionValideView.php');
                 return;
             }
-
         }
     $messageErreur=$messageErreur." </span>";
 

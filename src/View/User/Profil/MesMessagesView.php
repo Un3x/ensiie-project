@@ -16,7 +16,7 @@
         <tbody>
         <?php  for($i = 0; $i < sizeof($mesMessages); $i++) {  ?>
             <tr>
-                <td> <?=$mesMessages[$i]['date']?> </td>
+                <td> <?=$mesMessages[$i]?> </td>
                 <td> <?=$mesMessages[$i]['heure']?> </td>
 
             </tr>

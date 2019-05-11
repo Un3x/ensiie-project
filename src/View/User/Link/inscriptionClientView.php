@@ -49,12 +49,17 @@
                 <br/> (Les caractères elfiques ne sont pas supportées)
             </span>
              <br/>
-            <label for="age"> age : </label>
-            <input type="number" name="age" id="age" value="<?=$valeurDefaut["age"]?>" min="0"/>
+            <label for="phoneNumber"> Votre numéro de téléphone : </label>
+            <input type="tel" name="phoneNumber" id="phoneNumber"/>
             <span class="contrainte">
-                Age invalide. L'age ne peut pas être nulle ou négative.
-                Nous refusons d'inscrire les gens qui ne sont pas encore née.
-                Attendez de naitre et revenez vous inscrire ensuite seulement.
+                Ceci n'est pas un numéro de téléphone. <br/>
+            </span>
+            <br/>
+
+            <label for="birthDate"> Date de naissance : : </label>
+            <input type="date" name="birthDate" id="birthDate" value="<?=$valeurDefaut["birthDate"]?>" />
+            <span class="contrainte">
+                Date invalide.
             </span>
             <br/>
 

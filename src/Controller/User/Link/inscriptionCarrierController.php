@@ -1,12 +1,12 @@
 <?php
 
-require_once('test.php');
+require("../src/model/User/VendorManager.class.php");
 require("inscriptionClientController.php");
+
 function getListeRace()
 {
-    $bdd = 0;
-    $raceManager = new RaceManager($bdd);
-    return $raceManager->getRace();
+    $raceManager = new RaceManager( bdd());
+    return $raceManager->getList();
 }
 function inscriptionCarrierDebut()
 {
@@ -60,21 +60,24 @@ function inscriptionCarrier()
         }
 
         // vérifier que le pseudo n'est pas déja dans la base
-        $bdd = 0;
-        $userManager = new UserManager($bdd);
-        if ($userManager->existe($_POST['mail']))
+        $vendorManager = new VendorManager(bdd());
+        if ($userManager->isUsed($_POST['mail']))
         {
             $messageErreur = $messageErreur . "Cet adresse mail est déjà utilisé. <br/> ";
         }
         if ($messageErreur == '<span class="warning">')
         {
+            $vendor = new Vendor();
+            $vendor->hydrate( $_POST["prenom"], $_POST["nom"], race, mail, passwod, money, phoneNumer, dateNaissance, 0, description, d, 0, 0, true, -1);
+            //$_POST["password"],$_POST["mail"], $_POST[""], 0, $_POST["phoneNumber"], $_POST[""], )
+            $vendorManager->add($vendor);
             require('../src/View/User/Link/inscriptionValideView.php');
             return;
         }
     }
     $messageErreur=$messageErreur." </span>";
 
-    // il faut re-generer la liste des races :
+    // il faut regenerer la liste des races :
 
     $tabRace = getListeRace();
     $optionRace = "";

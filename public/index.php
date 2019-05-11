@@ -44,7 +44,7 @@ if( isset($_GET['action']))
             require('../src/Controller/User/Link/inscriptionClientController.php');
             if(isset($_POST['mail']) && isset($_POST['password'])
             && isset($_POST['password2']) && isset($_POST['prenom'])
-            && isset($_POST['nom']) && isset($_POST['age'])
+            && isset($_POST['nom']) && isset($_POST["phoneNumber"]) && isset($_POST["birthDate"])
             && isset($_POST['description']))
             {
                 inscriptionClient();
