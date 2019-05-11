@@ -75,4 +75,4 @@
 
 <?php require "../src/View/template.php"; ?>
 
-<script src="/js/verificationFormulaireClient.js"></script>
+<script src="../public/js/verificationFormulaireClient.js"></script>
