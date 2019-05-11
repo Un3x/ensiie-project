@@ -90,10 +90,19 @@ class VendorManager extends ClientManager
 	/**
 	 * renvoie la liste de tout les utilisateurs
 	 * @access public
-	 * @return void
+	 * @return tout les vendeurs
 	 */
-		public function getList(){
-
-		}
-
+	public function getList()
+	{
+		$req=$this->connection->query("SELECT * from Vendor")->fetchAll();
+		if($req===false)
+			return false;
+		return array_map(function ($v) 
+		{
+			$vendor=new Vendor();
+			$raceManager=new RaceManager($this->connection);
+			$vendor->hydrate2($v,$raceManager->get($v['idrace']));
+			return $vendor;
+		},req);
+	}
 }
