@@ -43,6 +43,7 @@ create table events (
 	id_event serial primary key,
 	name varchar not null,
 	description_event varchar,
+	date_ev date not null,
 	id_asso int references associations(id_asso),
 	coeff_event int default 1 check (coeff_event<=100 and coeff_event>0)
 );
@@ -77,7 +78,7 @@ insert into users (firstname,lastname,pseudo,year,president,mail) values ('Loïc
 insert into users(firstname,lastname,pseudo,year,bde) values ('Quentin','Japhet','Samuh',2018,1);
 insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
 insert into associations(name,president,coeff_asso) values ('Securitiie',1,50);
-insert into events(name,id_asso,coeff_event) values ('reu',1,1); 
+insert into events(name,id_asso,coeff_event,date_ev) values ('reu',1,1,'2019-01-10'); 
 insert into score(id_user,id_event,notation) values (1,1,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);
 

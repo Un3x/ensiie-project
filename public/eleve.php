@@ -22,10 +22,11 @@ $iduser = $users[$_SESSION['login']]->getId();
 
 
 $points = $connection->query('SELECT name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
-$events = $connection->query('select e.name name_event,a.name name_asso,notation from ((select name,notation,id_asso,id_user from score join events using (id_event)) e join associations a using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$events = $connection->query('select e.name name_event,a.name name_asso,notation,date_ev from ((select name,notation,id_asso,id_user,date_ev from score join events using (id_event)) e join associations a using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 $moyenne = $connection->query('select moyenne from leaderboard where id_user='.$iduser)->fetch(\PDO::FETCH_OBJ);
 $participations = $connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 displayHeader();
+$assos=$connection->query("select * from associations")->fetchAll(\PDO::FETCH_OBJ);
 ?>
 <table class="table table-bordered table-hover table-striped">
 	<caption>Récapitulatif des points association</caption>
@@ -54,19 +55,49 @@ if ($moyenne):?>
 	<caption>Récapitulatif des évènements</caption>
 	<tr>
 		<th>Evenement</th>
+		<th>Date</th>
 		<th>Association</th>
 		<th>Points</th>
 	</tr>
 <?php foreach ($events as $event) : ?>
 	<tr>
 		<td><?php echo $event->name_event ?></td>
+		<td><?php echo $event->date_ev ?></td>
 		<td><?php echo $event->name_asso ?></td>
 		<td><?php echo $event->notation ?></td>
 	</tr>
 <?php endforeach; ?>
 </table>
 
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+	<fieldset>
+	<legend> A Participé à un évènement </legend>
+	<p>
+	<label for="association"> pour l'association </label>
+	<select id="association" name="association">
+		<?php foreach ($assos as $asso):?>
+		<option value="<?php echo $asso->id_asso ?>" selected="selected"><?php echo $asso->name ?></option>
+		<?php endforeach; ?>
+	</select>
+	</p>
+	<input type="submit" name="submit" value="Rechercher évènements"/>
+	</fieldset>
 
+
+	<?php if (!empty($_POST['association'])):
+	$evenements = $connection->query('select * from events where id_asso='.$_POST['association'])->fetchAll(\PDO::FETCH_OBJ);?>
+	<fieldset>
+	 <select id="event" name="event">
+<?php foreach ($evenements as $evenement):?>
+<option value="<?php echo $evenement->id_event ?>"><?php echo $evenement->name.", ".$evenement->date_ev ?></option>
+<?php endforeach ?>
+	</select>	
+	<input type="submit" name="submit_newev" value="Rajouter"/>
+	</fieldset>
+	<?php endif;?>
+
+
+</form>
 </body>
 </html>
 

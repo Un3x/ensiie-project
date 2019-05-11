@@ -85,7 +85,7 @@ displayHeader();
 ?>
 <header class="header de page">
     
-    <h1 id = "PagePerso"> <label> Infos personnelles: </label> </h1></header>
+    <h1 id = "PagePerso"> <label> Mon Profil : </label> </h1></header>
     <p>
     <table id="Resume" class="table table-bordered table-hover table-striped">
     <caption> Infos personnelles</caption>
