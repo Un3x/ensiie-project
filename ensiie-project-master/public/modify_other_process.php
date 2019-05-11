@@ -5,9 +5,9 @@
 	function tryMod(object $connection, array $users, string $type)
     {
     	foreach ($users as $user) :
-			$pwd_valide = $user->getPassword();
+			$user_valide = $user->getEmail();
 			$id = $user->getId();
-			if ($pwd_valide == $_POST['pwd']) {
+			if ($user_valide == $_POST['email']) {
 				session_start();
 				$user->setPassword($_POST['pwd_modifier']);
 				$user->setTel($_POST['tel_modifier']);
@@ -18,11 +18,11 @@
 
 				$sql ='UPDATE '.$type.' SET tel=:ntel, password=:npwd WHERE id=:nid';
 				$connection->prepare($sql)->execute(array('ntel' => ''.$new_tel, 'npwd'=>''.$new_pwd, 'nid'=>''.$id));
+
 				header ('Location: index.php');
 				return true;
 			}
 			else return false;
-
 		endforeach;
     }
 	//postgres
@@ -34,7 +34,7 @@
 	$userRepository = new \User\UserRepository($connection);
 	$ok = false;
 
-	if (isset($_POST['pwd']) && isset($_POST['pwd_modifier']) && isset($_POST['tel_modifier'])) {
+	if (isset($_POST['email']) && isset($_SESSION['active']) && $_SESSION['active'] && isset($_SESSION['type'])) {
 		$users = $userRepository->fetchAllParticipant();
 		$type = "Participant";
 		$ok = tryMod($connection, $users, $type);
@@ -54,7 +54,7 @@
 	}
 
 
-	echo '<body onLoad="alert(\'Mot de passe incorrect.\')">';
-	echo '<meta http-equiv="refresh" content="0;URL=your_account.php">';
+	echo '<body onLoad="alert(\'Email ou Type de compte incorrect .\')">';
+	echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 
 ?>

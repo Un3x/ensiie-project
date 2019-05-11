@@ -50,6 +50,11 @@
                 ?>
             </p>
             <p>
+                <?php
+                    echo 'Type : '.$_SESSION['type'];
+                ?>
+            </p>
+            <p>
                 <input type="submit" id="btn" value="Modifier" />
             </p>
         </form>

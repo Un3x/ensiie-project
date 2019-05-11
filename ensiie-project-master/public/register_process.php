@@ -9,13 +9,10 @@
 	$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$userRepository = new \User\UserRepository($connection);
-	$users = $userRepository->fetchAll();
-
 	if (isset($_POST['email']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['sport']) && isset($_POST['genre']) && isset($_POST['pwd'])) {
 
 		
-		$sql = "INSERT INTO Utilisateur (id, nom, prenom, email, password, tel, genre, sport) VALUES (:nid, :nnom, :nprenom, :nemail, :npassword, :ntel, :ngenre, :nsport)";
+		$sql = "INSERT INTO Participant (id, nom, prenom, email, password, tel, genre, sport) VALUES (:nid, :nnom, :nprenom, :nemail, :npassword, :ntel, :ngenre, :nsport)";
 		$state = $connection->prepare($sql);
 		$state->bindParam(':nid', $nid);
 		$state->bindParam(':nnom', $nnom);
