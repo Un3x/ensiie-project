@@ -17,15 +17,13 @@ form:valid {
 }
 
 form {
-	width:50%;
-	margin: 20px auto;
+	width:300px;
 }
 
 .formulaire {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border:1px solid #ccc;
 	font-size: large;
-	width:300px;
 	min-height:30px;
 	display:block;
 	margin-bottom:15px;
