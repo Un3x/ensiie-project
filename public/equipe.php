@@ -9,12 +9,11 @@
 	$dbName = 'realitiie';
 	$dbUser = 'postgres';
 	$dbPassword = 'postgres';
-	$connection = new PDO("pgsql:host=localhost, user=$dbUser, dbname=$dbName, password=$dbPassword");
+	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 	$membreRepository = new \Membre\MembreRepository($connection);
-	$membres = new \Membre\Membre($connection);
+	$membres = $membreRepository->fetchAll();
 	
-	$members = $MembreRepository->fetchAll();
 ?>
 
 <h2>NOTRE EQUIPE</h2>
@@ -50,7 +49,7 @@
 			-->
 			<?php // A TESTER
 			foreach ($membres as $membre) {
-				$img = $membres->getSurnom();
+				$img = $membre->getSurnom();
 				$img = "../img/membres/".$img.".png";
 				if(file_exists($img) == false){
 					$img = "../img/badassChicken.png";

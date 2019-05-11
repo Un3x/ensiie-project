@@ -88,3 +88,10 @@ bbody{
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+p.error {
+	color: red;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}

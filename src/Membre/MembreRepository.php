@@ -93,7 +93,7 @@ class MembreRepository
     
     public function setMembrePassword($id, $password)
     {
-        $password = password_hash($password);
+        $password = password_hash($password, PASSWORD_BCRYPT);
         
         $sql = "UPDATE membre
                 SET password = ?
@@ -114,12 +114,37 @@ class MembreRepository
     
     public function createMembre($nom, $prenom, $surnom, $password, $promo, $role)
     {
-        $password = password_hash($password);
+        $password = password_hash($password, PASSWORD_BCRYPT);
         
         $sql = "INSERT INTO membre
                 (nom, prenom, surnom, password, promo, role) VALUES (?, ?, ?, ?, ?, ?);";
         $req = $this->connection->prepare($sql);
         $status = $req->execute(array($nom, $prenom, $surnom, $password, $promo, $role));
         return $status;
+    }
+    
+    public function authentication($surnom, $password)
+    {                
+        $sql = "SELECT id_membre, nom, prenom, password, promo, role
+                FROM membre
+                WHERE surnom = ?";
+        $req = $this->connection->prepare($sql);
+        $req->execute(array($surnom));
+        $row = $req->fetch(\PDO::FETCH_OBJ);
+        
+        if($row == NULL || !password_verify($password, $row->password)){
+            return NULL;
+        }
+                
+        $membre = new Membre();
+        $membre
+        ->setId($row->id_membre)
+        ->setNom($row->nom)
+        ->setPrenom($row->prenom)
+        ->setSurnom($surnom)
+        ->setPromo($row->promo)
+        ->setRole($row->role);
+        
+        return $membre;
     }
 }

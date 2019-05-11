@@ -1,23 +1,25 @@
 <?php
 
 function create_session($pseudo, $mdp){
-	$rows = $this->connection->query('SELECT id, role FROM Membre WHERE pseudo=$pseudo AND mdp=$mdp')->fetchAll(\PDO::FETCH_OBJ);
-    $id = -1;
-	$role = null;
-    foreach ($rows as $row) {
-        $id = $row->id;
-        $role = $row->role;
-    }
+    $dbName = 'realitiie';
+    $dbUser = 'postgres';
+    $dbPassword = 'postgres';
+    
+    $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
-    if(id == -1){
+    $membreRepository = new \Membre\MembreRepository($connection);
+    
+    $membre = $membreRepository->authentication($pseudo, $mdp);
+
+    if($membre == null){
 		return false;
 	}
-
+	
 	session_start();
-	$_SESSION['id'] = $id;
+	$_SESSION['id'] =$membre->getId();
 	$_SESSION['pseudo'] = $pseudo;
-	$_SESSION['role'] = $role;
-
+	$_SESSION['role'] = $membre->getRole();
+	
 	return true;
 }
 
