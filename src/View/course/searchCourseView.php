@@ -13,15 +13,7 @@ ville d'arrivée :
 <datalist id="arrivalSuggestCity"></datalist>
 <br/>
 
-date :
-<input type=date id=date min= <?=date('Y-m-d')?> value="<?=$date?>" required />
-<br/>
-
-heure :
-<input type=time id=time value="<?=$time?>" required />
-<br/>
-
-<input type=button id=search value=Rechercher onclick="searchCourse('departure', 'arrival', 'date', 'time', 'resDiv')" />
+<input type=button id=search value=Rechercher onclick="searchCourse('departure', 'arrival', 'resDiv')" />
 
 
 <div id=resDiv></div>    
