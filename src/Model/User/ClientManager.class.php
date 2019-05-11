@@ -89,9 +89,19 @@ class ClientManager extends UserManager
 	/**
 	 * renvoie la liste de tout les utilisateurs
 	 * @access public
-	 * @return void
+	 * @return liste de client
 	 */
-	public function getList(){
-
+	public function getList()
+	{
+		$req=$this->connection->query("SELECT * from Client")->fetchAll();
+		if($req===false)
+			return false;
+		return array_map(function ($v) 
+		{
+			$client=new Client();
+			$raceManager=new RaceManager($this->connection);
+			$client->hydrate2($v,$raceManager->get($v['idrace']));
+			return $client;
+		},req);
 	}
 }
