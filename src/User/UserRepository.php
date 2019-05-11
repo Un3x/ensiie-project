@@ -115,6 +115,46 @@ class UserRepository
         return $query;
     }
 
+    public function creeUser_editer_information($id, $nom, $prenom, $pseudo, $ddn, $mail, $est_admin) {
+        $ret = new User();
+        $ret->setId($id);
+        $ret->setPrenom($prenom);
+        $ret->setNom($nom);
+        $ret->setPseudo($pseudo);
+        $ret->setDdn($ddn);       
+        $ret->setMail($mail); 
+        $ret->setAdmin($est_admin);
+        return $ret;
+    }
+
+    public function updateUser_editer_information($user) {
+        $id=$user->getId();
+        $prenom=$user->getPrenom();
+        $nom=$user->getNom();
+        $pseudo=$user->getPseudo();
+        $ddn=$user->getDdn();        
+        $mail=$user->getMail();        
+        $est_admin=$user->getAdmin();
+
+        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mail='$mail', est_admin='$est_admin', ddn='$ddn' WHERE id_user='$id';";
+
+        $this->connection->query("$query");
+
+        return $query;
+    }
+
+    
+
+    public function updateUser_editer_password($id, $mdp) {        
+        
+        $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
+        $query="UPDATE \"User\" SET mdp='$mdp_hash' WHERE id_user='$id';";
+
+        $this->connection->query("$query");
+
+        return $query;
+    }
+
     public function insertUser($user) {
         $id = $user->getId();
         $nom = $user->getNom();

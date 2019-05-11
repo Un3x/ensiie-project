@@ -37,7 +37,9 @@ $curr_user=$userRepository->fetchId($_SESSION["id_user"]);
 $ok_pseudo=true;
 $ok_nom=true;
 
-if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isset($_POST['mdp'])&&isset($_POST['cmdp'])) {
+
+
+if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])) {
     
     if (!verifPseudo($_POST['pseudo']) && !($_POST['pseudo']==$curr_user->getPseudo())) {
         $ok_pseudo=false;
@@ -46,12 +48,18 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
         $ok_nom=false;
     }
     if ($ok_pseudo && $ok_nom) {
-        $tmp = $userRepository->creeUser($_SESSION["id_user"], $_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['ddn'], $_POST['mdp'], $_POST['email'], '0', '0', $curr_user->getAdmin());
-        $userRepository->updateUser($tmp);
+        $tmp = $userRepository->creeUser_editer_information($_SESSION["id_user"], $_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['ddn'], $_POST['email'], $curr_user->getAdmin());
+        $userRepository->updateUser_editer_information($tmp);
 
         header("Location: index.php");
     }
 }
+
+if (isset($_POST['mdp']) && isset($_POST['cmdp']) && ($_POST['mdp'] == isset($_POST['cmdp'])) ) {
+    $userRepository->updateUser_editer_password($_SESSION["id_user"], $_POST['mdp']);
+    header("Location: index.php");
+}
+    
 ?>
 
 
@@ -132,10 +140,6 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
         <input class="formulaire" id="2" type="text" name="prenom" value=<?php echo $curr_user->getPrenom() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50" /><br>
         Pseudo :<br>
         <input class="formulaire" id="3" type="text" name="pseudo" value=<?php echo $curr_user->getPseudo() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"><br>
-        Nouveau mot de passe :<br>
-        <input class="formulaire" id="4" type="password" name="mdp" ><br>
-        Confirmation du nouveau mot de passe :<br>
-        <input class="formulaire" id="5" type="password" name="cmdp" oninput="check(this)"><br>
         Date de naissance :<br>
         <input class="formulaire" id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
         Email :<br>
@@ -143,11 +147,19 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
         <input class="formulaire" id="valider" type="submit" name="Envoyer">
      </form>
 
+     <form id="form_editer_mdp" action="editer.php" method="POST">
+        Nouveau mot de passe :<br>
+        <input class="formulaire" id="4" type="password" name="mdp" required><br>
+        Confirmation du nouveau mot de passe :<br>
+        <input class="formulaire" id="5" type="password" name="cmdp" oninput="check(this)" required><br>
+
+        <input class="formulaire" id="valider" type="submit" name="Envoyer">
+     </form>
+
      
      
 
-     <p id="mdp_invalide" style="display:none">Mot de passe invalide</p>
-     <p id="err" style="display:none">Veuillez remplir tous les champs</p>
+    
     </section>
      </body>
 
