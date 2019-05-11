@@ -86,11 +86,12 @@ require("header.php");
             echo "<h1 class=\"section\">Profil de ".$_GET['pseudo']."</h1>";
         }
 
-    if (isset($_POST['email'],$_POST['mdp'],$_POST['mdpverif']))
+    if (isset($_POST['email'],$_POST['mdp'],$_POST['mdpverif'],$_POST['city']))
 	{
 		$_POST['email']=htmlspecialchars($_POST['email']);
 		$_POST['mdp']=htmlspecialchars($_POST['mdp']);
-		$_POST['mdpverif']=htmlspecialchars($_POST['mdpverif']);
+        $_POST['mdpverif']=htmlspecialchars($_POST['mdpverif']);
+        $_POST['city']=htmlspecialchars($_POST['city']);
 		$verif=1;
 		$photoon=0; /*0 si l'utilisateur met pas de photo 1 si oui*/
         $id_photo=0;
@@ -103,7 +104,9 @@ require("header.php");
 		if ((strlen($_POST['mdp']) <8) && $verif==1){
 			echo "<span class=\"red\">Votre mot de passe doit contenir au moins 8 caractères</span><br/>";
 			$verif=0;
-		}
+        }
+        
+
 
 		if ((!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) && $verif==1){
 			echo "<span class=\"red\">Votre adresse email n'a pas le bon format</span><br/>";
@@ -113,7 +116,8 @@ require("header.php");
 		if (($userRepository->testmail($_POST['email']) != [] && $userRepository->testmail($_POST['email'])[0]->getMail() != $CurrUser[0]->getMail()) && $verif==1){
 			echo "<span class=\"red\">Il y a déjà un compte avec cette adresse email</span><br/>";
 			$verif=0;
-		}
+        }
+        
 
 		if ((isset($_FILES['pp']) AND $_FILES['pp']['error']==0) && $verif==1){
 			if (($_FILES['pp']['size'] <= 2000000) && $verif==1)
@@ -124,9 +128,9 @@ require("header.php");
 				if ((in_array($extension_upload,$extension_autorisees) && $verif==1))
 				{
                     $id_photo=$CurrUser[0]->getPhoto();
-                    unlink($userRepository->getPhoto($_SESSION['pseudo']));
+                    unlink($userRepository->getPhototoUnlink($_SESSION['pseudo']));
 					move_uploaded_file($_FILES['pp']['tmp_name'],'uploads/'.$id_photo.".".$extension_upload);
-					$photoon=1;
+                    $photoon=1;
 				}
 
 				else{
@@ -144,29 +148,20 @@ require("header.php");
 		if ($verif==1){
 			echo "Please wait..";
 			if ($photoon == 1){
-				$reqphoto=$connection->prepare("UPDATE photo SET extension='".$extension_upload."' WHERE id_photo='".$id_photo."';");
-				$paramsphoto=array(
-					'id_p' => $id_photo,
-					'ext' => $extension_upload
-				);
-				$reqphoto->execute($paramsphoto);
+                $reqphoto=$connection->query("UPDATE photo SET extension='".$extension_upload."' WHERE id_photo='".$id_photo."';");
             }
-            if ($id_photo!=0) {
-            $req=$connection->prepare("UPDATE utilisateur SET mail = :mail,  mdp = :motdepasse, photo_id = :id_p WHERE id='".$_SESSION['pseudo']."';");
+            $req=$connection->prepare("UPDATE utilisateur SET mail = :mail,  mdp = :motdepasse, loc = :localisation WHERE id='".$_SESSION['pseudo']."';");
             $params = array(
 				'mail' => $_POST['email'],
-				'motdepasse' => $_POST['mdp'],
-				'id_p' => $id_photo
+                'motdepasse' => $_POST['mdp'],
+                'localisation' => $_POST['city']
 			);
-            }
-            else {
-            $req=$connection->prepare("UPDATE utilisateur SET mail = :mail,  mdp = :motdepasse WHERE id='".$_SESSION['pseudo']."';");
-            $params = array(
-				'mail' => $_POST['email'],
-				'motdepasse' => $_POST['mdp']
-			);
-            }
-			$req->execute($params);
+            
+            $req->execute($params);
+            $_POST['city']=null;
+            $_POST['mdp']=null;
+            $_POST['email']=null;
+            $_FILES['pp']=null;
 			echo "<meta http-equiv=\"Refresh\" content=\"2;url=pageProfil.php\">";
 			exit();
 		}		
@@ -195,7 +190,8 @@ require("header.php");
             <form action="" method="post" class="form" enctype="multipart/form-data">
 	  	        Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" value="<?php echo $CurrUser[0]->getMail(); ?>"> <br/>
 		        Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
-		        Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
+                Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
+                Ville <span class="red">*</span> : <br/><input type="text" name="city" value="<?php echo $CurrUser[0]->getLocation(); ?>"> <br/>
 		        Photo de profil : <br/><input type="file" id="image_uploads" name="pp">
                 <div class="preview">
     	
@@ -239,7 +235,7 @@ require("header.php");
     </div>
 </form>
 <div id=\"suppprofil\">
-Êtes-vous sur de vouloir supprimer ce produit ?
+Êtes-vous sur de vouloir supprimer ce profil ?
 <form method=\"post\" action=\"\">
     <input type=\"hidden\" name=\"delete_user\" value=\"1\">
     <div class=\"flexbox_boutton\">
@@ -297,7 +293,7 @@ require("header.php");
         }
     }
 
-        if ($prods==[]){
+        if ($prods==[] || $c==0){
             if ($_GET['pseudo']==$_SESSION['pseudo']) echo "Vous n'avez posté aucune annonce";
             else {
                 echo $_GET['pseudo']." n'a posté aucune annonce";

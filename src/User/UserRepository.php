@@ -30,6 +30,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
@@ -54,6 +55,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
@@ -78,6 +80,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
@@ -102,6 +105,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
@@ -125,6 +129,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
             $users[] = $user;
@@ -146,6 +151,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
             $users[] = $user;
@@ -167,6 +173,7 @@ class UserRepository
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
+                ->setPhoto($row->photo_id)
                 ->setAdministrateur($row->administrateur)
                 ->setValid($row->valid);
             $users[] = $user;
@@ -178,6 +185,13 @@ class UserRepository
     public function getPhoto($pseudo){
         $rows=$this->connection->query("SELECT * FROM photo JOIN utilisateur ON photo_id=id_photo WHERE id='".$pseudo."';")->fetchAll(\PDO::FETCH_OBJ);
         $chemin="/uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
+        return $chemin;
+        
+    }
+
+    public function getPhototoUnlink($pseudo){
+        $rows=$this->connection->query("SELECT * FROM photo JOIN utilisateur ON photo_id=id_photo WHERE id='".$pseudo."';")->fetchAll(\PDO::FETCH_OBJ);
+        $chemin="uploads/".$rows[0]->id_photo.".".$rows[0]->extension;
         return $chemin;
         
     }

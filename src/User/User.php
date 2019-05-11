@@ -203,6 +203,11 @@ class User
         return $this->photo_id;
     }
 
+    public function setPhoto($id){
+        $this->photo_id=$id;
+        return $this;
+    }
+
 
     /**
      * @return int

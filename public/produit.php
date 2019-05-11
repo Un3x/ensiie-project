@@ -190,6 +190,12 @@ if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
 
   <div class="showInfo activeInfo">
     <div class="description">
+      <?php
+      $catduprod=$catRepository->getCatofP($CurrProduit[0]->getIdProd());
+      foreach($catduprod as $cat){
+        echo "<a href=\"cat.php?id=".$cat->getId()."\"><strong>#".$cat->getNomCat()." </strong></a>";
+      }
+      ?>
       <h3><?php
       if ($CurrProduit[0]->getPrice()==0){
         echo "Gratuit";
