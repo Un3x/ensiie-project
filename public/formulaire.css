@@ -17,19 +17,22 @@ form:valid {
 }
 
 form {
-	text-align:center;
-	}
+	width:30%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:2%;
+}
 
 .formulaire {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border:1px solid #ccc;
 	margin-left:auto;
 	margin-right:auto;
-	font-size: large;
-	min-height:30px;
+	font-size:large;
+	width:100%;
 	display:block;
-	margin-bottom:15px;
-	margin-top:5px;
+	margin-bottom:2%;
+	margin-top:2%;
 	outline: none;
 
 	-webkit-border-radius:5px;
@@ -38,4 +41,6 @@ form {
 	-ms-border-radius:5px;
 	border-radius:5px;
 }
+
+
 
