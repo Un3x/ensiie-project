@@ -1,7 +1,7 @@
 <?php
 
 $GLOBALS['connecte'] = isset($_SESSION["id_utilisateur"]);
-
+/*
 class User
 {
 
@@ -29,3 +29,4 @@ class User
 
 }
 
+*/

@@ -5,7 +5,7 @@ require_once('Race.class.php');
 /**
  * La classe gérant Race
  */
-abstract class RaceManager 
+class RaceManager 
 {
 
 	/**
@@ -62,6 +62,7 @@ abstract class RaceManager
 			return false;
 		$admin=new Race();
 		$admin->hydrate2($req);
+		return $admin;
 	}
 
 	/**

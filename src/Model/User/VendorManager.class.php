@@ -19,7 +19,7 @@ class VendorManager extends ClientManager
 	 * @param Vendor $user l'utilisateur à ajouter à la BD
 	 * @return int le nombre de ligne créé ou false
 	 */
-    public function add(Vendor $user)
+    public function add($user)
     {
 		return $this->connection->exec("INSERT INTO Vendor (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses,nbVendorCourses,occupied,position) VALUES ($user->getSurname(),$user->getFirstname(),$user->getRace()->getId(),$user->getMailAddress(),$user->getPassword(),$user->getMoney(),$user->getPhoneNumber(),$user->getBirthDate(),$user->getReputation(),$user->getCreationDate(),$user->getDescription(),$user->getGender(),$user->getNbClientCourses(),$user->getNbVendorCourses(),$user->getOccupied(),$user->getPosition())");
 	}
@@ -30,7 +30,7 @@ class VendorManager extends ClientManager
 	 * @param Vendor $user l'utilisateur à suprimer
 	 * @return int le nombre de ligne détruite ou false
 	 */
-    public function delete(Vendor $user) 
+    public function delete($user) 
     {
 			return $this->connection->exec("DELETE from Vendor where $user->getId()=id");
     }
@@ -41,14 +41,15 @@ class VendorManager extends ClientManager
 	 * @param int $id L'id de l'utilisateur à aller chercher
 	 * @return Vendor ou false
 	 */
-    public function get2($id) 
+    public function get($id) 
     {
 		$req=$this->connection->query("SELECT * from Vendor where id=$id")->fetch();
 		if($req==false)
 			return false;
 		$admin=new Vendor();
 		$raceManager=new RaceManager($this->connection);
-		$admin->hydrate2($req,$raceManager->getRace($req['idRace']));
+		$admin->hydrate2($req,$raceManager->get($req['idrace']));
+		return $admin;
 	}
 	
 	/**
@@ -58,10 +59,10 @@ class VendorManager extends ClientManager
 	 * @param string le mot de passe
 	 * @return Vendor ou false
 	 */
-  public function get($mailAddress, $password) 
+  public function get2($mailAddress, $password) 
   {
 		$req=$this->connection->query("select id from Vendor where $mailAddress=mailAddress and $password=password")->fetch();
-		return $req===false?false:get2($req['id']);
+		return $req===false?false:get($req['id']);
 	}
 
 	/**
@@ -81,9 +82,18 @@ class VendorManager extends ClientManager
 	 * @param Vendor $user nouvelles valeur à mettre dans la BD
 	 * @return void
 	 */
-    public function update(Vendor $user)
+    public function update($user)
     {
 			return $this->connection->exec("update from Vendor surname='$user->getSurname()',firstname='$user->getFirstname()',idRace='$user->getRace()->getId()',mailAddress='$user->getMailAddress()',passWord='$user->getPassword()',money='$user->getMoney()',phoneNumber='$user->getPhoneNumber()',birthDate='$user->getBirthDate()',reputation='$user->getReputation()',creationDate='$user->getCreationDate()',description='$user->getDescription()',gender='$user->getGender()', nbClientCourses='$user->getNbClientCourses()',$user->getNbClientCourses(),nbVendorCourses='$user->getNbVendorCourses()',occupied='$user->getOccupied()',position='$user->getPosition()' where $user->getId()=id");
     }
+
+	/**
+	 * renvoie la liste de tout les utilisateurs
+	 * @access public
+	 * @return void
+	 */
+		public function getList(){
+
+		}
 
 }

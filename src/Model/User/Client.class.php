@@ -44,14 +44,25 @@ class Client extends User
 
 	public  function hydrate($surname,$firstname,Race $race,$mailAddress,$password,$money,$phoneNumber,$birthDate,$reputation,$description,$gender,$nbClientCourses)
 	{
-		parent::hydrate($surname,$firstname,$race,$mailAddress,$password,$money,$phoneNumber,$birthDate,$reputation,$description,$gender);
+		$this->setSurname($surname);
+		$this->setFirstname($firstname);
+		$this->setRace($race);
+		$this->setMailAddress($mailAddress);
+		$this->setPassword($password);
+		$this->setMoney($money);
+		$this->setPhoneNumber($phoneNumber);
+		$this->setBirthDate($birthDate);
+		$this->setReputation($reputation);
+		$this->setDescription($description);
+		$this->setGender($gender);
 		$this->setNbClientCourses($nbClientCourses);
+		$this->creationDate=date('Y-m-d H:i:s');
 	}
 
 	public function hydrate2($sqlRow,Race $race)
 	{
 		$this->id=$sqlRow['id'];
-		$this->hydrate($sqlRow['surname'],$sqlRow['firstname'],$sqlRow['race'],$sqlRow['mailAddress'],$sqlRow['password'],$sqlRow['money'],$sqlRow['phoneNumber'],$sqlRow['birthDate'],$sqlRow['reputation'],$sqlRow['description'],$sqlRow['gender'],$sqlRow['nbClientCourses']);
-		$this->creationDate=$sqlRow['creationDate'];
+		$this->hydrate($sqlRow['surname'],$sqlRow['firstname'],$race,$sqlRow['mailaddress'],$sqlRow['password'],$sqlRow['money'],$sqlRow['phonenumber'],date_create($sqlRow['birthdate']),$sqlRow['reputation'],$sqlRow['description'],$sqlRow['gender'],$sqlRow['nbclientcourses']);
+		$this->creationDate=date_create($sqlRow['creationdate']);
 	}
 }

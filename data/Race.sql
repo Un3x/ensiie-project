@@ -6,6 +6,6 @@ CREATE TABLE  Race(
 );
 
 
-INSERT INTO cities (name, speed, capacity) VALUES
+INSERT INTO Race (name, speed, capacity) VALUES
 ('chocobo','150.','2'),
 ('gobelin','5.','1');

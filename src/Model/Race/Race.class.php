@@ -3,7 +3,7 @@
 /**
  * Classe représentant une race
  */
-abstract class Race 
+class Race 
 {
 
 	/**
@@ -104,7 +104,7 @@ abstract class Race
 	 */
 	public final  function setSpeed($speed) 
 	{
-		if(!is_double($speed))
+		if(!is_numeric($speed))
 		{
 			trigger_error('speed is not a double', E_USER_WARNING);
 			return;

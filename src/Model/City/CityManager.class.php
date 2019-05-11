@@ -1,6 +1,6 @@
 <?php
 
-require_once("city.class.php");
+require_once("City.class.php");
 
 class CityManager
 {
@@ -61,6 +61,7 @@ class CityManager
 			return false;
 		$admin=new City();
 		$admin->hydrate2($req);
+		return $admin;
 	}
 	
 	/**

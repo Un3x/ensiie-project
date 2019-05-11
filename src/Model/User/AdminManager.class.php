@@ -20,7 +20,7 @@ class AdminManager extends UserManager
 	 * @param Admin $user l'utilisateur à ajouter à la BD
 	 * @return int le nombre de ligne créé ou false
 	 */
-    public function add(Admin $user)
+    public function add($user)
     {
 		return $this->connection->exec("INSERT INTO Admin (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) VALUES ($user->getSurname(),$user->getFirstname(),$user->getRace()->getId(),$user->getMailAddress(),$user->getPassword(),$user->getMoney(),$user->getPhoneNumber(),$user->getBirthDate(),$user->getReputation(),$user->getCreationDate(),$user->getDescription(),$user->getGender())");
 	}
@@ -31,7 +31,7 @@ class AdminManager extends UserManager
 	 * @param Admin $user l'utilisateur à suprimer
 	 * @return int le nombre de ligne détruite ou false
 	 */
-    public function delete(Admin $user) 
+    public function delete($user) 
     {
 			return $this->connection->exec("delete from Admin where $user->getId()=id");
     }
@@ -42,14 +42,15 @@ class AdminManager extends UserManager
 	 * @param int $id L'id de l'utilisateur à aller chercher
 	 * @return Admin ou false
 	 */
-    public function get2($id) 
+    public function get($id) 
     {
 		$req=$this->connection->query("select * from Admin where id=$id")->fetch();
 		if($req==false)
 			return false;
 		$admin=new Admin();
 		$raceManager=new RaceManager($this->connection);
-		$admin->hydrate2($req,$raceManager->getRace($req['idRace']));
+		$admin->hydrate2($req,$raceManager->get($req['idrace']));
+		return $admin;
 	}
 	
 	/**
@@ -59,10 +60,10 @@ class AdminManager extends UserManager
 	 * @param string le mot de passe
 	 * @return User ou false
 	 */
-    public function get($mailAddress, $password) 
+    public function get2($mailAddress, $password) 
     {
 		$req=$this->connection->query("select id from Admin where $mailAddress=mailAddress and $password=password")->fetch();
-		return $req===false?false:get2($req['id']);
+		return $req===false?false:get($req['id']);
 	}
 
 	/**
@@ -82,9 +83,17 @@ class AdminManager extends UserManager
 	 * @param Admin $user nouvelles valeur à mettre dans la BD
 	 * @return void
 	 */
-    public function update(Admin $user)
+    public function update($user)
     {
 			return $this->connection->exec("update Admin set surname='$user->getSurname()',firstname='$user->getFirstname()',idRace='$user->getRace()->getId()',mailAddress='$user->getMailAddress()',passWord='$user->getPassword()',money='$user->getMoney()',phoneNumber='$user->getPhoneNumber()',birthDate='$user->getBirthDate()',reputation='$user->getReputation()',creationDate='$user->getCreationDate()',description='$user->getDescription()',gender='$user->getGender()' where $user->getId()=id");
-    }
+		}
 
+	/**
+	 * renvoie la liste de tout les utilisateurs
+	 * @access public
+	 * @return void
+	 */
+	public function getList(){
+
+	}
 }
