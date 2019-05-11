@@ -103,6 +103,6 @@ class VendorManager extends ClientManager
 			$raceManager=new RaceManager($this->connection);
 			$vendor->hydrate2($v,$raceManager->get($v['idrace']));
 			return $vendor;
-		},req);
+		},$req);
 	}
 }
