@@ -6,6 +6,7 @@
 	margin-bottom: 0px;
 	width: 100%;
 	align-items: center;
+	box-shadow:0px 4px 4px #818181;
 }
 
 #logo {
@@ -22,8 +23,11 @@
 }
 
 #mapid {
-    width: 425px;
-    height: 250px;
+    width: 950px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
 }
 
 #connexion-link {
