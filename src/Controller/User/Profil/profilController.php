@@ -45,16 +45,19 @@ function validationProfil()
     $erreur = false;
     if(!preg_match("#^\w{1,15}$#"   ,$_POST['prenom']))
     {
-        $message = $message."Le prenom doit être composé de caractère standard.";
+        $message = $message."Le prenom doit être composé de caractère standard. <br/> ";
         $erreur = true;
     }
     if(!preg_match("#^\w{1,15}$#"   ,$_POST['nom']))
     {
-        $message = $message."Le nom doit être composé de caractère standard.";
+        $message = $message."Le nom doit être composé de caractère standard.<br/>";
         $erreur=true;
     }
-
-    //verification des données
+    if($_POST['age'] >= 0)
+    {
+        $message = $message."L'age doit être positif.<br/>";
+        $erreur=true;
+    }
 
     // modification des données
 

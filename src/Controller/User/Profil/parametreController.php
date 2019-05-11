@@ -8,6 +8,11 @@ function parametreDebut()
 
 function parametreModifPassword()
 {
+    $message="";
+    if(strcmp($_POST['password'],POST['password2']))
+    {
+
+    }
 
 }
 

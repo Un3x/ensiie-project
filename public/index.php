@@ -42,11 +42,10 @@ if( isset($_GET['action']))
 
         case 'inscriptionClient':
             require('../src/Controller/User/Link/inscriptionClientController.php');
-            if(isset($_GET['pseudo']) && isset($_GET['password'])
-            && isset($_GET['password2']) && isset($_GET['prenom'])
-            && isset($_GET['nom']) && isset($_GET['age'])
-            && isset($_GET['mail']) && isset($_GET['age'])
-            && isset($_GET['description']))
+            if(isset($_POST['mail']) && isset($_POST['password'])
+            && isset($_POST['password2']) && isset($_POST['prenom'])
+            && isset($_POST['nom']) && isset($_POST['age'])
+            && isset($_POST['description']))
             {
                 inscriptionClient();
             }
@@ -61,7 +60,17 @@ if( isset($_GET['action']))
             break;
         case 'inscriptionCarrier':
             require('../src/Controller/User/Link/inscriptionCarrierController.php');
-            inscriptionCarrierDebut();
+            if(isset($_POST['password'])
+                && isset($_POST['password2']) && isset($_POST['prenom'])
+                && isset($_POST['nom']) && isset($_POST['age'])
+                && isset($_POST['mail'])
+                && isset($_POST['description']) && isset($_POST['race']))
+            {
+                inscriptionCarrier();
+            }
+            else {
+                inscriptionCarrierDebut();
+            }
             break;
 
         case 'profil' :

@@ -17,8 +17,11 @@
     <label for="password"> Nouveau mot de passe : </label>
     <input type="password" id="password"  name="password"/>
     <br/>
-    <label for="password2"> Nouveau mot de passe : </label>
+    <label for="password2"> Confirmation : </label>
     <input type="password" id="password2" name="password2"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Modifier votre mot de passe"/>
     <br/>
     <br/>
 </form>

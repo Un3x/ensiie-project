@@ -14,7 +14,7 @@
         <br/>
 
             <label for="mail"> Votre adresse mail : </label>
-            <input type="text" name="mail" id="mail" value="<?=$_POST["mail"]?>" />
+            <input type="text" name="mail" id="mail" value="<?=$valeurDefaut["mail"]?>" />
             <br/>
             <span class="contrainte">
                 L'adresse mail est invalide.
@@ -23,16 +23,16 @@
             <br/>
             <br/>
             <label for="password"> Mot de passe : </label>
-             <input type="password" name="password" id="password" value="<?=$_POST["password"]?>"/>
+             <input type="password" name="password" id="password" value="<?=$valeurDefaut["password"]?>"/>
              <br/>
             <label for="password2"> Confirmez votre mot de passe : </label>
-            <input type="password" name="password2" id="password2" value="<?=$_POST["password2"]?>"/>
+            <input type="password" name="password2" id="password2" value="<?=$valeurDefaut["password2"]?>"/>
             <br/>
             <span class="contrainte"> Les deux mots de passe ne corresponde pas. </span>
         <br/>
         <p>
             <label for="prenom"> prénom : </label>
-            <input type="text" name="prenom" id="prenom" value="<?=$_POST["prenom"]?>"/>
+            <input type="text" name="prenom" id="prenom" value="<?=$valeurDefaut["prenom"]?>"/>
             <br/>
             <span class="contrainte">
                 Le prenom est invalide ( entre 1 et 15 caractères standard)
@@ -42,7 +42,7 @@
             <br/>
 
              <label for="nom"> nom : </label>
-             <input type="text" name="nom" id="nom" value="<?=$_POST["nom"]?>"/>
+             <input type="text" name="nom" id="nom" value="<?=$valeurDefaut["nom"]?>"/>
             <br/>
             <span class="contrainte">
                 Le nom est invalide ( entre 1 et 15 caractères standard)
@@ -50,7 +50,7 @@
             </span>
              <br/>
             <label for="age"> age : </label>
-            <input type="number" name="age" id="age" value="<?=$_POST["age"]?>" min="0"/>
+            <input type="number" name="age" id="age" value="<?=$valeurDefaut["age"]?>" min="0"/>
             <span class="contrainte">
                 Age invalide. L'age ne peut pas être nulle ou négative.
                 Nous refusons d'inscrire les gens qui ne sont pas encore née.
@@ -61,7 +61,7 @@
         </p>
         <p>
             <label for= "description"> description : </label>
-            <input type="text-area" name="description" id="description" value="<?=$_POST["description"]?>" />
+            <input type="text-area" name="description" id="description" value="<?=$valeurDefaut["description"]?>" />
         </p>
         <input type="submit" value="Valider"/>
     </form>
@@ -74,4 +74,5 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php require "../src/View/template.php"; ?>
+
 <script src="/js/verificationFormulaireClient.js"></script>

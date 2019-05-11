@@ -1,7 +1,7 @@
 <?php
 
 require_once('test.php');
-
+require("inscriptionClientController.php");
 function getListeRace()
 {
     $bdd = 0;
@@ -12,7 +12,10 @@ function inscriptionCarrierDebut()
 {
 
     $messageErreur = "";
+    $valeurDefaut = initChamps();
+
     //creer la liste déroulante :
+
     $tabRace = getListeRace();
     $optionRace = "";
     for ($i = 0; $i < count($tabRace); $i++) {
@@ -33,7 +36,11 @@ function inscriptionCarrierDebut()
 
 function inscriptionCarrier()
 {
-    $messageErreur =  '<span class="warning">';
+
+    $messageErreur='<span class="warning">';
+
+    $valeurDefaut = initChampsPost();
+
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
         || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["age"]))
     {
@@ -67,5 +74,5 @@ function inscriptionCarrier()
     }
     $messageErreur=$messageErreur." </span>";
     
-    require('../src/View/User/Link/inscriptionClientView.php');
+    require('../src/View/User/Link/inscriptionCarrierView.php');
 }
