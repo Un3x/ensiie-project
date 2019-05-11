@@ -245,9 +245,9 @@ if (isset($_POST['titre'],$_POST['description'],$_POST['price'])){
         <p>Titre de l'annonce<span class="red">*</span> :</p> <input type="text" size="20" maxlength="50" name="titre" placeholder="Entrez le titre" required> <br/>
         <p>Texte de l'annonce<span class="red">*</span> :</p> <textarea name="description" cols="80" rows="15" placeholder="Veuillez saisir une desciption pour votre produit...(30 caractères minimum)" required></textarea> <br/>
         <p>Prix<span class="red">*</span> :</p> <input type="text" style="width : 200px;" name="price" placeholder="Entrez le prix en €" required> €<br/> <!-- verifier que c'est bien un nombre --> 
-        <p>Photo :</p> <input type="file" class="photo1" id="image_uploads1" name="photo_prod1">
-        <input type="file" class="photo2" id="image_uploads2" name="photo_prod2">
-        <input type="file" class="photo3" id="image_uploads3" name="photo_prod3">
+        <p>Photo :</p> <input type="file" class="photo1" id="image_uploads1" name="photo_prod1" accept="image/*">
+        <input type="file" class="photo2" id="image_uploads2" name="photo_prod2" accept="image/*">
+        <input type="file" class="photo3" id="image_uploads3" name="photo_prod3" accept="image/*">
         <div class="preview">
         </div>
         <div class="flexbox_boutton">
