@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <a href="contact.php">Contact</a>
-                <a href="aboutus.php">A propos</a>
+                <a href="aPropos.php">A propos</a>
                 <a href="search.php"><span class="loupe">&#128269;</span> Rechercher</a>
                 <!-- <button class="boutton" onclick="window.location.href='ajoutProd.php'" style="width:auto;">+ Ajouter un produit</button> -->
                 <?php

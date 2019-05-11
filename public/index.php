@@ -113,68 +113,6 @@ require("header.php");
             echo "<a href=\"sinscrire.php\"><h2 class=\"sous_titre\">Inscrivez-vous pour pouvoir poster votre annonce !</h2></a>";
         }
         ?>
-    <!-- <div class="produits">
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="voiture.jpg" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-        
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="voiture.jpg" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="hugo.JPG" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-
-        <a href="">
-        <div class="produit">
-            <div class="photo_prod">
-                <img class="preview" src="TTT_green.png" alt="photo du produit"/>
-            </div>
-            <div class="text_prod">
-                <p>
-                <span class="titre_prod">Très très très long Titre de l'annonce</span><br/><br/>
-                <span class="prix_prod">67 €</span><br/><br/>
-                <span class="details">Auto/Moto<br/>Evry</span>
-                </p>
-            </div>
-        </div>
-        </a>
-    </div> -->
-
 </section>
 
 <?php

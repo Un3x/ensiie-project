@@ -18,7 +18,7 @@
                 </div>
                 <div class="columnF">
                     <a href="concat.php">Nous contacter</a> <br/>
-                    <a href="aboutUs.php">A propos de nous</a>
+                    <a href="aPropos.php">A propos de nous</a>
                 </div>
                 <!-- <div class="columnF">
                     <h4>Nos locaux</h4>
