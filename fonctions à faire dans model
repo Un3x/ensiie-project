@@ -6,6 +6,8 @@ course :
     - mettre le statut validé à un trajet et le renvoyer : (int idTrajet) -> course / null
     - mettre le statut en attente de validation du transporteur à un trajet et le renvoyer : (int idTrajet) -> course / null
     - mettre le statut effectué à un trajet et le renvoyer : (int idTrajet) -> course / null
+    -retourne la liste des trajets qu'un client a effectué :
+    -retourne la liste des trajets qu'un vendeur a effectué :
     
 city :
     -retourner position d'une ville : (string city) -> (float latitude, float longitude) / null
