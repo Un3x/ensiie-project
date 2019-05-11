@@ -22,6 +22,7 @@ if (!isset($_POST['mdp'])) {
 	Mot de Passe :<br>
 	<input type="password" name="mdp"><br>
 	<input type="submit" class="butcon" value="Valider"></form>';
+	echo '<a href="./inscription.php">Inscription</a>';
 }
 else {
 	$pseudo=$_POST['pseudo'];
@@ -39,6 +40,7 @@ else {
     </header><section class="connect"><div class="container"><div class="grand-titre">Bienvenue sur la page de connexion de Sciience</div>';
 	echo '<p>Mot de passe erroné ou pseudo invalide</p>';
 	echo '<p><a href=connexion.php>Cliquez ici</a> pour réessayer</p>';
+	echo '<a href="./inscription.php">Inscription</a>';
 }
 
 ?>

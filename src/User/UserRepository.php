@@ -134,9 +134,9 @@ class UserRepository
         $pseudo=$user->getPseudo();
         $ddn=$user->getDdn();        
         $mail=$user->getMail();        
-        $est_admin=$user->getAdmin();
+               
 
-        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mail='$mail', est_admin='$est_admin', ddn='$ddn' WHERE id_user='$id';";
+        $query="UPDATE \"User\" SET prenom='$prenom', nom='$nom', pseudo='$pseudo', mail='$mail', ddn='$ddn' WHERE id_user='$id';";
 
         $this->connection->query("$query");
 

@@ -37,15 +37,15 @@ $curr_user=$userRepository->fetchId($_SESSION["id_user"]);
 $ok_pseudo=true;
 $ok_nom=true;
 
-
-
 if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])) {
     
     if (!verifPseudo($_POST['pseudo']) && !($_POST['pseudo']==$curr_user->getPseudo())) {
         $ok_pseudo=false;
+        echo "Ce pseudo existe déjà !";
     }
     if (!verifNomPrenom($_POST['nom'], $_POST['prenom']) && !($_POST['nom']==$curr_user->getNom() && $_POST['prenom']==$curr_user->getPrenom())) {
         $ok_nom=false;
+        echo "Quelqu'un vous a usurpé ! Cette combinaison Nom, Prénom existe déjà !";
     }
     if ($ok_pseudo && $ok_nom) {
         $tmp = $userRepository->creeUser_editer_information($_SESSION["id_user"], $_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['ddn'], $_POST['email'], $curr_user->getAdmin());
@@ -53,9 +53,10 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])) {
 
         header("Location: index.php");
     }
-}
+    //TODO si les pseudos et les noms ne sont pas ok faire un else...
+} 
 
-if (isset($_POST['mdp']) && isset($_POST['cmdp']) && ($_POST['mdp'] == isset($_POST['cmdp'])) ) {
+if (isset($_POST['mdp']) && isset($_POST['cmdp']) && ($_POST['mdp'] == $_POST['cmdp']) ) {
     $userRepository->updateUser_editer_password($_SESSION["id_user"], $_POST['mdp']);
     header("Location: index.php");
 }

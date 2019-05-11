@@ -119,7 +119,7 @@ else {
 <head>
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="formulaire.css">
+    <link rel="stylesheet" href="formulaire_large.css">
     <link rel="stylesheet" href="espace_perso.css">
 
 </head>
