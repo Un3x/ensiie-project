@@ -4,6 +4,6 @@
     src: url("tngan.ttf");
 }
 
-html {
+* {
     font-family: 'tngan';
 }

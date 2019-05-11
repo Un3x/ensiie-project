@@ -8,12 +8,10 @@
     
     <?= isset($_COOKIE['lang']) && $_COOKIE['lang']=='elf' ?
 
-        '<link rel="stylesheet" href="/css/elfStyle.css" />' :
-
-        '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">'
+        '<link rel="stylesheet" href="/css/elfStyle.css" />' : ''
 
     ?>
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title> <?= $title ?> </title>
 
 </head>

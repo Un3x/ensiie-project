@@ -13,7 +13,7 @@ if( isset($_GET['action']))
             break;
 
         case 'choixInscription':
-            require('../src/View/choixInscriptionView.php');
+            require('../src/View/User/Link/choixInscriptionView.php');
             break;
 
         case 'clients':
@@ -41,7 +41,7 @@ if( isset($_GET['action']))
             break;
 
         case 'inscriptionClient':
-            require('../src/Controller/inscriptionClientController.php');
+            require('../src/Controller/User/Link/inscriptionClientController.php');
             if(isset($_GET['pseudo']) && isset($_GET['password'])
             && isset($_GET['password2']) && isset($_GET['prenom'])
             && isset($_GET['nom']) && isset($_GET['age'])

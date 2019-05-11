@@ -14,17 +14,22 @@ class CityManager
     
     public function getCityAutocompl($name, $number)
     {
-        $res = $this->connection->query("SELECT name FROM cities WHERE name ILIKE '$name%' ORDER BY population DESC FETCH FIRST $number ROWS ONLY")->fetchAll(\PDO::FETCH_OBJ);;
+		$statement = $this->connection->prepare("SELECT name FROM cities WHERE name ILIKE :name ORDER BY population DESC FETCH FIRST :number ROWS ONLY");
+		$statement->execute(array("name" => $name.'%',"number" => $number));
+		$res = $statement->fetchAll();
+		
+		if (!$res) return [];
 
         $cities = [];
 
         foreach($res as $row)
         {
-            $cities[] = $row->name;
+            $cities[] = $row['name'];
         }
 
         return $cities;
-    }
+	}
+	
 
     /**
 	 * ajoute city dans la BD
@@ -34,7 +39,8 @@ class CityManager
 	 */
     public function add(City $city)
     {
-		return $this->connection->exec("INSERT INTO cities (name,latitude,longitude,population) VALUES ($city->getName,$city->getLatitude,$city->getLongitude,$city->getPopulation)");
+		$statement = $this->connection->prepare("INSERT INTO cities (name,latitude,longitude,population) VALUES (:name,:latitude,:longitude,:population)");
+		return $statement->execute(array("name" => $city->getName, "latitude" => $city->getLatitude, "longitude" => $city->getLongitude, "population" => $city->getPopulation));
 	}
 
 	/**
@@ -45,7 +51,8 @@ class CityManager
 	 */
     public function delete(City $city) 
     {
-			return $this->connection->exec("DELETE from cities where $city->getId()=id");
+		$statement = $this->connection->prepare("DELETE from cities where id = :id");
+		return $statement->execute(array("id" => $city->getId()));
     }
 
 	/**
@@ -56,8 +63,10 @@ class CityManager
 	 */
     public function get($id) 
     {
-		$req=$this->connection->query("SELECT * from cities where id=$id")->fetch();
-		if($req==false)
+		$statement = $this->connection->prepare("SELECT * from cities where id = :id");
+		$statement->execute(array("id" => $city->getId()));
+		$req=$statement->fetch();
+		if(!$req)
 			return false;
 		$admin=new City();
 		$admin->hydrate2($req);
@@ -72,7 +81,8 @@ class CityManager
 	 */
     public function update(City $city)
     {
-			return $this->connection->exec("update from cities set name='$city->getName()',latitude='$city->getLatitude()',longitude='$city->getLongitude()',population='$city->getPopulation()' where $city->getId()=id");
+		$statement = $this->connection->prepare("UPDATE from cities set name=:name, latitude=:latitude, longitude=:longitude, population=:population where id=:id");
+		return $statement->execute(array("name" => $city->getName(),"latitude"=>$city->getLatitude(),"longitude"=>$city->getLongitude(),"population"=>$city->getPopulation(),"id" => $city->getId()));
     }
 	/**
 	 * change la valeur de connection
@@ -95,7 +105,7 @@ class CityManager
 			$city=new City();
 			$city->hydrate2($v);
 			return $city;
-		},req);
+		},$req);
 	}
 
 }

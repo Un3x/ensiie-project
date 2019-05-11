@@ -102,6 +102,6 @@ class ClientManager extends UserManager
 			$raceManager=new RaceManager($this->connection);
 			$client->hydrate2($v,$raceManager->get($v['idrace']));
 			return $client;
-		},req);
+		},$req);
 	}
 }

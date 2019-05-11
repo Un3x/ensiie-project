@@ -104,6 +104,6 @@ class AdminManager extends UserManager
 			$raceManager=new RaceManager($this->connection);
 			$admin->hydrate2($v,$raceManager->get($v['idrace']));
 			return $admin;
-		},req);
+		},$req);
 	}
 }

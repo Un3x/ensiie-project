@@ -14,7 +14,7 @@
         <br/>
 
             <label for="mail"> Votre adresse mail : </label>
-            <input type="text" name="mail" id="mail" value="<?=$_POST["mail"]?>" />
+            <input type="text" name="mail" id="mail" value="<?=$_POST['mail']?>" />
             <br/>
             <span class="contrainte">
                 L'adresse mail est invalide.
