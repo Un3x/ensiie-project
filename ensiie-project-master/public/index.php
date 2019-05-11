@@ -19,7 +19,7 @@
 <div class="wrapper row2">
 <div id="container" class="clear">
 <!-- Slider -->
-<section id="slider"><a href="#"><img src="images/sport2.jpg" width="960" height="360" alt=""></a></section>
+<section id="slider"><a href="#"><img src="images/cce.png" width="960" height="360" alt=""></a></section>
 <!-- main content -->
 <div id="homepage">
 <!-- Services -->

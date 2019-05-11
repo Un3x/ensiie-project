@@ -75,9 +75,9 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 #header{padding:20px 0;}
 
 #header #hgroup{float:left; margin:0 0 20px 0;}
-#header #hgroup h1, #header #hgroup h2{font-weight:normal; font-style:bold; text-transform:none;color:blue }
+#header #hgroup h1, #header #hgroup h2{font-weight:normal; font-style:bold; text-transform:none;color:#FF9900 }
 #header #hgroup h1{font-size:40px;}
-#header #hgroup h1:hover{color:#FF9900; background-color:#232323;}
+#header #hgroup h1:hover{color:#000080; background-color:#232323;}
 #header #hgroup h2{font-size:13px;}
 
 #header nav{display:block; float:right; margin:10px 0 0 0; padding:20px 0; color:#FF9900; background-color:#232323;}
