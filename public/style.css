@@ -48,6 +48,7 @@
   padding: 10px;
   font-size: 110%;
   border: none;
+  border-radius: 3px;
   cursor: pointer;
   display: block;
   position: relative;
