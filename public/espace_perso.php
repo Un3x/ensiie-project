@@ -33,12 +33,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courant (si il 
 if (!isset($_SESSION["id_user"])) {
     header("Location: connexion.php");
 }
-
-
 $curr_user=$userRepository->fetchId($_SESSION["id_user"]);
-
-
-
 
 
 $user_connected=isset($_SESSION["id_user"]);
@@ -54,17 +49,11 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     $pseudo=$user->getPseudo();
 }
 
-
-
 //gestion de la demande d'annulation d'une réservation
 if (isset($_POST['id_rendre'])) {
     $tmpres=$reservationRepository->creeReservation($_POST['id_rendre'], $_SESSION['id_user']);
     $reservationRepository->deleteReservation($tmpres);
 }
-
-
-
-
 
 //on récupère la liste des réservations
 //on récupere la liste des livres empruntés par l'utilisateur
@@ -77,39 +66,41 @@ else {
     $empruntés = [];
 }
 
+$curr_user=$userRepository->fetchId($_SESSION["id_user"]);
+
+$ok_pseudo= 1;
+$ok_nom= 1;
+$ok_mdp= 1;
+
+if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isset($_POST['info'])) {
+    
+    if (!verifPseudo($_POST['pseudo']) && !($_POST['pseudo']==$curr_user->getPseudo())) {
+        $ok_pseudo=0;
+    }
+    if (!verifNomPrenom($_POST['nom'], $_POST['prenom']) && !($_POST['nom']==$curr_user->getNom() && $_POST['prenom']==$curr_user->getPrenom())) {
+        $ok_nom=0;        
+    }
+    if ($ok_pseudo && $ok_nom) {
+        $tmp = $userRepository->creeUser_editer_information($_SESSION["id_user"], $_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['ddn'], $_POST['email'], $curr_user->getAdmin());
+        $userRepository->updateUser_editer_information($tmp);
+
+        header("Location: index.php");
+    }
+} 
+
+if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
+    if ($_POST['mdp'] == $_POST['cmdp']) {
+        $userRepository->updateUser_editer_password($_SESSION["id_user"], $_POST['mdp']);
+        header("Location: index.php");
+    }
+    else {
+        $ok_mdp = 0;
+    }    
+}
+
 
 ?>
 
-<script>   
-  var curr_onglet = '';
-
-  function change_onglet(name)
-  {
-    if(name == curr_onglet) { 
-        // on ferme l'onglet si on clique dessus alors qu'il est déjà ouvert
-        //document.getElementById('onglet_'+name).className = 'onglet_0 onglet';
-        document.getElementById('contenu_onglet_'+name).style.display = 'none';
-        document.getElementById('onglet_reservation').style.display = 'block';
-        document.getElementById('onglet_emprunt').style.display = 'block';
-        document.getElementById('onglet_info').style.display = 'block';
-        document.getElementById('onglet_mdp').style.display = 'block';
-        curr_onglet = '';
-    }
-    else {  
-        // on cache tous les onglets
-        document.getElementById('onglet_reservation').style.display = 'none';
-        document.getElementById('onglet_emprunt').style.display = 'none';
-        document.getElementById('onglet_info').style.display = 'none';
-        document.getElementById('onglet_mdp').style.display = 'none';
-      
-        // on ouvre l'onglet cliqué et son contenu
-        document.getElementById('onglet_'+name).style.display = 'block';
-        document.getElementById('contenu_onglet_'+name).style.display = 'block';
-
-        curr_onglet = name;
-    }    
-  }        
-</script>
 
 <html>
 <head>
@@ -221,7 +212,18 @@ else {
                 
                 <span class="res onglet" id="onglet_info" onclick="change_onglet('info');">Modifier mes informations</span> <!-- onclick="javascript:change_onglet('');" -->
                 <div class="contenu" id="contenu_onglet_info">
-                    <form class="form" id="form_editer" action="editer.php" method="POST">
+                    <?php 
+						if($ok_pseudo == 0 || $ok_nom == 0) {
+							echo '<span class="invalid_submit">Modification invalide !</span></br>';
+							if($ok_nom == 0) 
+								echo '<span class="invalid_submit">Le couple Prénom/Nom apparaît déjà dans nos bases de données. Avez-vous un autre compte ?</span>';
+							else if ($ok_pseudo == 0) 
+								echo '<span class="invalid_submit">Ce pseudo existe déjà !</span>';										
+						}			
+					?>
+                    <form class="form" id="form_editer" action="espace_perso.php" method="POST">
+                        <!-- champs caché pour savoir si on vient de info ou mdp -->
+						<input type="hidden" name="info" value="42"/> 
                         Nom :<br>
                         <input class="formulaire" id="1" type="text" name="nom" value=<?php echo $curr_user->getNom() ?> required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br>
                         Prenom :<br>
@@ -232,19 +234,25 @@ else {
                         <input class="formulaire" id="6" type="date" name="ddn" value=<?php echo $curr_user->getDdn() ?> required /><br>
                         Email :<br>
                         <input class="formulaire" id="7" type="text" name="email" value=<?php echo $curr_user->getMail() ?> required pattern="[a-zA-Z0-9._-]*@[a-zA-Z0-9-]*.[a-zA-Z]*" maxlength="50"/><br>
-                        <input class="formulaire" id="valider" type="submit" value="Envoyer">
+                        <input class="formulaire" id="valider_info" type="submit" value="Envoyer">
                     </form>
                 </div>
 
                 <div class="res onglet" id="onglet_mdp" onclick="change_onglet('mdp');">Changer mon mot de passe</div> <!-- onclick="javascript:change_onglet('');" -->
                 <div class="contenu" id="contenu_onglet_mdp">
-                    <form class="form" id="form_editer_mdp" action="editer.php" method="POST">
+                    <?php 
+                        if ($ok_mdp == 0)
+                            echo '<span class="invalid_submit">Vos mots de passe doivent être identiques !</span>';
+                    ?>
+                    <form class="form" id="form_editer_mdp" action="espace_perso.php" method="POST">
+                        <!-- champs caché pour savoir si on vient de info ou mdp -->
+						<input type="hidden" name="form_mdp" value="42"/> 
                         Nouveau mot de passe :<br>
                         <input class="formulaire" id="4" type="password" name="mdp" required><br>
                         Confirmation du nouveau mot de passe :<br>
                         <input class="formulaire" id="5" type="password" name="cmdp" oninput="check_mdp(this)" required><br>
 
-                        <input class="formulaire" id="valider" type="submit" value="Envoyer">
+                        <input class="formulaire" id="valider_mdp" type="submit" value="Envoyer">
                     </form>
                 </div>
             </div>
@@ -256,6 +264,17 @@ else {
     </section>
 </body>
 
+<script>
+    // si l'un des 2 est false, c'est que l'utilisateur était sur modification des infos et 
+    //s'est trompé donc on le remet sur modification
+    if ( <?php echo $ok_nom ?> == 0 || <?php echo $ok_pseudo ?> == 0 ) {
+        change_onglet('info');
+    }
+    else if (<?php echo $ok_mdp ?> == 0) {
+        // si il s'est trompé sur le mdp, on le remet sur la modification de mot de passe
+        change_onglet('mdp');
+    }		
+</script>
 
 
 
