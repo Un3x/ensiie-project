@@ -1,6 +1,13 @@
 /* partie pour les formulaire */
 
-form:invalid { 
+.form {
+	width:60%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:2%;
+}
+
+.form:invalid { 
 	color: rgb(250, 94, 94);
 	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
 	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
@@ -8,7 +15,7 @@ form:invalid {
 	
 }
 
-form:valid {
+.form:valid {
 	color: rgba(99, 190, 99, 0.986);
 	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
 	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
@@ -16,16 +23,38 @@ form:valid {
 	
 }
 
-form {
+.formulaire {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border:1px solid #ccc;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:large;
+	width:100%;
+	display:block;
+	margin-bottom:2%;
+	margin-top:2%;
+	outline: none;
+
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+}
+
+
+.form_connexion {
 	width:60%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:2%;
 }
 
-.formulaire {
+.formulaire_connexion {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border:1px solid #ccc;
+	background-color: rgb(63, 161, 68);
+	color: white;	
 	margin-left:auto;
 	margin-right:auto;
 	font-size:large;

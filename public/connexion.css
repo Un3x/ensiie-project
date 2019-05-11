@@ -1,0 +1,39 @@
+.onglet
+{
+        display:inline-block;
+        margin-top: 2%;
+        height:5%;
+        width:46.5%;
+        padding:3px;
+        border:1px solid grey;
+        border-radius:10px 10px 0px 0px;
+        cursor:pointer;
+}
+
+.onglet_non_selec
+{
+        background: #cccccc;
+        border-bottom:1px solid grey;
+}
+.onglet_selec
+{
+        background:white;
+        border-bottom:0px solid grey;
+        padding-bottom:4px;
+}
+.contenu_onglet
+{
+  width: 95%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color:white;
+  border:1px solid grey;
+  margin-top:-1px;
+  padding:5px;
+  display:none;
+}
+
+.invalid_submit {
+  color: red;
+  font-size: 85%;
+}

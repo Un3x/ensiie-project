@@ -47,7 +47,7 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 
 <html>
 <head>
-     <meta charset="utf-8">
+     <meta charset="utf-8"/>
     <title>Inscription</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="formulaire_small.css">

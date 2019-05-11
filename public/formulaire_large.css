@@ -1,6 +1,6 @@
 /* partie pour les formulaire */
 
-form:invalid { 
+.form:invalid { 
 	color: rgb(250, 94, 94);
 	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
 	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
@@ -8,7 +8,7 @@ form:invalid {
 	
 }
 
-form:valid {
+.form:valid {
 	color: rgba(99, 190, 99, 0.986);
 	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
 	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
@@ -16,7 +16,7 @@ form:valid {
 	
 }
 
-form {
+.form {
 	width:25%;
 	margin-left:auto;
 	margin-right:auto;

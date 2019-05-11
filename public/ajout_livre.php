@@ -125,7 +125,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <section class="connect">
 <div class="container">
 <div class="grand-titre">Page d'ajout de livre</div>
-<form id="form_ajout_livre" action="ajout_livre.php" method="POST">
+<form class="form" id="form_ajout_livre" action="ajout_livre.php" method="POST">
     Titre<br>
     <input class="formulaire" id="titre" type="text" name="titre" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="70"/>
     <br>Auteur<br>
