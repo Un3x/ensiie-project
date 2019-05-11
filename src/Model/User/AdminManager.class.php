@@ -91,9 +91,19 @@ class AdminManager extends UserManager
 	/**
 	 * renvoie la liste de tout les utilisateurs
 	 * @access public
-	 * @return void
+	 * @return liste des admin
 	 */
-	public function getList(){
-
+	public function getList()
+	{
+		$req=$this->connection->query("SELECT * from Admin")->fetchAll();
+		if($req===false)
+			return false;
+		return array_map(function ($v) 
+		{
+			$admin=new Admin();
+			$raceManager=new RaceManager($this->connection);
+			$admin->hydrate2($v,$raceManager->get($v['idrace']));
+			return $admin;
+		},req);
 	}
 }
