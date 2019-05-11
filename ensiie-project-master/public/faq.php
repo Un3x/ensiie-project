@@ -1,28 +1,19 @@
 <?php
     include("ini_session.php");
-?>
+    ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-    <title>          Challenge Centrale Evry</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css">
+<title>Challenge Centrale Evry</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css?version=1.94" type="text/css">
+
+<?php include ("header.php");?>
 </head>
-
 <body>
-    <?php include("header.php"); ?>
-    <?php include("menu.php"); ?>
-    <div id="middle" class="middle">
-        <p>
-            <br/>
-            FAQ :<br />
-            Q :
-            R :
-            Q :
-            R :
-        </p>
-    </div>
 
-    <?php include("footer.php"); ?>
+<?php include("footer.php"); ?>
+
 </body>
 </html>
