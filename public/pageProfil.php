@@ -58,7 +58,7 @@ require("header.php");
                 $connection->query("DELETE FROM produits WHERE id_produit='".$id."';");
             }
             $connection->query("DELETE FROM utilisateur WHERE id='".$_SESSION['pseudo']."';");
-            echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+            echo "<meta http-equiv=\"Refresh\" content=\"2;url=deconnexion.php\">";
             exit();
         }
 
@@ -85,6 +85,92 @@ require("header.php");
         else{
             echo "<h1 class=\"section\">Profil de ".$_GET['pseudo']."</h1>";
         }
+
+    if (isset($_POST['email'],$_POST['mdp'],$_POST['mdpverif']))
+	{
+		$_POST['email']=htmlspecialchars($_POST['email']);
+		$_POST['mdp']=htmlspecialchars($_POST['mdp']);
+		$_POST['mdpverif']=htmlspecialchars($_POST['mdpverif']);
+		$verif=1;
+		$photoon=0; /*0 si l'utilisateur met pas de photo 1 si oui*/
+        $id_photo=0;
+
+		if (($_POST['mdp'] != $_POST['mdpverif']) && $verif==1){
+			echo "<span class=\"red\">Vos mots de passe ne sont pas similaires</span><br/>";
+			$verif=0;
+		}
+
+		if ((strlen($_POST['mdp']) <8) && $verif==1){
+			echo "<span class=\"red\">Votre mot de passe doit contenir au moins 8 caractères</span><br/>";
+			$verif=0;
+		}
+
+		if ((!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) && $verif==1){
+			echo "<span class=\"red\">Votre adresse email n'a pas le bon format</span><br/>";
+			$verif=0;
+		}
+		
+		if (($userRepository->testmail($_POST['email']) != [] && $userRepository->testmail($_POST['email'])[0]->getMail() != $CurrUser[0]->getMail()) && $verif==1){
+			echo "<span class=\"red\">Il y a déjà un compte avec cette adresse email</span><br/>";
+			$verif=0;
+		}
+
+		if ((isset($_FILES['pp']) AND $_FILES['pp']['error']==0) && $verif==1){
+			if (($_FILES['pp']['size'] <= 2000000) && $verif==1)
+			{
+				$infosfichier=pathinfo($_FILES['pp']['name']);
+				$extension_upload=$infosfichier['extension'];
+				$extension_autorisees=array('jpg','jpeg','gif','png','JPG','PNG','GIF','JPEG');
+				if ((in_array($extension_upload,$extension_autorisees) && $verif==1))
+				{
+                    $id_photo=$CurrUser[0]->getPhoto();
+                    unlink($userRepository->getPhoto($_SESSION['pseudo']));
+					move_uploaded_file($_FILES['pp']['tmp_name'],'uploads/'.$id_photo.".".$extension_upload);
+					$photoon=1;
+				}
+
+				else{
+					echo "<span class=\"red\">Le type de votre image n'est pas accepté (jpg, jpeg, png, gif only)</span><br/>";
+					$verif=0;
+				}
+			}
+
+			else{
+				echo "<span class=\"red\">Votre fichier est à une taille trop grande</span><br/>";
+				$verif=0;
+			}
+		}
+
+		if ($verif==1){
+			echo "Please wait..";
+			if ($photoon == 1){
+				$reqphoto=$connection->prepare("UPDATE photo SET extension='".$extension_upload."' WHERE id_photo='".$id_photo."';");
+				$paramsphoto=array(
+					'id_p' => $id_photo,
+					'ext' => $extension_upload
+				);
+				$reqphoto->execute($paramsphoto);
+            }
+            if ($id_photo!=0) {
+            $req=$connection->prepare("UPDATE utilisateur SET mail = :mail,  mdp = :motdepasse, photo_id = :id_p WHERE id='".$_SESSION['pseudo']."';");
+            $params = array(
+				'mail' => $_POST['email'],
+				'motdepasse' => $_POST['mdp'],
+				'id_p' => $id_photo
+			);
+            }
+            else {
+            $req=$connection->prepare("UPDATE utilisateur SET mail = :mail,  mdp = :motdepasse WHERE id='".$_SESSION['pseudo']."';");
+            $params = array(
+				'mail' => $_POST['email'],
+				'motdepasse' => $_POST['mdp']
+			);
+            }
+			$req->execute($params);
+			echo "<meta http-equiv=\"Refresh\" content=\"2;url=pageProfil.php\">";
+			exit();
+		}		
+	} 
     ?>
     <h2 class="sous_titre"><?php echo $CurrUser[0]->getId(); ?></h2>
     <!-- FAIRE DES COLONES -->
@@ -107,14 +193,9 @@ require("header.php");
         </div>
         <div class="columnInfo" id="formulaire" style="display: none;">
             <form action="" method="post" class="form" enctype="multipart/form-data">
-                Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="nom" placeholder="Nom"> <br/>
-	  	        Prénom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="prenom" placeholder="Prénom"> <br/>
-	  	        Pseudo <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="id_user" placeholder="Pseudo"> <br/>
-	  	        Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" placeholder="Email"> <br/>
-		        Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" placeholder="Mot de passe"> <br/>
-		        Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" placeholder="Mot de passe"> <br/>
-	  	        Date de naissance : <br/><input type="date" name="bday" value=<?php echo (new DateTime())->format('Y-m-d'); ?>> <br/>
-	  	        Ville <span class="red">*</span> : <br/><input type="text" name="ville" placeholder="Ville"> <br/>
+	  	        Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" value="<?php echo $CurrUser[0]->getMail(); ?>"> <br/>
+		        Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
+		        Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
 		        Photo de profil : <br/><input type="file" id="image_uploads" name="pp">
                 <div class="preview">
     	
@@ -149,6 +230,7 @@ require("header.php");
     </script>
 
     <?php
+    if ($_SESSION['pseudo'] == $_GET['pseudo']) {
     echo "<form method=\"post\" action=\"\">
     <div class=\"flexbox_button\">
         <div class=\"bouton\">
@@ -170,7 +252,7 @@ require("header.php");
     </div>
 </form>
 </div>
-<script type=\"text/javascript\">show('none','suppprofil');</script>";
+<script type=\"text/javascript\">show('none','suppprofil');</script>";}
     ?>
     <?php
     if ($_GET['pseudo']==$_SESSION['pseudo']){
@@ -183,9 +265,11 @@ require("header.php");
     <div class="produits">
     <?php 
         $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
+        $c=0;
         foreach ($prods as $prod){
                 $ProdRepository->afficheProd($prod);
-                if ($_GET['pseudo']==$_SESSION['pseudo'] && $prod->getValide()==1) 
+                if ($_GET['pseudo']==$_SESSION['pseudo'] && $prod->getValide()==1) {
+                $c=$c+1;
                 echo 
                 "<form method=\"post\" action=\"\">
                     <div class=\"flexbox_button\">
@@ -211,6 +295,7 @@ require("header.php");
                 </div>
                 <script type=\"text/javascript\">show('none','".$prod->getIdProd()."');</script>";
         }
+    }
 
         if ($prods==[]){
             if ($_GET['pseudo']==$_SESSION['pseudo']) echo "Vous n'avez posté aucune annonce";

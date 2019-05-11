@@ -200,7 +200,7 @@ class User
     }
 
     public function getPhoto(){
-        return $this->id_photo;
+        return $this->photo_id;
     }
 
 
