@@ -1,5 +1,5 @@
 <?php
-namespace Comment;
+namespace CommentCustomer;
 
 class CommentCustomer
 {
