@@ -12,3 +12,6 @@ course :
 city :
     -retourner position d'une ville : (string city) -> (float latitude, float longitude) / null
 
+user :
+    -savoir si un couple d'identifiant/mot_de_passe existe et retourne son id si oui, retourne 0 si non :  (string mail, string passwordHash) -> int
+    - savoir si un mail est déjà utilisé pour un des comptes, retourne un booléen : (string mail) -> boolean
