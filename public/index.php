@@ -45,7 +45,7 @@ $spots = $spotRepository->fetchAll();
 	<div id="search">
 		<form action="map.php">
 		<span style="font-size:140%">Trouve le spot le plus près de chez toi :</br></span>
-		<input type="text" name="ville" placeholder="Entrez votre ville">
+		<input id="searchbar" type="text" name="ville" placeholder="Entrez votre ville">
 		</form>
 	</div>
 
