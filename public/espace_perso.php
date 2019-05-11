@@ -105,10 +105,10 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="formulaire_large.css">
-    <link rel="stylesheet" href="espace_perso.css">
-    <script type="text/javascript" src="./script_espace_perso.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/formulaire_large.css">
+    <link rel="stylesheet" href="./css/espace_perso.css">
+    <script type="text/javascript" src="./js/script_espace_perso.js"></script>
 
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -137,7 +137,7 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
 </div>
      <body>
         <header>
-            <img src="./titre.png"/>
+            <img src="../images/sciience.png"/>
         </header>
     <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

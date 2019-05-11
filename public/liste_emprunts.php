@@ -51,7 +51,7 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
 <html>
 <head>
 	<meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 	<title>liste emprunts</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -79,7 +79,7 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
         ?>
     </div>
 <body><header>
-        <img src="./titre.png"/>
+        <img src="../images/sciience.png"/>
     </header>
     <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

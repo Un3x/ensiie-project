@@ -76,8 +76,8 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="formulaire.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/formulaire.css">
     <title>Page d'ajout de livre</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -106,7 +106,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     </div>
 <body>
   <header>
-        <img src="./titre.png"/>
+        <img src="../images/sciience.png"/>
     </header>
     <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

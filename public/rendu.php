@@ -66,7 +66,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
 <head>
     <meta charset="utf-8">
     <title>Validation de rendu</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -94,7 +94,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     </div>
 <body>
     <header>
-        <img src="./titre.png"/>
+        <img src="../images/sciience.png"/>
     </header>
     <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

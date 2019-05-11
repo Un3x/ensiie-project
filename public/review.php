@@ -62,7 +62,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
 <head>
     <meta charset="utf-8">
     <title>Review</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -90,7 +90,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
     </div>
 <body>
     <header>
-        <a href="index.php"><img src="./titre.png"/></a>
+        <a href="index.php"><img src="../images/sciience.png"/></a>
     </header>
      <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

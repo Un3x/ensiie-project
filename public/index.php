@@ -47,7 +47,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 <head>
     <title>Sciience</title>
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -75,7 +75,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </div>
 <body>
     <header>
-        <img src="./titre.png"/>
+        <img src="../images/sciience.png"/>
     </header>
      <nav>
         <a href="index.php" class="rubrique">Accueil    </a>

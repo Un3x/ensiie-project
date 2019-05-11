@@ -42,7 +42,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
 <head>
 	<meta charset="utf-8">
 	<title>Review</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -70,7 +70,7 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
     </div>
 <body>
 	<header>
-        <a href="index.php"><img src="./titre.png"/></a>
+        <a href="index.php"><img src="../images/sciience.png"/></a>
     </header>
     <nav>
     	<a href="bibliotheque.php" class="rubrique">Retour vers la bibliothèque</a>

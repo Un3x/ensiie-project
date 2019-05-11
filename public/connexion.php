@@ -71,15 +71,15 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 	<head>
 		<meta charset="utf-8"/>
 		<title>Page de connexion de Sciience</title>
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="formulaire_small.css">
-		<link rel="stylesheet" href="connexion.css">
-		<script type="text/javascript" src="./script_connexion.js"></script>
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/formulaire_small.css">
+		<link rel="stylesheet" href="./css/connexion.css">
+		<script type="text/javascript" src="./js/script_connexion.js"></script>
 		
 	</head>
 	<body>
 		<header>
-      <a href="index.php"><img src="./titre.png"/></a>
+      <a href="index.php"><img src="../images/sciience.png"/></a>
     </header>
 		<section class="connect">
 			<div class="container">
