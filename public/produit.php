@@ -4,6 +4,10 @@ if (!isset($_SESSION['authent'])) {
     $_SESSION['authent'] = 0;
 }
 
+if (!isset($_SESSION['statut'])) {
+  $_SESSION['statut'] = 0;
+}
+
 require '../vendor/autoload.php';
 
 //postgres
@@ -28,27 +32,58 @@ require 'connexion.php';
 require("header.php");
 ?>
 
+<section>
+
 <?php
-  $CurrUser = $userRepository->testpseudo($_GET['pseudo']);
-  $cheminphoto = $userRepository->getPhoto($_GET['pseudo']);
+
+  if (!isset($_GET['produit'])){
+    echo "Ce produit n'existe pastest";
+    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+    exit();
+  }
+
+  if (!ctype_digit($_GET['produit'])){
+    echo "Ce produit n'existe pastest1";
+    echo "test";
+    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+    exit();
+  }
+
+
+  $_GET['produit']= (int) $_GET['produit'];
   $CurrProduit = $ProdRepository->getSpecificProd($_GET['produit']);
+  if ($CurrProduit==[]){
+    echo "Ce produit n'existe pastest2";
+    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+    exit();
+  }
+
+
+  if ($CurrProduit[0]->getValide()!=1 && $_SESSION['statut']!=1){
+    echo "<br\>Ce produit n'existe pas";
+    echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+    exit();
+  }
+
+  $pseudo_priprio=$CurrProduit[0]->getIdProprio();
+  $CurrUser = $userRepository->testpseudo($pseudo_priprio);
+  $cheminphoto = $userRepository->getPhoto($pseudo_priprio);
 
   $photo1 = $ProdRepository->getPhoto1($CurrProduit[0]->getIdProd());
   $photo2 = $ProdRepository->getPhoto2($CurrProduit[0]->getIdProd());
   $photo3 = $ProdRepository->getPhoto3($CurrProduit[0]->getIdProd());
 
-  if ($photo1 == null) {
-    $photo1 = "/upload/3.png";
-  }
-  if ($photo2 == null) {
-    $photo2 = "/upload/3.png";
-  }
-  if ($photo3 == null) {
-    $photo3 = "/upload/3.png";
-  }
+  // if ($photo1 == null) {
+  //   $photo1 = "/upload/3.png";
+  // }
+  // if ($photo2 == null) {
+  //   $photo2 = "/upload/3.png";
+  // }
+  // if ($photo3 == null) {
+  //   $photo3 = "/upload/3.png";
+  // }
 ?>
 
-<section>
 
 <h2 class="sous_titre"><?php echo $CurrProduit[0]->getTitle(); ?></h2>
 
@@ -107,7 +142,13 @@ require("header.php");
 
   <div class="showInfo activeInfo">
     <div class="description">
-      <h3><?php echo $CurrProduit[0]->getPrice(); ?> €</h3>
+      <h3><?php
+      if ($CurrProduit[0]->getPrice()==0){
+        echo "Gratuit";
+      }
+      else{ 
+        echo $CurrProduit[0]->getPrice()." €"; 
+      }?></h3>
       <h4><?php echo $CurrUser[0]->getLocation(); ?></h4>
       <p><?php echo $CurrProduit[0]->getDescription(); ?></p>
       <p><?php echo $CurrProduit[0]->getDatePubli()->format('Y-m-d'); ?></p>
@@ -123,10 +164,23 @@ require("header.php");
   <div class="showInfo">
     <div class="otherProd">
     <?php
-    $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
+    $prods=array_reverse($ProdRepository->getProdofUser($pseudo_priprio));
+    if ($prods==[]){
+      echo "L'utilisateur n'a aucune autre annonce";
+    }
+        $c=0;
+
         foreach ($prods as $prod){
+          if (!$CurrProduit[0]->getIdProd()==$prod->getIdProd()){
                 $ProdRepository->afficheProd($prod);
+                if ($prod->getValide()){
+                  $c=$c+1;
+                }
+              }
         }
+      if ($c==0){
+          echo "L'utilisateur n'a aucune autre annonce";
+      }
     ?>
     </div>
   </div>

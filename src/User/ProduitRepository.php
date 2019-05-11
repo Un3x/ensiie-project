@@ -38,6 +38,50 @@ class ProduitRepository
         return $cats;
     }
 
+    public function fetchAllDeleteByAdmin()
+    {
+        $rows = $this->connection->query("SELECT * FROM produits WHERE valide='2';")->fetchAll(\PDO::FETCH_OBJ);
+        $cats=[];
+        foreach ($rows as $row) {
+            $cat=new Produits();
+            $cat
+                ->setId($row->id_produit)
+                ->setDatePubli(new \DateTimeImmutable($row->date_publi))
+                ->setDescription($row->descript)
+                ->setPrice($row->price)
+                ->setTitle($row->title)
+                ->setPhoto1($row->photo1)
+                ->setPhoto2($row->photo2)
+                ->setPhoto3($row->photo3)
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
+            $cats[]=$cat;
+        }
+        return $cats;
+    }
+
+    public function fetchAllDeleteByUser()
+    {
+        $rows = $this->connection->query("SELECT * FROM produits WHERE valide='3';")->fetchAll(\PDO::FETCH_OBJ);
+        $cats=[];
+        foreach ($rows as $row) {
+            $cat=new Produits();
+            $cat
+                ->setId($row->id_produit)
+                ->setDatePubli(new \DateTimeImmutable($row->date_publi))
+                ->setDescription($row->descript)
+                ->setPrice($row->price)
+                ->setTitle($row->title)
+                ->setPhoto1($row->photo1)
+                ->setPhoto2($row->photo2)
+                ->setPhoto3($row->photo3)
+                ->setValide($row->valide)
+                ->setIdProprio($row->id_proprio);
+            $cats[]=$cat;
+        }
+        return $cats;
+    }
+
     public function getProdofC($categorie)
     {
         $rows = $this->connection->query('SELECT * FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE categorie.id_cat='.$categorie)->fetchAll(\PDO::FETCH_OBJ);
@@ -203,7 +247,8 @@ public function getProdNonValid() {
         else{
             $prix="Gratuit";
         }
-        echo "<a href=\"produit.php?produit=".$produit->getIdProd()."&pseudo=".$produit->getIdProprio()."\">
+        if ($produit->getValide()==1){
+        echo "<a href=\"produit.php?produit=".$produit->getIdProd()."\">
         <div class=\"produit\">
         <div class=\"photo_prod\">
         <img class =\"preview\" src=\"".$chemin."\" alt=\"photo du produit\"/>
@@ -217,6 +262,48 @@ public function getProdNonValid() {
         </div>
         </div>
         </a>";
+        }
+    }
+
+    public function afficheProdEvenUnvalid($produit){
+        $chemin=$this->getPhoto1($produit->getIdProd());
+        $prix=$produit->getPrice();
+        $rows = $this->connection->query("SELECT nom_cat FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat WHERE assoc_prd_cat.id_prod=".$produit->getIdProd().";")->fetchAll(\PDO::FETCH_OBJ);
+        $categories="";
+        $taille=count($rows);
+        $c=1;
+        foreach ($rows as $row){
+            if ($c<$taille){
+                $categories=$categories.($row->nom_cat).", ";
+                $c=$c+1;
+            }
+
+            else{
+                $categories=$categories.($row->nom_cat);
+            }
+
+        }
+        if ($prix!=0){
+            $prix=$prix." €";
+        }
+        else{
+            $prix="Gratuit";
+        }
+        echo "<a href=\"produit.php?produit=".$produit->getIdProd()."\">
+        <div class=\"produit\">
+        <div class=\"photo_prod\">
+        <img class =\"preview\" src=\"".$chemin."\" alt=\"photo du produit\"/>
+        </div>
+        <div class=\"text_prod\">
+        <p>
+        <span class=\"titre_prod\">".$produit->getTitle()."</span><br/><br/>
+        <span class=\"prix_prod\">".$prix."</span><br/><br/>
+        <span class=\"details\">".$categories."<br/>".$produit->getDatePubli()->format('Y-m-d')."</span>
+        </p>
+        </div>
+        </div>
+        </a>";
+        
     }
 
     public function getSpecificProd($idproduit)

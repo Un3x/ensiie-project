@@ -45,10 +45,13 @@ require("header.php");
         $prods=array_reverse($ProdRepository->getProdofC($_GET['id']));
         $nom=$catRepository->getCatofId($_GET['id'])[0]->getNomCat();
         echo "<h2 class=\"sous_titre\">Produits dans la catégorie ".$nom."</h1>";
-        if ($prods ==[]) echo "<span class=\"red\">Pas de produits dans cette catégorie</span>";
+        $c=0;
         foreach ($prods as $prod){
             $ProdRepository->afficheProd($prod);
+            if ($prod->getValide()==1) $c=$c+1;
         }
+        if ($prods ==[]) echo "<span class=\"red\">Pas de produits dans cette catégorie</span>";
+        else if ($c==0) echo "<span class=\"red\">Pas de produits dans cette catégorie</span>";
     }
     ?>
 

@@ -45,8 +45,14 @@ require("header.php");
         foreach ($prods as $prod){
             if ($c<$max){
                 $ProdRepository->afficheProd($prod);
-                $c=$c+1;
+                if ($prod->getValide()==1){
+                    $c=$c+1;
+                }
             }
+        }
+
+        if ($c==0){
+            echo "<h4>Aucune annonce postée</h4>";
         }
 
         if ($_SESSION['authent'] == 1) {
@@ -57,11 +63,13 @@ require("header.php");
             foreach ($prods as $prod){
                 if ($c<$max){
                     $ProdRepository->afficheProd($prod);
-                    $c=$c+1;
+                    if ($prod->getValide()==1){
+                        $c=$c+1;
+                    }
                 }
             }
 
-            if ($prods==[]){
+            if ($c==0){
                 echo "<h4>Tu n'as posté aucune annonce ! <a href=\"ajoutProd.php\">Qu'attends-tu ?</a> &#x1F448</h4>";
             }
         }

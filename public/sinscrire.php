@@ -26,6 +26,12 @@ require("header.php");
 
 <section>
 <?php 
+
+if ($_SESSION['authent']==1){
+	echo "Vous êtes déjà connecté.";
+	exit();
+}
+
 if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'],$_POST['bday'],$_POST['ville'],$_POST['mdpverif']))
 	{
 		$_POST['id_user']=htmlspecialchars($_POST['id_user']);

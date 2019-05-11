@@ -20,7 +20,7 @@ CREATE TABLE "utilisateur"(
     mdp VARCHAR(100),
     photo_id INTEGER REFERENCES photo(id_photo),
     administrateur INTEGER /*CHECK (administrateur = 1 || administrateur = 0)*/,
-    valid INTEGER,
+    valid INTEGER,/*0 pas valide 1 valide 2 supprimer par admin*/
     CONSTRAINT key_user PRIMARY KEY (id)
     /*CONSTRAINT fk_photo FOREIGN KEY (photo_id) REFERENCES photo_profil(id_photo)*/
     
@@ -37,7 +37,7 @@ CREATE TABLE "produits"(
     photo1 INTEGER REFERENCES photo(id_photo),
     photo2 INTEGER REFERENCES photo(id_photo),
     photo3 INTEGER REFERENCES photo(id_photo),
-    valide INTEGER,
+    valide INTEGER, /*0 pas valide 1 valide 2 supprimer par admin 3 supprimer par user*/
     CONSTRAINT key_prod PRIMARY KEY (id_produit)
     /*CONSTRAINT fk_proprio FOREIGN KEY (id_proprio) REFERENCES "utilisateur
 "(id)*/
@@ -91,7 +91,7 @@ INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(8,'Services','services.php'
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(9,'Emploi','emploi.php');
 INSERT INTO "categorie"(id_cat,nom_cat, link) VALUES(10,'BONS PLANS','bonsplans.php');
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price,photo1,photo2,photo3,valide) VALUES (0,'2019-04-30','matth91000','Trotinette en très bon état','XIAOMI M365',40000,4,3,3,0);
-INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price,photo1,photo2,photo3,valide) VALUES (1,'2019-04-30','matth91000','Cours de maths de première à 1ère année de prépa','Cherche prof particulier mathématiques sur Evry',0,3,3,3,1);
+INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price,photo1,photo2,photo3,valide) VALUES (1,'2019-04-30','matth91000','Cours de maths de première à 1ère année de prépa','Cherche prof particulier mathématiques sur Evry',0,3,3,3,0);
 INSERT INTO "produits"(id_produit,date_publi,id_proprio,descript,title,price,photo1,photo2,photo3,valide) VALUES (2,'2019-04-30','matth91000','Le salon aura lieu le 7 mai prochain. Rémuneration : 200€','Cherche animateur pour salon du jeu vidéo',0,3,3,3,0);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (6,0);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (1,0);

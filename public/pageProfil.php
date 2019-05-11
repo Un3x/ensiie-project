@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['authent'])) {
     $_SESSION['authent'] = 0;
 }
+
+if (!isset($_SESSION['statut'])) {
+    $_SESSION['statut'] = 0;
+  }
 require '../vendor/autoload.php';
 
 //postgres
@@ -39,12 +43,36 @@ require("header.php");
             }
         }
 
+        if (isset($_POST['delete'],$_POST['id'])){
+            $connection->query("UPDATE produits SET valide='3' WHERE id_produit='".$_POST['id']."';");
+            echo "Votre annonce a bien été supprimée<br/>";
+            $_POST['id']=null;
+            $_POST['delete']=null;
+        }
+
+        if (isset($_POST['delete_user'])){
+            $list_prod=$ProdRepository->getProdofUser($_SESSION['pseudo']);
+            foreach ($list_prod as $p){
+                $id=$p->getIdProd();
+                $connection->query("DELETE FROM assoc_prd_cat WHERE id_prod='".$id."';");
+                $connection->query("DELETE FROM produits WHERE id_produit='".$id."';");
+            }
+            $connection->query("DELETE FROM utilisateur WHERE id='".$_SESSION['pseudo']."';");
+            echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+            exit();
+        }
+
         if ($_SESSION['authent']==0){
             echo "Vous devez être connecté pour voir le contenu d'un profil";
             exit();
         }
         $CurrUser = $userRepository->testpseudo($_GET['pseudo']);
         if ($CurrUser==[]){
+            echo "Ce profil n'existe pas.<br/>Redirection en cours...";
+            echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
+            exit();
+        }
+        if ($CurrUser[0]->getValid()!=1 && $_SESSION['statut']!=1){
             echo "Ce profil n'existe pas.<br/>Redirection en cours...";
             echo "<meta http-equiv=\"Refresh\" content=\"2;url=index.php\">";
             exit();
@@ -112,9 +140,38 @@ require("header.php");
                 form.style.display = "block";
                 infos.style.display = "none";
             }
-        } 
+        }
+
+        function show(etat,id)
+        {
+            document.getElementById(id).style.display=etat;
+        }
     </script>
 
+    <?php
+    echo "<form method=\"post\" action=\"\">
+    <div class=\"flexbox_button\">
+        <div class=\"bouton\">
+            <input type=\"reset\" onclick=\"show('block','suppprofil')\" value=\"&#128465; Supprimer mon profil\" name=\"supprimer\">
+        </div>
+    </div>
+</form>
+<div id=\"suppprofil\">
+Êtes-vous sur de vouloir supprimer ce produit ?
+<form method=\"post\" action=\"\">
+    <input type=\"hidden\" name=\"delete_user\" value=\"1\">
+    <div class=\"flexbox_boutton\">
+        <div class=\"bouton\">
+            <input type=\"submit\" value=\"Oui\" name=\"Oui\">
+        </div>
+        <div class=\"bouton\">
+            <input type=\"reset\" onclick=\"show('none','suppprofil')\" value=\"Non\" name=\"Non\">
+        </div>
+    </div>
+</form>
+</div>
+<script type=\"text/javascript\">show('none','suppprofil');</script>";
+    ?>
     <?php
     if ($_GET['pseudo']==$_SESSION['pseudo']){
         echo "<h2 class=\"sous_titre\">Mes annonces</h2>";
@@ -128,7 +185,31 @@ require("header.php");
         $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
         foreach ($prods as $prod){
                 $ProdRepository->afficheProd($prod);
-                if ($_GET['pseudo']==$_SESSION['pseudo']) echo "<button class=\"supp\" onclick=\"\">&#128465; Supprimer</button>";
+                if ($_GET['pseudo']==$_SESSION['pseudo'] && $prod->getValide()==1) 
+                echo 
+                "<form method=\"post\" action=\"\">
+                    <div class=\"flexbox_button\">
+                        <div class=\"bouton\">
+                            <input type=\"reset\" onclick=\"show('block','".$prod->getIdProd()."')\" value=\"&#128465; Supprimer\" name=\"supprimer\">
+                        </div>
+                    </div>
+                </form>
+                <div id=\"".$prod->getIdProd()."\">
+                Êtes-vous sur de vouloir supprimer ce produit ?
+                <form method=\"post\" action=\"\">
+                    <input type=\"hidden\" name=\"id\" value=\"".$prod->getIdProd()."\">
+                    <input type=\"hidden\" name=\"delete\" value=\"1\">
+                    <div class=\"flexbox_boutton\">
+                        <div class=\"bouton\">
+                            <input type=\"submit\" value=\"Oui\" name=\"Oui\">
+                        </div>
+                        <div class=\"bouton\">
+                            <input type=\"reset\" onclick=\"show('none','".$prod->getIdProd()."')\" value=\"Non\" name=\"Non\">
+                        </div>
+                    </div>
+                </form>
+                </div>
+                <script type=\"text/javascript\">show('none','".$prod->getIdProd()."');</script>";
         }
 
         if ($prods==[]){

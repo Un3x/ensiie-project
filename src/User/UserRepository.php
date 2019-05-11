@@ -31,7 +31,80 @@ class UserRepository
                 ->setMail($row->mail)
                 ->setMdp($row->mdp)
                 //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
-                ->setAdministrateur($row->administrateur);
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
+    public function fetchAllUnvalid()
+    {
+        $rows = $this->connection->query('SELECT * FROM "utilisateur" WHERE valid=0')->fetchAll(\PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp)
+                //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
+    public function fetchAllDeleteByAdmin()
+    {
+        $rows = $this->connection->query('SELECT * FROM "utilisateur" WHERE valid=2')->fetchAll(\PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp)
+                //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
+    public function fetchAllDeleteByUser()
+    {
+        $rows = $this->connection->query('SELECT * FROM "utilisateur" WHERE valid=3')->fetchAll(\PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $user = new User();
+            $user
+                ->setId($row->id)
+                ->setFirstname($row->firstname)
+                ->setLastname($row->lastname)
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setLocation($row->loc)
+                ->setMail($row->mail)
+                ->setMdp($row->mdp)
+                //->setProfilePicture($row->pp); //pour l'avoir il faut faire une jointure avec la table : photo_profil
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
 
             $users[] = $user;
         }
@@ -51,7 +124,9 @@ class UserRepository
                 ->setBirthday(new \DateTimeImmutable($row->birthday))
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
-                ->setMdp($row->mdp);
+                ->setMdp($row->mdp)
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
             $users[] = $user;
         }
         return $users;
@@ -70,7 +145,9 @@ class UserRepository
                 ->setBirthday(new \DateTimeImmutable($row->birthday))
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
-                ->setMdp($row->mdp);
+                ->setMdp($row->mdp)
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
             $users[] = $user;
         }
         return $users;
@@ -89,7 +166,9 @@ class UserRepository
                 ->setBirthday(new \DateTimeImmutable($row->birthday))
                 ->setLocation($row->loc)
                 ->setMail($row->mail)
-                ->setMdp($row->mdp);
+                ->setMdp($row->mdp)
+                ->setAdministrateur($row->administrateur)
+                ->setValid($row->valid);
             $users[] = $user;
         }
         return $users;
@@ -105,6 +184,7 @@ class UserRepository
 
     public function afficheUser($user){
         $chemin=$this->getPhoto($user->getId());
+        if ($user->getValid()==1){
         echo "<a href=\"pageProfil.php?pseudo=".$user->getId()."\">
         <div class=\"produit\">
         <div class=\"photo_prod\">
@@ -119,6 +199,26 @@ class UserRepository
         </div>
         </div>
         </a>";
+        }
+    }
+
+    public function afficheUserEvenUnvalid($user){
+        $chemin=$this->getPhoto($user->getId());
+        echo "<a href=\"pageProfil.php?pseudo=".$user->getId()."\">
+        <div class=\"produit\">
+        <div class=\"photo_prod\">
+        <img class =\"preview\" src=\"".$chemin."\" alt=\"photo de profil\"/>
+        </div>
+        <div class=\"text_prod\">
+        <p>
+        <span class=\"titre_prod\">".$user->getId()."</span><br/><br/>
+        <span class=\"prix_prod\">".$user->getAge()." ans</span><br/><br/>
+        <span class=\"details\">".$user->getLocation()."</span>
+        </p>
+        </div>
+        </div>
+        </a>";
+        
     }
 
 

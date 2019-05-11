@@ -83,18 +83,31 @@ function showCat(etat){
                 $resultsearch=array_reverse($prodRepository->searchProdonCat(htmlspecialchars($_GET['search']),$cat->getId()));
                 endforeach;
                 echo '<br/><br/>';
-                foreach ($resultsearch as $res) :
-                    $prodRepository->afficheProd($res); endforeach;
+                $c=0;
+                foreach ($resultsearch as $res){
+                    $prodRepository->afficheProd($res);
+                    if ($res->getValide()==1){
+                        $c=$c+1;
+                    }
+                }
                 if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
+                else if ($c == 0) echo "Aucun résultat pour cette recherche.";
+
                 }
 
                 else{
                     echo 'dans toutes les catégories';
                     $resultsearch=array_reverse($prodRepository->searchProd(htmlspecialchars($_GET['search'])));
                     echo '<br/><br/>';
-                    foreach ($resultsearch as $res) :
-                        $prodRepository->afficheProd($res); endforeach;
+                    $c=0;
+                    foreach ($resultsearch as $res){
+                        $prodRepository->afficheProd($res);
+                        if ($res->getValide()==1){
+                            $c=$c+1;
+                        }
+                    }
                     if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
+                    else if ($c == 0) echo "Aucun résultat pour cette recherche.";
 
                 }
             }
@@ -103,10 +116,15 @@ function showCat(etat){
                 echo 'dans les Utilisateurs';
                 $resultsearch=$userRepository->searchUser(htmlspecialchars($_GET['search']));
                 echo '<br/><br/>';
-                $compt=1;
-                foreach ($resultsearch as $res) :
-                    $userRepository->afficheUser($res); endforeach;
+                $c=0;
+                foreach ($resultsearch as $res){
+                    $userRepository->afficheUser($res);
+                    if ($res->getValid()==1){
+                        $c=$c+1;
+                    }
+                }
                 if ($resultsearch == []) echo "Aucun résultat pour cette recherche.";
+                else if ($c == 0) echo "Aucun résultat pour cette recherche.test";
             }
         }
 
