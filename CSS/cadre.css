@@ -61,6 +61,21 @@
 
 }
 
+.CR-border1 {
+	border-radius: 35px 35px;
+	background: #8888CC;
+	padding: 25px;
+
+}
+
+.CR-border2 {
+	border-radius: 35px 35px;
+	background: #8888AA;
+	padding: 25px;
+
+}
+
+
 
 
 #conteneur
