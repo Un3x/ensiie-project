@@ -34,7 +34,7 @@
 	$userRepository = new \User\UserRepository($connection);
 	$ok = false;
 
-	if (isset($_POST['email']) && isset($_SESSION['active']) && $_SESSION['active'] && isset($_SESSION['type'])) {
+	if (isset($_POST['email']) && isset($_POST['tel_modifier']) && isset($_POST['pwd_modifier'])) {
 		$users = $userRepository->fetchAllParticipant();
 		$type = "Participant";
 		$ok = tryMod($connection, $users, $type);
