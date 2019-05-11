@@ -54,7 +54,7 @@
                 ?>
             </nav>
 
-            <div id="id01" class="modal">
+            <div id="id01" class="modal" style="z-index: 9999;">
         
         <form class="modal-content animate" action="" method="post">
             <div class="imgcontainer">
