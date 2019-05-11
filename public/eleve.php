@@ -40,11 +40,14 @@ foreach ($points as $point) : ?>
 	<td><?php echo $point->name ?></td>
 	<td><?php echo $point->moyenne ?></td>
 	</tr>
-<?php endforeach;?>
+<?php endforeach;
+
+if ($moyenne):?>
 	<tr id="moyenne">
 		<td> Moyenne </td>
 		<td> <?php echo $moyenne->moyenne ?> </td>
 	</tr>
+<?php endif;?>
 </table>
 
 <table class="table table-bordered table-hover table-striped">

@@ -73,7 +73,7 @@ from (select id_user,id_asso, moyenne*coeff_asso point, coeff_asso coefficient f
 group by a.id_user
 order by moyenne asc;
 
-insert into users (firstname,lastname,pseudo,year,president) values ('Loïc','Dubard','Wikle',2018,1);
+insert into users (firstname,lastname,pseudo,year,president,mail) values ('Loïc','Dubard','Wikle',2018,1,'loic97429@gmail.com');
 insert into users(firstname,lastname,pseudo,year,bde) values ('Quentin','Japhet','Samuh',2018,1);
 insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
 insert into associations(name,president,coeff_asso) values ('Securitiie',1,50);
@@ -86,7 +86,7 @@ select moyenne from leaderboard where id_user=$iduser; --la moyenne totale
 select name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user=$iduser; --par assos
 select name,association,notation from (score natural join events using (id_event) join associations using (id_asso)) where iduser=$iduser; --par evenements
 */
-select moyenne from leaderboard where id_user=1;
+--select moyenne from leaderboard where id_user=1;
 /*pour qu'un élève modifie sa participation a un évènement
  
  */
