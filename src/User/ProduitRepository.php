@@ -158,6 +158,27 @@ public function getPhoto3($idprod){
     
 }
 
+public function getProdNonValid() {
+    $rows = $this->connection->query("SELECT * FROM produits WHERE valide = 0;")->fetchAll(\PDO::FETCH_OBJ);
+    $prods=[];
+    foreach ($rows as $row){
+        $prod=new Produits();
+        $prod
+            ->setId($row->id_produit)
+            ->setDatePubli(new \DateTimeImmutable($row->date_publi))
+            ->setDescription($row->descript)
+            ->setPrice($row->price)
+            ->setTitle($row->title)
+            ->setPhoto1($row->photo1)
+            ->setPhoto2($row->photo2)
+            ->setPhoto3($row->photo3)
+            ->setValide($row->valide)
+            ->setIdProprio($row->id_proprio);
+        $prods[]=$prod;
+    }
+    return $prods;
+}
+
     public function afficheProd($produit){
         $chemin=$this->getPhoto1($produit->getIdProd());
         $prix=$produit->getPrice();

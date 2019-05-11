@@ -47,6 +47,9 @@
                     echo "<button class=\"boutton\" onclick=\"window.location.href='ajoutProd.php'\" style=\"width:auto;\">+ Ajouter un produit</button>";
                     echo "<button class=\"boutton\" onclick=\"window.location.href='pageProfil.php'\" style=\"width:auto;\">Mon profil</button>";
                     echo "<button class=\"boutton\" onclick=\"window.location.href='deconnexion.php'\" style=\"width:auto;\">Déconnexion</button>";
+                    if ($_SESSION['statut'] == 1) {
+                        echo "<button class=\"boutton\" onclick=\"window.location.href='validation.php'\" style=\"width:auto;\">&#11088; Administrateur</button>";
+                    }
                 }
                 ?>
             </nav>
