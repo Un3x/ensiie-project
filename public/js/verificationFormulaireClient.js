@@ -25,7 +25,7 @@ var check = {};
 check['mail'] = function ( )
 {
     var mail = document.getElementById("mail");
-    var regex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    var regex = /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/g;
     if(regex.test(mail.value))
     {
         return true;
@@ -65,6 +65,10 @@ check['age'] = function ( )
     return true;
 }
 
+check['password'] = function()
+{
+    return true;
+}
 check['password2'] = function ( )
 {
     var password = document.getElementById("password");
