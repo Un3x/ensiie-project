@@ -116,9 +116,10 @@ else {
      <div class="grand-titre">Bienvenue sur la page perso de <?php echo"$pseudo"; ?></div>
      <?php if (!($user_connected)) : ?>
         <div class="non connecté">
-            Vous n'êtes pas connectés, veulliez vous connecter<a href="connexion.php">ICI</a>pour accéder aux informations</div>
+            Vous n'êtes pas connectés, veuillez vous connecter<a href="connexion.php">ICI</a>pour accéder aux informations</div>
     <?php endif; ?>
     <?php if ($user_connected) : ?>
+    
     <div class="content">
         <div>
             <div class="res">Mes réservations</div>
