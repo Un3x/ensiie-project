@@ -84,5 +84,18 @@ class CityManager
 	{
 		$this->connection=$connection;
 	}
+	
+	public function getList()
+	{
+		$req=$this->connection->query("SELECT * from cities")->fetchAll();
+		if($req===false)
+			return false;
+		return array_map(function ($v) 
+		{
+			$city=new City();
+			$city->hydrate2($v);
+			return $city;
+		},req);
+	}
 
 }
