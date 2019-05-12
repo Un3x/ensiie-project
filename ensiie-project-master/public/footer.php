@@ -5,7 +5,7 @@
 <section class="one_quarter">
 <h2 class="title">Sponsors</h2>
 <nav>
-<img src="images/evian-logo-grey.png" width="180" height="160" alt="">
+<img src="images/Evian-logo-grey.png" width="180" height="160" alt="">
 </nav>
 </section>
 <!-- Section Two -->
