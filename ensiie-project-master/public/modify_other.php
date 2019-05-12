@@ -14,6 +14,8 @@
 </head>
 
 <body>
+<div class="wrapper row2">
+<div id="container" class="clear">
 
 
 <div id="form_account" class="middle">
@@ -40,6 +42,8 @@
 <input type="submit" id="btn" value="Cancel" />
 </p>
 </form>
+</div>
+</div>
 </div>
 <?php include("footer.php"); ?>
 

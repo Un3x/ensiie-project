@@ -14,6 +14,8 @@
 </head>
 
 <body>
+<div class="wrapper row2">
+<div id="container" class="clear">
 <div id="form_sign_in" class="middle">
 <form action="login_process.php" method="POST">
 <p>
@@ -31,7 +33,8 @@
 </form>
 </div>
 
-
+</div>
+</div>
 
 <?php include("footer.php"); ?>
 
