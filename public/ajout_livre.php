@@ -37,6 +37,7 @@ if (!(verifAdmin($_SESSION["id_user"]))) {
     header("Location: index.php");
 }
 
+$ok_livre = 1;
 
 if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image']) && isset($_POST['edition']) && isset($_POST['auteur1'])) {
     if (verifTitre($_POST['titre'])) {
@@ -70,6 +71,10 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 
         header("Location: index.php");
     }
+    else {
+        // le livre existe déjà
+        $ok_livre = 0;
+    }
 }
 
 ?>
@@ -77,7 +82,8 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <head>
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/formulaire.css">
+    <link rel="stylesheet" href="./css/formulaire_small.css">
+    <link rel="stylesheet" href="./css/ajout_livre.css">
     <title>Page d'ajout de livre</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
@@ -114,41 +120,45 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
 <section class="connect">
 <div class="container">
 <div class="grand-titre">Page d'ajout de livre</div>
-<form class="form" id="form_ajout_livre" action="ajout_livre.php" method="POST">
-    Titre<br>
-    <input class="formulaire" id="titre" type="text" name="titre" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="70"/>
-    <br>Auteur<br>
-    <input class="formulaire" id="auteur" type="text" name="auteur1" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
+    <?php 
+        if($ok_livre == 0) 
+            echo '<span class="invalid_submit">Le livre existe déjà !</span>';
+    ?>
+    <form class="form" id="form_ajout_livre" action="ajout_livre.php" method="POST">
+        Titre<br>
+        <input class="formulaire" id="titre" type="text" name="titre" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="70"/>
+        <br>Auteur<br>
+        <input class="formulaire" id="auteur" type="text" name="auteur1" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
+            
+        <br>
+        <a id="1" style="display:none">Auteur 2<br>
+        <input class="formulaire" type="text" name="auteur2" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
+
+        <a id="2" style="display:none" >Auteur 3<br>
+        <input class="formulaire" type="text" name="auteur3" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
+
+        <a id="3" style="display:none" >Auteur 4<br>
+        <input class="formulaire" type="text" name="auteur4" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
+
+        <a id="4" style="display:none" >Auteur 5<br>
+        <input class="formulaire" type="text" name="auteur5" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
+
+        <a id="5" style="display:none" >Auteur 6<br>
+        <input class="formulaire" type="text" name="auteur6" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
+
+        <input class="formulaire" id="butt" type="button" class="input" onclick="ajoute_aut()" value="+">
+
+        <br>Date de publication<br>
+        <input class="formulaire" id="date" type="date" name="datepub" required/>
         
-    <br>
-    <a id="1" style="display:none">Auteur 2<br>
-    <input class="formulaire" type="text" name="auteur2" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
-
-    <a id="2" style="display:none" >Auteur 3<br>
-    <input class="formulaire" type="text" name="auteur3" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
-
-    <a id="3" style="display:none" >Auteur 4<br>
-    <input class="formulaire" type="text" name="auteur4" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
-
-    <a id="4" style="display:none" >Auteur 5<br>
-    <input class="formulaire" type="text" name="auteur5" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
-
-    <a id="5" style="display:none" >Auteur 6<br>
-    <input class="formulaire" type="text" name="auteur6" pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/><br></a>
-
-    <input class="formulaire" id="butt" type="button" class="input" onclick="ajoute_aut()" value="+">
-
-    <br>Date de publication<br>
-    <input class="formulaire" id="date" type="date" name="datepub" required/>
+        <br>Image de couverture<br>
+        <input class="formulaire" id="img" type="text" name="image"/ required maxlength="200">
     
-    <br>Image de couverture<br>
-    <input class="formulaire" id="img" type="text" name="image"/ required maxlength="200">
-   
-    <br>Edition<br>
-    <input class="formulaire" id="edition" type="text" name="edition" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
-    <br>
-    <input class="formulaire" id="formSubmit" type="submit" class="butcon" value="Valider"/>
-</form>
+        <br>Edition<br>
+        <input class="formulaire" id="edition" type="text" name="edition" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"/>
+        <br>
+        <input class="formulaire" id="formSubmit" type="submit" class="butcon" value="Valider"/>
+    </form>
 </section>
 </body>
 </html>
