@@ -67,6 +67,11 @@ abstract class UserManager
 	 */
 	public abstract  function update(User $user) ;
 
+    public final function isUsed($mailAddress)
+	{
+		return $this->connection->query("select * from Client where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Vendor where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Admin where $mailAddress=mailAddress")->fetch()===false;
+	}
+
 	/**
 	 * change la valeur de connection
 	 * @access public

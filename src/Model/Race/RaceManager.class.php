@@ -35,7 +35,8 @@ class RaceManager
 	 */
     public function add(Race $race)
     {
-		return $this->connection->exec("INSERT INTO Race (name,speed,capacity) VALUES ($race->getName(),$race->getSpeed(),$race->getCapacity())");
+			$statement = $this->connection->prepare("INSERT INTO Race (name,speed,capacity) VALUES (:name,:speed,:capacity)");
+			return $statement->execute(array("name" => $race->getName(),"speed"=>$race->getSpeed(),"capacity"=>$race->getCapacity()));		
 	}
 
 	/**
@@ -46,7 +47,8 @@ class RaceManager
 	 */
     public function delete(Race $race) 
     {
-			return $this->connection->exec("DELETE from Race where $race->getId()=id");
+			$statement = $this->connection->prepare("DELETE from Race where id = :id");
+			return $statement->execute(array("id" => $race->getId()));
     }
 
 	/**
@@ -57,7 +59,9 @@ class RaceManager
 	 */
     public function get($id) 
     {
-		$req=$this->connection->query("SELECT * from Race where id=$id")->fetch();
+			$statement = $this->connection->prepare("SELECT * from Race where id = :id");
+			$statement->execute(array("id" => $id));
+			$req=$statement->fetch();
 		if($req==false)
 			return false;
 		$admin=new Race();
@@ -84,7 +88,8 @@ class RaceManager
 	 */
     public function update(Race $race)
     {
-			return $this->connection->exec("update from Race set name='$race->getName()',speed='$race->getSpeed(),capacity='$race->getCapacity()' where $race->getId()=id");
+			$statement = $this->connection->prepare("UPDATE from Race set name=:name, speed=:speed, capacity=:capacity where id=:id");
+			return $statement->execute(array("name" => $race->getName(),"latitude"=>$race->getSpeed(),"capacity"=>$race->getCapacity(),"id" => $race->getId()));
     }
 	/**
 	 * change la valeur de connection

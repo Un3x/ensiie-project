@@ -21,16 +21,20 @@ if (((isset($_POST['usedCard'])
     $courseId = $_POST['idCourse'];
 
 
-    require '../vendor/autoload.php';
-	require '../src/Model/Course/CourseManager.php';
+    require_once('../vendor/autoload.php');
+	require_once('../src/Model/Course/CourseManager.php');
 
 	
 	$connection = bdd();
     $CourseManager = new CourseManager($connection);
+    $VendorManager = new VendorManager($connection);
 
     $course = $CourseManager->getCourse($courseId);
+    $carrier = $VendorManager->get($course['carrierId']);
 
     if ($course){
+
+        $CourseManager->changeCourse($courseId,1);
 
         $clientName = $course['clientFirstname'].' '.$course['clientSurname'];
         $carrierName = $course['carrierFirstname'].' '.$course['carrierSurname'];
@@ -48,7 +52,7 @@ if (((isset($_POST['usedCard'])
         $Template->arrivalName = $arrivalName;
         
 
-        $recipient = "testprojetlicorne+testMail@gmail.com";
+        $recipient = $GLOBALS['user']->getMailAddress();
         $subject = "confirmation de réservation";
         $body = $Template->compile();
         $bodyAlt = "";
@@ -66,7 +70,7 @@ if (((isset($_POST['usedCard'])
         $Template->arrivalName = $arrivalName;
         
 
-        $recipient = "testprojetlicorne+testMail@gmail.com";
+        $recipient = $carrier->getMailAddress();
         $subject = "demande de trajet";
         $body = $Template->compile();
         $bodyAlt = "";

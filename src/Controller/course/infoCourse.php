@@ -6,13 +6,15 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 	require '../src/Model/Course/CourseManager.php';
 
 	$connection = bdd();
-
 	$CourseManager = new CourseManager($connection);
 
 	if (isset($_GET['courseId'])){
 
+		if(!$GLOBALS['user']){
+			header('Location: /connexion');
+		}
 
-		$userType = "carrier";
+		$userType = $_SESSION['userType'];
 
 		$course = $CourseManager->getCourse($_GET['courseId']);
 
@@ -23,10 +25,10 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 			$courseStatus=$course['state'];
 
 
-			if ($userType == "carrier") $name=$course["carrierFirstname"].' '.$course["carrierSurname"];
+			if ($userType == "Vendor") $name=$course["carrierFirstname"].' '.$course["carrierSurname"];
 			else $name=$course["clientFirstname"].' '.$course["clientSurname"];
 
-			$found = true;
+			$found = $_SESSION['userId']==$course['carrierId'] || $_SESSION['userId']==$course['clientId'];
 		}
 		else{
 			$found=false;

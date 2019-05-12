@@ -13,6 +13,7 @@ function initChamps()
     $valeurDefaut['nom'] = $user->getSurname();
     $valeurDefaut['description'] = $user->getDescription();
     $valeurDefaut['note'] = $user->getReputation();
+    $valeurDefaut['phoneNumber'] = $user->getPhoneNumber();
 
     return $valeurDefaut;
 }
@@ -57,9 +58,15 @@ function validationProfil()
     $clientManager = new ClientManager($bdd);
     $user = $GLOBALS["user"];
     $user->setFirstname($_POST["prenom"]);
+    $user->setSurname($_POST["nom"]);
+    $user->setPhoneNumber($_POST['phoneNumber']);
+    $user->setDescription($_POST['description']);
     // changer le reste
 
-    $clientManager->update($user);
+    if($clientManager->update($user) == false)
+    {
+        $message = $message." Erreur lors de la modification de la base de donnée. Veuillez ressayer ultérieurment. <br/> ";
+    };
 
     $message = $message." </span>";
 

@@ -7,7 +7,6 @@ require("../src/Model/User/VendorManager.class.php");
 
 function bdd()
 {
-
     try{
         //postgres
         $dbName = getenv('DB_NAME');
@@ -17,18 +16,15 @@ function bdd()
         return $a;
     }
     catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
+        
     }
-
 
     try {
         $a = new PDO('pgsql:host=localhost', "Lucas","");
         return $a;
     }
     catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
+        
     }
     return $a;
 }
