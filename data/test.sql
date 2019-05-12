@@ -28,16 +28,16 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('1', 'Jacques Muller');
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('2', 'La formule du savoir', 'Lé Nguyên Hoang', '2018-06-14', './cvlivres/xl_9782759822607-FormuleSavoir_couv-sofedis.jpg', 'Ecosciences');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('2', 'Lé Nguyên Hoang');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('3', 'Introduction à l’étude des phénomênes économiques', 'François MOREAU', '1999-1-1', './cvlivres/Introduction_a_l_etude_des_phenomene_economique.JPG', 'editeur');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('3', 'Introduction à l’étude des phénomênes économiques', 'François MOREAU', '1999-1-1', './cvlivres/Introduction_a_l_etude_des_phenomene_economique.jpg', 'editeur');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('3', 'François MOREAU');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('3', 'Gilles DESVILLES');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('4', 'Initiation au microprocessing sym', 'Jean-Claude ARRESTIER', '1999-1-1', './cvlivres/Initiation_au_microprocessing_SYM.JPG', 'International Institute of science and technology');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('4', 'Initiation au microprocessing sym', 'Jean-Claude ARRESTIER', '1999-1-1', './cvlivres/Initiation_au_microprocessing_SYM.jpg', 'International Institute of science and technology');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Jean-Claude ARRESTIER');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Alain AUTIN');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('4', 'Pierre CLAUDÉ');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('5', 'Construction mécanique – Tome 1', 'M. Dejans', '2006-5-1', './cvlivres/9782091795799.JPG', 'Nathan');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('5', 'Construction mécanique – Tome 1', 'M. Dejans', '2006-5-1', './cvlivres/9782091795799.jpg', 'Nathan');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'M. Dejans');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'H. Lehu');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('5', 'R. Quatremer');
@@ -50,5 +50,5 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('6', 'R. Bourgeron');
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('7', 'Guide du dessinateur industriel', 'A. Chevalier', '2003-6-25', './cvlivres/515lJficFfL._SX326_BO1,204,203,200_.jpg', 'Hachette');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('7', 'A. Chevalier');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.JPG', 'Raisonance');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg, 'Raisonance');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('8', 'Revision 1.00');
