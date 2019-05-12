@@ -56,7 +56,7 @@ class Client extends User
 		$this->setDescription($description);
 		$this->setGender($gender);
 		$this->setNbClientCourses($nbClientCourses);
-		$this->creationDate=date('Y-m-d H:i:s');
+		$this->creationDate=date_create();
 	}
 
 	public function hydrate2($sqlRow,Race $race)
