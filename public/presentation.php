@@ -34,7 +34,7 @@
             <div class="container">
                 <div id="paces-presentation">
                     <div id="locat">
-                        <img class="text-icon" src="images/location.svg" alt="location icon"/>
+                        <img class="text-icon" src="img/location.svg" alt="location icon"/>
                         <h3>Les sites de formation</h3>
                         <p>Les étudiants en PACES sont répartis sur 2 sites de formation : <strong>le campus universitaire d’Orsay et la faculté de pharmacie de Châtenay Malabry</strong>. Le choix du lieu d’études est laissé à la volonté des étudiants lors de l’affectation PARCOURSUP (dans la mesure des capacités d’accueil).</p>
                         <br/>
@@ -42,7 +42,7 @@
                         </p>
                     </div>
                     <div id="teach">
-                        <img class="text-icon" src="images/teaching.svg" alt="teach icon"/>
+                        <img class="text-icon" src="img/teaching.svg" alt="teach icon"/>
                         <h3>Les enseignements</h3>
                         <p>Au premier semestre, les <strong>cours magistraux</strong> (CM), sur le site d’Orsay, ont lieu le matin, permettant aux <strong>travaux dirigés</strong> (TD) d’avoir lieu l’après-midi. Ceci est inversé à Châtenay Malabry, où les TD sont faits le matin et les cours magistraux donnés l’après-midi. Les différents professeurs donnent ainsi leur cours une première fois le matin, puis le même une seconde fois l’après-midi. Au second semestre, les cours magistraux n’ont lieu que l’après-midi sur les deux sites. Ainsi, le professeur alterne sa présence sur les deux lieux et le cours est <strong>vidéo transmis en direct</strong> sur le second endroit. Cette répartition permet aux étudiants de recevoir le même enseignement peu importe le site et de permettre <strong>l’équité face au Concours</strong> qui est le même pour tous.
                         </p><br/>
@@ -207,13 +207,13 @@
                         </table>
                     </div>
                     <div id="numerus">
-                        <img class="text-icon" src="images/chart.svg" alt="chart-icon">
+                        <img class="text-icon" src="img/chart.svg" alt="chart-icon">
                         <h3>Numerus Clausus et les filières</h3>
                         <p>Le <strong>Numerus Clausus</strong> est l’ensembles des places attribuées dans les filières de médecine, pharmacie, odontologie et maïeutique. Il est <strong>fixé par arrêté ministériel et imposé à chaque Université.</strong> Au sein de Paris Sud, pour l’année 2017-2018, 156 places sont affiliées à la médecine, 54 à la pharmacie, 14 à l’odontologie et 11 à la maïeutique.</p><br> 
                         <p>Au-delà de ces filières médicales, <strong>des conventions de l’université existent</strong>, donnant la possibilité aux étudiants d’intégrer d’autres écoles. Ainsi, en 2017-2018, 76 places de kinésithérapie étaient ouvertes ; 24 places pour intégrer Polytech ; et 10 places pour devenir manipulateur en radiologie médicale.</p>
                     </div>
                     <div id="exam">
-                        <img id="exam" class="text-icon" src="images/exam.svg" alt="exam-icon">
+                        <img id="exam" class="text-icon" src="img/exam.svg" alt="exam-icon">
                         <h3>Le concours</h3>
                         <p>Le concours se situe sur <strong>un seul des 2 sites de PACES</strong> : à Orsay, sur une journée au premier semestre et 2 jours au second. Les épreuves sont d’une durée comprise entre 30 minutes et 2 heures, sous la forme de <strong>QCM</strong> (Questions à Choix Multiples), <strong>QCS</strong> (Questions à Choix Simple) ou <strong>QROC</strong> (Question à Réponse Ouverte Courte). À l’issue du 1er semestre, soit <strong>mi-décembre</strong>, une première partie du concours a lieu, aboutissant à une première sélection : les étudiants classés au-delà d’environ 850 sont conseillés de se réorienter pour le 2ème semestre. <strong>Début mai</strong> a lieu la seconde partie du concours, sur 2 journées. Celle-ci donne lieu à un classement final et à l’affectation au sein des différentes filières proposées. Les étudiants non affectés mais ayant un <strong>classement inférieur à 3 fois le Numerus Clausus</strong> (sous 669 environ) sont autorisés à redoubler leur année pour repasser le concours l’année suivante.
                         </p>
@@ -221,12 +221,12 @@
                 </div>
                 <div id="tsps-presentation">
                     <div id="tutorat">
-                        <img class="text-icon" src="images/doctors.svg" alt="doc icon"/>
+                        <img class="text-icon" src="img/doctors.svg" alt="doc icon"/>
                         <h3>Qui sommes-nous?</h3>
                         <p>Le <strong>tutorat Santé Paris-Sud</strong> (TSPS) est une <strong>association à but non-lucratif</strong> indépendante de la faculté, mais soutenue à la fois par celle-ci et le corps enseignant. Constitué d'une <strong>équipe de tuteurs issus de 2ème année</strong> de toutes filières de santé post-PACES ainsi que d'un <strong>bureau d'étudiants de 3ème année</strong>, le tutorat vise à aider au mieux les étudiants, tant que sur la préparation du Concours que sur le plan personnel, grâce aux différentes prestations proposées tous les ans.</p>
                     </div>
                     <div id="pedagogie">
-                        <img class="text-icon" src="images/pedagogie.svg" alt="Pédagogie"/>
+                        <img class="text-icon" src="img/pedagogie.svg" alt="Pédagogie"/>
                         <h3>Nos initiatives pédagogiques</h3>
                         <div>
                             <h4>Pré-rentrée</h4>

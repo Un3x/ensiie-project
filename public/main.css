@@ -604,14 +604,14 @@ input[type=text],input[type=password], input[type=email]{
 
 #p1{
     color: rgb(16, 108, 184);
-    background-image: url("images/study.svg");
+    background-image: url("img/study.svg");
     background-size: 230px auto;
     background-position: -60px center;
 }
 
 #p2{
     color: rgb(10, 170, 109);
-    background-image: url("images/tutorat.png");
+    background-image: url("img/tutorat.png");
     background-size: auto 100px;
     background-position: left center;
     filter: grayscale(80%)
@@ -727,6 +727,7 @@ input[type=text],input[type=password], input[type=email]{
 #main-content table td, #main-content table th{
     border-bottom: 1px solid #bef0ff;
     border-top: 1px solid #bef0ff;
+    width: 14%;
     min-width: 120px;
 }
 
