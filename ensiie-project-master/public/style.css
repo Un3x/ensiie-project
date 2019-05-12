@@ -1,7 +1,7 @@
 
 html{overflow-y:scroll;}
 
-body{margin:0; padding:0; font-size:13px; font-family:Georgia, "Times New Roman", Times, serif; color:#919191; background-color:#232323;}
+body{margin:0; padding:0; font-size:15px; font-family:Georgia, "Times New Roman", Times, serif; color:#919191; background-color:#232323;}
 
 .clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
 .clear{display:block; clear:both;}
@@ -107,7 +107,7 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 #container #homepage #services article figure{}
 #container #homepage #services article figure img{margin:0 0 15px 0; padding:4px; border:1px solid #D6D6D6;}
 #container #homepage #services article figure figcaption{}
-#container #homepage #services article figure h2{font-size:14px; font-weight:bold;}
+#container #homepage #services article figure h2{font-size:14px; font-weight:bold;color:#000080;}
 #container #homepage #services article figure footer{}
 
 #container #homepage #intro{}
@@ -115,7 +115,8 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 #container #homepage #intro article figure{}
 #container #homepage #intro article figure img{float:right; margin:0 0 10px 0; padding:4px; border:1px solid #D6D6D6;}
 #container #homepage #intro article figure figcaption{float:left; width:460px;}
-#container #homepage #intro article figure h2{}
+#container #homepage #intro article figure h2{color: #000080;}
+#container #homepage #intro article figure h2:hover{color: #FF9000;}
 #container #homepage #intro article figure footer{}
 
 /*----------------------------------------------Footer-------------------------------------*/
@@ -173,7 +174,7 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 
 .text2 {
     background-color:#FF9900;
-    color: blue;
+    color: #000080;
     
     font-size: 20px;
     padding: 16px 32px;
@@ -181,7 +182,7 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 
 .text2 a{
     background-color:#FF9900;
-    color: blue;
+    color: #000080;
     
     
 }
