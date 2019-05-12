@@ -84,8 +84,9 @@ class ClientManager extends UserManager
 	 */
     public function update($user)
     {
-			return $this->connection->exec("update from Client set surname='$user->getSurname()',firstname='$user->getFirstname()',idRace='$user->getRace()->getId()',mailAddress='$user->getMailAddress()',passWord='$user->getPassword()',money='$user->getMoney()',phoneNumber='$user->getPhoneNumber()',birthDate='$user->getBirthDate()',reputation='$user->getReputation()',creationDate='$user->getCreationDate()',description='$user->getDescription()',gender='$user->getGender()', nbClientCourses='$user->getNbClientCourses()' where $user->getId()=id");
-		}
+        //echo ("update Client set surname='".$user->getSurname()."',firstname='".$user->getFirstname()."',idRace='".$user->getRace()->getId()."',mailAddress='".$user->getMailAddress()."',password='".$user->getPassword()."',money='".$user->getMoney()."',phoneNumber='".$user->getPhoneNumber()."',birthDate='".$user->getBirthDate()->format("Y-m-d")."',reputation='".$user->getReputation()."',creationDate='".$user->getCreationDate()->format("Y-m-d")."',description='".$user->getDescription()."',gender='".$user->getGender()."', nbClientCourses='".$user->getNbClientCourses()."' where ".$user->getId()."=id" );
+        return $this->connection->exec("update Client set surname='".$user->getSurname()."',firstname='".$user->getFirstname()."',idRace='".$user->getRace()->getId()."',mailAddress='".$user->getMailAddress()."',password='".$user->getPassword()."',money='".$user->getMoney()."',phoneNumber='".$user->getPhoneNumber()."',birthDate='".$user->getBirthDate()->format("Y-m-d")."',reputation='".$user->getReputation()."',creationDate='".$user->getCreationDate()->format("Y-m-d")."',description='".$user->getDescription()."',gender='".$user->getGender()."', nbClientCourses='".$user->getNbClientCourses()."' where ".$user->getId()."=id" );
+    }
 
 	/**
 	 * renvoie la liste de tout les utilisateurs

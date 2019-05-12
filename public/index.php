@@ -103,7 +103,10 @@ if( isset($_GET['action']))
             break;
         case 'modifPassword':
             require('../src/Controller/User/Profil/parametreController.php');
-            parametreModifPassword();
+            if(isset($_POST["password"]) && isset($_POST["passwordOld"]) && isset($_POST["passwordOld"]))
+                parametreModifPassword();
+            else
+                parametreDebut();
             break;
         case 'destructionCompteDemande':
             require('../src/View/User/Profil/destructionCompteView.php');

@@ -6,8 +6,9 @@
 
 <section>
     <!-- mot de passe --!>
+<?=$message?>
 <form action="index.php?action=modifPassword" method="POST">
-    <label> Modifier votre mot de passe : </label>
+    <p> Modifier votre mot de passe : </p>
     <br/>
     <br/>
 
