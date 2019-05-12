@@ -1,5 +1,6 @@
 <head>
 	<link rel="stylesheet" href="../CSS/style.css">
+	<script rel="text/javascript" src="../JS/ajoutChamp.js"></script>
 </head>
 
 <body>
@@ -41,13 +42,14 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
                 
     ?>
     <div class="modifContainer">
-        <form action="" method="POST">
+        <form id="formAjoutProjet" action="" method="POST" onsubmit="return verficationEnvoie()">
         	<label>Titre : </label><input name="titre" type="text" required/>
         	<br/>
         	<label>Lien du git : </label><textarea name="git" rows="5" cols="40" required></textarea>
         	<br/>
-        	<label>Lien de téléchargement : </label><textarea name="telechargement" rows="5" cols="40" required></textarea>
-        	<input type="submit" name="creation" value="Envoyer"/>
+			<label>Lien de téléchargement : </label><textarea name="telechargement" rows="5" cols="40" required></textarea>
+			<input type="button" id="bAjoutMembre" onclick="ajoutMembre()" value="Ajouter un membre" />
+        	<input type="submit" id="bEnvoyer" name="creation" value="Envoyer"/>
         </form>
     </div>
     

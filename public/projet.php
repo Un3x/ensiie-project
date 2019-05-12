@@ -3,6 +3,9 @@
 	require("../inc/inc.nav.php");
 	require("../src/Jeu/Jeu.php");
 	require("../src/Jeu/JeuRepository.php");
+	require("../src/Equipe/Equipe.php");
+	require("../src/Equipe/EquipeRepository.php");
+	require("../src/Membre/Membre.php");
 	
 	entete("Projets");
 	navAccueil();
@@ -14,6 +17,7 @@
 
 	$JeuRepository = new \Jeu\JeuRepository($connection);	
 	$jeux = $JeuRepository->fetchAll();
+	$teamRepository = new \Equipe\EquipeRepository($connection);
 ?>
 
 <h2>PROJETS!</h2>
@@ -22,7 +26,7 @@
 </div>
 <div>
 <table>
-    	<tr><th></th><th>Titre</th><th>Git</th><th>Téléchargement</th></tr>
+    	<tr><th></th><th>Titre</th><th>Team</th><th>Git</th><th>Téléchargement</th></tr>
 		
 		<?php
     	foreach ($jeux as $jeu) {
@@ -31,10 +35,21 @@
 			if(file_exists($img) == false){
 				$img = "../img/RobotRealitIIE.png";
 			}
-					
+			
     	    echo 
     	    '<tr>
 				<td><img src='.$img.' alt="404 : game not found" width="150" height="150"/></td>
+				<td>';
+			
+			$team = $teamRepository->getEquipe($jeu->getId());
+			echo '<ul>';
+			foreach ($team as $mem){
+				echo '<li>'.$mem->getSurnom().' : '.$mem->getRole().'</li>';
+			}
+			echo '</ul>';	
+			
+			echo
+			'</td>
 				<td>'.$jeu->getTitre().'</td>
 				<td>'.$jeu->getGit().'</td>
 				<td><a href=../data/jeux/'.$jeu->getTelechargement().' download='.$jeu->getTitre().'>download</a></td>
