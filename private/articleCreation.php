@@ -27,6 +27,10 @@ $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password
 $articleRepository = new \Article\ArticleRepository($connection);
 
 if(isset($_POST['creation'])){ //Si l'article est créé, modification de la bdd puis renvoie vers la page de d'administration des articles
+    if(!isset($_POST['auteur'])){
+        $_POST['auteur'] = $_SESSION['id'];
+    }
+    
     $status = $articleRepository->createArticle($_POST['titre'], $_POST['texte'], $_POST['auteur'], $_POST['date']);
     
     if($status){
@@ -51,16 +55,19 @@ if(isset($_POST['creation'])){ //Si l'article est créé, modification de la bdd
         	<br/>
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required></textarea>
         	<br/>
-        	<label>Auteur : </label>
-        	<select name="auteur" required>
-        		<?php
-        		//if($membre->getId() = $article->getAuteur()->getId()){echo "selected";}
-        		foreach ($membres as $membre){
-        		    echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
-        		}
-        		?>
-        	</select>
-        	<br/>
+        	<?php if($_SESSION['role'] == 'a'){?>
+        		<label>Auteur : </label>
+            	<select name="auteur" required>
+            		<?php
+            		//if($membre->getId() = $article->getAuteur()->getId()){echo "selected";}
+            		foreach ($membres as $membre){
+            		    echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
+            		}
+            		?>
+            	</select>
+            	<br/>
+            <?php } ?>
+            
         	<label>Date de publication : </label><input name="date" type="date" required/>
         	<input type="submit" name="creation" value="Envoyer"/>
         </form>

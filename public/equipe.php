@@ -26,9 +26,6 @@
 			au Laval virtual il sera chargé d'organiser les tutos et vous entrainer pour pouvoir profiter vous même de l'expérience.</p>
 		
 		<h4>Son bureau</h4>
-			<p><b> Vice président : Altréon</b>, très actif dans l'association et à son compte plusieurs projets (même s'il ne totalise que des échecs),
-			se fera un plaisir de vous aider à réaliser le jeu de vos rêves. Il suffit, comme lui, de ne pas avoir de scrupules et de savoir
-			voler avec impunité le travail des autres.</p>
 			<p><b>Trésorier : Jalik</b>, ayant pour unique objectif de partir avec la caisse, mais pas avant de l'avoir entièrement dépensée en matériel
 			pour l'association. Le budget de l'association est à dépenser et c'est à vous de proposer ce qu'il faut acheter.</p>
 			
