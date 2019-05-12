@@ -87,7 +87,7 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
 	<section>
 		<div class="grand-titre">Emprunts</div>
        <!--on affiche direct la table on se fait pas chier-->
-       <div class="res">Liste des emprunts en court</div>
+       <div class="res">Liste des emprunts en cours</div>
 
       <?php if ($listeEmprunts == []): ?>
         <p>Aucun livre n'est actuellement emprunté</p>

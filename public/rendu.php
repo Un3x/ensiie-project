@@ -67,6 +67,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     <meta charset="utf-8">
     <title>Validation de rendu</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/formulaire_large.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -104,18 +105,16 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
 
     <?php 
     if (isset($okpseudo) && !($okpseudo)) {
-        echo "<p>Pseudo invalide</p>";
+        echo '<span class="invalid_submit">Pseudo invalide</p>';
     }
     ?>
     <br>
-
-    <form action="rendu.php" method="POST">
+    <form class="form" action="rendu.php" method="POST">
         Pseudo :<br>
-        <input id="f1pseudo" type="text" name="pseudo"><br>
-        <input class="bande2" type="button" class="input" onclick="valide_pseudo()" value="Valider">
-        <input id="validerf1" style="display:none" type="submit" name="Envoyer">
+        <input class="formulaire" id="f1pseudo" type="text" name="pseudo" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"><br>
+        <input class="formulaire" id="validerf1" type="submit" value="Rechercher">
     </form>
-    <p id="f1error" style="display:none">Veuillez remplir le champ</p>
+
 
     <!--TODO mettre à jour "livre emprunt", "histo", "Livre", "User"-->
     <?php if (isset($okpseudo) && $okpseudo) : ?>
@@ -147,27 +146,12 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
     </table>
 <?php endif; ?>
 <?php if ($livresarendre == []): ?>
-    <p>Cet utilisateur n'a pas de livres à rendre</p>
+    <p>Cet utilisateur n'a pas emprunté de livre</p>
 <?php endif; ?>
 </p>
     <?php endif; ?>
 </section>
 </body>
 
-<script>
-
-
-    function valide_pseudo() {
-        tmp=document.getElementById("f1pseudo").value;
-        if (tmp=='') {
-            document.getElementById("f1error").style.display="block";
-        }
-        else {
-            document.getElementById("validerf1").click();
-        }
-    }
-
-
-</script>
 
 </html>

@@ -48,6 +48,7 @@ else {
 	<meta charset="utf-8">
     <title>Bibliothèque</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/formulaire_large.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -85,59 +86,68 @@ else {
 	}
 	?>
   <section>
-	<div class="grand-titre">Bibliothèque</div>
-	<div class="champ recherche">
-		<h4>Rechercher un livre par titre</h4>
-		<form action="bibliotheque.php" method="POST">
-			Titre :<br>
-			<input id="ftitre" type="text" name="titre"><br>
-			<input type="button" class="butval" onclick="valide_ftitre()" value="Valider">
-			<input id="validerftitre" style="display:none" type="submit" name="Valider">
-		</form>
-		<p id="ftitreerror" style="display:none">Veuillez remplir le champ</p>
-	</div>
+    <div class="grand-titre">Bibliothèque</div>
+    <div class="champ recherche">
+      <h4 style="text-align: center">Rechercher un livre par titre</h4>
+      <form class="form" action="bibliotheque.php" method="POST">
+        Titre :<br>
+        <input class="formulaire" id="ftitre" type="text" name="titre" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="70"><br>
+        <input class="formulaire" id="formSubmit"  type="submit" value="Rechercher">
+      </form>
+      <p id="ftitreerror" style="display:none">Veuillez remplir le champ</p>
+    </div>
     <div class="contenu">
-      <div class="res">Livres</div>
-    	<table class="table table-bordered table-hover table-striped">
-    <thead style="font-weight: bold">
-      <th>Couverture</th>
-    <th>titre</th>
-    <th>publication</th>
-    <th>editeur</th>
-    <th>auteurs</th>
-    <th>emprunteur</th>
-    <th>review</th>
-    <?php if ($user_connected) {
-    	echo "<th>reserver</th>";
-    }
-    ?>
-    </thead>
-<?php
-    foreach ($livres as $livre) : ?>
-    <tr><?php $ID=$livre->getId(); ?>
-    <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage() ?>></td>
-    <td><?php echo $livre->getTitre() ?></td>
-    <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
-    <td><?php echo $livre->getEdition() ?></td>
-    <td>
-    	<table>
-    	<?php
-    	$auteurs = $auteurRepository->fetchByLivre($livre->getId());
-    	foreach ($auteurs as $auteur) : ?>
-    		<tr><td style="height:50px;border:none"><?php echo $auteur->getAuteur(); ?></td></tr>
-    	<?php endforeach; ?>
-    </table></td>
-    <td><?php if ($livre->getEmprunteur() != '') {
-      echo IdToPseudo($livre->getEmprunteur());
-    } ?></td>
-    <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input class="butcan" type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
-    <?php if ($user_connected) : ?>
-    	<td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input class="butcan" type="submit" name="Réserver" value="Réserver"></form></td>
-    <?php endif; ?>
-    </tr>
-<?php endforeach; ?>
-    </table>
-    <p></p>
+      <div class="res">Livres</div>      
+        <?php
+          if ($livres == array()) {
+            echo '<span class="center"> Aucun livre ne correspond à votre recherche.</span>';
+          }
+          else { ?>
+            <table class="table table-bordered table-hover table-striped">
+              <thead style="font-weight: bold">
+                <th>Couverture</th>
+                <th>Titre</th>
+                <th>Publication</th>
+                <th>Editeur</th>
+                <th>Auteurs</th>
+                <th>Emprunteur</th>
+                <th>Review</th>
+                <?php if ($user_connected) {
+                  echo "<th>Reserver</th>";
+                }
+                ?>
+              </thead>
+              <?php foreach ($livres as $livre) : ?>
+                <tr><?php $ID=$livre->getId(); ?>
+                <td class="couv"><img height="160" width="100" src=<?php echo $livre->getImage() ?>></td>
+                <td><?php echo $livre->getTitre() ?></td>
+                <td><?php echo date_format ($livre->getPublication(), 'Y-m-d') ?></td>
+                <td><?php echo $livre->getEdition() ?></td>
+                <td>
+                  <table>
+                    <?php
+                      $auteurs = $auteurRepository->fetchByLivre($livre->getId());
+                      foreach ($auteurs as $auteur) : 
+                    ?>
+                    <tr><td style="height:50px;border:none"><?php echo $auteur->getAuteur(); ?></td></tr>
+                    <?php endforeach; ?>
+                  </table>
+                </td>
+                <td><?php 
+                      if ($livre->getEmprunteur() != '') {
+                        echo IdToPseudo($livre->getEmprunteur());
+                      } 
+                    ?>
+                </td>
+                <td><form action="voir_review.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input class="butcan" type="submit" name="Voir les reviews" value="Voir les reviews"></form></td>
+                <?php if ($user_connected) : ?>
+                <td><form action="reservation.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $livre->getId(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $id_user; ?>><input class="butcan" type="submit" name="Réserver" value="Réserver"></form></td>
+                <?php endif; ?>        
+                <?php endforeach; ?> 
+                
+            </table>
+          <?php } ?>
+          <p></p>
     </div>
   </section>
   <footer>On est vraiment trop style regardez ce quon a fait</footer>

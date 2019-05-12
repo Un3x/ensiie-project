@@ -142,6 +142,9 @@ th{
 }
 .res{
 	height:50px;
+	line-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
 	background-image:linear-gradient(rgb(58,67,179),rgb(20,56,96));
 	font-size:x-large;
 	text-align:center;
@@ -158,5 +161,8 @@ th{
 	float:left;
 }
 
+.center{
+	text-align: center;
+}
 
 

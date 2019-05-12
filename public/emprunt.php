@@ -95,6 +95,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     <meta charset="utf-8">
     <title>Emprunt</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/formulaire_large.css">
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
         <?php
@@ -129,9 +130,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     </nav>
     <section>
     <div class="grand-titre">Page d'emprunt de livre</div>
-    <nav>
-         <!-- TODO recopier le nav-->
-    </nav>
+   
 
     <?php
     if (isset($dejareserv) && $dejareserv) {
@@ -149,21 +148,21 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 
 
     <!-- premier formulaire où l'admin peut saisir un utilisateur non obligatoire-->
-    <form action="emprunt.php" method="POST">
-        <br>Pseudo de l'emprunteur :<br>
-        <input id="f1pseudo" type="text" name="pseudo"><br>
-        <input type="button" class="butcan" onclick="valide_emprunteur()" value="Valider">
-        <input id="validerf1" style="display:none" type="submit" name="Envoyer">
-    </form>
-
-    <p id="f1error" style="display:none">Veuillez remplir le champ</p>
-
-
     <?php
     if (isset($okpseudo) && !($okpseudo)) {
-        echo "<p>Pseudo Invalide</p>";
+        echo '<span class="invalid_submit">Pseudo Invalide</span>';
     }
     ?>
+    <form class="form" action="emprunt.php" method="POST">
+        <br>Pseudo de l'emprunteur :<br>
+        <input class="formulaire" id="f1pseudo" type="text" name="pseudo" required pattern="[ a-zA-Z0-9']*[a-zA-Z0-9]" maxlength="50"><br>
+        <input class="formulaire" id="validerf1" type="submit" value="Rechercher">
+    </form>
+
+
+
+
+    
 
 
 
@@ -257,29 +256,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
 
 
 <script>
-    function valide_emprunteur() {
-        tmp=document.getElementById("f1pseudo").value;
-        if (tmp==''){
-            document.getElementById("f1error").style.display="block";
-        }
-        else {
-            document.getElementById("validerf1").click();
-        }
-    }
-
-
-    function valide_formulaire() {
-        tmpidlivre=document.getElementById("f2idlivre").value;
-        tmptitre=document.getElementById("f2titre").value;
-        tmppseudo=document.getElementById("f2pseudo").value;
-        if (tmpidlivre=='' || tmptitre=='' || tmppseudo=='') {
-            document.getElementById("f2error").style.display="block";
-        }
-        else {
-            document.getElementById("validerf2").click();
-        }
-    }
-
+    
     function affichetable() {
         if (document.getElementById("displaytable").style.display=="none") {
             document.getElementById("displaytable").style.display="block";
