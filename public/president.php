@@ -23,6 +23,12 @@ $users = $userRepository->fetchAll();
 $user = $users[$_SESSION['login']];
 
 $assos_pres = $connection->query('select * from associations where president='.$user->getId())->fetchAll(\PDO::FETCH_OBJ);
+//debut detail evenement
+if (array_key_exists('detail',$_POST) && !empty($_POST['idevent'])){
+	$_SESSION['event']=$_POST['idevent'];
+	header('Location: event.php');	
+}
+//fin detail evenement
 
 displayHeader();
 
@@ -120,7 +126,8 @@ $events=$connection->query('select * from events where id_asso='.$_SESSION['asso
 			<td><input type="text"  name="coeffevent" class="tableinput" value="<?php echo $event->coeff_event ?>"></td>
 			<td class="actions">
 				<input type="number" value="<?php echo $event->id_event ?>" name="idevent" class="idevent" readonly/>
-				<input type="submit" name="submit" value="Modifier" />
+				<input type="submit" name="submit" value="Modifier"/>
+				<input type="submit" name="detail" value="Détails" />
 				<input type="submit" name="suppr" value="Supprimer"/>
 			</td>
 			</form>
@@ -161,7 +168,7 @@ $events=$connection->query('select * from events where id_asso='.$_SESSION['asso
 foreach ($eleves as $eleve) {
 	$connection->query("insert into pointsassos (id_user,id_asso,notation,proposition) values (".$eleve->id_user.",".$_SESSION['association'].",".$eleve->moyenne.",".$eleve->moyenne.")");
 }
-$eleves = $connection->query("select * from pointsassos left join users using (id_user) where id_asso=".$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);
+$eleves = $connection->query("select * from pointsassos left join users using (id_user) where id_asso=".$_SESSION['association']." order by year desc,notation desc")->fetchAll(\PDO::FETCH_OBJ);
 ?>
 	<table class="table table-bordered table-hover table-striped">
 		<caption>Classement des élèves</caption>
@@ -169,6 +176,7 @@ $eleves = $connection->query("select * from pointsassos left join users using (i
 			<th>Prénom</th>
 			<th>Nom</th>
 			<th>Pseudo</th>
+			<th>Promo</th>
 			<th>Proposition</th>
 			<th>moyenne</th>
 		</tr>
@@ -178,6 +186,7 @@ $eleves = $connection->query("select * from pointsassos left join users using (i
 			<td> <?php echo $eleve->firstname ?> </td>
 			<td> <?php echo $eleve->lastname ?> </td>
 			<td> <?php echo $eleve->pseudo ?> </td>
+			<td> <?php echo $eleve->year+3 ?></td>
 			<td> <?php echo $eleve->proposition ?> </td>
 			<td><input type="number" min="1" max="10" name="points" class="tableinput" value="<?php echo $eleve->notation ?>"></td>
 			<td class="actions">
