@@ -1,10 +1,14 @@
 .row
 {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.notmain
+{
     background-color: black;
     color: white;
     font-size: 1em;
-    margin-right: 0px;
-    margin-left: 0px;
     font-weight: bold;
 }
 
@@ -14,7 +18,7 @@ main
     margin-bottom: 5px;
 }
 
-a
+.whiteStyle
 {
     color : white;
 }

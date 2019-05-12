@@ -18,23 +18,23 @@
 
     
     <body>
-        <nav class="row">
+        <nav class="row notmain">
             <ul>
                 <li class="col-md-7">
-                    <a href='' onclick="document.cookie = 'lang=fr'" >Fr</a>/
-                    <a href='' onclick="document.cookie = 'lang=elf'" >Elf</a>
+                    <a href='' onclick="document.cookie = 'lang=fr'" class="whiteStyle">Fr</a>/
+                    <a href='' onclick="document.cookie = 'lang=elf'" class="whiteStyle">Elf</a>
                 </li>
                 <li class="col-md-1">  
-                    <a href="/">Uber Licorne</a>
+                    <a href="/" class="whiteStyle">Uber Licorne</a>
                 </li>
                 <li class="col-md-1">  
-                    <a href="/clients">Clients</a>
+                    <a href="/clients" class="whiteStyle">Clients</a>
                 </li>
                 <li class="col-md-1"> 
-                    <a href="/creatures">Transporteurs</a> 
+                    <a href="/creatures" class="whiteStyle">Transporteurs</a> 
                 </li>
                 <li class="col-md-1"> 
-                    <a href="/informations">Informations +</a>
+                    <a href="/informations" class="whiteStyle">Informations +</a>
                 </li>
 
                 <?php 
@@ -42,7 +42,7 @@
                     {
                 ?>
                         <li>
-                            <a href="/index.php?action=deconnexion">Deconnexion</a>
+                            <a href="index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
                         </li>
                 <?php
                     }   
@@ -50,8 +50,8 @@
                     { 
                 ?>
                         <li class="col-md-1"> 
-                            <a href="/index.php?action=connexion" >Connexion</a> / 
-                            <a href="/index.php?action=choixInscription">Inscription</a> 
+                            <a href="index.php?action=connexion" class="whiteStyle" >Connexion</a> / 
+                            <a href="index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
                         </li>
                 <?php }
                 ?>
@@ -68,7 +68,7 @@
         </main>
 
 
-        <footer class="row">
+        <footer class="row notmain">
             <ul class="col-xs-6">
                 <li>A propos de nous</li>
                 <li>Contactez-nous</li>
