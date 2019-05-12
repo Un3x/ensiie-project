@@ -17,7 +17,7 @@
             <a href="https://twitter.com/trouvetontruc?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @trouvetontruc</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="columnF">
-                    <a href="concat.php">Nous contacter</a> <br/>
+                    <a href="contact.php">Nous contacter</a> <br/>
                     <a href="aPropos.php">A propos de nous</a>
                 </div>
                 <!-- <div class="columnF">

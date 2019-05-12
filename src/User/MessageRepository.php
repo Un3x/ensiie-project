@@ -28,6 +28,7 @@ public function fetchAll()
                 ->setTitre($row->titre)
                 ->setContenu($row->contenu)
                 ->setMail($row->mail)
+                ->setIdAdmin($row->id_admin)
                 ->setValid($row->valid);
 
             $cats[] = $cat;
@@ -48,6 +49,7 @@ public function fetchAll()
                 ->setTitre($row->titre)
                 ->setContenu($row->contenu)
                 ->setMail($row->mail)
+                ->setIdAdmin($row->id_admin)
                 ->setValid($row->valid);
 
             $cats[] = $cat;
@@ -68,6 +70,7 @@ public function fetchAll()
                 ->setTitre($row->titre)
                 ->setContenu($row->contenu)
                 ->setMail($row->mail)
+                ->setIdAdmin($row->id_admin)
                 ->setValid($row->valid);
 
             $cats[] = $cat;
@@ -88,6 +91,7 @@ public function fetchAll()
                 ->setTitre($row->titre)
                 ->setContenu($row->contenu)
                 ->setMail($row->mail)
+                ->setIdAdmin($row->id_admin)
                 ->setValid($row->valid);
 
             $cats[] = $cat;
@@ -108,6 +112,7 @@ public function fetchAll()
                 ->setTitre($row->titre)
                 ->setContenu($row->contenu)
                 ->setMail($row->mail)
+                ->setIdAdmin($row->id_admin)
                 ->setValid($row->valid);
 
             $cats[] = $cat;

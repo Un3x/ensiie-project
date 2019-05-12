@@ -8,15 +8,28 @@ class Message
     private $contenu;
     private $mail;
     private $valid;
+    private $id_admin;
 
     public function getId()
     {
         return $this->id_mess;
     }
 
+    public function getIdAdmin()
+    {
+        return $this->id_admin;
+    }
+
+
     public function setId($id)
     {
         $this->id_mess = $id;
+        return $this;
+    }
+
+    public function setIdAdmin($id)
+    {
+        $this->id_admin = $id;
         return $this;
     }
 

@@ -58,6 +58,7 @@ CREATE TABLE "message"(
     contenu VARCHAR,
     mail VARCHAR,
     valid INTEGER, /*0 si pas traité 1 si traité 2 si supprimé*/
+    id_admin VARCHAR,
     CONSTRAINT key_mess PRIMARY KEY (id_mess)
 );
 
