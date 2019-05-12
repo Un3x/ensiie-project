@@ -38,6 +38,11 @@ displayHeader();
 // - rajouter,modifier, enlever un évènement
 // - consulter, modifier, rajouter, enlever la participation d'un élève a un évènement
  
+if (array_key_exists('suppr_eleve',$_POST)){
+	if ($connection->query("delete from pointsassos where id_asso='".$_SESSION['association']."' and id_user=".$_POST["usertomodif"])){
+		echo "deleted";
+	}	
+}
 // début suppression evenement
 if (array_key_exists('suppr',$_POST) && !empty($_POST['idevent'])){
 	if ($connection->query("delete from events where id_event='".$_POST['idevent']."'")){
@@ -192,6 +197,7 @@ $eleves = $connection->query("select * from pointsassos left join users using (i
 			<td class="actions">
 				<input type="number" value="<?php echo $eleve->id_user ?>" name="usertomodif" class="idevent" readonly/>
 				<input type="submit" name="submit" value="Modifier" />
+				<input type="submit" name="suppr_eleve" value="Supprimer"/>
 			</td>
 			</form>
 
