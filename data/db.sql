@@ -82,6 +82,7 @@ insert into associations(name,president) values ('Vocaliise',2);
 insert into events(name,id_asso,coeff_event,date_ev) values ('reu',1,1,'2019-01-10'); 
 insert into score(id_user,id_event,notation) values (1,1,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);
+insert into pointsassos(id_user,id_asso,notation,proposition) values (3,1,7,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (2,2,8,10);
 
 /*pour q'un élève consulte ses points asso : 

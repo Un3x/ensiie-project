@@ -19,7 +19,7 @@ if (count($search)) {
     $query .= ' WHERE ' . implode(' OR ', $search);
 }
 $order = $_REQUEST['order'];
-if ($order) {
+if ($order && $order != "notation") {
     $query .= ' ORDER BY ' . $order;
 }
 
@@ -37,7 +37,7 @@ foreach($user_rows as $user) {
     ];
     if (isset($_REQUEST['asso'])) {
         foreach($_REQUEST['asso'] as $asso) {
-            $q = "SELECT * FROM pointsassos WHERE pointsassos.id_user = $id AND pointsassos.id_asso = $asso";
+            $q = "SELECT * FROM pointsassos WHERE pointsassos.id_user = $id AND pointsassos.id_asso = " . $connection->quote($asso);
             $rows = $connection->query($q)->fetchAll(\PDO::FETCH_ASSOC);
             if ($rows) {
                 $ligne['asso'][$rows[0]['id_asso']] = $rows[0]['notation'];

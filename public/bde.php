@@ -39,7 +39,7 @@ displayHeader();
 		<select id="ordre">
 		  <option value="lastname">nom</option>
 		  <option value="pseudo">pseudo</option>
-		  <option value="point">points associatif</option>
+		  <option value="notation">points associatif</option>
 		</select>
 	  </td>
 	  <td class="choix hide">
@@ -61,7 +61,7 @@ displayHeader();
 	<tbody></tbody>
   </table>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+<script src="jquery.min.js">
 
 </script>
 <script>
@@ -82,7 +82,15 @@ function action_aff() {
 		asso = $("#association").val(),
 		ordre = $("#ordre").val();
 	$.get("users.php", { "year": year, "asso": asso, "order": ordre }, function (users) {
-		console.log(users);
+		if (asso.length == 1 && ordre == 'notation') {
+			var asso_id = asso[0];
+			users.sort(function(a,b) {
+				var va = a['asso'][asso_id] || 0,
+					vb = b['asso'][asso_id] || 0;
+				return va < vb;
+			})
+		}
+		console.log(asso_id, users);
 		$("#res thead tr").remove();
 		$("#res thead").append('<tr><th>Firstname</th><th>Lastname</th><th>Pseudo</th></tr>');
 		asso.forEach(function(asso_id) {
