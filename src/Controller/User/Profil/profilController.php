@@ -1,19 +1,18 @@
 <?php
 
+require_once("../src/model/User/ClientManager.class.php");
+require_once("../src/model/User/User.class.php");
+
+
 function initChamps()
 {
     //initialisation des champs avec la BDD
-    /*
-    $valeurDefaut['age'] = $user->getAge();
-    $valeurDefaut['prenom'] = $user->getPrenom();
-    $valeurDefaut['nom'] = $user->getNom();
-    $valeurDefaut['description'] = "ab";
-    */
-    $valeurDefaut['age'] = 20;
-    $valeurDefaut['prenom'] = "Azathot";
-    $valeurDefaut['nom'] = "Le néant";
-    $valeurDefaut['description'] =  " ab ab";
-    $valeurDefaut['note'] = 2.5;
+    $user = $_SESSION['user'];
+    $valeurDefaut['age'] = 0;
+    $valeurDefaut['prenom'] = $user->getFirstName();
+    $valeurDefaut['nom'] = $user->getSurname();
+    $valeurDefaut['description'] = $user->getDescription();
+    $valeurDefaut['note'] = $user->getReputation();
 
     return $valeurDefaut;
 }
@@ -59,6 +58,12 @@ function validationProfil()
     */
 
     // modification des données
+    $bdd = bdd();
+
+    $clientManager = new ClientManager();
+    $user = $_SESSION["user"];
+    $user->setFirstname($_POST["prenom"]);
+    $clientManager->update($user);
 
     $message = $message." </span>";
 

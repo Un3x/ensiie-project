@@ -20,7 +20,8 @@ class ClientManager extends UserManager
 	 */
     public function add($user)
     {
-		return $this->connection->exec("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES ($user->getSurname(),$user->getFirstname(),$user->getRace()->getId(),$user->getMailAddress(),$user->getPassword(),$user->getMoney(),$user->getPhoneNumber(),$user->getBirthDate(),$user->getReputation(),$user->getCreationDate(),$user->getDescription(),$user->getGender(),$user->getNbClientCourses())");
+
+		return $this->connection->exec("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("YYY-MM-DD")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
 	}
 
 	/**
@@ -60,8 +61,8 @@ class ClientManager extends UserManager
 	 */
   public function get2($mailAddress, $password) 
   {
-		$req=$this->connection->query("select id from Client where $mailAddress=mailAddress and $password=password")->fetch();
-		return $req===false?false:get($req['id']);
+		$req=$this->connection->query("select id from Client where mailAddress='$mailAddress' and password='$password'")->fetch();
+		return $req===false?false:($this->get($req['id']));
 	}
 
 	/**
@@ -72,7 +73,7 @@ class ClientManager extends UserManager
 	 */
 	public function isUsed($mailAddress)
 	{
-		return $this->connection->query("select * from Client where $mailAddress=mailAddress")->fetch()===false;
+		return (($this->connection)->query("select * from client where mailaddress='$mailAddress'")->fetch())!=false;
 	}
 	
 	/**

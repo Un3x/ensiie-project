@@ -45,7 +45,7 @@ if( isset($_GET['action']))
             if(isset($_POST['mail']) && isset($_POST['password'])
             && isset($_POST['password2']) && isset($_POST['prenom'])
             && isset($_POST['nom']) && isset($_POST["phoneNumber"]) && isset($_POST["birthDate"])
-            && isset($_POST['description']))
+            && isset($_POST['description']) && isset($_POST["genre"]))
             {
                 inscriptionClient();
             }
@@ -62,7 +62,7 @@ if( isset($_GET['action']))
             require('../src/Controller/User/Link/inscriptionCarrierController.php');
             if(isset($_POST['password'])
                 && isset($_POST['password2']) && isset($_POST['prenom'])
-                && isset($_POST['nom']) && isset($_POST['age'])
+                && isset($_POST['nom']) && isset($_POST['genre']) && isset($_POST['phoneNumber']) && isset($_POST['birthDate'])
                 && isset($_POST['mail'])
                 && isset($_POST['description']) && isset($_POST['race']))
             {
@@ -105,6 +105,14 @@ if( isset($_GET['action']))
             require('../src/Controller/User/Profil/parametreController.php');
             parametreModifPassword();
             break;
+        case 'suppresionCompteDemande':
+            require('../src/View/User/destructionCompteView.php');
+            break;
+        case 'suppresionCompte':
+            require('../src/Controller/User/Profil/parametreController.php');
+            parametreSupprimeCompte();
+            break;
+
         case 'searchCourse':
             require('../src/Controller/course/searchCourse.php');
             break;

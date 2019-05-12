@@ -62,11 +62,20 @@
                 Date invalide.
             </span>
             <br/>
+            <label for="genre"> Votre genre : </label>
+            <select id="genre" name="genre">
+                <option value="M"> Masculin </option>
+                <option value="F"> Feminin </option>
+                <option value="Others"> Autre </option>
+            </select>
+            <br/>
 
         </p>
         <p>
             <label for= "description"> description : </label>
-            <input type="text-area" name="description" id="description" value="<?=$valeurDefaut["description"]?>" />
+            <textarea name="description" id="description">
+                <?=$valeurDefaut['description']?>
+            </textarea>
         </p>
         <input type="submit" value="Valider"/>
     </form>
@@ -80,4 +89,4 @@
 
 <?php require "../src/View/template.php"; ?>
 
-<script src="/js/verificationFormulaireClient.js"></script>
+<script src="../public/js/verificationFormulaireClient.js"></script>

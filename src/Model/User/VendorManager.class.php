@@ -73,7 +73,7 @@ class VendorManager extends ClientManager
 	 */
 	public function isUsed($mailAddress)
 	{
-		return $this->connection->query("select * from Vendor where $mailAddress=mailAddress")->fetch()===false;
+		return $this->connection->query("select * from Vendor where mailAddress='$mailAddress'")->fetch()!==false;
 	}
 	
 	/**

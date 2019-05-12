@@ -1,6 +1,8 @@
 <?php
 
-require('../src/model/User/ClientManager.class.php');
+require_once('../src/model/User/ClientManager.class.php');
+
+
 function initChampsPost()
 {
     $valeurDefaut['age'] = $_POST['age'];
@@ -36,12 +38,14 @@ function inscriptionClientDebut()
 
 function inscriptionClient()
 {
+
     $messageErreur =  '<span class="warning">';
     $valeurDefaut=initChampsPost();
 
 
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
-        || empty($_POST["prenom"]) || empty($_POST["nom"]))
+        || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["phoneNumber"]) || empty($_POST["birthDate"])
+        || empty($_POST["genre"]))
     {
 
         $messageErreur= $messageErreur."Certains champs indispensable sont vide  <br/>";
@@ -57,27 +61,54 @@ function inscriptionClient()
                 $messageErreur = $messageErreur . "Les deux mots de passe donnés ne correspondent 
             pas <br/>";
             }
+            if(!preg_match("#^(\d){10}$#", $_POST["phoneNumber"]))
+            {
+                $messageErreur = $messageErreur . " Le numéro de téléphone n'est pas au bon format. <br/>";
+
+            }
+            if(!preg_match("#^[0-9]{4}-[0-9]{2}-[0-9]{2}$#", $_POST["birthDate"]))
+            {
+                $messageErreur = $messageErreur . " La date de naissance n'est pas au bon format ( AAAA-MM-JJ). <br/>";
+            }
 
             // vérifier que le pseudo n'est pas déja dans la base
-
-            $userManager = new UserManager(bdd());
-            if ($userManager->existe($_POST['mail']))
+            $bdd = bdd();
+            $userManager = new ClientManager($bdd);
+            if ($userManager->isUsed($_POST['mail']))
             {
                 $messageErreur = $messageErreur . "Cet adresse mail est déjà utilisé pour un compte.<br/>
-                L'usage de compte multiple est interdit.";
+                L'usage de compte multiple est interdit. <br/>";
             }
+
+            /*
             if($_POST['age'] < 0)
             {
                 $messageErreur = $messageErreur . " Vous n'êtes pas encore née. Vous n'avez donc pas l'age requis <br/>";
             }
+            */
 
             if ($messageErreur == '<span class="warning">')
             {
-                require('../src/View/User/Link/inscriptionValideView.php');
+                $user = new Client;
+                $a = 'Client';
+                if($user instanceof $a)
+                {
+                    echo "BBB";
+                }
+                $raceManager = new RaceManager($bdd);
+                $user->hydrate($_POST['nom'],$_POST["prenom"],($raceManager->getList())[0],$_POST['mail'],$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,$_POST['description'],$_POST["genre"],0);
+                if($userManager->add($user) != false) {
+                    require('../src/View/User/Link/inscriptionValideView.php');
+                }
+                else
+                {
+                    $messageErreur = $messageErreur." Problème rencontré lors de l'inscription. <br/> Veuillez ressayer ultérieurement. <br/> </span> ";
+                    require("../src/View/User/Link/inscriptionClientView.php");
+                }
                 return;
             }
         }
-    $messageErreur=$messageErreur." </span>";
+    $messageErreur=$messageErreur." <br/> <br/> </span>";
 
     require('../src/View/User/Link/inscriptionClientView.php');
 

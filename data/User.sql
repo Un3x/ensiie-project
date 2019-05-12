@@ -65,3 +65,4 @@ VALUES ('aaa','bbb',1,'aaa.aawxcwxcqa@gmail.com','aaaa','5555','064455835500','1
 INSERT INTO Vendor (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses,nbVendorCourses,occupied,position) 
 VALUES ('aaa','bbb',1,'aaa.aaa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','0'),
 ('aaa','bbb',1,'aaa.aaasfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','0');
+

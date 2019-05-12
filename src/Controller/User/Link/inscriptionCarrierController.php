@@ -1,7 +1,7 @@
 <?php
 
-require("../src/model/User/VendorManager.class.php");
-require("inscriptionClientController.php");
+require_once("../src/model/User/VendorManager.class.php");
+require_once("inscriptionClientController.php");
 
 function getListeRace()
 {
@@ -19,12 +19,12 @@ function inscriptionCarrierDebut()
     $tabRace = getListeRace();
     $optionRace = "";
     for ($i = 0; $i < count($tabRace); $i++) {
-        $optionRace = $optionRace . " <option> " . $tabRace[$i]->getNom() . "  </option>";
+        $optionRace = $optionRace . " <option value='". $tabRace[$i]->getId()."'> " . $tabRace[$i]->getName() . "  </option>";
     }
 
     $caracRace = "<p> ";
     for ($i = 0; $i < count($tabRace); $i++) {
-        $caracRace = $caracRace . '<span class="info" id ='.$i.'> Vitesse : ' . $tabRace[$i]->getVitesse() . '<br\> Nombre maximum : ' . $tabRace[$i]->getnb() . "</span>";
+        $caracRace = $caracRace . '<span class="info" id='.$i.'> Vitesse : ' . $tabRace[$i]->getSpeed() . '<br\> Nombre maximum : ' . $tabRace[$i]->getCapacity() . "</span>";
         $caracRace = $caracRace . "</p>";
     }
 
@@ -42,7 +42,7 @@ function inscriptionCarrier()
     $valeurDefaut = initChampsPost();
 
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
-        || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["age"]))
+        || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["genre"]) || empty($_POST["phoneNumber"]) || empty($_POST["birthDate"]))
     {
 
         $messageErreur= $messageErreur."Certains champs necessaires sont vide  <br/>";
@@ -60,15 +60,17 @@ function inscriptionCarrier()
         }
 
         // vérifier que le pseudo n'est pas déja dans la base
-        $vendorManager = new VendorManager(bdd());
-        if ($userManager->isUsed($_POST['mail']))
+        $bdd = bdd();
+        $vendorManager = new VendorManager($bdd);
+        if ($vendorManager->isUsed($_POST['mail']))
         {
             $messageErreur = $messageErreur . "Cet adresse mail est déjà utilisé. <br/> ";
         }
         if ($messageErreur == '<span class="warning">')
         {
             $vendor = new Vendor();
-            $vendor->hydrate( $_POST["prenom"], $_POST["nom"], race, mail, passwod, money, phoneNumer, dateNaissance, 0, description, d, 0, 0, true, -1);
+            $raceManager = new RaceManager($bdd);
+            $vendor->hydrate( $_POST["prenom"], $_POST["nom"], ($raceManager->get($_POST['race'])) , $_POST['mail'], $_POST['password'], 0, $_POST['phoneNumber'], new DateTime($_POST['birthDate']),0, $_POST['description'], $_POST['genre'], 0, 0, true, 0);
             //$_POST["password"],$_POST["mail"], $_POST[""], 0, $_POST["phoneNumber"], $_POST[""], )
             $vendorManager->add($vendor);
             require('../src/View/User/Link/inscriptionValideView.php');
@@ -79,15 +81,15 @@ function inscriptionCarrier()
 
     // il faut regenerer la liste des races :
 
-    $tabRace = getListeRace();
+    tabRace = getListeRace();
     $optionRace = "";
     for ($i = 0; $i < count($tabRace); $i++) {
-        $optionRace = $optionRace . " <option> " . $tabRace[$i]->getNom() . "  </option>";
+        $optionRace = $optionRace . " <option value='". $tabRace[$i]->getId()."'> " . $tabRace[$i]->getName() . "  </option>";
     }
 
     $caracRace = "<p> ";
     for ($i = 0; $i < count($tabRace); $i++) {
-        $caracRace = $caracRace . '<span class="info" id ='.$i.'> Vitesse : ' . $tabRace[$i]->getVitesse() . '<br\> Nombre maximum : ' . $tabRace[$i]->getnb() . "</span>";
+        $caracRace = $caracRace . '<span class="info" id='.$i.'> Vitesse : ' . $tabRace[$i]->getSpeed() . '<br\> Nombre maximum : ' . $tabRace[$i]->getCapacity() . "</span>";
         $caracRace = $caracRace . "</p>";
     }
 

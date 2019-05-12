@@ -1,6 +1,6 @@
 <?php
-require('../src/model/User/UserManager.class.php');
-require('../verif.php');
+require_once('../src/model/User/ClientManager.class.php');
+
 
 function connexionDebut()
 {
@@ -10,13 +10,12 @@ function connexionDebut()
 
 function tentativeConnexion()
 {
-    $userManager = new UserManager(bdd());
+    $userManager = new ClientManager(bdd());
     if(filter_var($_POST['login'], FILTER_VALIDATE_EMAIL))
     {
-        $user = $userManager->get2($_POST['login'], hasherPassword($_POST['password']));
+        $user = $userManager->get2($_POST['login'],$_POST['password']);
         if($user != false)
         {
-            $_SESSION['id_utilisateur'] = $id;
             $_SESSION['user'] =  $user;
             //appeler plutôt le contrôleur correspondant ou header en repassant par index.php ?
             $GLOBALS['connecte']=true;
@@ -34,7 +33,7 @@ function tentativeConnexion()
     else
     {
         $messageErreur =  "<div class='warning'>
-            Il ne s'agit pas d'une adresse mail  <br/>
+            Il ne s'agit même pas d'une adresse mail ! <br/>
              </div>";
 
         require("../src/View/User/Link/connexionView.php");

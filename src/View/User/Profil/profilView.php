@@ -4,7 +4,7 @@
 <?php ob_start(); ?>
 
 
-
+<?php require("menu_membre.php") ?>
 
 
 

@@ -1,7 +1,7 @@
 <?php
-require('../src/model/User/UserManager.php');
+require('../src/model/User/UserManager.class.php');
 require('../src/Controller/verif.php');
-require('../config.php');
+
 
 function parametreDebut()
 {
@@ -35,5 +35,8 @@ function parametreModifPassword()
 
 function parametreSupprimeCompte()
 {
-
+    $bdd = bdd();
+    $clientManager = new ClientManager($bdd);
+    $clientManager->delete($_SESSION["user"]);
+    require('../src/View/User/Profil/destructionCompteFinView.php');
 }

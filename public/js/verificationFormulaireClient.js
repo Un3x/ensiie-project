@@ -82,7 +82,6 @@ check['password2'] = function ( )
 {
     var password = document.getElementById("password");
     var password2 = document.getElementById("password2");
-    alert("mot");
     if(password.value.toString() === password2.value.toString())
     {
         return true;

@@ -99,7 +99,7 @@ class RaceManager
 	
 	public function getList()
 	{
-		$req=$this->connection->query("SELECT * from Race")->fetchAll();
+		$req= $this->connection->query("SELECT * from Race")->fetchAll();
 		if($req===false)
 			return false;
 		return array_map(function ($v) 
@@ -107,7 +107,7 @@ class RaceManager
 			$race=new Race();
 			$race->hydrate2($v);
 			return $race;
-		},req);
+		},$req);
 	}
 
 }
