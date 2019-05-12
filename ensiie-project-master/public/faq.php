@@ -7,7 +7,7 @@
 <head>
 <title>Challenge Centrale Evry</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css?version=1.94" type="text/css">
+<link rel="stylesheet" href="style.css" type="text/css">
 
 <?php include ("header.php");?>
 </head>
