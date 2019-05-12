@@ -22,7 +22,8 @@ class AdminManager extends UserManager
 	 */
     public function add($user)
     {
-		return $this->connection->exec("INSERT INTO Admin (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) VALUES ($user->getSurname(),$user->getFirstname(),$user->getRace()->getId(),$user->getMailAddress(),$user->getPassword(),$user->getMoney(),$user->getPhoneNumber(),$user->getBirthDate(),$user->getReputation(),$user->getCreationDate(),$user->getDescription(),$user->getGender())");
+		$statement = $this->connection->prepare("INSERT INTO Admin (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) VALUES (:surname,:firstname,:idRace,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender)");
+		return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender()));
 	}
 
 	/**
@@ -33,7 +34,8 @@ class AdminManager extends UserManager
 	 */
     public function delete($user) 
     {
-			return $this->connection->exec("delete from Admin where $user->getId()=id");
+		$statement = $this->connection->prepare("DELETE from Admin where id = :id");
+		return $statement->execute(array("id" => $user->getId()));
     }
 
 	/**
@@ -44,7 +46,9 @@ class AdminManager extends UserManager
 	 */
     public function get($id) 
     {
-		$req=$this->connection->query("select * from Admin where id=$id")->fetch();
+        $statement = $this->connection->prepare("SELECT * from Admin where id = :id");
+		$statement->execute(array("id" => $id));
+		$req=$statement->fetch();	
 		if($req==false)
 			return false;
 		$admin=new Admin();
@@ -62,20 +66,10 @@ class AdminManager extends UserManager
 	 */
     public function get2($mailAddress, $password) 
     {
-		$req=$this->connection->query("select id from Admin where mailAddress='$mailAddress' and password='$password'")->fetch();
-
+        statement = $this->connection->prepare("SELECT id from Admin where mailAddress = :mailAddress and password = :password");
+		$statement->execute(array("mailAddress" => $mailAddress,"password" => $password));
+		$req=$statement->fetch();
 		return $req===false?false:($this->get($req['id']));
-	}
-
-	/**
-	 * renvoie l'utilisateur correspondant au mail et mdp ou false s'il n'y en à pas qui correspond
-	 * @access public
-	 * @param string l'adresse mail
-	 * @return true si l'adresse mail est dans la BD false sinon
-	 */
-	public function isUsed($mailAddress)
-	{
-		return $this->connection->query("select * from Admin where $mailAddress=mailAddress")->fetch()===false;
 	}
 
 	/**
@@ -86,8 +80,9 @@ class AdminManager extends UserManager
 	 */
     public function update($user)
     {
-			return $this->connection->exec("update Admin set surname='$user->getSurname()',firstname='$user->getFirstname()',idRace='$user->getRace()->getId()',mailAddress='$user->getMailAddress()',passWord='$user->getPassword()',money='$user->getMoney()',phoneNumber='$user->getPhoneNumber()',birthDate='$user->getBirthDate()',reputation='$user->getReputation()',creationDate='$user->getCreationDate()',description='$user->getDescription()',gender='$user->getGender()' where $user->getId()=id");
-		}
+		$statement = $this->connection->prepare("UPDATE from Admin set surname=:surname, firstname=:firstname, idRace=:idRace mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender where id=:id");
+		return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"id" => $user->getId()));
+	}
 
 	/**
 	 * renvoie la liste de tout les utilisateurs
