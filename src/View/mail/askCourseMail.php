@@ -10,6 +10,8 @@ détails du trajet :
 	prix : <?=$price ?> €<br/>
 	lieu de départ : <?=$departureName ?> <br/>
 	lieu d'arrivée : <?=$arrivalName ?> <br/>
+	distance : <?=$distance ?> <br/>
+	durée : <?=$duration ?> <br/>
 </div>
 
 <a href="http://localhost:8080/course/<?=$courseId ?>">plus d'infos</a>

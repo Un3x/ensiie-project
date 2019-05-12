@@ -55,6 +55,8 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 
 		$carrierId=$course['carrierId'];
 		$price=$course['price'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 
 		$departureLat = $course['departureLat'];
 		$departureLong = $course['departureLong'];

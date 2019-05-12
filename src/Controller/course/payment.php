@@ -29,6 +29,8 @@ else{
 		$arrivalName=$course['arrival'];
 		$idCourse=$courseId;
 		$numCard = $user['numCard'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 		#$numCard = null;
 
 		require('../src/View/course/paymentView.php');

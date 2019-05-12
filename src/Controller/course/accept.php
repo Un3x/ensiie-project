@@ -37,6 +37,8 @@ if (isset($_POST['courseId'])){
         $price = $course['price'];
         $departureName = $course['departure'];
         $arrivalName = $course['arrival'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 
         require('../src/Controller/mail/mailController.php');
 
@@ -46,7 +48,8 @@ if (isset($_POST['courseId'])){
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
-        
+        $template->duration = $duration;
+        $template->distance = $distance;
 
         $recipient = $client->getMailAddress();
         $subject = "réservation acceptée";
