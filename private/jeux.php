@@ -35,10 +35,13 @@ $jeux = $jeuRepository->fetchAll();
     	<tr><th>Titre</th></tr>
     	<?php 
     	foreach ($jeux as $jeu) {
-    	    echo 
-    	    '<tr><td>
-                <a href="jeuModification.php?id='.$jeu->getId().'">'.$jeu->getTitre().'</a>
-             </td></tr>';
+    	    //TODO Vérifier qu'il fait partie de l'équipe
+    	    //if($_SESSION['role'] == 'a' || $article->getAuteur()->getId() == $_SESSION['id']){
+        	    echo 
+        	    '<tr><td>
+                    <a href="jeuModification.php?id='.$jeu->getId().'">'.$jeu->getTitre().'</a>
+                 </td></tr>';
+    	    //}
     	}
     	?>
     </table>

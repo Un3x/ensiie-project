@@ -17,6 +17,17 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     exit();
 }
 
+if($_SESSION['role'] != 'a'){ //Si pas administrateur, renvoie vers d'administration
+    echo '<h4>Erreur: Vous n\'avez pas la permission d\'accéder à cette page, veuillez contacter un administrateur du site pour toutes questions</h4>';
+    echo '<h4>Redirection vers la page d\'administration...</h4>';
+    header( "refresh:3;url=admin.php" );
+    
+    pied();
+    
+    echo '</body>';
+    exit();
+}
+
 $dbName = 'realitiie';
 $dbUser = 'postgres';
 $dbPassword = 'postgres';

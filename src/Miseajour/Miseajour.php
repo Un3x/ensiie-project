@@ -16,11 +16,6 @@ class Miseajour
     private $jeu;
     
     /**
-     * @var Jeu
-     */
-    private $jeu;
-    
-    /**
      * @var string
      */
     private $texte;

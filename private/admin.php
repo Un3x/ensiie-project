@@ -35,7 +35,9 @@ if(isset($_POST['modification'])){ //Si membre est modfifié, modification de la
     header( "refresh:3;url=admin.php" );
     
 }else if(isset($_POST['modificationMdp'])){ //Si mot de passe est modifié, modification de la bdd puis rechargement de la page de d'administration  
-    if($_POST['password'] == $_POST['conf_password']){
+    if($membreRepository->authentication($membre->getSurnom(), $_POST['old_password']) == null){
+        echo '<h4>L\'ancien mot de passe ne correspond pas, veuillez réessayer</h4>';
+    }else if($_POST['password'] == $_POST['conf_password']){
         $status = $membreRepository->setMembrePassword($_SESSION['id'], $_POST['password']);
         
         if($status){
@@ -111,7 +113,9 @@ if(isset($_POST['modification'])){ //Si membre est modfifié, modification de la
     
     <br><br>
     
+    <h4>Changer de mot de passe :</h4>
     <form action="" method="POST">
+    	<label>Ancien mot de passe : </label><input name="old_password" type="password" required/>
     	<label>Nouveau mot de passe : </label><input name="password" type="password" required/>
     	<label>Confirmer nouveau mot de passe : </label><input name="conf_password" type="password" required/>
     	<input type="submit" name="modificationMdp" value="Envoyer"/>

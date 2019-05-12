@@ -19,10 +19,6 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     exit();
 }
 
-if(!isset($_GET['id'])){ //Si aucun article selectionné, renvoie vers la page de d'administration des articles
-    header("location: article.php");
-}
-
 $dbName = 'realitiie';
 $dbUser = 'postgres';
 $dbPassword = 'postgres';
@@ -32,10 +28,20 @@ $articleRepository = new \Article\ArticleRepository($connection);
 
 $article = $articleRepository->getArticle($_GET['id']);
 
+
+if(!isset($_GET['id'])){ //Si aucun article selectionné, renvoie vers la page de d'administration des articles
+    header("location: article.php");
+}
+
 if($article == NULL){ //Si article introuvable, renvoie vers la page de d'administration des articles
     echo '<h4>Erreur: l\'article n°'.$_GET['id'].' est introuvable!</h4>';
     echo '<h4>Redirection vers la liste des articles...</h4>';
     header( "refresh:3;url=article.php" );
+
+}else if($_SESSION['role'] != 'a' && $article->getAuteur()->getId() != $_SESSION['id']){ //Si pas administrateur, renvoie vers d'administration
+        echo '<h4>Erreur: Vous n\'avez pas la permission de modifier cette article car vous n\'en êtes pas l\'auteur</h4>';
+        echo '<h4>Redirection vers la page d\'administration...</h4>';
+        header( "refresh:3;url=admin.php" );
 }else if(isset($_POST['modification'])){ //Si article est modfifié, modification de la bdd puis renvoie vers la page de d'administration des articles
     if(!isset($_POST['auteur'])){
         $_POST['auteur'] = $_SESSION['id'];
