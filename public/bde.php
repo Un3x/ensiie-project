@@ -50,7 +50,7 @@ displayHeader();
 
   <button onclick="action_aff()">Rechercher</button>
 
-  <table id="res">
+  <table id="res" class="table table-bordered table-hover table-striped">
 	<thead>
 	  <tr>
 		<th>Firstname </th>
