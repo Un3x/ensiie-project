@@ -31,19 +31,18 @@ $asso=$connection->query('select * from associations where id_asso='.$_SESSION["
 $events=$connection->query('select * from events where id_event='.$_SESSION['event'])->fetch(\PDO::FETCH_OBJ);
 $eleves = $connection->query('select * from score left join users using (id_user) where id_event='.$_SESSION['event'])->fetchAll(\PDO::FETCH_OBJ);
 
-displayHeader();
 if (array_key_exists('suppr',$_POST)){
 	if ($connection->query("delete from score where id_event='".$_SESSION['event']."' and id_user=".$_POST['usertomodif'])){
-		echo "deleted";
+		header('Location: event.php');
 	}	
 }
+displayHeader();
 if (!empty($_POST['points'])) {
 	$connection->query("update score set notation=".$_POST["points"].' where id_user='.$_POST['usertomodif']);
-	echo "Note modifiée";
 }
 if (!empty($_POST['usertoadd'])){
 	$connection->query("insert into score(id_user,id_event,notation) values (".$_POST['usertoadd'].",".$_SESSION['event'].",10)");
-	echo "Elève rajouté !";
+	header('Location: event.php');
 }
 ?>
 <div class="gestion" id="gestion_evenements">
@@ -109,6 +108,7 @@ $.get("ajax/users_get.php", function(users) {
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/pointassos_set_event.php",{user: user_selected},'json');
+	window.location.replace('event.php');
 })
 
 }, 'json');

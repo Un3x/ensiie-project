@@ -18,7 +18,7 @@ $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$connection->query("insert into pointsassos (id_user,id_asso,notation,proposition) values (".$connection->quote($_REQUEST["user"]).",".	$_SESSION['association'].",5,5)");
+
 
 header('Content-type:text/javascript;charset=utf-8');
 

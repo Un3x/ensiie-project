@@ -219,13 +219,18 @@ $eleves = $connection->query("select * from pointsassos left join users using (i
 	</fieldset>
 </form>
 -->
-
+<legend>Rajouter un élève</legend>
+<label>Rechercher</label>
 <input type="text" id="ajout"/>
 <button id="ajout_submit">Ajouter</button>
 
 </div>
 
 <div class="gestion" id="gestion_transmission">
+<legend>Changer de président</legend>
+<label>Rechercher</label>
+<input type="text" id="passation"/>
+<button id="passation_submit">Transmettre</button>
 
 </div>
 
@@ -235,6 +240,7 @@ $eleves = $connection->query("select * from pointsassos left join users using (i
 <script src="assets/awesomplete.min.js"></script>
 <script>
 $("#ajout_submit").prop("disabled",true);
+$("#passation_submit").prop("disabled",true);
 var users_list = [],
 		user_selected;
 $.get("ajax/users_get.php", function(users) {
@@ -254,9 +260,24 @@ $.get("ajax/users_get.php", function(users) {
 			user_selected = suggestion.value;
 		}
 	});
+	var input2 = document.getElementById("passation");
+	new Awesomplete(input2, {
+		list: users_list,
+		replace: function(suggestion) {
+			this.input.value = suggestion.label;
+//			console.log(suggestion);
+			$("#passation_submit").prop("disabled",false);
+			user_selected = suggestion.value;
+		}
+	});
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/pointassos_set.php",{user: user_selected},'json');
+	window.location.replace('president.php');
+})
+$("#passation_submit").on("click", function() {
+	$.get("ajax/passation_set.php",{user: user_selected},'json');
+	window.location.replace('president.php');
 })
 
 }, 'json');
