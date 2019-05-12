@@ -10,29 +10,33 @@
 	padding-left    : 15%;
 }
 
-#menu div:first-child
+/*#menu div:first-child
 {
 	border-left: 1px white solid;
-}
+}*/
 
-#menu div
+#menu a div
 {
 	display      : inline;
-	padding-left : 5px;
-	padding-right: 5px;
-	border-right : 1px white solid;
+	/*padding-left : 5px;
+	padding-right: 5px;*/
+	/*border-right : 1px white solid;*/
+	border: 1px white solid;
+	padding : 10px;
 }
 
-#menu div a
+#menu a
 {
 	color          :white;
 	text-decoration: none;
 }
 
-#menu div a:hover
+#menu a div:hover
 {
+	/*transition-delay: 0.2s;*/
 	color          :red;
 	text-decoration: none;
+	background-color: white;
 }
 
 body

@@ -47,42 +47,42 @@
 		echo "alt=\"Accueil\" /></a>"; */
 		
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/index.php\">Realitiie</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/index.php\"><div>\n";
+		echo "\t\t\tRealitiie\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/index.php\">Accueil</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/index.php\"><div>\n";
+		echo "\t\t\tAccueil\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/equipe.php\">Equipe</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/equipe.php\"><div>\n";
+		echo "\t\t\tEquipe\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/article.php\">Articles</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/article.php\"><div>\n";
+		echo "\t\t\tArticles\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/debrief.php\">Comptes rendu</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/debrief.php\"><div>\n";
+		echo "\t\t\tComptes rendu\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/projet.php\">Projets</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/projet.php\"><div>\n";
+		echo "\t\t\tProjets\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/laval.php\">Laval</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/laval.php\"><div>\n";
+		echo "\t\t\tLaval\n";
+		echo "\t\t</div></a>\n";
 		
-		echo "\t\t<div>\n";
-		echo "\t\t\t<a href=\"../public/ressources.php\">Ressources</a>\n";
-		echo "\t\t</div>\n";
+		echo "\t\t<a href=\"../public/ressources.php\"><div>\n";
+		echo "\t\t\tRessources\n";
+		echo "\t\t</div></a>\n";
 		
 		if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
-		    echo "\t\t<div>\n";
-		    echo "\t\t\t<a href=\"../private/admin.php\">Administration</a>\n";
-		    echo "\t\t</div>\n";
+		    echo "\t\t<a href=\"../private/admin.php\"><div>\n";
+		    echo "\t\t\tAdministration\n";
+		    echo "\t\t</div></a>\n";
 		}
 		
 		

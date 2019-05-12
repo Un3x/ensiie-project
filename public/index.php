@@ -7,14 +7,19 @@
 
 
 <div class="background-img">
+
+<div class="round-border">
 <h2>REALITIIE</h2>
 
 <p>Fondée en 2012, suite à la première participation au concours Laval Virtual d'élèves de l'ENSIIE, 
 RealitIIE est l'association regroupant tous les élèves motivés par la réalité virtuelle.
 Mais depuis, l'association s'est diversifiée pour inclure également le dévelopement de jeux
 videos au sens large.</p>
-
-
+</div>
+</br>
+</br>
+</br>
+<div class="round-border">
 <h2>NOS ACTIVITES</h2>
 
 
@@ -56,7 +61,7 @@ de la plus grande exposition de réalité virtuelle en Europe.</p>
 </div>
 </div>
 </div>
-
+</div>
 
 </div>
 
