@@ -29,8 +29,17 @@ $users = $userRepository->fetchAll();
 $user = $users[$_SESSION['login']];
 $asso=$connection->query('select * from associations where id_asso='.$_SESSION["association"])->fetch(\PDO::FETCH_OBJ);
 $events=$connection->query('select * from events where id_event='.$_SESSION['event'])->fetch(\PDO::FETCH_OBJ);
+$eleves = $connection->query('select * from score left join users using (id_user) where id_event='.$_SESSION['event'])->fetchAll(\PDO::FETCH_OBJ);
 
 displayHeader();
+if (!empty($_POST['points'])) {
+	$connection->query("update score set notation=".$_POST["points"].' where id_user='.$_POST['usertomodif']);
+	echo "Note modifiée";
+}
+if (!empty($_POST['usertoadd'])){
+	$connection->query("insert into score(id_user,id_event,notation) values (".$_POST['usertoadd'].",".$_SESSION['event'].",10)");
+	echo "Elève rajouté !";
+}
 ?>
 <div class="gestion" id="gestion_evenements">
 
@@ -40,7 +49,7 @@ displayHeader();
 			<th>Prénom</th>
 			<th>Nom</th>
 			<th>Pseudo</th>
-			<th>Year</th>
+			<th>Promo</th>
 			<th>Participation</th>
 		</tr>
 		<?php foreach ($eleves as $eleve) : ?>
@@ -49,7 +58,8 @@ displayHeader();
 			<td> <?php echo $eleve->firstname ?> </td>
 			<td> <?php echo $eleve->lastname ?> </td>
 			<td> <?php echo $eleve->pseudo ?> </td>
-			<td> <?php echo $eleve->proposition ?> </td>
+			<td> <?php echo $eleve->year+3 ?> </td>
+
 			<td><input type="number" min="1" max="10" name="points" class="tableinput" value="<?php echo $eleve->notation ?>"></td>
 			<td class="actions">
 				<input type="number" value="<?php echo $eleve->id_user ?>" name="usertomodif" class="idevent" readonly/>
@@ -61,5 +71,6 @@ displayHeader();
 		<?php endforeach; ?>
 	</table>
 
+<!--TODO rajouter un élève dans l'evenement-->
 </body>
 </html>
