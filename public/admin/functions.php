@@ -10,6 +10,7 @@ function displayHeader(){
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="assets/awesomplete.css">
 	<title> Points assos IIE </title>
 </head>
 <body>

@@ -181,11 +181,11 @@ $note = $connection->query("select * from pointsassos where id_user=".$eleve->id
 		<?php endforeach; ?>
 	</table>
 
+<!--
 <form method="post">
 	<fieldset>
 	<legend>Rajouter un élève</legend>
 	<label for="elevetoadd">Pseudo : </label>
-	<!-- TODO Samuh please remplace le select par un text avec autocompletion -->
 	<select name="elevetoadd">
 		<?php foreach ($users as $user):?>
 		<option value="<?php echo $user->getId()?>" ><?php echo $user->getPseudo() ?> </option>
@@ -194,6 +194,10 @@ $note = $connection->query("select * from pointsassos where id_user=".$eleve->id
 	<input name="submit" type="submit" value="Envoyer"/>
 	</fieldset>
 </form>
+-->
+
+<input type="text" id="ajout"/>
+<button id="ajout_submit">Ajouter</button>
 
 </div>
 
@@ -202,6 +206,38 @@ $note = $connection->query("select * from pointsassos where id_user=".$eleve->id
 </div>
 
 <?php endif; ?>
+
+<script src="assets/jquery.min.js"></script>
+<script src="assets/awesomplete.min.js"></script>
+<script>
+$("#ajout_submit").prop("disabled",true);
+var users_list = [],
+		user_selected;
+$.get("ajax/users_get.php", function(users) {
+	users.forEach(function(u) {
+		users_list.push({
+			label: u['lastname'] + " '" + u['pseudo'] + "' " + u['firstname'],
+			value: u['id_user']
+		})
+	})
+	var input = document.getElementById("ajout");
+	new Awesomplete(input, {
+		list: users_list,
+		replace: function(suggestion) {
+			this.input.value = suggestion.label;
+			console.log(suggestion);
+			$("#ajout_submit").prop("disabled",false);
+			user_selected = suggestion.value;
+		}
+	});
+
+$("#ajout_submit").on("click", function() {
+	$.get("ajax/pointassos_set.php",{user: user_selected},'json');
+})
+
+}, 'json');
+</script>
+
 
 </body>
 </html>

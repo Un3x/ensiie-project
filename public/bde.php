@@ -61,10 +61,10 @@ displayHeader();
 	<tbody></tbody>
   </table>
 
-<script src="jquery.min.js">
+<script src="assets/jquery.min.js">
 //<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-
 </script>
+
 <script>
 var asso_name = [];
 $.get("asso.php", function (asso) {

@@ -1,4 +1,15 @@
 <?php
+
+include('./admin/functions.php');
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['login']) || empty($_SESSION['bde'])) 
+{
+	// Si inexistante ou nulle, on redirige vers le formulaire de login
+	exit();
+}
+
 require '../vendor/autoload.php';
 
 function csv_encode($v) {
