@@ -47,6 +47,67 @@ class ArticleRepository
         
         return $articles;
     }*/
+	
+	public function fetchCompteRendu()
+    {
+        $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+                                          FROM "article" NATURAL JOIN "membre" 
+										  WHERE LOWER(titre) LIKE \'%compte%rendu%\'
+										  ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
+        $articles = [];
+        foreach ($rows as $row) {
+            $article = new Article();
+            $auteur = new Membre();
+            $auteur
+            ->setId($row->id_membre)
+            ->setNom($row->nom)
+            ->setPrenom($row->prenom)
+            ->setSurnom($row->surnom)
+            ->setPromo($row->promo)
+            ->setRole($row->role);
+            $article
+            ->setId($row->id_article)
+            ->setTitre($row->titre)
+            ->setTexte($row->texte)
+            ->setAuteur($auteur)
+            ->setDate(new \DateTimeImmutable($row->date));
+            
+            $articles[] = $article;
+        }
+        
+        return $articles;
+    }
+
+	public function fetchOther()
+    {
+        $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+                                          FROM "article" NATURAL JOIN "membre" 
+										  WHERE LOWER(titre) NOT LIKE \'%compte%rendu%\'
+										  ORDER BY date DESC
+										  LIMIT 10')->fetchAll(\PDO::FETCH_OBJ);
+        $articles = [];
+        foreach ($rows as $row) {
+            $article = new Article();
+            $auteur = new Membre();
+            $auteur
+            ->setId($row->id_membre)
+            ->setNom($row->nom)
+            ->setPrenom($row->prenom)
+            ->setSurnom($row->surnom)
+            ->setPromo($row->promo)
+            ->setRole($row->role);
+            $article
+            ->setId($row->id_article)
+            ->setTitre($row->titre)
+            ->setTexte($row->texte)
+            ->setAuteur($auteur)
+            ->setDate(new \DateTimeImmutable($row->date));
+            
+            $articles[] = $article;
+        }
+        
+        return $articles;
+    }
 
     public function fetchWithoutTexte()
     {

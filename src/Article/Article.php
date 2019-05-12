@@ -71,7 +71,7 @@ class Article
      */
     public function getTexte()
     {
-        return $this->texte;
+        return $this->text;
     }
 
     /**
@@ -80,7 +80,7 @@ class Article
      */
     public function setTexte($texte)
     {
-        $this->texte = $texte;
+        $this->text = $texte;
         return $this;
     }
     
@@ -105,7 +105,7 @@ class Article
     /**
      * @return \DateTimeInterface
      */
-    public function getDate(): \DateTimeInterface
+    public function getDate()
     {
         return $this->date;
     }
@@ -125,7 +125,7 @@ class Article
      * @return int
      * @throws \OutOfRangeException
      */
-    public function joursDepuisPublication(): int
+    public function joursDepuisPublication()
     {
         $now = new \DateTime();
 
