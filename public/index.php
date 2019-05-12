@@ -5,8 +5,59 @@ require_once('../src/config.php');
 
 
 
-if( isset($_GET['action']))
-{
+if( isset($_GET['action'])) {
+
+    if ($GLOBALS['user']) {
+        switch ($_GET['action']) {
+            case 'profil' :
+                require('../src/Controller/User/Profil/profilController.php');
+                profilDebut();
+                break;
+            case 'changementProfil':
+                require('../src/Controller/User/Profil/profilController.php');
+                profilModifEnCours();
+                break;
+            case 'validationProfil':
+                require('../src/Controller/User/Profil/profilController.php');
+                if (isset($_POST["annuler"])) {
+                    echo "AA";
+                    profilDebut();
+                } else if (isset($_POST["valider"])) {
+                    validationProfil();
+                } else {
+                    profilDebut();
+                }
+                break;
+            case 'parametre' :
+                require('../src/Controller/User/Profil/parametreController.php');
+                parametreDebut();
+                break;
+            case 'modifPassword':
+                require('../src/Controller/User/Profil/parametreController.php');
+                if (isset($_POST["password"]) && isset($_POST["passwordOld"]) && isset($_POST["passwordOld"]))
+                    parametreModifPassword();
+                else
+                    parametreDebut();
+                break;
+            case 'destructionCompteDemande' :
+                require('../src/View/User/Profil/destructionCompteView.php');
+                break;
+
+            case 'destructionCompte':
+
+                require('../src/Controller/User/Profil/parametreController.php');
+                parametreSupprimeCompte();
+                break;
+            default:
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+                break;
+
+        }
+
+
+    }
+
     switch($_GET['action']){
         case 'informations':
             require('../src/View/informationsView.php');
@@ -73,48 +124,8 @@ if( isset($_GET['action']))
             }
             break;
 
-        case 'profil' :
-            require('../src/Controller/User/Profil/profilController.php');
-            profilDebut();
-            break;
-        case 'changementProfil':
-            require('../src/Controller/User/Profil/profilController.php');
-            profilModifEnCours();
-            break;
-        case 'validationProfil':
-            require('../src/Controller/User/Profil/profilController.php');
-            if(isset($_POST["annuler"]))
-            {
-                echo "AA";
-                profilDebut();
-            }
-            else if (isset($_POST["valider"]))
-            {
-                validationProfil();
-            }
-            else
-            {
-                profilDebut();
-            }
-            break;
-        case 'parametre' :
-            require('../src/Controller/User/Profil/parametreController.php');
-            parametreDebut();
-            break;
-        case 'modifPassword':
-            require('../src/Controller/User/Profil/parametreController.php');
-            if(isset($_POST["password"]) && isset($_POST["passwordOld"]) && isset($_POST["passwordOld"]))
-                parametreModifPassword();
-            else
-                parametreDebut();
-            break;
-        case 'destructionCompteDemande':
-            require('../src/View/User/Profil/destructionCompteView.php');
-            break;
-        case 'destructionCompte':
-            require('../src/Controller/User/Profil/parametreController.php');
-            parametreSupprimeCompte();
-            break;
+
+
 
         case 'searchCourse':
             require('../src/Controller/course/searchCourse.php');
