@@ -6,6 +6,6 @@
         <ul> <a href="index.php?action=trajets"> Ensemble des courses effectués </a> </ul>
         <ul> <a href="index.php?action=messages">  </a></ul>
         <!-- Partie vendeur : tresorie //
-        Partie admin :  --!>
+        Partie admin :  -->
     </li>
 </nav>

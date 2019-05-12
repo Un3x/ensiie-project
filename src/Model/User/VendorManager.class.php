@@ -22,7 +22,7 @@ class VendorManager extends ClientManager
     public function add($user)
     {
 			$statement = $this->connection->prepare("INSERT INTO Vendor (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses,nbVendorCourses,occupied,position,price) VALUES (:surname,:firstname,:idRace,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender,:nbClientCourses,:nbVendorCourses,:occupied,:position,:price)");
-			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"password" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied(),"position" => $user->getPosition(),"price"=>$user->getPrice()));
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied(),"position" => $user->getPosition(),"price"=>$user->getPrice()));
 	}
 
 	/**
@@ -65,10 +65,11 @@ class VendorManager extends ClientManager
 	 */
   public function get2($mailAddress, $password) 
   {
-		$statement = $this->connection->prepare("SELECT id from Vendor where mailAddress = :mailAddress and password = :password");
-		$statement->execute(array("mailAddress" => $mailAddress,"password" => $password));
+		$statement = $this->connection->prepare("SELECT id, password from Vendor where mailAddress = :mailAddress");
+		$statement->execute(array("mailAddress" => $mailAddress));
 		$req=$statement->fetch();
-		return $req===false?false:get($req['id']);
+
+		return !password_verify($password, $req['password'])?false:$this->get($req['id']);
 	}
 
 	/**
@@ -80,7 +81,7 @@ class VendorManager extends ClientManager
     public function update($user)
     {
 			$statement = $this->connection->prepare("UPDATE from Client set surname=:surname, firstname=:firstname, idRace=:idRace mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender, nbClientCourses=:nbClientCourses, nbVendorCourses=:nbVendorCourses, occupied=:occupied, position=:position where id=:id");
-			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied(),"position" => $user->getPosition(),"id" => $user->getId()));
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied(),"position" => $user->getPosition(),"id" => $user->getId()));
     }
 
 	/**

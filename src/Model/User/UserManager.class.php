@@ -70,11 +70,14 @@ abstract class UserManager
     public final function isUsed($mailAddress)
 	{
 		$statement1 = $this->connection->prepare("SELECT * FROM Client WHERE mailAddress = :mailAddress ");
-		$req1=$statement1->execute(array("mailAddress" => $mailAddress))->fetch();
+		$statement1->execute(array("mailAddress" => $mailAddress));
+		$req1=$statement1->fetch();
 		$statement2 = $this->connection->prepare("SELECT * FROM Admin WHERE mailAddress = :mailAddress ");
-		$req2=$statement2->execute(array("mailAddress" => $mailAddress))->fetch();
+		$statement2->execute(array("mailAddress" => $mailAddress));
+		$req2=$statement2->fetch();
 		$statement3 = $this->connection->prepare("SELECT * FROM Vendor WHERE mailAddress = :mailAddress ");
-		$req3=$statement3->execute(array("mailAddress" => $mailAddress))->fetch();
+		$statement3->execute(array("mailAddress" => $mailAddress));
+		$req3=$statement3->fetch();
 
 		return !($req3===false && $req2===false && $req1===false);
 	}
