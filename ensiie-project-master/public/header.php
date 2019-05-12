@@ -19,7 +19,7 @@
         &ensp;&ensp;&ensp;
         <a href="your_account.php" > Votre compte </a>';
         if (isset($_SESSION['type']) && $_SESSION['type'] == "Organisateur") {
-            echo '<br><a href="modify_other.php" > Modifier un autre compte </a>';
+            echo '<br><br><a href="modify_other.php" > Modifier un autre compte </a>';
         }
         echo '</h4>';
     }
