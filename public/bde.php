@@ -31,7 +31,7 @@ displayHeader();
 	  <td> pour l(es) association(s) : </td>
 	  <td>
 		<select id="association" multiple="multiple" size="4">
-		  <option value="2021" selected="selected">1A (Promo 2021)</option>
+		  <option>Aucune Asso</option>
 		</select>
 	  </td>
 	  <td class="choix hide">ordonner par:</td>

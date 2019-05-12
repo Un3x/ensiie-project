@@ -74,10 +74,11 @@ from (select id_user,id_asso, moyenne*coeff_asso point, coeff_asso coefficient f
 group by a.id_user
 order by moyenne asc;
 
-insert into users (firstname,lastname,pseudo,year,president,mail) values ('Loïc','Dubard','Wikle',2018,1,'loic97429@gmail.com');
+insert into users (firstname,lastname,pseudo,year,president,mail) values ('Loïc','Dubard','Wikle',2021,1,'loic97429@gmail.com');
 insert into users(firstname,lastname,pseudo,year,bde) values ('Quentin','Japhet','Samuh',2018,1);
 insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
 insert into associations(name,president,coeff_asso) values ('Securitiie',1,50);
+insert into associations(name,president,coeff_asso) values ('Vocaliise',1,60);
 insert into events(name,id_asso,coeff_event,date_ev) values ('reu',1,1,'2019-01-10'); 
 insert into score(id_user,id_event,notation) values (1,1,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);

@@ -32,9 +32,10 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 mysql_free_result($result);
 */
+
 $data = $connection->query($query)->fetchAll(\PDO::FETCH_OBJ);
 
-if ($_REQUEST['export']) {
+if (@$_REQUEST['export']) {
     header('Content-type:application/vnd.ms-excel');
     header('Content-Disposition:inline;filename=export.csv');
     

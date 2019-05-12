@@ -25,12 +25,15 @@ echo $data;
 //var_dump($query);
 
 $data = $connection->query($query)->fetchAll(\PDO::FETCH_OBJ);
+
+header('Content-type:text/javascript;charset=utf-8');
 $data = json_encode($data);
+
 /*
 echo '<pre>';
 var_dump($data);
 echo '</pre>';
- */
+*/
 
 echo $data;
 
