@@ -65,9 +65,9 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
         <form action="" method="POST">
         	<label>Titre : </label><input name="titre" type="text" value="<?php echo $jeu->getTitre() ?>" required/>
         	<br/>
-        	<label>Lien du git : </label><textarea name="git" rows="5" cols="40" required><?php echo $jeu->getGit() ?></textarea>
+        	<label>Lien du git : </label><input name="git" type="text" value="<?php echo $jeu->getGit() ?>" required/>
         	<br/>
-        	<label>Lien de téléchargement : </label><textarea name="telechargement" rows="5" cols="40" required><?php echo $jeu->getTelechargement() ?></textarea>
+        	<label>Lien de téléchargement : </label><input name="telechargement" type="text" value="<?php echo $jeu->getTelechargement() ?>" required/>
         	<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>

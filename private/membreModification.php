@@ -71,7 +71,7 @@ if($membre == NULL){ //Si membre introuvable, renvoie vers la page de d'administ
         	<br/>
         	<label>Surnon : </label><input name="surnom" type="text" value="<?php echo $membre->getSurnom() ?>" required/>
         	<br/>
-        	<label>Mot de passe (laissez vide pour ne pas modifier : </label><input name="password" type="password"/>
+        	<label>Mot de passe (laissez vide pour ne pas modifier) : </label><input name="password" type="password"/>
         	<br/>
         	<label>promo : </label>
         	<select name="promo" required>

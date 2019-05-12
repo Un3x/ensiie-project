@@ -37,6 +37,10 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
     echo '<h4>Redirection vers la liste des articles...</h4>';
     header( "refresh:3;url=article.php" );
 }else if(isset($_POST['modification'])){ //Si article est modfifié, modification de la bdd puis renvoie vers la page de d'administration des articles
+    if(!isset($_POST['auteur'])){
+        $_POST['auteur'] = $_SESSION['id'];
+    }
+    
     $status = $articleRepository->setArticle($_GET['id'], $_POST['titre'], $_POST['texte'], $_POST['auteur'], $_POST['date']);
     
     if($status){
@@ -72,19 +76,21 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
         	<br/>
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required><?php echo $article->getTexte() ?></textarea>
         	<br/>
-        	<label>Auteur : </label>
-        	<select name="auteur" required>
-        		<?php
-        		foreach ($membres as $membre){
-        		    if($membre->getId() == $article->getAuteur()->getId()){ //Selectionne l'auteur de l'article
-                        echo '<option value="'.$membre->getId().'" selected>'.$membre->getSurnom().'</option>';
-        		    }else{
-        		        echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
-        		    }
-        		}
-        		?>
-        	</select>
-        	<br/>
+        	<?php if($_SESSION['role'] == 'a'){?>
+            	<label>Auteur : </label>
+            	<select name="auteur" required>
+            		<?php
+            		foreach ($membres as $membre){
+            		    if($membre->getId() == $article->getAuteur()->getId()){ //Selectionne l'auteur de l'article
+                            echo '<option value="'.$membre->getId().'" selected>'.$membre->getSurnom().'</option>';
+            		    }else{
+            		        echo '<option value="'.$membre->getId().'">'.$membre->getSurnom().'</option>';
+            		    }
+            		}
+            		?>
+            	</select>
+            	<br/>
+            <?php } ?>
         	<label>Date de publication : </label><input name="date" type="date" value="<?php echo $article->getDate()->format('Y-m-d') ?>" required/>
         	<input type="submit" name="modification" value="Envoyer"/>
         </form>
