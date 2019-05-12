@@ -147,7 +147,7 @@
 <div class="container2">
 <img src="images/cyclisme.jpg" width="210" height="180" alt="" class="image2">
 <div class="middle2">
-<div class="text2"><a href="index.php">Règles</a></div>
+<div class="text2"><a href="cyclisme.php">Règles</a></div>
 </div>
 </div>
 <figcaption>
