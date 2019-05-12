@@ -180,6 +180,21 @@ $note = $connection->query("select * from pointsassos where id_user=".$eleve->id
 		</tr>
 		<?php endforeach; ?>
 	</table>
+
+<form method="post">
+	<fieldset>
+	<legend>Rajouter un élève</legend>
+	<label for="elevetoadd">Pseudo : </label>
+	<!-- TODO Samuh please remplace le select par un text avec autocompletion -->
+	<select name="elevetoadd">
+		<?php foreach ($users as $user):?>
+		<option value="<?php echo $user->getId()?>" ><?php echo $user->getPseudo() ?> </option>
+		<?php endforeach;?>
+	</select>
+	<input name="submit" type="submit" value="Envoyer"/>
+	</fieldset>
+</form>
+
 </div>
 
 <div class="gestion" id="gestion_transmission">
