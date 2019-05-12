@@ -4,8 +4,8 @@ $departure = ['cityName' => $_POST['departure'], 'latitude' => 49.420318, 'longi
 $arrival = ['cityName' => $_POST['arrival'], 'latitude' => 49.41461, 'longitude' => 8.681495];
 $user = ['numCard' => "0123XXXXXXXXXX56"];
 
-if(false && !(isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'])){
-	require("../src/View/connexionView.php");
+if(!$GLOBALS['user']){
+	header('Location: /connexion');
 }
 else{
 
@@ -18,7 +18,7 @@ else{
 
 	$CourseManager = new CourseManager($connection);
 
-	$courseId = $CourseManager->preBookCourse($_POST['departure'], $_POST['arrival'], $_POST['carrierId'], $_POST['carrierId']);
+	$courseId = $CourseManager->preBookCourse($_POST['departure'], $_POST['arrival'], $_POST['carrierId'], $_SESSION['userId']);
 
 	if ($courseId){
 		$course = $CourseManager->getCourse($courseId);

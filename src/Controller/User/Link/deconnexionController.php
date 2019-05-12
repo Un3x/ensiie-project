@@ -1,5 +1,5 @@
 <?php
 
 session_destroy();
-$GLOBALS['connecte']=false;
+$GLOBALS['user']=null;
 require('../src/View/User/Link/deconnexionView.php');

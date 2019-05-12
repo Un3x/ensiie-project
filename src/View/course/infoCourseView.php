@@ -1,6 +1,6 @@
 <?php $title = "Un merveilleux site pour réserver des licornes ! " ?>
 
-<?php ob_start(); ?>
+<?php ob_start();?>
 
 <div>
 	nom : <?=$name ?> <br/>
@@ -21,9 +21,9 @@
 	<input type=submit id=search value=Réserver />
 </form>
 
-<?php break; case "carrier": ?>
+<?php break; case "Vendor": ?>
 <?php switch($courseStatus){ 
-		case "booked": ?>
+		case 1: //booked?>
 	<form action="/course/accept" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=accept value="Accepter la réservation" />
@@ -40,29 +40,29 @@
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
-	<?php break; case "finished": ?>
+	<?php break; case 3: //"finished": ?>
 
-	<?php break; case "cancelled": ?>
+	<?php break; case 4; //"cancelled": ?>
 
 	<?php break; } ?>
 
-<?php break; case "client": ?>
+<?php break; case "Client": ?>
 	<?php switch($courseStatus){ 
-		case "booked": ?>
+		case 1; //"booked": ?>
 	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
-	<?php break; case "confirmed": ?>
+	<?php break; case 2; //"confirmed": ?>
 	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
-	<?php break; case "finished": ?>
+	<?php break; case 3; //"finished": ?>
 
-	<?php break; case "cancelled": ?>
+	<?php break; case 4; //"cancelled": ?>
 
 	<?php break; } ?>
 

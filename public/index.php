@@ -128,6 +128,18 @@ if( isset($_GET['action']))
         case 'confirmationCourse' :
             require('../src/Controller/course/confirmationCourse.php');
             break;
+
+        case 'acceptCourse' :
+            require('../src/Controller/course/accept.php');
+            break;
+
+        case 'refuseCourse' :
+            require('../src/Controller/course/refuse.php');
+            break;
+
+        case 'cancelCourse' :
+            require('../src/Controller/course/cancel.php');
+            break;
         
         case '' :
             require('../src/View/accueilView.php');

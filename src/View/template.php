@@ -45,7 +45,7 @@
     if($GLOBALS['user']) 
     { ?>
         <li>
-            <a href="index.php?action=deconnexion" > Deconnexion </a>
+            <a href="/index.php?action=deconnexion" > Deconnexion </a>
         </li>
         <?php
     }
@@ -54,9 +54,9 @@
     ?>
 
     <li> 
-        <a href="index.php?action=connexion" >Connexion  </a> 
+        <a href="/index.php?action=connexion" >Connexion  </a> 
          / 
-        <a href="index.php?action=choixInscription"> Inscription </a> 
+        <a href="/index.php?action=choixInscription"> Inscription </a> 
     </li>
 
     <?php }

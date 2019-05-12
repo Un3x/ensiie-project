@@ -45,7 +45,7 @@ class VendorManager extends ClientManager
     {
 		$req=$this->connection->query("SELECT * from Vendor where id=$id")->fetch();
 		if($req==false)
-			return false;return $req===false?false:($this->get($req['id']));
+			return false;
 		$admin=new Vendor();
 		$raceManager=new RaceManager($this->connection);
 		$admin->hydrate2($req,$raceManager->get($req['idrace']));
@@ -62,7 +62,7 @@ class VendorManager extends ClientManager
   public function get2($mailAddress, $password) 
   {
 		$req=$this->connection->query("select id from Vendor where mailAddress='$mailAddress' and password='$password'")->fetch();
-		return $req===false?false:get($req['id']);
+		return $req===false?false:($this->get($req['id']));
 	}
 
 	/**

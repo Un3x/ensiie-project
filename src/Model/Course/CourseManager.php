@@ -69,32 +69,13 @@ class CourseManager
 
     /**
      * work only if the course exist in the db
-     * change the state and the id of the client
+     * change the state
      */
-    public function changeCourse($id_course,$state,$client)
+    public function changeCourse($id_course,$state)
     {
-        $statement = $this->connection->prepare("UPDATE Course SET state = :state AND client = :client WHERE id_course = :id");
-        $statement->execute(array("id" => $id_course,
-                                  "state" => $state,
-                                  "client" => $client));
-        
-        $statement = $this->connection->prepare("SELECT * FROM Course WHERE id_course = :id");
-        $statement->execute(array("id" => $id_course));
-        $rows = $statement->fetchAll();
-
-        foreach($rows as $row) 
-        {
-            $course = new Course();
-            $course
-                ->setId($row['id_course'])
-                ->setDeparture($row['departure'])
-                ->setArrival($row['arrival'])
-                ->setCarrier($row['carrier'])
-                ->setDepartureDateTime($row['departureDateTime'])
-                ->setState($row['state']);
-        }
-
-        return $course;
+        $statement = $this->connection->prepare("UPDATE Course SET state = :state WHERE id = :id");
+        return $statement->execute(array("id" => $id_course,
+                                  "state" => $state));
     }
 
     /**
