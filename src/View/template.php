@@ -42,7 +42,7 @@
                     {
                 ?>
                         <li>
-                            <a href="index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
+                            <a href="/index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
                         </li>
                 <?php
                     }   
@@ -50,8 +50,8 @@
                     { 
                 ?>
                         <li class="col-md-1"> 
-                            <a href="index.php?action=connexion" class="whiteStyle" >Connexion</a> / 
-                            <a href="index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
+                            <a href="/index.php?action=connexion" class="whiteStyle" >Connexion</a> / 
+                            <a href="/index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
                         </li>
                 <?php }
                 ?>

@@ -6,6 +6,6 @@
         <ul> <a href="/index.php?action=trajets"> Mes course </a> </ul>
         <ul> <a href="/index.php?action=messages"> Mes messages </a></ul>
         <!-- Partie vendeur : tresorie //
-        Partie admin :  --!>
+        Partie admin :  -->
     </li>
 </nav>
