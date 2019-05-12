@@ -1,17 +1,28 @@
+@-ms-viewport{
+    width: device-width;
+}
+
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Martel Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     text-decoration: none;
 }
 
-main[id="disconnected"]{
+header[id="disconnected"]{
     position: relative;
     background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     width: 100%;
-    height: 630px;
     color: white;
     display: inline-block;
+    padding-bottom: 100px;
+}
+
+a, .button{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container{
@@ -19,7 +30,7 @@ main[id="disconnected"]{
     margin: 0 auto;
 }
 
-#curve{
+.curve{
     position: absolute;
     bottom: 0;
     left:0;
@@ -29,31 +40,26 @@ main[id="disconnected"]{
     z-index: 0;
 }
 
-#curve path{
+.curve path{
     fill: white;
 }
 
-@media only screen and (max-width: 768px) { /*tablet for main shape*/
-    @-ms-viewport{
-        width: device-width;
+@media only screen and (max-width: 768px) {
+    header[id="disconnected"]{
+        padding-bottom: 75px;
     }
-
-    main[id="disconnected"]{
-        height: 570px;
-    }
-
-    #curve{
-        max-height: 70px;
+    .curve{
+    max-height: 70px;
     }
 }
 
 @media only screen and (max-width: 590px){
-    main[id="disconnected"]{
-        height: 470px;
+    header[id="disconnected"]{
+        padding-bottom: 60px;
     }
-    #curve{
+    .curve{
         max-height: 55px;
-    }
+}
 }
 
 .navbar-container{
@@ -73,21 +79,24 @@ main[id="disconnected"]{
 #landing-nav .nav-link li > a{
     display:block;
     text-align: center;
-    padding: 14px 16px;
+    margin: 14px 16px;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 200;
     color: white;
     opacity: 0.8;
     font-size: 15px;
+    letter-spacing: auto;
+    transition: all 0.25s ease-in-out;
 }
 
 #landing-nav .nav-link li a:hover{
     opacity: 1;
     font-weight: 400;
+    letter-spacing: 3px;
 }
 
-.navbar-container h1, .sidebar-container h1{
+.navbar-container h1 a, .sidebar-container h1 a{
     color: white;
     position: relative;
     padding: 13px 20px;
@@ -107,23 +116,29 @@ main[id="disconnected"]{
 }
 
 #sidebar-nav{
-    background-color: white;
-    margin-top: 12%;
+    background-color: #0a2c5f;
+    margin-top: 0;
     position: fixed;
     right: 0;
     left: 0;
     margin-right: auto;
     margin-left: auto;
-    width: 80vw;
-    border-radius: 10px;
+    width: 100vw;
     box-shadow: 0px 0px 15px #656565;
-    z-index : 3;
+    z-index : 2;
 }
 
 #sidebar-nav .nav-link{
     padding: 15px 0px;
     text-align: center;
     list-style-type: none;
+    transform: translateY(10px);
+    z-index: 2;
+}
+
+#sidebar-nav .nav-link li{
+    display: none;
+    margin-bottom: 10px;
 }
 
 #sidebar-nav .nav-link > li a{
@@ -131,38 +146,56 @@ main[id="disconnected"]{
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 400;
-    opacity: 0.8;
+    opacity: 1;
     font-size: 18px;
-    color: rgb(16, 106, 165);
-    transition: font-size 0.28s, opacity 0.28s, color 0.3s;
+    color: white;
+    transition: all 0.3s;
+    letter-spacing: 1px;
 }
 
 #sidebar-nav .nav-link li a:hover{
     font-size: 20px;
-    opacity: 1;
-    color: rgb(14, 178, 243);
+    letter-spacing: 2px;
 }
 
-.sidebar-container h1{
-    text-shadow: 0.1em 1.6px 3px #161142;
+#sidebar-nav #login-link{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: white;
+    color: #0a2c5f;
+    border-radius: 20px;
+    z-index: 5;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.sidebar-container h1 a{
+    text-shadow: 0 0 5px rgb(46, 73, 122);
     padding: 8px 0px;
     font-size: 25px;
 }
 
 #nav-toggle{
+    position: relative;
     color: white;
     text-shadow: 0px 0px 5px #161142;
     font-size: 30px;
-    transition: opacity 0.25s;
     float: right;
     transform: translateX(-30px);
+    z-index : 3;
 }
 
-#nav-toggle:hover{
-    opacity: 0.6;
+#nav-curve .curve{
+    transform: scale(1, -1) translateY(-100%);
+    max-height: 80px;
+    z-index: 1;
 }
 
-@media only screen and (max-width: 768px){ /*mobile and tablet*/
+#nav-curve path{
+    fill: #0a2c5f;
+}
+
+@media only screen and (max-width: 768px){
     .navbar-container{
         display: none;
     }
@@ -170,7 +203,6 @@ main[id="disconnected"]{
         display: block;
     }
 }
-
 
 #logo-img{
     object-fit: cover;
@@ -184,23 +216,31 @@ main[id="disconnected"]{
 }
 
 #header-text{
+    display: block;
     max-width: 500px;
     padding: 10px;
-    transform: translateY(60%);
+    transform: translateY(100%);
 }
 
 #header-text h1{
-    display: inline-block;
+    font-size: 35px;
+    position: absolute;
     font-weight: 700;
     font-family: 'Ubuntu', sans-serif;
-    text-shadow: 0.06em 0.1em gray;
+    text-shadow: 0.08em 0.08em gray;
 }
 
 #header-text p{
-    padding-top: 20px;
+    position: relative;
+    padding-top: 10px;
     font-weight: 400;
+    font-size: 18px;
     line-height: 1.2em;
-    color: #0a2c5f;
+    color: white;
+    opacity: 0.8;
+    transform: translateY(30px);
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .button{
@@ -212,12 +252,13 @@ main[id="disconnected"]{
     padding: 8px 30px; 
     color: white;
     border-radius: 40px;
-    box-shadow: 0px 0px 5px 0px #656565;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.386);
+    transition: all 200ms;
 }
 
 .button:hover{
-    top:-3px;
-    box-shadow: 0px 5px 10px 0px #4b4b4b;
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.586);
 }
 
 @media only screen and (max-width: 768px) {
@@ -227,14 +268,23 @@ main[id="disconnected"]{
         width: 40vw;
         transform: translateY(10%);
     }
-
+    #header-text{
+        transform: translateY(75%);
+    }
     #header-text h1{
         font-size: 25px;
         padding: 0;
+        position: static;
+        text-shadow: 0 0 5px rgb(46, 73, 122);
+    }
+    #header-text p{
+        font-size: 15px;
+        transform: translateY(10px);
+        margin: 0;
     }
 }
 
-@media only screen and (max-width: 590px) {/*mobile portrait only for landing page*/
+@media only screen and (max-width: 590px) {
     #logo-img{
         position: static;
         height: 30vh;
@@ -257,6 +307,8 @@ main[id="disconnected"]{
     }
     #header-text h1{
         font-size: 25px;
+        text-shadow: 0 0 5px rgb(46, 73, 122);
+        position: static;
     }
 }
 
@@ -416,7 +468,12 @@ input[type=text],input[type=password], input[type=email]{
     margin-top: 25px;
 }
 
-@media only screen and (max-width: 595px){ /*mobile portrait only for sign forms*/
+@media only screen and (max-width: 768px){
+    .sign-container h1{
+        text-shadow: 0 0 5px rgb(46, 73, 122);
+    }
+}
+@media only screen and (max-width: 595px){
     .sign{
         width: 250px;
         padding: 20px 20px;
@@ -436,9 +493,10 @@ input[type=text],input[type=password], input[type=email]{
     }
 
     .sign-container h1{
-        font-size: 25px;
+        font-size: 28px;
         text-align: center;
-        text-shadow: 0.1em 1.6px 3px #161142;
+        letter-spacing: 0.5px;
+        text-shadow: 0 0 5px rgb(46, 73, 122);
     }
 
     #signup{
@@ -453,4 +511,256 @@ input[type=text],input[type=password], input[type=email]{
     }
 }
 
-@-ms-viewport{ width: device-width;}
+#p-text{
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+}
+
+#p-text h1{
+    text-shadow: 0.06em 0.08em gray;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+#p-text p{
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media only screen and (max-width: 768px){
+    #p-text h1{
+        text-shadow: 0 0 5px rgb(46, 73, 122);
+        font-size: 30px;
+        font-weight: 500;
+    }
+    #p-text p{
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: normal;
+    }
+    #p-text{
+        transform: translateY(50px);
+        position: relative;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 590px){
+    #p-text h1{
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: .7px;
+    }
+    #p-text p{
+        font-size: 17px;
+    }
+}
+
+#p-wrapper{
+    width: 95%;
+    max-width: 950px;
+    margin: 1% auto;
+    display: flex;
+    position: relative;
+}
+
+.p-section{
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+    cursor:pointer;
+    max-width: 350px;
+    height: 85px;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 6px 10px 0px #25336b75;
+    border-radius: 10px;
+    transition: all 280ms;
+}
+
+#p1:hover, #p2:hover{
+    filter: none;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 10px 0px #25336b75;
+}
+
+.p-section h2{
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#p1, #p2{
+    flex: 0 0 45%;
+    background-repeat: no-repeat;
+}
+
+#p1{
+    color: rgb(16, 108, 184);
+    background-image: url("images/study.svg");
+    background-size: 230px auto;
+    background-position: -60px center;
+}
+
+#p2{
+    color: rgb(10, 170, 109);
+    background-image: url("images/tutorat.png");
+    background-size: auto 100px;
+    background-position: left center;
+    filter: grayscale(80%)
+}
+
+.p-sec-text{
+    width: 62%;
+    float: right;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 768px){
+    #p-wrapper{
+        margin-top: 10%;
+        position: relative;
+    }
+    .p-section h2{
+        font-size: 14px;
+    }
+    .p-sec-text{
+        text-align: center;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 590px){
+    #p-wrapper{
+        width: 98%;
+        margin-top: 16%;
+    }
+    #p1, #p2{
+        flex: 0 0 48%;
+    }
+    .p-section h2{
+        font-size: 13px;
+    }
+    #p2{
+        background-position: -15px center;
+    }
+    #p1{
+        background-position: -40px center;
+        background-size: 150px auto;
+    }
+    .p-sec-text{
+        padding-right: 1%;
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 400px){
+    #p1 .p-sec-text{
+        padding-top: 25px;
+    }
+}
+
+.text-icon{
+    display: block;
+    margin: 15px auto;
+    width: 150px;
+    padding: 10px 10px;
+    
+}
+
+#main-content{
+    transform: translateY(-30px);
+    text-indent: 30px;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    padding-bottom: 20px;
+    font-weight: 300;
+}
+
+#main-content h3{
+    text-align: center;
+    font-size: 22px;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+
+#main-content h4{
+    font-size: 20px;
+    font-weight: 400;
+    color: #0068a5;
+    padding-bottom: 5px;
+}
+
+#main-content p, #main-content ul li, #main-content p strong{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6em;
+}
+
+#main-content p{
+    text-align: justify;
+}
+
+#main-content p strong{
+    font-weight: 400;
+}
+
+#main-content ul{
+    margin-left: 20px;
+    text-indent: 0;
+}
+
+#main-content table{
+    text-align: center;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+#main-content table td, #main-content table th{
+    border-bottom: 1px solid #bef0ff;
+    border-top: 1px solid #bef0ff;
+    min-width: 120px;
+}
+
+#main-content th{
+    font-weight: 400;
+}
+
+#main-content thead{
+    background-color: #bef0ff;
+}
+
+.semester-cell{
+    color: #1ba9d4;
+    background-color: #f2f2f2;
+}
+
+#main-content table tfoot{
+    color: white;
+    background-color: #78ddfc;
+}
+
+@media only screen and (max-width: 590px){
+    #main-content{
+        text-indent: 0;
+        font-size: 15px;
+    }
+    .text-icon{
+        width: 100px;
+        padding: 0;
+    }
+}
+
+#paces-presentation{
+    display: block;
+}
+#tsps-presentation{
+    display: none;
+}
