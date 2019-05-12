@@ -21,7 +21,22 @@ class User
     /**
      * @var \DateTimeInterface
      */
-    private $birthday;
+    private $signupdate;
+
+    /**
+     * @var string
+     */
+    private $mailaddress;
+
+    /**
+     * @var string
+     */
+    private $passwd;
+
+    /**
+     * @var string
+     */
+    private $activcode;
 
     /**
      * @return int
@@ -80,35 +95,106 @@ class User
     /**
      * @return \DateTimeInterface
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getSignupDate(): \DateTimeInterface
     {
-        return $this->birthday;
+        return $this->signupdate;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param \DateTimeInterface $signupdate
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setSignupDate(\DateTimeInterface $sdate)
     {
-        $this->birthday = $birthday;
+        $this->birthday = $sdate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailAddress()
+    {
+        return $this->mailaddress;
+    }
+
+    /**
+     * @param string $lastname
+     * @return User
+     */
+    public function setMailAddress($mailaddress)
+    {
+        $this->mailaddress = $mailaddress;
+        return $this;
+    }
+
+    /**
+     * return Hash
+     * @return string
+     */
+    public function getPasswdH()
+    {
+        return $this->passwd;
+    }
+
+    /**
+     * @param string $lastname
+     * @return User
+     */
+    public function setPasswdH($passwd)
+    {
+        $this->passwd = $passwd;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActivCode()
+    {
+        return $this->activcode;
+    }
+
+    /**
+     * @param string $lastname
+     * @return User
+     */
+    public function setActivCode($activcode)
+    {
+        $this->activcode = $activcode;
         return $this;
     }
 
 
     /**
+     * @todo Check if working
      * @return int
      * @throws \OutOfRangeException
      */
-    public function getAge(): int
+    public function getAccountAge(): int
     {
         $now = new \DateTime();
 
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
+        if ($now < $this->getSignupDate()) {
+            throw new \OutOfRangeException('Signup date in the future');
         }
 
-        return $now->diff($this->getBirthday())->y;
+        return $now->diff($this->getSignupDate())->y;
     }
+
+    /**
+     * @return int
+     * @param string $log
+     * @param string $pw 
+     */
+    public function testLogin($log, $pw): int
+    {
+        $res = 0;
+        if ($this->getMailAddress() == $log && $this->getPasswd() == $pw) {
+            $res = 1;
+        }
+        return $res;
+    }
+
 }
 

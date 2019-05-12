@@ -1,14 +1,17 @@
 <?php
 require '../vendor/autoload.php';
 
+// VIDAGE SESSION
+
 //postgres
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
+global $userRepository;
 $userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
+//$users = $userRepository->fetchAll();
 ?>
 
 <!DOCTYPE html>
