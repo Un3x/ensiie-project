@@ -32,6 +32,11 @@ $events=$connection->query('select * from events where id_event='.$_SESSION['eve
 $eleves = $connection->query('select * from score left join users using (id_user) where id_event='.$_SESSION['event'])->fetchAll(\PDO::FETCH_OBJ);
 
 displayHeader();
+if (array_key_exists('suppr',$_POST)){
+	if ($connection->query("delete from score where id_event='".$_SESSION['event']."' and id_user=".$_POST['usertomodif'])){
+		echo "deleted";
+	}	
+}
 if (!empty($_POST['points'])) {
 	$connection->query("update score set notation=".$_POST["points"].' where id_user='.$_POST['usertomodif']);
 	echo "Note modifiée";
@@ -64,6 +69,7 @@ if (!empty($_POST['usertoadd'])){
 			<td class="actions">
 				<input type="number" value="<?php echo $eleve->id_user ?>" name="usertomodif" class="idevent" readonly/>
 				<input type="submit" name="submit" value="Modifier" />
+				<input type="submit" name="suppr" value="Supprimer"/>
 			</td>
 			</form>
 
