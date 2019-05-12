@@ -40,7 +40,7 @@ displayHeader();
 		</select>
 	  </div>
 	  <div class="choix">
-		<button onclick="action_exp()">CSV</button>
+		<button onclick="action_exp()">Export CSV</button>
 	  </div>
 	</div>
   </table>
