@@ -34,6 +34,7 @@ mysql_free_result($result);
 */
 $data = $connection->query($query)->fetchAll(\PDO::FETCH_OBJ);
 
+if (!empty($_REQUEST['export'])):
 if ($_REQUEST['export']) {
     header('Content-type:application/vnd.ms-excel');
     header('Content-Disposition:inline;filename=export.csv');
@@ -54,6 +55,13 @@ else {
     $data = json_encode($data);
    echo $data;
 }
+else:
+    header('Content-type:text/javascript;charset=utf-8');
+
+    $data = json_encode($data);
+   echo $data;
+
+endif;
 /*
 echo '<pre>';
 var_dump($data);
