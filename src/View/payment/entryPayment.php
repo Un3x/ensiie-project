@@ -12,5 +12,5 @@
     <br/>
     <input type=submit name=sendInfoCard value="Valider" />
     <input type=hidden id="usedCard" name="usedCard" value=<?php if($numCard!=null){echo "savedCard";}else{echo "newCard";} ?> />
-    <input type=hidden value=$idCourse />
+    <input type=hidden name=idCourse value="<?=$idCourse?>" />
 </div>

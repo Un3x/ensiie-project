@@ -1,7 +1,9 @@
 <?php
-	/*
+	
+if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrierId'])) || isset($_GET['courseId'])){
+
 	require '../vendor/autoload.php';
-	require '../src/model/course/CourseManager.php';
+	require '../src/Model/Course/CourseManager.php';
 
 	//GETgres
 	$dbName = getenv('DB_NAME');
@@ -9,57 +11,66 @@
 	$dbPassword = getenv('DB_PASSWORD');
 	$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
+	$CourseManager = new CourseManager($connection);
 
-	$CourseManager = new \City\CityManager($connection);
+	if (isset($_GET['courseId'])){
 
-	$courses = $CourseManager->searchCourses();
-	*/
 
-	if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrierId'])) || isset($_GET['courseId'])){
-	
-		if (isset($_GET['courseId'])){
+		$userType = "carrier";
 
-			$course = ['carrierId' => 86746483642268, 'price' => 20, 'departureId' => 2373465, 'arrivalId' => 686326, 'courseId' => $_GET['courseId']];
-			$carrier = ['name' => "aa"];
-			$departure = ['cityName' => "Paris", 'latitude' => 49.420318, 'longitude' => 8.687872];
-			$arrival = ['cityName' => "Évry", 'latitude' => 49.41461, 'longitude' => 8.681495];
-			$courseId = $course['courseId'];
-			$courseStatus = "booked";
+		$course = $CourseManager->getCourse($_GET['courseId']);
+
+		if ($course){
+			$courseId=$_GET['courseId'];
+			$departureName=$course['departure'];
+			$arrivalName=$course['arrival'];
+			$courseStatus=$course['state'];
+
+
+			if ($userType == "carrier") $name=$course["carrierFirstname"].' '.$course["carrierSurname"];
+			else $name=$course["clientFirstname"].' '.$course["clientSurname"];
 
 			$found = true;
-			$userType = "carrier";
 		}
 		else{
-			$course = ['carrierId' => $_GET['carrierId'], 'price' => 20, 'departureId' => 2373465, 'arrivalId' => 686326, 'idCourse' => 63958462529];
-			$carrier = ['name' => "aa"];
-			$departure = ['cityName' => $_GET['departure'], 'latitude' => 49.420318, 'longitude' => 8.687872];
-			$arrival = ['cityName' => $_GET['arrival'], 'latitude' => 49.41461, 'longitude' => 8.681495];
+			$found=false;
+		}
+	}
+	else{
+
+		$course = $CourseManager->fetchThisCourse($_GET['departure'],$_GET['arrival'],$_GET['carrierId']);
+
+		if ($course){
+			$departureName=$_GET['departure'];
+			$arrivalName=$_GET['arrival'];
+			$name=$course["firstname"].' '.$course["surname"];
 
 			$found = true;
 			$userType = null;
 		}
-
-		if($found){
-
-			$name=$carrier['name'];
-			$carrierId=$course['carrierId'];
-			$price=$course['price'];
-			$departureName=$departure['cityName'];
-			$arrivalName=$arrival['cityName'];
-
-			$departureLat = $departure['latitude'];
-			$departureLong = $departure['longitude'];
-			$arrivalLat = $arrival['latitude'];
-			$arrivalLong = $arrival['longitude'];
-
-			require('../src/View/course/infoCourseView.php');
-		}
 		else{
-			$content = "Ce trajet n'existe pas";
-			require('../src/View/template.php');
+			$found=false;
 		}
+	}
+
+	if($found){
+
+		$carrierId=$course['carrierId'];
+		$price=$course['price'];
+
+		$departureLat = $course['departureLat'];
+		$departureLong = $course['departureLong'];
+		$arrivalLat = $course['arrivalLat'];
+		$arrivalLong = $course['arrivalLong'];
+
+		require('../src/View/course/infoCourseView.php');
 	}
 	else{
 		$content = "Ce trajet n'existe pas";
 		require('../src/View/template.php');
 	}
+}
+else{
+	$content = "Ce trajet n'existe pas";
+	require('../src/View/template.php');
+}

@@ -1,5 +1,4 @@
 <?php
-namespace Course;
 
 class Course
 {
@@ -24,13 +23,13 @@ class Course
      * @var int
      * id of the carrier
      */
-    private $carrier
+    private $carrier;
 
     /**
      * @var int
      * id of the client
      */
-    private $client
+    private $client;
 
 
     /**
@@ -41,7 +40,12 @@ class Course
     /**
      * @var int
      */
-    private $state
+    private $state;
+
+    /**
+     * @var float
+     */
+    private $price;
 
 
 
@@ -138,7 +142,7 @@ class Course
     /**
      * @return DateTime
      */
-    public function getDepartureDateTIme()
+    public function getDepartureDateTime()
     {
         return $this->departureDateTime;
     }
@@ -147,13 +151,13 @@ class Course
      * @param DateTime $departureDateTime
      * @return Course
      */
-    public function setCarrier($departureDateTime)
+    public function setDepartureDateTime($departureDateTime)
     {
         $this->departureDateTime = new DateTime($departureDateTime);
         return $this;
     }
 
-        /**
+    /**
      * @return int
      */
     public function getState()
@@ -165,11 +169,27 @@ class Course
      * @param int $state
      * @return Course
      */
-    public function setCarrier($state)
+    public function setState($state)
     {
         $this->state = $state;
         return $this;
     }
 
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 
+    /**
+     * @param float $price
+     * @return Course
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+        return $this;
+    }
 }

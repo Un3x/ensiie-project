@@ -1,6 +1,6 @@
 <?php
 
-if ((isset($_POST['usedCard'])
+if (((isset($_POST['usedCard'])
     && $_POST['usedCard'] == 'newCard'
     && isset($_POST['nCard'])
     && preg_match("/^[0-9]{16}$/", $_POST['nCard'])
@@ -13,69 +13,78 @@ if ((isset($_POST['usedCard'])
     && preg_match("/^[0-9]{3}$/", $_POST['codeCard']))
     ||
     (isset($_POST['usedCard'])
-    && $_POST['usedCard'] == 'savedCard')){
+    && $_POST['usedCard'] == 'savedCard'))
+    &&
+    isset($_POST['idCourse'])){
 
-    //validation paiement trajet
-
-    $message = "paiement validé";
-
-
-
-    $courseId = '15728632268232634';
-    $clientName = 'azertyuiop';
-    $carrierName = 'qsdfgjlm';
-	$price = 50;
-	$departureName = 'Paris';
-	$arrivalName = 'Évry';
-
-    require('../src/Controller/mail/mailController.php');
-
-    $Template = new EmailTemplate('../src/View/mail/bookingConfirmationMail.php');
-    $Template->courseId = $courseId;
-	$Template->name = $carrierName;
-	$Template->price = $price;
-	$Template->departureName = $departureName;
-	$Template->arrivalName = $arrivalName;
-    
-
-    $recipient = "testprojetlicorne+testMail@gmail.com";
-    $subject = "confirmation de réservation";
-    $body = $Template->compile();
-    $bodyAlt = "Coucou ! Tu veux voir ma bite ?";
-
-    sendMail($recipient, $subject, $body, $bodyAlt);
+   
+    $courseId = $_POST['idCourse'];
 
 
+    require '../vendor/autoload.php';
+	require '../src/Model/Course/CourseManager.php';
 
+	//postgres
+	$dbName = getenv('DB_NAME');
+	$dbUser = getenv('DB_USER');
+	$dbPassword = getenv('DB_PASSWORD');
+	$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    $CourseManager = new CourseManager($connection);
 
-    $Template = new EmailTemplate('../src/View/mail/askCourseMail.php');
-    $Template->courseId = $courseId;
-	$Template->name = $clientName;
-	$Template->price = $price;
-	$Template->departureName = $departureName;
-	$Template->arrivalName = $arrivalName;
-    
+    $course = $CourseManager->getCourse($courseId);
 
-    $recipient = "testprojetlicorne+testMail@gmail.com";
-    $subject = "demande de trajet";
-    $body = $Template->compile();
-    $bodyAlt = "Coucou ! Tu veux voir ma bite ?";
+    if ($course){
 
-    sendMail($recipient, $subject, $body, $bodyAlt);
+        $clientName = $course['clientFirstname'].' '.$course['clientSurname'];
+        $carrierName = $course['carrierFirstname'].' '.$course['carrierSurname'];
+        $price = $course['price'];
+        $departureName = $course['departure'];
+        $arrivalName = $course['arrival'];
+
+        require('../src/Controller/mail/mailController.php');
+
+        $Template = new EmailTemplate('../src/View/mail/bookingConfirmationMail.php');
+        $Template->courseId = $courseId;
+        $Template->name = $carrierName;
+        $Template->price = $price;
+        $Template->departureName = $departureName;
+        $Template->arrivalName = $arrivalName;
+        
+
+        $recipient = "testprojetlicorne+testMail@gmail.com";
+        $subject = "confirmation de réservation";
+        $body = $Template->compile();
+        $bodyAlt = "";
+
+        sendMail($recipient, $subject, $body, $bodyAlt);
 
 
 
 
+        $Template = new EmailTemplate('../src/View/mail/askCourseMail.php');
+        $Template->courseId = $courseId;
+        $Template->name = $clientName;
+        $Template->price = $price;
+        $Template->departureName = $departureName;
+        $Template->arrivalName = $arrivalName;
+        
+
+        $recipient = "testprojetlicorne+testMail@gmail.com";
+        $subject = "demande de trajet";
+        $body = $Template->compile();
+        $bodyAlt = "";
+
+        sendMail($recipient, $subject, $body, $bodyAlt);
+
+        //validation paiement trajet
+
+        $message = "paiement validé";
 
 
-
-
-
-
-
-
-
-
+    }
+    else{
+        $message = "ce trajet n'existe pas";
+    }
 
 }
 else{
