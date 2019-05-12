@@ -17,35 +17,32 @@ displayHeader();
     
     <h1 id = "PageBDE"> <label> Gestion BDE : </label> </h1></header>
 
-  <table>
-	<tr>
-	  <td>Consulter points associatifs de(s) l'année(s) : </td>
-	  <td>
-		<select id="promoAnnee" multiple="multiple" size="4">
+  <table class="table">
+	<div style="display: flex; justify-content: space-between">
+	  <div style="display: flex">Consulter points associatifs de(s) l'année(s) :&nbsp;
+				<select id="promoAnnee" multiple="multiple" size="4">
 		  <option value="2018" selected="selected">1A (Promo 2021)</option>
 		  <option value="2017">2A (Promo 2020)</option>
 		  <option value="2016">3A (Promo 2019)</option>
 		  <option value="2015">4A (Promo 2018)</option>
 		</select>
-	  </td>
-	  <td> pour l(es) association(s) : </td>
-	  <td>
+	  </div>
+	  <div style="display: flex"> pour l(es) association(s) :&nbsp;
 		<select id="association" multiple="multiple" size="4">
 		  <option>Aucune Asso</option>
 		</select>
-	  </td>
-	  <td class="choix hide">ordonner par:</td>
-	  <td class="choix hide">
+	  </div>
+	  <div class="choix">ordonner par:&nbsp;
 		<select id="ordre">
 		  <option value="lastname">nom</option>
 		  <option value="pseudo">pseudo</option>
 		  <option value="notation">points associatif</option>
 		</select>
-	  </td>
-	  <td class="choix hide">
+	  </div>
+	  <div class="choix">
 		<button onclick="action_exp()">CSV</button>
-	  </td>
-	</tr>
+	  </div>
+	</div>
   </table>
 
   <button onclick="action_aff()">Rechercher</button>
@@ -67,8 +64,8 @@ displayHeader();
 
 <script>
 var asso_name = [];
-$.get("asso.php", function (asso) {
-	console.log(asso);
+$.get("ajax/asso.php", function (asso) {
+//	console.log(asso);
 	$("#association option").remove();
 	asso.forEach(function(u) {
 		asso_name[u['id_asso']] = u['name'];
@@ -78,11 +75,10 @@ $.get("asso.php", function (asso) {
 
 
 function action_aff() {
-	$(".choix").removeClass("hide");
 	var year = $("#promoAnnee").val(),
 		asso = $("#association").val(),
 		ordre = $("#ordre").val();
-	$.get("users.php", { "year": year, "asso": asso, "order": ordre }, function (users) {
+	$.get("ajax/users.php", { "year": year, "asso": asso, "order": ordre }, function (users) {
 		if (asso.length == 1 && ordre == 'notation') {
 			var asso_id = asso[0];
 			users.sort(function(a,b) {
@@ -91,7 +87,7 @@ function action_aff() {
 				return va < vb;
 			})
 		}
-		console.log(asso_id, users);
+//		console.log(asso_id, users);
 		$("#res thead tr").remove();
 		$("#res thead").append('<tr><th>Firstname</th><th>Lastname</th><th>Pseudo</th></tr>');
 		asso.forEach(function(asso_id) {
@@ -119,7 +115,7 @@ function action_exp() {
 	var year = $("#promoAnnee").val(),
 		ordre = $("#ordre").val(),
 		asso = $("#association").val(),
-		arg = "users.php?export=1";
+		arg = "ajax/users.php?export=1";
 	year.forEach(function(annee) {
 		arg += "&year[]=" + annee;
 	});

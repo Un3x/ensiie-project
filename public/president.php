@@ -243,7 +243,7 @@ $.get("ajax/users_get.php", function(users) {
 		list: users_list,
 		replace: function(suggestion) {
 			this.input.value = suggestion.label;
-			console.log(suggestion);
+//			console.log(suggestion);
 			$("#ajout_submit").prop("disabled",false);
 			user_selected = suggestion.value;
 		}

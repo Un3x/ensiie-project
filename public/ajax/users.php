@@ -1,6 +1,6 @@
 <?php
 
-include('./admin/functions.php');
+include('../admin/functions.php');
 // On prolonge la session
 session_start();
 // On teste si la variable de session existe et contient une valeur
@@ -10,7 +10,7 @@ if(empty($_SESSION['login']) || empty($_SESSION['bde']))
 	exit();
 }
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 function csv_encode($v) {
     return '"' . $v . '"';

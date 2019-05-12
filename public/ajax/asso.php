@@ -1,6 +1,6 @@
 <?php
 
-include('./admin/functions.php');
+include('../admin/functions.php');
 // On prolonge la session
 session_start();
 // On teste si la variable de session existe et contient une valeur
@@ -10,13 +10,13 @@ if(empty($_SESSION['login']) || empty($_SESSION['bde']))
 	exit();
 }
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$query = "SELECT * FROM associations";
+$query = "SELECT * FROM associations ORDER BY name";
 
 /*
 $result = mysql_query($query,$connect);

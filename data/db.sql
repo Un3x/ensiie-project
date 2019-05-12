@@ -81,6 +81,8 @@ insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','T
 insert into associations(name,president) values ('Securitiie',1);
 insert into associations(name,president) values ('Vocaliise',2);
 insert into associations(name,president) values ('BDE',3);
+insert into associations(name,president) values ('Martiiale',2);
+insert into associations(name,president) values ('Escalade',1);
 insert into events(name,id_asso,coeff_event,date_ev) values ('reu',1,1,'2019-01-10'); 
 insert into score(id_user,id_event,notation) values (1,1,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);
