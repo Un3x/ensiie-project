@@ -138,6 +138,34 @@ function affiche_nav($user_connected, $admin) {
   }
 }
 
+function affiche_bandeau_connexion($user_connected, $nom, $prenom, $pseudo, $admin) {
+
+  if ($user_connected) {
+    echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom";
+    if($admin) {
+        echo '<span style="font-style:italic; font-size:small">  (Admin)</span>';
+    };
+    echo "</TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Déconnexion\"></form></TD>
+      </TR>
+    </TABLE>";
+
+    //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
+
+  }
+  else {
+    echo "<TABLE >
+      <TR>
+        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
+        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
+      </TR>
+    </TABLE>";
+  }
+        
+}
+
 
 
 

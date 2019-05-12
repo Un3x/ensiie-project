@@ -19,6 +19,11 @@ $auteurRepository = new \Auteur\AuteurRepository($connection);
 $userRepository = new \User\UserRepository($connection);
 $auteurs = $auteurRepository->fetchAll();
 $user_connected=isset($_SESSION["id_user"]);
+
+$prenom = '';
+$nom = '';
+$pseudo = '';
+$admin = false;
 if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
 //!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
     $id_user=$_SESSION["id_user"];
@@ -87,29 +92,9 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
     <title>Page d'ajout de livre</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
-        <?php
-        if ($user_connected) {
-            echo "<TABLE >
-      <TR>
-        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnexion\"></form></TD>
-      </TR>
-    </TABLE>";
-
-            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
-
-        }
-        else {
-            echo "<TABLE >
-      <TR>
-        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
-      </TR>
-    </TABLE>";
-        }
-        
-        ?>
-    </div>
+    <?php affiche_bandeau_connexion($user_connected, $nom, $prenom, $pseudo, $admin) ?> 
+    <!-- dans utils.php -->
+</div>
 <body>
   <header>
         <img src="../images/sciience.png"/>

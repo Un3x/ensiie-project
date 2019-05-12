@@ -1,14 +1,11 @@
 <?php
 
-//cette page permet aux admins de voir la liste des livres empruntés ainsi que la date à laquelle ils ont été empruntés
+// cette page permet aux admins de voir la liste des livres empruntés ainsi que la date à 
+// laquelle ils ont été empruntés
 
 include("utils.php");
 
 require '../vendor/autoload.php';
-
-
-//TODOTODOTODOTODOTODOTODOTODOTODO j'ai eu la flemme de la tester sur docker donc a vérifier plus la fonction fetchEmprunted de livreRepository
-
 
 
 session_start();
@@ -22,8 +19,14 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
 $user_connected=isset($_SESSION["id_user"]);
-if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il est identifié)
-//!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
+
+$prenom = '';
+$nom = '';
+$pseudo = '';
+$admin = false;
+if ($user_connected) {
+  //on récupère les info sur l'utilisateur courrant (si il est identifié)
+  //!\\ si vous le copiez vous devez avoir la ligne $userRepository = new \User\UserRepository($connection); plus haut
     $id_user=$_SESSION["id_user"];
     $user=$userRepository->fetchId($id_user);
     $admin=$user->getAdmin();
@@ -55,29 +58,9 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
 	<title>liste emprunts</title>
 </head>
 <div class="top"> <!--ajout d'un haut de page si l'utilisateur est admin ou si il est connecté-->
-        <?php
-        if ($user_connected) {
-            echo "<TABLE >
-      <TR>
-        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom</TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"deconnection.php\"><input class=\"bande2\" type=\"submit\" value=\"Deconnexion\"></form></TD>
-      </TR>
-    </TABLE>";
-
-            //"<p style=\"white-space: no-wrap\">Vous êtes connecté en tant que $nom \"$pseudo\" $prenom<div style=\"white-space: no-wrap\">Deconection</div> </p>";
-
-        }
-        else {
-            echo "<TABLE >
-      <TR>
-        <TD class=\"bande1\" align=\"left\" WIDTH=\"100%\"></TD>
-        <TD style=\"border:none; height:30px\" align=\"right\"><form action=\"connexion.php\"><input class=\"bande2\" type=\"submit\" value=\"Connexion\"></form></TD>
-      </TR>
-    </TABLE>";
-        }
-        
-        ?>
-    </div>
+  <?php affiche_bandeau_connexion($user_connected, $nom, $prenom, $pseudo, $admin) ?> 
+  <!-- dans utils.php -->
+</div>
 <body><header>
         <img src="../images/sciience.png"/>
     </header>
