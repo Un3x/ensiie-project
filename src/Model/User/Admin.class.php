@@ -20,7 +20,7 @@ class Admin extends User
 		$this->setReputation($reputation);
 		$this->setDescription($description);
 		$this->setGender($gender);
-		$this->creationDate=date('Y-m-d H:i:s');
+		$this->creationDate=date_create();
 	}
 
 	public function hydrate2($sqlRow,Race $race)

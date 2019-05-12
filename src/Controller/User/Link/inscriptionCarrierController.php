@@ -71,7 +71,6 @@ function inscriptionCarrier()
             $vendor = new Vendor();
             $raceManager = new RaceManager($bdd);
             $vendor->hydrate( $_POST["prenom"], $_POST["nom"], ($raceManager->get($_POST['race'])) , $_POST['mail'], $_POST['password'], 0, $_POST['phoneNumber'], new DateTime($_POST['birthDate']),0, $_POST['description'], $_POST['genre'], 0, 0, true, 0);
-            $vendorManager->add($vendor);
             if($vendorManager->add($vendor) != false) {
                 require('../src/View/User/Link/inscriptionValideView.php');
             }

@@ -69,7 +69,7 @@ abstract class UserManager
 
     public final function isUsed($mailAddress)
 	{
-		return $this->connection->query("select * from Client where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Vendor where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Admin where $mailAddress=mailAddress")->fetch()===false;
+		return $this->connection->query("select * from Client where mailAddress='$mailAddress'")->fetch()||$this->connection->query("select * from Vendor where mailAddress='$mailAddress'")->fetch()||$this->connection->query("select * from Admin where mailAddress='$mailAddress'")->fetch();
 	}
 
 	/**

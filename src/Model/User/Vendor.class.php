@@ -164,7 +164,7 @@ class Vendor extends User
 		$this->setNbVendorCourses($nbVendorCourses);
 		$this->setOccupied($occupied);
 		$this->setPosition($position);
-		$this->creationDate=date('Y-m-d H:i:s');
+		$this->creationDate=date_create();
 	}
 
 	public function hydrate2($sqlRow,Race $race)
