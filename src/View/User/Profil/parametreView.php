@@ -29,7 +29,7 @@
 
 <section>
     <p> Voulez-vous vraiment supprimer votre compte ? : </p>
-    <a href="index.php?action=suppressionCompte">
+    <a href="index.php?action=destructionCompteDemande">
         <input type="button" value="Suppresion de votre compte"/>
     </a>
     <!-- supprimer le compte --!>

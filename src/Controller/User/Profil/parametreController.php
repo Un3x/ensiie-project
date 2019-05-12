@@ -36,7 +36,16 @@ function parametreModifPassword()
 function parametreSupprimeCompte()
 {
     $bdd = bdd();
-    $clientManager = new ClientManager($bdd);
-    $clientManager->delete($_SESSION["user"]);
+    if($GLOBALS["userType"] == "Vendor")
+    {
+        $vendorManager = new VendorManager($bdd);
+        $vendorManager->delete($GLOBALS["user"]);
+    }
+    if($GLOBALS["userType"] == "Client")
+    {
+        $clientManager = new ClientManager($bdd);
+        $clientManager->delete($_SESSION["user"]);
+    }
+
     require('../src/View/User/Profil/destructionCompteFinView.php');
 }

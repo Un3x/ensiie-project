@@ -105,10 +105,10 @@ if( isset($_GET['action']))
             require('../src/Controller/User/Profil/parametreController.php');
             parametreModifPassword();
             break;
-        case 'suppresionCompteDemande':
-            require('../src/View/User/destructionCompteView.php');
+        case 'destructionCompteDemande':
+            require('../src/View/User/Profil/destructionCompteView.php');
             break;
-        case 'suppresionCompte':
+        case 'destructionCompte':
             require('../src/Controller/User/Profil/parametreController.php');
             parametreSupprimeCompte();
             break;

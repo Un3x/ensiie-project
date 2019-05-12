@@ -24,12 +24,12 @@
           <?php if($modif) echo "'index.php?action=validationProfil'"; else  echo"'index.php?action=changementProfil'"; ?>
           method="POST" >
         <label for="prenom"> Votre prenom : </label>
-        <input type="text" id="prenom" value="<?=$valeurDefaut['prenom']?>"  <?php if(!$modif) echo "readonly"; ?> />
+        <input type="text" id="prenom" name="prenom" value="<?=$valeurDefaut['prenom']?>"  <?php if(!$modif) echo "readonly"; ?> />
 
         <br/>
 
         <label for="nom"> Votre nom </label>
-        <input type="text" id="nom"  value="<?=$valeurDefaut['nom']?>"  <?php if(!$modif) echo "readonly"; ?> />
+        <input type="text" id="nom"  name="nom" value="<?=$valeurDefaut['nom']?>"  <?php if(!$modif) echo "readonly"; ?> />
 
         <br/>
 
