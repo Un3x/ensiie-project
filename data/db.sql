@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS "photo" CASCADE;
 DROP TABLE IF EXISTS "produits" CASCADE;
 DROP TABLE IF EXISTS "categorie" CASCADE;
 DROP TABLE IF EXISTS "assoc_prd_cat" CASCADE;
+DROP TABLE IF EXISTS "message" CASCADE;
 
 CREATE TABLE "photo"(
     id_photo INTEGER,
@@ -49,6 +50,15 @@ CREATE TABLE "categorie"(
     nom_cat VARCHAR,
     link VARCHAR,
     CONSTRAINT key_cat PRIMARY KEY (id_cat)
+);
+
+CREATE TABLE "message"(
+    id_mess INTEGER,
+    titre VARCHAR,
+    contenu VARCHAR,
+    mail VARCHAR,
+    valid INTEGER, /*0 si pas traité 1 si traité 2 si supprimé*/
+    CONSTRAINT key_mess PRIMARY KEY (id_mess)
 );
 
 
@@ -99,6 +109,7 @@ INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (8,1);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (9,1);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (6,2);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (9,2);
+INSERT INTO "message" (id_mess,titre,contenu,mail,valid) VALUES (0,'Petit message','Je suis très content de votre travail','matthieu.gosset@yahoo.fr',0);
 
 /*
 COMMANDE POUR RECUPERER LES TITRES DES PRODUITS DE CATEGORIE N

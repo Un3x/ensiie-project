@@ -20,6 +20,9 @@ $cats = $catRepository->fetchAll();
 
 $phoRepository=new \User\PhotoRepository($connection);
 $ProdRepository=new \User\ProduitRepository($connection);
+$MessRepository= new \User\MessageRepository($connection);
+$mess=$MessRepository->fetchUnvalid();
+$taillemess=sizeof($mess);
 
 require 'connexion.php';
 
@@ -70,6 +73,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
     }
 }
 ?>
+<a href="checkmessage.php"><h2 class="sous_titre"><?php echo $taillemess;?> message(s) en attente</h2></a>
 <h2 class="sous_titre">Les annonces pas encore validées :</h2>
 <?php 
     $prods=array_reverse($ProdRepository->getProdNonValid());

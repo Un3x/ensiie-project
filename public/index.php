@@ -24,6 +24,8 @@ $cats = $catRepository->fetchAll();
 
 $phoRepository=new \User\PhotoRepository($connection);
 $ProdRepository=new \User\ProduitRepository($connection);
+$MessRepository= new \User\MessageRepository($connection);
+$mess=$MessRepository->fetchUnvalid();
 
 require 'connexion.php';
 
@@ -42,9 +44,11 @@ require("header.php");
         if ($_SESSION['statut']== 1){
             $prods=sizeof($ProdRepository->getProdNonValid());
             $us=sizeof($userRepository->fetchAllUnvalid());
+            $taillemes=sizeof($mess);
             echo "Vous êtes administrateur :<br/>
             Il y a <strong>".$prods."</strong> annonce(s) à traiter<br/>
-            Il y a <strong>".$us."</strong> profil(s) à traiter<br/>";
+            Il y a <strong>".$us."</strong> profil(s) à traiter<br/>
+            Il y a <strong>".$taillemes."</strong> message(s) en attente<br/>";
         }
 
         if (isset($_SESSION['authent'])) {
