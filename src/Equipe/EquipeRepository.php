@@ -67,4 +67,40 @@ class EquipeRepository
 
         return $equipes;
     }
+    
+    public function getEquipe($idJeu)
+    {
+        $jeuRepository = new JeuRepository($this->connection);
+        
+        $rows = $this->connection->query('SELECT id_membre, equipe.role, nom, prenom, surnom, promo, membre.role
+                                          FROM "equipe" NATURAL JOIN "membre"
+                                          WHERE id_jeu = '.$idJeu)->fetchAll(\PDO::FETCH_OBJ);
+        
+        $jeu = $jeuRepository->getJeu($idJeu);
+                
+        $membres = array();
+        $roles = array();
+        
+        foreach ($rows as $row) { 
+            $membre = new Membre();
+            $membre
+            ->setId($row->id_membre)
+            ->setNom($row->nom)
+            ->setPrenom($row->prenom)
+            ->setSurnom($row->surnom)
+            ->setPromo($row->promo)
+            ->setRole($row->membre.role);
+            
+            $membres[] = $membre;
+            $roles[membre] = $row->equipe.role;
+        }
+        
+        $equipe = new Equipe();
+        $equipe
+        ->setJeu($jeu)
+        ->setMembres($membres)
+        ->setRoles($roles);
+        
+        return $equipe;
+    }
 }

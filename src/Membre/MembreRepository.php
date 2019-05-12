@@ -18,7 +18,9 @@ class MembreRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT id_membre, nom, prenom, surnom, promo, role FROM "membre"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT id_membre, nom, prenom, surnom, promo, role
+                                          FROM "membre"
+                                          ORDER BY promo DESC, surnom')->fetchAll(\PDO::FETCH_OBJ);
         $membres = [];
         foreach ($rows as $row) {
             $membre = new Membre();
