@@ -1,17 +1,17 @@
 <?php
 
-require_once('../src/model/User/ClientManager.class.php');
+require_once('../src/Model/User/ClientManager.class.php');
 
 
 function initChampsPost()
 {
-    $valeurDefaut['age'] = $_POST['age'];
     $valeurDefaut['prenom'] = $_POST['prenom'];
     $valeurDefaut['nom'] = $_POST['nom'];
     $valeurDefaut['mail'] = $_POST['mail'];
     $valeurDefaut['password'] = $_POST['password'];
     $valeurDefaut['password2'] = $_POST['password2'];
     $valeurDefaut['description'] = $_POST['description'];
+    $valeurDefaut["birthDate"] = $_POST["birthDate"];
     return $valeurDefaut;
 }
 
@@ -24,6 +24,7 @@ function initChamps()
     $valeurDefaut['password2'] = "";
     $valeurDefaut['mail'] ="";
     $valeurDefaut['description'] ="";
+    $valeurDefaut["birthDate"] ="";
     return $valeurDefaut;
 }
 

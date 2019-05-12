@@ -1,28 +1,51 @@
 <?php
 
-$GLOBALS['connecte'] = isset($_SESSION["user"]);
-if($GLOBALS['connecte'])
-{
-    $a = "Client";
-    $b = "Vendor";
-    $c = "Admin";
-
-    $GLOBALS['client'] = ($_SESSION["user"] instanceof  $a);
-    $GLOBALS['vendeur'] = ($_SESSION["user"] instanceof  $b);
-    $GLOBALS['admin'] = ($_SESSION["user"] instanceof  $c);
-}
+require("../src/Model/User/ClientManager.class.php");
+require("../src/Model/User/AdminManager.class.php");
+require("../src/Model/User/VendorManager.class.php");
 
 
 function bdd()
 {
+    try{
+        //postgres
+        $dbName = getenv('DB_NAME');
+        $dbUser = getenv('DB_USER');
+        $dbPassword = getenv('DB_PASSWORD');
+        $a = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+        return $a;
+    }
+    catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+
     try {
-    $a = new PDO('pgsql:host=localhost', "Lucas","");
-} catch (PDOException $e) {
+        $a = new PDO('pgsql:host=localhost', "Lucas","");
+        return $a;
+    }
+    catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
     }
     return $a;
 }
-/*
 
-*/
+
+
+if(isset($_SESSION["userId"])&&isset($_SESSION["userType"]))
+{
+    $ClientManager = new ClientManager(bdd());
+    $AdminManager = new AdminManager(bdd());
+    $VendorManager = new VendorManager(bdd());
+
+    if($_SESSION["userType"]=="Client") $user = $ClientManager->get($_SESSION["userId"]);
+    if($_SESSION["userType"]=="Admin") $user = $AdminManager->get($_SESSION["userId"]);
+    if($_SESSION["userType"]=="Vendor") $user = $VendorManager->get($_SESSION["userId"]);
+
+    $GLOBALS['user'] = $user;
+}
+else{
+    $GLOBALS['user'] = null;
+}
+

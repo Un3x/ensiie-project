@@ -42,7 +42,7 @@
      </li>
 
 <?php 
-    if($GLOBALS['connecte']) 
+    if($GLOBALS['user']) 
     { ?>
         <li>
             <a href="index.php?action=deconnexion" > Deconnexion </a>
@@ -66,9 +66,9 @@
 
 </nav>
 
-<?php if($GLOBALS['connecte'])
+<?php if($GLOBALS['user'])
     {
-        //require("../src/View/User/Profil/menu_membre.php");
+        require("../src/View/User/Profil/menu_membre.php");
     }
     ?>
 

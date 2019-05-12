@@ -1,6 +1,6 @@
 <?php
 
-require_once("../src/model/User/VendorManager.class.php");
+require_once("../src/Model/User/VendorManager.class.php");
 require_once("inscriptionClientController.php");
 
 function getListeRace()
@@ -81,7 +81,7 @@ function inscriptionCarrier()
 
     // il faut regenerer la liste des races :
 
-    tabRace = getListeRace();
+    $tabRace = getListeRace();
     $optionRace = "";
     for ($i = 0; $i < count($tabRace); $i++) {
         $optionRace = $optionRace . " <option value='". $tabRace[$i]->getId()."'> " . $tabRace[$i]->getName() . "  </option>";

@@ -1,13 +1,13 @@
 <?php
 
-require_once("../src/model/User/ClientManager.class.php");
-require_once("../src/model/User/User.class.php");
+require_once("../src/Model/User/ClientManager.class.php");
+require_once("../src/Model/User/User.class.php");
 
 
 function initChamps()
 {
     //initialisation des champs avec la BDD
-    $user = $_SESSION['user'];
+    $user = $GLOBALS['user'];
     $valeurDefaut['age'] = 0;
     $valeurDefaut['prenom'] = $user->getFirstName();
     $valeurDefaut['nom'] = $user->getSurname();

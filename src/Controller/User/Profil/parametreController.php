@@ -1,6 +1,6 @@
 <?php
-require('../src/model/User/UserManager.class.php');
-require('../src/Controller/verif.php');
+require_once('../src/Model/User/UserManager.class.php');
+require_once('../src/Controller/verif.php');
 
 
 function parametreDebut()

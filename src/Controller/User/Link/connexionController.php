@@ -1,5 +1,7 @@
 <?php
-require_once('../src/model/User/ClientManager.class.php');
+require_once('../src/Model/User/ClientManager.class.php');
+require_once('../src/Model/User/VendorManager.class.php');
+require_once('../src/Model/User/AdminManager.class.php');
 
 
 function connexionDebut()
@@ -10,15 +12,23 @@ function connexionDebut()
 
 function tentativeConnexion()
 {
-    $userManager = new ClientManager(bdd());
+    $ClientManager = new ClientManager(bdd());
+    $AdminManager = new AdminManager(bdd());
+    $VendorManager = new VendorManager(bdd());
     if(filter_var($_POST['login'], FILTER_VALIDATE_EMAIL))
     {
-        $user = $userManager->get2($_POST['login'],$_POST['password']);
+        if(!$user = $ClientManager->get2($_POST['login'],$_POST['password']))
+        if(!$user = $AdminManager->get2($_POST['login'],$_POST['password']))
+        $user = $VendorManager->get2($_POST['login'],$_POST['password']);
+
         if($user != false)
         {
-            $_SESSION['user'] =  $user;
+            $_SESSION['userId'] =  $user->getId();
+            $_SESSION['userType'] = get_class($user);
             //appeler plutôt le contrôleur correspondant ou header en repassant par index.php ?
-            $GLOBALS['connecte']=true;
+            $GLOBALS['user']=$user;
+
+
             require("../src/Controller/User/Profil/profilController.php");
             profilDebut();
         }

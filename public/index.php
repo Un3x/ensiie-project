@@ -56,7 +56,7 @@ if( isset($_GET['action']))
             break;
 
         case 'trajets':
-            require('../src/View/User/Profil/mesTrajetsView.php');
+            require('../src/Controller/User/Profil/mesTrajetsController.php');
             break;
         case 'inscriptionCarrier':
             require('../src/Controller/User/Link/inscriptionCarrierController.php');

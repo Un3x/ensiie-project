@@ -62,8 +62,9 @@ class AdminManager extends UserManager
 	 */
     public function get2($mailAddress, $password) 
     {
-		$req=$this->connection->query("select id from Admin where $mailAddress=mailAddress and $password=password")->fetch();
-		return $req===false?false:get($req['id']);
+		$req=$this->connection->query("select id from Admin where mailAddress='$mailAddress' and password='$password'")->fetch();
+
+		return $req===false?false:($this->get($req['id']));
 	}
 
 	/**
