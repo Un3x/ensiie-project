@@ -71,6 +71,42 @@ if (!empty($_POST['usertoadd'])){
 		<?php endforeach; ?>
 	</table>
 
-<!--TODO rajouter un élève dans l'evenement-->
+<input type="text" id="ajout"/>
+<button id="ajout_submit">Ajouter</button>
+
+</div>
+
+
+<script src="assets/jquery.min.js"></script>
+<script src="assets/awesomplete.min.js"></script>
+<script>
+$("#ajout_submit").prop("disabled",true);
+var users_list = [],
+		user_selected;
+$.get("ajax/users_get.php", function(users) {
+	users.forEach(function(u) {
+		users_list.push({
+			label: u['lastname'] + " '" + u['pseudo'] + "' " + u['firstname'],
+			value: u['id_user']
+		})
+	})
+	var input = document.getElementById("ajout");
+	new Awesomplete(input, {
+		list: users_list,
+		replace: function(suggestion) {
+			this.input.value = suggestion.label;
+			console.log(suggestion);
+			$("#ajout_submit").prop("disabled",false);
+			user_selected = suggestion.value;
+		}
+	});
+
+$("#ajout_submit").on("click", function() {
+	$.get("ajax/pointassos_set_event.php",{user: user_selected},'json');
+})
+
+}, 'json');
+</script>
+
 </body>
 </html>
