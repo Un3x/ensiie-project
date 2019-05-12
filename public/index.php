@@ -94,7 +94,7 @@ if( isset($_GET['action']))
             }
             else
             {
-                require("../src/View/404View.php");
+                profilDebut();
             }
             break;
         case 'parametre' :
@@ -103,12 +103,15 @@ if( isset($_GET['action']))
             break;
         case 'modifPassword':
             require('../src/Controller/User/Profil/parametreController.php');
-            parametreModifPassword();
+            if(isset($_POST["password"]) && isset($_POST["passwordOld"]) && isset($_POST["passwordOld"]))
+                parametreModifPassword();
+            else
+                parametreDebut();
             break;
-        case 'suppresionCompteDemande':
-            require('../src/View/User/destructionCompteView.php');
+        case 'destructionCompteDemande':
+            require('../src/View/User/Profil/destructionCompteView.php');
             break;
-        case 'suppresionCompte':
+        case 'destructionCompte':
             require('../src/Controller/User/Profil/parametreController.php');
             parametreSupprimeCompte();
             break;

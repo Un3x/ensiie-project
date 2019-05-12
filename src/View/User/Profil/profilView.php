@@ -24,12 +24,12 @@
           <?php if($modif) echo "'index.php?action=validationProfil'"; else  echo"'index.php?action=changementProfil'"; ?>
           method="POST" >
         <label for="prenom"> Votre prenom : </label>
-        <input type="text" id="prenom" value="<?=$valeurDefaut['prenom']?>"  <?php if(!$modif) echo "readonly"; ?> />
+        <input type="text" id="prenom" name="prenom" value="<?=$valeurDefaut['prenom']?>"  <?php if(!$modif) echo "readonly"; ?> />
 
         <br/>
 
         <label for="nom"> Votre nom </label>
-        <input type="text" id="nom"  value="<?=$valeurDefaut['nom']?>"  <?php if(!$modif) echo "readonly"; ?> />
+        <input type="text" id="nom"  name="nom" value="<?=$valeurDefaut['nom']?>"  <?php if(!$modif) echo "readonly"; ?> />
 
         <br/>
 
@@ -37,23 +37,26 @@
         <input type="number" id="age"  value="<?=$valeurDefaut['age']?>"  <?php if(!$modif) echo "readonly"; ?> />
 
         <br/>
-
+        <label for="phoneNumber"> Votre numéro de téléphone : </label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" value="<?=$valeurDefaut['phoneNumber']?>" <?php if((!$modif)) echo "readonly"; ?> />
+        <br/>
 
         <label for="description"> Votre description : </label>
         <br/>
-        <textarea id="description"  <?php if(!$modif) echo "readonly"; ?>  >
+        <textarea id="description"  name="description" <?php if(!$modif) echo "readonly"; ?>  >
             <?=$valeurDefaut['description']?>
         </textarea>
 
         <br/>
 
 
-        <?php if($_SESSION['userType']=='vendeur')  { ?>
+        <?php if($_SESSION['userType']=='Vendor')  { ?>
 
 
         <label for="vitesse"> Vitesse : </label>
             <br/>
             <label for="nb_max"> Capacité de charge : </label>
+            <br/>
 
 
         <?php } ?>

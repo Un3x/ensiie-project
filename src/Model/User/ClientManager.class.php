@@ -4,7 +4,7 @@ require_once('Client.class.php');
 require_once('UserManager.class.php');
 
 /**
- * La classe gérant Admin
+ * La classe gérant Client
  */
 class ClientManager extends UserManager
 {
@@ -20,8 +20,8 @@ class ClientManager extends UserManager
 	 */
     public function add($user)
     {
-        //echo("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("Y-m-d")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
-		return $this->connection->exec("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("Y-m-d")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
+			$statement = $this->connection->prepare("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (:surname,:firstname,:idRace,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender,:nbClientCourses)");
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses()));
 	}
 
 	/**
@@ -32,7 +32,8 @@ class ClientManager extends UserManager
 	 */
     public function delete($user) 
     {
-			return $this->connection->exec("DELETE from Client where $user->getId()=id");
+			$statement = $this->connection->prepare("DELETE from Client where id = :id");
+			return $statement->execute(array("id" => $user->getId()));
     }
 
 	/**
@@ -43,7 +44,9 @@ class ClientManager extends UserManager
 	 */
     public function get($id) 
     {
-		$req=$this->connection->query("SELECT * from Client where id=$id")->fetch();
+		$statement = $this->connection->prepare("SELECT * from Client where id = :id");
+		$statement->execute(array("id" => $id));
+		$req=$statement->fetch();
 		if($req==false)
 			return false;
 		$admin=new Client();
@@ -61,19 +64,10 @@ class ClientManager extends UserManager
 	 */
   public function get2($mailAddress, $password) 
   {
-		$req=$this->connection->query("select id from Client where mailAddress='$mailAddress' and password='$password'")->fetch();
+		$statement = $this->connection->prepare("SELECT id from Client where mailAddress = :mailAddress and password = :password");
+		$statement->execute(array("mailAddress" => $mailAddress,"password" => $password));
+		$req=$statement->fetch();
 		return $req===false?false:($this->get($req['id']));
-	}
-
-	/**
-	 * renvoie l'utilisateur correspondant au mail et mdp ou false s'il n'y en à pas qui correspond
-	 * @access public
-	 * @param string l'adresse mail
-	 * @return true si l'adresse mail est dans la BD false sinon
-	 */
-	public function isUsed($mailAddress)
-	{
-		return (($this->connection)->query("select * from client where mailaddress='$mailAddress'")->fetch())!=false;
 	}
 	
 	/**
@@ -84,8 +78,9 @@ class ClientManager extends UserManager
 	 */
     public function update($user)
     {
-			return $this->connection->exec("update from Client set surname='$user->getSurname()',firstname='$user->getFirstname()',idRace='$user->getRace()->getId()',mailAddress='$user->getMailAddress()',passWord='$user->getPassword()',money='$user->getMoney()',phoneNumber='$user->getPhoneNumber()',birthDate='$user->getBirthDate()',reputation='$user->getReputation()',creationDate='$user->getCreationDate()',description='$user->getDescription()',gender='$user->getGender()', nbClientCourses='$user->getNbClientCourses()' where $user->getId()=id");
-		}
+			$statement = $this->connection->prepare("UPDATE from Client set surname=:surname, firstname=:firstname, idRace=:idRace mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender, nbClientCourses=:nbClientCourses where id=:id");
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"id" => $user->getId()));
+    }
 
 	/**
 	 * renvoie la liste de tout les utilisateurs

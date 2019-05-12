@@ -11,24 +11,38 @@ function parametreDebut()
 
 function parametreModifPassword()
 {
-    $message="";
-    $userManager = new ClientManager(bdd());
-
-    $user = $userManager->get($_SESSION["id_utilisateur"]);
-
-    if( verifierPassword($_POST['password'], $user->getPassword()) && strcmp($_POST['password'],POST['password2']))
-    {
-        $message="Votre mot de passe a bien été modifié";
-        $user->setPassword(hasherPassword($_POST['password']));
-        $userManager->update($user);
-        //envoyer mail.
-        require('../src/View/User/Profil/parametreView.php');
+    $message = "";
+    $bdd = bdd();
+    if ($_SESSION["userType"] == "Client") {
+        $userManager = new ClientManager($bdd);
     }
-    else
+    else if ($_SESSION["userType"] == "Vendor")
     {
-        $message="Erreur rencontrée !";
-        require('../src/View/User/Profil/parametreView.php');
+        $userManager = new VendorManager($bdd);
     }
+        $user = $GLOBALS["user"];
+
+    // utiliser password_verify lorsque le hasage sera implemente dans la bdd
+        if (strcmp($_POST['passwordOld'], $user->getPassword()) ==0 && strcmp($_POST['password'], $_POST['password2'])==0 )
+        {
+            $message = "Votre mot de passe a bien été modifié.";
+            $user->setPassword(($_POST['password']));
+            if($userManager->update($user) != false) {
+                //envoyer mail.
+                require('../src/View/User/Profil/parametreView.php');
+            }
+            else
+            {
+                $message =" Erreur avec le serveur. ";
+                require('../src/View/User/Profil/parametreView.php');
+
+            }
+        }
+        else {
+            //$message = $user->getPassword()."/et/".$_POST["passwordOld"]."/et/".$_POST["password"]."/et/".$_POST["password2"];
+            require('../src/View/User/Profil/parametreView.php');
+        }
+
 
 }
 
@@ -36,7 +50,17 @@ function parametreModifPassword()
 function parametreSupprimeCompte()
 {
     $bdd = bdd();
-    $clientManager = new ClientManager($bdd);
-    $clientManager->delete($_SESSION["user"]);
+    if($GLOBALS["userType"] == "Vendor")
+    {
+        $vendorManager = new VendorManager($bdd);
+        $vendorManager->delete($GLOBALS["user"]);
+    }
+    if($GLOBALS["userType"] == "Client")
+    {
+        $clientManager = new ClientManager($bdd);
+        $clientManager->delete($_SESSION["user"]);
+    }
+
     require('../src/View/User/Profil/destructionCompteFinView.php');
+
 }

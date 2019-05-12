@@ -49,7 +49,7 @@ if (isset($_POST['courseId'])){
         
 
         $recipient = $client->getMailAddress();
-        $subject = "confirmation de réservation";
+        $subject = "réservation acceptée";
         $body = $Template->compile();
         $bodyAlt = "";
 

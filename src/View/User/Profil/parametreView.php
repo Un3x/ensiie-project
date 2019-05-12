@@ -6,8 +6,9 @@
 
 <section>
     <!-- mot de passe --!>
+<?=$message?>
 <form action="index.php?action=modifPassword" method="POST">
-    <label> Modifier votre mot de passe : </label>
+    <p> Modifier votre mot de passe : </p>
     <br/>
     <br/>
 
@@ -29,7 +30,7 @@
 
 <section>
     <p> Voulez-vous vraiment supprimer votre compte ? : </p>
-    <a href="index.php?action=suppressionCompte">
+    <a href="index.php?action=destructionCompteDemande">
         <input type="button" value="Suppresion de votre compte"/>
     </a>
     <!-- supprimer le compte --!>

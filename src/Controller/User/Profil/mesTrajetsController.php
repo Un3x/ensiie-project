@@ -7,4 +7,7 @@ print_r($_SESSION);
 
 if($_SESSION['userType']=="Client") $mesCourses = $courseManager->getCourseClient($_SESSION['userId']);
 if($_SESSION['userType']=="Vendor") $mesCourses = $courseManager->getCourseCarrier($_SESSION['userId']);
+
+
+
 require("../src/View/User/Profil/mesTrajetsView.php");

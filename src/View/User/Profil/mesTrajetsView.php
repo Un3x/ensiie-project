@@ -17,13 +17,13 @@
     <tbody>
     <?php  for($i = 0; $i < sizeof($mesCourses); $i++) {  ?>
         <tr>
-            <td> <?=$mesCourses[$i]['lieu_dest']?> </td>
-            <td> <?=$mesCourses[$i]['lieu_arri']?> </td>
-            <td> <?=$mesCourses[$i]['date']?> </td>
-            <td> <?=$mesCourses[$i]['heure_dep']?> </td>
+            <td> <?=$mesCourses[$i]->getDeparture()?> </td>
+            <td> <?=$mesCourses[$i]->getArrival() ?> </td>
+            <td> <?=$mesCourses[$i]->getDepartureTime()->format("Y-m-d")?> </td>
+            <td> <?=$mesCourses[$i]->getDepartureTime()->format("H:i:s")?> </td>
             <td> <?=$mesCourses[$i]['heure_arri']?> </td>
-            <td> <?=$mesCourses[$i]['transporteur']?> </td>
-            <td> <?=$mesCourses[$i]['prix']?> </td>
+            <td> <?=$mesCourses[$i]->getCarrier()?> </td>
+            <td> <?=$mesCourses[$i]->getPrice()?> </td>
         </tr>
     <?php } ?>
     </tbody>

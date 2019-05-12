@@ -27,11 +27,11 @@ if (isset($_POST['courseId'])){
         $CourseManager->changeCourse($_POST['courseId'],4);
 
         $ClientManager = new ClientManager($connection);
-        $VendorManager = new VendorManager($connection)
+        $VendorManager = new VendorManager($connection);
 
         $course = $CourseManager->getCourse($courseId);
         $client = $ClientManager->get($course['clientId']);
-        $carrier = $CarrierManager->get($course['carrierId']);
+        $carrier = $VendorManager->get($course['carrierId']);
 
         $clientName = $course['clientFirstname'].' '.$course['clientSurname'];
         $carrierName = $course['carrierFirstname'].' '.$course['carrierSurname'];
@@ -50,7 +50,7 @@ if (isset($_POST['courseId'])){
         
 
         $recipient = $client->getMailAddress();
-        $subject = "confirmation de réservation";
+        $subject = "trajet annulé";
         $body = $Template->compile();
         $bodyAlt = "";
 
@@ -65,7 +65,7 @@ if (isset($_POST['courseId'])){
         
 
         $recipient = $carrier->getMailAddress();
-        $subject = "confirmation de réservation";
+        $subject = "trajet annulé";
         $body = $Template->compile();
         $bodyAlt = "";
 

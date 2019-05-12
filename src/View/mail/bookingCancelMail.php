@@ -2,7 +2,7 @@
 
 
 <section>
-<h2>Votre demande a été refusée</h2>
+<h2>Ce trajet a été annulé</h2>
 
 détails du trajet : 
 <div>
