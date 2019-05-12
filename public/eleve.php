@@ -21,7 +21,7 @@ $users = $userRepository->fetchAll();
 $iduser = $users[$_SESSION['login']]->getId();
 
 
-$points = $connection->query('SELECT name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
+$points = $connection->query('SELECT name,notation moyenne from (pointsassos join associations using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 $events = $connection->query('select e.name name_event,a.name name_asso,notation,date_ev from ((select name,notation,id_asso,id_user,date_ev from score join events using (id_event)) e join associations a using (id_asso)) where id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 $moyenne = $connection->query('select moyenne from leaderboard where id_user='.$iduser)->fetch(\PDO::FETCH_OBJ);
 $participations = $connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
