@@ -9,9 +9,6 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
-// Definition des constantes et variables
-define('LOGIN','toto');
-define('PASSWORD','tata');
 $errorMessage = '';
 
 // Test de l'envoi du formulaire

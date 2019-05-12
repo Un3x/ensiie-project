@@ -27,6 +27,13 @@ $moyenne = $connection->query('select moyenne from leaderboard where id_user='.$
 $participations = $connection->query('SELECT score.id_event score_id_ev, notation FROM score NATURAL JOIN events WHERE id_user = '.$iduser)->fetchAll(\PDO::FETCH_OBJ);
 displayHeader();
 $assos=$connection->query("select * from associations")->fetchAll(\PDO::FETCH_OBJ);
+
+
+
+//controleur
+if (!empty($_POST['event']) && !empty($_POST['note'])){
+	$connection->query('insert into score (id_user,id_event,notation) values ('.$iduser.','.$_POST['event'].','.$_POST['note'].')');	
+}
 ?>
 <table class="table table-bordered table-hover table-striped">
 	<caption>Récapitulatif des points association</caption>
@@ -76,26 +83,31 @@ if ($moyenne):?>
 	<label for="association"> pour l'association </label>
 	<select id="association" name="association">
 		<?php foreach ($assos as $asso):?>
-		<option value="<?php echo $asso->id_asso ?>" selected="selected"><?php echo $asso->name ?></option>
+		<option value="<?php echo $asso->id_asso ?>" <?php if (!empty($_POST['association'])): if ($asso->id_asso == $_POST['association']): echo 'selected="selected"'; endif; endif; ?> ><?php echo $asso->name ?></option>
 		<?php endforeach; ?>
 	</select>
 	</p>
 	<input type="submit" name="submit" value="Rechercher évènements"/>
 	</fieldset>
+</form>
 
-
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+<fieldset>
 	<?php if (!empty($_POST['association'])):
 	$evenements = $connection->query('select * from events where id_asso='.$_POST['association'])->fetchAll(\PDO::FETCH_OBJ);?>
 	<fieldset>
 	 <select id="event" name="event">
-<?php foreach ($evenements as $evenement):?>
-<option value="<?php echo $evenement->id_event ?>"><?php echo $evenement->name.", ".$evenement->date_ev ?></option>
-<?php endforeach ?>
+<?php foreach ($evenements as $evenement):
+	if (!$connection->query('select * from score where id_event='.$evenement->id_event.' and id_user='.$iduser)->fetchAll(\PDO::FETCH_OBJ)):?>
+		<option value="<?php echo $evenement->id_event ?>"><?php echo $evenement->name.", ".$evenement->date_ev ?></option>
+	<?php endif;endforeach; ?>
 	</select>	
+	<label for="note">participation : </label>
+	<input type="number" name="note" value="0" min="1" max="10"/>
 	<input type="submit" name="submit_newev" value="Rajouter"/>
 	</fieldset>
 	<?php endif;?>
-
+</fieldset>
 
 </form>
 </body>

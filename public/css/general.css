@@ -57,3 +57,15 @@ ul.topnav li.right {float: right;}
 .pasDeMail {
 	color: red;
 }
+
+.actions {
+	width:13%;
+	border:none;
+}
+
+.idevent {
+	display:none;
+}
+.tableinput {
+	border:none;
+}
