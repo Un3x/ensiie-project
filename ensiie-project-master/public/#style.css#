@@ -173,7 +173,7 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 
 .text2 {
   background-color:#FF9900;
-  color: blue;
+  color: #000080;
   
   font-size: 20px;
   padding: 16px 32px;
@@ -181,7 +181,7 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 
 .text2 a{
   background-color:#FF9900;
-  color: blue;
+  color: #000080;
   
  
 }
