@@ -90,11 +90,6 @@ function inscriptionClient()
             if ($messageErreur == '<span class="warning">')
             {
                 $user = new Client;
-                $a = 'Client';
-                if($user instanceof $a)
-                {
-                    echo "BBB";
-                }
                 $raceManager = new RaceManager($bdd);
                 $user->hydrate($_POST['nom'],$_POST["prenom"],($raceManager->getList())[0],$_POST['mail'],$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,$_POST['description'],$_POST["genre"],0);
                 if($userManager->add($user) != false) {
