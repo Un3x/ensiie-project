@@ -51,7 +51,8 @@ CREATE TABLE Vendor
     nbClientCourses INT NOT NULL,
     nbVendorCourses INT NOT NULL,
     position INT,
-    occupied BOOLEAN NOT NULL
+    occupied BOOLEAN NOT NULL,
+    price FLOAT NOT NULL
 );
 
 INSERT INTO Admin (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) 
@@ -62,6 +63,6 @@ INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNum
 VALUES ('aaa','bbb',1,'aaa.aawxcwxcqa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0'),
 ('aaa','bbb',1,'aaa.aaawxcwxsfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0');
 
-INSERT INTO Vendor (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses,nbVendorCourses,occupied,position) 
-VALUES ('aaa','bbb',1,'aaa.aaa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','0'),
-('aaa','bbb',1,'aaa.aaasfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','0');
+INSERT INTO Vendor (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses,nbVendorCourses,occupied,position,price) 
+VALUES ('aaa','bbb',1,'aaa.aaa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','1','12'),
+('aaa','bbb',1,'aaa.aaasfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0','0','false','700','10');

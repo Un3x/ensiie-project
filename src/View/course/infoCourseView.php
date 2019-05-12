@@ -15,9 +15,9 @@
 <?php switch($userType) {
 	case null :?>
 <form action="/course/payment" method="POST">
-	<input type=hidden name=carrierId value=<?=$carrierId?> />
-	<input type=hidden name=departure value=<?=$departureName?> />
-	<input type=hidden name=arrival value=<?=$arrivalName?> />
+	<input type=hidden name=carrierId value="<?=$carrierId?>" />
+	<input type=hidden name=departure value="<?=$departureName?>" />
+	<input type=hidden name=arrival value="<?=$arrivalName?>" />
 	<input type=submit id=search value=Réserver />
 </form>
 
@@ -25,18 +25,18 @@
 <?php switch($courseStatus){ 
 		case "booked": ?>
 	<form action="/course/accept" method="POST">
-	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=accept value="Accepter la réservation" />
 	</form>
 
 	<form action="/course/refuse" method="POST">
-	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=refuse value="Refuser la réservation" />
 	</form>
 
 	<?php break; case "confirmed": ?>
 	<form action="/course/cancel" method="POST">
-	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
@@ -50,13 +50,13 @@
 	<?php switch($courseStatus){ 
 		case "booked": ?>
 	<form action="/course/cancel" method="POST">
-	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
 	<?php break; case "confirmed": ?>
 	<form action="/course/cancel" method="POST">
-	<input type=hidden name=courseId value=<?=$courseId?> />
+	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 

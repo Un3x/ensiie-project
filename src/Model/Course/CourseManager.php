@@ -1,5 +1,6 @@
 <?php
-namespace Course
+
+require("Course.php");
 
 class CourseManager
 {
@@ -22,7 +23,7 @@ class CourseManager
 
 
     /**
-     * @return all available course 
+     * @return all available Course 
      */
     public function fetchAllCourses()
     {
@@ -31,12 +32,12 @@ class CourseManager
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
+                ->setId($row['id_course'])
+                ->setDeparture($row['departure'])
+                ->setArrival($row['arrival'])
+                ->setCarrier($row['carrier'])
+                ->setDepartureDateTime($row['departureDateTime'])
+                ->setState($row['state']);
             $courses[] = $course;
         }
 
@@ -46,22 +47,20 @@ class CourseManager
     /**
      * @param string $departure $arrival DateTIme $departureDateTime
      */
-    public function fetchCourses($departure,$arrival,$departureDateTime)
+    public function fetchCourses($departure,$arrival)
     {
-        $statement = $this->connection->prepare("SELECT * FROM course where departure = :departure AND arrival = :arrival AND departureDateTime >= :departureDateTime AND state = 0");
-        $rows = $statement->execute(array("departure" => $departure,
-                                          "arrival" => $arrival,
-                                          "departureDateTime" => $departureDateTime))->fetchAll();
+        $statement = $this->connection->prepare("SELECT Vendor.id, Vendor.surname, Vendor.firstname, Vendor.price, cities.latitude, cities.longitude  FROM Vendor JOIN cities ON position=cities.id where cities.name=:departure AND Vendor.occupied = FALSE");
+        $statement->execute(array("departure" => $departure));
+        $rows = $statement->fetchAll(); 
+        
+        $statement2 = $this->connection->prepare("SELECT latitude, longitude  FROM cities where name=:name");
+        $statement2->execute(array("name" => $arrival));
+        $city = $statement2->fetch();
+
         $courses = [];
+
         foreach ($rows as $row) {
-            $course = new Course();
-            $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
+            $course = ["carrierId" => $row['id'], "surname" => $row['surname'], "firstname" => $row['firstname'], "price" => round($row['price'] * sqrt(($row['latitude'] - $city['latitude'])**2 + ($row['longitude'] - $city['longitude'])**2), 2)];
             $courses[] = $course;
         }
 
@@ -74,23 +73,25 @@ class CourseManager
      */
     public function changeCourse($id_course,$state,$client)
     {
-        $statement = $this->connection->prepare("UPDATE course SET state = :state AND client = :client WHERE id_course = :id");
+        $statement = $this->connection->prepare("UPDATE Course SET state = :state AND client = :client WHERE id_course = :id");
         $statement->execute(array("id" => $id_course,
                                   "state" => $state,
                                   "client" => $client));
         
-        $statement = $this->connection->prepare("SELECT * FROM course WHERE id_course = :id");
-        $rows = $statement->execute(array("id" => $id_course))->fetchAll();
+        $statement = $this->connection->prepare("SELECT * FROM Course WHERE id_course = :id");
+        $statement->execute(array("id" => $id_course));
+        $rows = $statement->fetchAll();
+
         foreach($rows as $row) 
         {
             $course = new Course();
             $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
+                ->setId($row['id_course'])
+                ->setDeparture($row['departure'])
+                ->setArrival($row['arrival'])
+                ->setCarrier($row['carrier'])
+                ->setDepartureDateTime($row['departureDateTime'])
+                ->setState($row['state']);
         }
 
         return $course;
@@ -101,18 +102,19 @@ class CourseManager
      */
     public function getCourseClient($client)
     {
-        $statement = $this->connection->prepare("SELECT * FROM course where client = :client AND state = 2");
-        $rows = $statement->execute(array("client" => $client))->fetchAll();
+        $statement = $this->connection->prepare("SELECT * FROM Course where client = :client AND state = 2");
+        $statement->execute(array("client" => $client));
+        $rows = $statement->fetchAll();
         $courses = [];
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
+                ->setId($row['id_course'])
+                ->setDeparture($row['departure'])
+                ->setArrival($row['arrival'])
+                ->setCarrier($row['carrier'])
+                ->setDepartureDateTime($row['departureDateTime'])
+                ->setState($row['state']);
             $courses[] = $course;
         }
 
@@ -124,43 +126,72 @@ class CourseManager
      */
     public function getCourseCarrier($carrier)
     {
-        $statement = $this->connection->prepare("SELECT * FROM course where carrier = :carrier AND state = 2");
-        $rows = $statement->execute(array("carrier" => $carrier))->fetchAll();
+        $statement = $this->connection->prepare("SELECT * FROM Course where carrier = :carrier AND state = 2");
+        $statement->execute(array("carrier" => $carrier));
+        $rows = $statement->fetchAll();
         $courses = [];
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
+                ->setId($row['id_course'])
+                ->setDeparture($row['departure'])
+                ->setArrival($row['arrival'])
+                ->setCarrier($row['carrier'])
+                ->setDepartureDateTime($row['departureDateTime'])
+                ->setState($row['state']);
             $courses[] = $course;
         }
 
         return $courses;
     }
     
-    public function fetchThisCourse($departure,$arrival,$departureDateTime,$carrier)
+    public function fetchThisCourse($departure,$arrival,$carrierId)
     {
-        $statement = $this->connection->prepare("SELECT * FROM course WHERE carrier = :carrier AND departure = :departure AND arrival = :arrival AND departureDateTime = :departureDateTime");
-        $rows = $statement->execute(array("carrier" => $carrier,
-                                          "departure" => $departure,
-                                          "arrival" => $arrival,
-                                          "departureDateTime" => $departureDateTime))->fetchAll();
-        foreach ($rows as $row) {
-            $course = new Course();
-            $course
-                ->setId($row->id_course)
-                ->setDeparture($row->departure)
-                ->setArrival($row->arrival)
-                ->setCarrier($row->carrier)
-                ->setDepartureDateTime($row->departureDateTime)
-                ->setState($row->state);
-        }
+        $statement = $this->connection->prepare("SELECT Vendor.id, Vendor.surname, Vendor.firstname, Vendor.price, cities.latitude, cities.longitude  FROM Vendor JOIN cities ON position=cities.id where cities.name=:departure AND Vendor.occupied = FALSE AND Vendor.id=:id");
+        $statement->execute(array("departure" => $departure, "id"=>$carrierId));
+        $row = $statement->fetch(); 
+        
+        $statement2 = $this->connection->prepare("SELECT latitude, longitude  FROM cities where name=:name");
+        $statement2->execute(array("name" => $arrival));
+        $city = $statement2->fetch();
 
-        return $courses;
+        if (!$row || !$city) return [];
+
+        $course = ["carrierId" => $row['id'], "surname" => $row['surname'], "firstname" => $row['firstname'], "price" => round($row['price'] * sqrt(($row['latitude'] - $city['latitude'])**2 + ($row['longitude'] - $city['longitude'])**2), 2), 'departureLat' => $row['latitude'], 'departureLong' => $row['longitude'], 'arrivalLat' => $city['latitude'], 'arrivalLong' => $city['longitude']];
+
+        return $course;
     }
-*/
+
+    public function preBookCourse($departure, $arrival, $carrier, $client){
+        $statement2 = $this->connection->prepare("SELECT id,latitude,longitude FROM cities where name=:name");
+        $statement2->execute(array("name" => $departure));
+        $departure = $statement2->fetch();
+        $statement2->execute(array("name" => $arrival));
+        $arrival = $statement2->fetch();
+        $statement3 = $this->connection->prepare("SELECT price FROM Vendor where id=:id");
+        $statement3->execute(array("id" => $carrier));
+        $vendor = $statement3->fetch();
+
+
+        $statement = $this->connection->prepare("INSERT INTO Course (departure, arrival, carrier, client, datetime, state, price) VALUES (:departure, :arrival, :carrier, :client, :datetime, 0, :price)");
+        if ($statement->execute(array("departure"=>$departure['id'], "arrival"=>$arrival['id'], "carrier"=>$carrier, "client"=>$client, 'datetime'=>date_create()->format('Y-m-d H:i:s'), 'price'=>round($vendor['price'] * sqrt(($departure['latitude'] - $arrival['latitude'])**2 + ($departure['longitude'] - $arrival['longitude'])**2), 2)))){
+            return $this->connection->lastInsertId();
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function getCourse($id)
+    {
+        $statement = $this->connection->prepare("SELECT Vendor.id, Vendor.surname, Vendor.firstname, Client.id, Client.surname, Client.firstname, Course.price, Departure.name, Arrival.name, Departure.latitude, Departure.longitude, Arrival.latitude, Arrival.longitude, datetime, state FROM Course JOIN cities AS Departure ON departure=Departure.id JOIN cities AS Arrival ON arrival=Arrival.id JOIN Vendor ON carrier=Vendor.id JOIN Client ON client=Client.id where Course.id=:id");
+        $statement->execute(array("id" => $id));
+        $row = $statement->fetch();
+
+        if (!$row) return [];
+        
+        $course = ["carrierId" => $row[0], "carrierSurname" => $row[1], "carrierFirstname" => $row[2], "clientId" => $row[3], "clientSurname" => $row[4], "clientFirstname" => $row[5], "price" => $row[6], "departure" => $row[7], "arrival" => $row[8], "departureLat" => $row[9], "departureLong" => $row[10], "arrivalLat" => $row[11], "arrivalLong" => $row[12], "datetime" => $row[13], "state" => $row[14]];
+        return $course;
+    }
+
 }
