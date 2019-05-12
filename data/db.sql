@@ -61,7 +61,7 @@ create table pointsassos (
 	id_user int references users(id_user),
 	id_asso int references associations(id_asso),
 	notation int not null check(notation<=10 and notation>0),
-	proposition int not null check(proposition<=10 and notation>0),
+	proposition int not null check(proposition<=10 and proposition>0),
 	primary key (id_user,id_asso)
 );
 
@@ -70,7 +70,7 @@ from (select id_asso,id_event,id_user, notation*coeff_event point, coeff_event c
 group by id_asso,id_user;
 
 create view leaderboard as select id_user,sum(a.point) moyenne 
-from (select id_user,id_asso, moyenne*coeff_asso point, coeff_asso coefficient from pointsassos_prop join associations using (id_asso)) a
+from (select id_user,id_asso, notation*coeff_asso point, coeff_asso coefficient from pointsassos join associations using (id_asso)) a
 group by a.id_user
 order by moyenne asc;
 

@@ -70,6 +70,13 @@ if (!empty($_POST['points']) && !empty($_POST['usertomodif'])){
 	$connection->query('update pointsassos set notation='.$_POST['points'].' where id_user='.$_POST['usertomodif'].' and id_asso='.$_SESSION["association"]);
 }
 //fin modification points assos élèves
+
+//début rajouter un élève
+if (!empty($_POST['usertoadd'])){
+	$connection->query("insert into pointsassos(id_user,id_asso,notation,proposition) values (".$_POST['usertoadd'].",".$_SESSION['association'].",10,1)");
+	echo "eleve rajouté";
+}
+//fin rajouter un élève
 ?>
 
 <header class="header de page">
@@ -150,7 +157,12 @@ $events=$connection->query('select * from events where id_asso='.$_SESSION['asso
 </div>
 
 <div class="gestion" id="gestion_eleve">
-<?php $eleves = $connection->query("select * from pointsassos_prop left join users using (id_user) where id_asso=".$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);?>
+<?php $eleves = $connection->query("select * from pointsassos_prop left join users using (id_user) where id_asso=".$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);
+foreach ($eleves as $eleve) {
+	$connection->query("insert into pointsassos (id_user,id_asso,notation,proposition) values (".$eleve->id_user.",".$_SESSION['association'].",".$eleve->moyenne.",".$eleve->moyenne.")");
+}
+$eleves = $connection->query("select * from pointsassos left join users using (id_user) where id_asso=".$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);
+?>
 	<table class="table table-bordered table-hover table-striped">
 		<caption>Classement des élèves</caption>
 		<tr>
@@ -160,17 +172,14 @@ $events=$connection->query('select * from events where id_asso='.$_SESSION['asso
 			<th>Proposition</th>
 			<th>moyenne</th>
 		</tr>
-		<?php foreach ($eleves as $eleve) : 
-		$connection->query("insert into pointsassos (id_user,id_asso,notation,proposition) values (".$eleve->id_user.",".$_SESSION['association'].",".$eleve->moyenne.",".$eleve->moyenne.")");
-$note = $connection->query("select * from pointsassos where id_user=".$eleve->id_user." and id_asso=".$_SESSION["association"])->fetch(\PDO::FETCH_OBJ);
-		?>
+		<?php foreach ($eleves as $eleve) : ?>
 		<tr>
 			<form method="post">
 			<td> <?php echo $eleve->firstname ?> </td>
 			<td> <?php echo $eleve->lastname ?> </td>
 			<td> <?php echo $eleve->pseudo ?> </td>
-			<td> <?php echo $eleve->moyenne ?> </td>
-			<td><input type="number" min="1" max="10" name="points" class="tableinput" value="<?php echo $note->notation ?>"></td>
+			<td> <?php echo $eleve->proposition ?> </td>
+			<td><input type="number" min="1" max="10" name="points" class="tableinput" value="<?php echo $eleve->notation ?>"></td>
 			<td class="actions">
 				<input type="number" value="<?php echo $eleve->id_user ?>" name="usertomodif" class="idevent" readonly/>
 				<input type="submit" name="submit" value="Modifier" />
