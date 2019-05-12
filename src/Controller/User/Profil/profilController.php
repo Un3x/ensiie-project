@@ -49,20 +49,16 @@ function validationProfil()
         $message = $message."Le nom doit être composé de caractère standard.<br/>";
         $erreur=true;
     }
-    /*
-    if($_POST['age'] >= 0)
-    {
-        $message = $message."L'age doit être positif.<br/>";
-        $erreur=true;
-    }
-    */
+
 
     // modification des données
     $bdd = bdd();
 
-    $clientManager = new ClientManager();
-    $user = $_SESSION["user"];
+    $clientManager = new ClientManager($bdd);
+    $user = $GLOBALS["user"];
     $user->setFirstname($_POST["prenom"]);
+    // changer le reste
+
     $clientManager->update($user);
 
     $message = $message." </span>";
@@ -71,5 +67,6 @@ function validationProfil()
     //$message = "<span class='information'> Les informations que vous avez saisi ont bien été validé";
     $modif=false;
 
+    $valeurDefaut=initChamps();
     require('../src/View/User/Profil/profilView.php');
 }

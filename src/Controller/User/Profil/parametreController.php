@@ -1,5 +1,5 @@
 <?php
-require_once('../src/Model/User/UserManager.class.php');
+require_once('../src/Model/User/ClientManager.class.php');
 require_once('../src/Controller/verif.php');
 
 
@@ -12,7 +12,7 @@ function parametreDebut()
 function parametreModifPassword()
 {
     $message="";
-    $userManager = new UserManager(bdd());
+    $userManager = new ClientManager(bdd());
 
     $user = $userManager->get($_SESSION["id_utilisateur"]);
 

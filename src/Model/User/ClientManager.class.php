@@ -20,8 +20,8 @@ class ClientManager extends UserManager
 	 */
     public function add($user)
     {
-
-		return $this->connection->exec("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("YYY-MM-DD")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
+        echo("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("Y-m-d")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
+		return $this->connection->exec("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (    '".$user->getSurname()."' , '".$user->getFirstname()."', ".$user->getRace()->getId().", '".$user->getMailAddress()."','".$user->getPassword()."' ,   ".$user->getMoney().", ".$user->getPhoneNumber().", '".$user->getBirthDate()->format("Y-m-d")."',".$user->getReputation().",'".$user->getCreationDate()  ."','".$user->getDescription()."','".$user->getGender()."',".$user->getNbClientCourses(). ") ");
 	}
 
 	/**
