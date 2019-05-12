@@ -94,7 +94,7 @@ if( isset($_GET['action']))
             }
             else
             {
-                require("../src/View/404View.php");
+                profilDebut();
             }
             break;
         case 'parametre' :
