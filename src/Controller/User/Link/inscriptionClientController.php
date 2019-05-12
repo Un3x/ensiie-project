@@ -11,20 +11,19 @@ function initChampsPost()
     $valeurDefaut['password'] = $_POST['password'];
     $valeurDefaut['password2'] = $_POST['password2'];
     $valeurDefaut['description'] = $_POST['description'];
-    $valeurDefaut["birthDate"] = $_POST["birthDate"];
+    $valeurDefaut['birthDate'] = $_POST['birthDate'];
     return $valeurDefaut;
 }
 
 function initChamps()
 {
-    $valeurDefaut['age'] = 20;
     $valeurDefaut['prenom'] = "";
     $valeurDefaut['nom'] = "";
     $valeurDefaut['password'] = "";
     $valeurDefaut['password2'] = "";
     $valeurDefaut['mail'] ="";
     $valeurDefaut['description'] ="";
-    $valeurDefaut["birthDate"] ="";
+    $valeurDefaut['birthDate'] = "";
     return $valeurDefaut;
 }
 
