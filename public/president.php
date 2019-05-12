@@ -31,12 +31,39 @@ displayHeader();
 // - transmettre le role de président
 // - rajouter,modifier, enlever un évènement
 // - consulter, modifier, rajouter, enlever la participation d'un élève a un évènement
-// - 
+ 
+// début suppression evenement
+if (array_key_exists('suppr',$_POST) && !empty($_POST['idevent'])){
+	echo "on supprime";
+	$connection->query("delete from events where id_event='".$_POST['idevent']."'");	
+}
+//fin suppression evenement
+
+//debut modification evenement
+if (!empty($_POST['nameevent'])){
+	$connection->query("update events set name='".$_POST["nameevent"]."' where id_event=".$_POST["idevent"]);
+}
+if (!empty($_POST['dateevent'])){
+	$date = new DateTime($_POST['dateevent']);
+	$date= $date->format('Y-m-d');
+	$connection->query("update events set date_ev='".$date."' where id_event=".$_POST["idevent"]);
+}
+
+if (!empty($_POST['coeffevent'])){
+	$connection->query("update events set coeff_event=".$_POST["coeffevent"]." where id_event=".$_POST["idevent"]);
+}
+if (!empty($_POST['descriptionevent'])){
+	$connection->query("update events set description_event='".$_POST["descriptionevent"]."' where id_event=".$_POST["idevent"]);
+}
+//fin modification evenement
+
+//debut création evenement
 if (!empty($_POST['event_name']) && !empty($_POST['event_date']) && !empty($_POST['event_desc']) && !empty($_SESSION['association']) && !empty($_POST['coeff_event'])){
 	$date = new DateTime($_POST['event_date']);
 	$date= $date->format('Y-m-d');
 	$connection->query("insert into events(name,id_asso,coeff_event,date_ev,description_event) values ('".$_POST['event_name']."',".$_SESSION['association'].",".$_POST['coeff_event'].",'".$date."','".$_POST['event_desc']."')");
 }
+//fin création evenement
 ?>
 
 <header class="header de page">
@@ -54,9 +81,10 @@ if (!empty($_POST['event_name']) && !empty($_POST['event_date']) && !empty($_POS
 </fieldset>
 </form>
 
-<?php if (!empty($_POST['association'])):
-$_SESSION['association']=$_POST['association'];
-$events=$connection->query('select * from events where id_asso='.$_POST['association'])->fetchAll(\PDO::FETCH_OBJ);
+<?php if (!empty($_POST['association'])){
+$_SESSION['association']=$_POST['association'];}
+if (!empty($_SESSION['association'])):
+$events=$connection->query('select * from events where id_asso='.$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);
 ?>
 
 
@@ -72,10 +100,18 @@ $events=$connection->query('select * from events where id_asso='.$_POST['associa
 		</tr>
 		<?php foreach ($events as $event) : ?>
 		<tr>
-			<td><?php echo $event->name ?></td>
-			<td><?php echo $event->date_ev ?></td>
-			<td><?php echo $event->description_event ?></td>
-			<td><?php echo $event->coeff_event ?></td>
+			<form method="post">
+			<td> <input type="text"  name="nameevent" class="tableinput" value="<?php echo $event->name ?>" /> </td>
+			<td><input type="text"  name="dateevent" class="tableinput" value="<?php echo $event->date_ev ?>"></td>
+			<td><input type="textarea"  name="descriptionevent" class="tableinput" value="<?php echo $event->description_event ?>"></td>
+			<td><input type="text"  name="coeffevent" class="tableinput" value="<?php echo $event->coeff_event ?>"></td>
+			<td class="actions">
+				<input type="number" value="<?php echo $event->id_event ?>" name="idevent" class="idevent" readonly/>
+				<input type="submit" name="submit" value="Modifier" />
+				<input type="submit" name="suppr" value="Supprimer"/>
+			</td>
+			</form>
+
 		</tr>
 		<?php endforeach; ?>
 	</table>
