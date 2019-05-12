@@ -73,7 +73,8 @@ if (!empty($_POST['points']) && !empty($_POST['usertomodif'])){
 
 //début rajouter un élève
 if (!empty($_POST['usertoadd'])){
-	$connection->query("insert into pointsassos(id_user,id_asso,notation,proposition) values (".$_POST['usertoadd'].",".$_SESSION['association']."10,1)");
+	$connection->query("insert into pointsassos(id_user,id_asso,notation,proposition) values (".$_POST['usertoadd'].",".$_SESSION['association'].",10,1)");
+	echo "eleve rajouté";
 }
 //fin rajouter un élève
 ?>
