@@ -27,6 +27,20 @@ $moves = $moveRepository->fetchAll();
 $spotRepository = new \Spot\SpotRepository($connection);
 $spots = $spotRepository->fetchAll();
 
+//récupration de la ville entrée par l'utilisateur
+if (isset($_GET['ville'])) $ville = $_GET['ville'];
+
+//si un utilisateur ajoute un nouveau spot
+if (isset($_POST['spotname'])) {
+    $spot = new \Spot\Spot();
+    //récupérer la latitude et la longitude ??
+    $spot->setLongitude(0);
+    $spot->setLatitude(0);
+    $spot->setNom($_POST['spotname']);
+    $spot->setVille($_POST['spotcity']);
+    $spot->setNote($_POST['spotnote']);
+    $spotRepository->addSpot($spot);
+}
 ?>
 
 <html>
@@ -34,6 +48,9 @@ $spots = $spotRepository->fetchAll();
     <!-- Latest compiled and minified CSS -->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <?php my_head(); ?>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
 
 </head>
 <body>
@@ -43,15 +60,42 @@ $spots = $spotRepository->fetchAll();
 <div class="container">
 
 	<div id="search">
-		<form action="map.php">
+		<form action="index.php">
 		<span style="font-size:140%">Trouve le spot le plus près de chez toi :</br></span>
 		<input id="searchbar" type="text" name="ville" placeholder="Entrez votre ville">
 		</form>
-	</div>
+    </div>
+    
+    <div id="mapid">
+		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+        <script type="text/javascript" src="app.js"></script>
+    </div>
 
+	<?php if (!isset($_SESSION['mail'])) {
+        //bouton de création de compte si l'utilisateur n'est pas connecté
+        echo "<div calss=\"flex-container\" style=\"margin-top: 20px\">
+                <button class=\"bouton\" style=\"margin-left:45%\">
+                <a href=\"connexion.php\">Créez-vous un compte !</a>
+                </div>";
+    }?>
 
-	<?php if (!isset($_SESSION['mail'])) articles(); 
-			else followed($_SESSION['mail']);?>
+    <div class="article-container">
+
+        <?php if (isset($_SESSION['mail'])) followed($_SESSION['mail']); ?>
+        
+        <div class="article">
+            <form action="index.php" method="post">
+            <span style="font-size:140%">Ajoute un Spot que tu as découvert :</br></span>
+            <input type="text" name="spotname" required="true" placeholder="Entrez le nom du spot">
+            <input type="text" name="spotcity" required="true" placeholder="Entrez la ville du spot">
+            <input type="number" min="0" max="5" name="spotnote" placeholder="Entrez une note entre 0 et 5">
+            <button class="bouton" type="submit" style="margin-top: 8px">envoyer</button>
+            </form>
+        </div>
+    </div>
+    
 
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
     <table class="table table-bordered table-hover table-striped">

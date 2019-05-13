@@ -46,7 +46,6 @@ function my_head() {
  */
 function followed($login) {
 	echo "
-	<div class=\"article-container\">
 		<div class=\"article\">
 			<p>
 			Bonjour, ici se trouvera les différents spots suivis ainsi que l'activité
@@ -54,7 +53,6 @@ function followed($login) {
 			les spots suivis et les spots près de ma localisation.
 			</p>
 		</div>
-	</div>
 	";
 }
 
