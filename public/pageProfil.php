@@ -248,7 +248,7 @@ require("header.php");
     </div>
 </form>
 </div>
-<script type=\"text/javascript\">show('none','suppprofil');</script>";}
+<script>show('none','suppprofil');</script>";}
     ?>
     <?php
     if ($_GET['pseudo']==$_SESSION['pseudo']){
@@ -289,7 +289,7 @@ require("header.php");
                     </div>
                 </form>
                 </div>
-                <script type=\"text/javascript\">show('none','".$prod->getIdProd()."');</script>";
+                <script>show('none','".$prod->getIdProd()."');</script>";
         }
     }
 

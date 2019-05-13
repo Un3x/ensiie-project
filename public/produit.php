@@ -174,7 +174,7 @@ if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
      </div>
  </form>
  </div>
- <script type=\"text/javascript\">show('none','".$iduser."');</script>";
+ <script>show('none','".$iduser."');</script>";
 }
 ?>
 

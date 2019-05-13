@@ -26,7 +26,7 @@ require("header.php");
 
 
 <section>
-<script type="text/javascript">
+<script>
 function showCat(etat){
     document.getElementById("categorie").style.display=etat;
 }

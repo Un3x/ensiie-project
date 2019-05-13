@@ -69,7 +69,7 @@ require("header.php");
 
     $user=$userRepository->testmail($mess[0]->getMail());
 ?>
-<script type="text/javascript">
+<script>
 function show(etat,id){
     document.getElementById(id).style.display=etat;
 }
@@ -120,7 +120,7 @@ if ($mess[0]->getValid()==0){
                     </div>
                 </form>
             </div>
-            <script type=\"text/javascript\">show('none','".$mess[0]->getId()."');</script>"
+            <script>show('none','".$mess[0]->getId()."');</script>"
         ;
 }
 

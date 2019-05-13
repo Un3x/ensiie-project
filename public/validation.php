@@ -36,7 +36,7 @@ require("header.php");
 ?>
 
 <section>
-<script type="text/javascript">
+<script>
 function show(etat,id){
     document.getElementById(id).style.display=etat;
 }
@@ -111,7 +111,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
                     </div>
                 </form>
             </div>
-            <script type=\"text/javascript\">show('none','".$prod->getIdProd()."');</script>"
+            <script>show('none','".$prod->getIdProd()."');</script>"
         ;
         }
     }
@@ -157,7 +157,7 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
                     </div>
                 </form>
             </div>
-            <script type=\"text/javascript\">show('none','".$user->getId()."');</script>"
+            <script>show('none','".$user->getId()."');</script>"
         ;
         }
     }
