@@ -36,6 +36,8 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
 	$i = 1;
 	while( isset($_POST['membre'.$i]) && isset($_POST['roleMembre'.$i]) )
 	{
+		echo $_POST['membre'.$i]." ";
+		echo $_POST['roleMembre'.$i]."<br/>";
 		$idMembre = $_POST['membre'.$i];
 		$role     = $_POST['roleMembre'.$i];
 		$equipeRepository->createEquipe( $idJeu, $idMembre, $role );
