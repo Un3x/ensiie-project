@@ -8,7 +8,7 @@
 <body>
     <form action="recherche.php" method = "POST">
         <p> Département </p>
-        <select name="département">
+        <select name="departement">
             <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -112,7 +112,7 @@
         </select>
 
         <p> Ville </p>
-        <input type="text" name="Ville">
+        <input type="text" name="ville">
 
         <p>Montant du loyer ?</p>
         <input type="number" name="prix">
@@ -127,6 +127,31 @@ $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+$logementRepository = new \User\LogementRepository($connection);
+$departement = $_POST['departement'];
+$ville = $_POST['ville'];
+$prix = $_POST['prix'];
+$logements = $logementRepository->fetch2($departement, $ville, $prix);
+
+<table class="table table-bordered table-hover table-striped">
+        <thead style="font-weight: bold">
+            <td>#</td>
+            <td>Ville</td>
+            <td>NbPlaces</td>
+            <td>Prix</td>
+        </thead>
+        <?php /** @var \User\Logement $user */
+        foreach ($logements as $logement) : ?>
+            <tr>
+                <td><?php echo $logement->getId() ?></td>
+                <td><?php echo $logement->getVille() ?></td>
+                <td><?php echo $logement->getNbPlaces() ?></td>
+                <td><?php echo $logement->getPrix() ?> </td>
+            </tr>
+        <?php endforeach; ?>
+</table>
+
     
 </body>
 </html>
