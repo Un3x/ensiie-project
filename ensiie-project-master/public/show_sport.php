@@ -31,7 +31,9 @@ $rows = $sportRepository->fetchAllUsers();
     <?php include ("header.php")?>
 </head>
 <body>
-    <table class="table table-bordered table-hover table-striped">
+<div class="abc ligne2">
+<div id="block" class="clear">
+    <table class="table1">
         <thead style="font-weight: bold">
             <td>Sport</td>
             <td>Prenom</td>
@@ -51,10 +53,13 @@ $rows = $sportRepository->fetchAllUsers();
             </tr>
         <?php endforeach;?>
     </table>
+<br>
+<br>
+<br>
+<br>
 
 
-
-    <table class="table table-bordered table-hover table-striped">
+    <table class="table1">
         <thead style="font-weight: bold">
             <td>Adresse Logement</td>
             <td>Sport</td>
@@ -70,7 +75,8 @@ $rows = $sportRepository->fetchAllUsers();
             </tr>
         <?php endforeach;?>
     </table>
-
+</div>
+</div>
     <?php include("footer.php") ?>
 
 </body>

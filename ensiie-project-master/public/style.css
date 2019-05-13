@@ -122,6 +122,20 @@ h3{
 }
 
 
+.table1{
+    border-collapse:collapse;
+    width:90%;
+}
+
+th, td {
+    border:1px solid black;
+    width:20%;
+    color: #000080;
+}
+
+td {
+    text-align:center;
+}
 
 .left_img{
     float:left;
