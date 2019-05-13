@@ -84,7 +84,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     $tmplivre->setDateEmprunt($date);
     $livreRepository->updateLivre($tmplivre);
 
-    header("Location: index.php");
+    header("Location: emprunt.php");
 
 }
 
