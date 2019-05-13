@@ -31,6 +31,23 @@ CREATE TABLE Sport (
 
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Basketball', 'm', 'Square');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Basketball', 'f', 'Square');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'm', 'Parc des Coquibus');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'f', 'Parc des Coquibus');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Handball', 'm', 'C-19');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Handbabll', 'f', 'C-19');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'm', 'hall');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'f', 'hall');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Natation', 'm', 'Piscine municipale');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Natation', 'f', 'Piscine municipale');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'm', 'toit');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'f', 'toit');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Parkour', 'm', 'Evry');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Parkour', 'f', 'Evry');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Cheerleading', 'm', 'Rotonde');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Cheerleading', 'f', 'Rotonde');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Cyclisme', 'm', 'Parc des Coquibus');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Cyclisme', 'f', 'Parc des Coquibus');
+
 
 CREATE TABLE Logement (
        adresse VARCHAR(100) PRIMARY KEY);
