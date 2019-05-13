@@ -138,10 +138,12 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $logementRepository = new \Logement\LogementRepository($connection);
+if (isset($_POST['prix'])){
 $departement = $_POST['departement'];
 $ville = $_POST['ville'];
 $prix = $_POST['prix'];
 $logements = $logementRepository->fetch2($departement, $ville, $prix);
+}
 ?>
 
 <table class="table table-bordered table-hover table-striped">
@@ -161,6 +163,7 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
             </tr>
         <?php endforeach; ?>
 </table>
+
 
     
 </body>
