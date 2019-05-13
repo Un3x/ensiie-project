@@ -146,7 +146,7 @@ if (isset($_POST['id_user'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POS
 	<h1 class="section">Inscription</h1>
 	<h2 class="sous_titre">Création de votre profil</h2>
 	<p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
-	<form action="" method="post" class="form" enctype="multipart/form-data">
+	<form action="sinscrire.php" method="post" class="form" enctype="multipart/form-data">
 		Nom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="nom" placeholder="Nom" required> <br/>
 	  	Prénom <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="prenom" placeholder="Prénom" required> <br/>
 	  	Pseudo <span class="red">*</span> : <br/><input type="text" size="20" maxlength="30" name="id_user" placeholder="Pseudo" required> <br/>

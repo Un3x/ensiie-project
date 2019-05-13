@@ -82,10 +82,10 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
             $ProdRepository->afficheProdEvenUnvalid($prod);
             echo "
 
-            <form method=\"post\" action=\"\">
+            <form method=\"post\" action=\"validation.php\">
                 <input type=\"hidden\" name=\"id\" value=\"".$prod->getIdProd()."\">
                 <input type=\"hidden\" name=\"type\" value=\"produit\">
-                <input type=\"hidden\" name=\"delete\" value=\"0\" \>
+                <input type=\"hidden\" name=\"delete\" value=\"0\" >
                     <div class=\"flexbox_boutton\">
                         <div class=\"bouton\">
                             <input type=\"submit\" value=\"&#10004; Valider\" name=\"validation\">
@@ -97,8 +97,8 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
             </form>
             <div id=\"".$prod->getIdProd()."\">
             Êtes-vous sur de vouloir supprimer ce produit ?
-                <form method=\"post\" action=\"\">
-                    <input type=\"hidden\" name=\"delete\" value=\"1\" \>
+                <form method=\"post\" action=\"validation.php\">
+                    <input type=\"hidden\" name=\"delete\" value=\"1\" >
                     <input type=\"hidden\" name=\"id\" value=\"".$prod->getIdProd()."\">
                     <input type=\"hidden\" name=\"type\" value=\"produit\">
                     <div class=\"flexbox_boutton\">
@@ -128,10 +128,10 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
             $userRepository->afficheUserEvenUnvalid($user);
             echo "
 
-            <form method=\"post\" action=\"\">
+            <form method=\"post\" action=\"validation.php\">
                 <input type=\"hidden\" name=\"id\" value=\"".$user->getId()."\">
                 <input type=\"hidden\" name=\"type\" value=\"utilisateur\">
-                <input type=\"hidden\" name=\"delete\" value=\"0\" \>
+                <input type=\"hidden\" name=\"delete\" value=\"0\" >
                     <div class=\"flexbox_boutton\">
                         <div class=\"bouton\">
                             <input type=\"submit\" value=\"&#10004; Valider\" name=\"validation\">
@@ -143,8 +143,8 @@ if(isset($_POST['id'],$_POST['type'],$_POST['delete'])){
             </form>
             <div id=\"".$user->getId()."\">
             Êtes-vous sur de vouloir supprimer cet utilisateur ?
-                <form method=\"post\" action=\"\">
-                    <input type=\"hidden\" name=\"delete\" value=\"1\" \>
+                <form method=\"post\" action=\"validation.php\">
+                    <input type=\"hidden\" name=\"delete\" value=\"1\" >
                     <input type=\"hidden\" name=\"id\" value=\"".$user->getId()."\">
                     <input type=\"hidden\" name=\"type\" value=\"utilisateur\">
                     <div class=\"flexbox_boutton\">

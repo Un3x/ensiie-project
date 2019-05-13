@@ -152,7 +152,7 @@ if(isset($_POST['id'],$_POST['delete'])){
 <?php
 if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
  echo 
- "<form method=\"post\" action=\"\">
+ "<form method=\"post\" action=\"#\">
      <div class=\"flexbox_button\">
          <div class=\"bouton\">
              <input type=\"reset\" onclick=\"show('block','".$iduser."')\" value=\"&#128465; Supprimer\" name=\"supprimer\">
@@ -161,7 +161,7 @@ if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
  </form>
  <div id=\"".$iduser."\">
  Êtes-vous sur de vouloir supprimer ce produit ?
- <form method=\"post\" action=\"\">
+ <form method=\"post\" action=\"#\">
      <input type=\"hidden\" name=\"id\" value=\"".$iduser."\">
      <input type=\"hidden\" name=\"delete\" value=\"1\">
      <div class=\"flexbox_boutton\">

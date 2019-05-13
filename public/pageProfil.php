@@ -187,7 +187,7 @@ require("header.php");
             ?>
         </div>
         <div class="columnInfo" id="formulaire" style="display: none;">
-            <form action="" method="post" class="form" enctype="multipart/form-data">
+            <form action="pageProfil.php" method="post" class="form" enctype="multipart/form-data">
 	  	        Adresse mail <span class="red">*</span> : <br/><input type="text" name="email" value="<?php echo $CurrUser[0]->getMail(); ?>"> <br/>
 		        Mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdp" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
                 Verification mot de passe <span class="red">*</span> : <br/><input type="password" size="20" name="mdpverif" value="<?php echo $CurrUser[0]->getMdp(); ?>"> <br/>
@@ -227,7 +227,7 @@ require("header.php");
 
     <?php
     if ($_SESSION['pseudo'] == $_GET['pseudo']) {
-    echo "<form method=\"post\" action=\"\">
+    echo "<form method=\"post\" action=\"pageProfil.php\">
     <div class=\"flexbox_button\">
         <div class=\"bouton\">
             <input type=\"reset\" onclick=\"show('block','suppprofil')\" value=\"&#128465; Supprimer mon profil\" name=\"supprimer\">
@@ -236,7 +236,7 @@ require("header.php");
 </form>
 <div id=\"suppprofil\">
 Êtes-vous sur de vouloir supprimer ce profil ?
-<form method=\"post\" action=\"\">
+<form method=\"post\" action=\"pageProfil.php\">
     <input type=\"hidden\" name=\"delete_user\" value=\"1\">
     <div class=\"flexbox_boutton\">
         <div class=\"bouton\">
@@ -267,7 +267,7 @@ require("header.php");
                 $ProdRepository->afficheProd($prod);
                 if ($_GET['pseudo']==$_SESSION['pseudo'] && $prod->getValide()==1) {
                 echo 
-                "<form method=\"post\" action=\"\">
+                "<form method=\"post\" action=\"pageProfil.php\">
                     <div class=\"flexbox_button\">
                         <div class=\"bouton\">
                             <input type=\"reset\" onclick=\"show('block','".$prod->getIdProd()."')\" value=\"&#128465; Supprimer\" name=\"supprimer\">
@@ -276,7 +276,7 @@ require("header.php");
                 </form>
                 <div id=\"".$prod->getIdProd()."\">
                 Êtes-vous sur de vouloir supprimer ce produit ?
-                <form method=\"post\" action=\"\">
+                <form method=\"post\" action=\"pageProfil.php\">
                     <input type=\"hidden\" name=\"id\" value=\"".$prod->getIdProd()."\">
                     <input type=\"hidden\" name=\"delete\" value=\"1\">
                     <div class=\"flexbox_boutton\">
@@ -300,7 +300,7 @@ require("header.php");
             }
         }
     ?>
-
+</div>
 </section>
 
 <script>

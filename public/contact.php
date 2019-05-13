@@ -67,7 +67,7 @@ if (isset($_POST['titre'],$_POST['contenu'],$_POST['mail'])){
     <h1 class="section">Nous contacter</h1>
     <h2 class="sous_titre">Votre message</h2>
     <p>Veuillez compléter les champs suivants.<br>Les champs munis d'un <span class="red">*</span> sont obligatoires.</p>
-    <form action="" method="post" class="form">
+    <form action="contact.php" method="post" class="form">
         <br/>
         <p>Titre de votre message<span class="red">*</span> :</p> <input type="text" size="20" maxlength="50" name="titre" placeholder="Entrez le titre" required> <br/>
 <?php

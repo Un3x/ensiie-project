@@ -29,7 +29,7 @@ require("header.php");
 <section>
     <?php
     if (!isset($_GET['id'])){
-        echo "<h2 class=\"sous_titre\">Produits de toutes les catégories</h1>";
+        echo "<h2 class=\"sous_titre\">Produits de toutes les catégories</h2>";
         $prods=array_reverse($ProdRepository->fetchAll());
         foreach ($prods as $prod){
             $ProdRepository->afficheProd($prod);

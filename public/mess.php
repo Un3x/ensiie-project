@@ -93,9 +93,9 @@ echo $mess[0]->getContenu();
 if ($mess[0]->getValid()==0){
     echo "
 
-            <form method=\"post\" action=\"\">
+            <form method=\"post\" action=\"mess.php\">
                 <input type=\"hidden\" name=\"id\" value=\"".$mess[0]->getId()."\">
-                <input type=\"hidden\" name=\"delete\" value=\"0\" \>
+                <input type=\"hidden\" name=\"delete\" value=\"0\" >
                     <div class=\"flexbox_boutton\">
                         <div class=\"bouton\">
                             <input type=\"submit\" value=\"&#10004; Je m'en occupe\" name=\"validation\">
@@ -107,8 +107,8 @@ if ($mess[0]->getValid()==0){
             </form>
             <div id=\"".$mess[0]->getId()."\">
             Êtes-vous sur de vouloir supprimer ce message?
-                <form method=\"post\" action=\"\">
-                    <input type=\"hidden\" name=\"delete\" value=\"1\" \>
+                <form method=\"post\" action=\"mess.php\">
+                    <input type=\"hidden\" name=\"delete\" value=\"1\" >
                     <input type=\"hidden\" name=\"id\" value=\"".$mess[0]->getId()."\">
                     <div class=\"flexbox_boutton\">
                         <div class=\"bouton\">
