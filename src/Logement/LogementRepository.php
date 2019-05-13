@@ -45,7 +45,7 @@ class LogementRepository
         $NPL = $logement->getNbPlaces();
         $prix = $logement->getPrix();
 
-        $req = 'INSERT INTO "Logements" (iduser, departement ,ville , nb_places_libres, prix)
+        $req = 'INSERT INTO "logement" (iduser, departement ,ville , nb_places_libres, prix)
                 VALUES (:user, :departement, :ville, :NPL, :prix)';
         $valeurs = ['user'=>$user, 'departement'=>$dep, 'ville'=>$ville,
         'NPL'=>$NPL, 'prix'=>$prix];
@@ -63,7 +63,6 @@ class LogementRepository
         foreach ($rows as $row) {
             $logement = new Logement();
             $logement
-                ->setId($row->idLogement)
                 ->setUser($row->iduser)
                 ->setDep($row->departement)
                 ->setVille($row->ville)
