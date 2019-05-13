@@ -25,8 +25,14 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 			$courseStatus=$course['state'];
 
 
-			if ($userType == "Vendor") $name=$course["carrierFirstname"].' '.$course["carrierSurname"];
-			else $name=$course["clientFirstname"].' '.$course["clientSurname"];
+			if ($userType == "Client"){
+				$name=$course["carrierFirstname"].' '.$course["carrierSurname"];
+				$id=$course['carrierId'];
+			}
+			else {
+				$name=$course["clientFirstname"].' '.$course["clientSurname"];
+				$id=$course['clientId'];
+			}
 
 			$found = $_SESSION['userId']==$course['carrierId'] || $_SESSION['userId']==$course['clientId'];
 		}
@@ -42,6 +48,7 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 			$departureName=$_GET['departure'];
 			$arrivalName=$_GET['arrival'];
 			$name=$course["firstname"].' '.$course["surname"];
+			$id = $_GET['carrierId'];
 
 			$found = true;
 			$userType = null;

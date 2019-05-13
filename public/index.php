@@ -125,6 +125,10 @@ if( isset($_GET['action'])) {
             }
             break;
 
+        case 'userInfos':
+            require('../src/Controller/User/userInfosController.php');
+            break;
+
 
 
 

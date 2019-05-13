@@ -53,11 +53,11 @@ CREATE TABLE Vendor
     price FLOAT NOT NULL
 );
 
-INSERT INTO Admin (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) 
+INSERT INTO Admin (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) 
 VALUES ('aaa','bbb','aaa.aawxcsfdfcfgsfgwxcqa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other'),
 ('aaa','bbb','aaa.aaawxcwxssdfgsdfgsfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other');
 
-INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) 
+INSERT INTO Client (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) 
 VALUES ('aaa','bbb','aaa.aawxcwxcqa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0'),
 ('aaa','bbb','aaa.aaawxcwxsfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0');
 
