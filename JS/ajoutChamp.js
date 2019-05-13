@@ -12,18 +12,19 @@ function ajouterSelectMembres( membres )
 		var div        = document.createElement( "div" );
 		var saisie     = document.createElement( "input" );
 		var ajout      = document.createElement( "select" );
-		ajout.name     = "membre" + (nbMembres+1);
-		ajout.required = "required";
-		ajout.className = "selectName";
-		ajout.style.display   = "inline";
-		ajout.style.width  = "50%"
 
-		saisie.type = "text";
-		saisie.required = "required";
+		ajout.name          = "membre" + (nbMembres+1);
+		ajout.required      = "required";
+		ajout.className     = "selectName";
+		ajout.style.display = "inline";
+		ajout.style.width   = "50%";
+
+		saisie.type          = "text";
+		saisie.required      = "required";
 		saisie.style.display = "inline";
-		saisie.name    = "roleMembre" + (nbMembres+1);
-		saisie.placeholder = "rôle";
-		saisie.style.width  = "50%";
+		saisie.name          = "roleMembre" + (nbMembres+1);
+		saisie.placeholder   = "rôle";
+		saisie.style.width   = "50%";
 
 		div.style.display = "inline";
 
@@ -35,10 +36,10 @@ function ajouterSelectMembres( membres )
 			ajout.appendChild( option );
 		}
 		//champ.appendChild( ajout );
-		var bouton = document.getElementById( "bEnvoyer");
+		var elementAAjouterApres = document.getElementById( "bAjoutMembre");
 		div.appendChild( ajout );
 		div.appendChild( saisie );
-		champ.insertBefore( div, bouton );
+		champ.insertBefore( div, elementAAjouterApres );
 	}
 }
 function getMembres()

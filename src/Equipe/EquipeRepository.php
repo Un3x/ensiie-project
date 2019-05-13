@@ -66,7 +66,13 @@ class EquipeRepository
         }
 
         return $equipes;
-    }
+	}
+	
+	public function createEquipe( $idJeu, $idMembre, $role )
+	{
+		$eadza = $this->connection->query("INSERT INTO equipe VALUES( $idJeu, $idMembre, $role)");
+		echo " $eadza ";
+	}
     
     public function getEquipe($idJeu)
     {

@@ -38,52 +38,46 @@
 
 	function menu()
 	{
-		/*echo "<header>\n";
-		echo "\t<div id=\"menu\">\n";*/
-		
-		
-	/*	echo "\t\t<a href=\"index.php\">";
-		echo "\t\t\t<img src=\"../img/logo_realitiie.png\" ";
-		echo "alt=\"Accueil\" /></a>"; */
-		
-		
-		/*echo "\t\t<a href=\"../public/index.php\"><div>\n";
+		/*echo "\t\t<a class=\"active\" href=\"../public/index.php\">\n";
 		echo "\t\t\tRealitiie\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/index.php\"><div>\n";
+		echo "\t\t<a href=\"../public/index.php\">\n";
 		echo "\t\t\tAccueil\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/equipe.php\"><div>\n";
+		echo "\t\t<a href=\"../public/equipe.php\">\n";
 		echo "\t\t\tEquipe\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/article.php\"><div>\n";
+		echo "\t\t<a href=\"../public/article.php\">\n";
 		echo "\t\t\tArticles\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/debrief.php\"><div>\n";
+		echo "\t\t<a href=\"../public/debrief.php\">\n";
 		echo "\t\t\tComptes rendu\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/projet.php\"><div>\n";
+		echo "\t\t<a href=\"../public/projet.php\">\n";
 		echo "\t\t\tProjets\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/laval.php\"><div>\n";
+		echo "\t\t<a href=\"../public/laval.php\">\n";
 		echo "\t\t\tLaval\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
 		
-		echo "\t\t<a href=\"../public/ressources.php\"><div>\n";
+		echo "\t\t<a href=\"../public/ressources.php\">\n";
 		echo "\t\t\tRessources\n";
-		echo "\t\t</div></a>\n";
+		echo "\t\t</a>\n";
+		
+		
 		
 		if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
 		    echo "\t\t<a href=\"../private/admin.php\"><div>\n";
 		    echo "\t\t\tAdministration\n";
 		    echo "\t\t</div></a>\n";
 		}
+		
 		
 		
 		

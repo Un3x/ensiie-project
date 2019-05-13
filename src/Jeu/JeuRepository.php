@@ -71,7 +71,16 @@ class JeuRepository
         $req = $this->connection->prepare($sql);
         $status = $req->execute(array($id));
         return $status;
-    }
+	}
+	
+	public function getIdJeu( $titre )
+	{
+		echo "<p>$titre</p>";
+		$res = $this->connection->query('SELECT id_jeu FROM jeux WHERE titre = \''.$titre.'\' ' )->fetchAll();
+		echo "<p>type de la requete ".var_dump($res)."</p>";
+		//echo "<p>type de la requete ".$res."</p>";
+		return $res[0]['id_jeu'];
+	}
     
     public function createJeu($titre, $git, $telechargement, $description)
     {

@@ -8,6 +8,8 @@
 <?php
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
+require '../src/Equipe/Equipe.php';
+require '../src/Equipe/EquipeRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
 entete( "Accueil" );
@@ -24,18 +26,40 @@ $dbPassword = 'postgres';
 $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 $jeuRepository = new \Jeu\JeuRepository($connection);
+$equipeRepository = new \Equipe\EquipeRepository($connection);
 
 if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd puis renvoie vers la page de d'administration des jeux
-    $status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
+
+	$titreJeu = htmlspecialchars_decode($_POST['titre']);
+	$git      = htmlspecialchars_decode($_POST['git']);
+	$lienT    = htmlspecialchars_decode($_POST['telechargement']);
+	echo "$titreJeu";
+	echo " $git ";
+	echo $lienT;
+ 
+	//$status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
+
+	$idJeu = $jeuRepository->getIdJeu( $titreJeu );
+	echo "<p>idJeu : $idJeu</p>";
+	$i = 1;
+	while( isset($_POST['membre'.$i]) && isset($_POST['roleMembre'.$i]) )
+	{
+		echo $_POST['membre'.$i]." ";
+		echo $_POST['roleMembre'.$i]."<br/>";
+		$idMembre = $_POST['membre'.$i];
+		$role     = $_POST['roleMembre'.$i];
+		$equipeRepository->createEquipe( $idJeu, $idMembre, $role );
+		$i = $i + 1;
+	}
     
-    if($status){
+    /*if($status){
         echo '<h4>Le projet a bien été créé</h4>';
     }else{
         echo '<h4>Erreur: la création du nouveau projet a échoué!</h4>';
-    }
+    }*/
     
     echo '<h4>Redirection vers la liste des projets...</h4>';
-    header( "refresh:3;url=jeux.php" );
+    //header( "refresh:3;url=jeux.php" );
 }else{
 
     echo '<h1>Création d\'un projet</h1>';
@@ -45,8 +69,8 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
         <form id="formAjoutProjet" action="" method="POST" onsubmit="return verficationEnvoie()">
         	<label>Titre : </label><input name="titre" type="text" required/>
         	<br/>
-        	<label>Description : </label><textarea name="description" rows="5" cols="40" required></textarea>
-        	<br/>
+			<label>Description : </label><textarea name="description" rows="5" cols="40" required></textarea>
+			<br/>
         	<label>Lien du git : </label><textarea name="git" rows="5" cols="40" required></textarea>
         	<br/>
 			<label>Lien de téléchargement : </label><textarea name="telechargement" rows="5" cols="40" required></textarea>
