@@ -6,13 +6,14 @@
 <body>
 
 <?php
+$id_page="jeucreation";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require '../src/Equipe/Equipe.php';
 require '../src/Equipe/EquipeRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" );
+entete( "Accueil" ,$id_page);
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion

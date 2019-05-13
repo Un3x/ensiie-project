@@ -1,8 +1,8 @@
 <?php
-	id_page="laval";
+	$id_page="laval";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
-	entete("Laval");
+	entete("Laval",$id_page);
 	navAccueil();
 	
 	

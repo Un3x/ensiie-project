@@ -8,7 +8,7 @@
 	require("../src/Equipe/EquipeRepository.php");
 	require("../src/Membre/Membre.php");
 	
-	entete("Projets");
+	entete("Projets",$id_page);
 	
 	
 	

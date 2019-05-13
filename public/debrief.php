@@ -1,12 +1,13 @@
 <?php
+	$id_page="debrief";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Article/Article.php");
 	require("../src/Article/ArticleRepository.php");
 	require("../src/Membre/Membre.php");
-	entete("Comptes-rendus");
+	entete("Comptes-rendus",$id_page);
 	
-	$id_page="debrief";
+	
 	navAccueil();
 	
 	$dbName = 'realitiie';

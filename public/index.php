@@ -2,7 +2,7 @@
 	$id_page="index";
 	require( "../inc/inc.default.php" );
 	require( "../inc/inc.nav.php" );
-	entete( "Accueil" );
+	entete( "Accueil" ,$id_page);
 	navAccueil();
 	
 	

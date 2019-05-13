@@ -4,7 +4,7 @@
 	require( "../inc/inc.nav.php" );
 	require( "../src/Membre/Membre.php");
 	require( "../src/Membre/MembreRepository.php");
-	entete( "Equipe" );
+	entete( "Equipe" ,$id_page);
 	navAccueil();
 	
 	$dbName = 'realitiie';

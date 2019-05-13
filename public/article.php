@@ -5,7 +5,7 @@
 	require("../src/Article/Article.php");
 	require("../src/Article/ArticleRepository.php");
 	require("../src/Membre/Membre.php");
-	entete("Articles");
+	entete("Articles",$id_page);
 	navAccueil();
 	$dbName = 'realitiie';
 	$dbUser = 'postgres';
