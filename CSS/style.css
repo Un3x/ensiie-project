@@ -181,13 +181,13 @@ body {
 
 h1 {
  	font-size: 200%; 
- 	color: navy; 
+ 	color: black; 
 	text-align: center;
 }
 
 h2 {
  	font-size: 150%; 
- 	color: red; 
+ 	color: black; 
  	padding-left: 15px;
 }
  
