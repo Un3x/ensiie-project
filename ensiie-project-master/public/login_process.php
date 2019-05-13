@@ -53,11 +53,11 @@
 		}
 	}
 	else {
-		echo '<body onLoad="alert(\'Veuillez remplir tous les champs.\')">';
+		echo '<script> alert("Veuillez remplir tous les champs.")</script>';
 		echo '<meta http-equiv="refresh" content="0;URL=login.php">';
 	}
 
-	echo '<body onLoad="alert(\'Username ou mot de passe incorrect.\')">';
+	echo '<script> alert("Username ou mot de passe incorrect.")</script>';
 	echo '<meta http-equiv="refresh" content="0;URL=login.php">';
 
 ?>

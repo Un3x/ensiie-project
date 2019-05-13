@@ -21,11 +21,11 @@
 <p>
 <br/><br/>
 <label>Username :</label>
-<input type="text" name="login" />
+<input type="text" name="login" required/>
 </p>
 <p>
 <label>Password :</label>
-<input type="password" name="pwd" />
+<input type="password" name="pwd" required/>
 </p>
 <p>
 <input type="submit" id="btn" value="Login" />
