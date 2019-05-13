@@ -1,3 +1,9 @@
+<?php if (isset($_SESSION['connected'])): ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+<?php else: ?>
 <footer>
     <div class="container">
         <img id="contact-us-img" src="img/contact_us.svg" alt="Icone question" />
@@ -15,3 +21,5 @@
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
+
+<?php endif ?>

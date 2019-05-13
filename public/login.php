@@ -26,7 +26,7 @@
           <?php
             if (array_key_exists('testco', $_SESSION)) {
                 if (isset($_SESSION['testco'])) {
-                    echo '<p><strong>*** Identifiants invalides***</strong></p>';
+                    echo '<p class="sign-msg">Identifiants invalides</p>';
                 }
             }
           ?>

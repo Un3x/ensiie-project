@@ -457,6 +457,10 @@ input[type=text],input[type=password], input[type=email]{
     font-size: 35px;
 }
 
+.sign-msg{
+    color: rgb(207, 43, 43);
+}
+
 #signup{
     width: 50%;
 }
