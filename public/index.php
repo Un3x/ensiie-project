@@ -11,6 +11,8 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 ?>
 
+<?php include_once("navbar.phtml"); ?>
+
 <html>
 <head>
     <title> Accueil </title>
