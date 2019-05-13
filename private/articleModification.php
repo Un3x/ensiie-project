@@ -1,5 +1,6 @@
 <head>
 	<link rel="stylesheet" href="../CSS/style.css">
+	<script rel="text/javascript" src="../JS/ajoutMedia.js"></script>
 </head>
 
 <body>
@@ -39,16 +40,29 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
     header( "refresh:3;url=article.php" );
 
 }else if($_SESSION['role'] != 'a' && $article->getAuteur()->getId() != $_SESSION['id']){ //Si pas administrateur, renvoie vers d'administration
-        echo '<h4>Erreur: Vous n\'avez pas la permission de modifier cette article car vous n\'en êtes pas l\'auteur</h4>';
-        echo '<h4>Redirection vers la page d\'administration...</h4>';
-        header( "refresh:3;url=admin.php" );
+		
+	echo '<h4>Erreur: Vous n\'avez pas la permission de modifier cette article car vous n\'en êtes pas l\'auteur</h4>';
+	echo '<h4>Redirection vers la page d\'administration...</h4>';
+	header( "refresh:3;url=admin.php" );
 }else if(isset($_POST['modification'])){ //Si article est modfifié, modification de la bdd puis renvoie vers la page de d'administration des articles
     if(!isset($_POST['auteur'])){
         $_POST['auteur'] = $_SESSION['id'];
     }
-    
-    $status = $articleRepository->setArticle($_GET['id'], $_POST['titre'], $_POST['texte'], $_POST['auteur'], $_POST['date']);
-    
+	$idArticle = htmlspecialchars_decode( $_GET['id'] );
+	$titre     = htmlspecialchars_decode( $_POST['titre'] );
+	$texte     = htmlspecialchars_decode( $_POST['texte'] );
+	$auteur    = htmlspecialchars_decode( $_POST['auteur'] );
+	$date      = htmlspecialchars_decode( $_POST['date'] );
+    $status = $articleRepository->setArticle( $idArticle, $idArticle, $texte, $auteur, $date);
+	/*$i = 1;
+	echo "patate";
+	while( isset($_FILES['media'.$i]) && $i < 5 )
+	{
+		//$lien = htmlspecialchars_decode( $_FILES['media'.$i] );
+		echo var_dump($_FILES['media'.$i]);
+		echo var_dump($_POST['media'.$i]);
+		$i = $i + 1;
+	}*/
     if($status){
         echo '<h4>L\'article n°'.$_GET['id'].' a bien été modifié</h4>';
     }else{
@@ -79,7 +93,7 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
                 
     ?>
     <div class="modifContainer">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data" id="formAjout">
         	<label>Titre : </label><input name="titre" type="text" value="<?php echo $article->getTitre() ?>" required/>
         	<br/>
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required><?php echo $article->getTexte() ?></textarea>
@@ -96,11 +110,27 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
             		    }
             		}
             		?>
-            	</select>
+				</select>
             	<br/>
             <?php } ?>
         	<label>Date de publication : </label><input name="date" type="date" value="<?php echo $article->getDate()->format('Y-m-d') ?>" required/>
-        	<input type="submit" name="modification" value="Envoyer"/>
+			<?php
+				/*$medias = $articleRepository->getMediasFromArticle($article->getId());
+				$i = 1;
+				foreach( $medias as $media )
+				{
+					echo var_dump( $media );
+					echo '<div style="display: inline;">';
+					echo '<input type="file" value="'.$media->lien.'" name="media'.$i.'">';
+					echo '<input type="hidden" value="'.$media->id_media.'" name="idMedia'.$i.'">';
+					echo '</div>';
+					$i = $i + 1;
+				}*/
+
+			?>
+			<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
+			<input type="button" id="bSuppMedia" onclick="suppMedia()" style="background-color:red" value="Supprimer la dernière image" />
+			<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>
     
