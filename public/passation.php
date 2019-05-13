@@ -3,7 +3,7 @@ include('./admin/functions.php');
 // On prolonge la session
 session_start();
 // On teste si la variable de session existe et contient une valeur
-if(empty($_SESSION['login']) || empty($_SESSION['president'])) 
+if(empty($_SESSION['login']) || empty($_SESSION['president'] || empty($_SESSION['userpassation']))) 
 {
   // Si inexistante ou nulle, on redirige vers le formulaire de login
   header('Location: authentification.php');
@@ -21,15 +21,16 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 $user = $users[$_SESSION['login']];
-$userpassation = $connection->query('select pseudo from users where id_user='.$_SESSION["userpassation"])->fetch(\PDO::FETCH_OBJ);
+$userpassation = $connection->query('select pseudo from users where id_user='.$_SESSION['userpassation'])->fetch(\PDO::FETCH_OBJ);
 if (!empty($_POST['cancel'])){
 	header('Location: president.php');
 }
 elseif (!empty($_POST['passation'])){
-	$connection->query("update associations set president=".$_SESSION["userpassation"]." where id_asso=".$_SESSION['association']);
+	$connection->query("update associations set president=".$_SESSION['userpassation']." where id_asso=".$_SESSION['association']);
 	if ($connection->query("select count(id_asso) as c from associations where president=".$user->getId())->fetch(\PDO::FETCH_OBJ)->c == 0){
 		$connection->query("update users set president=0 where id_user=".$user->getId());
 	}	
+	$connection->query("update users set president=1 where id_user=".$_SESSION['userpassation']);
 	header('Location: deauth.php');
 }
 displayHeader();

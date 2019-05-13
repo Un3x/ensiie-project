@@ -267,7 +267,7 @@ $.get("ajax/users_get.php", function(users) {
 			this.input.value = suggestion.label;
 //			console.log(suggestion);
 			$("#passation_submit").prop("disabled",false);
-			user_selected = suggestion.value;
+			user_selected_passation = suggestion.value;
 		}
 	});
 
@@ -276,7 +276,7 @@ $("#ajout_submit").on("click", function() {
 	window.location.replace('president.php');
 })
 $("#passation_submit").on("click", function() {
-	$.get("ajax/passation_set.php",{user: user_selected},'json');
+	$.get("ajax/passation_set.php",{user_passation: user_selected_passation},'json');
 	
 	window.location.replace('passation.php');
 })
