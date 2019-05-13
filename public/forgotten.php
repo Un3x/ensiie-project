@@ -10,7 +10,6 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 $errorMessage = '';
 
-
 if (!empty($_POST['login'])&&!empty($_POST['mail']))
 {
 	if (!array_key_exists($_POST['login'],$users))
@@ -30,7 +29,7 @@ if (!empty($_POST['login'])&&!empty($_POST['mail']))
 		session_start();
 		$_SESSION['recup']=$code;
 		$_SESSION['email']=$_POST['mail'];
-		header('Location: recup.php');
+		header('Location: /ajax/mail.php');
 		exit();
 	}
 }
@@ -57,7 +56,6 @@ if(!empty($errorMessage))
 		</p>
 	  </fieldset>
 	</form>
-
 
 </body>
 </html>
