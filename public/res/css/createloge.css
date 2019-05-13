@@ -10,7 +10,8 @@ body {
 	position: relative;
 	width: 300px;
 	padding: 20px 20px 20px;
-	z-index: -1;
+    z-index: -1;
+    font-family: Arial,sans-serif;
 }
 
 .create:before {
@@ -23,6 +24,7 @@ body {
     z-index: -1;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
+    font-family: Arial,sans-serif;
 }
 
 .create h1{
@@ -33,10 +35,12 @@ body {
     text-align: center;
     background: #008000;
     border-radius: 3px;
+    font-family: Arial,sans-serif;
 }
 
 .create input {
-	width: 100%;
+    width: 100%;
+    font-family: Arial,sans-serif;
 }
 
 .create input[type=submit] {
@@ -47,15 +51,19 @@ body {
     border: none;
     cursor: pointer;
     width: 100%;
+    font-family: Arial,sans-serif;
 }
 
 .create p {
     margin: 20px 0 0;
+    font-family: Arial,sans-serif;
 }
 
 .create p.submit {
     text-align: right;
+    font-family: Arial,sans-serif;
 }
 .create input[type=text], .inscrip input[type=password],.inscrip input[type=date] {
     width: 275px;
+    font-family: Arial,sans-serif;
 }
