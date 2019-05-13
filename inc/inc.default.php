@@ -96,11 +96,10 @@
         	    <li class="menu"><a class="menu active" href="../public/index.php">Accueil</a></li>
         	    <li class="menu"><a class="menu" href="../public/equipe.php">Équipe</a></li>
         	    <li class="menu"><a class="menu"href="../public/article.php">Articles</a></li>
-        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes rendu</a></li>
+        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes-rendus</a></li>
         	    <li class="menu"><a class="menu"href="../public/projet.php">Projets</a></li>
         	    <li class="menu"><a class="menu"href="../public/laval.php">Laval</a></li>
         	    <li class="menu"><a class="menu"href="../public/ressources.php">Ressources</a></li>
-        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes rendu</a></li>
         	    
         	    <?php
         	    if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
