@@ -5,7 +5,7 @@
 <body>
 
 <?php
-$id_page="membreCreation";
+$id_page="admin";
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );

@@ -6,7 +6,7 @@
 <body>
 
 <?php
-$id_page="tuto";
+$id_page="admin";
 require '../src/Tuto/Tuto.php';
 require '../src/Tuto/TutoRepository.php';
 require( "../inc/inc.default.php" );

@@ -161,7 +161,11 @@
         	    
         	    <?php
         	    if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
-        	        ?><li class="menu"><a class="menu"href="../private/admin.php">Administration</a></li><?php
+        	        if($id_page != "admin"){
+        	           ?><li class="menu"><a class="menu" href="../private/admin.php">Administration</a></li><?php
+        	        }else{
+        	           ?><li class="menu"><a class="menu active" href="../private/admin.php">Administration</a></li><?php
+        	        }
 				}
 				?>
         	    

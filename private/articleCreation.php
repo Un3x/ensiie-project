@@ -6,7 +6,7 @@
 <body>
 
 <?php
-$id_page="articlecreation";
+$id_page="admin";
 require '../src/Article/Article.php';
 require '../src/Article/ArticleRepository.php';
 require '../src/Membre/Membre.php';
