@@ -32,10 +32,10 @@ $users = $userRepository->fetchAll();
 
 <div id="centre">
         <div id="recherche">
-            <a href="Recherche.phtml"> Je cherche une colocation </a>
+            <a href="searchlogement.phtml"> Je cherche une colocation </a>
         </div>
         <div id="createlogement">
-            <a href="Create_Logement.phtml"> Je propose une colocation </a>
+            <a href="createlogement.phtml"> Je propose une colocation </a>
         </div>
 </div>
 
