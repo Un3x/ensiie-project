@@ -1,8 +1,8 @@
 <?php
-	$dbName = 'realitiie';
-	$dbUser = 'postgres';
-	$dbPassword = 'postgres';
-	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
+    $dbName = 'realitiie';
+    $dbUser = 'postgres';
+    $dbPassword = 'postgres';
+    $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 	$request = "SELECT id_membre, surnom FROM membre";
 	$result = $connection->query($request);

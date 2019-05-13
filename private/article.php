@@ -18,11 +18,6 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     exit();
 }
 
-$dbName = 'realitiie';
-$dbUser = 'postgres';
-$dbPassword = 'postgres';
-$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
-
 $articleRepository = new \Article\ArticleRepository($connection);;
 //$articleRepository = new \Article\ArticleRepository($connection);
 $articles = $articleRepository->fetchWithoutTexte();

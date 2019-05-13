@@ -1,5 +1,6 @@
 <head>
 	<link rel="stylesheet" href="../CSS/style.css">
+	<script rel="text/javascript" src="../JS/ajoutMedia.js"></script>
 </head>
 
 <body>
@@ -18,11 +19,6 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     require( "../inc/connexionForm.php" );
     exit();
 }
-
-$dbName = 'realitiie';
-$dbUser = 'postgres';
-$dbPassword = 'postgres';
-$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 $articleRepository = new \Article\ArticleRepository($connection);
 
@@ -50,7 +46,7 @@ if(isset($_POST['creation'])){ //Si l'article est créé, modification de la bdd
                 
     ?>
     <div class="modifContainer">
-        <form action="" method="POST">
+        <form id="formAjout" action="" method="POST">
         	<label>Titre : </label><input name="titre" type="text" required/>
         	<br/>
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required></textarea>
@@ -69,7 +65,13 @@ if(isset($_POST['creation'])){ //Si l'article est créé, modification de la bdd
             <?php } ?>
             
         	<label>Date de publication : </label><input name="date" type="date" required/>
-        	<input type="submit" name="creation" value="Envoyer"/>
+        	
+        	<br/><br/>
+        	
+        	<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
+			<input type="button" id="bSuppMedia" onclick="suppMedia()" style="background-color:red" value="Supprimer la dernière image" />
+        	
+        	<input type="submit" id="bEnvoyer" name="creation" value="Envoyer"/>
         </form>
     </div>
     
