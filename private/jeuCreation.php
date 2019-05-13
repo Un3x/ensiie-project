@@ -30,19 +30,20 @@ $equipeRepository = new \Equipe\EquipeRepository($connection);
 
 if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd puis renvoie vers la page de d'administration des jeux
 
-	$titreJeu = htmlspecialchars_decode($_POST['titre']);
-	$git      = htmlspecialchars_decode($_POST['git']);
-	$lienT    = htmlspecialchars_decode($_POST['telechargement']);
+	$titreJeu    = htmlspecialchars_decode($_POST['titre']);
+	$git         = htmlspecialchars_decode($_POST['git']);
+	$lienT       = htmlspecialchars_decode($_POST['telechargement']);
+	$description = htmlspecialchars_decode($_POST['description']);
  
-	$status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
+	$status = $jeuRepository->createJeu($titreJeu, $git, $lienT, $description);
 
 	$idJeu = $jeuRepository->getIdJeu( $titreJeu );
 
 	$i = 1;
 	while( isset($_POST['membre'.$i]) && isset($_POST['roleMembre'.$i]) )
 	{
-		$idMembre = $_POST['membre'.$i];
-		$role     = $_POST['roleMembre'.$i];
+		$idMembre = htmlspecialchars_decode($_POST['membre'.$i]);
+		$role     = htmlspecialchars_decode($_POST['roleMembre'.$i]);
 		$equipeRepository->createEquipe( $idJeu, $idMembre, $role );
 		$i = $i + 1;
 	}
