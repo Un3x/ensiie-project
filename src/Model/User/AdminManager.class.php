@@ -79,7 +79,7 @@ class AdminManager extends UserManager
 	 */
     public function update($user)
     {
-		$statement = $this->connection->prepare("UPDATE from Admin set surname=:surname, firstname=:firstname,mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender where id=:id");
+		$statement = $this->connection->prepare("UPDATE  Admin set surname=:surname, firstname=:firstname,mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender where id=:id");
 		return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"passWord" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate(),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate(),"description" => $user->getDescription(),"gender" => $user->getGender(),"id" => $user->getId()));
 	}
 

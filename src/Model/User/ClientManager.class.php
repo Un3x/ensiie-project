@@ -21,8 +21,11 @@ class ClientManager extends UserManager
     public function add($user)
     {
 			$statement = $this->connection->prepare("INSERT INTO Client (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (:surname,:firstname,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender,:nbClientCourses)");
-			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses()));
-		}
+
+			$a = $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses()));
+            print_r($statement->errorInfo());
+			return $a;
+    }
 
 	/**
 	 * suprime user dans la BD

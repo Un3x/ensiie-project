@@ -92,11 +92,11 @@ class CourseManager
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row['id_course'])
+                ->setId($row['id'])
                 ->setDeparture($row['departure'])
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
-                ->setDepartureDateTime($row['departureDateTime'])
+                ->setDepartureDateTime($row['datetime'])
                 ->setState($row['state']);
             $courses[] = $course;
         }
@@ -121,7 +121,8 @@ class CourseManager
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
                 ->setDepartureDateTime($row['departureDateTime'])
-                ->setState($row['state']);
+                ->setState($row['state'])
+                ->setPrice($row['price']);
             $courses[] = $course;
         }
 

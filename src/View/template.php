@@ -71,11 +71,17 @@
 
 
         <main>
-                <?php 
-                    if($GLOBALS['user'])
+            <?php 
+                if($GLOBALS['user']) {
+                    if($_SESSION["userType"] == "Admin")
+                    {
+                        require("../src/View/Admin/menu_admin.php");
+                    }
+                    else
                     require("../src/View/User/Profil/menu_membre.php");
-                ?>
-                <?=$content?>
+                }
+            ?>
+            <?=$content?>
         </main>
 
 

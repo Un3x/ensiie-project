@@ -23,7 +23,7 @@ function parametreModifPassword()
         $user = $GLOBALS["user"];
 
     // utiliser password_verify lorsque le hasage sera implemente dans la bdd
-        if (strcmp($_POST['passwordOld'], $user->getPassword()) ==0 && strcmp($_POST['password'], $_POST['password2'])==0 )
+        if (password_verify($_POST['passwordOld'], $user->getPassword()) ==0 && strcmp($_POST['password'], $_POST['password2'])==0 )
         {
             $message = "Votre mot de passe a bien été modifié.";
             $user->setPassword(($_POST['password']));
@@ -39,6 +39,7 @@ function parametreModifPassword()
             }
         }
         else {
+
             //$message = $user->getPassword()."/et/".$_POST["passwordOld"]."/et/".$_POST["password"]."/et/".$_POST["password2"];
             require('../src/View/User/Profil/parametreView.php');
         }

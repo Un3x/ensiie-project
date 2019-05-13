@@ -82,12 +82,7 @@ function inscriptionClient()
                 L'usage de compte multiple est interdit. <br/>";
             }
 
-            /*
-            if($_POST['age'] < 0)
-            {
-                $messageErreur = $messageErreur . " Vous n'êtes pas encore née. Vous n'avez donc pas l'age requis <br/>";
-            }
-            */
+
 
             if ($messageErreur == '<span class="warning">')
             {

@@ -55,7 +55,7 @@
                 Ceci n'est pas un numéro de téléphone. <br/>
             </span>
             <br/>
-            <label for="birthDate"> Date de naissance : : </label>
+            <label for="birthDate"> Date de naissance (aaaa-mm-jj)  : </label>
             <input type="date" name="birthDate" id="birthDate" value="<?=$valeurDefaut["birthDate"]?>" />
             <span class="contrainte">
                 Date invalide.
