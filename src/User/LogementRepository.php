@@ -13,16 +13,16 @@ class LogementRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "Logement"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM "logement"')->fetchAll(\PDO::FETCH_OBJ);
         $logements = [];
         foreach ($rows as $row) {
-            $logement = new User();
+            $logement = new Logement();
             $logement
                 ->setId($row->idLogement)
                 ->setUser($row->iduser)
                 ->setDep($row->departement)
                 ->setVille($row->ville)
-                ->setNbPlaces($this->nb_places_libres)
+                ->setNbPlaces($row->nb_places_libres)
                 ->setPrix($row->prix);
 
             $logements[] = $logement;
@@ -55,5 +55,25 @@ class LogementRepository
         }
 
     }
+
+    public function fetch2($departement,$ville,$prix){
+        
+        $rows = $this->connection->query('SELECT * FROM "logement" WHERE departement='.$this->connection->quote($departement).' AND ville='.$this->connection->quote($ville).' AND prix='.$this->connection->quote($prix).)->fetchAll(\PDO::FETCH_OBJ);
+        $logements = [];
+        foreach ($rows as $row) {
+            $logement = new Logement();
+            $logement
+                ->setId($row->idLogement)
+                ->setUser($row->iduser)
+                ->setDep($row->departement)
+                ->setVille($row->ville)
+                ->setNbPlaces($row->nb_places_libres)
+                ->setPrix($row->prix);
+
+            $logements[] = $logement;
+        }
+
+        return $logements;
+    }   
 
 }
