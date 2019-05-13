@@ -18,7 +18,7 @@ class JeuRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "jeux"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM "jeux" ORDER BY titre')->fetchAll(\PDO::FETCH_OBJ);
         $jeux = [];
         foreach ($rows as $row) {
             $jeu = new Jeu();
