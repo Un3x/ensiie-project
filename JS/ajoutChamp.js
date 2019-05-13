@@ -2,16 +2,32 @@ function ajoutMembre()
 {
 	getMembres();
 }
+function suppMembre()
+{
+	var nbMembres = document.getElementsByClassName( "selectName" ).length;
+	if( nbMembres > 0 )
+	{
+		var membres = [];
+		for( var i = 0; i < nbMembres; i++ )
+		{
+			membres[i] = document.getElementsByName( "membre"+(i+1) )[0];
+		}
+		console.log( membres );
+		var parent = membres[membres.length - 1].parentElement.parentElement;
+		parent.removeChild( membres[membres.length - 1].parentElement );
+	}
+}
 function ajouterSelectMembres( membres )
 {
 	var nbMembres = document.getElementsByClassName( "selectName" ).length;
 	if( nbMembres < membres.length )
 	{
 		var id = "formAjoutProjet"
-		var champ      = document.getElementById( id );
-		var div        = document.createElement( "div" );
-		var saisie     = document.createElement( "input" );
-		var ajout      = document.createElement( "select" );
+		var champ           = document.getElementById( id );
+		var div             = document.createElement( "div" );
+		var saisie          = document.createElement( "input" );
+		var ajout           = document.createElement( "select" );
+		var boutonSupprimer = document.createElement( "input" );
 
 		ajout.name          = "membre" + (nbMembres+1);
 		ajout.required      = "required";

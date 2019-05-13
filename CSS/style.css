@@ -273,7 +273,7 @@ input[type=text], input[type=password], select, textarea {
 	  box-sizing: border-box;
 }
 
-input[type=submit], #bAjoutMembre {
+input[type=submit], #bAjoutMembre, #bSuppMembre {
 	  width: 100%;
 	  background-color: #4CAF50;
 	  color: white;
