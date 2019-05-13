@@ -140,6 +140,7 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 			</div>            
       <p></p>
 		</section>
+		<?php affiche_footer()?>
 	</body>
 	<script>
 		// si l'un des 3 est false, c'est que l'utilisateur était sur inscription et l'a foiré donc 

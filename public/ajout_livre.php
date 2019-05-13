@@ -145,6 +145,7 @@ if (isset($_POST['titre']) && isset($_POST['datepub']) && isset($_POST['image'])
         <input class="formulaire" id="formSubmit" type="submit" class="butcon" value="Valider"/>
     </form>
 </section>
+<?php affiche_footer()?>
 </body>
 </html>
     

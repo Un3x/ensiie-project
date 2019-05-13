@@ -237,6 +237,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     </table>
 </div>
 </section>
+<?php affiche_footer()?>
 </body>
 
 

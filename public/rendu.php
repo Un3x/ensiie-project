@@ -136,6 +136,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
 </p>
     <?php endif; ?>
 </section>
+<?php affiche_footer()?>
 </body>
 
 

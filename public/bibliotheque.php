@@ -134,7 +134,7 @@ else {
           <p></p>
     </div>
   </section>
-  <footer>On est vraiment trop style regardez ce quon a fait</footer>
+  <?php affiche_footer()?>
    </body>
 
    <script>

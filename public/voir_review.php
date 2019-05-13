@@ -84,4 +84,5 @@ if ($user_connected) {//on récupère les info sur l'utilisateur courrant (si il
         <p></p>
 	<?php endif; ?>
 </section>
+<?php affiche_footer()?>
 </body>

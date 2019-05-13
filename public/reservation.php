@@ -77,4 +77,5 @@ if ($okreserv && ($nbres < 3)) {
         <p>Désolé, vous ne pouvez pas réserver plus de trois livres à la fois</p>
     <?php endif; ?>
 </section>
+<?php affiche_footer()?>
 </body>
