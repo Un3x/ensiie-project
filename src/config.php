@@ -4,6 +4,7 @@ require("../src/Model/User/ClientManager.class.php");
 require("../src/Model/User/AdminManager.class.php");
 require("../src/Model/User/VendorManager.class.php");
 
+$modeDemo = true; //rajoute automatiquement des carriers quand on fait des recherches de trajets, évite de devoir remplir à la main la bdd de plein de carriers à des endroits différents
 
 function bdd()
 {

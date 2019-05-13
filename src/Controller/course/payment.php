@@ -7,6 +7,11 @@ $user = ['numCard' => "0123XXXXXXXXXX56"];
 if(!$GLOBALS['user']){
 	header('Location: /connexion');
 }
+else if($_SESSION['userType']!='Client'){
+	$title="erreur";
+	$content = "Désolé mais ce type de compte ne peut pas faire de réservations";
+	require('../src/View/template.php');
+}
 else{
 
 	require '../vendor/autoload.php';
@@ -36,6 +41,7 @@ else{
 		require('../src/View/course/paymentView.php');
 	}
 	else{
+		$title="trajet non trouvé";
 		$content = "trajet non trouvé";
 		require('../src/View/template.php');
 	}

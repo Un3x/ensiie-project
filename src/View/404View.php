@@ -1,4 +1,4 @@
-<?php $title = "Un merveilleux site pour réserver des licornes ! " ?>
+<?php $title = "page inexistante" ?>
 
 <?php ob_start(); ?>
 

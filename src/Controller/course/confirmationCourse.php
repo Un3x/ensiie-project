@@ -52,8 +52,8 @@ if (((isset($_POST['usedCard'])
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
-        $template->duration = $duration;
-        $template->distance = $distance;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $GLOBALS['user']->getMailAddress();
@@ -72,8 +72,8 @@ if (((isset($_POST['usedCard'])
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
-        $template->duration = $duration;
-        $template->distance = $distance;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $carrier->getMailAddress();

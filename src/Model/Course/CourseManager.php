@@ -45,7 +45,7 @@ class CourseManager
     }
 
     /**
-     * @param string $departure $arrival DateTIme $departureDateTime
+     * @param string $departure $arrival
      */
     public function fetchCourses($departure,$arrival)
     {

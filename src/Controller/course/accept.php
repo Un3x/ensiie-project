@@ -48,8 +48,8 @@ if (isset($_POST['courseId'])){
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
-        $template->duration = $duration;
-        $template->distance = $distance;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
 
         $recipient = $client->getMailAddress();
         $subject = "réservation acceptée";
@@ -59,16 +59,18 @@ if (isset($_POST['courseId'])){
         sendMail($recipient, $subject, $body, $bodyAlt);
 
 
-
+        $title="trajet accepté";
         $content = "Le trajet a bien été accepté";
 		require('../src/View/template.php');
 	}
 	else{
+        $title="trajet non trouvé";
 		$content = "Ce trajet n'existe pas";
 		require('../src/View/template.php');
 	}
 }
 else{
+    $title="trajet non trouvé";
 	$content = "Ce trajet n'existe pas";
 	require('../src/View/template.php');
 }
