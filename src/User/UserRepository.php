@@ -123,4 +123,19 @@ class UserRepository
         }
         return true;
     }
+
+    /**
+     * delete a user from the database
+     * @param \User $user
+     * @return boolean
+     */
+    public function supprUser($user) {
+        $req = 'DELETE FROM "user" WHERE mail='.$this->connection->quote($user->getMail());
+        $req_ex = $this->connection->query($req);
+        if (!$req_ex) {
+            print_r($req_ex->errorInfo());
+            return false;
+        }
+        return true;
+    }
 }

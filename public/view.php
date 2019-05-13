@@ -60,9 +60,7 @@ function followed($login) {
 	echo "
 		<div class=\"article\">
 			<p>
-			Bonjour, ici se trouvera les différents spots suivis ainsi que l'activité
-			des amis suivis. La map pourrait aussi être affichée en option pour visualiser
-			les spots suivis et les spots près de ma localisation.
+			Bonjour, ici se trouvera les différents spots suivis ainsi que l'activité des amis suivis.
 			</p>
 		</div>
 	";

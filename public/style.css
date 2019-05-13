@@ -148,7 +148,7 @@ footer {
 input {
 	font-size: 160%;
 	padding-left: 10px;
-	margin-top: 8px;
+	margin-bottom: 8px;
 	border-radius: 0px;
 	border: 0px;
 	width: 600px;
@@ -169,6 +169,10 @@ input {
 	min-height: 45px;
 	background-color: #81d4fa;
 	box-shadow: 1px 1px 4px lightgray;
+}
+
+em {
+	font-size: 130%;
 }
 
 body {
@@ -200,7 +204,7 @@ li {
 #compte-content {
 	justify-content: center;
 	margin-top: 40px;
-	min-height: 600px;
+	min-height: 100px;
 }
 
 #photo {
