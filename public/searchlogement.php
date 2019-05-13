@@ -9,7 +9,7 @@ include '../src/Logement/Logement.php';
     <link rel="stylesheet" href="../../../public/res/css/main.css" />
 </head>
 <body>
-    <form action="searchlogement_process.php" method = "POST">
+    <form action="searchlogement.php" method = "POST">
         <p> Département </p>
         <select name="departement">
             <option>01</option>
@@ -138,6 +138,7 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $logementRepository = new \Logement\LogementRepository($connection);
+$logements=[];
 if (isset($_POST['prix'])){
 $departement = $_POST['departement'];
 $ville = $_POST['ville'];
@@ -163,6 +164,7 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
             </tr>
         <?php endforeach; ?>
 </table>
+
 
 
     
