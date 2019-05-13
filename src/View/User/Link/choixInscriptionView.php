@@ -1,22 +1,11 @@
-
-
-<?php $title = "Un merveilleux site pour réserver des licornes ! " ?>
+<?php $title = "Choix inscription" ?>
 
 
 <?php ob_start(); ?>
 
-<section>
-
-<p>
-    Pour profitez de nos services  ? : <a href="index.php?action=inscriptionClient"> inscrivez-vous ici </a>
-</p>
-
-<br/>
-
-<p>
-    Vous voulez vendre votre corps ? : <a href="index.php?action=inscriptionCarrier"> inscrivez-vous ici </a>
-</p>
-
+<section class="row">
+    <p class="col-md-6 border"><a href="index.php?action=inscriptionClient" class="special">DEVENIR CLIENT</a></p>
+    <p class="col-md-6 border"><a href="index.php?action=inscriptionCarrier" class="special">DEVENIR TRANSPORTEUR</a></p>
 </section>
 
 <?php $content = ob_get_clean(); ?>
