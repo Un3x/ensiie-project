@@ -39,20 +39,21 @@ if($count!=0) {
 if(isset($_POST['valid_ban_email']))
 {
     $ban_email = $_POST['ban_email'];
+
+    if ($_POST["ban_email"]!="") {
     $sql_verify = "SELECT * FROM member WHERE email='$ban_email';";
     $result_verify = $connection->prepare($sql_verify);
     $result_verify->execute();
-
     $count = $result_verify->rowCount();
-    if($count!=0) {
-        $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
-        $result = $connection->prepare($query);
-        $result->execute();
-        //header("Location:accueil.php");
-    }
-    else
-    {
-        echo"<script>wrongEmail()</script>";
+        if ($count!=0) {
+            $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
+            $result = $connection->prepare($query);
+            $result->execute();
+            //header("Location:accueil.php");
+        }
+        else {
+            echo"<script>wrongEmail()</script>";
+        }
     }
 
 }

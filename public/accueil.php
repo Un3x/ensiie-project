@@ -46,7 +46,7 @@ foreach ($members as $m) {
     <link rel="stylesheet" type="text/css" href="css/accueilLayout.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
-        function displayHistory() {
+        function displayRoom() {
 
         }
     </script>
@@ -79,7 +79,7 @@ foreach ($members as $m) {
     </form>
     <div class="top-bar-left" style="display:inline-block;float:right;">
         <div class="menu">
-            <button type="button">Lancer une discussion</button>
+            <a href="discu_video.php"><button type="button">Lancer une discussion</button></a>
             <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>
             <a href="logout.php" ><button type="button">Logout</button></a>
         </div>
@@ -111,9 +111,7 @@ foreach ($members as $m) {
 
 <div id="left_col">
 
-    <div class="chatbox_left" onload="displayHistory()"></div><br>
-    <div class="chatbox_left"></div>
-
+    <div class="chatbox_left" onload="displayRoom()"></div><br>
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
