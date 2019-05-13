@@ -1,10 +1,8 @@
 <?php
+	$id_page="index";
 	require( "../inc/inc.default.php" );
 	require( "../inc/inc.nav.php" );
 	entete( "Accueil" );
-	
-	$id_page="index";
-	
 	navAccueil();
 	
 	

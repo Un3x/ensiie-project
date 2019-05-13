@@ -1,10 +1,11 @@
 <?php
+	$id_page="ressources";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Tuto/Tuto.php");
 	require("../src/Tuto/TutoRepository.php");
 	entete("Ressources");
-	$id_page="ressources";
+	
 	navAccueil();
 
 	$TutoRepository = new \Tuto\TutoRepository($connection);
