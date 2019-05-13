@@ -20,7 +20,7 @@ nb_places_libres INT,
 prix INT,
 CONSTRAINT fk_user
 	   FOREIGN KEY (idUser)
-	   REFERENCES user(idUser)
+	   REFERENCES "user" (idUser)
 );
 
 DROP TABLE IF EXISTS "favoris";
@@ -30,10 +30,10 @@ idUser INT,
 idLogement INT,
 CONSTRAINT fk_user2
 	   FOREIGN KEY (idUser)
-	   REFERENCES user(idUser),
+	   REFERENCES "user" (idUser),
 CONSTRAINT fk_logement
 	   FOREIGN KEY (idLogement)
-	   REFERENCES logement(idLogement),
+	   REFERENCES "logement" (idLogement),
 PRIMARY KEY (idUser,idLogement)
 );
 
