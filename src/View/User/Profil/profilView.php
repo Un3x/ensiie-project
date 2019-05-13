@@ -3,15 +3,14 @@
 
 <?php ob_start(); ?>
 
-
 <section>
 
     <!-- Insérer ici la moyenne des avis-->
-    <p>
+    <h1>
         <?=($valeurDefaut['prenom']." ".$valeurDefaut['nom']) ?> : <?= $valeurDefaut['note']?> (en moyenne) <br/>
         <!-- insérer image  -->
 
-    </p>
+    </h1>
 
     <br/>
     <br/>
@@ -96,18 +95,8 @@
 
 
     </form>
-
-
-
-
-</section>
-
-
-
-<section> 
-
-Savez-vous que ... ? 
-Ah, bah moi non plus, je ne le savais pas.
+    Savez-vous que ... ? 
+    Ah, bah moi non plus, je ne le savais pas.
 
 </section>
 

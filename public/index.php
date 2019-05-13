@@ -72,14 +72,19 @@ if( isset($_GET['action'])) {
             break;
         
         case 'connexion':
-            require('../src/Controller/User/Link/connexionController.php');
-            if( isset($_POST['login']) && isset($_POST['password']))
+            if( ! $GLOBALS['user'])
             {
-                tentativeConnexion();
+                require('../src/Controller/User/Link/connexionController.php');
+                if (isset($_POST['login']) && isset($_POST['password'])) {
+                    tentativeConnexion();
+                } else {
+                    connexionDebut();
+                }
             }
             else
             {
-                connexionDebut();
+                require('../src/Controller/User/Profil/profilController.php');
+                profilDebut();
             }
             break;
 
@@ -177,6 +182,19 @@ if( isset($_GET['action'])) {
             
         case 'contactezNousController' :
             require('../src/Controller/contactezNousController.php');
+            break;
+
+        case 'utilisateursAdmin' :
+            if( $GLOBALS["user"] && $_SESSION["userType"] == "Admin")
+            {
+                require("../src/Controller/Admin/utilisateursController.php");
+                allClients();
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
             break;
         
         
