@@ -24,13 +24,6 @@ $users = $userRepository->fetchAll();
 
 
 
-<div id="colonne2">
-<a href="MonCompte.phtml">Se connecter</a> 
-<a href="Compte.phtml">S'inscrire</a>
-
-</div>
-
-
 <div id="colonne1">
 
 
