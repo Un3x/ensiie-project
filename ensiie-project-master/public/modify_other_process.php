@@ -58,7 +58,7 @@
 	}
 
 
-	echo '<body onLoad="alert(\'Email ou Type de compte incorrect .\')">';
-	echo '<meta http-equiv="refresh" content="0;URL=index.php">';
+	echo '<script> alert("Email ou type de compte incorrect.")</script>';
+	echo '<meta http-equiv="refresh" content="0;URL=login.php">';
 
 ?>

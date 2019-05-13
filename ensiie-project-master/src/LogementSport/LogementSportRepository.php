@@ -24,13 +24,15 @@ class LogementSportRepository
         $logements = [];
         foreach ($rows as $row) {
             $logement = new LogementSport();
-            $logement
-                ->setAdresse($row->adresse)  
-                ->setGenre($row->genre)  
-                ->setNom($row->nom);
+            if (($row->genre == 'f' && $row->adresse == 'Chambre') || ($row->genre == 'm' && $row->adresse == 'Tente')) {
 
+                $logement
+                    ->setAdresse($row->adresse)  
+                    ->setGenre($row->genre)  
+                    ->setNom($row->nom);
 
-            $logements[] = $logement;
+                $logements[] = $logement;
+            }
         }
 
         return $logements;
@@ -38,3 +40,4 @@ class LogementSportRepository
 
 
 }
+?>

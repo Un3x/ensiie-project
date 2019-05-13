@@ -34,12 +34,12 @@ INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'm', 'Parc des Coquibus
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'f', 'Parc des Coquibus');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Handball', 'm', 'C-19');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Handball', 'f', 'C-19');
-INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'm', 'hall');
-INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'f', 'hall');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'm', 'Hall');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'f', 'Hall');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Natation', 'm', 'Piscine municipale');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Natation', 'f', 'Piscine municipale');
-INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'm', 'toit');
-INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'f', 'toit');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'm', 'Toit');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Rugby', 'f', 'Toit');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Parkour', 'm', 'Evry');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Parkour', 'f', 'Evry');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Cheerleading', 'm', 'Rotonde');
@@ -50,11 +50,9 @@ INSERT INTO Sport (nom, genre, lieu) VALUES ('Cyclisme', 'f', 'Parc des Coquibus
 
 CREATE TABLE Logement (
        adresse VARCHAR(100) PRIMARY KEY);
-       /*locataire INTEGER  REFERENCES Utilisateur(id),
-       type_log VARCHAR(50) );*/ 
 
-INSERT INTO Logement (adresse) VALUES ('Cabane');
-INSERT INTO Logement (adresse) VALUES ('Jardin');
+INSERT INTO Logement (adresse) VALUES ('Chambre');
+INSERT INTO Logement (adresse) VALUES ('Tente');
 
 
 CREATE TABLE LogementSport (

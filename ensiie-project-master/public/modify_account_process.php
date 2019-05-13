@@ -53,7 +53,7 @@
 	}
 
 
-	echo '<body onLoad="alert(\'Mot de passe incorrect.\')">';
-	echo '<meta http-equiv="refresh" content="0;URL=your_account.php">';
+	echo '<script> alert("Mot de passe incorrect.")</script>';
+	echo '<meta http-equiv="refresh" content="0;URL=login.php">';
 
 ?>
