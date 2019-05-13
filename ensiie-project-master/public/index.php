@@ -42,7 +42,7 @@
 
 <section id="services" class="clear">
 <article class="tiers">
-<figure><img src="images/sport.jpg" width="200" height="180" alt="">
+<figure><img src="images/sports.jpg" width="200" height="180" alt="">
 <figcaption>
 <h2>Sports</h2>
 <p>Venez découvrir tous les sports proposés, du plus connu au plus insolite !</p>
