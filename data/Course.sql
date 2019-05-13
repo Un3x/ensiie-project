@@ -6,5 +6,7 @@ CREATE TABLE  Course(
     client INT NOT NULL,
     datetime TIMESTAMP NOT NULL,
     state INT NOT NULL,
-    price FLOAT NOT NULL
+    price FLOAT NOT NULL,
+    distance FLOAT NOT NULL,
+    duration FLOAT NOT NULL
 );

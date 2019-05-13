@@ -8,6 +8,14 @@ require_once('User.class.php');
 class Vendor extends User 
 {
 
+		/**
+	 * race de l'utilisateur
+	 * @var Race
+	 * @access protected
+	 */
+	protected  $race;
+
+
 	/**
 	 * Le nombre de courses vendu
 	 * @var unsigned int
@@ -35,6 +43,41 @@ class Vendor extends User
 	 * @access protected
 	 */
 	protected  $nbClientCourses;
+	
+	
+	/**
+	 * Le prix/distance
+	 * @var float
+	 * @access protected
+	 */
+	protected $price;
+
+	/**
+	 * retourne nbClientCourses
+	 * @access public
+	 * @return float
+	 */
+	public final  function getPrice() 
+	{
+		return $this->price;
+	}
+
+
+	/**
+	 * assigne l'argument price si c'est un numbre
+	 * @access public
+	 * @param unsigned int $nbClientCourses le nouveau nbClientCourses
+	 * @return void
+	 */
+	public final  function setPrice($price) 
+	{
+		if(!is_numeric($price)||$price<0)
+		{
+			trigger_error('nbClientCourses is not a numeric', E_USER_WARNING);
+			return;
+		}
+		$this->price=$price;
+	}
 
 	/**
 	 * retourne nbClientCourses
@@ -98,6 +141,30 @@ class Vendor extends User
 
 
 	/**
+	 * renvoie race
+	 * @access public
+	 * @return Race
+	 */
+	public final  function getRace() 
+	{
+		return $this->race;
+	}
+
+
+
+	/**
+	 * assigne l'argument à race si la valeur est valide
+	 * @access public
+	 * @param Race $race nouvelle race
+	 * @return void
+	 */
+	public final  function setRace(Race $race) 
+	{
+		$this->race=$race;
+	}
+
+
+	/**
 	 * assigne l'argument nbVendorCourses si c'est un unsigned int
 	 * @access public
 	 * @param unsigned int $nbVendorCourses le nouveau nbVendorCourses
@@ -147,7 +214,7 @@ class Vendor extends User
 		$this->position=$position;
 	}
 
-	public  function hydrate($surname,$firstname,Race $race,$mailAddress,$password,$money,$phoneNumber,$birthDate,$reputation,$description,$gender,$nbClientCourses,$nbVendorCourses,$occupied,$position)
+	public  function hydrate($surname,$firstname,Race $race,$mailAddress,$password,$money,$phoneNumber,$birthDate,$reputation,$description,$gender,$nbClientCourses,$nbVendorCourses,$occupied,$position,$price)
 	{
 		$this->setSurname($surname);
 		$this->setFirstname($firstname);
@@ -164,13 +231,14 @@ class Vendor extends User
 		$this->setNbVendorCourses($nbVendorCourses);
 		$this->setOccupied($occupied);
 		$this->setPosition($position);
-		$this->creationDate=date('Y-m-d H:i:s');
+		$this->setPrice($price);
+		$this->creationDate=date_create();
 	}
 
 	public function hydrate2($sqlRow,Race $race)
 	{
 		$this->id=$sqlRow['id'];
-		$this->hydrate($sqlRow['surname'],$sqlRow['firstname'],$race,$sqlRow['mailaddress'],$sqlRow['password'],$sqlRow['money'],$sqlRow['phonenumber'],date_create($sqlRow['birthdate']),$sqlRow['reputation'],$sqlRow['description'],$sqlRow['gender'],$sqlRow['nbclientcourses'],$sqlRow['nbvendorcourses'],$sqlRow['occupied'],$sqlRow['position']);
+		$this->hydrate($sqlRow['surname'],$sqlRow['firstname'],$race,$sqlRow['mailaddress'],$sqlRow['password'],$sqlRow['money'],$sqlRow['phonenumber'],date_create($sqlRow['birthdate']),$sqlRow['reputation'],$sqlRow['description'],$sqlRow['gender'],$sqlRow['nbclientcourses'],$sqlRow['nbvendorcourses'],$sqlRow['occupied'],$sqlRow['position'],$sqlRow['price']);
 		$this->creationDate=date_create($sqlRow['creationdate']);
 	}
 }

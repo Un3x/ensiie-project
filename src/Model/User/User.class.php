@@ -31,13 +31,6 @@ abstract class User
 	protected  $firstname;
 
 	/**
-	 * race de l'utilisateur
-	 * @var Race
-	 * @access protected
-	 */
-	protected  $race;
-
-	/**
 	 * adresse mail de l'utilisateur
 	 * @var string
 	 * @access protected
@@ -131,18 +124,6 @@ abstract class User
 	{
 		return $this->firstname;
 	}
-
-
-	/**
-	 * renvoie race
-	 * @access public
-	 * @return Race
-	 */
-	public final  function getRace() 
-	{
-		return $this->race;
-	}
-
 
 	/**
 	 * renvoie mailAddress
@@ -275,19 +256,6 @@ abstract class User
 		}
 		$this->firstname=$firstname;
 	}
-
-
-	/**
-	 * assigne l'argument à race si la valeur est valide
-	 * @access public
-	 * @param Race $race nouvelle race
-	 * @return void
-	 */
-	public final  function setRace(Race $race) 
-	{
-		$this->race=$race;
-	}
-
 
 	/**
 	 * assigne l'argument à mailAddress si la valeur est valide

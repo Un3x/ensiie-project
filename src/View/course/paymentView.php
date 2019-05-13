@@ -8,6 +8,8 @@
 	prix : <?=$price ?> €<br/>
 	lieu de départ : <?=$departureName ?> <br/>
 	lieu d'arrivée : <?=$arrivalName ?> <br/>
+	distance : <?=$distance ?> <br/>
+	durée : <?=$duration ?> <br/>
 </div>
 
 <br/>

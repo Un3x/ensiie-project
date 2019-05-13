@@ -41,6 +41,8 @@ if (((isset($_POST['usedCard'])
         $price = $course['price'];
         $departureName = $course['departure'];
         $arrivalName = $course['arrival'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 
         require('../src/Controller/mail/mailController.php');
 
@@ -50,6 +52,8 @@ if (((isset($_POST['usedCard'])
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $GLOBALS['user']->getMailAddress();
@@ -68,6 +72,8 @@ if (((isset($_POST['usedCard'])
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $carrier->getMailAddress();

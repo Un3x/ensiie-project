@@ -55,6 +55,8 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 
 		$carrierId=$course['carrierId'];
 		$price=$course['price'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 
 		$departureLat = $course['departureLat'];
 		$departureLong = $course['departureLong'];
@@ -64,11 +66,13 @@ if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrie
 		require('../src/View/course/infoCourseView.php');
 	}
 	else{
+		$title="trajet non trouvé";
 		$content = "Ce trajet n'existe pas";
 		require('../src/View/template.php');
 	}
 }
 else{
+	$title="trajet non trouvé";
 	$content = "Ce trajet n'existe pas";
 	require('../src/View/template.php');
 }

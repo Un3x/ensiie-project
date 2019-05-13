@@ -7,6 +7,8 @@
 	prix : <?=$price ?> €<br/>
 	lieu de départ : <?=$departureName ?> <br/>
 	lieu d'arrivée : <?=$arrivalName ?> <br/>
+	distance : <?=$distance ?> <br/>
+	durée : <?=$duration ?> <br/>
 </div>
 
 <div id='mapId' style='width: 600px; height: 400px;'></div>
@@ -24,6 +26,7 @@
 <?php break; case "Vendor": ?>
 <?php switch($courseStatus){ 
 		case 1: //booked?>
+	trajet réservé <br/>
 	<form action="/course/accept" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=accept value="Accepter la réservation" />
@@ -34,7 +37,8 @@
 	<input type=submit id=refuse value="Refuser la réservation" />
 	</form>
 
-	<?php break; case "confirmed": ?>
+	<?php break; case 2;//"confirmed": ?>
+	trajet confirmé <br/>
 	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
@@ -49,20 +53,24 @@
 <?php break; case "Client": ?>
 	<?php switch($courseStatus){ 
 		case 1; //"booked": ?>
+	trajet réservé <br/>
 	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
 	<?php break; case 2; //"confirmed": ?>
+	trajet confirmé <br/>
 	<form action="/course/cancel" method="POST">
 	<input type=hidden name=courseId value="<?=$courseId?>" />
 	<input type=submit id=cancel value="Annuler la réservation" />
 	</form>
 
 	<?php break; case 3; //"finished": ?>
+	trajet effectué <br/>
 
 	<?php break; case 4; //"cancelled": ?>
+	trajet annulé ou refusé <br/>
 
 	<?php break; } ?>
 

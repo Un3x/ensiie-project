@@ -21,6 +21,8 @@ function searchCourse(departureId, arrivalId, resultId){
                 for (var ligne of res["data"]){
                     resDiv.innerHTML += "<div>nom : "+ligne['firstname']+" "+ligne['surname'] + "<br/>";
                     resDiv.innerHTML += "prix : "+ligne['price'] + " €<br/>";
+                    resDiv.innerHTML += "distance : "+ligne['distance'] + " €<br/>";
+                    resDiv.innerHTML += "durée : "+ligne['duration'] + " €<br/>";
                     resDiv.innerHTML += '<a href="/course/'+departureCourse+'_'+arrivalCourse+'_'+ligne['carrierId']+'" >infos</a></div><br/><br/>';
                 }
             }

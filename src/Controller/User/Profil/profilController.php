@@ -38,6 +38,7 @@ function validationProfil()
 {
 
     $valeurDefaut=initChamps();
+    $modif=false;
     $message = "<span class='warning' >";
     $erreur = false;
     if(!preg_match("#^\w{1,15}$#"   ,$_POST['prenom']))
@@ -50,7 +51,18 @@ function validationProfil()
         $message = $message."Le nom doit être composé de caractère standard.<br/>";
         $erreur=true;
     }
+    if(!preg_match("#^(\d){10}$#", $_POST["phoneNumber"]))
+    {
+        $message = $message." Le numéro de téléphone n'est pas au bon format. <br/>";
+        $erreur=true;
+    }
 
+    if($erreur)
+    {
+        $message = $message." </span>";
+        require('../src/View/User/Profil/profilView.php');
+        return;
+    }
 
     // modification des données
     $bdd = bdd();
@@ -65,15 +77,13 @@ function validationProfil()
 
     if($clientManager->update($user) == false)
     {
-        $message = $message." Erreur lors de la modification de la base de donnée. Veuillez ressayer ultérieurment. <br/> ";
-    };
+        $message = $message." Erreur lors de la modification de la base de donnée. Veuillez ressayer ultérieurment. <br/> </span";
+        require('../src/View/User/Profil/profilView.php');
+        return;
+    }
 
-    $message = $message." </span>";
 
-
-    //$message = "<span class='information'> Les informations que vous avez saisi ont bien été validé";
-    $modif=false;
-
+    $message = "<span class='information'> Les informations que vous avez saisi ont bien été validé";
     $valeurDefaut=initChamps();
     require('../src/View/User/Profil/profilView.php');
 }

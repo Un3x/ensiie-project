@@ -20,7 +20,7 @@ abstract class UserManager
 	/**
 	 * constructeur
 	 * @access public
-	 * @param \PDO $connection la connection à la BD
+	 * @param \PDO $connection  la connection à la BD
 	 */
 	public  function __construct(\PDO $connection) 
 	{
@@ -69,7 +69,17 @@ abstract class UserManager
 
     public final function isUsed($mailAddress)
 	{
-		return $this->connection->query("select * from Client where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Vendor where $mailAddress=mailAddress")->fetch()===false||$this->connection->query("select * from Admin where $mailAddress=mailAddress")->fetch()===false;
+		$statement1 = $this->connection->prepare("SELECT * FROM Client WHERE mailAddress = :mailAddress ");
+		$statement1->execute(array("mailAddress" => $mailAddress));
+		$req1=$statement1->fetch();
+		$statement2 = $this->connection->prepare("SELECT * FROM Admin WHERE mailAddress = :mailAddress ");
+		$statement2->execute(array("mailAddress" => $mailAddress));
+		$req2=$statement2->fetch();
+		$statement3 = $this->connection->prepare("SELECT * FROM Vendor WHERE mailAddress = :mailAddress ");
+		$statement3->execute(array("mailAddress" => $mailAddress));
+		$req3=$statement3->fetch();
+
+		return !($req3===false && $req2===false && $req1===false);
 	}
 
 	/**

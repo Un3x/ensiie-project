@@ -111,7 +111,7 @@ class City
 	 */
 	public final  function setLatitude($latitude) 
 	{
-		if(!is_double($latitude))
+		if(!is_numeric($latitude))
 		{
 			trigger_error('latitude is not an double', E_USER_WARNING);
 			return;
@@ -127,7 +127,7 @@ class City
 	 */
 	public final  function setLongitude($longitude) 
 	{
-		if(!is_double($longitude))
+		if(!is_numeric($longitude))
 		{
 			trigger_error('longitude is not an double', E_USER_WARNING);
 			return;
@@ -149,19 +149,36 @@ class City
 			return;
 		}
 		$this->population=$population;
+		}
+		
+	/**
+	 * assigne l'argument id si c'est un unsigned int
+	 * @access public
+	 * @param unsigned int $id le nouveau id
+	 * @return void
+	 */
+	public final  function setId($id) 
+	{
+		if(!is_int($id)||$id<0)
+		{
+			trigger_error('id is not an unsigned int', E_USER_WARNING);
+			return;
+		}
+		$this->id=$id;
     }
 
-	public  function hydrate($name,$latitude,$longitude,$population)
+	public  function hydrate($name,$latitude,$longitude,$population,$id)
 	{
         $this->setName($name);
         $this->setLatitude($latitude);
         $this->setLongitude($longitude);
-        $this->setPopulation($population);
+				$this->setPopulation($population);
+				$this->setId($id);
 	}
 
 	public function hydrate2($sqlRow)
 	{
-		$this->hydrate($sqlRow['name'],$sqlRow['latitude'],$sqlRow['longitude'],$sqlRow['population']);
+		$this->hydrate($sqlRow['name'],$sqlRow['latitude'],$sqlRow['longitude'],$sqlRow['population'],$sqlRow['id']);
 	}
 
 

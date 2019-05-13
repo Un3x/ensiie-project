@@ -77,7 +77,9 @@ class RaceManager
 	 */
 	public function exist($name)
 	{
-		return !($this->connection->query("select * from Race where $name=name")->fetch()===false);
+		$statement = $this->connection->prepare("SELECT * FROM Race WHERE name = :name ");
+		$req=$statement->execute(array("name" => $name))->fetch();
+		return !($req===false);
 	}
 	
 	/**
@@ -89,7 +91,7 @@ class RaceManager
     public function update(Race $race)
     {
 			$statement = $this->connection->prepare("UPDATE from Race set name=:name, speed=:speed, capacity=:capacity where id=:id");
-			return $statement->execute(array("name" => $race->getName(),"latitude"=>$race->getSpeed(),"capacity"=>$race->getCapacity(),"id" => $race->getId()));
+			return $statement->execute(array("name" => $race->getName(),"speed"=>$race->getSpeed(),"capacity"=>$race->getCapacity(),"id" => $race->getId()));
     }
 	/**
 	 * change la valeur de connection

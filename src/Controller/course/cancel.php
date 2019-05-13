@@ -16,7 +16,7 @@ if (isset($_POST['courseId'])){
 
     if ($course){
 
-        $found = ($_SESSION['userId']==$course['carrierId'] || $_SESSION['userId']==$course['carrierId']) && $course['state']=2;
+        $found = ($_SESSION['userId']==$course['carrierId'] || $_SESSION['userId']==$course['clientId']) && ($course['state']==2||$course['state']==1);
     }
     else{
         $found=false;
@@ -38,6 +38,8 @@ if (isset($_POST['courseId'])){
         $price = $course['price'];
         $departureName = $course['departure'];
         $arrivalName = $course['arrival'];
+		$duration=$course['duration'];
+		$distance=$course['distance'];
 
         require('../src/Controller/mail/mailController.php');
 
@@ -47,6 +49,8 @@ if (isset($_POST['courseId'])){
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $client->getMailAddress();
@@ -62,6 +66,8 @@ if (isset($_POST['courseId'])){
         $Template->price = $price;
         $Template->departureName = $departureName;
         $Template->arrivalName = $arrivalName;
+        $Template->duration = $duration;
+        $Template->distance = $distance;
         
 
         $recipient = $carrier->getMailAddress();
@@ -72,16 +78,18 @@ if (isset($_POST['courseId'])){
         sendMail($recipient, $subject, $body, $bodyAlt);
 
 
-
-        $content = "Le trajet a bien été accepté";
+        $title="trajet annulé";
+        $content = "Le trajet a bien été annulé";
 		require('../src/View/template.php');
 	}
 	else{
+        $title="trajet non trouvé";
 		$content = "Ce trajet n'existe pas";
 		require('../src/View/template.php');
 	}
 }
 else{
+    $title="trajet non trouvé";
 	$content = "Ce trajet n'existe pas";
 	require('../src/View/template.php');
 }

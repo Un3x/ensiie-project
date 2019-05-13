@@ -64,7 +64,7 @@ class CityManager
     public function get($id) 
     {
 		$statement = $this->connection->prepare("SELECT * from cities where id = :id");
-		$statement->execute(array("id" => $city->getId()));
+		$statement->execute(array("id" => $id));
 		$req=$statement->fetch();
 		if(!$req)
 			return false;
@@ -72,6 +72,24 @@ class CityManager
 		$admin->hydrate2($req);
 		return $admin;
 	}
+
+	/**
+	 * renvoie la city correspondant au nom ou false s'il n'y en à pas qui correspond
+	 * @access public
+	 * @param string $name Le nom de la ville à aller chercher
+	 * @return City ou false
+	 */
+	public function get2($name) 
+	{
+	$statement = $this->connection->prepare("SELECT * from cities where name = :name");
+	$statement->execute(array("name" => $name));
+	$req=$statement->fetch();
+	if(!$req)
+		return false;
+	$admin=new City();
+	$admin->hydrate2($req);
+	return $admin;
+}
 	
 	/**
 	 * modifie la BD avec les nouvelles valeurs de city
