@@ -116,17 +116,7 @@
         <input type="text" name="Ville">
 
         <p>Montant du loyer ?</p>
-        <select name="loyer">
-            <option>100 - 199 euros</option>
-            <option>200 - 299 euros</option>
-            <option>300 - 399 euros</option>
-            <option>400 - 499 euros</option>
-            <option>500 - 599 euros</option>
-            <option>600 - 699 euros</option>
-            <option>700 - 799 euros</option>
-            <option>800 - 899 euros</option>
-            <option>800 euros ou plus</option>
-        </select>
+        <input type="number" name="prix">
 
         <p>Nombre de places</p>
         <select name="pieces">

@@ -116,39 +116,9 @@
         <input type="text" name="Ville">
 
         <p>Montant du loyer ?</p>
-        <select name="loyer">
-            <option>100 - 199 euros</option>
-            <option>200 - 299 euros</option>
-            <option>300 - 399 euros</option>
-            <option>400 - 499 euros</option>
-            <option>500 - 599 euros</option>
-            <option>600 - 699 euros</option>
-            <option>700 - 799 euros</option>
-            <option>800 - 899 euros</option>
-            <option>800 euros ou plus</option>
-        </select>
+        <input type="number" name="prix">
 
-        <p>Nombre de pièces</p>
-        <select name="pieces">
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7 ou plus</option>
-        </select>
-
-        <p> Le logement doit-il accepter les animaux ?</p>
-        <select name="animal1">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-
-        <p> Logement fumeur </p>
-        <select name="fumeur">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
+        
 
         <input type="submit" value="Rechercher"/>    
 
