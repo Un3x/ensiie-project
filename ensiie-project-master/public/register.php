@@ -61,12 +61,12 @@
                             <input type="password" id="pwd" name="pwd" required />
                         </p>
                         <p>
-                            <input type="submit" id="btn" value="Valider" />
+                            <input type="submit" id="valider" value="Valider" />
                         </p>
                     </form>
                     <form action="index.php" method="POST">
                         <p>
-                            <input type="submit" id="btn" value="Cancel" />
+                            <input type="submit" id="cancel" value="Cancel" />
                         </p>
                     </form>
                 </div>
