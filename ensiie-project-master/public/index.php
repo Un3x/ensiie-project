@@ -42,7 +42,7 @@
 
 <section id="services" class="clear">
 <article class="tiers">
-<figure><img src="images/sports.png" width="200" height="180" alt="">
+<figure><img src="images/sport.jpg" width="200" height="180" alt="">
 <figcaption>
 <h2>Sports</h2>
 <p>Venez découvrir tous les sports proposés, du plus connu au plus insolite !</p>
@@ -50,7 +50,7 @@
 </figure>
 </article>
 <article class="tiers">
-<figure><img src="images/ecoles.png" width="200" height="180" alt="">
+<figure><img src="images/ecole.jpg" width="200" height="180" alt="">
 <figcaption>
 <h2>Ecoles</h2>
 <p>Presque toutes les écoles réservent leur spot au challenge. </p>
@@ -58,7 +58,7 @@
 </figure>
 </article>
 <article class="tiers lastbox">
-<figure><img src="images/particpants.png" width="200" height="180" alt="">
+<figure><img src="images/participant.jpg" width="200" height="180" alt="">
 <figcaption>
 <h2>Participants </h2>
 <p>Le Challenge accueille chaque année une multitude d'élèves de toute la France !</p>
