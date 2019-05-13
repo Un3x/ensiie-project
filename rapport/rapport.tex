@@ -33,7 +33,9 @@ Le but premier est de répondre au besoin du Bureau des élèves de l'ENSIIE qui
 
  Ce classement doit être exportable dans un fichier csv pour des manipulations externes des coefficients des associations par le BDE.\\
  
-\section{Approche}
+ \clearpage
+ 
+\section{Approches importantes}
 \subsection{Structure du site}
 Nous avons donc pensé le site comme une plateforme épurée où la seule page accessible sans connexion est "index.php".\\
  Il y a donc 3 type d'utilisateurs : les \textbf{élèves}, les \textbf{membres du bde} et les \textbf{présidents}.\\ Chaque type d'utilisateur a accès à des fonctionnalités différentes.\\ 
@@ -49,7 +51,7 @@ Nous avons donc pensé le site comme une plateforme épurée où la seule page a
  \end{itemize}
  
  \subsection{Structure de la base de donnée}
- On a choisi d'utiliser une base de données découpée en 5 tables : 
+ On a choisi d'utiliser une base de données découpée en 5 tables : \\
  \begin{itemize}
  	\item users(id\_user, firstname, lastname, pseudo, year, password, mail, bde, president) : contient tous les utilisateurs et leurs informations personnelles.
  	\item associations(id\_asso, name, president, coeff\_asso): contient la liste des associations ainsi que l'id du président.
@@ -58,17 +60,66 @@ Nous avons donc pensé le site comme une plateforme épurée où la seule page a
  	\item pointsassos(id\_user, id\_asso, notation, proposition) : contient la liste des points associatifs de chaque élèves pour chaque association.\\
  \end{itemize} 
 
-Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilisées dans le code : 
+Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilisées dans le code : \\
 \begin{itemize}
 	\item pointsassos\_prop(id\_user, id\_asso, moyenne) : calcul la proposition de note d'un élève dans une association en faisant la moyenne de ses notes dans chaque association.
 	\item leaderboard(id\_user, moyenne) : calcul les points totaux de tous les élèves pour le semestre.
 \end{itemize}
 \subsection{Fonctionnalités pour les élèves}
-	Les pages accessibles par tous les élèves enregistrés sont "eleves.php" qui permet aux élèves de consulter leur participations aux évènement des différentes associations et aux et "profil.php"
+	Tous les élèves enregistrés ont accès à "\textbf{eleves.php}" qui permet aux élèves de consulter leur participations aux évènement des différentes associations et leur points dans chaque association. \\
+	Sur cette page ils peuvent aussi proclamer leur participation à un évènement pour une association (ils choisissent d'abord l'association par un simple formulaire constitué d'un select puis un des évènements correspondants par un deuxième formulaire similaire)\\
+	
+	Ils ont aussi accès à "\textbf{profil.php}" sur laquelle ils peuvent consulter les informations sur leur compte, modifier leur mot de passe par un formulaire classique à 3 champs (le mot de passe est hashé avec l'algorithme bcrypt avant d'être stocké dans la base de donnée). Le même type de formulaire est utilisé pour modifier (ou en mettre une si il n'y en avait pas) l'adresse mail de récupération de mot de passe.
+	
 \subsection{Fonctionnalités pour les membres du BDE}
+	Les membres du BDE, sur la page "\textbf{bde.php}" peuvent choisir parmis deux menus de selections : les promos et les associations des élèves à afficher. Ils peuvent ensuite afficher un tableau récapitulant ces données ou exporter ces données au format csv.\\ Un select déroulant permet de choisir l'ordre d'affichage du tableau : par nom ou pseudo ou points associatifs (si une seule association est sélectionnée).\\
+	
+	Cette page est majoritairement faite en JS. \\
+	
+	Il faudrait rajouter la possibilité pour un membre du bde de rajouter le rôle de BDE à un élève lambda ou de le supprimer.
+
 \subsection{Fonctionnalités pour les présidents d'associations}	
+	Les présidents d'association peuvent sur la page "\textbf{president.php}" tout d'abord choisir dans un petit formulaire php constitué d'un select une des associations dont ils sont président.\\
+	
+	Il vont ensuite pouvoir consulter la liste des évènements correspondants à cette association dans un tableau où chaque ligne est un formulaire et chaque case un input de type text (ou textarea) sauf la dernière colonne qui contient trois boutons : modifier, détails et supprimer.\\
+	
+	Ces boutons envoient des requêtes différentes qui sont interprétées par le php et permettent respectivement de supprimer un évènement, envoyer les modifications sur l'évènement et afficher les détails des gens ayant participé à un évènement. \\
+	
+	\textit{Il faut préciser que la suppression d'un évènement dans la base de donnée ne fonctionne pas si il y a encore des gens qui y ont participé. Il vaut mieux donc supprimer ces gens avant la suppression de l'évènement.\\}
+	
+	Le bouton "Détails" redirige vers la page "\textbf{event.php}" en définissant la variable de session : "\$\_SESSION['event']" qui contient l'id de l'évènement concerné. On pourra, exactement de la même manière qu'avec les évènements sur la page précédente, modifier la note de participation d'un élève à cet évènement ou le supprimer de l'évènement. \\
+	
+	On pourra aussi, grâce à l'input de type texte avec autosuggestions en JS, rajouter un élève à un évènement sur "\textbf{event.php}" ou rajouter un évènement à une association sur "\textbf{president.php}".\\
+	
+	Un dernier input avec autosuggestion permet de modifier une variable de session "\$\_SESSION['userpassation']" et d'envoyer l'utilisateur vers la page "\textbf{passation.php}" pour qu'il confirme l'abandon de son rôle de président pour l'association choisie et qu'il le donne à un autre élève.
+
+\subsection{La récupération de mot de passe}
+Le système de récupération de mot de passe utilisé ici est constitué d'un premier formulaire sur \textbf{forgotten.php} qui prend le login (donc pseudo) et l'email de récupération, puis envoie à la page \textbf{mail.php} un code de 10 chiffres aléatoires qui l'envoie par mail puis renvoie sur la page \textbf{recup.php} qui contient un simple formulaire demandant le code envoyé (le nombre d'essais maximum pour la session est de 3, ensuite il faut réenvoyer un nouveau code).\\
+
+Si le code entré est le bon, la page change et demande maintenant un nouveau mot de passe et une confirmation de ce mot de passe. On est ensuite redirigé vers \textbf{authentification.php}. 
+
 \section{Répartition des rôles}
-Le projet est  
+Le projet est versionné grâce à git et hébergé sur github. Nous avons décidé d'utiliser un Trello pour organiser les tâches à effectuer et par qui elles doivent l'être.\\
+
+La répartition du travail a donc été originalement faite comme présentée ci-dessous : \\
+
+\begin{itemize}
+	\item Loïc Dubard : accueil et menu (+css responsive du menu), système d'authentification et de récupération de mot de passe, fonctionnalités des présidents d'associations (président.php)\\ 
+	\item Quentin Japhet s'occupe des fonctionnalités du BDE (bde.php), les input avec suggestion automatique en JS et de l'envoie des codes de récupération de mot de passe par mail. \\
+	\item Aurélien Ignacio : eleve.php\\
+	\item Oscar Potier : CSS et profil.php\\
+\end{itemize}
 
 \section{Problèmes rencontrés}
+\subsection{OAuth et base de donnée distante}
+Le principe de base était d'utiliser le protocole OAuth pour se connecter directement à la base de donnée d'Arise, et en recréer une en local avec uniquement les nouvelles données. Nous n'avons pas réussi à l'implémenter avec docker, mais une fois en production sur les serveurs d'arise, ce sera facile de le faire.  
+
+\subsection{Envoie d'un mail}
+La fonction mail() de php ne fonctionnant pas sur docker (pas de Mail Transfert Agent) nous avons choisi de recréer une fonction php qui fait une requête au serveur smtp de google avec un compte créer pour l'occasion et le mot de passe stocké en clair côté serveur pour envoyer un mail.\\
+
+Si le site venait à être mis en production, nous utiliserons la fonction mail() de base du php.\\
+
+\subsection{Design et graphisme du site}
+Côté design, le site n'est pas un exemple. En effet, nous n'avons pas eu d'idées révolutionnaires pour rendre notre produit attrayant.
+
 \end{document}
