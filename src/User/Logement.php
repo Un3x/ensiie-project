@@ -63,7 +63,7 @@ class Logement
      * @param int $user
      * @return Logement
      */
-    public function setId($user)
+    public function setUser($user)
     {
         $this->iduser = $user;
         return $this;
@@ -99,7 +99,7 @@ class Logement
      * @param varchar $ville 
      * @return Logement
      */
-    public function ($ville)
+    public function setVille($ville)
     {
         $this->ville = $ville;
         return $this;
@@ -118,7 +118,7 @@ class Logement
      * @param int $NPL 
      * @return Logement
      */
-    public function ($NPL)
+    public function setNbPlaces($NPL)
     {
         $this->nb_places_libres = $NPL;
         return $this;
@@ -139,7 +139,7 @@ class Logement
      * @param int $prix 
      * @return Logement
      */
-    public function ($prix)
+    public function setPrix($prix)
     {
         $this->prix = $prix;
         return $this;
