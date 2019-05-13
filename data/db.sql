@@ -89,17 +89,3 @@ insert into pointsassos(id_user,id_asso,notation,proposition) values (1,1,9,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (3,1,7,10);
 insert into pointsassos(id_user,id_asso,notation,proposition) values (2,2,8,10);
 
-/*pour q'un élève consulte ses points asso : 
-select moyenne from leaderboard where id_user=$iduser; --la moyenne totale
-select name,moyenne from (pointsassos_prop join associations using (id_asso)) where id_user=$iduser; --par assos
-select name,association,notation from (score natural join events using (id_event) join associations using (id_asso)) where iduser=$iduser; --par evenements
-*/
---select moyenne from leaderboard where id_user=1;
-/*pour qu'un élève modifie sa participation a un évènement
- 
- */
-
-/*pour que le BDE ai le leaderboard
-select firstname,lastname,pseudo,year,moyenne from users join leaderboard using (id_user); 
-*/
-

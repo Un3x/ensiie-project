@@ -277,7 +277,8 @@ $("#ajout_submit").on("click", function() {
 })
 $("#passation_submit").on("click", function() {
 	$.get("ajax/passation_set.php",{user: user_selected},'json');
-	window.location.replace('president.php');
+	
+	window.location.replace('passation.php');
 })
 
 }, 'json');
