@@ -50,5 +50,5 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('6', 'R. Bourgeron');
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('7', 'Guide du dessinateur industriel', 'A. Chevalier', '2003-6-25', './cvlivres/515lJficFfL._SX326_BO1,204,203,200_.jpg', 'Hachette');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('7', 'A. Chevalier');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg, 'Raisonance');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg', 'Raisonance');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('8', 'Revision 1.00');
