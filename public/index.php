@@ -155,6 +155,27 @@ if( isset($_GET['action'])) {
         case 'cancelCourse' :
             require('../src/Controller/course/cancel.php');
             break;
+            
+        case 'aPropos' :
+            require('../src/View/aProposView.php');
+            break;
+        
+        case 'conditionUtilisation' :
+            require('../src/View/conditionsUtilisationsView.php');
+            break;
+            
+        case 'venteAme' :
+            require('../src/View/venteAmeView.php');
+            break;
+            
+        case 'contactezNous' :
+            require('../src/View/contactezNousView.php');
+            break;
+            
+        case 'contactezNousController' :
+            require('../src/View/contactezNousController.php');
+            break;
+        
         
         case '' :
             require('../src/View/accueilView.php');

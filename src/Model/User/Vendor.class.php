@@ -8,6 +8,14 @@ require_once('User.class.php');
 class Vendor extends User 
 {
 
+		/**
+	 * race de l'utilisateur
+	 * @var Race
+	 * @access protected
+	 */
+	protected  $race;
+
+
 	/**
 	 * Le nombre de courses vendu
 	 * @var unsigned int
@@ -129,6 +137,30 @@ class Vendor extends User
 	public final  function getPosition() 
 	{
 		return $this->position;
+	}
+
+
+	/**
+	 * renvoie race
+	 * @access public
+	 * @return Race
+	 */
+	public final  function getRace() 
+	{
+		return $this->race;
+	}
+
+
+
+	/**
+	 * assigne l'argument à race si la valeur est valide
+	 * @access public
+	 * @param Race $race nouvelle race
+	 * @return void
+	 */
+	public final  function setRace(Race $race) 
+	{
+		$this->race=$race;
 	}
 
 

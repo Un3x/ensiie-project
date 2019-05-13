@@ -20,7 +20,7 @@ abstract class UserManager
 	/**
 	 * constructeur
 	 * @access public
-	 * @param \PDO $connection la connection à la BD
+	 * @param \PDO $connection  la connection à la BD
 	 */
 	public  function __construct(\PDO $connection) 
 	{
