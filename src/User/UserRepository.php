@@ -51,7 +51,7 @@ class UserRepository
         $req = 'INSERT INTO "user" (pseudo, firstname, lastname, birthday, mdp)
                 VALUES (:pseudo, :prenom, :nom, :anniv, :mdp)';
         $valeurs = ['pseudo'=>$pseudo, 'prenom'=>$firstname, 'nom'=>$lastname,
-        'anniv'=>$birthday, 'mdp'=>$mdp;
+        'anniv'=>$birthday, 'mdp'=>$mdp];
         $req_preparee = $this->connection->prepare($req);
         if (!$req_preparee->execute($valeurs)) {
             print_r($req_preparee->errorInfo());
