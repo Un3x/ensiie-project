@@ -102,7 +102,7 @@
             <option>92   Hauts-de-Seine</option>
             <option>93   Seine-St-Denis</option>
             <option>94   Val-de-Marne</option>
-            <option>95   Val-D'Oise</option>
+            <option>95   Val-D-Oise</option>
             <option>2A   Corse-du-Sud</option>
             <option>2B   Haute-Corse</option>
             <option>971  Guadeloupe</option>
