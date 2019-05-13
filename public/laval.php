@@ -10,7 +10,7 @@
 <div class="round-border">
 	<h3>Laval Virtual : Quézaco? </h3>
 	<p> 
-		Laval Virtual est le plus grand salon d'Europe (??) sur la Réalitée Virtuelle (VR), 
+		Laval Virtual est le plus grand salon d'Europe sur la Réalitée Virtuelle (VR), 
 		Réalitée Augmentée (AR) et les techniques immersives. Il se déroule tous les ans en Avril
 		à Laval et propose un salon avec plus de 300 exposants et plus de 200 conférenciers.
 		Pour plus d'information : <a href="www.laval-virtual.com/fr/accueil/"> Laval-virtual.com</a>.

@@ -44,13 +44,12 @@
 			
 			$team = $teamRepository->getEquipe($jeu->getId());
 			echo '<ul>';
-			foreach ($team as $mem){
-				echo '<li>'.$mem->getSurnom().' : '.$mem->getRole().'</li>';
+			foreach ($team->getMembres() as $mem){
+				echo '<li>'.$mem->getSurnom().' : '.$team->getRole($mem->getId()).'</li>';
 			}
-			echo '</ul>';	
+			echo '</ul>	
 			
-			echo
-			'</td>
+			</td>
 				<td>'.$jeu->getGit().'</td>
 				<td><a href=../data/jeux/'.$jeu->getTelechargement().' download='.$jeu->getTitre().'>download</a></td>
 			</tr>';
