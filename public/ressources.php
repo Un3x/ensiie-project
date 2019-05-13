@@ -1,10 +1,10 @@
 <?php
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
-	entete("Projets");
+	entete("Ressources");
 	navAccueil();
 ?>
 
-<p>Vous retrouverez ici toutes les ressources pour vous aidez dans vos projets une fois connectÃ©.</p>
+<p>Vous retrouverez ici toutes les ressources pour vous aidez dans vos projets une fois connecté.</p>
 
 <?php pied(); ?>

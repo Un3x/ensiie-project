@@ -52,7 +52,7 @@ class ArticleRepository
     {
         $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
                                           FROM "article" NATURAL JOIN "membre" 
-										  WHERE LOWER(titre) LIKE \'%compte%rendu%\'
+										  WHERE compte_rendu IS true
 										  ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
         $articles = [];
         foreach ($rows as $row) {
