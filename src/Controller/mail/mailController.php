@@ -24,10 +24,12 @@ function sendMail($recipient, $subject, $body, $bodyAlt){
 		$mail->AltBody = $bodyAlt;
 	
 		$mail->send();
-		//echo 'Message has been sent';
+        //echo 'Message has been sent';
+        return true;
 	} catch (Exception $e) {
 		//echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-	}
+        return false;
+    }
 
 
 }

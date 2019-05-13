@@ -5,7 +5,7 @@
 
 <div>
 	nom : <?=$name ?> <br/>
-	prix : <?=$price ?> €<br/>
+	prix : <?=$price ?> <img src="/img/Pokedollar.png" alt="Pokedollar"><br/>
 	lieu de départ : <?=$departureName ?> <br/>
 	lieu d'arrivée : <?=$arrivalName ?> <br/>
 	distance : <?=$distance ?> <br/>
