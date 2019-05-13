@@ -70,19 +70,6 @@ CREATE TABLE "assoc_prd_cat"(
     /*CONSTRAINT fk_cat FOREIGN KEY (id_cat) REFERENCES categorie(id_cat)*/
 );
 
-/*INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "utilisateur"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');*/
-
 INSERT INTO "photo" (id_photo,extension) VALUES (0,'png');
 INSERT INTO "photo" (id_photo,extension) VALUES (1,'JPG');
 INSERT INTO "photo" (id_photo,extension) VALUES (2,'jpg');
@@ -114,11 +101,4 @@ INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (10,1);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (3,2);
 INSERT INTO "assoc_prd_cat" (id_cat,id_prod) VALUES (11,2);
 INSERT INTO "message" (id_mess,titre,contenu,mail,valid) VALUES (0,'Petit message','Je suis très content de votre travail','matthieu.gosset@yahoo.fr',0);
-
-/*
-COMMANDE POUR RECUPERER LES TITRES DES PRODUITS DE CATEGORIE N
-SELECT title FROM produits JOIN assoc_prd_cat ON id_produit=id_prod JOIN categorie ON categorie.id_cat=assoc_prd_cat.id_cat WHERE categorie.id_cat=N;
-
-COMMANDE POUR RECUPER LES TITRES DES CATEGORIES DU PRODUIT N
-SELECT nom_cat, link FROM categorie JOIN assoc_prd_cat ON categorie.id_cat=assoc_prd_cat.id_cat JOIN produits ON id_produit=id_prod WHERE id_produit=N;*/
 
