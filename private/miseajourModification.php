@@ -62,7 +62,7 @@ if($maj == NULL){ //Si la mise à jour introuvable, renvoie vers la page des pro
         <form action="" method="POST">
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required><?php echo $maj->getTexte() ?></textarea>
         	<br/>
-        	<label>Date de publication : </label><input name="date" type="date" value="<?php echo $maj->getDate()->format('Y-m-d') ?>" required/>
+        	<label>Date de publication : </label><input name="date" type="date" value="<?php echo $maj->get_Date()->format('Y-m-d') ?>" required/>
         	<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>

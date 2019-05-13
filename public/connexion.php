@@ -9,7 +9,7 @@ require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" );
+entete( "Connexion" );
 navAccueil();
 
 if(isset($_SESSION['pseudo'])){ //si connecté, redirection vers la page d'acceuil

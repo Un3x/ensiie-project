@@ -23,7 +23,7 @@ class MiseajourRepository
     {
         $rows = $this->connection->query('SELECT *
                                           FROM "miseajour" NATURAL JOIN "jeux"
-                                          ORDER BY date')->fetchAll(\PDO::FETCH_OBJ);
+                                          ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
         $miseajours = [];
         foreach ($rows as $row) {
             $jeu = new Jeu();
@@ -51,7 +51,7 @@ class MiseajourRepository
         $rows = $this->connection->query('SELECT *
                                           FROM "miseajour" NATURAL JOIN "jeux"
                                           WHERE jeux.id_jeu = '.$id_jeu.'
-                                          ORDER BY date')->fetchAll(\PDO::FETCH_OBJ);
+                                          ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
         $miseajours = [];
         foreach ($rows as $row) {
             $jeu = new Jeu();

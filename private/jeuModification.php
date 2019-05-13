@@ -81,7 +81,7 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
     <ul>
     	<?php 
     	foreach ($majs as $maj) {
-    	    echo '<li><a href="miseajourModification.php?id='.$maj->getId().'">'.$maj->getDate()->format('d/m/Y').'</li>';
+    	    echo '<li><a href="miseajourModification.php?id='.$maj->getId().'">'.$maj->get_Date()->format('d/m/Y').'</li>';
     	}
     	?>
     </ul>
