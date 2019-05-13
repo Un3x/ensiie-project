@@ -12,8 +12,8 @@
 <?php include ("header.php");?>
 </head>
 <body>
-<div class="wrapper row2">
-<div id="container" class="clear">
+<div class="abc ligne2">
+<div id="block" class="clear">
 <div id="un">
 <section id="intro" class="last clear">
 
