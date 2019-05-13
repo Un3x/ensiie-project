@@ -1,4 +1,3 @@
-
 -- ***************************
 -- * Création tables
 -- ***************************
@@ -34,7 +33,7 @@ INSERT INTO Sport (nom, genre, lieu) VALUES ('Basketball', 'f', 'Square');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'm', 'Parc des Coquibus');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Football', 'f', 'Parc des Coquibus');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Handball', 'm', 'C-19');
-INSERT INTO Sport (nom, genre, lieu) VALUES ('Handbabll', 'f', 'C-19');
+INSERT INTO Sport (nom, genre, lieu) VALUES ('Handball', 'f', 'C-19');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'm', 'hall');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Tennis', 'f', 'hall');
 INSERT INTO Sport (nom, genre, lieu) VALUES ('Natation', 'm', 'Piscine municipale');
