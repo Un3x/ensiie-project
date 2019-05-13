@@ -47,7 +47,7 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 	if (!verifPseudo($_POST['pseudo'])) {
 			$ok_pseudo = 0;
 	}
-	if (!verifNomPrenom($_POST['nom'], $_POST['prenom']) ) {
+	if (!verifNomPrenomPseudo($_POST['nom'], $_POST['prenom'], $_POST['pseudo']) ) {
 			$ok_nom = 0;
 	}
 	if ($_POST['mdp'] != $_POST['cmdp']) {
@@ -111,10 +111,10 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
 						if($ok_pseudo == 0 || $ok_mdp == 0 || $ok_nom == 0) {
 							echo '<span class="invalid_submit">Inscription invalide !</span></br>';
 							if($ok_nom == 0) 
-								echo '<span class="invalid_submit">Le couple Prénom/Nom apparaît déjà dans nos bases de données. Avez-vous déjà un compte ?</span>';
+								echo '<span class="invalid_submit">L\'ensemble Prénom/Nom/Pseudo apparaît déjà dans nos bases de données. Avez-vous déjà un compte ?</span>';
 							else if ($ok_pseudo == 0) 
 								echo '<span class="invalid_submit">Ce pseudo existe déjà !</span>';							
-							else if (!$ok_mdp == 0) 
+							if (!$ok_mdp == 0) 
 								echo '<span class="invalid_submit">Vos mots de passe doivent être identiques !</span>';						
 						}			
 					?>

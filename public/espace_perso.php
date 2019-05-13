@@ -82,7 +82,7 @@ if (isset($_POST['nom'])&&isset($_POST['prenom'])&&isset($_POST['pseudo'])&&isse
     if (!verifPseudo($_POST['pseudo']) && !($_POST['pseudo']==$curr_user->getPseudo())) {
         $ok_pseudo=0;
     }
-    if (!verifNomPrenom($_POST['nom'], $_POST['prenom']) && !($_POST['nom']==$curr_user->getNom() && $_POST['prenom']==$curr_user->getPrenom())) {
+    if (!verifNomPrenomPseudo($_POST['nom'], $_POST['prenom'], $_POST['pseudo']) && !($_POST['nom']==$curr_user->getNom() && $_POST['prenom']==$curr_user->getPrenom() && $_POST['pseudo']==$curr_user->getPseudo())) {
         $ok_nom=0;        
     }
     if ($ok_pseudo && $ok_nom) {
@@ -190,9 +190,9 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
 						if($ok_pseudo == 0 || $ok_nom == 0) {
 							echo '<span class="invalid_submit">Modification invalide !</span></br>';
 							if($ok_nom == 0) 
-								echo '<span class="invalid_submit">Le couple Prénom/Nom apparaît déjà dans nos bases de données. Avez-vous un autre compte ?</span>';
+								echo '<span class="invalid_submit">L\'ensemble Prénom/Nom/Pseudo apparaît déjà dans nos bases de données. Avez-vous un autre compte ?</span>';
 							else if ($ok_pseudo == 0) 
-								echo '<span class="invalid_submit">Ce pseudo existe déjà !</span>';										
+                                echo '<span class="invalid_submit">Ce pseudo existe déjà !</span>';										
 						}			
 					?>
                     <form class="form" id="form_editer" action="espace_perso.php" method="POST">

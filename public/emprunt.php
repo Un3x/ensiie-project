@@ -135,7 +135,7 @@ if (isset($_POST['id_livre']) && isset($_POST['pseudo']) && $okpseudo && $okid &
     <!-- premier formulaire où l'admin peut saisir un utilisateur non obligatoire-->
     <?php
     if (isset($okpseudo) && !($okpseudo)) {
-        echo '<span class="invalid_submit">Pseudo Invalide</span>';
+        echo '<span class="invalid_submit">Pseudo inexistant !</span>';
     }
     ?>
     <form class="form" action="emprunt.php" method="POST">

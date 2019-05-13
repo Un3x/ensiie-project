@@ -52,7 +52,7 @@ function verifPseudo($pseudo) {//returne true si le pseudo n'existe pas et false
     return true;
 }
 
-function verifNomPrenom($nom, $prenom) {
+function verifNomPrenomPseudo($nom, $prenom, $pseudo) {
     $dbName = getenv('DB_NAME');
     $dbUser = getenv('DB_USER');
     $dbPassword = getenv('DB_PASSWORD');
@@ -62,9 +62,10 @@ function verifNomPrenom($nom, $prenom) {
     $users = $userRepository->fetchAll();
 
     foreach ($users as $user) {
-        $tmpnom=$user->getNom();
-        $tmpprenom=$user->getPrenom();
-        if ($nom==$tmpnom && $prenom==$tmpprenom) {
+        $tmpNom = $user->getNom();
+        $tmpPrenom = $user->getPrenom();
+        $tmpPseudo = $user->getPseudo();
+        if ($nom == $tmpNom && $prenom == $tmpPrenom && $pseudo == $tmpPseudo) {
             return false;
         }
     }
@@ -178,7 +179,7 @@ function affiche_bandeau_connexion($user_connected, $nom, $prenom, $pseudo, $adm
 
 
 function affiche_footer() {
-    echo '<footer style="text-align:right">Sciience 2019<br>En cas de problème : sciience@ensiie.fr</footer>';
+    echo '<footer style="text-align:right">ScIIencE 2019<br>En cas de problème : sciience@ensiie.fr</footer>';
 }
 
 

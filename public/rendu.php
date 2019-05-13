@@ -90,7 +90,7 @@ if (isset($okpseudo) && $okpseudo && isset($_POST['id_livre']) && !(verifIdLivre
 
     <?php 
     if (isset($okpseudo) && !($okpseudo)) {
-        echo '<span class="invalid_submit">Pseudo invalide</p>';
+        echo '<span class="invalid_submit">Pseudo inexistant !</p>';
     }
     ?>
     <br>
