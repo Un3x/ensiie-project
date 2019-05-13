@@ -20,8 +20,8 @@ class ClientManager extends UserManager
 	 */
     public function add($user)
     {
-			$statement = $this->connection->prepare("INSERT INTO Client (surname,firstname,idRace,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (:surname,:firstname,:idRace,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender,:nbClientCourses)");
-			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses()));
+			$statement = $this->connection->prepare("INSERT INTO Client (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) VALUES (:surname,:firstname,:idRace,:mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender,:nbClientCourses)");
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses()));
 	}
 
 	/**
@@ -50,8 +50,7 @@ class ClientManager extends UserManager
 		if($req==false)
 			return false;
 		$admin=new Client();
-		$raceManager=new RaceManager($this->connection);
-		$admin->hydrate2($req,$raceManager->get($req['idrace']));
+		$admin->hydrate2($req);
 		return $admin;
 	}
 	
@@ -79,8 +78,8 @@ class ClientManager extends UserManager
 	 */
     public function update($user)
     {
-			$statement = $this->connection->prepare("UPDATE Client set surname=:surname, firstname=:firstname, idRace=:idRace, mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender, nbClientCourses=:nbClientCourses where id=:id");
-			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"id" => $user->getId()));
+			$statement = $this->connection->prepare("UPDATE Client set surname=:surname, firstname=:firstname, mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender, nbClientCourses=:nbClientCourses where id=:id");
+			return $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"passWord" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"id" => $user->getId()));
     }
 
 	/**
@@ -96,8 +95,7 @@ class ClientManager extends UserManager
 		return array_map(function ($v) 
 		{
 			$client=new Client();
-			$raceManager=new RaceManager($this->connection);
-			$client->hydrate2($v,$raceManager->get($v['idrace']));
+			$client->hydrate2($v);
 			return $client;
 		},$req);
 	}
