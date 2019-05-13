@@ -1,0 +1,61 @@
+body {
+    background-image:url(../../image/arriereplan.jpg);
+    background-repeat:no-repeat;
+    background-origin: [border-box|padding-box|content-box];
+    background-size:cover;
+}
+
+.create {
+    margin: 100px auto;
+	position: relative;
+	width: 300px;
+	padding: 20px 20px 20px;
+	z-index: -1;
+}
+
+.create:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
+
+.create h1{
+	margin: -20px -20px 21px;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    background: #008000;
+    border-radius: 3px;
+}
+
+.create input {
+	width: 100%;
+}
+
+.create input[type=submit] {
+    background-color: #008000;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.create p {
+    margin: 20px 0 0;
+}
+
+.create p.submit {
+    text-align: right;
+}
+.create input[type=text], .inscrip input[type=password],.inscrip input[type=date] {
+    width: 275px;
+}
