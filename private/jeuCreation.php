@@ -26,7 +26,7 @@ $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password
 $jeuRepository = new \Jeu\JeuRepository($connection);
 
 if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd puis renvoie vers la page de d'administration des jeux
-    $status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement']);
+    $status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
     
     if($status){
         echo '<h4>Le projet a bien été créé</h4>';
@@ -44,6 +44,8 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
     <div class="modifContainer">
         <form id="formAjoutProjet" action="" method="POST" onsubmit="return verficationEnvoie()">
         	<label>Titre : </label><input name="titre" type="text" required/>
+        	<br/>
+        	<label>Description : </label><textarea name="description" rows="5" cols="40" required></textarea>
         	<br/>
         	<label>Lien du git : </label><textarea name="git" rows="5" cols="40" required></textarea>
         	<br/>

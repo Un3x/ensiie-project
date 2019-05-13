@@ -31,7 +31,7 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
     echo '<h4>Redirection vers la liste des projets...</h4>';
     header( "refresh:3;url=jeux.php" );
 }else if(isset($_POST['modification'])){ //Si jeu est modfifié, modification de la bdd puis renvoie vers la page de d'administration des jeux
-    $status = $jeuRepository->setJeu($_GET['id'], $_POST['titre'], $_POST['git'], $_POST['telechargement']);
+    $status = $jeuRepository->setJeu($_GET['id'], $_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
     
     if($status){
         echo '<h4>Le projet n°'.$_GET['id'].' a bien été modifié</h4>';
@@ -62,6 +62,8 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
     <div class="modifContainer">
         <form action="" method="POST">
         	<label>Titre : </label><input name="titre" type="text" value="<?php echo $jeu->getTitre() ?>" required/>
+        	<br/>
+        	<label>Description : </label><textarea name="description" rows="5" cols="40" required><?php echo $jeu->getDescription() ?></textarea>
         	<br/>
         	<label>Lien du git : </label><input name="git" type="text" value="<?php echo $jeu->getGit() ?>" required/>
         	<br/>

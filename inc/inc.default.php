@@ -38,8 +38,8 @@
 
 	function menu()
 	{
-		echo "<header>\n";
-		echo "\t<div id=\"menu\">\n";
+		/*echo "<header>\n";
+		echo "\t<div id=\"menu\">\n";*/
 		
 		
 	/*	echo "\t\t<a href=\"index.php\">";
@@ -47,7 +47,7 @@
 		echo "alt=\"Accueil\" /></a>"; */
 		
 		
-		echo "\t\t<a href=\"../public/index.php\"><div>\n";
+		/*echo "\t\t<a href=\"../public/index.php\"><div>\n";
 		echo "\t\t\tRealitiie\n";
 		echo "\t\t</div></a>\n";
 		
@@ -94,6 +94,28 @@
 		
 		
 		echo "\t</div>\n";
-		echo "</header>\n";
+		echo "</header>\n";*/
+	    
+	    ?>
+	    <div class="menu">
+    	    <ul class="menu">
+        	    <li class="menu"><a class="menu active" href="../public/index.php">Accueil</a></li>
+        	    <li class="menu"><a class="menu" href="../public/equipe.php">Équipe</a></li>
+        	    <li class="menu"><a class="menu"href="../public/article.php">Articles</a></li>
+        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes rendu</a></li>
+        	    <li class="menu"><a class="menu"href="../public/projet.php">Projets</a></li>
+        	    <li class="menu"><a class="menu"href="../public/laval.php">Laval</a></li>
+        	    <li class="menu"><a class="menu"href="../public/ressources.php">Ressources</a></li>
+        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes rendu</a></li>
+        	    
+        	    <?php
+        	    if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration
+        	        ?><li class="menu"><a class="menu"href="../private/admin.php">Administration</a></li><?php
+				}
+				?>
+        	    
+    	    </ul>
+    	</div>
+	    <?php
 	}
 ?>
