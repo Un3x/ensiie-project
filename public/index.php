@@ -171,6 +171,11 @@ if( isset($_GET['action'])) {
         case 'contactezNous' :
             require('../src/View/contactezNousView.php');
             break;
+            
+        case 'contactezNousController' :
+            require('../src/View/contactezNousController.php');
+            break;
+        
         
         case '' :
             require('../src/View/accueilView.php');
