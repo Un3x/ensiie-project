@@ -31,7 +31,7 @@
 <figcaption>
 <h2>Le Challenge</h2>
 <p>Organisé par des élèves de l’ENSIIE, le Challenge Centrale Evry est un tournoi sportif étudiant qui rassemble plus de 3000 élèves des plus grandes écoles d’ingénieurs françaises et étrangères. Depuis sa création en 1983, les étudiants se retrouvent en mars sur le campus de l’école pour s’affronter dans de nombreux sports et tenter de remporter le trophée final.</p>
-<p>Le Challenge Centrale Evry c’est à la fois (du sport avec) 19 sports différents, une soirée animée par des DJs professionnels, un Village Challenge avec la possibilité de rencontrer des entreprises, des concours de pompoms, de fanfares ou même de mascottes et des activités variées pour vous divertir entre les matchs ou pour promouvoir nos valeurs (le handisport, le développement durable).</p>
+<p>Le Challenge Centrale Evry c’est à la fois du sport avec 9 sports différents, une soirée animée par des DJs professionnels, un Village Challenge avec la possibilité de rencontrer des entreprises, des concours de pompoms, de fanfares ou même de mascottes et des activités variées pour vous divertir entre les matchs ou pour promouvoir nos valeurs (le handisport, le développement durable).</p>
 </figcaption>
 </figure>
 </article>
