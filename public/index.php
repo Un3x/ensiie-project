@@ -70,8 +70,27 @@ if (isset($_POST['spotname'])) {
 		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
-        <script type="text/javascript" src="app.js"></script>
+        <script>
+		var mymap = L.map('mapid').setView([48.623447, 2.425771], 14);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 20,
+    id: 'mapbox.streets',
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+	</script>
     </div>
+    <?php foreach ($spots as $spot) :?>
+	 <?php $lat = $spot->getlatitude();
+          	$long = $spot->getLongitude();
+		$name = $spot->getNom();?>
+		<script>
+		 var marker = L.marker([<?php echo $lat?>,<?echo $long?>]).addTo(mymap);
+    		 marker.bindPopup('<h3>"<?php echo $name?>"</h3>');
+}
+		</script>
+		<?php endforeach;?>
+    
 
 	<?php if (!isset($_SESSION['mail'])) {
         //bouton de création de compte si l'utilisateur n'est pas connecté
