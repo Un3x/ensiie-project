@@ -45,7 +45,7 @@ class TutoRepository
         $row = $row[0];
         $tuto = new Tuto();
         $tuto
-        ->setId($row->$id)
+        ->setId($id)
         ->setTitre($row->titre)
         ->setTexte($row->texte)
         ->setPdf($row->pdf);
@@ -75,7 +75,7 @@ class TutoRepository
     public function createTuto($titre, $texte, $pdf)
     {        
         $sql = "INSERT INTO tuto
-                (titre, texte, pdf) VALUES (?, ?, ?, ?, ?, ?);";
+                (titre, texte, pdf) VALUES (?, ?, ?);";
         $req = $this->connection->prepare($sql);
         $status = $req->execute(array($titre, $texte, $pdf));
         return $status;
