@@ -5,6 +5,8 @@
 	require("../src/Article/ArticleRepository.php");
 	require("../src/Membre/Membre.php");
 	entete("Comptes-rendus");
+	
+	$id_page="debrief";
 	navAccueil();
 	
 	$dbName = 'realitiie';

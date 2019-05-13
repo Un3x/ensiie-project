@@ -2,7 +2,11 @@
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	entete("Laval");
+	
+	id_page="laval";
 	navAccueil();
+	
+	
 ?>
 
 <h2>LAVAL VIRTUAL</h2>

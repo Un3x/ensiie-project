@@ -4,6 +4,7 @@
 	require("../src/Tuto/Tuto.php");
 	require("../src/Tuto/TutoRepository.php");
 	entete("Ressources");
+	$id_page="ressources";
 	navAccueil();
 
 	$dbName = 'realitiie';
@@ -13,6 +14,8 @@
 
 	$TutoRepository = new \Tuto\TutoRepository($connection);
 	$tutos = $TutoRepository->fetchAll();
+	
+	
 ?>
 
 <div class="round-border">
