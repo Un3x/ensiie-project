@@ -41,8 +41,8 @@
 			
 			<?php
 			foreach ($membres as $membre) {
-				$img = $membre->getSurnom();
-				$img = "../img/membres/".$img.".png";
+				$imgs = ???
+				$img = $imgs[0];
 				if(file_exists($img) == false){
 					$img = "../img/badassChicken.png";
 				}
