@@ -8,7 +8,7 @@ include '../src/User/User.php';
 <head>
     <title> Ajouter un logement </title>
     <meta charset="utf-8">
- 
+    <link rel="stylesheet" href="res/css/createloge.css" />
 </head>
 <body>
     <div class="create">
