@@ -149,7 +149,7 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
 
 <table class="table table-bordered table-hover table-striped">
         <thead>
-            <td>#</td>
+            
             <td>Ville</td>
             <td>Nombre de place</td>
             <td>Prix</td>
@@ -157,7 +157,7 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
         <?php /** @var \User\Logement $logement */
         foreach ($logements as $logement) : ?>
             <tr>
-                <td><?php echo $logement->getId() ?></td>
+                
                 <td><?php echo $logement->getVille() ?></td>
                 <td><?php echo $logement->getNbPlaces() ?></td>
                 <td><?php echo $logement->getPrix() ?> €</td>

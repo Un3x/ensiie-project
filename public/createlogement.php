@@ -8,7 +8,7 @@ include '../src/User/User.php';
 <head>
     <title> Ajouter un logement </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="res/css/createloge.css" />
+ 
 </head>
 <body>
     <div class="create">
@@ -135,8 +135,9 @@ include '../src/User/User.php';
     <?php
 
 require '../vendor/autoload.php';
-require '../src/Logement/LogementRepository.php';
-require '../src/Logement/Logement.php';
+require_once '../src/Logement/LogementRepository.php';
+require_once '../src/Logement/Logement.php';
+require_once '../src/User/User.php';
 
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
@@ -147,12 +148,12 @@ $logementRepository = new \Logement\LogementRepository($connection);
 $logement = new \Logement\Logement($connection);
 
 if (isset($_POST['prix'])){
-$logement.setUser(null); 
-$logement.setDep($_POST['departement']);
-$logement.setVille($_POST['ville']);
-$logement.setNBPlaces($_POST['place']);
-$logement.setPrix($_POST['prix']);
-addLogement($logement);
+$logement->setUser(null); 
+$logement->setDep($_POST['departement']);
+$logement->setVille($_POST['ville']);
+$logement->setNbPlaces($_POST['place']);
+$logement->setPrix($_POST['prix']);
+$logementRepository->addLogement($logement);
 }
     ?>
 

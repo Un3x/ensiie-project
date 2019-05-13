@@ -47,8 +47,8 @@ class LogementRepository
 
         $req = 'INSERT INTO "Logements" (iduser, departement ,ville , nb_places_libres, prix)
                 VALUES (:user, :departement, :ville, :NPL, :prix)';
-        $valeurs = ['user'=>$iduser, 'departement'=>$departement, 'ville'=>$ville,
-        'NPL'=>$nb_places_libres, 'prix'=>$prix];
+        $valeurs = ['user'=>$user, 'departement'=>$dep, 'ville'=>$ville,
+        'NPL'=>$NPL, 'prix'=>$prix];
         $req_preparee = $this->connection->prepare($req);
         if (!$req_preparee->execute($valeurs)) {
             print_r($req_preparee->errorInfo());
