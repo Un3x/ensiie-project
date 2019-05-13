@@ -1,4 +1,5 @@
 <?php
+	$id_page="projet";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Jeu/Jeu.php");
@@ -9,7 +10,7 @@
 	
 	entete("Projets");
 	
-	$id_page="projet";
+	
 	
 	navAccueil();
 	

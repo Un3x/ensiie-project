@@ -73,6 +73,23 @@ class EquipeRepository
 		$sql = "INSERT INTO equipe VALUES (?, ?, ?);";
 		$req = $this->connection->prepare($sql);
 		$status = $req->execute(array($idJeu,$idMembre, $role) );
+		return $status;
+	}
+
+	public function setEquipe( $idJeu, $idMembre, $role )
+	{
+		$sql = "UPDATE equipe SET equipe.role = ? WHERE id_jeu = ? AND id_membre = ?;";
+		$req = $this->connection->prepare($sql);
+		$status = $req->execute(array($idJeu,$idMembre, $role) );
+		return $status;
+	}
+
+	public function deleteEquipe( $idJeu, $idMembre )
+	{
+		$sql = "DELETE FROM equipe WHERE id_jeu = ? AND id_membre= ?";
+		$req = $this->connection->prepare($sql);
+		$status = $req->execute(array($idJeu,$idMembre) );
+		return $status;
 	}
     
     public function getEquipe($idJeu)
