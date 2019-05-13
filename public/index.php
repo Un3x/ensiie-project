@@ -34,8 +34,8 @@ if (isset($_GET['ville'])) $ville = $_GET['ville'];
 if (isset($_POST['spotname'])) {
     $spot = new \Spot\Spot();
     //récupérer la latitude et la longitude ??
-    $spot->setLongitude(0);
-    $spot->setLatitude(0);
+    $spot->setLongitude($_POST['spotlongitude']);
+    $spot->setLatitude($_POST['spotlatitude']);
     $spot->setNom($_POST['spotname']);
     $spot->setVille($_POST['spotcity']);
     $spot->setNote($_POST['spotnote']);
@@ -88,9 +88,11 @@ if (isset($_POST['spotname'])) {
         <div class="article">
             <form action="index.php" method="post">
             <span style="font-size:140%">Ajoute un Spot que tu as découvert :</br></span>
-            <input type="text" name="spotname" required="true" placeholder="Entrez le nom du spot">
-            <input type="text" name="spotcity" required="true" placeholder="Entrez la ville du spot">
-            <input type="number" min="0" max="5" name="spotnote" placeholder="Entrez une note entre 0 et 5">
+            <input type="text" name="spotname" required="true" placeholder="Nom du spot">
+            <input type="text" name="spotcity" required="true" placeholder="Ville du spot">
+            <input type="number" min="0" max="5" name="spotnote" placeholder="Note entre 0 et 5">
+            <input type="number" name="spotlatitude" required="true" placeholder="Latitude">
+            <input type="number" name="spotlongitude" required="true" placeholder="Longitude">
             <button class="bouton" type="submit" style="margin-top: 8px">envoyer</button>
             </form>
         </div>

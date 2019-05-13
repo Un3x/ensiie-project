@@ -14,9 +14,10 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $userRepository = new \User\UserRepository($connection);
 $user = new \User\User();
+$currentuser = new \User\User();
 
-//si on a un nouvel utilisateur
-if (isset($_POST['firstname'])) {
+//si on a un nouvel utilisateur ou une modification
+if (isset($_POST['signup']) || isset($_POST['modif'])) {
 	// génération des attributs de l'objet User
 	$user->setFirstname($_POST['firstname']);
 	$user->setLastname($_POST['lastname']);
@@ -36,31 +37,38 @@ if (isset($_POST['firstname'])) {
 		$user->setCurrent_training($_POST['current_training']);
 
 	//ajout de l'utilisateur User à la base
-	echo $user->getMail();
-	$userRepository->addUser($user);
-	$_SESSION['mail'] = $user->getMail();
-	echo $user->getPassword();
+	if (isset($_POST['signup'])) {
+		$userRepository->addUser($user);
+		$_SESSION['mail'] = $user->getMail();
+	}
+	//modification de l'utilisateur
+	else {
+		$userRepository->modifUser($_SESSION['mail'],$user);
+		$_SESSION['mail'] = $user->getMail();
+	}
+	
 }
 
+//si un utilisateur se connecte
 else if (isset($_POST['login'])) {
-	$user = $userRepository->fetchOneByMail($_POST['login']);
-	if ($user == null) {
+	$currentuser = $userRepository->fetchOneByMail($_POST['login']);
+	if ($currentuser == null) {
 		echo '<script>alert("Utilisateur non trouvé")</script>';
 		//header('Location: connexion.php');
 		exit();
 	}
-	if ($_POST['password'] !== $user->getPassword()) {
+	if ($_POST['password'] !== $currentuser->getPassword()) {
 		//echo '<script>alert("Erreur d\'authentification")</script>';
 		header('Location: connexion.php');
 		//exit();
 	}
 	else {
-		$_SESSION['mail'] = $user->getMail();
+		$_SESSION['mail'] = $currentuser->getMail();
 	}
 }
 
 else if (isset($_SESSION['mail'])) {
-	$user = $userRepository->fetchOneByMail($_SESSION['mail']);
+	$currentuser = $userRepository->fetchOneByMail($_SESSION['mail']);
 }
 
 if(!isset($_SESSION['mail'])) {
@@ -89,29 +97,22 @@ $users = $userRepository->fetchAll();
 			<div class="flex-container" id="info-content">
 				<!-- informations sur le compte -->
 				<div class="infocomptes">
-					<?php echo ($user->getFirstname()); ?>
+					<?php echo ($currentuser->getFirstname()); ?>
 				</div>
 				<div class="infocomptes">
-					<?php echo ($user->getLastname()); ?>
+					<?php echo ($currentuser->getLastname()); ?>
 				</div>
 				<div class="infocomptes">
-					<?php echo ($user->getYop());?> années d'expérience
+					<?php echo ($currentuser->getYop());?> années d'expérience
 				</div>
 				<div class="infocomptes">
-					<?php echo ($user->getMail());?>
+					<?php echo ($currentuser->getMail());?>
 				</div>
+				<button class="bouton"> 
+					<a href="modifCompte.php">Gestion de compte</a>
+				</button>
 			</div>
 		</div>
-
-		<?php /** @var \User\User $userr */
-        foreach ($users as $userr) : ?>
-            <tr>
-                <td><?php echo $userr->getId() ?></td>
-                <td><?php echo $userr->getFirstname() ?></td>
-                <td><?php echo $userr->getLastname() ?></td>
-                <td><?php echo $userr->getAge() ?> years</td>
-            </tr>
-      <?php endforeach; ?>
 
 	<footer>
 		<?php footer();?>

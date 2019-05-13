@@ -90,4 +90,37 @@ class UserRepository
         }
 
     }
+
+    /**
+     * modify the user identify by login with the attributes of newuser
+     * @param string $mail
+     * @param \User $newuser
+     * @return boolean
+     */
+    public function modifUser($login, $user) {
+        $firstname = $user->getFirstname();
+        $lastname = $user->getLastname();
+        $birthday = $user->getBirthday();
+        $city = $user->getCity();
+        if ($user->getYop() == null)
+            $yop = 0;
+        else $yop = $user->getYop();
+        $mail = $user->getMail();
+        $password = $user->getPassword();
+        $phone = $user->getPhone();
+        $current_training = $user->getCurrent_training();
+
+        $req = 'UPDATE "user" SET firstname='.$this->connection->quote($firstname).', lastname='.$this->connection->quote($lastname).', birthday='.$this->connection->quote(date_format($birthday, 'Y-m-d')).', city='.$this->connection->quote($city).', yop='.$this->connection->quote($yop).', mail='.$this->connection->quote($mail).', password='.$this->connection->quote($password).', phone= '.$this->connection->quote($phone).', current_training='.$this->connection->quote($current_training).' WHERE mail='.$this->connection->quote($login);
+
+       /*
+        $valeurs = ['prenom'=>$firstname, 'nom'=>$lastname, 'mail'=>$mail, 'mdp'=>$password, 'anniv'=>date_format($birthday, 'Y-m-d'), 'ville'=>$city, 'yop'=>$yop, 'tel'=>$phone, 'curr_train'=>$current_training];
+       */
+        $req_prepare = $this->connection->query($req);
+       
+        if (!$req_prepare) {
+            print_r($req_prepare->errorInfo());
+            return false;
+        }
+        return true;
+    }
 }
