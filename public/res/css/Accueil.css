@@ -1,0 +1,84 @@
+body {
+    background-image:url(../../image/arriereplan.jpg);
+    background-repeat:no-repeat;
+    background-origin: [border-box|padding-box|content-box];
+    background-size:cover;
+    }
+
+#centre {
+    
+    }
+
+a:link{
+    text-decoration: none; 
+    color: white;}
+
+a:visited{
+    text-decoration: none; 
+    color: white;
+}
+
+
+
+#recherche {
+    position : absolute;
+    top : 50%; left : 35%;
+    transform : translate(-50%, -50%);
+    font-family: Arial,sans-serif;
+    font-size: 1.6em;
+    width: 320px;
+    height: 40px;
+    padding-top: 7px; /*permet le centrage vertical*/
+    text-align: center;
+    border-radius: 8px;
+    background: linear-gradient( #008000, #2C2C2C);
+    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
+                 0 -1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#createlogement{
+    position : absolute;
+    top : 50%; left : 65%;
+    transform : translate(-50%, -50%);
+    font-family: Arial,sans-serif;
+    font-size: 1.6em;
+    width: 320px;
+    height: 40px;
+    padding-top: 7px; /*permet le centrage vertical*/
+    text-align: center;
+    border-radius: 8px;
+    background: linear-gradient( #008000, #2C2C2C);
+    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
+                 0 -1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#createlogement:active{
+    color: #000;
+    background: rgb(68, 68, 68);
+    background: linear-gradient( rgb(85, 85, 85), #2C2C2C);
+    box-shadow: 1px 1px 10px black inset, 
+                0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#createlogement:hover{
+    color: #222;
+    background: rgb(85, 85, 85);
+    background: linear-gradient( #777, #333);
+}
+
+
+#recherche:active{
+    color: #000;
+    background: #444;
+    background: linear-gradient( #555, #2C2C2C);
+    box-shadow: 1px 1px 10px black inset, 
+                0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+#recherche:hover{
+    color: #222;
+    background: #555;
+    background: linear-gradient( #777, #333);
+}
