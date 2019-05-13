@@ -21,9 +21,8 @@
 				header ('Location: index.php');
 				return true;
 			}
-			else return false;
-
 		endforeach;
+		return false;
     }
 	//postgres
 	$dbName = getenv('DB_NAME');

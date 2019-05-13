@@ -2,6 +2,8 @@
 require '../vendor/autoload.php';
 require '../src/Sport/SportRepository.php';
 require '../src/Sport/Sport.php';
+require '../src/LogementSport/LogementSportRepository.php';
+require '../src/LogementSport/LogementSport.php';
 include("ini_session.php");
 //postgres
 $dbName = getenv('DB_NAME');
@@ -14,6 +16,9 @@ $userRepository = new \User\UserRepository($connection);
 $usersParticipant = $userRepository->fetchAllParticipant();
 $usersJury = $userRepository->fetchAllJury();
 $usersOrganisateur = $userRepository->fetchAllOrganisateur();
+$logementSportRepository = new \LogementSport\LogementSportRepository($connection);
+$logementSports = $logementSportRepository->fetchAll();
+
 $rows = $sportRepository->fetchAllUsers();
 ?>
 
@@ -43,6 +48,25 @@ $rows = $sportRepository->fetchAllUsers();
                 <td><?php echo $row->unom ?></td>
                 <td><?php echo $row->genre ?></td>
                 <td><?php echo $row->lieu ?></td>
+            </tr>
+        <?php endforeach;?>
+    </table>
+
+
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead style="font-weight: bold">
+            <td>Adresse Logement</td>
+            <td>Sport</td>
+            <td>Genre</td>
+        </thead>
+         <?php /** @var \User\User $user */
+        
+        foreach ($logementSports as $row) : ?>
+            <tr>
+                <td><?php echo $row->adresse ?></td>
+                <td><?php echo $row->nom ?></td>
+                <td><?php echo $row->genre ?></td>
             </tr>
         <?php endforeach;?>
     </table>

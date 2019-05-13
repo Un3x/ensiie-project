@@ -26,6 +26,7 @@ $users = $userRepository->fetchAllParticipant();
             <td>Lastname</td>
             <td>Email</td>
             <td>Tel</td>
+            <td>Sport</td>
             <td>Password</td>
         </thead>
         <?php /** @var \User\User $user */
@@ -36,6 +37,7 @@ $users = $userRepository->fetchAllParticipant();
                 <td><?php echo $user->getNom() ?></td>
                 <td><?php echo $user->getEmail() ?></td>
                 <td><?php echo $user->getTel() ?></td>
+                <td><?php echo $user->getSport() ?></td>
                 <td><?php echo $user->getPassword() ?></td>
             </tr>
         <?php endforeach; ?>
@@ -48,6 +50,7 @@ $users = $userRepository->fetchAllParticipant();
             <td>Lastname</td>
             <td>Email</td>
             <td>Tel</td>
+            <td>Sport</td>
             <td>Password</td>
         </thead>
         <?php /** @var \User\User $user */
@@ -58,6 +61,7 @@ $users = $userRepository->fetchAllParticipant();
                 <td><?php echo $user->getNom() ?></td>
                 <td><?php echo $user->getEmail() ?></td>
                 <td><?php echo $user->getTel() ?></td>
+                <td><?php echo $user->getSport() ?></td>
                 <td><?php echo $user->getPassword() ?></td>
             </tr>
         <?php endforeach; ?>
@@ -70,6 +74,7 @@ $users = $userRepository->fetchAllParticipant();
             <td>Lastname</td>
             <td>Email</td>
             <td>Tel</td>
+            <td>Sport</td>
             <td>Password</td>
         </thead>
         <?php /** @var \User\User $user */
@@ -80,6 +85,7 @@ $users = $userRepository->fetchAllParticipant();
                 <td><?php echo $user->getNom() ?></td>
                 <td><?php echo $user->getEmail() ?></td>
                 <td><?php echo $user->getTel() ?></td>
+                <td><?php echo $user->getSport() ?></td>
                 <td><?php echo $user->getPassword() ?></td>
             </tr>
         <?php endforeach; ?>

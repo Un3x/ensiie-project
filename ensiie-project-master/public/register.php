@@ -43,9 +43,20 @@
                             <input type="text" id="tel" name="tel" required pattern="[0-9]{10}" />
                         </p>
                         <p>
-                            <label for="sport">Sport :</label>
-                            <input type="text" id="sport" name="sport" required />
-                        </p>
+                        <label for="sport">Choisir un sport:</label>
+						<select id="sport" name="sport" required>
+						    <option value="">Choix</option>
+						    <option value="Basketball">Basketball</option>
+						    <option value="Handball">Handball</option>
+						    <option value="Parkour">Parkour</option>
+						    <option value="Football">Football</option>
+						    <option value="Natation">Natation</option>
+						    <option value="Tennis">Tennis</option>
+						    <option value="Rugby">Rugby</option>
+						    <option value="Cheerleading">Cheerleading</option>
+						    <option value="Cyclisme">Cyclisme</option>
+						</select>
+						</p>
                         <p>
                             <label for="pwd">Mot de passe :</label>
                             <input type="password" id="pwd" name="pwd" required />

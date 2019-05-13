@@ -1,7 +1,7 @@
 <?php
 namespace Sport;
-require '../src/User/UserRepository.php';
-require '../src/User/User.php';
+require_once '../src/User/UserRepository.php';
+require_once '../src/User/User.php';
 class SportRepository
 {
     /**

@@ -5,28 +5,28 @@
 <section class="one_quarter">
 <h2 class="title">Sponsors</h2>
 <nav>
-<img src="images/Evian-logo-grey.png" width="180" height="160" alt="">
+<img src="images/Evian-logo-grey.png" width="180" height="160" alt="Logo Evian">
 </nav>
 </section>
 <!-- Section Two -->
 <section class="one_quarter">
 <h2 class="title"></h2>
 <nav>
-<img src="images/carrefour.png" width="160" height="140" alt="">
+<img src="images/carrefour.png" width="160" height="140" alt="Logo Carrefour">
 </nav>
 </section>
 <!-- Section Three -->
 <section class="one_quarter">
 <h2 class="title"></h2>
 <nav>
-<img src="images/adidas.png" width="160" height="140" alt="">
+<img src="images/adidas.png" width="160" height="140" alt="Logo Adidas">
 </nav>
 </section>
 <!-- Section Four -->
 <section class="one_quarter lastbox">
 <h2 class="title"></h2>
 <nav>
-<img src="images/IMT.png" width="190" height="170" alt="">
+<img src="images/IMT.png" width="190" height="170" alt="Logo IMT">
 </nav>
 </section>
 <!-- / Section -->

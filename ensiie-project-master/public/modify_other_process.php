@@ -15,15 +15,19 @@
 				$new_tel = $user->getTel();
 				$_SESSION['pwd'] = $new_pwd;
 				$_SESSION['tel'] = $new_tel;
-
-				$sql ='UPDATE '.$type.' SET tel=:ntel, password=:npwd WHERE id=:nid';
-				$connection->prepare($sql)->execute(array('ntel' => ''.$new_tel, 'npwd'=>''.$new_pwd, 'nid'=>''.$id));
-
+				if ($_POST['delete'] == 'Non') {
+					$sql ='UPDATE '.$type.' SET tel=:ntel, password=:npwd WHERE id=:nid';
+					$connection->prepare($sql)->execute(array('ntel' => ''.$new_tel, 'npwd'=>''.$new_pwd, 'nid'=>''.$id));
+				}
+				else {
+					$sql ='DELETE FROM '.$type.' WHERE email=:nemail';
+					$connection->prepare($sql)->execute(array('nemail'=>''.$user_valide));
+				}
 				header ('Location: index.php');
 				return true;
 			}
-			else return false;
 		endforeach;
+		return false;
     }
 	//postgres
 	$dbName = getenv('DB_NAME');
@@ -34,7 +38,7 @@
 	$userRepository = new \User\UserRepository($connection);
 	$ok = false;
 
-	if (isset($_POST['email']) && isset($_POST['tel_modifier']) && isset($_POST['pwd_modifier'])) {
+	if (isset($_POST['email']) && isset($_POST['tel_modifier']) && isset($_POST['pwd_modifier']) && isset($_POST['delete'])) {
 		$users = $userRepository->fetchAllParticipant();
 		$type = "Participant";
 		$ok = tryMod($connection, $users, $type);
