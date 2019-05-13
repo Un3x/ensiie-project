@@ -225,7 +225,7 @@ if ($_SESSION['statut']==1 && $CurrProduit[0]->getValide()==1){
         $c=0;
 
         foreach ($prods as $prod){
-          if (!$CurrProduit[0]->getIdProd()==$prod->getIdProd()){
+          if (!($CurrProduit[0]->getIdProd()==$prod->getIdProd())){
                 $ProdRepository->afficheProd($prod);
                 if ($prod->getValide()){
                   $c=$c+1;

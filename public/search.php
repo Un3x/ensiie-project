@@ -39,13 +39,13 @@ function showCat(etat){
         <div class="radioboxes">
             <div class="radio">
             <label for="prd" class="radiobox">Produits
-                <input type="radio" name="typerec" value="prod" checked="checked" onclick="showCat('block');"/>
+                <input type="radio" name="typerec" value="prod" id="prd" checked="checked" onclick="showCat('block');"/>
                 <span class="radiomark"></span>
             </label>
             </div>
             <div class="radio">
             <label for="util" class="radiobox">Utilisateur
-                <input type="radio" name="typerec" value="util" onclick="showCat('none');"/>
+                <input type="radio" name="typerec" value="util" id="util" onclick="showCat('none');"/>
                 <span class="radiomark"></span>
             </label>
             </div>
