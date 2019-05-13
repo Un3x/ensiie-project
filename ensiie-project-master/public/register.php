@@ -5,19 +5,18 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <title>Challenge Centrale Evry</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css" type="text/css">
+<head>
+<title>Challenge Centrale Evry</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css?version=211" type="text/css">
 
-        <?php include("header.php");?>
-    </head>
+<?php include("header.php");?>
+</head>
 
-    <body>
-        <div class="wrapper row2">
-            <div id="container" class="clear">
-
-                <div id="form_account" class="middle">
+<body>
+<div class="abc ligne2">
+<div id="block" class="clear">
+               	<div id="form_account" class="middle">
                     <form action="register_process.php" method="POST">
                         <p>
                             <br/><br/>
