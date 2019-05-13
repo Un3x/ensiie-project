@@ -118,6 +118,9 @@
             <input type="text" name="ville">
             <p>Montant du loyer ?</p>
             <input type="number" name="prix">
+            <p>Nombre de place disponible</p>
+            <input type="number" name="place">
+
             <p><input type="submit" value="Créer"/></p>
         </form>
     </div>
