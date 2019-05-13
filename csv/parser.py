@@ -45,12 +45,20 @@
 # 1         achievement-title
 # 2         achievement-text
 # 3  <opt>  achievement-icon
+#
+# ---> fichiers "endXXX.csv"
+#
+# 1  end-node
+# 2  end-title
+# 3  end-full-text
+# 4  end-short-text
 
 import sys
 import re
 
 ach_fl = re.compile(r'ach(\d+).csv')
 node_fl = re.compile(r'node(\d+).csv')
+end_fl = re.compile(r'end(\d+).csv')
 re_req = re.compile(r'\((.*), ?(.*)\)')
 
 NODE_TABLE_SIZE = 28
@@ -97,6 +105,27 @@ def handle_int(poss_int: str) -> str:
     return 0 if poss_int == '' else int(poss_int)
 
 
+def handle_end(filename: str):
+    match = end_fl.fullmatch(filename)
+    if match is None:
+        return None
+
+    with open(filename, 'r', encoding='utf-8') as fl:
+        lines = [line.strip().replace('\n', '') for line in fl.readlines()]
+
+    res = dict()
+    res['id'] = int(match.group(1))
+    res['node'] = int(lines[0])
+    res['title'] = lines[1]
+    res['full'] = lines[2]
+    res['short'] = lines[3]
+
+    print(f"\n---> Ending {res['id']}, for node {res['node']} <---")
+    print('INSERT INTO "ends"("end_id", "end_node", "title", "full_text", "short_text") VALUES')
+    print(f"({res['id']}, {res['node']}, {res['title']}, {res['full']}, {res['short']});")
+    print('\n')
+
+
 def handle_ach(filename: str):
     match = ach_fl.fullmatch(filename)
     if match is None:
@@ -115,7 +144,7 @@ def handle_ach(filename: str):
         res['icon'] = 'NULL'
 
     print(f"\n---> Achievement {res['id']} <---")
-    print('INSERT INTO "achievements"(id, title, text, icon) VALUES')
+    print('INSERT INTO "achievements"("id", "title", "text", "icon") VALUES')
     print(f"({res['id']}, {res['title']}, {res['text']}, {res['icon']});")
     print('\n')
 
@@ -128,20 +157,20 @@ def handle_node(filename: str):
     current_id = int(match.group(1))
 
     node_base = re.sub(' +', ' ', 'INSERT INTO "story_node"\
-            (id, \
-            modif_alchol, \
-            modif_attendance, \
-            modif_ghost, \
-            modif_bar, \
-            modif_baka, \
-            modif_diese, \
-            join_bar, \
-            join_baka, \
-            join_diese, \
-            ach_id, \
-            content, \
-            bg_picture, \
-            fg_picture) \
+            ("id", \
+            "modif_alchol", \
+            "modif_attendance", \
+            "modif_ghost", \
+            "modif_bar", \
+            "modif_baka", \
+            "modif_diese", \
+            "join_bar", \
+            "join_baka", \
+            "join_diese", \
+            "ach_id", \
+            "content", \
+            "bg_picture", \
+            "fg_picture") \
             VALUES\
             \n({id}, \
             {modif_alcohol}, \
@@ -249,3 +278,4 @@ def handle_node(filename: str):
 for filename in sys.argv[1:]:
     handle_node(filename)
     handle_ach(filename)
+    handle_end(filename)

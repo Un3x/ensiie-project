@@ -8,10 +8,20 @@ DROP TABLE IF EXISTS "current_story";
 DROP TABLE IF EXISTS "completed";
 DROP TABLE IF EXISTS "choice";
 DROP TABLE IF EXISTS "achievements";
+DROP TABLE IF EXISTS "ends";
 
 DROP TYPE IF EXISTS req_type;
 
 CREATE TYPE req_type AS ENUM('alcohol','ghost','attendance','bar','baka','diese','is_bar','is_baka','is_diese');
+
+CREATE TABLE "ends" (
+  "end_id" int NOT NULL,
+  "end_node" int NOT NULL,
+  "title" varchar NOT NULL,
+  "full_text" varchar NOT NULL,
+  "short_text" varchar NOT NULL,
+  PRIMARY KEY("end_id")
+);
 
 CREATE TABLE "achievements" (
   "id" int NOT NULL,
