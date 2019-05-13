@@ -75,7 +75,15 @@ function inscriptionCarrier()
             $messageErreur = $messageErreur . "Les deux mots de passe donnés ne correspondent 
             pas <br/>";
         }
+        if(!preg_match("#^(\d){10}$#", $_POST["phoneNumber"]))
+        {
+            $messageErreur = $messageErreur . " Le numéro de téléphone n'est pas au bon format. <br/>";
 
+        }
+        if(!preg_match("#^[0-9]{4}-[0-9]{2}-[0-9]{2}$#", $_POST["birthDate"]))
+        {
+            $messageErreur = $messageErreur . " La date de naissance n'est pas au bon format ( AAAA-MM-JJ). <br/>";
+        }
         // vérifier que le pseudo n'est pas déja dans la base
         $bdd = bdd();
         $vendorManager = new VendorManager($bdd);

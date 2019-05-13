@@ -39,6 +39,7 @@ function parametreModifPassword()
             }
         }
         else {
+
             //$message = $user->getPassword()."/et/".$_POST["passwordOld"]."/et/".$_POST["password"]."/et/".$_POST["password2"];
             require('../src/View/User/Profil/parametreView.php');
         }
