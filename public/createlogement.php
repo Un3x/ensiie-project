@@ -3,12 +3,12 @@
 <head>
     <title> Ajouter un logement </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../public/res/css/createloge.css" />
+    <link rel="stylesheet" href="res/css/createloge.css" />
 </head>
 <body>
     <div class="create">
 
-    <h1> La chibraxerie n'est jamais finie </h1>
+    <h1>Ajouter un logement</h1>
 
         <form action="createlogement.php" method = "POST">
             <p> Département </p>

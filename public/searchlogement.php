@@ -6,7 +6,7 @@ include '../src/Logement/Logement.php';
 <head>
     <title> Rechercher un Logement </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../../public/res/css/main.css" />
+    <link rel="stylesheet" href="res/css/main.css" />
 </head>
 <body>
     <form action="searchlogement.php" method = "POST">
