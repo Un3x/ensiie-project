@@ -124,6 +124,10 @@
     </form
 
 <?php
+
+require '../vendor/autoload.php';
+require '../src/User/LogementRepository.php';
+    
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
