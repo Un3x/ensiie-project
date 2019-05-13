@@ -4,13 +4,13 @@ if (isset($_SESSION['authent'])) {
         $peusdo = htmlspecialchars($_POST['uname']);
         $password = htmlspecialchars($_POST['psw']);
         foreach ($users as $utilisateur) {
-            if ($utilisateur->getId() == $peusdo && $utilisateur->getMdp() == $password) {
+            if ($utilisateur->getId() == $peusdo && $utilisateur->getMdp() == $password && $utilisateur->getValid()==1) {
                 $_SESSION['authent'] = 1;
                 $_SESSION['statut'] = $utilisateur->getAdministrateur();
                 $_SESSION['pseudo'] = $utilisateur->getId();
             }
 
-            if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password) {
+            if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password && $utilisateur->getValid()==1) {
                 $_SESSION['authent'] = 1;
                 $_SESSION['statut'] = $utilisateur->getAdministrateur();
                 $_SESSION['pseudo'] = $utilisateur->getId();

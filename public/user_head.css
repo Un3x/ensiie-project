@@ -12,7 +12,7 @@ h1 {
 }
 
 header {
-    background-color: #009925;
+    background-color: rgb(173, 54, 54);
     border-bottom: 1px whitesmoke;
     display: flex;
     justify-content: center;
@@ -126,7 +126,7 @@ header a{
 
 footer {
     text-align: center;
-    background-color: #009925;
+    background-color: rgb(173, 54, 54);
     color: white;
     padding: 20px;
 }
@@ -194,7 +194,7 @@ h1.section {
 
 input[type=reset] {
         padding: 14px 20px;
-        background-color: #f44336;
+        background-color: rgb(173, 54, 54);
         color : white;
 }
 
@@ -252,7 +252,7 @@ form img {
 
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
-  background-color: #009925;
+  background-color: rgb(173, 54, 54);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -383,7 +383,7 @@ img.photo_profil  {
 
 /* When the radio button is checked, add a blue background */
 .radiobox input:checked ~ .radiomark {
-  background-color: #009925;
+  background-color: rgb(173, 54, 54);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

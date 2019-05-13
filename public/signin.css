@@ -143,8 +143,8 @@ input.signin, input.signin {
 
 /* Set a style for all buttons */
 button.boutton {
-  background-color: #4CAF50;
-  color: white;
+  background-color: rgb(226, 215, 166);
+  color: #8b2c2c;
   padding: 14px 20px;
   margin: 8px;
   border: none;

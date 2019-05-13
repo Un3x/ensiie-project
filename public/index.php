@@ -57,11 +57,11 @@ require("header.php");
                 $password = htmlspecialchars($_POST['psw']);
                 $c=0;
                 foreach ($users as $utilisateur) {
-                    if ($utilisateur->getId() == $peusdo && $utilisateur->getMdp() == $password) {
+                    if ($utilisateur->getId() == $peusdo && $utilisateur->getMdp() == $password && $utilisateur->getValid()==1) {
                         $c=$c+1;
                     }
 
-                    if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password) {
+                    if ($utilisateur->getMail() == $peusdo && $utilisateur->getMdp() == $password && $utilisateur->getValid()==1) {
                         $c=$c+1;
                     }
 

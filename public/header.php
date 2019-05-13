@@ -6,14 +6,14 @@
             <link rel="stylesheet" type="text/css" href="user_head.css"/>
             <link rel="stylesheet" type="text/css" href="signin.css"/>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="icon" type="image/ico" href="TTT_green.png"/>
+            <link rel="icon" type="image/ico" href="TTT_red.png"/>
 
         </head>
   
         <body>
             <header>
                 <h1 class="pc"><a href="index.php">"Trouve Ton Truc"</a></h1>
-                <a href="index.php" class="mobile"><img src="TTT_green.png" alt="Logo du site TTT"/></a>
+                <a href="index.php" class="mobile"><img src="TTT_white.png" alt="Logo du site TTT"/></a>
             </header>
 
             <nav>

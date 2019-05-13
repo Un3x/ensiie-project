@@ -263,9 +263,9 @@ require("header.php");
         $prods=array_reverse($ProdRepository->getProdofUser($_GET['pseudo']));
         $c=0;
         foreach ($prods as $prod){
+                $c=$c+1;
                 $ProdRepository->afficheProd($prod);
                 if ($_GET['pseudo']==$_SESSION['pseudo'] && $prod->getValide()==1) {
-                $c=$c+1;
                 echo 
                 "<form method=\"post\" action=\"\">
                     <div class=\"flexbox_button\">
