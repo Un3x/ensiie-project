@@ -1,0 +1,7 @@
+\babel@toc {french}{}
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Approche}{2}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Structure du site}{2}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Fonctionnalit\IeC {\'e}s pour les \IeC {\'e}l\IeC {\`e}ves}{2}{subsection.1.2}% 
+\contentsline {section}{\numberline {2}R\IeC {\'e}partition des r\IeC {\^o}les}{2}{section.2}% 
+\contentsline {section}{\numberline {3}Probl\IeC {\`e}mes rencontr\IeC {\'e}s}{2}{section.3}% 

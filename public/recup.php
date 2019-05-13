@@ -18,9 +18,22 @@ if(empty($_SESSION['recup']) || empty($_SESSION['email']))
   header('Location: forgotten.php');
   exit();
 }
-displayHeader();
 $iduser = $connection->query("select id_user from users where mail= '".$_SESSION['email']."'")->fetch(\PDO::FETCH_OBJ);
 $errorMessage='';
+if(!empty($_POST['NewPW'])&&!empty($_POST['NewPW2']))
+{
+if($_POST['NewPW'] !== $_POST['NewPW2'])
+{
+	$errorMessage='Nouveaux mots de passe differents';
+}
+else
+{
+	$connection->query("UPDATE users SET password='".password_hash($_POST["NewPW"],PASSWORD_BCRYPT)."' WHERE id_user=".$iduser->id_user);
+	$errorMessage='Le mot de passe a été changé !';
+	header("Location: authentification.php");
+}
+}
+displayHeader();
 
 
 function print_code_form($errorMessage)
@@ -61,10 +74,6 @@ function print_chgmdp_form($errorMessage)
             echo '<p>', htmlspecialchars($errorMessage) ,'</p>';
           }
         ?>
-       <p>
-          <label for="AncienPW">Mot de passe actuel :</label> 
-          <input type="password" name="OldPW" id="password" value="" />
-        </p>
         <p>
           <label for="password">Nouveau mot de passe:</label> 
           <input type="password" name="NewPW" id="NewPW" value="" /> 
@@ -101,21 +110,6 @@ if (!empty($_POST['code']))
 } else print_code_form($errorMessage);
 
 
-if(!empty($_POST['OldPW'])&&!empty($_POST['NewPW'])&&!empty($_POST['NewPW2']))
-{ if(!password_verify($_POST['OldPW'],$users[$_SESSION['login']]->getPassword()))
-{
-	$errorMessage='Mauvais mot de passe!';
-}
-elseif($_POST['NewPW'] !== $_POST['NewPW2'])
-{
-	$errorMessage='Nouveaux mots de passe differents';
-}
-else
-{
-	$connection->query("UPDATE users SET password='".password_hash($_POST["NewPW"],PASSWORD_BCRYPT)."' WHERE id_user=".$user->getId());
-	$errorMessage='Le mot de passe a été changé !';
-}
-}
 
 ?>
 
