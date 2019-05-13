@@ -3,7 +3,7 @@
 	require( "../inc/inc.nav.php" );
 	require( "../src/Membre/Membre.php");
 	require( "../src/Membre/MembreRepository.php");
-	entete( "Accueil" );
+	entete( "Equipe" );
 	navAccueil();
 	
 	$dbName = 'realitiie';

@@ -4,7 +4,7 @@
 	require("../src/Article/Article.php");
 	require("../src/Article/ArticleRepository.php");
 	require("../src/Membre/Membre.php");
-	entete("Articles");
+	entete("Compte-rendu");
 	navAccueil();
 	
 	$dbName = 'realitiie';
