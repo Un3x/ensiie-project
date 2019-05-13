@@ -5,23 +5,14 @@ body {
     background-size:cover;
 }
 
-
-.login {
-    position: relative;
-    margin: 150px auto;
-    padding: 20px 20px 20px;
-    width: 300px;
+.inscrip {
+	margin: 100px auto;
+	position: relative;
+	width: 300px;
+	padding: 20px 20px 20px;
+	z-index: -1;
 }
-
-.login p.submit {
-    text-align: right;
-}
-   
-.login-help a:hover {
-    text-decoration: underline;
-}
-
-.login:before {
+.inscrip:before {
     content: '';
     position: absolute;
     top: -8px;
@@ -29,12 +20,12 @@ body {
     bottom: -8px;
     left: -8px;
     z-index: -1;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
 }
-   
-.login h1 {
-    margin: -20px -20px 21px;
+
+.inscrip h1{
+	margin: -20px -20px 21px;
     line-height: 40px;
     font-size: 15px;
     color: white;
@@ -42,16 +33,12 @@ body {
     background: #008000;
     border-radius: 3px;
 }
-   
-.login p {
-    margin: 20px 0 0;
+
+.inscrip input {
+	width: 100%;
 }
 
-.login input[type=text], .login input[type=password] {
-    width: 275px;
-}
-
-.login input[type=submit] {
+.inscrip input[type=submit] {
     background-color: #008000;
     color: white;
     padding: 14px 20px;
@@ -59,4 +46,15 @@ body {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+.inscrip p {
+    margin: 20px 0 0;
+}
+
+.inscrip p.submit {
+    text-align: right;
+}
+.inscrip input[type=text], .inscrip input[type=password],.inscrip input[type=date] {
+    width: 275px;
 }

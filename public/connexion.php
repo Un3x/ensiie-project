@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="res/css/connexion.css" />
 <?php include_once("navbar.phtml"); ?>
 
 <!DOCTYPE html>
@@ -6,15 +5,15 @@
 <head>
     <title> S'inscrire </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/res/css/form.css" />
+    <link rel="stylesheet" href="/res/css/login.css" />
 </head>
 
 <body>
     <div class="login">
         <h1>Connexion</h1>
         <form action="connexion.php" method = "POST">
-           <p> Email </p>
-          <input type="text" name="email">
+            <p> Email </p>
+            <input type="text" name="email">
             <p> Mot de passe </p>
             <input type="password" name="mdp">
             <p><input type="submit"></p>

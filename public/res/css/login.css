@@ -1,0 +1,58 @@
+body {
+    background-image:url(../../image/arriereplan.jpg);
+    background-repeat:no-repeat;
+    background-origin: [border-box|padding-box|content-box];
+    background-size:cover;
+}
+
+
+.login {
+    position: relative;
+    margin: 100px auto;
+    padding: 20px 20px 20px;
+    width: 300px;
+}
+
+.login p.submit {
+    text-align: right;
+}
+
+.login:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
+   
+.login h1 {
+    margin: -20px -20px 21px;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    background: #008000;
+    border-radius: 3px;
+}
+   
+.login p {
+    margin: 20px 0 0;
+}
+
+.login input[type=text], .login input[type=password] {
+    width: 275px;
+}
+
+.login input[type=submit] {
+    background-color: #008000;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
