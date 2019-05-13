@@ -12,6 +12,7 @@ function initChampsPost()
     $valeurDefaut['password2'] = $_POST['password2'];
     $valeurDefaut['description'] = $_POST['description'];
     $valeurDefaut['birthDate'] = $_POST['birthDate'];
+    $valeurDefaut['phoneNumber']= $_POST['phoneNumber'];
     return $valeurDefaut;
 }
 
@@ -24,6 +25,7 @@ function initChamps()
     $valeurDefaut['mail'] ="";
     $valeurDefaut['description'] ="";
     $valeurDefaut['birthDate'] = "";
+    $valeurDefaut['phoneNumber'] ="";
     return $valeurDefaut;
 }
 

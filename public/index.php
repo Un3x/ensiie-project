@@ -116,7 +116,7 @@ if( isset($_GET['action'])) {
                 && isset($_POST['password2']) && isset($_POST['prenom'])
                 && isset($_POST['nom']) && isset($_POST['genre']) && isset($_POST['phoneNumber']) && isset($_POST['birthDate'])
                 && isset($_POST['mail'])
-                && isset($_POST['description']) && isset($_POST['race']))
+                && isset($_POST['description']) && isset($_POST['race']) && isset($_POST['price']))
             {
                 inscriptionCarrier();
             }

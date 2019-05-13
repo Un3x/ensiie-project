@@ -13,6 +13,7 @@ function inscriptionCarrierDebut()
 
     $messageErreur = "";
     $valeurDefaut = initChamps();
+    $valeurDefaut['price'] = "";
 
     //creer la liste déroulante :
 
@@ -39,7 +40,23 @@ function inscriptionCarrier()
 
     $messageErreur='<span class="warning">';
 
+
     $valeurDefaut = initChampsPost();
+    $valeurDefaut['price'] = $_POST['price'];
+    // il faut regenerer la liste des races :
+
+    $tabRace = getListeRace();
+    $optionRace = "";
+    for ($i = 0; $i < count($tabRace); $i++) {
+        $optionRace = $optionRace . " <option value='". $tabRace[$i]->getId()."' > " . $tabRace[$i]->getName() . "  </option>";
+    }
+
+    $caracRace = "<p> ";
+    for ($i = 0; $i < count($tabRace); $i++) {
+        $caracRace = $caracRace . '<span class="info" id='.$i.'> Vitesse : ' . $tabRace[$i]->getSpeed() . '<br\> Nombre maximum : ' . $tabRace[$i]->getCapacity() . "</span>";
+        $caracRace = $caracRace . "</p>";
+    }
+
 
     if(empty($_POST["mail"]) || empty($_POST["password"]) || empty($_POST["password2"])
         || empty($_POST["prenom"]) || empty($_POST["nom"]) || empty($_POST["genre"]) || empty($_POST["phoneNumber"]) || empty($_POST["birthDate"]))
@@ -84,19 +101,8 @@ function inscriptionCarrier()
     }
     $messageErreur=$messageErreur." </span>";
 
-    // il faut regenerer la liste des races :
 
-    $tabRace = getListeRace();
-    $optionRace = "";
-    for ($i = 0; $i < count($tabRace); $i++) {
-        $optionRace = $optionRace . " <option value='". $tabRace[$i]->getId()."'> " . $tabRace[$i]->getName() . "  </option>";
-    }
 
-    $caracRace = "<p> ";
-    for ($i = 0; $i < count($tabRace); $i++) {
-        $caracRace = $caracRace . '<span class="info" id='.$i.'> Vitesse : ' . $tabRace[$i]->getSpeed() . '<br\> Nombre maximum : ' . $tabRace[$i]->getCapacity() . "</span>";
-        $caracRace = $caracRace . "</p>";
-    }
 
     require('../src/View/User/Link/inscriptionCarrierView.php');
 }

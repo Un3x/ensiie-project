@@ -50,7 +50,7 @@
             <br/>
 
             <label for="phoneNumber"> Votre numéro de téléphone : </label>
-            <input type="tel" name="phoneNumber" id="phoneNumber"/>
+            <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$valeurDefaut['phoneNumber']?>"/>
             <span class="contrainte">
                 Ceci n'est pas un numéro de téléphone. <br/>
             </span>
@@ -74,6 +74,13 @@
         </fieldset>
 
         <br/>
+
+        <label for="price"> Votre prix (en lingot d'or par   ) : </label>
+        <input type="number" id="price" name="price"/>
+        <br/>
+
+        <br/>
+
         <label for="genre"> Votre genre : </label>
         <select id="genre" name="genre">
             <option> Masculin </option>

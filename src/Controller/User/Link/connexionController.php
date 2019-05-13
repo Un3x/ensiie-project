@@ -25,10 +25,7 @@ function tentativeConnexion()
         {
             $_SESSION['userId'] =  $user->getId();
             $_SESSION['userType'] = get_class($user);
-            //appeler plutôt le contrôleur correspondant ou header en repassant par index.php ?
             $GLOBALS['user']=$user;
-
-
             require("../src/Controller/User/Profil/profilController.php");
             profilDebut();
         }

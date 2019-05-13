@@ -50,7 +50,7 @@
             </span>
              <br/>
             <label for="phoneNumber"> Votre numéro de téléphone : </label>
-            <input type="tel" name="phoneNumber" id="phoneNumber"/>
+            <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$valeurDefaut['phoneNumber']?>"/>
             <span class="contrainte">
                 Ceci n'est pas un numéro de téléphone. <br/>
             </span>

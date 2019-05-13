@@ -33,12 +33,15 @@
 
         <br/>
 
-        <label for="age"> Votre age :  </label>
-        <input type="number" id="age"  value="<?=$valeurDefaut['age']?>"  <?php if(!$modif) echo "readonly"; ?> />
+
 
         <br/>
         <label for="phoneNumber"> Votre numéro de téléphone : </label>
         <input type="tel" id="phoneNumber" name="phoneNumber" value="<?=$valeurDefaut['phoneNumber']?>" <?php if((!$modif)) echo "readonly"; ?> />
+        <br/>
+
+
+        <br/>
         <br/>
 
         <label for="description"> Votre description : </label>
@@ -48,18 +51,26 @@
         </textarea>
 
         <br/>
-
+        <br/>
+        <br/>
 
         <?php if($_SESSION['userType']=='Vendor')  { ?>
-
-
-        <label for="vitesse"> Vitesse : </label>
+<label for="race"> Votre race : </label>
             <br/>
-            <label for="nb_max"> Capacité de charge : </label>
+
+            <?=$race?>
+
             <br/>
+            <br/>
+            <label for="price"> Votre prix ( en lingot d'or par ) : </label>
+            <input type="number" id="price" name="price" value="<?=$valeurDefaut['price']?>" <?php if(!$modif) echo "readonly"; ?> />
 
 
         <?php } ?>
+
+        <br/>
+        <br/>
+        <br/>
 
 
         <?php if($modif)  { ?>
@@ -107,3 +118,12 @@ Ah, bah moi non plus, je ne le savais pas.
 <?php $content = ob_get_clean(); ?>
 
 <?php require("../src/View/template.php"); ?>
+
+<?php if($_SESSION["userType"] == 'Vendor' && $modif)  {?>
+
+<script src="../public/js/changementCaracRace.js">
+
+</script>
+
+<?php } ?>
+
