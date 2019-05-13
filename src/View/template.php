@@ -70,12 +70,12 @@
 
         <footer class="row notmain">
             <ul class="col-xs-6">
-                <li>A propos de nous</li>
-                <li>Contactez-nous</li>
+                <li><a href="/aPropos" class="whiteStyle">A propos de nous</a></li>
+                <li><a href="/contactezNous" class="whiteStyle">Contactez-nous</a></li>
              </ul>
             <ul class="col-xs-6"> 
-                <li>Nos conditions d'utilisations</li>      
-                <li>Cliquez ici pour vendre votre âme </li>
+                <li><a href="/conditionUtilisation" class="whiteStyle">Nos conditions d'utilisations</a></li>      
+                <li><a href="/venteAme" class="whiteStyle">Cliquez ici pour vendre votre âme</a></li>
             </ul>
         </footer>
     </body>
