@@ -21,7 +21,7 @@
 <?php
 	$i = 2;
 	foreach($articles as $article){
-		if ($article->get_Date() <= getDate()){
+		if ($article->getDate() > getDate()){
 			if ($i == 1)
 				$i = 2;
 			else
@@ -30,7 +30,7 @@
 			echo '<div class="CR-border'.$i.'">
 			<h3>'.$article->getTitre().'</h3>';
 		
-			$imgs = ???;
+			$imgs = $articleRepository->getMedias($article->getId());
 			foreach($imgs as $img){
 				if(file_exists($img) == true){
 						echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 

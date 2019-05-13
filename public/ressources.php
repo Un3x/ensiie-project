@@ -28,7 +28,7 @@
 		echo '<div class="round-border">
 			<p>'.$tuto->getTitre().'</p>';
 		
-		$imgs = ???;
+		$imgs = $TutoRepository->getMedias($tuto->getId());;
 		foreach($imgs as $img){
 			if(file_exists($img) == true){
 					echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 

@@ -43,7 +43,7 @@
 			
 			<?php
 			foreach ($membres as $membre) {
-				$imgs = ???
+				$imgs = $membreRepository->getMedias($membre->getId());
 				$img = $imgs[0];
 				if(file_exists($img) == false){
 					$img = "../img/badassChicken.png";

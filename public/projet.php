@@ -37,7 +37,7 @@
 		
 		<?php
     	foreach ($jeux as $jeu) {
-			$imgs = ???
+			$imgs = $jeuRepository->getMedias($jeu->getId());
 			$img = $imgs[0];
 			if(file_exists($img) == false){
 				$img = "../img/RobotRealitIIE.png";
