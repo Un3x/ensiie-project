@@ -5,14 +5,13 @@
 <body>
 
 <?php
-$id_page="articlemodification";
 require '../src/Article/Article.php';
 require '../src/Article/ArticleRepository.php';
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" ,$id_page);
+entete( "Accueil" );
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
@@ -48,13 +47,7 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
         $_POST['auteur'] = $_SESSION['id'];
     }
     
-    if (isset($_POST['cr'])){
-        $cr = $_POST['cr'];
-    }else{
-        $cr = 0;
-    }
-    
-    $status = $articleRepository->setArticle($_GET['id'], $_POST['titre'], $_POST['texte'], $_POST['auteur'], $_POST['date'], $cr);
+    $status = $articleRepository->setArticle($_GET['id'], $_POST['titre'], $_POST['texte'], $_POST['auteur'], $_POST['date']);
     
     if($status){
         echo '<h4>L\'article n°'.$_GET['id'].' a bien été modifié</h4>';
@@ -107,15 +100,6 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
             	<br/>
             <?php } ?>
         	<label>Date de publication : </label><input name="date" type="date" value="<?php echo $article->getDate()->format('Y-m-d') ?>" required/>
-        	
-        	<br/><br/>
-        	<?php if($article->getCr()){ ?>
-        		<label>Compte-rendu : </label><input type="checkbox" name="cr" value="1" checked>
-        	<?php }else{ ?>
-        		<label>Compte-rendu : </label><input type="checkbox" name="cr" value="1">
-        	<?php } ?>
-        	<br/><br/>
-        	
         	<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>
