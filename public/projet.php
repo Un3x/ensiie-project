@@ -38,7 +38,8 @@
 			
     	    echo 
     	    '<tr>
-				<td><img src='.$img.' alt="404 : game not found" width="150" height="150"/></td>
+				<td><img src='.$img.' alt="404 : game not found" width="75" height="75"/></td>
+				<td><a href=../public/jeuDetail.php?id='.$jeu->getId().'>'.$jeu->getTitre().'</a></td>
 				<td>';
 			
 			$team = $teamRepository->getEquipe($jeu->getId());
@@ -50,7 +51,6 @@
 			
 			echo
 			'</td>
-				<td>'.$jeu->getTitre().'</td>
 				<td>'.$jeu->getGit().'</td>
 				<td><a href=../data/jeux/'.$jeu->getTelechargement().' download='.$jeu->getTitre().'>download</a></td>
 			</tr>';

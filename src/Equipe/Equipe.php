@@ -76,15 +76,15 @@ class Equipe
     }
     
     /**
-     * @param Membre $membre
+     * @param int $membre
      * @return string
      */
     public function getRole($membre)
     {
-        if(in_array($membre, $this->membres)){
-            return $this->membres[$membre->getId()];
+        if(isset($this->roles[$membre])){
+            return $this->roles[$membre];
         }else{
-            
+            return "";
         }
     }
     

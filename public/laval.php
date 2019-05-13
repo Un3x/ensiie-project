@@ -7,7 +7,7 @@
 
 <h2>LAVAL VIRTUAL</h2>
 
-<div>
+<div class="round-border">
 	<h3>Laval Virtual : Quézaco? </h3>
 	<p> 
 		Laval Virtual est le plus grand salon d'Europe (??) sur la Réalitée Virtuelle (VR), 
@@ -29,8 +29,9 @@
 		RealitIIE envoie donc toujours une ou deux équipes de 4 élèves pour participer à ce concours.		
 	</p>
 </div>
-
-<div>
+</br>
+</br>
+<div class="round-border">
 	<h3>Les jeux de Laval</h3>
 	<p>Available soon!</p>
 	<p>Vous retrouverez ici tous les jeux VR qui ont été réalisés pendant cette évènement </p>

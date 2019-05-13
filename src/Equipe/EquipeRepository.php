@@ -72,15 +72,14 @@ class EquipeRepository
     {
         $jeuRepository = new JeuRepository($this->connection);
         
-        $rows = $this->connection->query('SELECT id_membre, equipe.role, nom, prenom, surnom, promo, membre.role
-                                          FROM "equipe" NATURAL JOIN "membre"
+        $rows = $this->connection->query('SELECT membre.id_membre, equipe.role as erole, nom, prenom, surnom, promo, membre.role
+                                          FROM equipe JOIN membre on equipe.id_membre = membre.id_membre
                                           WHERE id_jeu = '.$idJeu)->fetchAll(\PDO::FETCH_OBJ);
         
         $jeu = $jeuRepository->getJeu($idJeu);
                 
         $membres = array();
         $roles = array();
-        
         foreach ($rows as $row) { 
             $membre = new Membre();
             $membre
@@ -89,10 +88,10 @@ class EquipeRepository
             ->setPrenom($row->prenom)
             ->setSurnom($row->surnom)
             ->setPromo($row->promo)
-            ->setRole($row->membre.role);
+            ->setRole($row->role);
             
             $membres[] = $membre;
-            $roles[membre] = $row->equipe.role;
+            $roles[$membre->getId()] = $row->erole;
         }
         
         $equipe = new Equipe();
