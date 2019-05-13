@@ -22,7 +22,7 @@
 <div class="round-border">
 	<h3>Voici des tutos qui pourront vous aider dans vos projets!</h3>
 </div>
-</br>
+<br/>
 <?php 
 	foreach($tutos as $tuto){
 		echo '<div class="round-border">
@@ -41,7 +41,7 @@
 					view '.$tuto->getTitre().'.pdf
 				</a>
 			</p>
-			</div></br>';
+			</div><br/>';
 	}
 ?>
 

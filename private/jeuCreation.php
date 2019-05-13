@@ -20,11 +20,6 @@ if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de con
     exit();
 }
 
-$dbName = 'realitiie';
-$dbUser = 'postgres';
-$dbPassword = 'postgres';
-$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
-
 $jeuRepository = new \Jeu\JeuRepository($connection);
 $equipeRepository = new \Equipe\EquipeRepository($connection);
 
