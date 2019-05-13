@@ -2,7 +2,7 @@
 	
 if ((isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['carrierId'])) || isset($_GET['courseId'])){
 
-	require '../vendor/autoload.php';
+	//require '../vendor/autoload.php';
 	require '../src/Model/Course/CourseManager.php';
 
 	$connection = bdd();

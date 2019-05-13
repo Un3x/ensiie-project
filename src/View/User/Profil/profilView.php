@@ -104,15 +104,6 @@
 
 
 
-<section> 
-
-Savez-vous que ... ? 
-Ah, bah moi non plus, je ne le savais pas.
-
-</section>
-
-
-
 
 
 <?php $content = ob_get_clean(); ?>

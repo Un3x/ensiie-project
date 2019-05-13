@@ -32,12 +32,32 @@ class CourseManager
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row['id_course'])
+                ->setId($row['id'])
                 ->setDeparture($row['departure'])
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
                 ->setDepartureDateTime($row['departureDateTime'])
-                ->setState($row['state']);
+                ->setState($row['state'])
+                ->setPrice($row['price']);
+            $courses[] = $course;
+        }
+
+        return $courses;
+    }
+    public function fetchAllCoursesAll()
+    {
+        $rows = $this->connection->query("SELECT * FROM course")->fetchAll();
+        $courses = [];
+        foreach ($rows as $row) {
+            $course = new Course();
+            $course
+                ->setId($row['id'])
+                ->setDeparture($row['departure'])
+                ->setArrival($row['arrival'])
+                ->setCarrier($row['carrier'])
+                ->setDepartureDateTime($row['datetime'])
+                ->setState($row['state'])
+                ->setPrice($row['price']);
             $courses[] = $course;
         }
 

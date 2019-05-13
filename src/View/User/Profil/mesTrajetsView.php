@@ -9,9 +9,10 @@
             <th> Lieu d'arrivée</th>
             <th> Date </th>
             <th> Heure de départ</th>
-            <th> Transporteur </th>
-            <th> Transporteur </th>
+            <th> Prénom du transporteur </th>
+            <th> Nom du transporteur </th>
             <th> Prix </th>
+            <th>  Détails </th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
             <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getFirstname()?> </td>
             <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getSurname()?> </td>
             <td>  <?=$mesCourses[$i]->getCarrier()?> </td>
+            <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'info </a></td>
         </tr>
     <?php } ?>
     </tbody>

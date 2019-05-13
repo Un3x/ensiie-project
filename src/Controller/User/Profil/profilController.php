@@ -8,7 +8,6 @@ function initChamps()
 {
     //initialisation des champs avec la BDD
     $user = $GLOBALS['user'];
-    $valeurDefaut['age'] = 0;
     $valeurDefaut['prenom'] = $user->getFirstName();
     $valeurDefaut['nom'] = $user->getSurname();
     $valeurDefaut['description'] = $user->getDescription();
