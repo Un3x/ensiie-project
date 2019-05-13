@@ -69,3 +69,13 @@ ul.topnav li.right {float: right;}
 .tableinput {
 	border:none;
 }
+
+#select-interface {
+	display: flex;
+	justify-content: space-evenly;
+  }
+  #select-interface  select {
+	vertical-align: top;
+	margin-left: 1em;
+  }
+  

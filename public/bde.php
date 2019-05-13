@@ -17,9 +17,8 @@ displayHeader();
     
     <h1 id = "PageBDE"> <label> Gestion BDE : </label> </h1></header>
 
-  <table class="table">
-	<div style="display: flex; justify-content: space-between">
-	  <div style="display: flex">Consulter points associatifs de(s) l'année(s) :&nbsp;
+	<div id="select-interface">
+	  <div >Consulter points associatifs de(s) l'année(s) :&nbsp;
 				<select id="promoAnnee" multiple="multiple" size="4">
 		  <option value="2018" selected="selected">1A (Promo 2021)</option>
 		  <option value="2017">2A (Promo 2020)</option>
@@ -27,7 +26,7 @@ displayHeader();
 		  <option value="2015">4A (Promo 2018)</option>
 		</select>
 	  </div>
-	  <div style="display: flex"> pour l(es) association(s) :&nbsp;
+	  <div > pour l(es) association(s) :&nbsp;
 		<select id="association" multiple="multiple" size="4">
 		  <option>Aucune Asso</option>
 		</select>
@@ -43,7 +42,6 @@ displayHeader();
 		<button onclick="action_exp()">Export CSV</button>
 	  </div>
 	</div>
-  </table>
 
   <button onclick="action_aff()">Rechercher</button>
 
