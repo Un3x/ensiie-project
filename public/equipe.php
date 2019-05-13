@@ -1,4 +1,5 @@
 <?php
+	$id_page="equipe";
 	require( "../inc/inc.default.php" );
 	require( "../inc/inc.nav.php" );
 	require( "../src/Membre/Membre.php");
@@ -13,6 +14,7 @@
 
 	$membreRepository = new \Membre\MembreRepository($connection);
 	$membres = $membreRepository->fetchAll();
+	
 	
 ?>
 

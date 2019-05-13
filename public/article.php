@@ -1,4 +1,5 @@
 <?php
+	$id_page="article";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Article/Article.php");

@@ -1,13 +1,17 @@
 <?php
+	$id_page="ressources";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Tuto/Tuto.php");
 	require("../src/Tuto/TutoRepository.php");
 	entete("Ressources");
+	
 	navAccueil();
 
 	$TutoRepository = new \Tuto\TutoRepository($connection);
 	$tutos = $TutoRepository->fetchAll();
+	
+	
 ?>
 
 <div class="round-border">

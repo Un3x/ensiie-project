@@ -5,6 +5,7 @@ function ajoutMembre()
 function suppMembre()
 {
 	var nbMembres = document.getElementsByClassName( "selectName" ).length;
+	console.log( nbMembres );
 	if( nbMembres > 0 )
 	{
 		var membres = [];
@@ -12,7 +13,6 @@ function suppMembre()
 		{
 			membres[i] = document.getElementsByName( "membre"+(i+1) )[0];
 		}
-		console.log( membres );
 		var parent = membres[membres.length - 1].parentElement.parentElement;
 		parent.removeChild( membres[membres.length - 1].parentElement );
 	}
@@ -27,7 +27,6 @@ function ajouterSelectMembres( membres )
 		var div             = document.createElement( "div" );
 		var saisie          = document.createElement( "input" );
 		var ajout           = document.createElement( "select" );
-		var boutonSupprimer = document.createElement( "input" );
 
 		ajout.name          = "membre" + (nbMembres+1);
 		ajout.required      = "required";
@@ -58,6 +57,7 @@ function ajouterSelectMembres( membres )
 		champ.insertBefore( div, elementAAjouterApres );
 	}
 }
+
 function getMembres()
 {
 	var xhttp = new XMLHttpRequest();

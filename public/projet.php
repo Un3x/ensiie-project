@@ -1,4 +1,5 @@
 <?php
+	$id_page="projet";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	require("../src/Jeu/Jeu.php");
@@ -8,6 +9,9 @@
 	require("../src/Membre/Membre.php");
 	
 	entete("Projets");
+	
+	
+	
 	navAccueil();
 	
 	$dbName = 'realitiie';
@@ -18,6 +22,9 @@
 	$JeuRepository = new \Jeu\JeuRepository($connection);	
 	$jeux = $JeuRepository->fetchAll();
 	$teamRepository = new \Equipe\EquipeRepository($connection);
+	
+	
+	
 ?>
 
 <h2>PROJETS!</h2>
