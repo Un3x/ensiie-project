@@ -5,7 +5,7 @@
 <body>
 
 <?php
-$id_page="miseajourcreation";
+$id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require '../src/Miseajour/Miseajour.php';
