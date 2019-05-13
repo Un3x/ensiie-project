@@ -11,13 +11,12 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
     <title> Accueil </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../public/res/css/accueil.css" />
-    <link rel="stylesheet" href="../../public/res/css/main.css" />
+    <link rel="stylesheet" href="../res/css/Accueil.css" />
+    <link rel="stylesheet" href="../res/css/main.css" />
 </head>
 <body>
 
