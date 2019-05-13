@@ -32,14 +32,11 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
 	$titreJeu = htmlspecialchars_decode($_POST['titre']);
 	$git      = htmlspecialchars_decode($_POST['git']);
 	$lienT    = htmlspecialchars_decode($_POST['telechargement']);
-	echo "$titreJeu";
-	echo " $git ";
-	echo $lienT;
  
-	//$status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
+	$status = $jeuRepository->createJeu($_POST['titre'], $_POST['git'], $_POST['telechargement'], $_POST['description']);
 
 	$idJeu = $jeuRepository->getIdJeu( $titreJeu );
-	echo "<p>idJeu : $idJeu</p>";
+
 	$i = 1;
 	while( isset($_POST['membre'.$i]) && isset($_POST['roleMembre'.$i]) )
 	{
@@ -51,16 +48,14 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
 		$i = $i + 1;
 	}
 
-    
-    
-    /*if($status){
-        echo '<h4>Le projet a bien été créé</h4>';
-    }else{
-        echo '<h4>Erreur: la création du nouveau projet a échoué!</h4>';
-    }*/
-    
-    echo '<h4>Redirection vers la liste des projets...</h4>';
-    //header( "refresh:3;url=jeux.php" );
+	if($status){
+		echo '<h4>Le projet a bien été créé</h4>';
+	}else{
+		echo '<h4>Erreur: la création du nouveau projet a échoué!</h4>';
+	}
+
+	echo '<h4>Redirection vers la liste des projets...</h4>';
+	header( "refresh:3;url=jeux.php" );
 }else{
 
     echo '<h1>Création d\'un projet</h1>';
@@ -76,6 +71,7 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
         	<br/>
 			<label>Lien de téléchargement : </label><textarea name="telechargement" rows="5" cols="40" required></textarea>
 			<input type="button" id="bAjoutMembre" onclick="ajoutMembre()" value="Ajouter un membre" />
+			<input type="button" id="bSuppMembre" onclick="suppMembre()" style="background-color:red" value="Supprimer le dernier Membre" />
         	<input type="submit" id="bEnvoyer" name="creation" value="Envoyer"/>
         </form>
     </div>

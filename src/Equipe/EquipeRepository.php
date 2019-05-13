@@ -70,8 +70,9 @@ class EquipeRepository
 	
 	public function createEquipe( $idJeu, $idMembre, $role )
 	{
-		$eadza = $this->connection->query("INSERT INTO equipe VALUES( $idJeu, $idMembre, $role)");
-		echo " $eadza ";
+		$sql = "INSERT INTO equipe VALUES (?, ?, ?);";
+		$req = $this->connection->prepare($sql);
+		$status = $req->execute(array($idJeu,$idMembre, $role) );
 	}
     
     public function getEquipe($idJeu)
