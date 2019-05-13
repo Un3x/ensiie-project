@@ -36,10 +36,7 @@ class UserRepository
         return $users;
     }
 
-
-}
-
-/**
+    /**
      * Add user to the database
      * @param \User $user
      * @return boolean
@@ -61,3 +58,5 @@ class UserRepository
         }
 
     }
+
+}
