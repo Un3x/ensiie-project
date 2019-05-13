@@ -9,7 +9,7 @@
 		$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 	}
 
-	function entete( $titre = "" )
+	function entete( $titre = "" ,$id_page)
 	{
 		echo "<!DOCTYPE HTML>\n";
 		echo "<html lang=\"fr\"\n";
@@ -23,7 +23,7 @@
 		echo "</head>\n";
 		echo "<body>\n";
 		initialisation();
-		menu();
+		menu($id_page);
 	}
 
 	function pied()
@@ -36,7 +36,7 @@
 		echo "</html>";
 	}
 
-	function menu()
+	function menu($id_page)
 	{
 		/*echo "\t\t<a class=\"active\" href=\"../public/index.php\">\n";
 		echo "\t\t\tRealitiie\n";
@@ -89,17 +89,75 @@
 		
 		echo "\t</div>\n";
 		echo "</header>\n";*/
-	    
+	    echo "<div class=\"menu\">";
+    	echo "    <ul class=\"menu\">";
+		
+		if($id_page != "index")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\" href=\"../public/index.php\">Accueil</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Accueil</p></li>";
+		}
+		
+		if($id_page != "equipe")
+		{
+			echo "<li class=\"menu\"><a class=\"menu\" href=\"../public/equipe.php\">Équipe</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Équipe</p></li>";
+		}
+        
+
+		
+		if($id_page != "article")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\"href=\"../public/article.php\">Articles</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Articles</p></li>";
+		}	
+		
+		
+		
+		if($id_page != "debrief")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\"href=\"../public/debrief.php\">Comptes-rendus</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Comptes-rendus</p></li>";
+		}	
+        	    
+        
+		if($id_page != "projet")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\"href=\"../public/projet.php\">Projets</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Projets</p></li>";
+		}		
+        	    
+        if($id_page !="laval")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\"href=\"../public/laval.php\">Laval</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Laval</p></li>";
+		}	    
+        	  
+
+		if($id_page != "ressources")
+		{
+			echo"<li class=\"menu\"><a class=\"menu\"href=\"../public/ressources.php\">Ressources</a></li>";
+		}
+		else{
+			echo"<li class=\"menu active\"><p>Ressources</p></li>";
+		}
+		
+		
+		
 	    ?>
-	    <div class="menu">
-    	    <ul class="menu">
-        	    <li class="menu"><a class="menu active" href="../public/index.php">Accueil</a></li>
-        	    <li class="menu"><a class="menu" href="../public/equipe.php">Équipe</a></li>
-        	    <li class="menu"><a class="menu"href="../public/article.php">Articles</a></li>
-        	    <li class="menu"><a class="menu"href="../public/debrief.php">Comptes-rendus</a></li>
-        	    <li class="menu"><a class="menu"href="../public/projet.php">Projets</a></li>
-        	    <li class="menu"><a class="menu"href="../public/laval.php">Laval</a></li>
-        	    <li class="menu"><a class="menu"href="../public/ressources.php">Ressources</a></li>
+	    
         	    
         	    <?php
         	    if(isset($_SESSION['pseudo'])){ //Si connecté, affiche un lien vers la page d'administration

@@ -4,7 +4,7 @@
 	require("../inc/inc.nav.php");
 	require("../src/Tuto/Tuto.php");
 	require("../src/Tuto/TutoRepository.php");
-	entete("Ressources");
+	entete("Ressources",$id_page);
 	
 	navAccueil();
 
