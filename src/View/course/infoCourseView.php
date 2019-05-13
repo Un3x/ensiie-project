@@ -3,7 +3,7 @@
 <?php ob_start();?>
 
 <div>
-	nom : <?=$name ?> <br/>
+	nom : <a href='/userInfos/<?= $userType=="Vendor" ? "Client" : "Vendor" ?>/<?=$id?>'> <?=$name ?> </a> <br/>
 	prix : <?=$price ?> €<br/>
 	lieu de départ : <?=$departureName ?> <br/>
 	lieu d'arrivée : <?=$arrivalName ?> <br/>

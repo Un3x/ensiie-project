@@ -99,7 +99,7 @@ class CityManager
 	 */
     public function update(City $city)
     {
-		$statement = $this->connection->prepare("UPDATE from cities set name=:name, latitude=:latitude, longitude=:longitude, population=:population where id=:id");
+		$statement = $this->connection->prepare("UPDATE cities set name=:name, latitude=:latitude, longitude=:longitude, population=:population where id=:id");
 		return $statement->execute(array("name" => $city->getName(),"latitude"=>$city->getLatitude(),"longitude"=>$city->getLongitude(),"population"=>$city->getPopulation(),"id" => $city->getId()));
     }
 	/**

@@ -37,7 +37,7 @@
                     if($GLOBALS['user']) 
                     {
                 ?>
-                        <li>
+                        <li class="col-md-1">
                             <a href="index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
                         </li>
                 <?php
