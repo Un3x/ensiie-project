@@ -83,7 +83,7 @@ class Logement
      */
     public function setDep($dep)
     {
-        $this->idLogement = $dep;
+        $this->departement = $dep;
         return $this;
     }
 

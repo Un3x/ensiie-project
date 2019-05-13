@@ -9,7 +9,7 @@
 
     <form action="createlogement.php" method = "POST">
         <p> Département </p>
-        <select name="département">
+        <select name="departement">
         <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -126,8 +126,8 @@
     <?php
 
     require '../vendor/autoload.php';
-    require_once '../src/Logement/LogementRepository.php';
-    require_once '../src/Logement/Logement.php';
+    require '../src/Logement/LogementRepository.php';
+    require '../src/Logement/Logement.php';
     
     $dbName = getenv('DB_NAME');
     $dbUser = getenv('DB_USER');
@@ -138,7 +138,7 @@
     if (isset($_POST['prix'])){
     $logement.setDep($_POST['departement']);
     $logement.setVille($_POST['ville']);
-    $logement.setPrix($_POST['ville']);
+    $logement.setPrix($_POST['prix']);
     $logementRepository->addLogement($logement);
     }
     ?>
