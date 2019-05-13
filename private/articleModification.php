@@ -6,24 +6,20 @@
 <body>
 
 <?php
+$id_page="admin";
 require '../src/Article/Article.php';
 require '../src/Article/ArticleRepository.php';
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" );
+entete( "Accueil" ,$id_page);
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
     require( "../inc/connexionForm.php" );
     exit();
 }
-
-$dbName = 'realitiie';
-$dbUser = 'postgres';
-$dbPassword = 'postgres';
-$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
 
 $articleRepository = new \Article\ArticleRepository($connection);
 
@@ -53,7 +49,7 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 	$texte     = htmlspecialchars_decode( $_POST['texte'] );
 	$auteur    = htmlspecialchars_decode( $_POST['auteur'] );
 	$date      = htmlspecialchars_decode( $_POST['date'] );
-    $status = $articleRepository->setArticle( $idArticle, $idArticle, $texte, $auteur, $date);
+    
 	/*$i = 1;
 	echo "patate";
 	while( isset($_FILES['media'.$i]) && $i < 5 )
@@ -63,6 +59,15 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 		echo var_dump($_POST['media'.$i]);
 		$i = $i + 1;
 	}*/
+    
+    if (isset($_POST['cr'])){
+        $cr = $_POST['cr'];
+    }else{
+        $cr = 0;
+    }
+    
+    $status = $articleRepository->setArticle( $idArticle, $idArticle, $texte, $auteur, $date, $cr);
+    
     if($status){
         echo '<h4>L\'article n°'.$_GET['id'].' a bien été modifié</h4>';
     }else{
@@ -130,7 +135,16 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 			?>
 			<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
 			<input type="button" id="bSuppMedia" onclick="suppMedia()" style="background-color:red" value="Supprimer la dernière image" />
-			<input type="submit" name="modification" value="Envoyer"/>
+        	
+        	<br/><br/>
+        	<?php if($article->getCr()){ ?>
+        		<label>Compte-rendu : </label><input type="checkbox" name="cr" value="1" checked>
+        	<?php }else{ ?>
+        		<label>Compte-rendu : </label><input type="checkbox" name="cr" value="1">
+        	<?php } ?>
+        	<br/><br/>
+        	
+        	<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>
     

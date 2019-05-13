@@ -33,6 +33,15 @@ class Article
     /**
      * @return int
      */
+    
+    /**
+     * @var bool
+     */
+    private $cr;
+    
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
@@ -130,10 +139,28 @@ class Article
         $now = new \DateTime();
 
         if ($now < $this->getDate()) {
-            throw new \OutOfRangeException('Pas encore publié');
+            throw new \OutOfRangeException('Pas encore publiï¿½');
         }
 
         return $now->diff($this->getDate())->y;
+    }
+    
+    /**
+     * @param bool $cr
+     * @return Article
+     */
+    public function setCr($cr)
+    {
+        $this->cr = $cr;
+        return $this;
+    }
+    
+    /**
+     * @return bool
+     */
+    public function getCr()
+    {
+        return $this->cr;
     }
 }
 

@@ -5,11 +5,12 @@
 <body>
 
 <?php
+$id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "jeux" );
+entete( "jeux" ,$id_page);
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion

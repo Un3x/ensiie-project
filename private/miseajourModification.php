@@ -5,13 +5,14 @@
 <body>
 
 <?php
+$id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require '../src/Miseajour/Miseajour.php';
 require '../src/Miseajour/MiseajourRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Accueil" );
+entete( "Accueil" ,$id_page);
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion

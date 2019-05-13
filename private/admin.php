@@ -5,11 +5,12 @@
 <body>
 
 <?php
+$id_page="admin";
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
 require( "../inc/inc.nav.php" );
-entete( "Administration" );
+entete( "Administration" , $id_page);
 navAccueil();
 
 if(!isset($_SESSION['pseudo'])){ //Si pas connecté, renvoie vers la page de connexion
@@ -66,6 +67,7 @@ if(isset($_POST['modification'])){ //Si membre est modfifié, modification de la
     
     <form action="article.php"><input type="submit" class="admin" value="Articles"/></form>
     <form action="jeux.php"><input class="admin" type="submit" value="Projets"/></form>
+    <form action="tuto.php"><input class="admin" type="submit" value="Tutos"/></form>
     
     <?php if($_SESSION['role'] == 'a'){?>
     	<form action="membre.php"><input class="admin" type="submit" value="Membres"/></form>

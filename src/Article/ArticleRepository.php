@@ -19,10 +19,9 @@ class ArticleRepository
         $this->connection = $connection;
     }
 
-    /* Utile?
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+        $rows = $this->connection->query('SELECT id_article, titre, texte, date, compte_rendu, id_membre, nom, prenom, surnom, promo, role
                                           FROM "article" NATURAL JOIN "membre"')->fetchAll(\PDO::FETCH_OBJ);
         $articles = [];
         foreach ($rows as $row) {
@@ -40,17 +39,18 @@ class ArticleRepository
             ->setTitre($row->titre)
             ->setTexte($row->texte)
             ->setAuteur($auteur)
-            ->setDate(new \DateTimeImmutable($row->date));
+            ->setDate(new \DateTimeImmutable($row->date))
+            ->setCr($row->compte_rendu);
             
             $articles[] = $article;
         }
         
         return $articles;
-    }*/
+    }
 	
 	public function fetchCompteRendu()
     {
-        $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+        $rows = $this->connection->query('SELECT id_article, titre, texte, date, compte_rendu, id_membre, nom, prenom, surnom, promo, role
                                           FROM "article" NATURAL JOIN "membre" 
 										  WHERE compte_rendu IS true
 										  ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
@@ -70,7 +70,8 @@ class ArticleRepository
             ->setTitre($row->titre)
             ->setTexte($row->texte)
             ->setAuteur($auteur)
-            ->setDate(new \DateTimeImmutable($row->date));
+            ->setDate(new \DateTimeImmutable($row->date))
+            ->setCr($row->compte_rendu);
             
             $articles[] = $article;
         }
@@ -80,7 +81,7 @@ class ArticleRepository
 
 	public function fetchOther()
     {
-        $rows = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+        $rows = $this->connection->query('SELECT id_article, titre, texte, date, compte_rendu, id_membre, nom, prenom, surnom, promo, role
                                           FROM "article" NATURAL JOIN "membre" 
 										  WHERE LOWER(titre) NOT LIKE \'%compte%rendu%\'
 										  ORDER BY date DESC
@@ -101,7 +102,8 @@ class ArticleRepository
             ->setTitre($row->titre)
             ->setTexte($row->texte)
             ->setAuteur($auteur)
-            ->setDate(new \DateTimeImmutable($row->date));
+            ->setDate(new \DateTimeImmutable($row->date))
+            ->setCr($row->compte_rendu);
             
             $articles[] = $article;
         }
@@ -111,7 +113,7 @@ class ArticleRepository
 
     public function fetchWithoutTexte()
     {
-        $rows = $this->connection->query('SELECT id_article, titre, date, id_membre, nom, prenom, surnom, promo, role
+        $rows = $this->connection->query('SELECT id_article, titre, date, compte_rendu, id_membre, nom, prenom, surnom, promo, role
                                           FROM "article" NATURAL JOIN "membre"
                                           ORDER BY date DESC')->fetchAll(\PDO::FETCH_OBJ);
         $articles = [];
@@ -129,7 +131,8 @@ class ArticleRepository
                 ->setId($row->id_article)
                 ->setTitre($row->titre)
                 ->setAuteur($auteur)
-                ->setDate(new \DateTimeImmutable($row->date));
+                ->setDate(new \DateTimeImmutable($row->date))
+                ->setCr($row->compte_rendu);
             
             $articles[] = $article;
         }
@@ -139,7 +142,7 @@ class ArticleRepository
     
     public function getArticle($id)
     {
-        $row = $this->connection->query('SELECT id_article, titre, texte, date, id_membre, nom, prenom, surnom, promo, role
+        $row = $this->connection->query('SELECT id_article, titre, texte, date, compte_rendu, id_membre, nom, prenom, surnom, promo, role
                                          FROM "article" NATURAL JOIN "membre"
                                          WHERE id_article = '.$id)->fetchAll(\PDO::FETCH_OBJ);
         if(count($row) == 0){
@@ -160,7 +163,8 @@ class ArticleRepository
             ->setTitre($row->titre)
             ->setTexte($row->texte)
             ->setAuteur($auteur)
-            ->setDate(new \DateTimeImmutable($row->date));
+            ->setDate(new \DateTimeImmutable($row->date))
+            ->setCr($row->compte_rendu);
         
         return $article;
     }
@@ -171,7 +175,7 @@ class ArticleRepository
                 SET titre = ?, texte = ?, id_membre = ?, date = ?, compte_rendu = ?
                 WHERE id_article = ?";
         $req = $this->connection->prepare($sql);
-        $status = $req->execute(array($titre, $texte, $auteur, $date, $id, $cr));
+        $status = $req->execute(array($titre, $texte, $auteur, $date, $cr, $id));
         return $status;
     }
     
