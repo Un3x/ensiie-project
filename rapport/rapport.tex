@@ -38,16 +38,37 @@ Le but premier est de répondre au besoin du Bureau des élèves de l'ENSIIE qui
 Nous avons donc pensé le site comme une plateforme épurée où la seule page accessible sans connexion est "index.php".\\
  Il y a donc 3 type d'utilisateurs : les \textbf{élèves}, les \textbf{membres du bde} et les \textbf{présidents}.\\ Chaque type d'utilisateur a accès à des fonctionnalités différentes.\\ 
  
+ Un menu simple couronne la page web avec les onglets suivants : 
+ \begin{itemize}
+ 	\item Accueil
+ 	\item Connexion (ou Déconnexion de <Pseudo>) 
+ 	\item Mon Profil
+ 	\item Mes Points
+ 	\item Gestion BDE : uniquement accessible aux membres du BDE.
+ 	\item Gestion Président : uniquement accessible si président d'une association.
+ \end{itemize}
+ 
+ \subsection{Structure de la base de donnée}
  On a choisi d'utiliser une base de données découpée en 5 tables : 
  \begin{itemize}
- 	\item users(id\_user,firstname,lastname,pseudo,year,password,mail,bde,president)
- 	\item associations()
- 	\item score()
- 	\item pointsassos()
+ 	\item users(id\_user, firstname, lastname, pseudo, year, password, mail, bde, president) : contient tous les utilisateurs et leurs informations personnelles.
+ 	\item associations(id\_asso, name, president, coeff\_asso): contient la liste des associations ainsi que l'id du président.
+ 	\item events(id\_event, id\_asso, name, date\_ev, description, coeff\_event) : contient la liste des évènements et l'id de l'association à laquelle ils appartiennent.
+ 	\item score(id\_user, id\_event, notation) : contient la liste des participations des utilisateurs à chaque évènements.
+ 	\item pointsassos(id\_user, id\_asso, notation, proposition) : contient la liste des points associatifs de chaque élèves pour chaque association.\\
  \end{itemize} 
 
+Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilisées dans le code : 
+\begin{itemize}
+	\item pointsassos\_prop(id\_user, id\_asso, moyenne) : calcul la proposition de note d'un élève dans une association en faisant la moyenne de ses notes dans chaque association.
+	\item leaderboard(id\_user, moyenne) : calcul les points totaux de tous les élèves pour le semestre.
+\end{itemize}
 \subsection{Fonctionnalités pour les élèves}
 	Les pages accessibles par tous les élèves enregistrés sont "eleves.php" qui permet aux élèves de consulter leur participations aux évènement des différentes associations et aux et "profil.php"
+\subsection{Fonctionnalités pour les membres du BDE}
+\subsection{Fonctionnalités pour les présidents d'associations}	
 \section{Répartition des rôles}
+Le projet est  
+
 \section{Problèmes rencontrés}
 \end{document}

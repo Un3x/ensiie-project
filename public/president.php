@@ -172,6 +172,7 @@ $events=$connection->query('select * from events where id_asso='.$_SESSION['asso
 <?php $eleves = $connection->query("select * from pointsassos_prop left join users using (id_user) where id_asso=".$_SESSION['association'])->fetchAll(\PDO::FETCH_OBJ);
 foreach ($eleves as $eleve) {
 	$connection->query("insert into pointsassos (id_user,id_asso,notation,proposition) values (".$eleve->id_user.",".$_SESSION['association'].",".$eleve->moyenne.",".$eleve->moyenne.")");
+	$connection->query("update pointsassos set proposition=".$eleve->moyenne." where id_user=".$eleve->id_user." and id_asso=".$_SESSION['association']);
 }
 $eleves = $connection->query("select * from pointsassos left join users using (id_user) where id_asso=".$_SESSION['association']." order by year desc,notation desc")->fetchAll(\PDO::FETCH_OBJ);
 ?>
