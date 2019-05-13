@@ -16,6 +16,15 @@ class CourseManager
     public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
+
+        $statement = $this->connection->prepare("SELECT CURRENT_TIMESTAMP,datetime, duration FROM Course");
+        $statement->execute(array());
+        $rows = $statement->fetchAll();
+        //print_r($statement->errorInfo());
+        //print_r($rows);
+
+
+
     }
 
 

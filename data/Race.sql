@@ -7,5 +7,11 @@ CREATE TABLE  Race(
 
 
 INSERT INTO Race (name, speed, capacity) VALUES
-('chocobo','150.','2'),
-('gobelin','5.','1');
+('chocobo','60.','2'),
+('gobelin','5.','1'),
+('licorne', '80', '2'),
+('dragon', '70','5'),
+('slime', '0.1', '1'),
+('leviathan', '100', '30'),
+('griffon', '50', '3'),
+('phénix', '80', '4');
