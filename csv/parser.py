@@ -116,14 +116,13 @@ def handle_end(filename: str):
     res = dict()
     res['id'] = int(match.group(1))
     res['node'] = int(lines[0])
-    res['title'] = lines[1]
-    res['full'] = lines[2]
-    res['short'] = lines[3]
+    res['title'] = handle_str(lines[1])
+    res['full'] = handle_str(lines[2])
+    res['short'] = handle_str(lines[3])
 
-    print(f"\n---> Ending {res['id']}, for node {res['node']} <---")
+    print(f"--- Ending {res['id']}, for node {res['node']} ---")
     print('INSERT INTO "ends"("end_id", "end_node", "title", "full_text", "short_text") VALUES')
-    print(f"({res['id']}, {res['node']}, {res['title']}, {res['full']}, {res['short']});")
-    print('\n')
+    print(f"({res['id']}, {res['node']}, {res['title']}, {res['full']}, {res['short']});\n")
 
 
 def handle_ach(filename: str):
@@ -143,10 +142,9 @@ def handle_ach(filename: str):
     except IndexError:
         res['icon'] = 'NULL'
 
-    print(f"\n---> Achievement {res['id']} <---")
+    print(f"--- Achievement {res['id']} ---")
     print('INSERT INTO "achievements"("id", "title", "text", "icon") VALUES')
-    print(f"({res['id']}, {res['title']}, {res['text']}, {res['icon']});")
-    print('\n')
+    print(f"({res['id']}, {res['title']}, {res['text']}, {res['icon']});\n")
 
 
 def handle_node(filename: str):
@@ -257,7 +255,7 @@ def handle_node(filename: str):
             res['next'] = int(lines[line_i])
             choices.append(res)
 
-    print(f"\n--- Node {current_id} ---")
+    print(f"--- Node {current_id} ---")
     print(node_base.format(**node_values))
     if requirements != []:
         print(f"--- Requirements for node {current_id} ---")
@@ -268,11 +266,11 @@ def handle_node(filename: str):
     if choices != []:
         print(f"--- Choices for node {current_id} ---")
         for choice in choices:
-            print(f"-- ==> {choice['next']}")
+            print(f"--- ==> {choice['next']}")
             print(choice_base.format(**choice))
     else:
-        print("--- No choices: this node is and ending ---")
-    print("\n")
+        print("--- No choices: this node is an ending ---")
+    print('')
 
 
 for filename in sys.argv[1:]:
