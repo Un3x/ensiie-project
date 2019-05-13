@@ -1,0 +1,89 @@
+body {
+    background-image:url(../../image/arriereplan.jpg);
+    background-repeat:no-repeat;
+    background-origin: [border-box|padding-box|content-box];
+    background-size:cover;
+}
+
+.search {
+	margin: 100px auto;
+	position: relative;
+	width: 300px;
+	padding: 20px 20px 20px;
+	font-family: Arial,sans-serif;
+}
+.search:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.7);
+	border-radius: 4px;
+	font-family: Arial,sans-serif;
+}
+
+.search h1{
+	margin: -20px -20px 21px;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    background: #008000;
+	border-radius: 3px;
+	font-family: Arial,sans-serif;
+}
+
+.search input {
+	width: 100%;
+	font-family: Arial,sans-serif;
+}
+
+.search input[type=submit] {
+    background-color: #008000;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+	width: 100%;
+	font-family: Arial,sans-serif;
+}
+
+.search p {
+	margin: 20px 0 0;
+	font-family: Arial,sans-serif;
+}
+
+.search p.submit {
+	text-align: right;
+	font-family: Arial,sans-serif;
+}
+.search input[type=text], .search input[type=password],.search input[type=date] {
+	width: 275px;
+	font-family: Arial,sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 50px auto;
+    font-family: Arial,sans-serif
+}
+  
+table, th, td {
+    border: 1px solid black;
+    font-family: Arial,sans-serif;
+    padding: 10px;
+}
+
+thead {
+    background-color: #008000;
+    color: white;
+}
+
+tr:hover {background-color: rgba(255, 255, 255, 0.8);}
