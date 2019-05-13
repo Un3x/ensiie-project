@@ -64,7 +64,7 @@
 		echo "\t\t</a>\n";
 		
 		echo "\t\t<a href=\"../public/debrief.php\">\n";
-		echo "\t\t\tComptes rendu\n";
+		echo "\t\t\tComptes-rendus\n";
 		echo "\t\t</a>\n";
 		
 		echo "\t\t<a href=\"../public/projet.php\">\n";
