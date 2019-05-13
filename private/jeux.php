@@ -5,7 +5,7 @@
 <body>
 
 <?php
-$id_page="jeux";
+$id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require( "../inc/inc.default.php" );

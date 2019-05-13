@@ -6,7 +6,7 @@
 <body>
 
 <?php
-$id_page="jeucreation";
+$id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
 require '../src/Equipe/Equipe.php';
