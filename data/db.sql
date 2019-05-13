@@ -45,8 +45,7 @@ INSERT INTO "user"(pseudo, firstname, lastname, birthday, mdp) VALUES ('ya','Yve
 INSERT INTO "user"(pseudo, firstname, lastname, birthday, mdp) VALUES ('aw', 'Amelia', 'Waters', '1981-12-01','amelia');
 
 
-INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (0, 91 , 'Evry', 2, 400);
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (1, 91 , 'Evry', 1, 500);
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (2, 13 , 'Marseille', 2, 400);
 
-INSERT INTO "favoris"(idUser, idLogement) VALUES (1,2);
+INSERT INTO "favoris"(idUser, idLogement) VALUES (1,1);
