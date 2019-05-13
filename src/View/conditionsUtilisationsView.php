@@ -1,4 +1,4 @@
-<?php $title = "conditions d'utilisations (pas copié-collé)" ?>
+<?php $title = "conditions générales d'utilisations" ?>
 
 <?php ob_start(); ?>
 
