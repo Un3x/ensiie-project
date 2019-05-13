@@ -109,8 +109,8 @@ if (isset($_POST['spotname'])) {
             <input type="text" name="spotname" required="true" placeholder="Nom du spot">
             <input type="text" name="spotcity" required="true" placeholder="Ville du spot">
             <input type="number" min="0" max="5" name="spotnote" placeholder="Note entre 0 et 5">
-            <input type="number" name="spotlatitude" required="true" placeholder="Latitude">
-            <input type="number" name="spotlongitude" required="true" placeholder="Longitude">
+            <input type="number" step="any" name="spotlatitude" required="true" placeholder="Latitude">
+            <input type="number" step="any" name="spotlongitude" required="true" placeholder="Longitude">
             <button class="bouton" type="submit" style="margin-top: 8px">envoyer</button>
             </form>
         </div>
