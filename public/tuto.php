@@ -2,7 +2,7 @@
 	$id_page="tuto";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
-	entete("Tutos");
+	entete("Tutos",$id_page);
 	
 	
 	
