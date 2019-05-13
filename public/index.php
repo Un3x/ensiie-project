@@ -24,7 +24,6 @@ if( isset($_GET['action'])) {
             
             require('../src/Controller/User/Profil/profilController.php');
             if (isset($_POST["annuler"])) {
-                echo "AA";
                 profilDebut();
             } else if (isset($_POST["valider"])) {
                 validationProfil();
