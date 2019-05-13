@@ -28,7 +28,7 @@ class UserRepository
      */
     private function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "user"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM "users"')->fetchAll(\PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
@@ -39,7 +39,10 @@ class UserRepository
                 ->setSignupDate(new \DateTimeImmutable($row->signupdate))
                 ->setMailAddress($row->mailaddress)
                 ->setPasswdH($row->passwd)
-                ->setActivCode($row->activcode);
+                ->setActivCode($row->activcode)
+                ->setLastLogDate($row->lastlogdate)
+                ->setUserRole($row->userrole)
+                ->setPicturePath($row->picturepath);
 
             $users[$row->mailaddress] = $user;
         }

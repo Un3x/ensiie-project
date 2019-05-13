@@ -39,6 +39,26 @@ class User
     private $activcode;
 
     /**
+     * @var \DateTimeInterface
+     */
+    private $lastlogdate;
+
+    /**
+     * @var string
+     */
+    private $userrole;
+
+    /**
+     * @var string
+     */
+    private $picturepath;
+
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
+
+    /**
      * @return int
      */
     public function getId()
@@ -165,6 +185,64 @@ class User
         return $this;
     }
 
+    /**
+     * @param string $lastlogdate
+     * @return User
+     */
+    public function setLastLogDate($lastlogdate)
+    {
+        $this->lastlogdate = $lastlogdate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastLogDate()
+    {
+        return $this->lastlogdate;
+    }
+
+    /**
+     * @param string $userrole
+     * @return User
+     */
+    public function setUserRole($userrole)
+    {
+        $this->userrole = $userrole;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserRole()
+    {
+        return $this->userrole;
+    }
+
+    /**
+     * @param string $picturepath
+     * @return User
+     */
+    public function setPicturePath($picturepath)
+    {
+        $this->picturepath = $picturepath;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicturePath()
+    {
+        return $this->picturepath;
+    }
+
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------------- */
 
     /**
      * @todo Check if working
