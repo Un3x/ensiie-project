@@ -26,12 +26,12 @@ class Logement
     /**
      * @var int
      */
-    private nb_places_libres;
+    private $nb_places_libres;
 
     /**
      * @var int
      */
-    private prix;
+    private $prix;
 
     /**
      * @return int

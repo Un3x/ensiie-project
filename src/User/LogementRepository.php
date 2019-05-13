@@ -13,8 +13,8 @@ class LogementRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "Logements"')->fetchAll(\PDO::FETCH_OBJ);
-        $logementss = [];
+        $rows = $this->connection->query('SELECT * FROM "Logement"')->fetchAll(\PDO::FETCH_OBJ);
+        $logements = [];
         foreach ($rows as $row) {
             $logement = new User();
             $logement
@@ -45,7 +45,7 @@ class LogementRepository
         $NPL = $logement->getNbPlaces();
         $prix = $logement->getPrix();
 
-        $req = 'INSERT INTO "logements" (iduser, departement ,ville , nb_places_libres, prix)
+        $req = 'INSERT INTO "Logements" (iduser, departement ,ville , nb_places_libres, prix)
                 VALUES (:user, :departement, :ville, :NPL, :prix)';
         $valeurs = ['user'=>$iduser, 'departement'=>$departement, 'ville'=>$ville,
         'NPL'=>$nb_places_libres, 'prix'=>$prix];
