@@ -5,6 +5,13 @@
 </div>
 <nav>
 <ul>
+<li>
+    <?php
+        if (isset($_SESSION['prenom'])) {
+            echo 'Bonjour '.$_SESSION['prenom'].' :'; 
+        }
+    ?>
+</li>
 <li><a href="index.php">Accueil</a></li>
 <li><a href="sports.php">Sports</a></li>
 <li><a href="faq.php">FAQ</a></li>
