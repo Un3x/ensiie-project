@@ -9,7 +9,7 @@ CREATE TABLE "user" (
     mdp VARCHAR NOT NULL
 );
 
-DROP TABLE IF EXISTS "logement";
+DROP TABLE IF EXISTS "logement" CASCADE;
 
 CREATE TABLE "logement" (
 idLogement SERIAL PRIMARY KEY,
@@ -23,7 +23,7 @@ CONSTRAINT fk_user
 	   REFERENCES "user" (idUser)
 );
 
-DROP TABLE IF EXISTS "favoris";
+DROP TABLE IF EXISTS "favoris" CASCADE;
 
 CREATE TABLE "favoris" (
 idUser INT,
