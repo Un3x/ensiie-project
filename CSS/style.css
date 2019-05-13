@@ -273,7 +273,7 @@ input.moins:hover {
 
 
 .topnav {
-  background-color: #333;
+  background-color: #335;
   overflow: hidden;
 }
 
@@ -296,7 +296,6 @@ input.moins:hover {
 
 
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #131313;
   color: white;
 }
-
