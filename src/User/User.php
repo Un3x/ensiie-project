@@ -118,6 +118,7 @@ class User
     {
         $this->pseudo = $ps;
         return $this;
+    }
 
      public function getmdp()
     {
@@ -129,6 +130,7 @@ class User
     {
         $this->mdp = $mdp;
         return $this;
+    }
 
     /**
      * @return int
