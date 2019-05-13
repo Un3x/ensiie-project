@@ -21,7 +21,7 @@
         <nav class="row">
             <div>
                 <div class="col-md-7">  
-                    <a href="/" class="whiteStyle"><img alt="logo" src="image/logo_licorne_modified.png">Uber Licorne</a>
+                    <a href="/" class="whiteStyle"><img alt="logo" src="/image/logo_licorne_modified.png">Uber Licorne</a>
                 </div>
                 <div class="col-md-1">  
                     <br />
@@ -42,7 +42,7 @@
                 ?>
                         <div class="col-md-1">
                             <br />
-                            <a href="index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
+                            <a href="/index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
                         </div>
                 <?php
                     }       
@@ -51,11 +51,11 @@
                 ?>
                         <div class="col-md-1"> 
                             <br />
-                            <a href="index.php?action=connexion" class="whiteStyle" >Connexion</a>
+                            <a href="/index.php?action=connexion" class="whiteStyle" >Connexion</a>
                         </div> 
                         <div class="col-md-1">
                             <br />
-                            <a href="index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
+                            <a href="/index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
                         </div>
                 <?php }
                 ?>

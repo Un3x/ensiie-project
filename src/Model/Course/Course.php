@@ -193,3 +193,22 @@ class Course
         return $this;
     }
 }
+
+
+function distance($lat1, $lon1, $lat2, $lon2)
+{
+    //rayon de la terre
+    $r = 6366;
+    $lat1 = deg2rad($lat1);
+    $lat2 = deg2rad($lat2);
+    $lon1 = deg2rad($lon1);
+    $lon2 = deg2rad($lon2);
+
+    //calcul précis
+    $dp= 2 * asin(sqrt(pow (sin(($lat1-$lat2)/2) , 2) + cos($lat1)*cos($lat2)* pow( sin(($lon1-$lon2)/2) , 2)));
+
+    //sortie en km
+    $d = $dp * $r;
+
+    return round($d/1.616, 2);
+}
