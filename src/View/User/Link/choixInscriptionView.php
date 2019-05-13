@@ -12,5 +12,3 @@
 
 
 <?php require("../src/View/template.php"); ?>
-
-<?php echo "O" ?>
