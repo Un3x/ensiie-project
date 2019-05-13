@@ -21,6 +21,7 @@ if (!isset($_POST['connexion'])) {
     $connecte = create_session($_POST['pseudo'], $_POST['mdp']);
 	if($connecte){
 	    header("Refresh: 0");
+		exit();
 	}else{
 	    ?><p class="error">Pseudo ou Mot de passe incorrect</p>
 	    <div class="login-page">

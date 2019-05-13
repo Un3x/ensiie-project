@@ -26,12 +26,12 @@ $connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password
 
 $articleRepository = new \Article\ArticleRepository($connection);
 
-$article = $articleRepository->getArticle($_GET['id']);
-
 
 if(!isset($_GET['id'])){ //Si aucun article selectionné, renvoie vers la page de d'administration des articles
     header("location: article.php");
 }
+
+$article = $articleRepository->getArticle($_GET['id']);
 
 if($article == NULL){ //Si article introuvable, renvoie vers la page de d'administration des articles
     echo '<h4>Erreur: l\'article n°'.$_GET['id'].' est introuvable!</h4>';
