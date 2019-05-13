@@ -1,4 +1,9 @@
-<?php include_once("navbar.phtml"); ?>
+<?php include_once("navbar.phtml");
+include '../src/Logement/Logement.php';
+include '../src/Logement/LogementRepository.php';
+include '../src/User/User.php';
+?>
+
 <html>
 <head>
     <title> Ajouter un logement </title>
@@ -142,8 +147,10 @@ $logementRepository = new \Logement\LogementRepository($connection);
 $logement = new \Logement\Logement($connection);
 
 if (isset($_POST['prix'])){
+$logement.setUser(null); 
 $logement.setDep($_POST['departement']);
 $logement.setVille($_POST['ville']);
+$logement.setNBPlaces($_POST['place']);
 $logement.setPrix($_POST['prix']);
 addLogement($logement);
 }
