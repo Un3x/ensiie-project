@@ -6,7 +6,7 @@ class User
     /**
      * @var int
      */
-    private $id;
+    private $iduser;
 
     /**
      * @var string
@@ -28,7 +28,7 @@ class User
      */
     public function getId()
     {
-        return $this->id;
+        return $this->iduser;
     }
 
     /**
@@ -37,7 +37,7 @@ class User
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->iduser = $id;
         return $this;
     }
 
