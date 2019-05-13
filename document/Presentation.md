@@ -76,6 +76,7 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 Une partie de la note sera attribuée par groupe, une autre réservée à l’investissement personnel.
 
+
 > Les points auxquels nous ferons attention lors de la notation :
 > * La méthodologie, quels vont être vos choix d’organisation ?
 > * La participation au sein de l’équipe, on attend que vous soyez moteur et que vous soyez force de proposition.
