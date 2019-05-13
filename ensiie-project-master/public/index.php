@@ -7,7 +7,7 @@
 <head>
 <title>Challenge Centrale Evry</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css?version=211" type="text/css">
+<link rel="stylesheet" href="style.css?version=218" type="text/css">
 
 <?php include ("header.php")?>
 </head>
@@ -20,6 +20,25 @@
 <div id="block" class="clear">
 <section><a href="index.php"><img src="images/cce.png" width="960" height="360" alt=""></a></section>
 <div id="un">
+
+
+
+
+
+<section id="intro" class="last clear">
+<article>
+<figure><img src="images/challenge.jpg" width="450" height="250" alt="">
+<figcaption>
+<h2>Le Challenge</h2>
+<p>Organisé par des élèves de l’ENSIIE, le Challenge Centrale Evry est un tournoi sportif étudiant qui rassemble plus de 3000 élèves des plus grandes écoles d’ingénieurs françaises et étrangères. Depuis sa création en 1983, les étudiants se retrouvent en mars sur le campus de l’école pour s’affronter dans de nombreux sports et tenter de remporter le trophée final.</p>
+<p>Le Challenge Centrale Evry c’est à la fois (du sport avec) 19 sports différents, une soirée animée par des DJs professionnels, un Village Challenge avec la possibilité de rencontrer des entreprises, des concours de pompoms, de fanfares ou même de mascottes et des activités variées pour vous divertir entre les matchs ou pour promouvoir nos valeurs (le handisport, le développement durable).</p>
+</figcaption>
+</figure>
+</article>
+</section>
+
+<br>
+<br>
 
 <section id="services" class="clear">
 <article class="tiers">
@@ -49,17 +68,7 @@
 </section>
 
 
-<section id="intro" class="last clear">
-<article>
-<figure><img src="images/dd.jpg" width="450" height="250" alt="">
-<figcaption>
-<h2>Développement durable</h2>
-<p>Le Challenge Centrale Evry est un événement éco-responsable qui s’engage à réduire le plus possible les impacts environnementaux et sociaux négatifs tout en favorisant les retombées économiques locales.</p>
-<p>Cette manifestation s’engage également dans une démarche d’évaluation des impacts environnementaux, sociaux et économiques afin d’aboutir à une stratégie d’amélioration continue. Chaque participant s’engage aussi à respecter cette démarche.</p>
-</figcaption>
-</figure>
-</article>
-</section>
+
 </div>
 </div>
 
