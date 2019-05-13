@@ -11,6 +11,12 @@ class User
     /**
      * @var string
      */
+    private $pseudo;
+
+
+    /**
+     * @var string
+     */
     private $firstname;
 
     /**
@@ -22,6 +28,11 @@ class User
      * @var \DateTimeInterface
      */
     private $birthday;
+
+     /**
+     * @var string
+     */
+    private $mdp;
 
     /**
      * @return int
@@ -95,6 +106,29 @@ class User
         return $this;
     }
 
+    /*pas encore commenté*/
+    
+     public function getpseudo()
+    {
+        return $this->pseudo;
+    }
+
+
+    public function setpseudo($ps)
+    {
+        $this->pseudo = $ps;
+        return $this;
+
+     public function getmdp()
+    {
+        return $this->mdp;
+    }
+
+
+    public function setmdp($mdp)
+    {
+        $this->mdp = $mdp;
+        return $this;
 
     /**
      * @return int
