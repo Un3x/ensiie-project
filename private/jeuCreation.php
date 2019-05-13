@@ -29,6 +29,7 @@ $jeuRepository = new \Jeu\JeuRepository($connection);
 $equipeRepository = new \Equipe\EquipeRepository($connection);
 
 if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd puis renvoie vers la page de d'administration des jeux
+
 	$titreJeu = htmlspecialchars_decode($_POST['titre']);
 	$git      = htmlspecialchars_decode($_POST['git']);
 	$lienT    = htmlspecialchars_decode($_POST['telechargement']);

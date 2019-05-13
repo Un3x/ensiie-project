@@ -12,9 +12,11 @@
 <h2>REALITIIE</h2>
 
 <p>Fondée en 2012, suite à la première participation au concours Laval Virtual d'élèves de l'ENSIIE, 
-RealitIIE est l'association regroupant tous les élèves motivés par la réalité virtuelle.
-Mais depuis, l'association s'est diversifiée pour inclure également le dévelopement de jeux
+RealitIIE est l'association regroupant tous les élèves motivés par la création de jeux vidéo principalement VR.
+Mais depuis, l'association s'est diversifiée pour inclure également le développement de jeux
 videos au sens large.</p>
+<p>Elle regroupe maintenant les activitées de game design, de modélisation, d'animation, de création de 
+musiques et sons, de développement et tout ce qui gravite autour de la création du jeu vidéo en général.</p>
 </div>
 </br>
 </br>
