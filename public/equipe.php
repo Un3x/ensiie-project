@@ -4,6 +4,8 @@
 	require( "../src/Membre/Membre.php");
 	require( "../src/Membre/MembreRepository.php");
 	entete( "Equipe" );
+	
+	$id_page="equipe";
 	navAccueil();
 	
 	$dbName = 'realitiie';
@@ -13,6 +15,7 @@
 
 	$membreRepository = new \Membre\MembreRepository($connection);
 	$membres = $membreRepository->fetchAll();
+	
 	
 ?>
 

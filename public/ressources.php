@@ -4,10 +4,13 @@
 	require("../src/Tuto/Tuto.php");
 	require("../src/Tuto/TutoRepository.php");
 	entete("Ressources");
+	$id_page="ressources";
 	navAccueil();
 
 	$TutoRepository = new \Tuto\TutoRepository($connection);
 	$tutos = $TutoRepository->fetchAll();
+	
+	
 ?>
 
 <div class="round-border">
