@@ -1,4 +1,7 @@
-<?php include_once("navbar.phtml"); ?>
+<?php /*include_once("navbar.phtml"); */
+include '../src/Logement/Logement.php';
+?>
+
 <html>
 <head>
     <title> Rechercher un Logement </title>
@@ -6,7 +9,7 @@
     <link rel="stylesheet" href="../../../public/res/css/main.css" />
 </head>
 <body>
-    <form action="recherche.php" method = "POST">
+    <form action="searchlogement_process.php" method = "POST">
         <p> Département </p>
         <select name="departement">
             <option>01</option>
@@ -119,21 +122,22 @@
 
         
 
-        <input type="submit" value="Rechercher"/>    
+        <input type="submit" value="Rechercher">    
 
-    </form
+    </form>
 
 <?php
 
 require '../vendor/autoload.php';
-require '../src/User/LogementRepository.php';
+require_once '../src/Logement/LogementRepository.php';
+require_once '../src/Logement/Logement.php';
     
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$logementRepository = new \User\LogementRepository($connection);
+$logementRepository = new \Logement\LogementRepository($connection);
 $departement = $_POST['departement'];
 $ville = $_POST['ville'];
 $prix = $_POST['prix'];
