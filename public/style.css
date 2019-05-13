@@ -19,7 +19,7 @@
 
 #connexion {
 	position: absolute;
-	min-width : 120px;
+	min-width : 150px;
 	right: 10px;
 }
 
@@ -38,7 +38,7 @@
 .dropdown {
 	position: absolute;
 	display: inline-block;
-	right: 140px;
+	right: 170px;
 	min-width: 150px;
 }
 
