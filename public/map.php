@@ -25,8 +25,20 @@
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
 		<script type="text/javascript" src="app.js"></script>
+		<?php
+			foreach ($spots as $spot) :
+				$lat = $spot->getlatitude;
+				echo $lat;
+				$long = $spot->getLongitude;
+				echo $long;
+			endforeach;
+		?>
 	<footer>
 		<?php footer();?>
 	</footer>
 	</body>
 </html>
+
+<script>
+	
+</script>
