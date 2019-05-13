@@ -15,6 +15,7 @@
 <li><a href="index.php">Accueil</a></li>
 <li><a href="sports.php">Sports</a></li>
 <li><a href="faq.php">FAQ</a></li>
+<li><a href="show_sport.php">Infos Pratiques</a></li>
 <li> <a href = <?php
     if (!isset($_SESSION['login']) && !isset($_SESSION['pwd'])) {
         echo '<h4 class="connexion"> <a href="login.php" >Connexion</a>
