@@ -42,4 +42,5 @@ function ajouterSelectMedia()
 function verficationEnvoie()
 {
 	return true
+	//Manque de temps
 }
