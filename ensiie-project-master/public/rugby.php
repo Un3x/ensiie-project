@@ -3,7 +3,7 @@
     ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fr" dir="ltr">
 <head>
 <title>Challenge Centrale Evry</title>
 <meta charset="UTF-8">
