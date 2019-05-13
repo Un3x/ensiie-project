@@ -51,6 +51,7 @@
                         </li>
                 <?php }
                 ?>
+
                 <li class="col-md-1">
                     <a href='' onclick="document.cookie = 'lang=fr'" class="whiteStyle">Fr</a>/
                     <a href='' onclick="document.cookie = 'lang=elf'" class="whiteStyle">Elf</a>
@@ -61,8 +62,14 @@
 
         <main>
             <?php 
-                if($GLOBALS['user'])
-                require("../src/View/User/Profil/menu_membre.php");
+                if($GLOBALS['user']) {
+                    if($_SESSION["userType"] == "Admin")
+                    {
+                        require("../src/View/Admin/menu_admin.php");
+                    }
+                    else
+                    require("../src/View/User/Profil/menu_membre.php");
+                }
             ?>
             <?=$content?>
         </main>

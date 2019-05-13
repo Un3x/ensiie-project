@@ -11,6 +11,16 @@ function verifierPassword($pass,$hash)
     return password_verify($pass,$hash);
 }
 
+
+function verifDate($a)
+{
+
+}
+function verifNom($a)
+{
+    return  preg_match("#^(\d){1,15}$#", $_POST["phoneNumber"]);
+}
+
 function verifMail($mail)
 {
     return filter_var($mail, FILTER_VALIDATE_EMAIL);
