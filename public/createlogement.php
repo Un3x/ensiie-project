@@ -7,6 +7,9 @@
 </head>
 <body>
     <div class="create">
+
+    <h1> La chibraxerie n'est jamais finie </h1>
+
         <form action="createlogement.php" method = "POST">
             <p> Département </p>
             <select name="departement">
@@ -123,22 +126,24 @@
 
     <?php
 
-    require '../vendor/autoload.php';
-    require '../src/Logement/LogementRepository.php';
-    require '../src/Logement/Logement.php';
-    
-    $dbName = getenv('DB_NAME');
-    $dbUser = getenv('DB_USER');
-    $dbPassword = getenv('DB_PASSWORD');
-    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+require '../vendor/autoload.php';
+require '../src/Logement/LogementRepository.php';
+require '../src/Logement/Logement.php';
 
-    $logement= new \Logement\Logement;
-    if (isset($_POST['prix'])){
-    $logement.setDep($_POST['departement']);
-    $logement.setVille($_POST['ville']);
-    $logement.setPrix($_POST['prix']);
-    $logementRepository->addLogement($logement);
-    }
+$dbName = getenv('DB_NAME');
+$dbUser = getenv('DB_USER');
+$dbPassword = getenv('DB_PASSWORD');
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+$logementRepository = new \Logement\LogementRepository($connection);
+$logement = new \Logement\Logement($connection);
+
+if (isset($_POST['prix'])){
+$logement.setDep($_POST['departement']);
+$logement.setVille($_POST['ville']);
+$logement.setPrix($_POST['prix']);
+addLogement($logement);
+}
     ?>
 
     </body>
