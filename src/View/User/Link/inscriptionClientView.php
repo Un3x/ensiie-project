@@ -64,8 +64,8 @@
             <br/>
             <label for="genre"> Votre genre : </label>
             <select id="genre" name="genre">
-                <option value="M"> Masculin </option>
-                <option value="F"> Feminin </option>
+                <option value="hélicopter apache"> hélicopter apache </option>
+                <option value="hélicopter apache"> hélicopter apache </option>
                 <option value="Others"> Autre </option>
             </select>
             <br/>
