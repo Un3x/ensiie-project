@@ -1,4 +1,4 @@
-
+<?php include_once("navbar.phtml"); ?>
 <html>
 <head>
     <title> Rechercher un Logement </title>

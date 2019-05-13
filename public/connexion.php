@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../public/res/css/main.css" />
 </head>
+<?php include_once("navbar.phtml"); ?>
 <body>
     <form action="connexion.php" method = "POST">
         <p> Email </p>

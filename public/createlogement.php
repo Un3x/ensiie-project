@@ -1,3 +1,4 @@
+<?php include_once("navbar.phtml"); ?>
 <html>
 <head>
     <title> Ajouter un logement </title>

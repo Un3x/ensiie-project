@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<?php include_once("navbar.phtml"); ?>
 <head>
     <title> S'inscrire </title>
     <meta charset="utf-8">
