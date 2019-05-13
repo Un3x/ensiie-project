@@ -2,8 +2,13 @@ INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admi
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '2', '0');
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0', 'true');
 INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-
-
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Banner', 'Bruce', 'Hulk', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Wayne', 'Bruce', 'Batman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parker', 'Peter', 'Spiderman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Stark', 'Tony', 'Ironman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Robert', 'MrIndestructible', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Hélene', 'Elastigirl', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'JackJack', 'JackJack', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
 
 
 
@@ -41,3 +46,12 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('7', 'A. Chevalier');
 
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg', 'Raisonance');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('8', 'Revision 1.00');
+
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('9', 'Autobiographie scientifique', 'Max Planck', '2010-1-1', './cvlivres/Autobiographie-scientifique.jpg', 'Flammarion');
+INSERT INTO "Auteur"(id_livre, auteur) VALUES ('9', 'Max Planck');
+
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('10', 'Le Beau Livre de la Physique', 'Clifford A. Pickover', '2012-3-10', './cvlivres/LBL.jpg', 'Dunod');
+INSERT INTO "Auteur"(id_livre, auteur) VALUES ('10', 'Clifford A. Pickover');
+
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('11', 'Une brève histoire du temps', 'Stephen Hawking', '2018-5-4', './cvlivres/BHT.jpg', 'Edilivres');
+INSERT INTO "Auteur"(id_livre, auteur) VALUES ('11', 'Stephen Hawking');
