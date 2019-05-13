@@ -11,17 +11,6 @@ INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livre
 
 
 
-
-INSERT INTO "Historique"(id_livre, id_user, date_emprunt, date_rendu) VALUES('chocapic1', '3', '2019-04-01', '2019-04-22');
-INSERT INTO "Reservation"(id_livre, id_user) VALUES ('chocapic1', '3');
-
-
-INSERT INTO "Review"(id, num, personne, texte, note) VALUES ('chocapic1', '4', '3', 'ce livre est vraiment trop bien', '5');
-
-
-
-
-
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('1', 'Formulaire technique de mécanique générale', 'Jacques Muller', '1996-1-1', './cvlivres/9782853140010_internet_w290.png', 'PAILLART');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('1', 'Jacques Muller');
 
@@ -50,5 +39,5 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('6', 'R. Bourgeron');
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('7', 'Guide du dessinateur industriel', 'A. Chevalier', '2003-6-25', './cvlivres/515lJficFfL._SX326_BO1,204,203,200_.jpg', 'Hachette');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('7', 'A. Chevalier');
 
-INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg, 'Raisonance');
+INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('8', 'Getting Started with the raisonance 8051 and ST6 Development Kits', 'Revision 1.00', '1999-1-1', './cvlivres/Raisonance.jpg', 'Raisonance');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('8', 'Revision 1.00');

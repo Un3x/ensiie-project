@@ -122,6 +122,16 @@ function IdToPseudo($id_user) {
     return $tmp;
 }
 
+
+
+
+
+
+
+
+
+//section fonction de tanguy
+
 function affiche_nav($user_connected, $admin) {
   echo '<a href="index.php" class="rubrique">Accueil</a>';
   echo '<a href="bibliotheque.php" class="rubrique">Bibliothèque</a>';
@@ -164,6 +174,11 @@ function affiche_bandeau_connexion($user_connected, $nom, $prenom, $pseudo, $adm
     </TABLE>";
   }
         
+}
+
+
+function affiche_footer() {
+    echo '<footer style="text-align:right">Sciience 2019<br>En cas de problème : sciience@ensiie.fr</footer>';
 }
 
 

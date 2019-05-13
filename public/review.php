@@ -131,6 +131,7 @@ $historiques = $historiqueRepository->fetchByUser($_SESSION['id_user']);
     <?php endif; ?>
     </div>
 </section>
+<?php affiche_footer()?>
 </body>
 
 <script>

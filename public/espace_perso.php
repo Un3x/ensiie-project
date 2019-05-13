@@ -236,6 +236,7 @@ if (isset($_POST['mdp']) && isset($_POST['cmdp'])&&isset($_POST['form_mdp']) ) {
         <?php endif; ?>
         
     </section>
+    <?php affiche_footer()?>
 </body>
 
 <script>

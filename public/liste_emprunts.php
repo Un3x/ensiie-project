@@ -95,5 +95,6 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
    <p></p>
  <?php endif; ?>
 </section>
+<?php affiche_footer()?>
 </body>
 </html>
