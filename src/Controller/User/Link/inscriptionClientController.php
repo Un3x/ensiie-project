@@ -12,6 +12,7 @@ function initChampsPost()
     $valeurDefaut['password2'] = $_POST['password2'];
     $valeurDefaut['description'] = $_POST['description'];
     $valeurDefaut['birthDate'] = $_POST['birthDate'];
+    $valeurDefaut['phoneNumber']= $_POST['phoneNumber'];
     return $valeurDefaut;
 }
 
@@ -24,6 +25,7 @@ function initChamps()
     $valeurDefaut['mail'] ="";
     $valeurDefaut['description'] ="";
     $valeurDefaut['birthDate'] = "";
+    $valeurDefaut['phoneNumber'] ="";
     return $valeurDefaut;
 }
 
@@ -91,7 +93,7 @@ function inscriptionClient()
             {
                 $user = new Client;
                 $raceManager = new RaceManager($bdd);
-                $user->hydrate($_POST['nom'],$_POST["prenom"],($raceManager->getList())[0],$_POST['mail'],$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,$_POST['description'],$_POST["genre"],0);
+                $user->hydrate($_POST['nom'],$_POST["prenom"],$_POST['mail'],$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,$_POST['description'],$_POST["genre"],0);
                 if($userManager->add($user) != false) {
                     require('../src/View/User/Link/inscriptionValideView.php');
                 }

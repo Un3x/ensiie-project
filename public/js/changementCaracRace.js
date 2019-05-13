@@ -9,7 +9,7 @@ for(var i = 0; i < options.length; i++)
 }
 
 effacer();
-document.getElementById("1").style.display="inline-block";
+document.getElementById("0").style.display="inline-block";
 
 menu.addEventListener('change', function()
 
