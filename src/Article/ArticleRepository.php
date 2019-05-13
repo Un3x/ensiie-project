@@ -165,13 +165,13 @@ class ArticleRepository
         return $article;
     }
     
-    public function setArticle($id, $titre, $texte, $auteur, $date)
+    public function setArticle($id, $titre, $texte, $auteur, $date, $cr)
     {
         $sql = "UPDATE article
-                SET titre = ?, texte = ?, id_membre = ?, date = ?
+                SET titre = ?, texte = ?, id_membre = ?, date = ?, compte_rendu = ?
                 WHERE id_article = ?";
         $req = $this->connection->prepare($sql);
-        $status = $req->execute(array($titre, $texte, $auteur, $date, $id));
+        $status = $req->execute(array($titre, $texte, $auteur, $date, $id, $cr));
         return $status;
     }
     
@@ -184,12 +184,59 @@ class ArticleRepository
         return $status;
     }
     
-    public function createArticle($titre, $texte, $auteur, $date)
+    public function createArticle($titre, $texte, $auteur, $date, $cr)
     {
         $sql = "INSERT INTO article
-                (titre, texte, id_membre, date) VALUES (?, ?, ?, ?);";
+                (titre, texte, id_membre, date, compte_rendu) VALUES (?, ?, ?, ?, ?);";
         $req = $this->connection->prepare($sql);
-        $status = $req->execute(array($titre, $texte, $auteur, $date));
+        $status = $req->execute(array($titre, $texte, $auteur, $date, $cr));
         return $status;
+    }
+    
+    public function getIdArticle( $titre )
+    {
+        $row = $this->connection->query('SELECT id_article FROM article WHERE titre = \''.$titre.'\' ')->fetchAll(\PDO::FETCH_OBJ);
+        if(count($row) == 0){
+            return NULL;
+        }
+        return $row[0]->id_article;
+    }
+    
+    public function deleteAllMedia($id){
+        $rows = $this->connection->query('SELECT lien
+                                          FROM media
+                                          WHERE id_article = '.$id)->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($rows as $row) {
+            if (file_exists($row->lien)) {
+                unlink($row->lien);
+            }
+        }
+        
+        $sql = "DELETE FROM media
+                WHERE id_article = ?";
+        $req = $this->connection->prepare($sql);
+        $status = $req->execute(array($id));
+        return $status;
+    }
+    
+    public function addMedia($id, $lien){
+        $sql = "INSERT INTO media
+                (id_article, lien) VALUES (?, ?);";
+        $req = $this->connection->prepare($sql);
+        $status = $req->execute(array($id, $lien));
+        return $status;
+    }
+    
+    public function getMedias( $id )
+    {
+        $rows = $this->connection->query('SELECT lien
+                                          FROM media
+                                          WHERE id_media = '.$id)->fetchAll(\PDO::FETCH_OBJ);
+        $liens = [];
+        foreach ($rows as $row) {
+            $liens[] = $row->lien;
+        }
+        
+        return $liens;
     }
 }

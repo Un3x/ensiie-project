@@ -38,3 +38,7 @@ if (!isset($_POST['connexion'])) {
 }
 ?>
 <body>
+
+<?php
+	pied();
+?>

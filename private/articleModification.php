@@ -59,6 +59,8 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
     echo '<h4>Redirection vers la liste des articles...</h4>';
     header( "refresh:3;url=article.php" );
 }else if(isset($_POST['supression'])){ //Si article est supprimé, modification de la bdd puis renvoie vers la page de d'administration des articles
+    
+    $articleRepository->deleteAllMedia($_GET['id']);
     $status = $articleRepository->deleteArticle($_GET['id']);
     
     if($status){
