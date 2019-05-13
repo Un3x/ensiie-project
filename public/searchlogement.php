@@ -123,6 +123,7 @@
 
     </form
 
+<?php
 $dbName = getenv('DB_NAME');
 $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
@@ -133,6 +134,7 @@ $departement = $_POST['departement'];
 $ville = $_POST['ville'];
 $prix = $_POST['prix'];
 $logements = $logementRepository->fetch2($departement, $ville, $prix);
+?>
 
 <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
@@ -141,7 +143,7 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
             <td>NbPlaces</td>
             <td>Prix</td>
         </thead>
-        <?php /** @var \User\Logement $user */
+        <?php /** @var \User\Logement $logement */
         foreach ($logements as $logement) : ?>
             <tr>
                 <td><?php echo $logement->getId() ?></td>
