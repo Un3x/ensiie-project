@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="recherche.php" method = "POST">
+    <form action="createlogement.php" method = "POST">
         <p> Département </p>
         <select name="département">
         <option>01</option>
@@ -113,46 +113,35 @@
         </select>
 
         <p> Ville </p>
-        <input type="text" name="Ville">
+        <input type="text" name="ville">
 
         <p>Montant du loyer ?</p>
         <input type="number" name="prix">
 
-        <p>Nombre de places</p>
-        <select name="pieces">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7 ou plus</option>
-        </select>
-
-        <p>Nombre de pièces</p>
-        <select name="pieces">
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7 ou plus</option>
-        </select>
-
-        <p> Le logement doit-il accepter les animaux ?</p>
-        <select name="animal1">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-
-        <p> Logement fumeur </p>
-        <select name="fumeur">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-
         <input type="submit" value="Créer"/>
     </form>
+
+
+
+    <?php
+
+    require '../vendor/autoload.php';
+    require_once '../src/Logement/LogementRepository.php';
+    require_once '../src/Logement/Logement.php';
+    
+    $dbName = getenv('DB_NAME');
+    $dbUser = getenv('DB_USER');
+    $dbPassword = getenv('DB_PASSWORD');
+    $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+
+    $logement= new \Logement\Logement;
+    if (isset($_POST['prix'])){
+    $logement.setDep($_POST['departement']);
+    $logement.setVille($_POST['ville']);
+    $logement.setPrix($_POST['ville']);
+    $logementRepository->addLogement($logement);
+    }
+    ?>
 
     </body>
 </html>
