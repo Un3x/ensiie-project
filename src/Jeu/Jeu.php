@@ -22,6 +22,11 @@ class Jeu
      * @var string
      */
     private $telechargement;
+	
+	/**
+	 * @var string
+	 */
+	private $description;
     
     /**
      * @return int
@@ -92,6 +97,24 @@ class Jeu
     public function setTelechargement($telechargement)
     {
         $this->telechargement = $telechargement;
+        return $this;
+    }
+	
+	/**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+	
+	/**
+     * @param string $description
+     * @return Jeu
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
         return $this;
     }
 }

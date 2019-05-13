@@ -82,7 +82,7 @@ class Miseajour
     /**
      * @return \DateTimeInterface
      */
-    public function getDate()
+    public function get_Date()
     {
         return $this->date;
     }

@@ -26,7 +26,8 @@ class JeuRepository
                 ->setId($row->id_jeu)
                 ->setTitre($row->titre)
                 ->setGit($row->git)
-                ->setTelechargement($row->telechargement);
+                ->setTelechargement($row->telechargement)
+				->setDescription($row->description);
 
             $jeux[] = $jeu;
         }
@@ -47,18 +48,19 @@ class JeuRepository
             ->setId($row->id_jeu)
             ->setTitre($row->titre)
             ->setGit($row->git)
-            ->setTelechargement($row->telechargement);
+            ->setTelechargement($row->telechargement)
+			->setDescription($row->description);
         
         return $jeu;
     }
     
-    public function setJeu($id, $titre, $git, $telechargement)
+    public function setJeu($id, $titre, $git, $telechargement, $description)
     {
         $sql = "UPDATE jeux
-                SET titre = ?, git = ?, telechargement = ?
+                SET titre = ?, git = ?, telechargement = ?, description = ?
                 WHERE id_jeu = ?";
         $req = $this->connection->prepare($sql);
-        $status = $req->execute(array($titre, $git, $telechargement, $id));
+        $status = $req->execute(array($titre, $git, $telechargement, $description, $id));
         return $status;
     }
     
@@ -71,12 +73,12 @@ class JeuRepository
         return $status;
     }
     
-    public function createJeu($titre, $git, $telechargement)
+    public function createJeu($titre, $git, $telechargement, $description)
     {
         $sql = "INSERT INTO jeux
-                (titre, git, telechargement) VALUES (?, ?, ?);";
+                (titre, git, telechargement,description) VALUES (?, ?, ?, ?);";
         $req = $this->connection->prepare($sql);
-        $status = $req->execute(array($titre, $git, $telechargement));
+        $status = $req->execute(array($titre, $git, $telechargement, $description));
         return $status;
     }
 }
