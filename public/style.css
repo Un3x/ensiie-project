@@ -135,8 +135,8 @@ footer {
 }
 
 #searchbar{
-	box-shadow: 0px 2px 4px #818181;
-	border-radius: 3px;
+    box-shadow: 0px 2px 2px;
+    border-radius: 27px;
 }
 
 .searchbar {
