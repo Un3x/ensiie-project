@@ -64,9 +64,9 @@ $rows = $sportRepository->fetchAllUsers();
         
         foreach ($logementSports as $row) : ?>
             <tr>
-                <td><?php echo $row->adresse ?></td>
-                <td><?php echo $row->nom ?></td>
-                <td><?php echo $row->genre ?></td>
+                <td><?php echo $row->getAdresse() ?></td>
+                <td><?php echo $row->getNom() ?></td>
+                <td><?php echo $row->getGenre() ?></td>
             </tr>
         <?php endforeach;?>
     </table>

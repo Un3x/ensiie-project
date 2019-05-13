@@ -20,7 +20,7 @@ class LogementSportRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM Logement JOIN Sport ON Logement.nom = Sport.nom')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM Logement, Sport')->fetchAll(\PDO::FETCH_OBJ);
         $logements = [];
         foreach ($rows as $row) {
             $logement = new LogementSport();
