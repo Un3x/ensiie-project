@@ -117,7 +117,7 @@
 <article class="tiers">
 <figure>
 <div class="container2">
-<img src="images/parkour.jpg" width="200" height="180" alt="" class="image2">
+<img src="images/parkour.jpg" width="210" height="180" alt="" class="image2">
 <div class="middle2">
 <div class="text2"><a href="parkour.php">Règles</a></div>
 </div>

@@ -225,7 +225,7 @@ img{
 
 .middle2 {
     top: 50%;
-    left: 50%;
+    left: 74%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transition: .5s ease;
