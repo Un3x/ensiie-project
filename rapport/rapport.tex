@@ -185,11 +185,20 @@ Cette espace n'est pas particulièrement destinée à l'admin qui a le droit lui
 \\subsection{Déconnexion}
 Il s'agit d'une page de déconnexion commune à tous. Elle s'occupe seulement de se vider des variables de sessions, ains que des variables globales. 
 
-\\subsection{L'espace Admin}
+\subsection{L'espace Admin}
 
-\\subsection{configuration du template}
-Pour pouvoir accéder à l'espace membres et les différentes pages que l'on vient de proposer, il faut que cela soit accessible finalement. 
-En s'aidant des variables de sessions et de celles défini dans config.php, il est facilement possible dans php d'y inclure un menu supplémentaire pour accéder à ses pages, selon le degré de connexion et le type de connexion . 
+L'espace admin laisse la possibilité d'accéder à la liste des clients enregistré sur le site. On peut modifier ce qui concerne la partie profil de cette utilisateurs. 
+On peut également détruire ce compte, mais il s'agit d'une opération dangereuse. En effet, tel qu'implementé actuellement, il n'y a pas vérification et suppression de la présence de cet utilisateur dans les autres bases de données.
+\\
+La même possibilité est laissé pour la liste des vendeurs. Toutefois, on ne peut pas modifier les caractéristiques de leur profil spécifique à leur aspect vendeur. 
+\\
+L'admin a également la possibilité d'accéder à l'ensemble des trajets dans la base de données. 
+Enfin, il est le seul à pouvoir rajouter une nouvelle race dans la base de donnée, ainsi qu'un nouvel admin.
+
+\subsection{configuration du template}
+Pour pouvoir accéder à l'espace membres et les différentes pages que l'on vient de proposer, il faut que cela soit accessible.  
+En s'aidant des variables de sessions et de celles défini dans config.php, il est facilement possible dans la page template d'y inclure un menu supplémentaire pour accéder à ses pages, selon le degré de connexion et le type de connexion , permettant à l'utilisateur connecté de disposer de son menu correspondant. 
+Le menu vendeur et client reste le même, ( car c'est le contrôleur de la modification du profil, et de la liste des trajets qui s'occupe de la distinction ) 
 
 \section{La vue}
 \section{La répartition des rôles}
