@@ -1,0 +1,441 @@
+html {
+	font-family: 'Lato', sans-serif;
+}
+
+body {
+	margin : 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+/* Style Menu principal du site */
+header {
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: fixed;
+	width: 100%;
+	background-color: #FFFFFF;
+	z-index: 999999;
+}
+
+header .flex_div_principal {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+header .logo_site {
+	margin-left: 80px;
+	height : 100px;
+}
+
+.menu_principal {
+	margin-right: 60px;
+	display: flex;
+}
+
+.menu_principal .lien_menu_principal {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 20px;
+	margin-right: 20px;
+	text-transform: uppercase;
+	font-weight: 900;
+	color: #00AFF5;
+}
+
+.menu_principal .lien_menu_principal i {
+	padding-right: 5px;
+}
+
+.menu_principal .lien_menu_principal:visited {
+	color: #00AFF5;
+}
+
+/* Style du main content */
+
+main {
+	padding-top: 140px;
+}
+
+/* Style du footer */
+
+footer {
+	margin-top: 30px;
+}
+
+footer .footer_bas {
+	background-color: #00AFF5;
+}
+
+footer .footer_bas .thanks {
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: 1016px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+footer .footer_haut {
+	background-color: #D3D3D3;
+}
+
+
+footer .footer_haut .menu_footer {
+	max-width: 1016px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	text-align: left;
+}
+
+#nav_footer {
+	column-count: 3;
+	flex: 3;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#nav_footer ul {
+	margin: 0;
+	list-style: none;
+}
+
+#nav_footer ul .li_footer {
+	margin-bottom: 8px;
+	line-height: 24px;
+}
+
+#nav_footer ul .li_footer a {
+	color : #293133;
+	font-weight: 600;
+}
+
+/* Style page d'accueil */
+
+.banner_accueil {
+	position: relative;
+}
+
+.image_accueil {
+	background-image: url("stade.jpg");
+	background-size: cover;
+	height: 500px;
+	background-position: 50% 50%;
+}
+
+.title_accueil {
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    bottom: 0;
+    margin-bottom: 40px;
+}
+
+.title_accueil h1 {
+	color: #FFFFFF;
+	margin-bottom: 40px;
+}
+
+.bouton_recherche {
+	background-color: #00AFF5;
+	color: #FFFFFF;
+	border-radius: 30px;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.article_accueil {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: 1016px;
+	position: relative;
+	text-align: center;
+	margin: auto;
+}
+
+/** Style page de connexion **/
+
+.tableau_formulaire {
+	max-width: 1080px;
+	display: flex;
+	margin: auto;
+}
+
+.col_form {
+	max-width: 50%;
+	flex-basis: 50%;
+	padding: 0 30px;
+}
+
+.tableau_formulaire .membre_formulaire {
+	margin-top: 15px;
+
+}
+
+
+.membre_formulaire label {
+	display: block;
+	font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.membre_formulaire input {
+	border-radius: 5px;
+    border: 1px solid #ddd;
+	width: 100%;
+	height: 25px;
+	padding-left: 5px;
+}
+
+.membre_formulaire input:hover {
+	border-color: #00AFF5;
+}
+
+
+.membre_formulaire button {
+	border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #00AFF5;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.titre_div {
+	display: flex;
+	justify-content: center;
+	background-color: #00AFF5;
+	margin-bottom: 10px;
+}
+
+.titre_page {
+	text-transform: uppercase;
+	color: #FFFFFF;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+
+.col2 {
+	border-left : 1px solid #ececec;
+}
+
+/** Page de proposition de match **/
+
+.content_form {
+	width: 1080px;
+	margin: auto;
+	text-align: center;
+}
+
+.match_prop {
+	display: flex;
+	justify-content: space-around;
+}
+
+.content_form .membre_formulaire label {
+	font-size: 1em;
+	font-weight: bold;
+	display: initial;
+}
+
+.adresse_formulaire {
+	text-align: left;
+	margin-left: 120px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.membre_adresse {
+	display: flex;
+	justify-content: space-around;
+}
+
+.flex_adresse label {
+	font-size: 1em;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.content_form input {
+	margin-top: 5px;
+}
+
+#commentaires {
+	margin-top: 10px;
+	padding-left: 5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+
+.for_connect {
+	width: 1080px;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.recherche_match {
+	margin-top: 60px;
+}
+
+.indication_connect {
+	font-size: 1em;
+	font-weight: bold;
+	margin: 50px;
+}
+
+.for_connect input {
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	width: 100%;
+	height: 25px;
+	padding-left: 5px;
+	margin-top: 25px;
+}
+
+.for_connect input:hover {
+	border-color: #00AFF5;
+}
+
+.for_connect label {
+	font-size: x-large;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #A0CE5F;
+}
+
+.title_recherche {
+	color: #A0CE5F;
+	font-size: x-large;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 60px;
+    text-align: center;
+}
+
+.liste_compte {
+	margin: auto;
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.liste_compte button {
+	background-color: #A0CE5F;
+	color: #FFFFFF;
+	border-radius: 30px;
+	padding: 20px;
+	font-weight: bold;
+	border: 0;
+}
+
+.liste_compte p {
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.rectangle_annonce {
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.titre_annonce {
+    border-bottom: 1px solid #ddd;
+}
+
+.nom_match {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.nom_annonce {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.flex_annonce {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.intro_nom {
+    padding-right: 5px;
+}
+
+.commentaires_annonce {
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.bouton_annonce {
+    text-align: right;
+    margin-right: 15px;
+    margin-bottom: 35px;
+}
+
+a:link, button {
+    cursor: pointer;
+}
+
+.div_validation {
+    margin-top: 40px;
+}
+
+.div_reservation {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.valider_reservation span {
+    font-size: 1.2em;
+}
+
+.validation_com {
+    margin-bottom: 40px;
+}
+
+.recherche_match input {
+	margin-bottom: 15px;
+}
+
+.titre_principal {
+	color: #A0CE5F;
+}
+
+.bouton_accueil {
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.bouton_accueil a {
+	background-color: #A0CE5F;
+}
+
+.article_accueil p {
+	margin-top: 40px;
+}
