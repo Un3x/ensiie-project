@@ -1,0 +1,356 @@
+
+header{
+    text-align : center;
+    height : 80px;
+    font-size : 50px;
+    line-height : 80px;
+    font-family : 'Courier New';
+    background-size : cover;
+    background-color : black;
+    color : white;
+}
+
+nav{
+    background-color: lightcoral;
+    text-align : center;
+    border : 1px solid red;
+    height : 30px;
+    line-height : 30px;
+    padding: 10px;
+    font-size : 20px;
+    font-family : Helvetica;
+    background-size : cover;
+    color : black;
+}
+
+div#div1 {
+    float:right;
+    width:70%;
+    height:80%;
+    overflow: scroll;
+
+}
+
+div#div2 {
+    float:left;
+    background-color: lightgrey;
+    width:25%;
+    height: 80%;
+    overflow: scroll;
+
+}
+header#hder{
+    background-color: blue;
+
+}
+h3 {
+    text-align:center;
+    background-color: green;
+}
+
+#div101 {
+    width:100%;
+    height:60%;
+    overflow:scroll;
+}
+
+#div102 {
+    width:100%;
+    height:40% ;
+    background-color:white;
+    position:fixed;
+}
+
+aside > ul {
+    padding: 0px;
+    list-style-type: none;
+}
+
+img {
+    overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:40%;
+    margin-left: 10%;
+    height:5%;
+}
+
+footer {
+    height:10%;
+    background-color: red;
+}
+
+.nv:link {
+    color:black;
+    text-align : center;
+    text-decoration: none;
+}
+
+.nv:hover {
+    color:red;
+    text-align : center;
+    text-decoration: none;
+}
+
+.date_heure {
+    text-align: center;
+}
+
+.c{
+    text-decoration:none;
+    color : red;
+}
+
+#c{
+    text-align: center;
+}
+
+
+
+.anim {
+    animation-duration: 8s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-iteration-count : infinite;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    10% {
+        color:red;
+    }
+    20% {
+        color: #ff954b;
+    }
+    30% {
+        color: #fff55d;
+    }
+    40% {
+        color: #a3ff68;
+    }
+    50% {
+        font-size: 300%;
+        margin-left: 25%;
+        width: 150%;
+        color: #46ffc7;
+    }
+    60% {
+        color: #4585ff;
+    }
+    70% {
+        color: #2e1f51;
+    }
+    80% {
+        color: rgba(18, 4, 15, 0.96);
+    }
+    90% {
+         color:rgba(18, 4, 15, 0.96);
+     }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+.ml16,.ml17,.ml18{
+    color: rgba(98, 28, 71, 0.69);
+    padding: 40px 0;
+    font-weight: 800;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    overflow: hidden;
+
+}
+
+.ml17 {
+    text-align:right;
+}
+
+.ml18 {
+    text-align: left;
+}
+
+.ml16 .letter {
+    display: inline-block;
+    line-height: 1em;
+
+}
+
+#img_bienvenue {
+    width : 70%;
+    height: 30%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+#img_bienvenue:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+
+
+
+
+
+
+.form-style{
+    font-family: 'Open Sans Condensed', arial, sans;
+    width: 500px;
+    padding: 30px;
+    background: #FFFFFF;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+    overflow: scroll;
+
+}
+.form-style h2{
+    background: #4D4D4D;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #797979;
+    font-size: 18px;
+    font-weight: 100;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
+}
+.form-style input[type="text"],
+.form-style input[type="date"],
+.form-style input[type="datetime"],
+.form-style input[type="email"],
+.form-style input[type="number"],
+.form-style input[type="search"],
+.form-style input[type="time"],
+.form-style input[type="url"],
+.form-style input[type="password"],
+.form-style textarea,
+.form-style select
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
+
+}
+.form-style textarea{
+    resize:none;
+    overflow: scroll;
+}
+.form-style input[type="button"],
+.form-style input[type="submit"]{
+    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    background-color: #2CBBBB;
+    border: 1px solid #27A0A0;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    padding: 8px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.form-style input[type="button"]:hover,
+.form-style input[type="submit"]:hover {
+    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    background-color:#34CACA;
+}
+
+#rech:link {
+    color:blue;
+    text-decoration: none;
+    font-style: italic;
+}
+
+#rech:hover {
+    color:red;
+    text-decoration: none;
+    font-style: italic;
+}
+
+#rec{
+    list-style-type: none;
+}
+
+.criteres {
+    text-align: right;
+    color: red;
+    font-size: x-small;
+    font-style: italic;
+}
+
+.avatar {
+    width:150px;
+    height:150px;
+}
+
+#avatar_change {
+    border-style:solid;
+    border-color:blue;
+    background-color:blue;
+    text-decoration: none;
+    color:white;
+}
+
+#img_aurevoir {
+    width : 70%;
+    height: 30%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+#img_aurevoir:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+#suppr {
+    border-style:solid;
+    border-color:blue;
+    background-color:blue;
+    text-decoration: none;
+    color:white;
+}
+
+#signaler:link{
+    border-style:solid;
+    border-color:blue;
+    background-color:blue;
+    text-decoration: none;
+    color:white;
+}
+
+#signaler:visited{
+    border-style:solid;
+    border-color:blue;
+    background-color:blue;
+    text-decoration: none;
+    color:red;
+}
+
+.sp {
+    color:black;
+}
+

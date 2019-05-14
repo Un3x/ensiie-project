@@ -1,43 +1,29 @@
-<?php
-require '../vendor/autoload.php';
 
-//postgres
-$dbName = getenv('DB_NAME');
-$dbUser = getenv('DB_USER');
-$dbPassword = getenv('DB_PASSWORD');
-$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
-
-$userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
-?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="accueil.css" />
+    <title>Bienvenu Sur ManAdvisor</title>
 </head>
-<body>
-
-<div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+<body style="height:100%; width:100%">
+<br/>
+<div id="d1">
+    <br/>
+    UN CLIC, UNE NOTE!
+    <br/><br/>
+</div>
+<br/>
+<div  id ="d2">
+    <br/>
+    <a href="inscription.php"> S'INSCRIRE </a>
+    <br/><br/>
+</div>
+<br/><br/>
+<div  id ="d3">
+    <br/>
+    <a href="connexion.php">SE CONNECTER</a>
+    <br/><br/>
 </div>
 </body>
 </html>

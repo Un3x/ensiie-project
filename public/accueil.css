@@ -1,0 +1,47 @@
+body {
+    color:black;
+    background-color:white;
+    background-image:url("happiness.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+
+a:link {
+    color : white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+#d1 {
+    width: 100%;
+    text-align:center;
+}
+
+
+#d2 {
+    background-color: red;
+    width: 100%;
+    text-align:left;
+    margin-left: 45%;
+
+}
+
+
+#d3 {
+    background-color: green;
+    width: 100%;
+    text-align:center;
+    margin-top: 20%;
+}
+
+
+
+h1 {
+    text-align: center;
+
+}

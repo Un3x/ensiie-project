@@ -1,19 +1,62 @@
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+CREATE TABLE Connexion(
+pseudo VARCHAR PRIMARY KEY,
+mdp VARCHAR NOT NULL
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+CREATE TABLE Identite (
+pseudo VARCHAR  PRIMARY KEY ,
+nom VARCHAR NOT NULL,
+prenom VARCHAR NOT NULL,
+sexe VARCHAR NOT NULL,
+phrase VARCHAR NOT NULL,
+region VARCHAR NOT NULL,
+ville VARCHAR NOT NULL,
+note INTEGER NOT NULL
+);
+
+CREATE TABLE Avatar(
+pseudo VARCHAR PRIMARY KEY,
+avatar VARCHAR NOT NULL
+);
+
+CREATE TABLE Commentaire(
+pseudo VARCHAR,
+commentaire VARCHAR,
+commentateur VARCHAR,
+dat DATE,
+heur TIME
+);
+
+CREATE TABLE Signalement(
+pseudo VARCHAR,
+commentaire VARCHAR,
+commentateur VARCHAR,
+dat DATE,
+heur TIME
+);
+
+CREATE TABLE Notation (
+pseudo VARCHAR ,
+note INTEGER
+);
+
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Ngolo','DJIGUI','Tresor','M','Faudra essayer detre heureux ne serait-ce que pour donner lexemple','Ile-de-France','Paris',7);
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Presley','CAZENAVE','Clément','M','Memphis meilleur jeune 2012#pipo','Ile-de-France','Paris',8);
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Papy','PRIGENT','Thibaud','M','I think that alcohol is water, and you?','Ile-de-France','Paris',10);
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Kronk','DURAND','Lenaic','M','Voilà voilà','Ile-de-France','Paris',7);
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Tic','COMMINGES','Alexis','M','La vie est plus drôle avec le principe des olives','Ile-de-France','Paris',3);
+INSERT INTO Identite(pseudo,nom,prenom,sexe,phrase,region,ville,note) VALUES('Administrateur','DJIGUI','Tresor','M','Je suis un administrateur','Ile-de-France','Paris',7);
+
+INSERT INTO Commentaire(pseudo,commentaire,commentateur,dat,heur) VALUES('Ngolo','Trop gentil ce mec!','Papy',CURRENT_DATE ,CURRENT_TIME );
+INSERT INTO Commentaire(pseudo,commentaire,commentateur,dat,heur) VALUES('Ngolo','Merci pour la dernière fois!','Presley',CURRENT_DATE ,CURRENT_TIME );
+INSERT INTO Commentaire (pseudo,commentaire,commentateur,dat,heur) VALUES('Ngolo','On se revoit bientôt poto!','Kronk',CURRENT_DATE ,CURRENT_TIME );
+INSERT INTO Commentaire(pseudo,commentaire,commentateur,dat,heur) VALUES('Ngolo','Quel prétentieux ce béninois!','Tic',CURRENT_DATE ,CURRENT_TIME );
+
+INSERT INTO Connexion(pseudo,mdp) VALUES('Ngolo','1998Tres@r');
+INSERT INTO Connexion(pseudo,mdp) VALUES('Administrateur','1998Tres@r');
+
+INSERT INTO Avatar(pseudo,avatar) VALUES('Ngolo','avatar/avatar8.jpeg');
+INSERT INTO Avatar(pseudo,avatar) VALUES('Presley','avatar/avatar8.jpeg');
+INSERT INTO Avatar(pseudo,avatar) VALUES('Papy','avatar/avatar8.jpeg');
+INSERT INTO Avatar(pseudo,avatar) VALUES('Kronk','avatar/avatar8.jpeg');
+INSERT INTO Avatar(pseudo,avatar) VALUES('Tic','avatar/avatar8.jpeg');
