@@ -1,0 +1,74 @@
+*{padding: 0;margin: 0;list-style: none;text-decoration: none;}  
+nav{width: 800px;margin: 0 auto;}    /* 对导航的内容设置一个主体为800px的宽并使其居中 */
+.clear{clear: both;}
+nav{ height: 50px;}
+nav .menu>li{float: left;width: 120px;text-align: center;padding: 10px 25px;font-size: 18px;position: relative;}
+nav .menu>li a{color: chocolate; }
+nav .menu>li:hover{background: AntiqueWhite;}   /* 设置鼠标滑过后的样式 */
+nav .menu{}
+nav .sub-menu{display: none;margin-top: 10px;}  /* 先使二级菜单的内容隐藏 */
+nav .menu>li:hover .sub-menu{display: block; /*position: absolute;*/}   /* 鼠标滑过一级菜单后的显示二级菜单 */
+nav .sub-menu li{padding: 5px 0;transition: .4s;cursor: pointer;}
+nav .sub-menu li:hover{background: pink;}
+
+#logo{
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    background: inherit;
+    margin-right: 60px;
+}
+
+header{
+    position: absolute;
+    width: 95.8%;
+    z-index: -1;
+    padding: 30px;
+    text-align: center;
+    background-color: OrangeRed ;
+    font-size: 28px;
+    color: Cornsilk;
+}
+
+body{
+    font-family: Georgia,"Times New Roman",Serif;
+    background-color: WhiteSmoke;
+}
+
+.main{ 
+    display: flex;
+    flex-direction: 
+    row-reverse;
+    margin-top: 125px;}
+.main aside{flex: 30%;padding: 20px;}
+.main article{flex: 50%;padding: 20px;}
+.main section{flex: 20%;padding: 20px;margin-right: 30px;}
+
+.boxinfo {
+    color: #333;
+    background-color: Cornsilk ;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.float {
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 490px;
+    background-color: #ddd;
+}
+
+footer{
+    font-size: 20px;
+    color: grey;
+    padding: 30px;
+    text-align: center;
+
+}
+.contact:hover a{color: chocolate;} 
+
+
+
+
+
