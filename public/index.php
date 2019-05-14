@@ -117,7 +117,7 @@ if (isset($_POST['spotname'])) {
     </div>
     
 
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
+
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
             <td>#</td>
