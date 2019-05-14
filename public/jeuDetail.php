@@ -1,4 +1,5 @@
 <?php
+    $id_page="projet";
 	require("../inc/inc.default.php");
 	require("../inc/inc.nav.php");
 	
@@ -40,7 +41,7 @@
 	$equipe = $EquipeRepository->getEquipe($idjeu);
 	$maj = $MiseajourRepository->fetchAllFromJeu($idjeu);
 	
-	entete($jeu->getTitre());
+	entete( $jeu->getTitre(), $id_page );
 	navAccueil();
 ?>
 
@@ -48,7 +49,7 @@
 	<?php
 	echo '<h1>'.$jeu->getTitre().'</h1>';
 	
-	$imgs = $jeuRepository->getMedias($jeu->getId());
+	$imgs = $JeuRepository->getMedias($jeu->getId());
 	foreach($imgs as $img){
 		if(file_exists($img) == true){
 				echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 
@@ -83,13 +84,13 @@
 		
 		else{
 			foreach($maj as $m){
-				if ($m->get_Date() <= getDate()){
-					echo '<h3>Mise à jour du '.$m->get_Date()->format("d M Y").'</h3>';
+				if (true || $m->getDate() <= getDate()){
+					echo '<h3>Mise à jour du '.$m->getDate()->format("d M Y").'</h3>';
 				
 					$imgs = $MiseajourRepository->getMedias($jeu->getId());
 					foreach($imgs as $img){
 						if(file_exists($img)){
-							echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 
+							echo '<img src="'.$img.'" alt="img not found" width="100" height="100"/>'; 
 						}
 					}
 				
