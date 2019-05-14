@@ -34,13 +34,13 @@ CREATE TABLE "achievements" (
 CREATE TABLE "choice" (
   "id" int NOT NULL,
   "content" varchar DEFAULT NULL,
-  "next_node" serial NOT NULL,
+  "next_node" int NOT NULL,
   PRIMARY KEY("id","next_node")
 );
 
 CREATE TABLE "completed" (
   "pseudo" varchar NOT NULL,
-  "end_id" serial NOT NULL,
+  "end_id" int NOT NULL,
   "ghost" int NOT NULL,
   "alcohol" int NOT NULL,
   "attendance" int NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE "requirement" (
 );
 
 CREATE TABLE "story_node" (
-  "id" serial NOT NULL,
+  "id" int NOT NULL,
   "modif_alcohol" int DEFAULT NULL,
   "modif_attendance" int DEFAULT NULL,
   "modif_ghost" int DEFAULT NULL,
@@ -126,12 +126,7 @@ INSERT INTO "story_node" ("id", "modif_alcohol", "modif_attendance", "modif_ghos
 INSERT INTO "user_bis" ("pseudo", "hash_bis", "gender") VALUES
 ('Bob', 'x', 'Hélicoptère Apache'),
 ('Kat', 'motdepasse', 'f'),
-('DonaldTrump', 'illbuildwall', 'f'),
+('DonaldTrump', 'illbuildwall', 'm'),
 ('Kubat', 'x', 'm'),
 ('Polio', 'x', 'm'),
 ('Sun', 'x', 'Hélicoptère Apache');
-
--- dépendances circulaires
--- ALTER TABLE "completed" ADD UNIQUE KEY "end_id" ("end_id");
--- ALTER TABLE "story_node" ADD UNIQUE KEY "id" ("id");
--- ALTER TABLE "choice" ADD UNIQUE KEY "next_node" ("next_node");

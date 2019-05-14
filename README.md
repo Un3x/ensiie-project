@@ -1,7 +1,7 @@
 # ENSIIE Web Project Skeleton
 
 ## Install your application
-This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
+This tutorial will guide you through the installation procedure of the Web Project Skeleton.
 
 The only packages you need to install right now are **docker** and **docker-compose**
 * [Install Docker](https://docs.docker.com/install/) :
@@ -19,7 +19,7 @@ The next step is to set some environment variables in the `.env` file
     * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
 
 Now, let's begin the installation :
-* `make install`. This command may take time.  
+* `make install`. This command may take time.
 * That's it! Your website is running [http:localhost:8080](http:localhost:8080)
 
 Below are some useful commands :
@@ -28,3 +28,9 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+## Adding stories to the database easily
+
+In the `csv/` directory you will find a parser. Its use is simple: `cd csv && python3 parser.py *.csv`. The output is by default printed on `stdout`, to allow for easier validation by a human. This output can be redirected or copied at the end of the file `data/db.sql` (be sure to delete any previous version of this output to avoid errors).
+
+The formats for the `.csv` files (content and naming) are given in the documentation of the parser itself (one information per line, one file per node/achievement/end). Any optional information is preceded with `<opt>` and lines numbers are given to help you write them easily.
