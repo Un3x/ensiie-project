@@ -99,6 +99,9 @@ if($membre == NULL){ //Si membre introuvable, renvoie vers la page de d'administ
         		}
         		?>
         	</select>
+			<?php
+				echo '<a href="../private/mediaModification.php?idMembre='.$membre->getId().'" >Modifier la photo de profil</a>';
+			?>
         	<input type="submit" name="modification" value="Envoyer"/>
         </form>
     </div>

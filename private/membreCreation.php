@@ -67,7 +67,7 @@ if(isset($_POST['creation'])){ //Si le membre est créé, modification de la bdd
         	<br/>
         	<label>Prénom : </label><input name="prenom" type="text" required/>
         	<br/>
-        	<label>Surnon : </label><input name="surnom" type="text" required/>
+        	<label>Surnom : </label><input name="surnom" type="text" required/>
         	<br/>
         	<label>Mot de passe : </label><input name="password" type="password" required/>
         	<br/>
