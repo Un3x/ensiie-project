@@ -1,0 +1,19 @@
+
+
+<h1 class = "grey">Nouvelle fin !</h1>
+
+<h1 id = "end_title" class = "brown"></h1>
+
+<div class = "end_stat">
+<p> <span class = "orange">Alcoolemie</span> <span id = "stat_al" class = "grey">%</span></p>
+</div>
+
+<div class = "end_stat">
+<p> <span class = "orange">Fantomisation</span> <span id = "stat_go" class = "grey">%</span></p>
+</div>
+
+<div class = "end_stat">
+<p> <span class = "orange">Serieux</span> <span id = "stat_at" class = "grey">%</span></p>
+</div>
+
+<button class = "logout_button" onclick = "window.location.href = 'php_accueil.php'" >Retourner à l'accueil</button>

@@ -1,0 +1,22 @@
+
+
+<h1>Nouvelle fin :</h1>
+
+<div id = "desc_fin">
+	<h1></h1>
+	<p class = "grey"></p>
+</div>
+
+<div class = "end_stat" id = "stat_alcohol">
+<h1 class = "orange">Alcoolemie : </h1>
+</div>
+
+<div class = "end_stat" id = "stat_ghost">
+<h1 class = "orange">Fantomisation : </h1>
+</div>
+
+<div class = "end_stat" id = "stat_attend">
+<h1 class = "orange">Serieux : </h1>
+</div>
+
+<button class = "logout_button">Retourner à l'accueil</button>

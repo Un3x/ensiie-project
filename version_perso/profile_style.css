@@ -1,0 +1,192 @@
+#profile_main{
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	min-width: 1000px;
+	padding-top: 10px;
+}
+
+.pouet{
+	display: flex;
+	flex-direction: row;
+}
+
+.protag{
+	width: 20%;
+	max-width: 250px;
+	min-width: 200px;
+	margin: 15px;
+	border-right: 4px solid #f5cf47;
+}
+
+.protag img{
+	width: 100%;
+}
+
+.profile_content{
+	align-self: flex-start;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	min-width: 600px;
+	margin: 15px;
+}
+.top_row{
+	align-self: flex-start;
+	display: flex;
+	flex-direction: row;
+}
+.profile_info{
+	background-image: url(Visuels/bg_profile.png);
+	width: 50%;
+	max-width: 400px;
+	min-width: 300px;
+	margin: 15px;
+	padding: 15px;
+	box-shadow: 2px 2px 8px #999999;
+	overflow: hidden;
+}
+
+
+
+.profile_info .grey{
+	font-size: 1.2em;
+	line-height: 1;
+	
+}
+
+.info{
+	border-radius: 18px;
+	padding: 10px;
+	margin: auto;
+	width: 95%;
+	background-color: rgba(255, 255, 255, 0.5);;
+}
+
+h1 .brown{
+	width: 100%;
+	text-align: center;
+}
+
+.achievements{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-self: flex-start;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 180px;
+}
+
+.contains_achievements{
+	width: 80%;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.contains_achievements h2{
+	height: 30px;
+	line-height: 0.3;
+	width: 100%;
+	text-align: center;
+}
+
+/* width */
+.achievements::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.achievements::-webkit-scrollbar-track {
+  background: #eeeeee;
+  border-radius: 5px;
+}
+ 
+/* Handle */
+.achievements::-webkit-scrollbar-thumb {
+  background: #f5cf47; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.achievements::-webkit-scrollbar-thumb:hover {
+  background: #ed9a00; 
+}
+
+.achievements_placeholder{
+	margin: 10px;
+	align-self: flex-start;
+	width: 80px;
+	height: 80px;
+	background-color: #f5cf47;	
+}
+
+.stories_info{
+	width: 100%;
+}
+
+.stories_info h2{
+	width: 100%;
+	text-align: center;
+}
+
+
+.choice_buttons{
+	margin: auto;
+	width: 100%;
+
+}
+
+#form_zone button{
+	min-width: 70px;
+	margin: auto;
+	
+}
+
+#modif_form{
+	display: flex;
+	flex-direction: row;
+}
+
+.left_form{
+	width: 40%;
+	text-align: right;
+	vertical-align: center;
+}
+.right_form{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-right: auto;
+	margin-left: auto;
+	width: 40%;
+	vertical-align: center;
+}
+
+.change_right .champs{
+	width: 100%;
+}
+
+.change_right .champs input{
+	width: 100%;
+}
+
+#bigredbutton{
+	width: 100%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 2em;
+	background-color: red;
+	text-align: center;
+	cursor: pointer;
+}
+h2{
+	width: 100%;
+	text-align: center;
+}
+
+#zone_51 p{
+	width: 100%;
+	text-align: center;
+}
+
