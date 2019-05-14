@@ -61,7 +61,7 @@ if (isset($_POST['spotname'])) {
 
 	<div id="search">
 		<form action="index.php">
-		<span style="font-size:140%">Trouve le spot le plus près de chez toi :</br></span>
+		<span style="font-size:140%">Trouve le spot le plus près de chez toi :<br/></span>
 		<input id="searchbar" type="text" name="ville" placeholder="Entrez votre ville">
 		</form>
     </div>
