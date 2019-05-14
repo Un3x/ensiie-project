@@ -97,7 +97,9 @@ if (isset($_POST['spotname'])) {
                 <button class=\"bouton\" style=\"margin-left:45%\">
                 <a href=\"connexion.php\">Créez-vous un compte !</a>
                 </div>";
-    } else formSpot();
+    } 
+    //affichage de l'ajout d'un spot si l'utilisateur est cuonnecté
+    else formSpot();
     ?>
 
     <table class="table table-bordered table-hover table-striped">
