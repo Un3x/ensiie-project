@@ -149,8 +149,6 @@ INSERT INTO "story_node" ("id", "modif_alcohol", "modif_attendance", "modif_ghos
 (14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, E'Tuto-chan : \"C\'est l\'idée ! Continue comme ça !\"', 'entree.jpg', 'chara_1.png'),
 (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, E'Tu t\'approches ensuite de Teto-chan...', 'entree.jpg', 'chara_2.png');
 
-
-
 INSERT INTO "ends" ("end_id", "end_node", "title", "full_text", "short_text") VALUES
 (1, 15, 'Premières interactions', 'Tu as rencontré les soeurs Tu et espères bien rejoindre leurs associations ! Continue comme ça !', E'a commencé sa grande aventure à l\'ENSIIE !');
 
