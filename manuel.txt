@@ -1,3 +1,5 @@
+Manuel concernant les pages de src:
+
 Alors, pour gérer les entrées de la table "User" par exemple il y a plusieurs fonctions:
 
 chaque entrée est un objet vu par php donc pour récupérer les informations d'un objet il faut utiliser des 
