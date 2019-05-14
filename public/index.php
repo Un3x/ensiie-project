@@ -83,10 +83,11 @@ if (isset($_POST['spotname'])) {
     <?php foreach ($spots as $spot) :?>
 	 <?php $lat = $spot->getlatitude();
           	$long = $spot->getLongitude();
-		$name = $spot->getNom();?>
+		$name = $spot->getNom();
+		$note = $spot->getNote();?>
 		<script>
 		 var marker = L.marker([<?php echo $lat?>,<?php echo $long?>]).addTo(mymap);
-    		 marker.bindPopup("<b><?php echo $name?></b>");
+    		 marker.bindPopup("<b><?php echo $name?></b></br>Note:<?php echo $note?>");
 		</script>
 		<?php endforeach;?>
     
