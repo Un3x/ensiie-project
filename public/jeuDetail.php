@@ -48,7 +48,7 @@
 	<?php
 	echo '<h1>'.$jeu->getTitre().'</h1>';
 	
-	$imgs = $jeuRepository->getMedias($jeu->getId());;
+	$imgs = $jeuRepository->getMedias($jeu->getId());
 	foreach($imgs as $img){
 		if(file_exists($img) == true){
 				echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 
@@ -86,9 +86,9 @@
 				if ($m->get_Date() <= getDate()){
 					echo '<h3>Mise à jour du '.$m->get_Date()->format("d M Y").'</h3>';
 				
-					$imgs = ???;
+					$imgs = $MiseajourRepository->getMedias($jeu->getId());
 					foreach($imgs as $img){
-						if(file_exists($img) == true){
+						if(file_exists($img)){
 							echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 
 						}
 					}
