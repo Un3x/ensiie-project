@@ -1,8 +1,8 @@
 <?php
 include 'Vue.php';
-enTete("Authentification");
+enTete2("Authentification");
 vue_connexion();
 retour_menu();
-pied();
+//pied();
 ?>
 

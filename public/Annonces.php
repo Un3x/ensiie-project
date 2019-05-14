@@ -14,7 +14,7 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $productRepository = new \User\ProductRepository($connection);
 $products = $productRepository->fetchAll();
-enTete2("Annonces dans la ville $city de la planète $planet");
+enTete2("Annonces dans la ville $planet");
 
 ?>
 

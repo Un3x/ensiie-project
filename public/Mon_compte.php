@@ -3,12 +3,11 @@ include("Modele.php");
 include("Vue.php");
 include("../src/User/User.php");
 
-
-$psd = $_POST['psd']; //pseudo 
-
-
-//enTete("Infomation of user id: ".$psd."");
-
+if(!$_SESSION['connect']){
+	header('Location: Connexion.php');
+}
+$psd = $_SESSION['nomuser'];
+enTete2("Infomation of user id: $psd");
 $users = search_info_perso($psd);
 
 foreach ($users as $user){
@@ -18,9 +17,6 @@ foreach ($users as $user){
 	}
 }
 
-
-
-
 retour_menu();
-//pied();
+pied();
 ?>
