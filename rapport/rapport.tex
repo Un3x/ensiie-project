@@ -2,6 +2,10 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
 \title{Rapport de projet web}
 \author{Alexandre Garand, Lucas Bourel, Corentin Guillerme, Maxime Song}
@@ -9,7 +13,21 @@
 \begin{document}
 
 \maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
 \newpage
+
+\section{Présentation du projet}
+    Notre projet est un site de réservation de trajets entre plusieurs villes (type uber). Mais au lieu de réserver un trajet en voiture, les utilisateurs réservent des trajets sur des créatures fantastiques (licornes, dragons, phénix ...).
+    \\
+    
+    Les utilisateurs peuvent donc s'inscrire soit pour réserver un trajet soit pour proposer un trajet en tant que monture.
+    \\
+    
+    Bien évidemment les trajets proposés n'existent pas dans la réalité.
+    \\
+    
+    Par la suite les utilisateurs qui cherchent un trajet seront appelés des clients et ceux qui proposent de faire des trajets seront appelés des vendeurs, transporteurs, créatures ou montures.
 
 \section{L'architecture}
 	Nous avons choisit d'utiliser une structure modèle-vue-contrôleur.\\ \\
@@ -43,8 +61,88 @@
 		\subsubsection{Les injections SQL}
 			Le deuxième problème rencontrer est l'héritage de User qui n'a pas pus être fais au niveau de la base de donnée ce qui à été pallié en écrivant trois base de donnée distincte avec des données similaires. Cette solution peu efficace à causer une duplication du code importante et un héritage peu utile au niveau des managers.
 			
-\section{Le contrôle}
+\section{Réservation de trajet}
+    \subsection{Partie client}
+        Pour réserver un trajet les utilisateurs ont à disposition un formulaire dans lequel ils entrent la ville de départ et la ville d'arrivée.
+        
+        Ils arrivent ensuite sur une page avec la liste des créatures pouvant effectuer ce trajet avec des informations comme le prix et le temps de trajet.
+        
+        En choisissant un trajet ils arrivent sur une page affichant des informations plus complètes sur le trajet et un lien vers le profil public du vendeur.
+        
+        Sur cette page ils peuvent réserver le trajet puis sont inviter à entrer un numéro de carte bancaire pour confirmer le paiement.
+        \\
+        
+        Le client est alors informé par mail que son trajet à bien été réservé et obtient un lien pour accéder à des informations sur ce dernier.
+        
+        Dès que le vendeur a accepté (ou refusé) le trajet le client en est informé par un mail.
+        \\
+        
+        Le client peut annuler un trajet à tout moment excepté si ce dernier est déjà terminé.
+    
+    \subsection{Partie Vendeur}
+        Lorsqu'un client a fait une demande de réservation, le vendeur correspondant est alerté par mail qui contient un lien vers ce trajet et de là il peut soit accepter soit refuser. Le client recevra alors un mail l'informant de sa décision.
+        \\
+        
+        Par la suite le vendeur aura toujours la possibilité d'annuler le trajet avant que celui-ci ne se termine.
+            
+            
+    \subsection{Problèmes rencontrés et solutions}
+        \subsubsection{Envois de mails}
+            Afin d'informer les utilisateurs sur les états des réservations la façon la plus simple étant donné qu'ils peuvent ne pas être connecté au site est de leur envoyer des mails.
+            \\
+            
+            Pour cela nous avons du installer PHPMailer afin de faciliter l'envoi de mails.
+            Dans l'objectif dene pas mettre les identifiants et mots de passe du compte mail utilisé pour les envois dans le code source PHP nous avons utilisé XOAUTH2 pour se connecter.
+            \\
+            
+            Le compte mail utilisé est un compte GMail car il nous permet d'avoir accès à une quantité illimitée d'alias ce qui est beaucoup plus pratique pour les phases de test.
+        
+        \subsubsection{Affichage du trajet sur une carte}
+            Pour afficher une carte avec le trajet effectué nous avons utilisé l'API Leaflet car elle est très légère, gratuite et opensource.
+            \\
+            
+            Les cartes proviennent d'OpenStreetMap et le chemin parcourru a été obtenu grâce à openrouteservice. Cependant ce service nécessitant une clé pour être utilisé nous avons du mettre la requete au niveau du PHP pour éviter que les utilisateurs ne voient la clé utilisée.
+            La requète se fait à l'aide d'Ajax car cela permet de réduire le temps de réponse du serveur pour l'envoi de la page.
+        
+        \subsubsection{Formulaire de choix des villes}
+            Afin d'avoir des villes pour les départs et les arrivées nous avons récupéré une liste de ville qui provient de geonames.
+            
+            Pour faciliter le choix de la ville nous avons du en supprimer certaines de la base de bonnées pour éviter qu'il n'y ait plusieurs villes ayant le même nom (nous avons gardé celle ayant le plus d'habitants)
+            \\
+            
+            Pour que l'utilisateur puisse plus facilement choisir une ville nous avons ajouté un script d'autocomplétion qui affiche à l'aide d'Ajax une liste déroulante contenant des noms de villes commençant par ce que l'utilisateur a entré.
+            
+            Cependant comme le serveur n'accepte qu cinq connexions à la fois nous avons qu ajouter un timeout avant de faire la requête pour vérifier si la valeur du champ a changé et ainsi limiter le nombre de requêtes pour ne pas faire planter le serveur.
+        
+        \subsubsection{Stockage des trajets}
+            Il est impossible de stocker tous les trajets qui peuvent être effectués car il est de l'ordre du nombre de vendeurs sur des villes différentes multiplié pas le nombre de villes (on arrive très rapidement au dessus du million). 
+            \\
+            
+            Pour les recherches de trajets on regarde donc quels vendeurs sont disponibles à la ville de départ et on crée un trajet pour chacun d'entre eux mais sans le rajouter à la base de donnée. Ils ne sont entrés que lorsque le client arrive sur la page de paiement, pour éviter qu'ils ne soient modifiés pendant le paiement.
+        
+        \subsubsection{Calcul de distance entre les villes}
+            Comme l'API de recherche de chemin entre deux villes est limitée à des chemins inférieurs à 6 000 km et qui ne traversent pas les océans il faut utiliser une autre méthode pour calculer les distances entre deux villes.
+            
+            C'est pour cela que les distances sont calculées à l'aide des coordonnées GPS.
+            
+    
+
 \section{La vue}
-\section{La répartition}
+\section{La répartition des rôles}
+\begin{description}
+ \item[Alexandre Garand :].
+ \\
+ 
+ 
+ \item[Lucas Bourel :] .
+ \\
+ 
+ \item[Corentin Guillerme :] toute la partie réservation de trajets côté controller et vue (recherche de trajets, réservation, envois de mails...)
+ \\
+ 
+ \item[Maxime Song :].
+ \\
+\end{description}
+
 
 \end{document}
