@@ -42,7 +42,7 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
 	
 }else if($_SESSION['role'] == 'a' || Equipe->faitPartieEquipe($jeu, $_SESSION['id'])){ //Si pas administrateur, renvoie vers d'administration
 		
-	echo '<h4>Erreur: Vous n\'avez pas la permission de modifier cette article car vous n\'en êtes pas l\'auteur</h4>';
+	echo '<h4>Erreur: Vous n\'avez pas la permission de modifier ce projet car vous ne faites pas partie de l\'equipe</h4>';
 	echo '<h4>Redirection vers la page d\'administration...</h4>';
 	header( "refresh:3;url=admin.php" );
 	
@@ -97,7 +97,6 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
     header( "refresh:3;url=jeux.php" );
 }else if(isset($_POST['supression'])){ //Si jeu est supprimé, modification de la bdd puis renvoie vers la page de d'administration des jeux
 	
-	$equipesRepository->deleteAllEquipe($_GET['id']);
 	$status = $jeuRepository->deleteJeu($_GET['id']);
     
     if($status){
