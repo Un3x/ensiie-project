@@ -3,10 +3,17 @@ namespace User;
 
 class User
 {
+
+
     /**
      * @var int
      */
     private $iduser;
+
+    /**
+     * @var VARCHAR NOT NULL
+     */
+    /*private $mail;*/
 
     /**
      * @var string
@@ -33,6 +40,24 @@ class User
      * @var string
      */
     private $mdp;
+
+    /**
+     * @return varchar
+     */
+    /*public function getMail()
+    {
+        return $this->mail;
+    }*/
+
+    /**
+     * @param varchar $mail
+     * @return User
+     */
+    /*public function setMail($mail)
+    {
+        $this->mail = $mail;
+        return $this;
+    }*/
 
     /**
      * @return int

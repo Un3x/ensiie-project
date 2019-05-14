@@ -6,7 +6,7 @@ include '../src/Logement/Logement.php';
 <head>
     <title> Rechercher un Logement </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="res/css/searchlogement.css" />
+    <link rel="stylesheet" href="res/css/./searchlogement.css" />
 </head>
 <body>
     <div class="search">
@@ -138,6 +138,7 @@ $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
 $logementRepository = new \Logement\LogementRepository($connection);
+$userRepository = new \User\UserRepository($connection);
 $logements=[];
 if (isset($_POST['prix'])){
 $departement = $_POST['departement'];
@@ -145,6 +146,9 @@ $ville = $_POST['ville'];
 $prix = $_POST['prix'];
 $logements = $logementRepository->fetch2($departement, $ville, $prix);
 }
+
+
+
 ?>
 
 <table class="table table-bordered table-hover table-striped">
@@ -153,14 +157,16 @@ $logements = $logementRepository->fetch2($departement, $ville, $prix);
             <td>Ville</td>
             <td>Nombre de place</td>
             <td>Prix</td>
+            <td>Propriétaire</td>
         </thead>
         <?php /** @var \User\Logement $logement */
-        foreach ($logements as $logement) : ?>
+        foreach ($logements as $logement) :?>
             <tr>
                 
                 <td><?php echo $logement->getVille() ?></td>
                 <td><?php echo $logement->getNbPlaces() ?></td>
                 <td><?php echo $logement->getPrix() ?> €</td>
+                
             </tr>
         <?php endforeach; ?>
 </table>
