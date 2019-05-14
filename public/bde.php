@@ -9,8 +9,20 @@ if(empty($_SESSION['login']) || empty($_SESSION['bde']))
 	header('Location: http://localhost:8080/authentification.php');
 	exit();
 }
-displayHeader();
+require '../vendor/autoload.php';
+//postgres
+$dbName = getenv('DB_NAME');
+$dbUser = getenv('DB_USER');
+$dbPassword = getenv('DB_PASSWORD');
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
+$userRepository = new \User\UserRepository($connection);
+$users = $userRepository->fetchAll();
+
+
+
+
+displayHeader();
 ?>
 
 <header class="header de page">
@@ -46,6 +58,7 @@ displayHeader();
   <button onclick="action_aff()">Rechercher</button>
 
   <table id="res" class="table table-bordered table-hover table-striped">
+		<caption>Résultat de la recherche</caption>
 	<thead>
 	  <tr>
 		<th>Firstname </th>
@@ -125,6 +138,78 @@ function action_exp() {
 	window.open(arg);
 }
 </script>
-  </body>
+
+<!-- Gestion des membres du bde -->
+<div class="gestion" id="gestion membres bde">
+<?php
+$eleves = $connection->query("select * from users where bde=1 order by year desc")->fetchAll(\PDO::FETCH_OBJ);
+?>
+	<table class="table table-bordered table-hover table-striped">
+		<caption>Membres du BDE</caption>
+		<tr>
+			<th>Prénom</th>
+			<th>Nom</th>
+			<th>Pseudo</th>
+			<th>Promo</th>
+		</tr>
+		<?php foreach ($eleves as $eleve) : ?>
+		<tr>
+			<form method="post" id="membre_bde" action="admin/bde_controller.php">
+			<td> <?php echo $eleve->firstname ?> </td>
+			<td> <?php echo $eleve->lastname ?> </td>
+			<td> <?php echo $eleve->pseudo ?> </td>
+			<td> <?php echo $eleve->year+3 ?></td>
+			<td class="actions">
+				<input type="number" value="<?php echo $eleve->id_user ?>" name="usertomodif" class="idevent" readonly/>
+				<input type="submit" name="suppr" value="Supprimer"/>
+			</td>
+			</form>
+
+		</tr>
+		<?php endforeach; ?>
+	</table>
+
+<legend>Rajouter un élève</legend>
+<label>Rechercher</label>
+<input type="text" id="ajout"/>
+<button id="ajout_submit">Ajouter</button>
+
+
+
+
+<script src="assets/jquery.min.js"></script>
+<script src="assets/awesomplete.min.js"></script>
+<script>
+$("#ajout_submit").prop("disabled",true);
+var users_list = [],
+		user_selected;
+$.get("ajax/users_get.php", function(users) {
+	users.forEach(function(u) {
+		users_list.push({
+			label: u['lastname'] + " '" + u['pseudo'] + "' " + u['firstname'],
+			value: u['id_user']
+		})
+	})
+	var input = document.getElementById("ajout");
+	new Awesomplete(input, {
+		list: users_list,
+		replace: function(suggestion) {
+			this.input.value = suggestion.label;
+//			console.log(suggestion);
+			$("#ajout_submit").prop("disabled",false);
+			user_selected = suggestion.value;
+		}
+	});
+
+$("#ajout_submit").on("click", function() {
+	$.get("ajax/bde_set.php",{user: user_selected},'json');
+	setTimout(location.reload(),1000);
+})
+
+}, 'json');
+</script>
+
+</div>
+</body>
 
 </html>

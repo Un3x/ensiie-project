@@ -30,10 +30,6 @@ $assos=$connection->query("select * from associations")->fetchAll(\PDO::FETCH_OB
 
 
 
-//controleur
-if (!empty($_POST['event']) && !empty($_POST['note'])){
-	$connection->query('insert into score (id_user,id_event,notation) values ('.$iduser.','.$_POST['event'].','.$_POST['note'].')');	
-}
 ?>
 <table class="table table-bordered table-hover table-striped">
 	<caption>Récapitulatif des points association</caption>
@@ -76,7 +72,7 @@ if ($moyenne):?>
 <?php endforeach; ?>
 </table>
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+<form action="admin/eleve_controller.php" method="post">
 	<fieldset>
 	<legend> A Participé à un évènement </legend>
 	<p>
@@ -91,10 +87,10 @@ if ($moyenne):?>
 	</fieldset>
 </form>
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+<form action="admin/eleve_controller.php" method="post">
 <fieldset>
-	<?php if (!empty($_POST['association'])):
-	$evenements = $connection->query('select * from events where id_asso='.$_POST['association'])->fetchAll(\PDO::FETCH_OBJ);?>
+	<?php if (!empty($_SESSION['asso'])):
+	$evenements = $connection->query('select * from events where id_asso='.$_SESSION['asso'])->fetchAll(\PDO::FETCH_OBJ);?>
 	<fieldset>
 	 <select id="event" name="event">
 <?php foreach ($evenements as $evenement):

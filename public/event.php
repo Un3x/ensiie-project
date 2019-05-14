@@ -31,19 +31,7 @@ $asso=$connection->query('select * from associations where id_asso='.$_SESSION["
 $events=$connection->query('select * from events where id_event='.$_SESSION['event'])->fetch(\PDO::FETCH_OBJ);
 $eleves = $connection->query('select * from score left join users using (id_user) where id_event='.$_SESSION['event'])->fetchAll(\PDO::FETCH_OBJ);
 
-if (array_key_exists('suppr',$_POST)){
-	if ($connection->query("delete from score where id_event='".$_SESSION['event']."' and id_user=".$_POST['usertomodif'])){
-		header('Location: event.php');
-	}	
-}
 displayHeader();
-if (!empty($_POST['points'])) {
-	$connection->query("update score set notation=".$_POST["points"].' where id_user='.$_POST['usertomodif']);
-}
-if (!empty($_POST['usertoadd'])){
-	$connection->query("insert into score(id_user,id_event,notation) values (".$_POST['usertoadd'].",".$_SESSION['event'].",10)");
-	header('Location: event.php');
-}
 ?>
 <div class="gestion" id="gestion_evenements">
 
@@ -58,7 +46,7 @@ if (!empty($_POST['usertoadd'])){
 		</tr>
 		<?php foreach ($eleves as $eleve) : ?>
 		<tr>
-			<form method="post">
+			<form method="post" action="admin/event_controller.php">
 			<td> <?php echo $eleve->firstname ?> </td>
 			<td> <?php echo $eleve->lastname ?> </td>
 			<td> <?php echo $eleve->pseudo ?> </td>
@@ -108,7 +96,7 @@ $.get("ajax/users_get.php", function(users) {
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/pointassos_set_event.php",{user: user_selected},'json');
-	window.location.replace('event.php');
+	location.reload();
 })
 
 }, 'json');

@@ -37,7 +37,7 @@ displayHeader();
 ?>
 
 
-<form method="post">
+<form method="post" action="passation.php">
 <fieldset>
 	<legend>Confirmer la passation de présidence à <?php echo $userpassation->pseudo; ?> </legend>
 	<input type="submit" name="cancel" value="Annuler"/>
