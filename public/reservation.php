@@ -46,7 +46,7 @@ $nbres = nbReservation($_POST['id_user']);
 if ($okreserv && ($nbres < 3)) {
     $tmpreserv=$reservationRepository->creeReservation($_POST['id_livre'], $_POST['id_user']);
     $reservationRepository->insertReservation($tmpreserv);
-    header("Location: index.php");
+    header("Location: bibliotheque.php");
 }
 
 ?>

@@ -1,14 +1,14 @@
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admin) VALUES ('Charles', 'Tanguy', 'Ansyth', '$2y$10$5IKRZ9DBUX4tBy93jhKk6.w/uMrL8hwjzS/w/DbFx.WRLHzwPBNGO', '0','7', 'true');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '2', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0', 'true');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Banner', 'Bruce', 'Hulk', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Wayne', 'Bruce', 'Batman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parker', 'Peter', 'Spiderman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Stark', 'Tony', 'Ironman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Robert', 'MrIndestructible', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Hélene', 'Elastigirl', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
-INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'JackJack', 'JackJack', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', '0', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, est_admin) VALUES ('Charles', 'Tanguy', 'Ansyth', '$2y$10$5IKRZ9DBUX4tBy93jhKk6.w/uMrL8hwjzS/w/DbFx.WRLHzwPBNGO', 'tanguy.charles@ensiie.fr','7', 'true');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Fleurance', 'Paul', 'Deluxe', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'paul.fleurance@ensiie.fr', '2', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus, est_admin) VALUES ('Fourcade', 'Louis', 'Gofer', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'louis.fourcade@ensiie.fr', '0', '0', 'true');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Gauthier', 'Louis', 'Ofeeling', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'louis.gauthier@ensiie.fr', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Banner', 'Bruce', 'Hulk', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'bruce.banner@marvel.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Wayne', 'Bruce', 'Batman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'bruce.wayne@dc.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parker', 'Peter', 'Spiderman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'peter.parker@sony.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Stark', 'Tony', 'Ironman', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'tony.stark@marvel.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Robert', 'MrIndestructible', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'robert.parr@pixar.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'Helene', 'Elastigirl', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'helene.parr@pixar.com', '0', '0');
+INSERT INTO "User"(nom, prenom, pseudo, mdp, mail, nb_livres_empruntes, nb_livres_rendus) VALUES ('Parr', 'JackJack', 'JackJack', '$2y$10$MuUsTZFuEKeXoViyIrU/JOEHa8SoOlSCNFrNO40zqAcJsCEKK4ehK', 'adressedemerde.lol@disney.com', '0', '0');
 
 
 
@@ -55,3 +55,15 @@ INSERT INTO "Auteur"(id_livre, auteur) VALUES ('10', 'Clifford A. Pickover');
 
 INSERT INTO "Livre"(id_livre, titre, auteur, publication, couverture, editeur) VALUES ('11', 'Une brève histoire du temps', 'Stephen Hawking', '2018-5-4', './cvlivres/BHT.jpg', 'Edilivres');
 INSERT INTO "Auteur"(id_livre, auteur) VALUES ('11', 'Stephen Hawking');
+
+
+
+
+
+
+
+UPDATE "Livre" SET emprunteur='7', date_emprunt='2019-4-15' WHERE id_livre='9';
+UPDATE "Livre" SET emprunteur='8', date_emprunt='2019-5-1' WHERE id_livre='10';
+UPDATE "Livre" SET emprunteur='9', date_emprunt='2018-12-15' WHERE id_livre='11';
+
+
