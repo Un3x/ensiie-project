@@ -130,9 +130,11 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 					echo '<input type="hidden" value="'.$media->id_media.'" name="idMedia'.$i.'">';
 					echo '</div>';
 					$i = $i + 1;
-				}*/
-
+				}
+				*/
+				echo '<a href="../private/mediaModification.php?idArticle='.$article->getId().'" >Modifier le membre</a>';
 			?>
+			
 			<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
 			<input type="button" id="bSuppMedia" onclick="suppMedia()" style="background-color:red" value="Supprimer la dernière image" />
         	
