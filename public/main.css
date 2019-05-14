@@ -844,7 +844,19 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 @media only screen and (max-width: 768px){
-    #my-account-container{
+    #my-account-container,#sub-container{
         padding-top: 30px;
     }
+}
+
+#sub-container{
+    margin: 0 auto;
+    background-color: white;
+    width: 95%;
+    display: block;
+}
+
+#sujet-create-container input{
+    float: left;
+    width: 90%;
 }
