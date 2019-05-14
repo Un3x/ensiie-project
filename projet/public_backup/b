@@ -1,0 +1,50 @@
+ <!DOCTYPE html>
+ <html lang="fr">
+	 <head>
+		 <meta charset="UTF-8"/>
+		 <title>MapChat</title>
+		 <link rel="stylesheet" type="text/css" href="../css/page.css">
+	 </head>
+	 <body>
+		 <header>
+		 <h1>MapChat</h1>
+
+		 <h3>Un site internet original.</h3>
+		 <br>
+		  <div class="topnav">
+			<div class="search-container">
+			      	<form>
+                            <input type="text" style="width: 400px; padding: 0;"
+			    placeholder=" Search..." required>
+			    <button type="submit">
+			    </button>
+				</form>									</div>
+		  </div>
+		 </header>
+		  <div class="middletab">
+			  <table>
+		           <tr>
+			    <th><a href="science">/science/</a></th>
+			    <td>
+		            <a href="science_1">[sujet1]</a>
+			    </td>
+			    <td>[sujet2]</td>
+			   </tr>
+			   <tr>
+			    <th>/tech/</th>
+			    <td>[sujet3]</td>
+			   </tr>
+			   <tr>
+			    <th>/livres/</th>
+			   </tr>
+                           <tr>
+			    <th>/jeux vidéos/</th>
+			   </tr>
+
+
+			  </table>
+	          </div>
+		  <div class="foot">
+	          </div>
+	 </body>
+ </html> 

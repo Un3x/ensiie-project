@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html lang="fr">
+	 <head>
+		 <meta charset="UTF-8"/>
+		 <title>MapChat</title>
+		 <link rel="stylesheet" type="text/css" href="page_section.css">
+	 </head>
+	 <body>
+		 <header>
+		 <h1>/science/</h1>
+
+		 <h3>Pour <i>l'élite</i> de la nation et de la recherche.</h3>
+		 <h3><a href="b">[home]</a></h3>
+		  <div class="topnav">
+			<div class="search-container">
+			      	<form>
+                            <input type="text" style="width: 400px; padding: 0;"
+			    placeholder=" Search..." required>
+			    <button type="submit">
+			    </button>
+				</form>
+			</div>
+		  </div>
+		 </header>
+		  <div class="threads">
+			  <div class="thread">
+			  <div class="thr_title">
+		            <a href="science_1">La terre est-elle plate?</a>
+			  </div>
+			  <div class="thr_content">
+			    <a href="science_1">>inb4 conspiration</a>
+			  </div>
+			  </div>
+			  <div class="thread">
+			  <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+			  <div class="thread">
+		          <div class="thr_title">Aide pour mon DM de maths svp!</div>
+			  <div class="thr_content">issou</div>
+			  </div>
+
+	          </div>
+		  <div class="foot">
+	          </div>
+	 </body>
+ </html> 
