@@ -9,6 +9,17 @@
     text-decoration: none;
 }
 
+body[id="connected"]{
+    background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+body[id="connected"] .curve{
+    display: none;
+}
+
 header[id="disconnected"]{
     position: relative;
     background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
@@ -326,6 +337,17 @@ footer{
     margin-left: 5%;
     color: #424242;
     transform: translateY(-20px);
+}
+
+footer[id="connected"]{
+    transform: none;
+    margin: 0 auto;
+}
+
+footer[id="connected"] table{
+    max-width: 410px;
+    width: 100%;
+    white-space:nowrap;
 }
 
 .icon{
@@ -769,4 +791,53 @@ input[type=text],input[type=password], input[type=email]{
 }
 #tsps-presentation{
     display: none;
+}
+
+#my-account-container{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+#my-account-container h1{
+    position: relative;
+    color: white;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    text-shadow: 0.06em 0.1em gray;
+    margin-bottom: 10px;
+}
+
+#profile-pic-container{
+    display: block;
+    float: right;
+}
+
+#my-account{
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgb(71, 81, 104);
+}
+
+#my-account form input{
+    width: 90%;
+    float: left;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#my-account .button{
+    margin: 15px auto;
+    border: none;
+    display: block;
+    transform: translateY(10px);
+}
+
+#avatar{
+    max-height: 100px;
+    max-width: 20%;
 }

@@ -5,12 +5,16 @@
     <nav id="landing-nav">
         <ul class="nav-link">
             <li><a href="reset_session.php">Déconnexion</a></li>
+            <li><a href="profile.php">Mon profil</a></li>
+            <li class="v-link"><a href="training.php">Entraînements</a></li>
+            <li class="v-link"><a href="documents.php">Documents</a></li>
+            <li class="v-link"><a href="discussions.php">Discussions</a></li>
         </ul>
     </nav>
 </div>
 <div class="sidebar-container">
     <h1><a href="index.php">TSPS</a></h1>
-    <a id="nav-toggle" href="#">&#9776;</a>'
+    <a id="nav-toggle" href="#">&#9776;</a>
     <div id="sidebar-nav"></div>
 </div>
 
@@ -28,7 +32,7 @@
 </div>
 <div class="sidebar-container">
     <h1><a href="index.php">TSPS</a></h1>
-    <a id="nav-toggle" href="#">&#9776;</a>'
+    <a id="nav-toggle" href="#">&#9776;</a>
     <div id="sidebar-nav"></div>
 </div>
 
