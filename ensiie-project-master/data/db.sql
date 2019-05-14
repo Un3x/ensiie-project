@@ -18,9 +18,9 @@ CREATE TABLE Jury ( ) INHERITS (Utilisateur);
 CREATE TABLE Organisateur ( ) INHERITS (Utilisateur);
 CREATE TABLE Participant ( ) INHERITS (Utilisateur);
 
-INSERT INTO Participant (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Participant', 'John', 'participant@gmail.com', 'mdp', '0636754809', 'm', 'Basketball');
-INSERT INTO Jury (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Jury', 'Jury', 'jury@gmail.com', 'mdp', '0636754809', 'm', 'Basketball');
-INSERT INTO Organisateur (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Organisateur', 'Organisateur', 'organisateur@gmail.com', 'mdp', '0636754809', 'm', 'Basketball');
+INSERT INTO Participant (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Participant', 'Participant', 'participant@gmail.com', 'mdp', '0000000000', 'm', 'Basketball');
+INSERT INTO Jury (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Jury', 'Jury', 'jury@gmail.com', 'mdp', '0000000000', 'm', 'Basketball');
+INSERT INTO Organisateur (id, nom, prenom, email, password, tel, genre, sport) VALUES ('1', 'Organisateur', 'Organisateur', 'organisateur@gmail.com', 'mdp', '0000000000', 'm', 'Basketball');
 
 CREATE TABLE Sport (
        nom VARCHAR(50) NOT NULL ,
