@@ -1,0 +1,84 @@
+body
+{
+    background-color: #eee;
+}
+tbody tr:nth-child(odd) {
+    background-color: #64d8ce;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #94b0b3;
+  }
+  
+  
+  table {
+    background-color: #bd3547;
+  }
+  h1{
+      text-align: center;
+      font-size: 40px;
+  }
+h3{
+	text-align:center;
+	color:rgb(218, 25, 25);
+	font-size: 25px;
+	margin-top: 0.7%;
+    margin-right: 2%;
+   }
+   form {
+    /* Uniquement centrer le formulaire sur la page */
+    margin: 0 auto;
+    width: 500px;
+    /* Encadré pour voir les limites du formulaire */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+  }
+
+li label
+{
+    display: inline-block;
+	width: 300px;
+	padding: 5px 5px;
+	text-decoration: none;
+}
+form label
+{
+    display: block;
+    width: 210px;
+} 
+
+footer
+{
+   	background-color:666464;
+}
+p
+{
+    font-size: 25px;
+}
+li{
+	font-size: 25px;
+    list-style-type: circle;
+    
+}
+
+nav {
+	padding: 0; margin: 0;
+	text-align: center; /* centrer le texte */
+}
+nav li {
+	display: inline;
+	padding: 9px;
+	width: 50%;
+	font-size: 150%;
+	text-align: center;
+    background-color: rgb(40, 250, 215);
+    border-radius: 15px;
+    border : 0px dashed white;
+	color: #F9FBFB;
+	line-height: 200%;
+}
+nav a {
+	display:inline-block;
+	margin: 0 30px;
+}
