@@ -10,7 +10,7 @@
 	
 	function printFooter(){
 		echo "<footer> 
-				<p>temp</p>
+				<p></p>
 			</footer>";
 	}
 	
