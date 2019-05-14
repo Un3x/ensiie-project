@@ -7,7 +7,7 @@ const updateCounter = ctx => {
 };
 
 server([
-    get('/', ctx => render('index.html')),
+    get('/', ctx => render('chat.html')),
     socket('connect', updateCounter),
     socket('disconnect', updateCounter),
     socket('message', ctx => {

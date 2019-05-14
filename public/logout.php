@@ -1,15 +1,15 @@
 <?php
-// On démarre la session
+// Start the session
 session_start ();
 
-// On détruit les variables de notre session
+// Destroy the session variables
 session_unset ();
 
-// On détruit notre session
+// Destoy the session
 session_destroy ();
 
 $member = null;
 
-// On redirige le visiteur vers la page d'accueil
+// Redirect the user to the home page
 header ('location: loginView.php');
 ?>

@@ -34,7 +34,7 @@ if (isset($_POST['submit_btn']))
         echo "<script>checkFields()</script>";
     }
     else{
-    // removes backslashes
+    // Removes backslashes
     $lastnameTmp = stripslashes($_REQUEST['lastname']);
     $firstnameTmp = stripslashes($_REQUEST['firstname']);
     $email = stripslashes($_REQUEST['email']);
@@ -45,9 +45,6 @@ if (isset($_POST['submit_btn']))
     $result_verify->execute();
 
     $count = $result_verify->rowCount();
-    /*$result_verify = $connection->prepare("SELECT FOUND_ROWS()");
-    $result_verify->execute();
-    $row_count =$result_verify->fetchColumn();*/
     if($count!=0)
     {
         print "<div class='form'><h4>Email déjà utilisé !</h4></div>";
@@ -64,10 +61,8 @@ if (isset($_POST['submit_btn']))
         }}
     }
 }
+ob_start();
 ?>
-
-
-<?php ob_start(); ?>
 
 <div class="connexion">
 

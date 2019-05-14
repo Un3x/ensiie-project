@@ -19,22 +19,19 @@ if(isset($_POST['send_message_btn']))
         echo '<div class="msg">'
             .'Verifiez votre boite email !'
             .'</div>';
-        //echo "Verifiez votre boite email !";
-        //echo "<script>alert(\"Vérifiez votre boite email\")</script>";	fonctionnel mais pas ce qu'on vise au niveau design
     }
     else
     {
         echo "Erreur !";
     }
 }
+
+ob_start();
 ?>
-
-
-<?php ob_start(); ?>
 
 <div class="connexion">
     <h1>Password Reset</h1>
-    <form role="form" method="POST" enctype="multipart/form-data">	<!--Ajouter la page de action; action=\"send_script.php\"-->
+    <form role="form" method="POST" enctype="multipart/form-data">
         <input type="email" name="email_reset" placeholder="Username@ensiie.fr" size="48"><br><br>
         <input type="submit" name="send_message_btn" value="Reset">
         <input type="button" onclick="location.href='loginView.php'" value="Login"/>

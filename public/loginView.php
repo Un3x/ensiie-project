@@ -21,28 +21,17 @@ if(isset($_POST['submit_button']))
     $firstname_form=$row['firstname'];
     $lastname_form=$row['lastname'];
 
-    //Il faut utiliser le commentaire en-dessous au lieu de $connection->query
-    /*$q = $connection->prepare($requete);
-    $q->execute();*/
-
-    //Vérifier si le mot de passe est bien saisi pour éviter le SQL-Injection
-    /*if(!isset($pwd))
-    {die("Veuillez entrer votre mot de passe !");}*/
-
-    //Vérifier que le hashage correspond au mot de passe saisi
     if ($_POST["email"]!="" && $_POST["password"]!=""){
     if($model->verif_mdp($email_form, $pwd))
     {
-        //Il faut decrypter le password avant de le passer a verif_mdp
 
 
-        //Appel de config() pour sauvegarder le mot de passe dans la variable de session
+        //Call config() in order to save the password into the session variable
         $model->config($email_form, $lastname_form, $firstname_form, $pwd);
-        $_SESSION['email']=$email_form;                 //essayer de supprimer ces 4 lignes si c'est possible
+        $_SESSION['email']=$email_form;
         $_SESSION['lastname']=$lastname_form;
         $_SESSION['firstname']=$firstname_form;
         $_SESSION['password']=$pwd;
-        //header("Location:accueil.php");
         header('Location: accueil.php');
         exit();
     }}
@@ -51,13 +40,8 @@ if(isset($_POST['submit_button']))
         echo "<script>checkFields()</script>";
     }
     else
-    {	//echo "<div id='error_msg'>Email/Mot de passe incorrect !</div>";
-        //echo "Email/Mot de passe incorrect !";
-        //exit();
-
+    {
         print "<div class='form'><h3>Email or password incorrect !</h3></div>";
-
-        /*Il faut essayer de l'afficher en-dessous du champ de password dans la page login, voir favori (log out user de awa)*/
     }
 }
 ?>
@@ -106,5 +90,4 @@ if(isset($_POST['submit_button']))
 </div>
 
 <?php $content = ob_get_clean();
-
 require('template.php'); ?>

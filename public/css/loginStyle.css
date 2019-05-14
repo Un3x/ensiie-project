@@ -6,7 +6,6 @@ body {
 h1 {
     text-align: center;
     color: #C70039;
-    /*font-family: "OCR A Std", "monospace";*/
     font-family: "myFont", "Times New Roman";
     font-style: italic;
     font-size: 40px;
@@ -79,7 +78,6 @@ input[type=button] {
 #field_check
 {
     width:auto;
-    /*border:#333 1px solid;*/
     height:30px;
     text-align:left;
     font-size:15px;

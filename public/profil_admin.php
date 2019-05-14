@@ -9,8 +9,6 @@ $connection = $model->dbConnect();
 
 if(isset($_POST['valid_del_email']))
 {
-    //
-    //echo "p".$_SESSION['email']/"p";
     $email = $_SESSION['email'];
     $query = "DELETE FROM member WHERE email='$email'";
     $result=$connection->prepare($query);
@@ -22,18 +20,19 @@ if(isset($_POST['valid_del_email']))
 if(isset($_POST['valid_deban_email']))
 {
     $deban_email = $_POST['deban_email'];
-$sql_verify = "SELECT * FROM member WHERE email='$deban_email';";
-$result_verify = $connection->prepare($sql_verify);
-$result_verify->execute();
+    $sql_verify = "SELECT * FROM member WHERE email='$deban_email';";
+    $result_verify = $connection->prepare($sql_verify);
+    $result_verify->execute();
 
-$count = $result_verify->rowCount();
-if($count!=0) {
-    $query = "UPDATE member SET banned='false' WHERE email='$deban_email'";
-    $result = $connection->prepare($query);
-    $result->execute();
-    //header("Location:accueil.php");
-}else {        echo"<script>wrongEmail()</script>";
-}
+    $count = $result_verify->rowCount();
+    if($count!=0) {
+        $query = "UPDATE member SET banned='false' WHERE email='$deban_email'";
+        $result = $connection->prepare($query);
+        $result->execute();
+    }
+    else {
+        echo"<script>wrongEmail()</script>";
+    }
 }
 
 if(isset($_POST['valid_ban_email']))
@@ -49,7 +48,6 @@ if(isset($_POST['valid_ban_email']))
             $query = "UPDATE member SET banned='true' WHERE email='$ban_email'";
             $result = $connection->prepare($query);
             $result->execute();
-            //header("Location:accueil.php");
         }
         else {
             echo"<script>wrongEmail()</script>";
@@ -77,7 +75,7 @@ if(isset($_POST['valid_signup']))
         $firstname_form=$row['firstname'];
         $lastname_form=$row['lastname'];
         $model->config($email_form, $lastname_form, $firstname_form, $password);
-        //header("Location:accueil.php");
+
     }
     else if($_POST["firstname"]=="" || $_POST["lastname"]==""){
         echo "<script>updateNames()</script>";
@@ -103,17 +101,13 @@ if(isset($_POST['valid_mdp']))
             $result=$connection->prepare($query);
             $result->execute();
             $model->config($email_form, $lastname_form, $firstname_form, $pwd_new);
-            //header("Location:accueil.php");
         }
         else {
             echo"<script>wrongPwd()</script>";
         }
     }
 }
-
-
 ?>
-
 <script>
 
     function updateNames() {
@@ -197,12 +191,12 @@ if(isset($_POST['valid_mdp']))
         <button type="submit" name="valid_mdp" id="valid_mdp" class="input_form">Valider</button>
     </form><br>
 
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" <!--onSubmit="return wrongEmail()-->">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" ">
         Utilisateur à bannir :<br />
         <input type="text" name="ban_email" id="ban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_ban_email" id="valid_ban_email" class="input_form">Bannir</button>
     </form><br>
-    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" <!--onSubmit="return wrongEmail()-->">
+    <form id="signup" name="signup" role="form" method="POST" enctype="multipart/form-data" ">
         Utilisateur à débannir :<br />
         <input type="text" name="deban_email" id="deban_email" maxlength="38" class="input_form" placeholder="ex: prenom.nom@ensiie.fr"/><br>
         <button type="submit" name="valid_deban_email" id="valid_deban_email" class="input_form">Débannir</button>

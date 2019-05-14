@@ -30,7 +30,6 @@ select
 {
     width:250px;
     height:30px;
-    /*Coins arrondis*/
     border:#333 1px solid;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -48,7 +47,6 @@ input
 {
     width:250px;
     height:30px;
-    /*Coins arrondis*/
     border:#333 1px solid;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;

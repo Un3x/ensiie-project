@@ -15,7 +15,7 @@ help:
 start:
 	docker-compose up --build -d
 	sleep 3
-	docker-compose exec php /bin/bash -c 'npm start'
+	#docker-compose exec php /bin/bash -c 'npm start'
 
 stop:
 	docker-compose down -v

@@ -11,7 +11,6 @@ html, body {
 h1 {
     text-align: center;
     color: #C70039;
-    /*font-family: "OCR A Std", "monospace";*/
     font-family: "myFont", "Times New Roman";
     font-style: italic;
     font-size: 40px;
@@ -32,7 +31,6 @@ section#chatroom {
     height:60%;
     width:98%;
     border:1px solid #ACD8F0;
-    /*overflow:auto;*/
     overflow-x: hidden;}
 
 .chatbox_left {
@@ -40,7 +38,6 @@ section#chatroom {
     float: left;
     margin:0 auto;
     margin-bottom:5px;
-    /*padding:10px;*/
     background:#fff;
     height:60%;
     width:88%;

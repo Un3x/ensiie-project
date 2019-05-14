@@ -9,11 +9,6 @@ include_once('../src/Member/MemberRepository.php');
 $firstname_tmp=$_SESSION['firstname'];
 $lastname_tmp=$_SESSION['lastname'];
 
-/*try {
-    if(!($firstname_tmp = $_SESSION['firstname']) || !($lastname_tmp = $_SESSION['lastname'])){throw new Exception('Veuillez vous connecter !');}}
-catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();}*/
-
 require('../src/model.php');
 $model = new Model();
 $connection = $model->dbConnect();
@@ -27,14 +22,6 @@ foreach ($members as $m) {
         $member = $m;
     }
 }
-
-/*if(isset($_POST['createRoom']))
-{
-    $chatRoomForm = $_POST['chatRoom'];
-    $query = "INSERT INTO chatRoom (chatRoomName) VALUES ('$chatRoomForm')";
-    $result=$connection->prepare($query);
-    $result->execute();
-}*/
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +66,7 @@ foreach ($members as $m) {
     </form>
     <div class="top-bar-left" style="display:inline-block;float:right;">
         <div class="menu">
-            <a href="http://localhost:3000/index.html"><button type="button">Lancer une discussion</button></a>
+            <a href="http://localhost:3000/chat.html"><button type="button">Lancer une discussion</button></a>
             <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>
             <a href="logout.php" ><button type="button">Logout</button></a>
         </div>
@@ -89,18 +76,10 @@ foreach ($members as $m) {
 
 
 <div id="right_col">
-    <!--<div class="chatbox_right"></div>-->
 
     <section id="chatroom">
         <section id="feedback"></section>
     </section>
-
-    <!--<form name="message" action="">
-        <div class="field_and_button">
-            <input name="usermsg" type="text" id="usermsg" size="100" placeholder="Entrer votre message" />
-            <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
-        </div>
-    </form>-->
 
     <section id="input_zone">
         <input id="usermsg" class="vertical-align" type="text" size="100" placeholder="Entrer votre message" />

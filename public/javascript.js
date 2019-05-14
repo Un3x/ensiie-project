@@ -1,13 +1,12 @@
-// ./public/javascript.js
 
 // Get the current username from the cookies
 var user = cookie.get('user');
 if (!user) {
 
     // Ask for the username if there is none set already
-    user = prompt('Choose a username:');
+    user = prompt('Entrez votre pseudo:');
     if (!user) {
-        alert('We cannot work with you like that!');
+        alert('Le pseudo est obligatoire !');
     } else {
         // Store it in the cookies for future use
         cookie.set('user', user);
@@ -22,7 +21,6 @@ socket.on('count', function (data) {
 });
 
 // When we receive a message
-// it will be like { user: 'username', message: 'text' }
 socket.on('message', function (data) {
     $('.chat').append('<p><strong>' + data.user + '</strong>: ' + data.message + '</p>');
 });

@@ -2,14 +2,15 @@ CREATE TABLE "member" (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
-    searchUser boolean not null default false,
+    /*searchUser boolean not null default false,*/
     email VARCHAR(255) NOT NULL,
     password VARCHAR(40) NOT NULL,
     admin boolean not null default false,
     banned boolean not null default false
 );
-INSERT INTO "member"(firstname, lastname, email, password) VALUES ('John', 'Doe', 'ammar.moizaly@ensiie.fr', 'ammarammar');
-INSERT INTO "member"(firstname, lastname, email, password, admin) VALUES ('test', 'test', 'test.test@ensiie.fr', 'testtest', true);
+INSERT INTO "member"(firstname, lastname, email, password) VALUES ('Ammar', 'Moizaly', 'ammar.moizaly@ensiie.fr', 'ammarammar');
+INSERT INTO "member"(firstname, lastname, email, password) VALUES ('Mehdi', 'Abdallaoui', 'mehdi.abdallaoui@ensiie.fr', 'mehdimehdi');
+INSERT INTO "member"(firstname, lastname, email, password, admin) VALUES ('prénomAdmin', 'nomAdmin', 'test.test@ensiie.fr', 'testtest', true);
 
 create table "chat" (
   id SERIAL PRIMARY KEY,
@@ -26,6 +27,7 @@ create table "message" (
   message VARCHAR(255) NOT NULL DEFAULT ''
 );
 
+/*The two tables below will be used for the feature of chatrooms we are working on since there will be several users belonging to different chatrooms*/
 /*create table "chatRoom" (
     id SERIAL PRIMARY KEY,
     chatRoomName VARCHAR(30) NOT NULL,
@@ -39,16 +41,3 @@ CREATE TABLE "user" (
     lastname VARCHAR NOT NULL ,
     birthday date
 );*/
-
-/*INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');*/
