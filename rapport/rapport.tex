@@ -10,7 +10,7 @@
 \author{Alexandre Garand, Lucas Bourel, Corentin Guillerme, Maxime Song}
 
 \begin{document}
-\[\maketitle
+\maketitle
 \setcounter{tocdepth}{2}
 \tableofcontents
 \newpage
@@ -226,6 +226,30 @@ Enfin, la possibilité de demander l'ajout d'une race par un utilisateur ( devan
  \\
 \end{description}
 
-
-\]
+\section{Informations complémentaires}
+    \subsection{Modules installés}
+        Afin de pouvoir envoyer des mails nous avons du installer PHPMailer et league/oauth2-google. Pour cela nous avons inclus ces modules dans le fichier composer.json pour qu'ils soient installés automatiquement lors d'un $make install$
+        
+    \subsection{réécriture des URLs}
+        Notre site utilise le fichier index.php comme routeur donc toutes les demandes de pages passent par ce fichier avec une adresse du type adresseDuSite/index.php?action=truc
+        
+        Afin d'avoir des URLs plus jolies nous avons modifié le fichier de configuration du serveur (.docker/nginx-php/config/site.config) pour ajouter des réécritures d'URL.
+        
+        Toutes les URLs de la forme adresseDuSite/truc sont donc réécrites au niveau du serveur en adresseDuSite/index.php?action=truc
+        \\
+        
+        Cela permet d'avoir de belles URLs au niveau de l'utilisateur.
+        
+    \subsection{bots}
+        Le nombre de villes présentes dans la base de données est de l'ordre de 160 000. Donc pour éviter de ne pas trouver de trajet dans la grande majorité des cas il faudrait remplir la base de données avec un nombre de vendeurs du même ordre de grandeur de le nombre de villes. Pour éviter cela des vendeurs sont automatiquement ajoutés à la base de données à chaque recherche de trajet.
+        
+        Ce comportement est désactivable en passant la variable $\$modeDemo$ à false dans le fichier config.php.
+        
+    \subsection{identifiants}
+        compte admin : admin@uber-licorne.com / 
+        
+        comptes bots : testprojetlicorne+bot_<id_aléatoire>@gmail.com / imabot
+        
+        compte gmail : testprojetlicorne@gmail.com / 159asxcv
+        
 \end{document}
