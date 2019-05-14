@@ -50,23 +50,13 @@ if($article == NULL){ //Si article introuvable, renvoie vers la page de d'admini
 	$auteur    = htmlspecialchars_decode( $_POST['auteur'] );
 	$date      = htmlspecialchars_decode( $_POST['date'] );
     
-	/*$i = 1;
-	echo "patate";
-	while( isset($_FILES['media'.$i]) && $i < 5 )
-	{
-		//$lien = htmlspecialchars_decode( $_FILES['media'.$i] );
-		echo var_dump($_FILES['media'.$i]);
-		echo var_dump($_POST['media'.$i]);
-		$i = $i + 1;
-	}*/
-    
     if (isset($_POST['cr'])){
         $cr = $_POST['cr'];
     }else{
         $cr = 0;
     }
     
-    $status = $articleRepository->setArticle( $idArticle, $idArticle, $texte, $auteur, $date, $cr);
+    $status = $articleRepository->setArticle( $idArticle, $titre, $texte, $auteur, $date, $cr);
     
     if($status){
         echo '<h4>L\'article n°'.$_GET['id'].' a bien été modifié</h4>';

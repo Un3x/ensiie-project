@@ -15,7 +15,6 @@ function create_session($pseudo, $mdp){
 		return false;
 	}
 	
-	session_start();
 	$_SESSION['id'] =$membre->getId();
 	$_SESSION['pseudo'] = $pseudo;
 	$_SESSION['role'] = $membre->getRole();

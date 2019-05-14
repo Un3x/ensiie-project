@@ -15,9 +15,10 @@ navAccueil();
 
 if(isset($_SESSION['pseudo'])){ //si connecté, redirection vers la page d'acceuil
 	header("location: index.php");
+	exit();
+}else{
+	require( "../inc/connexionForm.php" );
 }
-
-require( "../inc/connexionForm.php" );
 
 ?>
 <body>
