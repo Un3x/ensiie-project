@@ -794,7 +794,7 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #my-account-container{
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     display: block;
 }
@@ -821,6 +821,7 @@ input[type=text],input[type=password], input[type=email]{
     width: 100%;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgb(71, 81, 104);
+    transform: translateX(-10px);
 }
 
 #my-account form input{
@@ -840,4 +841,10 @@ input[type=text],input[type=password], input[type=email]{
 #avatar{
     max-height: 100px;
     max-width: 20%;
+}
+
+@media only screen and (max-width: 768px){
+    #my-account-container{
+        padding-top: 30px;
+    }
 }
