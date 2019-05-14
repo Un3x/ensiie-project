@@ -95,8 +95,9 @@
 
 
     </form>
-    Savez-vous que ... ? 
-    Ah, bah moi non plus, je ne le savais pas.
+
+
+
 
 </section>
 

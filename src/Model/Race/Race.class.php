@@ -122,7 +122,7 @@ class Race
      */
     public final  function setCapacity($capacity)
     {
-        if(!is_int($capacity))
+        if(!is_numeric($capacity))
         {
             trigger_error('capacity is not a double', E_USER_WARNING);
             return;

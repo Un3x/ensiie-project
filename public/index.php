@@ -196,8 +196,101 @@ if( isset($_GET['action'])) {
                 require('../src/Controller/404.php');
             }
             break;
-        
-        
+        case 'vendeursAdmin' :
+            if( $GLOBALS["user"] && $_SESSION["userType"] == "Admin")
+            {
+                require("../src/Controller/Admin/utilisateursController.php");
+                allVendor();
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+            break;
+        case 'modifUserAdmin' :
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+                require('../src/Controller/Admin/utilisateursController.php');
+                if (isset($_GET['id']) && isset($_GET['type'])) {
+                    if (isset($_POST['destruction'])) {
+                        destruction($_GET['id'], $_GET['type']);
+                    } else {
+                        oneUser($_GET['id'], $_GET['type']);
+                    }
+                }
+            }
+
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+            break;
+
+        case 'coursesAdmin' :
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+            require('../src/Controller/Admin/allCoursesController.php');
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+            break;
+        case 'racesAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+            require('../src/Controller/Admin/racesAdmin.php');
+            allRaces();
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+
+            break;
+
+        case 'ajoutRaceAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+                require('../src/Controller/Admin/racesAdmin.php');
+                if(isset($_POST['capacite']) && isset($_POST['vitesse']) && isset($_POST['nom']))
+                {
+                    ajoutRace();
+                }
+                else
+                {
+                    ajoutRaceDebut();
+                }
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+            break;
+        case 'inscriptionAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+                require('../src/Controller/Admin/inscriptionAdminController.php');
+                if(isset($_POST['mail']) && isset($_POST['password'])
+                    && isset($_POST['password2']) && isset($_POST['prenom'])
+                    && isset($_POST['nom']) && isset($_POST["phoneNumber"]) && isset($_POST["birthDate"])
+                    && isset($_POST['description']) && isset($_POST["genre"]))
+                {
+                    inscriptionAdmin();
+                }
+                else
+                {
+                    inscriptionAdminDebut();
+                }
+
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+
+            break;
         case '' :
             require('../src/View/accueilView.php');
             break;

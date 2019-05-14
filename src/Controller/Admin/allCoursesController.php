@@ -2,14 +2,20 @@
 
 require_once("../src/Model/Course/CourseManager.php");
 require_once("../src/Model/City/CityManager.class.php");
+require_once("../src/Model/User/VendorManager.class.php");
+require_once("../src/Model/User/ClientManager.class.php");
+
 $bdd = bdd();
 $courseManager = new CourseManager($bdd);
 
-if($_SESSION['userType']=="Client") $mesCourses = $courseManager->getCourseClient($_SESSION['userId']);
-if($_SESSION['userType']=="Vendor") $mesCourses = $courseManager->getCourseCarrier($_SESSION['userId']);
+
+
+$mesCourses = $courseManager->fetchAllCoursesAll();
 
 //print_r($mesCourses);
 
 $cityManager = new CityManager($bdd);
 $vendorManager = new VendorManager($bdd);
-require("../src/View/User/Profil/mesTrajetsView.php");
+$clientManager = new ClientManager($bdd);
+
+require("../src/View/Admin/coursesView.php");

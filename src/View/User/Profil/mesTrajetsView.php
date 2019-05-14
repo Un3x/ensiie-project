@@ -5,31 +5,32 @@
     <h1>Liste des courses effectués</h1>
     <table>
         <tr>
-            <th>Lieu de destination</th>
-            <th>Lieu d'arrivée</th>
-            <th>Date</th>
-            <th>Heure de départ</th>
-            <th>Heure d'arrivée</th>
-            <th>Transporteur</th>
-            <th>Prix</th>
+            <th> Lieu de destination </th>
+            <th> Lieu d'arrivée</th>
+            <th> Date </th>
+            <th> Heure de départ</th>
+            <th> Prénom du transporteur </th>
+            <th> Nom du transporteur </th>
+            <th> Prix </th>
+            <th>  Détails </th>
         </tr>
-        <?php  for($i = 0; $i < sizeof($mesCourses); $i++) {  ?>
-            <tr>
-                <td> <?=$mesCourses[$i]->getDeparture()?> </td>
-                <td> <?=$mesCourses[$i]->getArrival() ?> </td>
-                <td> <?=$mesCourses[$i]->getDepartureTime()->format("Y-m-d")?> </td>
-                <td> <?=$mesCourses[$i]->getDepartureTime()->format("H:i:s")?> </td>
-                <td> <?=$mesCourses[$i]['heure_arri']?> </td>
-                <td> <?=$mesCourses[$i]->getCarrier()?> </td>
-                <td> <?=$mesCourses[$i]->getPrice()?> </td>
-            </tr>
-        <?php } ?>
-    </table>
-    <br />
-    <br />
-    <br />
-</section>
+    </thead>
+    <tbody>
+    <?php  for($i = 0; $i < count($mesCourses); $i++) {  ?>
+        <tr>
+            <td> <?= $cityManager->get($mesCourses[$i]->getDeparture())->getName() ?> </td>
+            <td> <?= $cityManager->get($mesCourses[$i]->getArrival())->getName()?> </td>
+            <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("Y-m-d")?> </td>
+            <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("H:i:s")?> </td>
+            <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getFirstname()?> </td>
+            <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getSurname()?> </td>
+            <td>  <?=$mesCourses[$i]->getCarrier()?> </td>
+            <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'info </a></td>
+        </tr>
+    <?php } ?>
+    </tbody>
 
+</table>
 
 
 <?php $content = ob_get_clean(); ?>
