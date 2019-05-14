@@ -852,8 +852,8 @@ input[type=text],input[type=password], input[type=email]{
 #sub-container{
     width: 100%;
     margin: 0 auto;
-    overflow: auto;
     background-color: white;
+    padding: 15px;
 }
 
 #sub-container ul{
@@ -861,9 +861,8 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #sub-container form{
-    margin-left: 10px;
-    display: block;
     margin: 0 auto;
+    display: block;
 }
 
 #sujet-create-container input{
