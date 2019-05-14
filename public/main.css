@@ -799,7 +799,7 @@ input[type=text],input[type=password], input[type=email]{
     display: block;
 }
 
-#my-account-container h1{
+#my-account-container h1, #contain h1{
     position: relative;
     color: white;
     padding-top: 15px;
@@ -839,8 +839,11 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #avatar{
+    float: right;
+    position: relative;
+    padding-right: 40%;
     max-height: 100px;
-    max-width: 20%;
+    max-width: 50%;
 }
 
 @media only screen and (max-width: 768px){
@@ -850,10 +853,13 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #sub-container{
-    width: 100%;
-    margin: 0 auto;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
+    display: block;
     padding: 15px;
+    border-radius: 10px;
 }
 
 #sub-container ul{
@@ -861,12 +867,60 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 #sub-container form{
+    padding-top: 30px;
+    padding-bottom: 5px;
     margin: 0 auto;
     display: block;
 }
 
 #sujet-create-container input{
+    height: 35px;
     display: block;
     float: none;
-    width: 90%;
+    width: 100%;
+}
+
+
+#sujet-create-container button{
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.sujet-list li{
+    list-style-type: none;
+    width: 100%;
+    border-bottom: rgba(173, 173, 173, 0.651) solid 1px;
+}
+
+.sujet-list li div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 280ms;
+}
+.sujet-list li div:hover{
+    box-shadow: 0px 3px 4px #656565;
+}
+
+.sujet-list li .vote-top, .sujet-list li .vote-down{
+    font-size: 30px;
+    float: right;
+    color: rgb(139, 139, 139);
+    padding: 5px;
+    transform: translateY(-50px);
+}
+
+.sujet-list .s-content{
+    color: #656565;
+}
+
+.s-author{
+    font-weight: 300;
+    font-style: italic;
+}
+
+.s-title{
+    color: rgb(26, 26, 78);
+    font-size: 20px;
 }
