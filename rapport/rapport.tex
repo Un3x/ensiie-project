@@ -47,9 +47,12 @@ Nous avons donc pensé le site comme une plateforme épurée où la seule page a
  	\item Mon Profil
  	\item Mes Points
  	\item Gestion BDE : uniquement accessible aux membres du BDE.
- 	\item Gestion Président : uniquement accessible si président d'une association.
+ 	\item Gestion Président : uniquement accessible si président d'une association.\\
  \end{itemize}
  
+ Toutes les requêtes post passent par un fichier controller associer à la page actuelle. Les fichiers controller sont dans le répertoire "/public/admin/"\\
+ 
+ Si l'utilisateur tente d'accéder à une page où il n'a pas les droits nécessaires il est automatiquement redirigé vers la page "\textbf{authentification.php}". 
  \subsection{Structure de la base de donnée}
  On a choisi d'utiliser une base de données découpée en 5 tables : \\
  \begin{itemize}
@@ -76,7 +79,7 @@ Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilis�
 	
 	Cette page est majoritairement faite en JS. \\
 	
-	Il faudrait rajouter la possibilité pour un membre du bde de rajouter le rôle de BDE à un élève lambda ou de le supprimer.
+	Tous les membres du BDE peuvent voir la liste des gens au bde et en rajouter ou en supprimer. Cependant on ne peut pas supprimer le président du bde. 
 
 \subsection{Fonctionnalités pour les présidents d'associations}	
 	Les présidents d'associations peuvent sur la page "\textbf{president.php}" tout d'abord choisir dans un petit formulaire php constitué d'un select une des associations dont ils sont président.\\
@@ -107,7 +110,7 @@ La répartition du travail a donc été originalement faite comme présentée ci
 	\item Loïc Dubard : accueil et menu (+css responsive du menu), système d'authentification et de récupération de mot de passe, fonctionnalités des présidents d'associations (président.php), écriture du rapport\\ 
 	\item Quentin Japhet s'occupe des fonctionnalités du BDE (bde.php), les input avec suggestion automatique en JS et de l'envoie des codes de récupération de mot de passe par mail. \\
 	\item Aurélien Inacio : eleve.php, correction du rapport\\
-	\item Oscar Pothier : CSS et profil.php\\
+	\item Oscar Pothier : profil.php\\
 \end{itemize}
 
 \section{Problèmes rencontrés}
