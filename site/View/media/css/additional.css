@@ -1,0 +1,90 @@
+#logo {
+    margin: 0 auto;
+}
+
+.mainbox {
+margin-top: 30px;
+}
+
+.login-form .panel-body {
+padding-top: 30px;
+}
+
+.login-form .form-group {
+margin-bottom: 25px;
+}
+
+.login-form .submit-group {
+margin-top: 10px;
+}
+
+.navbar-brand {
+padding: 5px 15px;
+}
+
+.navbar-brand img {
+max-height: 100%;
+width: auto;
+}
+
+@media (min-width: 768px) {
+.nojs-dropdown:hover {
+    background: #000;
+    text: #d9d9d9;
+}
+.nojs-dropdown:hover > .dropdown-menu {
+    display: block;
+}
+}
+
+.credential {
+font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+font-size: 18px;
+font-weight: bold;
+color: #fff;
+}
+
+.js-shown {
+display: none;
+}
+
+.collapse.js-hidden      { display: block; }
+tr.collapse.js-hidden    { display: table-row; }
+tbody.collapse.js-hidden { display: table-row-group; }
+
+.expand-updown-icon:before {
+content: "\e113";
+}
+
+.collapsed > .expand-updown-icon:before {
+content: "\e114";
+}
+
+.switch-toggle input.has-success + label {
+color: #39ab77;
+}
+.switch-toggle input.has-warning + label {
+color: #e07000;
+}
+.switch-toggle input.has-error + label {
+color: #b62e2d;
+}
+.switch-toggle input.has-success:checked + label {
+color: #ffffff;
+}
+.switch-toggle input.has-warning:checked + label {
+color: #ffffff;
+}
+.switch-toggle input.has-error:checked + label {
+color: #ffffff;
+}
+.switch-toggle input.has-success:checked ~ a {
+background-color: #39ab77;
+}
+.switch-toggle input.has-warning:checked ~ a {
+background-color: #e07000;
+}
+.switch-toggle input.has-error:checked ~ a {
+background-color: #b62e2d;
+}
+
