@@ -6,8 +6,8 @@
 <section class="information">
 
     <p>
-        Bravo ! Votre inscription s'est bien déroulé. <br/>
-            Se connecter.
+        Bravo ! L'inscription s'est correctement déroulé. <br/>
+
     </p>
 </section>
 

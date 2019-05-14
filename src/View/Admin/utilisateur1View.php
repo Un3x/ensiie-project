@@ -53,7 +53,7 @@
 
             <br/>
             <br/>
-            <label for="price"> Votre prix ( en lingot d'or par ) : </label>
+            <label for="price"> Son prix : </label>
             <?=$valeurDefaut['price']?>
             <br/>
             <label for="occupied"> Etat : </label>

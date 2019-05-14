@@ -268,7 +268,29 @@ if( isset($_GET['action'])) {
                 require('../src/Controller/404.php');
             }
             break;
-        
+        case 'inscriptionAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+                require('../src/Controller/Admin/inscriptionAdminController.php');
+                if(isset($_POST['mail']) && isset($_POST['password'])
+                    && isset($_POST['password2']) && isset($_POST['prenom'])
+                    && isset($_POST['nom']) && isset($_POST["phoneNumber"]) && isset($_POST["birthDate"])
+                    && isset($_POST['description']) && isset($_POST["genre"]))
+                {
+                    inscriptionAdmin();
+                }
+                else
+                {
+                    inscriptionAdminDebut();
+                }
+
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+
+            break;
         case '' :
             require('../src/View/accueilView.php');
             break;
