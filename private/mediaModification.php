@@ -31,7 +31,6 @@ if( isset($_POST['modificationMedia'] ) )
 	{
 		$idArticle = htmlspecialchars_decode( $_GET['idArticle']);
 		$articleRepository = new \Article\ArticleRepository($connection);
-		echo "patate";
 		$status = $articleRepository->deleteAllMedia($idArticle);
 		$i = 1;
 		$envoie = TRUE;
@@ -63,7 +62,7 @@ if( isset($_POST['modificationMedia'] ) )
 
 		$membreRepository = new \Membre\MembreRepository($connection);
 
-		$membreRepository->deleteAllMedia($idMembre);
+		$status = $membreRepository->deleteAllMedia($idMembre);
 		$i = 1;
 		$envoie = TRUE;
 		while( isset( $_FILES[ 'media'.$i ] ) )
