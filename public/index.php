@@ -228,11 +228,45 @@ if( isset($_GET['action'])) {
             break;
 
         case 'coursesAdmin' :
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
             require('../src/Controller/Admin/allCoursesController.php');
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
             break;
         case 'racesAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
             require('../src/Controller/Admin/racesAdmin.php');
             allRaces();
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
+
+            break;
+
+        case 'ajoutRaceAdmin':
+            if($GLOBALS["user"] && $_SESSION['userType'] == "Admin") {
+                require('../src/Controller/Admin/racesAdmin.php');
+                if(isset($_POST['capacite']) && isset($_POST['vitesse']) && isset($_POST['nom']))
+                {
+                    ajoutRace();
+                }
+                else
+                {
+                    ajoutRaceDebut();
+                }
+            }
+            else
+            {
+                header("HTTP/1.1 404 Not Found");
+                require('../src/Controller/404.php');
+            }
             break;
         
         case '' :
