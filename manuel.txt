@@ -1,12 +1,8 @@
-Bon déjà c'est la merde et tout marche pas correctement,
-dites moi si vous trouvez des erreurs pour que je souffre encore plus.
+Alors, pour gérer les entrées de la table "User" par exemple il y a plusieurs fonctions:
 
-
-Alors, pour gérer les entrées de la table "truc" par exemple il y a plusieurs fonctions
-
-chaque entrée est un objet vu par php donc pour récupérer les informations d'un objet il faut utiliser :
-
-$truc->getMachin(); (selon les fonctions get qu'il possède qui sont dans le fichier truc.php dans src)
+chaque entrée est un objet vu par php donc pour récupérer les informations d'un objet il faut utiliser des 
+fonctions du même style que $user->getNom(); qui récupère le nom de l'utilisateur user (selon les fonctions 
+get que la table possède et qui sont dans le fichier User.php dans src par exemple)
 
 
 
@@ -17,7 +13,7 @@ $listetrucs = $trucRepository->fetchAll();
 
 
 
-@  pour modifier un objet il faut utiliser les $truc->setMachin(parametre);
+@  pour modifier un objet il faut utiliser les fonctions du type $truc->setMachin(parametre);
 (les fonctions sont dans le truc.php dans src)
 
 
@@ -35,8 +31,7 @@ $lenomquevousvoulez = $trucRepository->creeTruc(parametres);
 
 @  enfin pour insérer un nouvel objet que vous avez créé (avec la ligne juste au dessus) il faut utiliser :
 
-$trucRepository->insertTruc($$lenomquevousvoulez);
+$trucRepository->insertTruc($lenomquevousvoulez);
 
 
 
-voilà c'est à peu près les seules fonctions dont on a besoin je pense (pour l'instant ça marche que pour user mais je ferai les autres apres)
