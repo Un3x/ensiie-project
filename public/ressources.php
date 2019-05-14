@@ -8,6 +8,11 @@
 	
 	navAccueil();
 
+	$dbName = 'realitiie';
+	$dbUser = 'postgres';
+	$dbPassword = 'postgres';
+	$connection = new PDO("pgsql:host=localhost user=$dbUser dbname=$dbName password=$dbPassword");
+
 	$TutoRepository = new \Tuto\TutoRepository($connection);
 	$tutos = $TutoRepository->fetchAll();
 	
@@ -21,10 +26,20 @@
 <?php 
 	foreach($tutos as $tuto){
 		echo '<div class="round-border">
-			<p>'.$tuto->getTitre().'</p>
-			<p>'.$tuto->getTexte().'</p>
+			<p>'.$tuto->getTitre().'</p>';
+		
+		$imgs = $TutoRepository->getMedias($tuto->getId());;
+		foreach($imgs as $img){
+			if(file_exists($img) == true){
+					echo '<img src='.$img.' alt="img not found" width="100" height="100"/>'; 
+			}
+		}
+		
+		echo '<p>'.$tuto->getTexte().'</p>
 			<p>
-				<a href="../document/Tuto/'.$tuto->getPdf().'>view '.$tuto->getTitre().'.pdf</a>
+				<a href="../document/Tuto/'.$tuto->getPdf().'">
+					view '.$tuto->getTitre().'.pdf
+				</a>
 			</p>
 			</div><br/>';
 	}
