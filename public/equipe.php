@@ -44,14 +44,19 @@
 			<?php
 			foreach ($membres as $membre) {
 				$imgs = $membreRepository->getMedias($membre->getId());
-				$img = $imgs[0];
-				if(file_exists($img) == false){
-					$img = "../img/badassChicken.png";
+				if (isset $imgs[0]){ // Si il y a 1 image au moins
+					$img = $imgs[0];
+					if(!file_exists($img)){
+						$img = "../img/badassChicken.png";
+					}
 				}
 					
+				else
+					$img = "../img/badassChicken.png";
+				
 				echo 
 				'<tr>
-					<td><img src='.$img.' alt="404 : people not found" width="150" height="150"/></td>
+					<td><img src='.$img.' alt="404 : people not found"/></td>
 					<td>'.$membre->getSurnom().'</td>
 					<td>'.$membre->getPrenom().'</td>
 					<td>'.$membre->getNom().'</td>

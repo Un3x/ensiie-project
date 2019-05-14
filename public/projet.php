@@ -39,13 +39,13 @@
     	foreach ($jeux as $jeu) {
 			$imgs = $JeuRepository->getMedias($jeu->getId());
 			$img = $imgs[0];
-			if(file_exists($img) == false){
+			if(!file_exists($img)){
 				$img = "../img/RobotRealitIIE.png";
 			}
 			
     	    echo 
     	    '<tr>
-				<td><img src='.$img.' alt="404 : img not found" width="75" height="75"/></td>
+				<td><img class="media" src='.$img.' alt="404 : img not found"/></td>
 				<td><a href=../public/jeuDetail.php?id='.$jeu->getId().'>'.$jeu->getTitre().'</a></td>
 				<td>';
 			
