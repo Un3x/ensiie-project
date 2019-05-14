@@ -1,13 +1,7 @@
 <?php
 	session_start();
-	
-?>
-
-<!DOCTYPE html>
-<?php require ('print_functions.php');
-	  require ('database_access.php');
-	  
-?>
+require ('include.php');
+echo '<!DOCTYPE html>
 
 <html>
 
@@ -19,31 +13,21 @@
 		<link rel = "stylesheet" type = "text/css" href = "profile_style.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="game_functions.js"></script>
-		
 		<script>
 		$(document).ready(function(){
 				$.post("php_script/getAdminRights.php", function(result){
 					if(result != ""){
 						$("#zone_51").html(result, function(){
 							// $("#zone_51").append(
-							
 						});
 					}
 				});
-			}); 
-		
-		
-		
+			});
 		</script>
 	</head>
-	
-	<body class = "bg">
-		<?php 
+	<body class = "bg">';
 			printHeader();
-			
-		?>
-		
-		<main>
+echo '		<main>
 			<div class = "round_rect" id = "profile_main">
 				<h1 class = "brown">Mon profil</h1>
 				<div class = "pouet">
@@ -53,9 +37,7 @@
 					<div class = "profile_content">
 						<div class = "top_row">
 							<div class = "profile_info">
-								
-								<div class = "info">
-									<?php
+								<div class = "info">';
 										$info = getUserInfo();
 										if($info['gender'] == "f"){
 											$gender = "♀";
@@ -68,12 +50,10 @@
 											<span class = \"grey\">Pseudo : " . $_SESSION['name'] . "
 											</span>
 										</p>
-											
 										<p><span class = \"grey\">Genre : $gender </span></p>
 										<p><span class = \"grey\">Date d'inscription : </span> </p>
 										<p><span class = \"grey\">Histoires completées : " . $info['nb'] . " </span></p>";
-									?>
-									<button class = "logout_button" onclick = "showPopup()">Modifier</button>
+echo '									<button class = "logout_button" onclick = "showPopup()">Modifier</button>
 								</div>
 							</div>
 							<div class = "contains_achievements">
@@ -94,7 +74,7 @@
 									<div class = "achievements_placeholder">
 									</div>
 								</div>
-							</div>					
+							</div>
 						</div>
 						<div class = "stories_info">
 							<h2 class = "grey">Mes histoires finies</h2>
@@ -105,29 +85,18 @@
 								</div>
 							</div>
 						</div>
-						
 						<div id = "zone_51">
-							
-						</div>					
-						<?php
+						</div>';
 							if(isset($_POST['submit'])){
 								echo "COUCOU";
 							}
-						?>
+echo '
 					</div>
 				</div>
-				
 			</div>
-			
-			
-		</main>
-		
-		
-		<?php
+		</main>';
 			printFooter();
-		?>
-		
-		<div id = "popup">
+echo '		<div id = "popup">
 			<div class = "round_rect" id = "popup_body">
 				<h1 class = "brown">Modifier mes informations</h1>
 					<div id = "modif_form">
@@ -140,7 +109,6 @@
 									<input type="radio" name="gender" value="m" checked><span class = "grey">Homme</span><br />
 									<input type="radio" name="gender" value="f"> <span class = "grey">Femme</span><br />
 									<input type="radio" name="gender" value="Non-binaire"> <span class = "grey">Non-binaire</span> <br />
-									
 								</div>
 									<input type = "submit" value = "Valider" class = "logout_button"/>
 								<div>
@@ -150,10 +118,9 @@
 					</div>
 				<div class = "choice_buttons">
 				<button class = "logout_button" onclick = "hidePopup()">Annuler</button>
-				</div>	
+				</div>
 			</div>
 		</div>
-	
 	</body>
 
-</html>
+</html>';

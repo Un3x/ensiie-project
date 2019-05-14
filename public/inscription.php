@@ -1,11 +1,9 @@
 <?php
 	session_start();
-?>
+require('include.php');
 
+echo '
 <!DOCTYPE html>
-<?php require ('print_functions.php');
-	require('database_access.php');
-?>
 
 <html>
 
@@ -16,12 +14,9 @@
 		<link rel = "stylesheet" type = "text/css" href = "profile_style.css"/>
 		<link rel = "stylesheet" type = "text/css" href = "subscription_style.css"/>
 	</head>
-	
-	<body class = "bg">
-		<?php 
+	<body class = "bg">';
 			printHeader();
-		?>
-		
+echo '
 		<main>
 			<div class = "round_rect" id = "subs_body">
 				<h1 class = "brown_2">Inscription</h1>
@@ -46,13 +41,9 @@
 							<input type="radio" name="gender" value="f"> <span class = "grey">Femme</span>
 							<input type="radio" name="gender" value="Non-binaire"> <span class = "grey">Non-binaire</span>
 						</div>
-						
-					</div>	
-										
+					</div>
 				</form>
-				
-				<div class = "insc_treatment">
-					<?php
+				<div class = "insc_treatment">';
 						if(isset($_POST['submit'])){
 							$state = addUser($_POST['pseudo'], $_POST['password'], $_POST['password_confirm'], $_POST['gender']);
 							if($state['isValid'] == 1){
@@ -65,15 +56,11 @@
 								echo "<p class = \"red\">$message</p>";
 							}
 						}
-					?>
+echo '
 				</div>
-				
 			</div>
-		</main>
-		
-		<?php
+		</main>';
 			printFooter();
-		?>
-	</body>
+echo '	</body>
 
-</html>
+</html>';

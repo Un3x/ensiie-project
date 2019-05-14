@@ -116,6 +116,7 @@ INSERT INTO "story_node" ("id", "modif_alcohol", "modif_attendance", "modif_ghos
 INSERT INTO "user_bis" ("pseudo", "hash_bis", "gender") VALUES
 ('Bob', 'x', 'Hélicoptère Apache'),
 ('Kat', 'motdepasse', 'f'),
+('DonaldTrump', 'illbuildwall', 'f'),
 ('Kubat', 'x', 'm'),
 ('Polio', 'x', 'm'),
 ('Sun', 'x', 'Hélicoptère Apache');

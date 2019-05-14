@@ -1,4 +1,3 @@
 <?php
-session_start();
 require ('print_functions.php');
-logOut();
+require('database_access.php');

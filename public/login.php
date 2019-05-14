@@ -1,11 +1,7 @@
-<?php 
+<?php
 	session_start();
-	require ('print_functions.php');
-	require ('database_access.php');
-	
-	
+require ('include.php');
 	$isValidUser = checkUser();
-	
 	if ($isValidUser){
 		echo "<script>
 				window.location.replace(\"php_accueil.php\");
@@ -20,23 +16,18 @@
 				<meta-charset = \"utf-8\"/>
 			<link rel = \"stylesheet\" type = \"text/css\" href = \"stylesheet.css\"/>
 			</head>
-	
 		<body class = \"bg\">
-			<?php 
+			<?php
 				printHeader();
 			?>
-		
 			<main>
 				<h1>TRUC</h1>
 				<?php
-					
 				?>
 			</main>
-		
 			<?php
 				printFooter();
 			?>
 		</body>
 		</html>";
 	}
-?>

@@ -1,4 +1,3 @@
-
 <?php
 	header( 'content-type: text/html; charset=utf-8' );
 	/*Print functions for the header and footer*/
@@ -223,4 +222,3 @@
 		
 	}
 	
-?>
