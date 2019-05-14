@@ -1,6 +1,7 @@
 
 <nav>
     <li>
+        <ul> <a href="/index.php?action=profil" >Profil</a> </ul>
         <ul> <a href="index.php?action=utilisateursAdmin"> Client </a> </ul>
 
         <ul> <a href="index.php?action=vendeursAdmin"> Vendeur </a> </ul>

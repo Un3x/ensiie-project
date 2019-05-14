@@ -54,8 +54,7 @@ CREATE TABLE Vendor
 );
 
 INSERT INTO Admin (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) 
-VALUES ('aaa','bbb','aaa.aawxcsfdfcfgsfgwxcqa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other'),
-('aaa','bbb','aaa.aaawxcwxssdfgsdfgsfd@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other');
+VALUES ('aaa','bbb','admin@uber-licorne.com','$2y$10$4GXuKN/vKgzU0QjTgkvjvezmWM/I0raYtjnC0e.pq.Er48iiKuRFu','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other');
 
 INSERT INTO Client (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender,nbClientCourses) 
 VALUES ('aaa','bbb','aaa.aawxcwxcqa@gmail.com','aaaa','5555','064455835500','1666-01-18 20:50:30','10','1666-01-18 20:50:30','ddddd','other','0'),

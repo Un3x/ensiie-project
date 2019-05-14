@@ -3,7 +3,7 @@
 // cost à gerer ?
 function hasherPassword($pass)
 {
- return password_hash($pass);
+ return password_hash($pass, PASSWORD_DEFAULT);
 }
 
 function verifierPassword($pass,$hash)

@@ -28,6 +28,7 @@ if (isset($_GET['userId']) && isset($_GET['userType'])){
         default:
             $title="utilisateur non trouvé";
             $content = "Cet utilisateur n'existe pas";
+            header("HTTP/1.1 404 Not Found");
             require('../src/View/template.php');
     }
 
@@ -54,5 +55,6 @@ if (isset($_GET['userId']) && isset($_GET['userType'])){
 else{
     $title="utilisateur non trouvé";
     $content = "Cet utilisateur n'existe pas";
+    header("HTTP/1.1 404 Not Found");
     require('../src/View/template.php');
 }

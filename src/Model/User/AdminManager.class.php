@@ -23,7 +23,7 @@ class AdminManager extends UserManager
     public function add($user)
     {
 		$statement = $this->connection->prepare("INSERT INTO Admin (surname,firstname,mailAddress,password,money,phoneNumber,birthDate,reputation,creationDate,description,gender) VALUES (:surname,:firstname, :mailAddress,:password,:money,:phoneNumber,:birthDate,:reputation,:creationDate,:description,:gender)");
-		$a = $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"password" => $user->getPassword(),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender()));
+		$a = $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"mailAddress" => $user->getMailAddress(),"password" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format('Y-m-d H:i:s'),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format('Y-m-d H:i:s'),"description" => $user->getDescription(),"gender" => $user->getGender()));
 	    print_r($statement->errorInfo());
         return $a;
     }
@@ -67,10 +67,11 @@ class AdminManager extends UserManager
 	 */
     public function get2($mailAddress, $password) 
     {
-        $statement = $this->connection->prepare("SELECT id from Admin where mailAddress = :mailAddress and password = :password");
-		$statement->execute(array("mailAddress" => $mailAddress,"password" => $password));
+        $statement = $this->connection->prepare("SELECT id, password from Admin where mailAddress = :mailAddress");
+		$statement->execute(array("mailAddress" => $mailAddress));
 		$req=$statement->fetch();
-		return $req===false?false:($this->get($req['id']));
+
+		return !password_verify($password, $req['password'])?false:$this->get($req['id']);
 	}
 
 	/**

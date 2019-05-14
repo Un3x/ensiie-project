@@ -86,6 +86,7 @@ if (isset($_POST['courseId']) && is_numeric($_POST['courseId'])){
         else{
             $title="trajet non trouvé";
             $content = "Ce trajet n'existe pas";
+            header("HTTP/1.1 404 Not Found");
             require('../src/View/template.php');
         }
     }
@@ -98,6 +99,7 @@ if (isset($_POST['courseId']) && is_numeric($_POST['courseId'])){
 }
 else{
     $title="trajet non trouvé";
-	$content = "Ce trajet n'existe pas";
+    $content = "Ce trajet n'existe pas";
+    header("HTTP/1.1 404 Not Found");
 	require('../src/View/template.php');
 }
