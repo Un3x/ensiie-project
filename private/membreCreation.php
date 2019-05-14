@@ -30,7 +30,7 @@ $roles = array('a' => "Administrateur", 'r' => "Membre"); // à compléter si aj
 
 if(isset($_POST['creation'])){ //Si le membre est créé, modification de la bdd puis renvoie vers la page de d'administration des membres
 	$status = $membreRepository->createMembre($_POST['nom'], $_POST['prenom'], $_POST['surnom'], $_POST['password'], $_POST['promo'], $_POST['role']);
-
+	$idMembre = htmlspecialchars_decode( $_GET['idMembre']);
 	$i = 1;
 	$envoie = TRUE;
 	while( isset($_FILES['media'.$i] )) {
