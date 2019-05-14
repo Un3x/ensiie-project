@@ -5,12 +5,12 @@ require_once('../src/Model/User/AdminManager.class.php');
 
 function initChampsPost()
 {
-    $valeurDefaut['prenom'] = $_POST['prenom'];
-    $valeurDefaut['nom'] = $_POST['nom'];
-    $valeurDefaut['mail'] = $_POST['mail'];
+    $valeurDefaut['prenom'] = htmlspecialchars($_POST['prenom']);
+    $valeurDefaut['nom'] = htmlspecialchars($_POST['nom']);
+    $valeurDefaut['mail'] = htmlspecialchars($_POST['mail']);
     $valeurDefaut['password'] = $_POST['password'];
     $valeurDefaut['password2'] = $_POST['password2'];
-    $valeurDefaut['description'] = $_POST['description'];
+    $valeurDefaut['description'] = htmlspecialchars($_POST['description']);
     $valeurDefaut['birthDate'] = $_POST['birthDate'];
     $valeurDefaut['phoneNumber']= $_POST['phoneNumber'];
     return $valeurDefaut;
@@ -87,7 +87,7 @@ function inscriptionAdmin()
         if ($messageErreur == '<span class="warning">')
         {
             $user = new Admin();
-            $user->hydrate($_POST['nom'],$_POST["prenom"],$_POST['mail'],$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,$_POST['description'],$_POST["genre"],0);
+            $user->hydrate(htmlspecialchars($_POST['nom']),htmlspecialchars($_POST["prenom"]),htmlspecialchars($_POST['mail']),$_POST['password'],0,$_POST['phoneNumber'],new DateTime($_POST['birthDate']),-1,htmlspecialchars($_POST['description']),$_POST["genre"],0);
             if($userManager->add($user) != false) {
                 require('../src/View/User/Link/inscriptionValideView.php');
             }

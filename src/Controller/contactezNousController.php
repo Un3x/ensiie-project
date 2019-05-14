@@ -4,9 +4,9 @@ if(isset($_POST['sujet']) && isset($_POST['corp'])&& isset($_POST['mail']))
     require('../src/Controller/mail/mailController.php');
     
     $recipient = "testprojetlicorne+contact@gmail.com";
-    $subject = $_POST['sujet'];
-    $mail=$_POST['mail'];
-    $corp=$_POST['corp'];
+    $subject = htmlspecialchars($_POST['sujet']);
+    $mail=htmlspecialchars($_POST['mail']);
+    $corp=htmlspecialchars($_POST['corp']);
     $body ="mail envoyé par $mail <br/><br/> $corp";
     $bodyAlt ="mail envoyé par $mail \n\n $corp";
 

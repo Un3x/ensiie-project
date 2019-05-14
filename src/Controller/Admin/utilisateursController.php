@@ -110,10 +110,10 @@ function oneUser($id, $type)
         {
 
             $user->setBirthDate(new DateTime($_POST['birthDate']));
-            $user->setMailAddress($_POST['mail']);
-            $user->setDescription($_POST['description']);
-            $user->setFirstname($_POST['prenom']);
-            $user->setSurname($_POST['nom']);
+            $user->setMailAddress(htmlspecialchars($_POST['mail']));
+            $user->setDescription(htmlspecialchars($_POST['description']));
+            $user->setFirstname(htmlspecialchars($_POST['prenom']));
+            $user->setSurname(htmlspecialchars($_POST['nom']));
             $user->setPhoneNumber($_POST['phoneNumber']);
             //$user->setGender($_POST['gender']);
             if($type == "Vendor")

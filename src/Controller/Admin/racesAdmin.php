@@ -24,7 +24,7 @@ function ajoutRace()
         $bdd= bdd();
         $raceManager = new RaceManager($bdd);
         $race = new Race();
-        $race->hydrate($_POST['nom'],$_POST['vitesse'], $_POST['capacite']);
+        $race->hydrate(htmlspecialchars($_POST['nom']),$_POST['vitesse'], $_POST['capacite']);
         if($raceManager->add($race) != false)
         {
             $title = "Accès Admin !";
