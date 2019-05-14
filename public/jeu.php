@@ -39,7 +39,7 @@ echo "<html>
 			printHeader();
 echo '		<main>
 			<div id = "side_info" class = "round_rect">
-					<button class = "logout_button" onclick="window.location.href = 'logout.php';">Deconnexion</button>
+					<button class = "logout_button" onclick="window.location.href = \'logout.php\';">Deconnexion</button>
 					<img src = "stroke.png" />
 					<img src = "Visuels/protag_chan.png" />
 					<div id = "stats">
