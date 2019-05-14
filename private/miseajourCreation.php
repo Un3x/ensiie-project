@@ -68,7 +68,7 @@ if($jeu == NULL){ //Si le jeu introuvable, renvoie vers la page des projets
     ?>
     
     <div class="modifContainer">
-        <form action="" method="POST">
+        <form id="formAjout" action="" method="POST">
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required></textarea>
         	<br/>
         	<label>Date de publication : </label><input name="date" type="date"  required/>
