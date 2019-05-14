@@ -22,7 +22,7 @@ CREATE TABLE "users" (
 
 INSERT INTO "users"(firstname, lastname, signupdate, mailaddress, passwd, activcode, lastlogdate, userrole, picturepath) 
     VALUES ('Amine', 'Ladmine', '2000-01-01', 'xxaminedu69xx@gmail.com',
-            '21232f297a57a5a743894a0e4a801fc3','1','2000-01-01','admin','../src/uploads/profilePics/default.png');
+            '21232f297a57a5a743894a0e4a801fc3','1','2000-01-01','admin','img/profilePics/default.png');
 
 
 --
