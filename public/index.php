@@ -102,69 +102,7 @@ if (isset($_POST['spotname'])) {
     //affichage de l'ajout d'un spot si l'utilisateur est cuonnecté
     else formSpot();
     ?>
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-			<td>Age</td>
-			<td>passws</td>
-			<td>mail</td>
-        </thead>
-      <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-				<td><?php echo $user->getAge() ?> years</td>
-				<td><?php echo $user->getPassword() ?></td>
-				<td><?php echo $user->getMail()  ?></td>
-            </tr>
-      <?php endforeach; ?>
-
-    </table>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>nom</td>
-            <td>difficulte</td>
-        </thead>
-      <?php /** @var \Move\Move $move */
-        foreach ($moves as $move) : ?>
-            <tr>
-                <td><?php echo $move->getId() ?></td>
-                <td><?php echo $move->getNom() ?></td>
-                <td><?php echo $move->getDifficulte() ?></td>
-            </tr>
-      <?php endforeach; ?>
-
-    </table>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>nom</td>
-            <td>latitude</td>
-            <td>longitude</td>
-            <td>note</td>
-            <td>ville</td>
-        </thead>
-      <?php /** @var \Spot\Spot $spot */
-        foreach ($spots as $spot) : ?>
-            <tr>
-                <td><?php echo $spot->getId() ?></td>
-                <td><?php echo $spot->getNom() ?></td>
-                <td><?php echo $spot->getlatitude() ?></td>
-                <td><?php echo $spot->getLongitude() ?></td>
-                <td><?php echo $spot->getNote() ?></td>
-                <td><?php echo $spot->getVille() ?></td>
-            </tr>
-      <?php endforeach; ?>
-
-    </table>
-
+    
 </div>
 <footer>
 <?php footer();?>
