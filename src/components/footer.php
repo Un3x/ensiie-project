@@ -21,10 +21,10 @@
             <p>Rien de plus simple! Il vous suffit de nous contacter par mail ou sur notre page Facebook. </p>
         </section>
         <table>
-            <td><a href="#"><img class="icon" src="img/facebook-icon.png" alt="Facebook icon" /></a></td>
+            <td><a href="https://www.facebook.com/tspsud/"><img class="icon" src="img/facebook-icon.png" alt="Facebook icon" /></a></td>
             <td><a href="#"><img class="icon" src="img/Mail-Icon.png" alt="Mail icon" /></a></td>
-            <td><a href="#"><img class="icon" src="img/anemflogo.png" /></a></td>
-            <td><a href="#"><img class="icon" src="img/anesflogo.png" /></a></td>
+            <td><a href="https://www.anemf.org/"><img class="icon" src="img/anemflogo.png" /></a></td>
+            <td><a href="http://www.anesf.com/"><img class="icon" src="img/anesflogo.png" /></a></td>
         </table>
     </div>
 </footer>

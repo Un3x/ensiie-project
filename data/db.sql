@@ -17,7 +17,7 @@ CREATE TABLE "users" (
     activcode VARCHAR NOT NULL,
     lastlogdate DATE NOT NULL,
     userrole VARCHAR NOT NULL ,
-    picturepath VARCHAR DEFAULT 'img/defprofilepic.png'
+    picturepath VARCHAR DEFAULT 'img/profilePics/default.png'
 );
 
 INSERT INTO "users"(firstname, lastname, signupdate, mailaddress, passwd, activcode, lastlogdate, userrole, picturepath) 

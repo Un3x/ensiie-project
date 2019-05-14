@@ -56,14 +56,12 @@
                         <form method="post">
                             <h4>Modifier votre adresse mail</h4>
                             <input type="email" placeholder="Nouvelle adresse e-mail" name="newEmail" required>
-                            <input type="email" placeholder="Nouvelle adresse e-mail" name="validNewEmail" required>
                             <button class="button" type="submit">Mettre à jour</button>
                         </form>
                         <form method="post">
                             <h4>Modifier votre mot de passe</h4>
                             <input type="password" minlength="6" maxlength="50" placeholder="Mot de passe actuel" name="currentPwd" required>
                             <input type="password" minlength="6" maxlength="50" placeholder="Nouveau mot de passe" name="newPwd" required>
-                            <input type="password" placeholder="Confirmation du nouveau mot de passe" name="validNewPwd" required>
                             <button class="button" type="submit">Mettre à jour</button>
                         </form>
                     </div>

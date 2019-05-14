@@ -36,7 +36,7 @@ $sujetsRepository = new SujetsRepository($connection);
                                     echo "<h3 class='s-title'>$t</h3>";
                                     echo "<p class='s-content'>$c</p>";
                                     echo "<h5 class='s-author'>$a</h5>";
-                                    echo "<p class='s-nbrep'>$rep</p>";
+                                    echo "<p class='s-nbrep'>Réponses : $rep</p>";
                                     echo "</div>";
                                     echo "<a class='vote-top' href='#'>&#9650;</a>";
                                     echo "<a class='vote-down' href='#'>&#9660;</a>";
@@ -83,7 +83,7 @@ $sujetsRepository = new SujetsRepository($connection);
                         <script>
                             var options = {
                             valueNames: [ 's-title', 's-author' ],
-                            page : 1,
+                            page : 3,
                             pagination : true
                             };
 
@@ -95,6 +95,7 @@ $sujetsRepository = new SujetsRepository($connection);
                             <h3>Créer un nouveau sujet</h3>
                             <input type="text" name="title" placeholder="Titre">
                             <input type="text" name="content" placeholder="Description...">
+                            <button type="submit">Création</button>
                         </form>
                     </div>
                 </div>

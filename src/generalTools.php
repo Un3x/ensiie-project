@@ -54,6 +54,7 @@ class LoginTools
         $_SESSION['firstname'] = $user->getFirstName();/* 
         echo "SESSION['firstname'] : " . $_SESSION['firstname'] . '<br>'; */
         $_SESSION['lastname'] = $user->getLastName();
+        $_SESSION['email'] = $user->getMailAddress();
         /* echo "SESSION['lastname'] : " . $_SESSION['lastname'] . '<br>';
         echo "}<br>"; */
     }
