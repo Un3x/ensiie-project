@@ -1,7 +1,7 @@
 <?php
 namespace Equipe;
 
-use Membre\Membre as test;
+use Membre\Membre;
 use Jeu\JeuRepository;
 
 
@@ -109,7 +109,7 @@ class EquipeRepository
         $membres = array();
         $roles = array();
         foreach ($rows as $row) { 
-            $membre = new test();
+            $membre = new Membre();
             $membre
             ->setId($row->id_membre)
             ->setNom($row->nom)
@@ -134,7 +134,7 @@ class EquipeRepository
 	public function faitPartieEquipe($idJeu, $id_membre){
 		$equipe = $this->getEquipe($idJeu);
 		foreach ($equipe->getMembres() as $membre) {
-			if($id_membre = $membre->getId()){
+			if($id_membre == $membre->getId()){
 				return true;
 			}
 		}

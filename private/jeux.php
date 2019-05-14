@@ -8,6 +8,8 @@
 $id_page="admin";
 require '../src/Jeu/Jeu.php';
 require '../src/Jeu/JeuRepository.php';
+require '../src/Membre/Membre.php';
+require '../src/Membre/MembreRepository.php';
 require '../src/Equipe/Equipe.php';
 require '../src/Equipe/EquipeRepository.php';
 require( "../inc/inc.default.php" );
