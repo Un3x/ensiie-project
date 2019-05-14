@@ -114,9 +114,6 @@ foreach ($members as $m) {
     <div class="chatbox_left" onload="displayRoom()"></div><br>
 </div>
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="chat.js"></script>
-
 <?php
 }}catch(Exception $e) {
     echo $e->getMessage();

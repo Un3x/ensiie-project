@@ -3,15 +3,6 @@ $css_link = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/loginStyle.cs
 echo $css_link;
 ?>
 <script>
-    function validateEmail()
-    {
-        if(!(document.getElementsByTagName('email').value == /^[a-zA-Z0-9_.+-]+@ensiie.fr$/g))
-        {
-            alert("Email invalide ! ");
-            return false;
-        }
-        return true;
-    }
 
     function checkFields() {
         if((document.getElementById("firstname").value == "")) {
@@ -62,8 +53,6 @@ if (isset($_POST['submit_btn']))
         print "<div class='form'><h4>Email déjà utilisé !</h4></div>";
     }
     else {
-
-        echo"<script>validateEmail()</script>";
         $query = "INSERT INTO member(firstname, lastname, email, password) VALUES ('$firstnameTmp', '$lastnameTmp', '$email', '$password')";
         $result=$connection->prepare($query);
         $result->execute();
