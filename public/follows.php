@@ -30,13 +30,13 @@ $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				<!--TODO une autocomplétion stylée-->
 				<h3>Suivez un nouveau spot :</h3>
 				<form action="follows.php" method="post">
- 					<input type="text" required="true" name="spot" placeholder="spot">
+ 					<input type="text" required="true" name="spot" placeholder="nom du spot">
 					 <button class="bouton" type="submit" style="margin-top:8px">envoyer</button>
 				</form>				
 			</div>
 			<div class="article">
 				<h2>Vos Amis suivis</h2>
-				<p>blablablablablab</p>
+				<p>liste de vos amis suivis</p>
 				<h3>Suivez un nouvel utilisateur :</h3>
 				<form action="follows.php" method="post">
  					<input type="text" required="true" name="ami" placeholder="utilisateur">

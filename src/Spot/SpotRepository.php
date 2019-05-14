@@ -63,6 +63,27 @@ class SpotRepository
     }
 
     /**
+     * Gives the first spot found by a city
+     * @param string $ville
+     * @return \Spot
+     */
+    public function firstByCity($ville) {
+        $spot = new Spot();
+        $req = 'SELECT * FROM "spot" WHERE ville='.$this->connection->quote($ville);
+        $rows = $this->connection->query($req)->fetch();
+            $spot
+                ->setId($rows['id'])
+                ->setNom($rows['nom'])
+                ->setLatitude($rows['latitude'])
+                ->setLongitude($rows['longitude'])
+                ->setNote($rows['note']==null ? 0 : $rows['note'])
+                ->setVille($rows['ville']);
+	        return $spot;
+	    
+        return null;
+    }
+
+    /**
      * Gives the first spot found by his id
      * @param int $id
      * @return \Spot

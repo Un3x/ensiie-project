@@ -7,21 +7,33 @@ function header_login() {
 			<div><a href=\"index.php\"><img src=\"logo.png\" height=\"60\"></a></div>
 			<div id=\"logo\">
 			Move IT!
-			</div>
-			<div class=\"dropdown\">
-			<button class=\"bouton\">Mon compte</button>
-				<div class=\"dropdown-content\">
-					<a href=\"compte.php\">Mon profil</a>
-					<a href=\"follows.php\">Mes follows</a>
+			</div>";
+			if (!isset($_SESSION['mail'])) {
+				echo "
+				<div class=\"dropdown\">
+					<button class=\"bouton\">
+					<a href=\"connexion.php\">Inscription</a>
+					</button>
 				</div>
-			</div>
+				";
+			}
+			else {
+				echo "
+				<div class=\"dropdown\">
+				<button class=\"bouton\">Mon compte</button>
+					<div class=\"dropdown-content\">
+						<a href=\"compte.php\">Mon profil</a>
+						<a href=\"follows.php\">Mes follows</a>
+					</div>
+				</div>";
+			}
+			echo"
 			<div id=\"connexion\">
 			<button class=\"bouton\">";
 				if (!isset($_SESSION['mail'])) {
 					echo "<a href=\"connexion.php\">Connexion</a>";
 				}
 				else {
-					//TODO unset de $_SESSION on click plus joli que js/php
 					echo "<a href=\"logout.php\">Déconnexion</a>";
 				}
 			echo "</button>
@@ -48,10 +60,28 @@ function followed($login) {
 	echo "
 		<div class=\"article\">
 			<p>
-			Bonjour, ici se trouvera les différents spots suivis ainsi que l'activité
-			des amis suivis. La map pourrait aussi être affichée en option pour visualiser
-			les spots suivis et les spots près de ma localisation.
+			Bonjour, ici se trouvera les différents spots suivis ainsi que l'activité des amis suivis.
 			</p>
+		</div>
+	";
+}
+
+function formSpot() {
+	echo "
+		<div class=\"article-container\">";
+			followed($_SESSION['mail']);		
+	echo "
+			<div class=\"article\">
+				<form action=\"index.php\" method=\"post\">
+				<span style=\"font-size:140%\">Ajoute un Spot que tu as découvert :</br></span>
+				<input type=\"text\" name=\"spotname\" required=\"true\" placeholder=\"Nom du spot\">
+				<input type=\"text\" name=\"spotcity\" required=\"true\" placeholder=\"Ville du spot\">
+				<input type=\"number\" min=\"0\" max=\"5\" name=\"spotnote\" placeholder=\"Note entre 0 et 5\">
+				<input type=\"number\" step=\"any\" name=\"spotlatitude\" required=\"true\" placeholder=\"Latitude\">
+				<input type=\"number\" step=\"any\" name=\"spotlongitude\" required=\"true\" placeholder=\"Longitude\">
+				<button class=\"bouton\" type=\"submit\" style=\"margin-top: 8px\">envoyer</button>
+				</form>
+			</div>
 		</div>
 	";
 }

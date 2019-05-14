@@ -61,7 +61,7 @@ if (isset($_POST['spotname'])) {
 
 	<div id="search">
 		<form action="index.php">
-		<span style="font-size:140%">Trouve le spot le plus près de chez toi :</br></span>
+		<span style="font-size:140%">Trouve le spot le plus près de chez toi :<br/></span>
 		<input id="searchbar" type="text" name="ville" placeholder="Entrez votre ville">
 		</form>
     </div>
@@ -97,27 +97,10 @@ if (isset($_POST['spotname'])) {
                 <button class=\"bouton\" style=\"margin-left:45%\">
                 <a href=\"connexion.php\">Créez-vous un compte !</a>
                 </div>";
-    }?>
-
-    <div class="article-container">
-
-        <?php if (isset($_SESSION['mail'])) followed($_SESSION['mail']); ?>
-        
-        <div class="article">
-            <form action="index.php" method="post">
-            <span style="font-size:140%">Ajoute un Spot que tu as découvert :</br></span>
-            <input type="text" name="spotname" required="true" placeholder="Nom du spot">
-            <input type="text" name="spotcity" required="true" placeholder="Ville du spot">
-            <input type="number" min="0" max="5" name="spotnote" placeholder="Note entre 0 et 5">
-            <input type="number" name="spotlatitude" required="true" placeholder="Latitude">
-            <input type="number" name="spotlongitude" required="true" placeholder="Longitude">
-            <button class="bouton" type="submit" style="margin-top: 8px">envoyer</button>
-            </form>
-        </div>
-    </div>
-    
-
-
+    } 
+    //affichage de l'ajout d'un spot si l'utilisateur est cuonnecté
+    else formSpot();
+    ?>
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
             <td>#</td>

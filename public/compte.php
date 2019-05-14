@@ -40,11 +40,13 @@ if (isset($_POST['signup']) || isset($_POST['modif'])) {
 	if (isset($_POST['signup'])) {
 		$userRepository->addUser($user);
 		$_SESSION['mail'] = $user->getMail();
+		$currentuser = $user;
 	}
 	//modification de l'utilisateur
 	else {
 		$userRepository->modifUser($_SESSION['mail'],$user);
 		$_SESSION['mail'] = $user->getMail();
+		$currentuser = $user;
 	}
 	
 }
@@ -96,17 +98,41 @@ $users = $userRepository->fetchAll();
 			</div>
 			<div class="flex-container" id="info-content">
 				<!-- informations sur le compte -->
-				<div class="infocomptes">
-					<?php echo ($currentuser->getFirstname()); ?>
+				<div>
+					<em>Prénom :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getFirstname()); ?>
+					</div>
 				</div>
-				<div class="infocomptes">
-					<?php echo ($currentuser->getLastname()); ?>
+				<div>
+					<em>Nom :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getLastname()); ?>
+					</div>
 				</div>
-				<div class="infocomptes">
-					<?php echo ($currentuser->getYop());?> années d'expérience
+				<div>
+					<em>Ville :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getCity());?>
+					</div>
 				</div>
-				<div class="infocomptes">
-					<?php echo ($currentuser->getMail());?>
+				<div>
+					<em>Expérience :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getYop());?> année(s) d'expérience
+					</div>
+				</div>
+				<div>
+					<em>Mail :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getMail());?>
+					</div>
+				</div>
+				<div>
+					<em>Téléphone :</em>
+					<div class="infocomptes">
+						<?php echo ($currentuser->getPhone());?>
+					</div>
 				</div>
 				<button class="bouton"> 
 					<a href="modifCompte.php">Gestion de compte</a>
