@@ -96,7 +96,7 @@ $.get("ajax/users_get.php", function(users) {
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/pointassos_set_event.php",{user: user_selected},'json');
-	location.reload();
+	setTimeout(function(){location.reload();},1000);
 })
 
 }, 'json');

@@ -195,12 +195,13 @@ $.get("ajax/users_get.php", function(users) {
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/pointassos_set.php",{user: user_selected},'json');
-	location.reload();	
+	setTimeout(function(){location.reload();},1000);
 })
 $("#passation_submit").on("click", function() {
 	$.get("ajax/passation_set.php",{user_passation: user_selected_passation},'json');
 	
-	window.location.replace('passation.php');
+	
+	setTimeout(function(){window.location.replace('passation.php');},1000);
 })
 
 }, 'json');

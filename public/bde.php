@@ -203,7 +203,7 @@ $.get("ajax/users_get.php", function(users) {
 
 $("#ajout_submit").on("click", function() {
 	$.get("ajax/bde_set.php",{user: user_selected},'json');
-	setTimout(location.reload(),1000);
+	setTimeout(function(){location.reload();},1000);
 })
 
 }, 'json');
