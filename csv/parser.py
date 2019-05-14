@@ -66,7 +66,7 @@ NODE_TABLE_SIZE = 28
 
 def handle_str(in_s: str) -> str:
     res = in_s.replace("'", "\\'")
-    return f"'{res}'"
+    return f"E'{res}'"
 
 
 def handle_req(node_id: int, var: str, req: str) -> str:
