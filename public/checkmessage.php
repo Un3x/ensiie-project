@@ -33,7 +33,7 @@ require("header.php");
 ?>
 
 <section>
-<h2 class="sous_titre">Messages en attente<h2>
+<h2 class="sous_titre">Messages en attente</h2>
 <?php
 $wait=$MessRepository->fetchUnvalid();
 foreach ($wait as $w){
@@ -43,7 +43,7 @@ if ($wait==[]){
     echo "<h4>Aucun message à traiter ! Good Job !</h4>";
 }
 ?>
-<h2 class="sous_titre">Messages traités<h2>
+<h2 class="sous_titre">Messages traités</h2>
 <?php
 $val=array_reverse($MessRepository->fetchValid());
 foreach ($val as $w){
@@ -53,7 +53,7 @@ if ($val==[]){
     echo "<h6>Aucun message traité</h6>";
 }
 ?>
-<h2 class="sous_titre">Messages supprimés<h2>
+<h2 class="sous_titre">Messages supprimés</h2>
 <?php
 $del=array_reverse($MessRepository->fetchDeleted());
 foreach ($del as $w){
