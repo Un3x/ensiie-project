@@ -19,7 +19,7 @@
 <?php
 	$i = 2;
 	foreach($articles as $article){
-		if ($article->getDate() > getDate()){
+		if ($article->getDate()->format("d M Y") <= getDate()){
 			if ($i == 1)
 				$i = 2;
 			else

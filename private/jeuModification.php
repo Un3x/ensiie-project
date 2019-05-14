@@ -97,6 +97,7 @@ if($jeu == NULL){ //Si jeu introuvable, renvoie vers la page de d'administration
     header( "refresh:3;url=jeux.php" );
 }else if(isset($_POST['supression'])){ //Si jeu est supprimé, modification de la bdd puis renvoie vers la page de d'administration des jeux
 	
+	$equipesRepository->deleteAllEquipe($_GET['id']);
 	$status = $jeuRepository->deleteJeu($_GET['id']);
     
     if($status){

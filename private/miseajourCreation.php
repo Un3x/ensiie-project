@@ -38,10 +38,10 @@ if($jeu == NULL){ //Si le jeu introuvable, renvoie vers la page des projets
     
     $status = $MajRepository->createMiseajour($_GET['id_jeu'], $_POST['texte'], $_POST['date']);
 	
-	$idMaj = $MajRepository->getIdMaj( $_POST['titre'] );
+	$idMaj = $MajRepository->getIdMiseajour( $_GET['id_jeu'], $_POST['texte']);
 	
 	$i = 1;
-    $envoie = TRUE;
+	$envoie = TRUE;
     while( isset($_FILES['media'.$i] )) {
         $lien = "../media/";
         $lien = $lien . basename($_FILES['media'.$i]['name']);
@@ -70,7 +70,7 @@ if($jeu == NULL){ //Si le jeu introuvable, renvoie vers la page des projets
     ?>
     
     <div class="modifContainer">
-        <form id="formAjout" action="" method="POST">
+        <form id="formAjout" action="" method="POST"  enctype="multipart/form-data" >
         	<label>Texte : </label><textarea name="texte" rows="5" cols="40" required></textarea>
         	<br/>
         	<label>Date de publication : </label><input name="date" type="date"  required/>
