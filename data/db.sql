@@ -44,8 +44,8 @@ PRIMARY KEY (iduser,idLogement)
 INSERT INTO "user"(/*mail*/pseudo, firstname, lastname, birthday, mdp) VALUES (/*ad1@gmail.com*/'jd','John', 'Doe', '1967-11-22','john');
 INSERT INTO "user"(pseudo, firstname, lastname, birthday, mdp) VALUES ('ya','Yvette', 'Angel', '1932-01-24','yvette');
 INSERT INTO "user"(pseudo, firstname, lastname, birthday, mdp) VALUES ('aw', 'Amelia', 'Waters', '1981-12-01','amelia');
-INSERT INTO "user"(pseudo, firstname, lastname, mdp) VALUES ('mp', 'Mathieu', 'Pavard','1932-01-24', 'mathieu');
-INSERT INTO "user"(pseudo, firstname, lastname, mdp) VALUES ('al', 'Antoine', 'Leefsma','1932-01-24', 'antoine');
+INSERT INTO "user"(pseudo, firstname, lastname,birthday, mdp) VALUES ('mp', 'Mathieu', 'Pavard','1932-01-24', 'mathieu');
+INSERT INTO "user"(pseudo, firstname, lastname,birthday, mdp) VALUES ('al', 'Antoine', 'Leefsma','1932-01-24', 'antoine');
 
 
 INSERT INTO "logement"(idUser, departement, ville, nb_places_libres, prix) VALUES (1, 91 , 'Evry', 1, 500);
