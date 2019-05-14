@@ -63,7 +63,7 @@ if( isset($_POST['modificationMedia'] ) )
 
 		$membreRepository = new \Membre\MembreRepository($connection);
 
-		$membreRepository->deleteAllMedia($idArticle);
+		$membreRepository->deleteAllMedia($idMembre);
 		$i = 1;
 		$envoie = TRUE;
 		while( isset( $_FILES[ 'media'.$i ] ) )

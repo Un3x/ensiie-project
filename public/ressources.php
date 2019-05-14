@@ -26,16 +26,8 @@
 <?php 
 	foreach($tutos as $tuto){
 		echo '<div class="round-border">
-			<p>'.$tuto->getTitre().'</p>';
-		
-		$imgs = $TutoRepository->getMedias($tuto->getId());;
-		foreach($imgs as $img){
-			if(file_exists($img)){
-					echo '<img class="media" src='.$img.' alt="img not found"/>'; 
-			}
-		}
-		
-		echo '<p>'.$tuto->getTexte().'</p>
+			<p>'.$tuto->getTitre().'</p>
+			<p>'.$tuto->getTexte().'</p>
 			<p>
 				<a href="../document/Tuto/'.$tuto->getPdf().'">
 					view '.$tuto->getTitre().'.pdf

@@ -38,10 +38,15 @@
 		<?php
     	foreach ($jeux as $jeu) {
 			$imgs = $JeuRepository->getMedias($jeu->getId());
-			$img = $imgs[0];
-			if(!file_exists($img)){
-				$img = "../img/RobotRealitIIE.png";
-			}
+			if (isset ($imgs[0])){ // Si il y a 1 image au moins
+					$img = $imgs[0];
+					if(!file_exists($img)){
+						$img = "../img/RobotRealitIIE.png";
+					}
+				}
+					
+				else
+					$img = "../img/RobotRealitIIE.png";
 			
     	    echo 
     	    '<tr>
