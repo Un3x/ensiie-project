@@ -43,9 +43,11 @@
 		\subsubsection{Race}
 			Cette table contient le nom et les caractéristique de la race afin de savoir comment les clients serons servis par la race en question.
 		\subsubsection{Course}
-			Celle-ci contient les informations sur les transports effectués afin de permettre aux utilisateurs d'accédés à l'historique de leurs transactions.
+			Celle-ci contient les informations sur les transports effectués afin de permettre aux utilisateurs d'accédés à l'historique de leurs transactions; un attribut est consacré à l'état de la course, car les courses peuvent être : disponibles, en cours de réservation, reservés, effectués, ou annulés/refusés.
 		\subsubsection{Cities}
 			Celle-ci contient les informations sur les villes: les coordonnées gps pour pouvoir les placés et la population pour pouvoir les trier dans la liste des propositions pour l’auto-complétion.
+		\subsubsection{Comment}
+		    Option de faire de donner un avis sur les Clients et Vendors, un prototype de modèle a été faite, mais cette partie n'a pas été intégré au site.
 	\subsection{Le programme}
 		\subsubsection{Principe général}
 			Pour chacune des tables de la base de donnée afin de pouvoir les manipuler efficacement en php chaque table est représenter par une classe possédant les mêmes attributs que la bases de donnée, un accesseur pour chaque attribut et un mutateur pour chaque sauf ceux qui ne doivent pas être modifier tels que l'id ou la date de création d'un compte.
@@ -201,6 +203,11 @@ En s'aidant des variables de sessions et de celles défini dans config.php, il e
 Le menu vendeur et client reste le même, ( car c'est le contrôleur de la modification du profil, et de la liste des trajets qui s'occupe de la distinction ) 
 
 \section{La vue}
+Au niveau du CSS, on a utilisé la grille de Bootstrap pour pouvoir bien placé les différents éléments du site, notamment pour faire le menu et le pied de page.\\
+On a pensé le site principalement pour grand écran, mais avec l'aide de Bootstrap, le cas des petits écrans est bien traité et ne pose pas de problème apparent d'affichage.\\
+Le design est inspiré du site de Uber, et on a repris l'écriture blanche sur fond noir pour le menu et le pied de page.\\
+On a fait le choix également de centré le contenu, mais on rencontre un léger soucis avec les tableaux.\\
+Enfin, tout le travail en CSS est dans une seule feuille, qui est appelé par template.php pour que le style s'applique sur toutes nos pages. 
 
 \section{Possibles amélioration}
 Certaines tables dans la base de données et ainsi que des manager dans le modèle existe mais ne sont pas utilisé. 
@@ -222,7 +229,7 @@ Enfin, la possibilité de demander l'ajout d'une race par un utilisateur ( devan
  \item[Corentin Guillerme :] toute la partie réservation de trajets côté controller et vue (recherche de trajets, réservation, envois de mails...)
  \\
  
- \item[Maxime Song :].
+ \item[Maxime Song :] Le modèle pour la manipulation des courses, et les commentaires sur les clients et les vendeurs (pas mis en place sur le site). Ainsi que la partie CSS. 
  \\
 \end{description}
 
