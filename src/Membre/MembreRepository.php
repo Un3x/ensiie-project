@@ -150,6 +150,15 @@ class MembreRepository
         return $membre;
     }
 	
+	public function getIdMembre( $surnom )
+    {
+        $row = $this->connection->query('SELECT id_membre FROM membre WHERE surnom = \''.$surnom.'\' ')->fetchAll(\PDO::FETCH_OBJ);
+        if(count($row) == 0){
+            return NULL;
+        }
+        return $row[0]->id_membre;
+    }
+	
 	public function deleteAllMedia($id){
         $rows = $this->connection->query('SELECT lien
                                           FROM media
