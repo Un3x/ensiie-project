@@ -1,6 +1,9 @@
 <?php
 
 require_once("../src/Model/User/ClientManager.class.php");
+
+require_once("../src/Model/City/CityManager.class.php");
+
 require_once("../src/Model/User/User.class.php");
 
 
@@ -13,9 +16,18 @@ function initChamps()
     $valeurDefaut['description'] = $user->getDescription();
     $valeurDefaut['note'] = $user->getReputation();
     $valeurDefaut['phoneNumber'] = $user->getPhoneNumber();
+    $valeurDefaut['position'] = "";
     if($_SESSION["userType"] == "Vendor")
     {
+        $cityManager = new CityManager(bdd());
         $valeurDefaut['price'] = $user->getPrice();
+        $a = $cityManager->get($user->getPosition());
+        if($a == false) {
+            $valeurDefaut['position'] = "Inconnu"; }
+        else
+        {
+            $valeurDefaut['position'] = $a->getName();
+        }
 
     }
 
@@ -61,6 +73,7 @@ function initRace($fixe)
         return $optionRace . $caracRace;
     }
 }
+
 
 function profilDebut()
 {
@@ -117,6 +130,13 @@ function validationProfil()
     if(!preg_match("#^(\d){10}$#", $_POST["phoneNumber"]))
     {
         $message = $message." Le numéro de téléphone n'est pas au bon format. <br/>";
+        $erreur=true;
+    }
+
+    $cityManager = new CityManager(bdd());
+    if( $_POST["position"] == "Inconnu"  ||  $cityManager->get2($_POST["position"]) == false )
+    {
+        $message = $message." La position entrée ne correspond à aucune ville connue de nos base de données. <br/>";
         $erreur=true;
     }
 

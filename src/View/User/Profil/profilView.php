@@ -63,7 +63,12 @@
             <br/>
             <label for="price"> Votre prix ( en <img src="/image/Pokedollar.png" alt="Pokedollar"> pour 10<sup>38</sup> l<sub>p</sub>) : </label>
             <input type="number" id="price" name="price" value="<?=$valeurDefaut['price']?>" <?php if(!$modif) echo "readonly"; ?> />
-
+            <br/>
+            <label for="position"> Votre position : </label>
+            <input type="text" id="position" name="position" value="<?=$valeurDefaut['position']?>" <?php if(!$modif) echo "readonly"; ?>
+                   oninput="setTimeout(suggestCity, 150, this, this.value, 'propositionCity')" list="propositionCity" autocomplete="off"
+            />
+            <datalist id="propositionCity"> </datalist>
 
         <?php } ?>
 
@@ -114,6 +119,9 @@
 <script src="/js/changementCaracRace.js">
 
 </script>
+    <script src="/js/suggestCity.js">
+
+    </script>
 
 <?php } ?>
 
