@@ -73,7 +73,7 @@ if(isset($_POST['creation'])){ //Si le jeu est créé, modification de la bdd pu
                 
     ?>
     <div class="modifContainer">
-        <form id="formAjoutProjet" action="" method="POST" onsubmit="return verficationEnvoie()">
+        <form id="formAjoutProjet" action="" method="POST" onsubmit="return verficationEnvoie()" enctype="multipart/form-data">
         	<label>Titre : </label><input name="titre" type="text" required/>
         	<br/>
 			<label>Description : </label><textarea name="description" rows="5" cols="40" required></textarea>
