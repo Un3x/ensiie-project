@@ -53,7 +53,7 @@
 			echo $request;
 			return NULL;
 		}
-		else if($result){
+		else if($result->rowCount() == 0){
 			return 0;
 		}
 		else {
@@ -71,11 +71,11 @@
 			echo "Erreur lors de l'exécution de la requête<br />";
 			return NULL;
 		}
-		else if(!$result){
+		else if($result->rowCount() == 0){
 			echo "Pas de node courant <br />";
 			return -1;
 		}
-		else if(!$result){
+		else if($result->rowCount() != 1){
 			echo "Erreur : plusieurs histoires en cours<br />";
 			return NULL;
 		}
@@ -122,7 +122,7 @@
 			echo "Erreur lors de l'exécution de la requête<br />";
 			exit();
 		}
-		if(mysqli_num_rows($result) == 0){
+		if($result->rowCount() == 0){
 			return null;
 		}
 		else{

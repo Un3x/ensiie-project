@@ -8,10 +8,10 @@
 	$userStats = getUserVariables();
 	
 	/*Fetching of all the existing choices from the current node*/
-	$request_choices = "SELECT DISTINCT choice.content, next_node FROM story_node JOIN choice WHERE choice.id = $node";
+	$request_choices = "SELECT DISTINCT \"choice\".\"content\", \"next_node\" FROM \"story_node\" JOIN \"choice\" WHERE \"choice\".\"id\" = $node";
 	
 	
-	if(!($result = mysqli_query($link, $request_choices))){
+	if(!($result = $link->query($request_choices))){
 			echo "Erreur lors de l'exécution de la requête de choix<br />";
 			exit();
 		}
@@ -28,7 +28,7 @@
 
 	/*Requirements collection and test*/
 	
-	while($row = $result->fetch_assoc()){
+	while($row = $result->fetch()){
 	
 		$content = $row['content'];
 		$id = $row['next_node'];
