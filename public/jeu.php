@@ -1,31 +1,24 @@
 <?php
 	session_start();
-?>
+require ('include.php');
 
-<!DOCTYPE html>
-<?php require ('print_functions.php');
-	require('database_access.php');
-?>
-
-<html>
+echo '<!DOCTYPE html>';
+echo "<html>
 
 	<head>
 		<title>My New LIIfE</title>
-		<meta-charset = "utf-8"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="game_functions.js"></script>
-		<link rel = "stylesheet" type = "text/css" href = "stylesheet.css"/>
-		<link rel = "stylesheet" type = "text/css" href = "game_style.css"/>
-	
+		<meta-charset = \"utf-8\"/>
+		<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
+		<script src=\"game_functions.js\"></script>
+		<link rel = \"stylesheet\" type = \"text/css\" href = \"stylesheet.css\"/>
+		<link rel = \"stylesheet\" type = \"text/css\" href = \"game_style.css\"/>
 		<script>
-			
 				$(document).ready(function(){
-					
-					$.post("php_script/checkHasStory.php", function(hasStory){
-						$.post("php_script/printGame.php", 
+					$.post(\"php_script/checkHasStory.php\", function(hasStory){
+						$.post(\"php_script/printGame.php\",
 							{story: hasStory},
 							function(content){
-								$("#game").append(content);
+								$(\"#game\").append(content);
 								if(hasStory == 1){
 									actualizeFront();
 								}
@@ -39,30 +32,16 @@
 						e.preventDefault();
 						printEnd();
 					});
-					
-				}); 
-		
+				});
 		</script>
-		
 	</head>
-	
-	
-				
-	<body class = "bg">
-	
-	
-		
-		<?php 
+	<body class = \"bg\">";
 			printHeader();
-		?>
-		
-		<main>
-			
+echo '		<main>
 			<div id = "side_info" class = "round_rect">
 					<button class = "logout_button" onclick="window.location.href = 'logout.php';">Deconnexion</button>
 					<img src = "stroke.png" />
 					<img src = "Visuels/protag_chan.png" />
-					
 					<div id = "stats">
 						<h1 class  = "orange">Mes Stats</h1>
 						<div class = "progress_bar">
@@ -75,7 +54,6 @@
 							<div id = "bar" class = "progress_bar_content"></div>
 						</div>
 					</div>
-					
 					<div id = "joined_assos">
 						<div class = "is_asso">
 							<img id = "is_bar" src = "Visuels/is_bar.png" />
@@ -88,10 +66,11 @@
 						</div>
 					</div>
 			</div>
-			
 			<div id = "game" class = "round_rect">
 				<div id = "game_profile">
-					<p> <span class = "orange"><?php echo $_SESSION['name'] ?></span> <br /> 
+          <p> <span class = "orange">';
+echo $_SESSION['name'];
+echo '</span> <br /> 
 					<a class = "grey" href = "profil.php" >Mon profil</span></a>
 					<img src = "stroke.png" />
 				</div>				
@@ -100,13 +79,11 @@
 			
 			
 			
-		</main>
+		</main>';
 		
-		<?php
 			printFooter();
-		?>
 		
-		<div id = "popup">
+echo'		<div id = "popup">
 			<div class = "round_rect" id = "popup_body">
 				<h1 class = "grey">Nouveau haut-fait !</h1>
 				<div class = "ach_info">
@@ -123,4 +100,4 @@
 		
 	</body>
 
-</html>
+</html>';

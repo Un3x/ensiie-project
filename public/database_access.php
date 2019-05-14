@@ -151,7 +151,7 @@
 			exit();
 		}
 
-		if(!$result){
+		if(!$result || $result->rowCount() == 0){
 			echo "L'utilisateur n'existe pas ou n'a pas d'histoire en cours <br />";
 			exit();
 		}
@@ -204,24 +204,6 @@
 		if(!($result = $link->query($request))){
 			echo "Erreur lors de l'exécution de la requête<br />";
 			exit();
-		}
-	}
-
-	function getUserVariables(){
-		$link = dbConnect();
-		$pseudo = $_SESSION['name'];
-		$request = "SELECT ghost, alcohol, attendance, bar, baka, diese, is_bar, is_baka, is_diese FROM \"current_story\" WHERE pseudo = '$pseudo'";
-		if(!($result = $link->query($request))){
-			echo "Erreur lors de l'exécution de la requête<br />";
-			exit();
-		}
-		if($result->rowCount() == 0){
-			echo "L'utilisateur n'existe pas ou n'a pas d'histoire en cours <br />";
-			exit();
-		}
-		else{
-			$userVariables = $result->fetch();
-			return $userVariables;
 		}
 	}
 
