@@ -84,13 +84,13 @@
 		
 		else{
 			foreach($maj as $m){
-				if (true || $m->getDate() <= getDate()){
+				if ( $m->getDate()->format("d M Y") <= getDate()){
 					echo '<h3>Mise à jour du '.$m->getDate()->format("d M Y").'</h3>';
 				
-					$imgs = $MiseajourRepository->getMedias($jeu->getId());
+					$imgs = $MiseajourRepository->getMedias($m->getId());
 					foreach($imgs as $img){
 						if(file_exists($img)){
-							echo '<img src="'.$img.'" alt="img not found" width="100" height="100"/>'; 
+							echo '<img class="media" src="'.$img.'" alt="img not found"/>'; 
 						}
 					}
 				
