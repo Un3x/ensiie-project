@@ -6,7 +6,7 @@
         <ul class="nav-link">
             <li><a href="reset_session.php">Déconnexion</a></li>
             <li><a href="profile.php">Mon profil</a></li>
-            <li class="v-link"><a href="training.php">Entraînements</a></li>
+            <li class="v-link"><a href="#">Entraînements</a></li>
             <li class="v-link"><a href="documents.php">Documents</a></li>
             <li class="v-link"><a href="discussions.php">Discussions</a></li>
         </ul>
