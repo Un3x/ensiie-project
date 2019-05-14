@@ -15,57 +15,42 @@ $sujetsRepository = new SujetsRepository($connection);
     <body id="connected">
         <div class="container">
             <?php require('../src/components/navbar_connection.php');?>
-            <div id="sub-container">
-                <div id="sujet-list-container">
-                <input class="search" placeholder="Search" />
-                <button class="sort" data-sort="s-title">
-                    Sort by Title
-                </button>
-                    <ul class="sujet-list list">
-                        <?php
-                            $sujetArr = $sujetsRepository->getSujets();
-                            foreach($sujetArr as $s){
-                                $t = $s->getTitle();
-                                $a = $s->getAuthor();
-                                $c = $s->getContent();
-                                $rep = $s->getNbRep();
-                                echo "<li>";
-                                echo "<div>";
-                                echo "<h3 class='s-title'>$t</h3>";
-                                echo "<p class='s-content'>$c</p>";
-                                echo "<h5 class='s-author'>$a</h5>";
-                                echo "<p class='s-nbrep'>$rep</p>";
-                                echo "</div>";
-                                echo "<a class='vote-top' href='#'>&#9650;</a>";
-                                echo "<a class='vote-down' href='#'>&#9660;</a>";
-                                echo "</li>";
-                            }
-                        ?>
-                    </ul>
-                    <script>
-                        $(document).ready(function () {
-                        $("a.vote-top").click(function () {
-                            the_id = $(this).attr('id');
-                            $.ajax({
-                                type: "POST",
-                                data: "action=upvote&id=" + $(this).attr("id"),
-                                url: "vote.php",
-                                success: function (msg) {
-                                    alert("Success");
-                                },
-                                error: function () {
-                                    alert("Error");
+            <div id="contain">
+                <h1>Q & A</h1>
+                <div id="sub-container">
+                    <div id="sujet-list-container">
+                    <input class="search" placeholder="Search" />
+                    <button class="sort" data-sort="s-title">
+                        Sort by Title
+                    </button>
+                        <ul class="sujet-list list">
+                            <?php
+                                $sujetArr = $sujetsRepository->getSujets();
+                                foreach($sujetArr as $s){
+                                    $t = $s->getTitle();
+                                    $a = $s->getAuthor();
+                                    $c = $s->getContent();
+                                    $rep = $s->getNbRep();
+                                    echo "<li>";
+                                    echo "<div>";
+                                    echo "<h3 class='s-title'>$t</h3>";
+                                    echo "<p class='s-content'>$c</p>";
+                                    echo "<h5 class='s-author'>$a</h5>";
+                                    echo "<p class='s-nbrep'>$rep</p>";
+                                    echo "</div>";
+                                    echo "<a class='vote-top' href='#'>&#9650;</a>";
+                                    echo "<a class='vote-down' href='#'>&#9660;</a>";
+                                    echo "</li>";
                                 }
-                                });
-                            });
-                        });
-
-                        $(document).ready(function () {
-                            $("a.vote-down").click(function () {
+                            ?>
+                        </ul>
+                        <script>
+                            $(document).ready(function () {
+                            $("a.vote-top").click(function () {
                                 the_id = $(this).attr('id');
                                 $.ajax({
                                     type: "POST",
-                                    data: "action=downvote&id=" + $(this).attr("id"),
+                                    data: "action=upvote&id=" + $(this).attr("id"),
                                     url: "vote.php",
                                     success: function (msg) {
                                         alert("Success");
@@ -73,27 +58,45 @@ $sujetsRepository = new SujetsRepository($connection);
                                     error: function () {
                                         alert("Error");
                                     }
+                                    });
                                 });
                             });
-                        }); 
-                    </script>
-                    <ul class="pagination"></ul>
-                    <script>
-                        var options = {
-                        valueNames: [ 's-title', 's-author' ],
-                        page : 1,
-                        pagination : true
-                        };
 
-                        var subList = new List('sub-container', options);
-                    </script>
-                </div>
-                <div id="sujet-create-container">
-                    <form method="post">
-                        <h3>Créer un nouveau sujet</h3>
-                        <input type="text" name="title" placeholder="Titre">
-                        <input type="text" name="content" placeholder="Description...">
-                    </form>
+                            $(document).ready(function () {
+                                $("a.vote-down").click(function () {
+                                    the_id = $(this).attr('id');
+                                    $.ajax({
+                                        type: "POST",
+                                        data: "action=downvote&id=" + $(this).attr("id"),
+                                        url: "vote.php",
+                                        success: function (msg) {
+                                            alert("Success");
+                                        },
+                                        error: function () {
+                                            alert("Error");
+                                        }
+                                    });
+                                });
+                            }); 
+                        </script>
+                        <ul class="pagination"></ul>
+                        <script>
+                            var options = {
+                            valueNames: [ 's-title', 's-author' ],
+                            page : 1,
+                            pagination : true
+                            };
+
+                            var subList = new List('sub-container', options);
+                        </script>
+                    </div>
+                    <div id="sujet-create-container">
+                        <form method="post">
+                            <h3>Créer un nouveau sujet</h3>
+                            <input type="text" name="title" placeholder="Titre">
+                            <input type="text" name="content" placeholder="Description...">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
