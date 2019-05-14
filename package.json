@@ -1,0 +1,27 @@
+{
+  "name": "Meetiie",
+  "version": "1.0.0",
+  "description": "Real time chat with socket.io and Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat",
+    "real",
+    "time",
+    "socket.io",
+    "Meetiie",
+    "Ensiie"
+  ],
+  "author": "Mehdi+Ammar",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "server": "^1.0.0-beta.2"
+  }
+}
