@@ -43,9 +43,11 @@
 		\subsubsection{Race}
 			Cette table contient le nom et les caractéristique de la race afin de savoir comment les clients serons servis par la race en question.
 		\subsubsection{Course}
-			Celle-ci contient les informations sur les transports effectués afin de permettre aux utilisateurs d'accédés à l'historique de leurs transactions.
+			Celle-ci contient les informations sur les transports effectués afin de permettre aux utilisateurs d'accédés à l'historique de leurs transactions; un attribut est consacré à l'état de la course, car les courses peuvent être : disponibles, en cours de réservation, reservés, effectués, ou annulés/refusés.
 		\subsubsection{Cities}
 			Celle-ci contient les informations sur les villes: les coordonnées gps pour pouvoir les placés et la population pour pouvoir les trier dans la liste des propositions pour l’auto-complétion.
+		\subsubsection{Comment}
+		    Option de faire de donner un avis sur les Clients et Vendors, un prototype de modèle a été faite, mais cette partie n'a pas été intégré au site.
 	\subsection{Le programme}
 		\subsubsection{Principe général}
 			Pour chacune des tables de la base de donnée afin de pouvoir les manipuler efficacement en php chaque table est représenter par une classe possédant les mêmes attributs que la bases de donnée, un accesseur pour chaque attribut et un mutateur pour chaque sauf ceux qui ne doivent pas être modifier tels que l'id ou la date de création d'un compte.
