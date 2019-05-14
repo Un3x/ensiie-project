@@ -81,8 +81,9 @@ class VendorManager extends ClientManager
     public function update($user)
     {
 			$statement = $this->connection->prepare("UPDATE Vendor set surname=:surname, firstname=:firstname, idRace=:idRace,  mailAddress=:mailAddress, passWord=:passWord, money=:money, phoneNumber=:phoneNumber, birthDate=:birthDate, reputation=:reputation, creationDate=:creationDate, description=:description, gender=:gender, nbClientCourses=:nbClientCourses, nbVendorCourses=:nbVendorCourses, occupied=:occupied, position=:position, price=:price where id=:id");
-			$a = $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format("Y-m-d"),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format("Y-m-d"),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied(),"position" => $user->getPosition(),"id" => $user->getId(), "price" => $user->getPrice()));
-            return $a;
+			$a = $statement->execute(array("surname" => $user->getSurname(),"firstname" => $user->getFirstname(),"idRace" => $user->getRace()->getId(),"mailAddress" => $user->getMailAddress(),"passWord" => password_hash($user->getPassword(), PASSWORD_DEFAULT),"money" => $user->getMoney(),"phoneNumber" => $user->getPhoneNumber(),"birthDate" => $user->getBirthDate()->format("Y-m-d"),"reputation" => $user->getReputation(),"creationDate" => $user->getCreationDate()->format("Y-m-d"),"description" => $user->getDescription(),"gender" => $user->getGender(),"nbClientCourses" => $user->getNbClientCourses(),"nbVendorCourses" => $user->getNbVendorCourses(),"occupied" => $user->getOccupied()?"true":"false","position" => $user->getPosition(),"id" => $user->getId(), "price" => $user->getPrice()));
+			//print_r($statement->errorInfo());
+			return $a;
 
     }
 

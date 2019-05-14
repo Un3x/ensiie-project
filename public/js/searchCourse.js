@@ -22,7 +22,7 @@ function searchCourse(departureId, arrivalId, resultId){
                     resDiv.innerHTML += "<div>nom : "+ligne['firstname']+" "+ligne['surname'] + "<br/>";
                     resDiv.innerHTML += "prix : "+ligne['price'] + " <img src='/image/Pokedollar.png' alt='Pokedollar'><br/>";
                     resDiv.innerHTML += "distance : "+ligne['distance'] + "·10<sup>38</sup> l<sub>p</sub><br/>";
-                    resDiv.innerHTML += "durée : "+ligne['duration'] + "·10<sup>47</sup> l<sub>p</sub><br/>";
+                    resDiv.innerHTML += "durée : "+ligne['duration'] + "·10<sup>47</sup> t<sub>p</sub><br/>";
                     resDiv.innerHTML += '<a href="/course/'+departureCourse+'_'+arrivalCourse+'_'+ligne['carrierId']+'" >infos</a></div><br/><br/>';
                 }
             }

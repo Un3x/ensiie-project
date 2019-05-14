@@ -1,0 +1,34 @@
+\BOOKMARK [1][-]{section.1}{Pr\351sentation du projet}{}% 1
+\BOOKMARK [1][-]{section.2}{L'architecture}{}% 2
+\BOOKMARK [1][-]{section.3}{Le mod\350le}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Les bases de donn\351es}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Le programme}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Probl\350mes rencontr\351s et solutions}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{R\351servation de trajets}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Partie client}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Partie Vendeur}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Recherche de trajets}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.4}{Envois de mails}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Affichage du trajet sur une carte}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.6}{Formulaire de choix des villes}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.7}{Stockage des trajets}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.8}{Calcul de distance entre les villes}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.9}{Routeur API}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{L'espace membre}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Diff\351rents utilisateurs}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{La connexion}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.3}{Le profil}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.4}{Param\350tres du compte}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.5}{Mes Trajets}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.6}{D\351connexion}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.7}{L'espace Admin}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.8}{configuration du template}{section.5}% 25
+\BOOKMARK [1][-]{section.6}{La vue}{}% 26
+\BOOKMARK [1][-]{section.7}{Possibles am\351liorations}{}% 27
+\BOOKMARK [1][-]{section.8}{La r\351partition des r\364les}{}% 28
+\BOOKMARK [1][-]{section.9}{Informations compl\351mentaires}{}% 29
+\BOOKMARK [2][-]{subsection.9.1}{S\351curit\351}{section.9}% 30
+\BOOKMARK [2][-]{subsection.9.2}{Modules install\351s}{section.9}% 31
+\BOOKMARK [2][-]{subsection.9.3}{r\351\351criture des URLs}{section.9}% 32
+\BOOKMARK [2][-]{subsection.9.4}{bots}{section.9}% 33
+\BOOKMARK [2][-]{subsection.9.5}{identifiants utiles}{section.9}% 34

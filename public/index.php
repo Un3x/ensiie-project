@@ -112,6 +112,8 @@ if( isset($_GET['action'])) {
             break;
 
         case 'trajets':
+            if (!$GLOBALS['user']) header('Location: /connexion');
+
             require('../src/Controller/User/Profil/mesTrajetsController.php');
             break;
         case 'inscriptionCarrier':

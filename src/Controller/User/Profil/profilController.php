@@ -142,6 +142,14 @@ function validationProfil()
 
     if($erreur)
     {
+        if($_SESSION["userType"] == "Vendor")
+        {
+            $race = initRace(true);
+        }
+        else
+        {
+            $race = "";
+        }
         $message = $message." </span>";
         require('../src/View/User/Profil/profilView.php');
         return;
@@ -163,14 +171,15 @@ function validationProfil()
         $userManager = new ClientManager($bdd);
 
 
-    $user->setFirstname($_POST["prenom"]);
-    $user->setSurname($_POST["nom"]);
+    $user->setFirstname(htmlspecialchars($_POST["prenom"]));
+    $user->setSurname(htmlspecialchars($_POST["nom"]));
     $user->setPhoneNumber($_POST['phoneNumber']);
-    $user->setDescription($_POST['description']);
+    $user->setDescription(htmlspecialchars($_POST['description']));
+    $user->setPosition($cityManager->get2($_POST["position"])->getId());
     // changer le reste
     if($userManager->update($user) == false)
     {
-        $message = $message." Erreur lors de la modification de la base de donnée. Veuillez ressayer ultérieurment. <br/> </span";
+        $message = $message." Erreur lors de la modification de la base de données. Veuillez réssayer ultérieurment. <br/> </span";
 
         $valeurDefaut=initChamps();
         if($_SESSION["userType"] == "Vendor")
@@ -186,7 +195,7 @@ function validationProfil()
     }
 
 
-    $message = "<span class='information'> Les informations que vous avez saisi ont bien été validé";
+    $message = "<span class='information'> Les informations que vous avez saisies ont bien été validées";
 
     $valeurDefaut=initChamps();
     if($_SESSION["userType"] == "Vendor")
