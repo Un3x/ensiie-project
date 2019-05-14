@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <html>    
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Inscription</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    <body>
+
+        <div class="header">
+            <div class="cover"></div>
+                <div class="navbar">
+                    <a href="main.php">Accueil</a>
+                    <a href="404.html">News</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Programme
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="404.html">Exposants</a>
+                            <a href="404.html">Scènes</a>
+                            <a href="404.html">Nocturne</a>
+                            <a href="404.html">Concours cosplay</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Info Pratiques
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="404.html">Plan de la convention</a>
+                            <a href="404.html">Accès</a>
+                            <a href="404.html">Consignes</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Photos
+                             <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="404.html">Bakanim' 2019</a>
+                            <a href="404.html">Éditions précédentes</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Nos partenaires
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    <div class="dropdown-content">
+                        <a href="http://www.ensiie.fr">ENSIIE</a>
+                        <a href="http://www.evry.fr">Ville d'Evry</a>
+                        <a href="http://bde.iiens.net">BDE ENSIIE</a>
+                    </div>
+                    </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Connexion
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        <div class="dropdown-content">
+                                <a href="bc2.php">Se Connecter</a>
+                                <a href="f_inscription.php">S'inscrire</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    
+        <div class="row" style="background-color:#bbb;">
+            <div class="column side" id="left_col"><img src="pictures/right_banner.jpg" alt="bannière droite">
+            </div> <!--- 521x1406 ---->
+
+            <div class="column middle">
+            <h1 class="connexion">Inscription administrateur</h1>
+            <form action = "" autocomplete = "off" method="post">
+                <table class="texte">
+					<tr>
+                        <td align = "right">Code administrateur : </td>
+                        <td><input type = "password" placeholder = "Votre code" name = "codeadmin"></td>
+                    </tr>
+                    <tr>
+                        <td align = "right">Pseudonyme : </td>
+                        <td><input type = "text" placeholder = "Votre pseudonyme" name = "pseudo"></td>
+                    </tr>
+                    <tr>
+                        <td align = "right">Courriel (mail) : </td>
+                        <td><input type = "text" placeholder = "Votre courriel" name = "courriel"><span id="aideCourriel"></span></td>
+                    </tr>
+                    <tr>
+                        <td align = "right">Mot de passe : </td>
+                        <td><input type = "password" placeholder = "Votre mot de passe" name = "code1"></td>
+                    </tr>
+                    <tr>
+                        <td align = "right">Confirmation du mot de passe : </td>
+                        <td><input type = "password" placeholder = "Votre mot de passe" name = "code2"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span id="infoMdp"></span></td>
+                    </tr>
+                </table>
+                <br/>
+                <input type = "reset" value = "Annuler" name = "bouton2">
+                <input type = "submit" value = "Valider" name = "bouton1">
+            </form>
+
+            <?php
+			if(isset($erreur)) {
+				echo '<font class="erreur" color="red">'.$erreur."</font>";
+			}
+            ?>
+            </div>
+            
+            <div class="column side" id="right_col"><img src="pictures/left_banner.png" alt="bannière gauche">
+            </div>
+        </div>
+        <script src="verif_inscription.js"></script>
+    </body>
+ </html>

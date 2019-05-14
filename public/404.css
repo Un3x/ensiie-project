@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Shancalluna";
+    src:url("fonts/Shancalluna_regular.ttf");
+}
+
+
+@font-face {
+    font-family: "Handgley";
+    src:url("fonts/Handgley Regular.otf");
+}
+
+figcaption {
+    margin-left: 30%;
+    font-size: 200%;
+}
+
+figure {
+    margin-left: 10%;
+}
+@font-face {
+    font-family: "pere_lachaise";
+    src:url("fonts/pere_lachaise.ttf");
+}
+
+body {
+    font-family: Shancalluna, Helvetica, sans-serif;
+    background-color: #000000;
+    color: rgb(196, 194, 194);
+}
+
+.standard {
+    font-family: Shancalluna, Helvetica, sans-serif;
+    background-color: #292626;
+    color: rgb(255, 188, 188);
+    background: url("fond.jpg") no-repeat;
+    background-size: cover;
+}
+
+
+.discret {
+    margin-left: 35%;
+    font-family: Shancalluna, Helvetica, sans-serif;
+    color: #646060;
+    font-size: 80%;
+}
+
+h1 {
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    font-family: Handgley, Helvetica, sans-serif;
+    background-color: rgba(233, 140, 124, 0.25);
+    color: #fa3990;
+    overflow: hidden;
+}
+
+h2 {
+	top: 0px;
+	left: 0px;
+	right: 0px;
+    bottom: 0px;
+    text-align: center;
+    font-size:200%;
+    font-family: Handgley, Helvetica, sans-serif;
+    color:  #fa36e6;
+}
+
+a {
+    color:  #008cff;
+}
+
+.raw {
+    color: #ff00e7;
+    margin-left: 10%;
+}
+
+.center{
+    width:40%;
+    margin: auto;
+    display: block;
+}
+
+a:visited {
+    color: #d097ff;
+}
+
+a:hover {
+    color: #b63969;
+}
+
+p {
+    margin-left: 10%;
+}
+
+.unvisited {
+    margin: auto;
+    font-family: Handgley, Helvetica, sans-serif;
+    text-align: center;
+    width: 80%;
+    color: rgb(0, 255, 42);
+    background-color: rgba(23, 176, 187, 0.2);
+}

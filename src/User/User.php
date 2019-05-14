@@ -4,111 +4,93 @@ namespace User;
 class User
 {
     /**
-     * @var int
+     * @var string
      */
-    private $id;
+    private $pseudo;
 
     /**
      * @var string
      */
-    private $firstname;
+    private $courriel;
 
     /**
      * @var string
      */
-    private $lastname;
+    private $motdepasse;
 
     /**
-     * @var \DateTimeInterface
-     */
-    private $birthday;
+    * @return int
+    */
+    private $lvl;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getpseudo()
     {
-        return $this->id;
+        return $this->pseudo;
     }
 
     /**
-     * @param int $id
+     * @param string $pseudo
      * @return User
      */
-    public function setId($id)
+    public function setpseudo($pseudo)
     {
-        $this->id = $id;
+        $this->pseudo = $pseudo;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getcourriel()
     {
-        return $this->firstname;
+        return $this->courriel;
     }
 
     /**
-     * @param string $firstname
+     * @param string $courriel
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setcourriel($courriel)
     {
-        $this->firstname = $firstname;
+        $this->courriel = $courriel;
         return $this;
     }
-
     /**
      * @return string
      */
-    public function getLastname()
+    public function getmotdepasse()
     {
-        return $this->lastname;
+        return $this->motdepasse;
     }
 
-    /**
-     * @param string $lastname
+     /**
+     * @param string $motdepasse
      * @return User
      */
-    public function setLastname($lastname)
+    public function setmotdepasse($motdepasse)
     {
-        $this->lastname = $lastname;
+        $this->motdepasse = $motdepasse;
         return $this;
     }
-
-    /**
-     * @return \DateTimeInterface
-     */
-    public function getBirthday(): \DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    /**
-     * @param \DateTimeInterface $birthday
-     * @return User
-     */
-    public function setBirthday(\DateTimeInterface $birthday)
-    {
-        $this->birthday = $birthday;
-        return $this;
-    }
-
 
     /**
      * @return int
-     * @throws \OutOfRangeException
      */
-    public function getAge(): int
+    public function getlvl()
     {
-        $now = new \DateTime();
+        return $this->lvl;
+    }
 
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
-
-        return $now->diff($this->getBirthday())->y;
+    /**
+     * @param int $lvl
+     * @return User
+     */
+    public function setlvl($lvl)
+    {
+        $this->lvl = $lvl;
+        return $this;
     }
 }
-

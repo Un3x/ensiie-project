@@ -18,15 +18,14 @@ class UserRepository
 
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "user"')->fetchAll(\PDO::FETCH_OBJ);
+        $rows = $this->connection->query("SELECT * FROM membres")->fetchAll(\PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
             $user
-                ->setId($row->id)
-                ->setFirstname($row->firstname)
-                ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setpseudo($row->pseudo)
+                ->setcourriel($row->courriel)
+                ->setmotdepasse($row->motdepasse);
 
             $users[] = $user;
         }
