@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
   require '../src/User/UserRepository.php';
   require '../src/config.php';
   
@@ -9,7 +9,8 @@ $users = $userRepository->getUserArray();
 $em = $_SESSION['email'];
 $usid = $users[$em]->getId();
 if(isset($_SESSION['newemail'])){
-  
+  $userRepository->majMail($usid,$_SESSION['newemail']);
 }
+unset($_SESSION['newemail']);
 
 ?>

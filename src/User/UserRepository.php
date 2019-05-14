@@ -1,5 +1,6 @@
 <?php
 namespace User;
+require_once "User.php";
 class UserRepository
 {
     /**
@@ -108,6 +109,10 @@ class UserRepository
         return false;
     }
 
-    
+    public function majMail($userid,$newmail){
+        $sql = "UPDATE users SET mailaddress=? WHERE id=?";
+        $this->connection->prepare($sql)->execute([$newmail, $userid]);
+        echo "<script>alert('Mail mis à jour')</script>";
+    }
 
 }

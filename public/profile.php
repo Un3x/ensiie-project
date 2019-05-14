@@ -1,6 +1,7 @@
 <?php
 // check if connected (TO DO ON ALL PAGES)
   session_start();
+  require "majprofile.php";
   //fetch user data
   $dbName = getenv('DB_NAME');
   $dbUser = getenv('DB_USER');
