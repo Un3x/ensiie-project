@@ -1,4 +1,13 @@
 <?php session_start();?>
+<?php require_once '../src/Questions/sujetsRepository.php';
+require_once '../src/Questions/sujets.php';
+require_once '../src/Questions/sujetsRepository.php';
+$dbName = getenv('DB_NAME');
+$dbUser = getenv('DB_USER');
+$dbPassword = getenv('DB_PASSWORD');
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+$sujetsRepository = new SujetsRepository($connection);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -8,8 +17,13 @@
             <?php require('../src/components/navbar_connection.php');?>
             <div id="sujet-list-container">
                 <ul class="sujet-list">
-                    <li class="sujet-container"></li>
-                </div>
+                    <?php
+                        $sujetArr = $sujetsRepository->getSujets();
+                        foreach($sujetArr as $s){
+                            $t = $s->getTitle();
+                            echo "<li>$t</li>";
+                        }
+                    ?>
                 </ul>
                 <ul class="pagination"></ul>
             </div>

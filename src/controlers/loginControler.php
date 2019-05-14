@@ -20,7 +20,7 @@ if(isset($_POST['email']) && isset($_POST['pwd'])){
   if($userLogged){
     // remplir session
     LoginTools::fillSessionArray($userLogged);
-    $nad = $_SERVER['HTTP_HOST'] . '/welcome.php';
+    $nad = $_SERVER['HTTP_HOST'] . '/profile.php';
     header("Location: http://$nad");
   } else {
     $_SESSION['testco'] = TRUE;

@@ -1,11 +1,11 @@
 <?php
+require_once(__DIR__.'/sujets.php');
 // classe répertoire des sujets
 /**
  * PAS OPTI
  * On va charger tous les sujets dans un tableau, et les traiter après dans du js
  * Plutôt opti pour les BD pas trop grosses, ce qui est le cas ici
  */
-namespace Sujet;
 class SujetsRepository
 {
     /**
@@ -27,7 +27,7 @@ class SujetsRepository
     public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
-        $this->usersArray = $this->fetchAll();
+        $this->sujetsArray = $this->fetchAll();
     }
 
     /**
@@ -35,57 +35,32 @@ class SujetsRepository
      */
     private function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "users"')->fetchAll(\PDO::FETCH_OBJ);
-        $users = [];
+        $rows = $this->connection->query('SELECT * FROM "sujets"')->fetchAll(\PDO::FETCH_OBJ);
+        $sujets = [];
         foreach ($rows as $row) {
-            $user = new User();
-            $user
+            $suj = new Sujet();
+            $suj
                 ->setId($row->id)
-                ->setFirstname($row->firstname)
-                ->setLastname($row->lastname)
-                ->setSignupDate(new \DateTimeImmutable($row->signupdate))
-                ->setMailAddress($row->mailaddress)
-                ->setPasswdH($row->passwd)
-                ->setActivCode($row->activcode)
-                ->setLastLogDate($row->lastlogdate)
-                ->setUserRole($row->userrole)
-                ->setPicturePath($row->picturepath);
+                ->setTitle($row->title)
+                ->setContent($row->content)
+                ->setAuthor($row->author)
+                ->setSDate(new \DateTimeImmutable($row->sdatetime))
+                ->setNbRep($row->nbrep)
+                ->setScore($row->score);
 
-            $users[$row->mailaddress] = $user;
+            $sujets[] = $suj;
         }
 
-        return $users;
+        return $sujets;
     }
 
     /**
      * pwh = password hash
      * returns user found if ok, false else
      */
-    public function logInWithCredentials($log, $pwh)
+    public function getSujets()
     {
-/*         echo "UserRepository::logInWithCredentials : {<br>";
-            echo "email : " . $log . '<br>';
-            echo "pwd : " . $pwh .'<br>}'; */
-        if(array_key_exists($log,$this->usersArray)){
-            if($this->usersArray[$log]->getPasswdH() == $pwh){/* 
-                echo "<br>CONNEXION OK !!  : " . $log . '<br>'; */
-                return $this->usersArray[$log];
-            } else {/* 
-                echo "<br>CONNEXION ECHOUEE MDP !!  : " . $log . '<br>';
-                echo "Vous avez entré  : " . $pwh . '<br>';
-                echo "Mais il fallait  : " . $this->usersArray[$log]->getPasswdH() . '<br>'; */
-                return FALSE;
-            }
-        } else {/* 
-            echo "<br>CONNEXION ECHOUEE LOGIN !!  : " . $log . '<br>'; */
-            return FALSE;
-        }
+      return $this->sujetsArray;
     }
-
-    public function getUserArray()
-    {
-        return $this->usersArray;
-    }
-
 
 }

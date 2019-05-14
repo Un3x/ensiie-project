@@ -1,5 +1,4 @@
 <?php
-namespace Sujet;
 
 class Sujet
 {
@@ -38,6 +37,7 @@ class Sujet
      */
     private $nbrep;
 
+    private $score;
 
     /** ---------------------------------------------------------------------------- */
     /** ---------------------------------------------------------------------------- */
@@ -167,6 +167,24 @@ class Sujet
     public function setNbRep($nbrep)
     {
         $this->nbrep = $nbrep;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * @param int $nbrep
+     * @return Sujet
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
         return $this;
     }
 
