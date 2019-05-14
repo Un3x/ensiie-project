@@ -15,23 +15,28 @@ $sujetsRepository = new SujetsRepository($connection);
     <body id="connected">
         <div class="container">
             <?php require('../src/components/navbar_connection.php');?>
-            <div id="sujet-list-container">
-                <ul class="sujet-list">
-                    <?php
-                        $sujetArr = $sujetsRepository->getSujets();
-                        foreach($sujetArr as $s){
-                            $t = $s->getTitle();
-                            echo "<li>$t</li>";
-                        }
-                    ?>
-                </ul>
-                <ul class="pagination"></ul>
-            </div>
             <div id="sub-container">
                 <div id="sujet-list-container">
                     <ul class="sujet-list">
-                        <li class="sujet-container"></li>
-                    </div>
+                        <?php
+                            $sujetArr = $sujetsRepository->getSujets();
+                            foreach($sujetArr as $s){
+                                $t = $s->getTitle();
+                                $a = $s->getAuthor();
+                                $c = $s->getContent();
+                                $rep = $s->getNbRep();
+                                echo "<li>";
+                                echo "<div>";
+                                echo "<h3 class='s-title'>$t</h3>";
+                                echo "<p class='s-content'>$c</p>";
+                                echo "<h5 class='s-author'>$a</h5>";
+                                echo "<p class='s-nbrep'>$rep</p>";
+                                echo "</div>";
+                                echo "<a class='vote-top' href='#'>&#9650;</a>";
+                                echo "<a class='vote-top' href='#'>&#9660;</a>";
+                                echo "</li>";
+                            }
+                        ?>
                     </ul>
                     <ul class="pagination"></ul>
                 </div>
