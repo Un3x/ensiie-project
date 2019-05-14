@@ -30,7 +30,7 @@
                     <img id="avatar" src=<?php echo "$picpath" ?> alt="Profile picture">
                     <input type="file" accept="image/png, image/jpeg">
                     </div>
-                    <div id="my-account data">
+                    <div id="my-account-data">
                         <h3>Mes données</h3>
                         <table>
                             <tr>
@@ -52,14 +52,15 @@
                         </table>
                     </div>
                     <div id="my-account-forms">
+                        <h3>Mettre à jour mes données</h3>
                         <form method="post">
-                            <h3>Modifier votre adresse mail</h3>
+                            <h4>Modifier votre adresse mail</h4>
                             <input type="email" placeholder="Nouvelle adresse e-mail" name="newEmail" required>
                             <input type="email" placeholder="Nouvelle adresse e-mail" name="validNewEmail" required>
                             <button class="button" type="submit">Mettre à jour</button>
                         </form>
                         <form method="post">
-                            <h3>Modifier votre mot de passe</h3>
+                            <h4>Modifier votre mot de passe</h4>
                             <input type="password" minlength="6" maxlength="50" placeholder="Mot de passe actuel" name="currentPwd" required>
                             <input type="password" minlength="6" maxlength="50" placeholder="Nouveau mot de passe" name="newPwd" required>
                             <input type="password" placeholder="Confirmation du nouveau mot de passe" name="validNewPwd" required>

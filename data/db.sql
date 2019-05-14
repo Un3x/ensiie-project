@@ -21,7 +21,7 @@ CREATE TABLE "users" (
 );
 
 INSERT INTO "users"(firstname, lastname, signupdate, mailaddress, passwd, activcode, lastlogdate, userrole, picturepath) 
-    VALUES ('Amine', 'Ladmine', '2000-01-01', 'xxaminedu69xx@gmail.com',
+    VALUES ('John', 'Smith', '2000-01-01', 'john.smith@gmail.com',
             '21232f297a57a5a743894a0e4a801fc3','1','2000-01-01','admin','img/profilePics/default.png');
 
 
@@ -41,10 +41,11 @@ CREATE TABLE "sujets" (
 );
 
 INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus) 
-    VALUES ('Est-ce que les sujets marchent ?', 'C''est une bonne question quand même' ,'Amine-senpai', '2000-01-01 00:00:01', 'unsolved');
+    VALUES ('À propos du système nerveux central', 'Je me demandais si on a bien formation des racines au niveau du foramen vertébral?' ,'Wanda Maximoff', '2000-01-01 12:08:59', 'unsolved');
 INSERT INTO "sujets"(title, author, sdatetime, topicstatus) 
-    VALUES ('Mais marchent-ils deux fois ?', 'Amine-senpai', '2000-01-01 00:00:01', 'unsolved');
-
+    VALUES ('Est-ce que la jonction urétéro-vésicale correspond au méat urétéral?', 'Mary Sue', '2000-01-01 15:08:01', 'unsolved');
+INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus)
+    VALUES ('Sillon collatéral ventral/pré olivaire','Quelle est la différence au niveau localisation entre les deux? Une illustration serait bien.','Alicia Romana','2012-03-06 16:17:18','unsolved');
 
 --
 -- Table of answers to topics

@@ -924,3 +924,9 @@ input[type=text],input[type=password], input[type=email]{
     color: rgb(26, 26, 78);
     font-size: 20px;
 }
+
+#my-account-data{
+    padding-bottom: 15px;
+    border-bottom: #656565 solid 1px;
+}
+
