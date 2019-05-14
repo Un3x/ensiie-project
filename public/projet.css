@@ -1,0 +1,127 @@
+body {
+
+	background-color: lightgrey;
+	margin-left: 10px;
+}
+
+
+h1{
+
+	color: #17202a;
+	margin-left: 10px;
+
+}
+
+h2{
+
+	color: lightgrey;
+	margin-left: 10px;
+
+}
+
+h3.event{
+	position: relative;
+	margin-top: 5px;
+	text-align: center;
+	color: #B22222;
+}
+
+h3.modif{
+	color:red;
+}
+
+h4.event{
+	margin-left: 10px;
+	font-size: 15px;
+	color: #B22222;
+}
+
+div.event{
+	margin-bottom: 20px;
+	text-align: center;
+	border: 2px solid #B22222;
+	width: 500px
+}
+
+div.content{
+	margin-left:-100px
+}
+
+
+div.head{
+	background-color: #B22222;
+}
+
+
+div.co{
+
+	margin-left: 10px;
+}
+
+div.events{
+	position: absolute;
+	left: 170px;
+}
+
+.column {
+  float: left;
+  width: 33%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.menu {
+	top: 170px;
+	width: 250px;
+}
+
+.menu a{
+	position: relative;
+	background-color: #B22222;
+	color: lightgrey;
+  	display: block;
+  	padding: 12px;
+  	text-decoration: none;
+}
+
+.menu a:hover{
+	background-color: grey;
+	color: black;
+}
+
+.menu a.active{
+	color: black;
+	background-color: grey;
+}
+
+
+a.event{
+
+	position: relative;
+	margin-left: 10px;
+}
+
+a{
+	color: grey;
+}
+
+p.user{
+
+	color: lightgrey;
+	margin-left: 10px;
+
+}
+
+p.erreur{
+	color: red;
+}
+
+p.event {
+	margin-left: 8px;
+}
+

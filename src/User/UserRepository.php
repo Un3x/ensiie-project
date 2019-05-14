@@ -8,6 +8,12 @@ class UserRepository
     private $connection;
 
     /**
+     * @var bool
+     
+    private $connected = false;
+    */
+
+    /**
      * UserRepository constructor.
      * @param \PDO $connection
      */
@@ -26,13 +32,14 @@ class UserRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setPseudo($row->pseudo)
+                ->setMDP($row->mdp)
+                ->setAdmin($row->admin);
 
             $users[] = $user;
         }
 
         return $users;
     }
-
 
 }

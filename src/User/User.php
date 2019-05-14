@@ -19,13 +19,21 @@ class User
     private $lastname;
 
     /**
-     * @var \DateTimeInterface
+     * @var string
      */
-    private $birthday;
+    private $pseudo;
+
+    /**
+     * @var string
+     */
+    private $mdp;
+
+    private $admin;
 
     /**
      * @return int
      */
+
     public function getId()
     {
         return $this->id;
@@ -59,6 +67,21 @@ class User
         return $this;
     }
 
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param string $firstname
+     * @return User
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+        return $this;
+    }
+
     /**
      * @return string
      */
@@ -78,37 +101,34 @@ class User
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return string
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getMDP()
     {
-        return $this->birthday;
+        return $this->mdp;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param string
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setMDP($mdp)
     {
-        $this->birthday = $birthday;
+        $this->mdp = $mdp;
+        return $this;
+    }
+
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
         return $this;
     }
 
 
-    /**
-     * @return int
-     * @throws \OutOfRangeException
-     */
-    public function getAge(): int
-    {
-        $now = new \DateTime();
-
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
-
-        return $now->diff($this->getBirthday())->y;
-    }
 }
 
