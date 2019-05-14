@@ -23,16 +23,17 @@ class UserRepository
         foreach ($rows as $row) {
             $user = new User();
             $user
-                ->setId($row->id)
-                ->setFirstname($row->firstname)
-                ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+            ->setPseudo($row->pseudo)
+            ->setMdp($row->mdp)
+            ->setPrenom($row->prenom)
+            ->setNom($row->nom)
+            ->setStatut($row->statut)
+            ->setMail($row->mail);
 
             $users[] = $user;
         }
 
         return $users;
     }
-
 
 }

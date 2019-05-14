@@ -4,111 +4,142 @@ namespace User;
 class User
 {
     /**
-     * @var int
+     * @var string
      */
-    private $id;
+    private $pseudo;
 
     /**
      * @var string
      */
-    private $firstname;
+    private $mdp;
 
     /**
      * @var string
      */
-    private $lastname;
+    private $prenom;
 
     /**
-     * @var \DateTimeInterface
+     * @var string
      */
-    private $birthday;
+    private $nom;
 
     /**
-     * @return int
+     * @var char
      */
-    public function getId()
+    private $statut;
+
+    /**
+     * @var
+     */
+    private $mail;
+
+    /**
+     * @return 
+     */
+    public function getPseudo()
     {
-        return $this->id;
+        return $this->pseudo;
     }
 
     /**
-     * @param int $id
+     * @param string $pseudo
      * @return User
      */
-    public function setId($id)
+    public function setPseudo($pseudo)
     {
-        $this->id = $id;
+        $this->pseudo = $pseudo;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getMdp()
     {
-        return $this->firstname;
+        return $this->mdp;
     }
 
     /**
-     * @param string $firstname
+     * @param string mdp
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setMdp($mdp) 
     {
-        $this->firstname = $firstname;
+        $this->mdp = $mdp;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLastname()
+    public function getNom()
     {
-        return $this->lastname;
+        return $this->nom;
     }
 
     /**
-     * @param string $lastname
+     * @param string $nom
      * @return User
      */
-    public function setLastname($lastname)
+    public function setNom($nom)
     {
-        $this->lastname = $lastname;
+        $this->nom = $nom;
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface
+        /**
+     * @return char
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getStatut()
     {
-        return $this->birthday;
+        return $this->statut;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param char $statut
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setStatut($statut)
     {
-        $this->birthday = $birthday;
+        $this->statut = $statut;
         return $this;
     }
 
+        /**
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
 
     /**
-     * @return int
-     * @throws \OutOfRangeException
+     * @param string $mail
+     * @return User
      */
-    public function getAge(): int
+    public function setMail($mail)
     {
-        $now = new \DateTime();
-
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
-
-        return $now->diff($this->getBirthday())->y;
+        $this->mail = $mail;
+        return $this;
     }
+
 }
-
