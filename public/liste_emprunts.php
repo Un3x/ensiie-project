@@ -18,6 +18,8 @@ $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=
 
 $userRepository = new \User\UserRepository($connection);
 $livreRepository = new \Livre\LivreRepository($connection);
+$reservationRepository = new \Reservation\ReservationRepository($connection);
+
 $user_connected=isset($_SESSION["id_user"]);
 
 $prenom = '';
@@ -48,6 +50,13 @@ if (!(verifAdmin($_SESSION["id_user"]))) {
 //on récupère la liste des livres empruntés
 
 $listeEmprunts = $livreRepository->fetchEmprunted();
+
+
+
+//on récupère la liste des livre réservés
+
+
+$listeReserved = $reservationRepository->fetchAll();
 
 ?>
 
@@ -92,8 +101,30 @@ $listeEmprunts = $livreRepository->fetchEmprunted();
        	</tr>
        <?php endforeach; ?>
    </table>
-   <p></p>
  <?php endif; ?>
+ <div class="res">Liste des reservations</div>
+ <?php if($listeReserved == []): ?>
+  <p>Aucun livre n'est actuellement réservé</p>
+<?php endif; ?>
+<?php if ($listeReserved != []): ?>
+  <table>
+    <thead style="fonct-weight: bold">
+      <th>#</th>
+      <th>Titre</th>
+      <th>Utilisateur</th>
+      <th>Annuler</th>
+    </thead>
+    <?php foreach ($listeReserved as $reserved): ?>
+      <tr>
+        <td><?php echo $reserved->getIdLivre(); ?></td>
+        <td><?php echo IdToTitre($reserved->getIdLivre()); ?></td>
+        <td><?php echo IdToPseudo($reserved->getIdUser()); ?></td>
+        <td><form action="annule_resa_admin.php" method="POST"><input style="display:none" type="text" name="id_livre" value=<?php echo $reserved->getIdLivre(); ?>><input style="display:none" type="text" name="id_user" value=<?php echo $reserved->getIdUser(); ?>><input type="submit" class="butcan" value="Annuler"></form></td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+<?php endif; ?>
+  <p></p>
 </section>
 <?php affiche_footer()?>
 </body>
