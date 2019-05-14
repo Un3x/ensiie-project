@@ -115,7 +115,7 @@ CREATE TABLE public.media (
     id_maj integer,
     id_article integer,
     id_membre integer,
-    lien character varying(200),
+    lien character varying(50),
     CONSTRAINT only_one_id CHECK ((((id_jeu IS NOT NULL) AND (id_maj IS NULL) AND (id_article IS NULL) AND (id_membre IS NULL)) OR ((id_jeu IS NULL) AND (id_maj IS NOT NULL) AND (id_article IS NULL) AND (id_membre IS NULL)) OR ((id_jeu IS NULL) AND (id_maj IS NULL) AND (id_article IS NOT NULL) AND (id_membre IS NULL)) OR ((id_jeu IS NULL) AND (id_maj IS NULL) AND (id_article IS NULL) AND (id_membre IS NOT NULL))))
 );
 
@@ -433,6 +433,9 @@ Pour Laval Virtual les membres de l’association sont d’accord pour envoyer l
  Jalik propose que l’association fasse un tuto toutes les 2 semaines .
  Pour Laval 2020, Plou prévient qu’il faudra envoyer une équipe avec le casque VR, pour éviter de partager le matériel avec les autres participants.
 </p>', 6, '2019-05-02', true);
+INSERT INTO public.article VALUES (7, '7', 'dzadaz', 3, '0005-05-25', false);
+INSERT INTO public.article VALUES (8, 'Plou le plot', 'ouiaiakdazda', 7, '2019-05-14', false);
+INSERT INTO public.article VALUES (9, 'Nouvelle techno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, '2019-05-12', false);
 
 
 --
@@ -452,14 +455,24 @@ INSERT INTO public.equipe VALUES (2, 9, 'Developpeur');
 INSERT INTO public.jeux VALUES (2, 'Restroom', NULL, 'Restroom.rar', NULL);
 INSERT INTO public.jeux VALUES (3, 'Overcraft', '', '', NULL);
 INSERT INTO public.jeux VALUES (1, 'Fight for the Door', ' ', 'fight_door.rar', NULL);
-INSERT INTO public.jeux VALUES (4, 'Projet Piratage', '.', '.', '.');
+INSERT INTO public.jeux VALUES (4, 'Projet Piratage', '<h1>Test du html</h1>', 'echo $jeu->getID();?>', NULL);
 
 
 --
 -- Data for Name: media; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.media VALUES (1, NULL, NULL, NULL, 3, 'Altreon.png');
+INSERT INTO public.media VALUES (2, NULL, NULL, 7, NULL, '../media/noir.jpg');
+INSERT INTO public.media VALUES (3, NULL, NULL, 8, NULL, '../media/noir.jpg');
+INSERT INTO public.media VALUES (4, NULL, NULL, 6, NULL, '../media/test.png');
+INSERT INTO public.media VALUES (8, NULL, NULL, NULL, 17, '../media/fiiets.png');
+INSERT INTO public.media VALUES (9, NULL, NULL, NULL, 4, '../media/fiietsV2.png');
+INSERT INTO public.media VALUES (10, NULL, NULL, NULL, 3, '../media/art.png');
+INSERT INTO public.media VALUES (11, NULL, NULL, 1, NULL, '../media/art2.png');
+INSERT INTO public.media VALUES (12, NULL, 4, NULL, NULL, '../media/Magnifique2.png');
+INSERT INTO public.media VALUES (13, NULL, 15, NULL, NULL, '../media/chicken.png');
+INSERT INTO public.media VALUES (14, NULL, 15, NULL, NULL, '../media/chicken.png');
+INSERT INTO public.media VALUES (15, NULL, NULL, 9, NULL, '../media/bleu.png');
 
 
 --
@@ -474,8 +487,9 @@ INSERT INTO public.membre VALUES (11, 'GABBAY', 'Milan', 'Jalik', '$2y$10$MxyToq
 INSERT INTO public.membre VALUES (4, 'VAN DER LEE', 'Rémi', 'fIIEts', '$2y$10$xnTJkXZ2CwPn52k/cxn4Xub9Lpk7GXQ9GWCMA0gVXmn9tieUT.77W', 2021, 'a');
 INSERT INTO public.membre VALUES (3, 'BRANDI', 'Matteo', 'Altreon', '$2y$10$IyMJ5ciGxqwsaXc.Ws.KOuTift.uxkQ2f6wYJH7Rr4u.p7lDd4GuS', 2021, 'a');
 INSERT INTO public.membre VALUES (6, 'ACHEROUFKEBIR', 'Yacine', 'DBA3', '$2y$10$.O1wReDPzxyo2mXVs3jbke4IXTodibdIlTa/t1HJGWt2Q.UdKDo7O', 2021, 'a');
-INSERT INTO public.membre VALUES (12, 'INACO', 'Aurélien', 'Prophet', '$2y$10$tv7Xj9KponvVA70oiMZtg.9lGJEpmeU6r87u/XXvWXGqnCL.dSMRW', 2021, 'r');
-INSERT INTO public.membre VALUES (13, 'MONNOT', 'Clément', 'Zaphkiel', '$2y$10$dlr6YKuALNktSx4ClknvS..z8hD0t0sRmMARYNKfqOaEx1RR9OPcq', 2021, 'r');
+INSERT INTO public.membre VALUES (14, 'DUPONT', 'Romain', 'Dieu', '$2y$10$Lw7SLwKjlI2Of6juoSLBgO2ATZeMzIMH0NT8nsgPQjy8zr9qG1XYa', 2022, 'a');
+INSERT INTO public.membre VALUES (16, 'ROSE', 'Rose', 'Rose', '$2y$10$7JQ7cE1mjPrvJsX1MA/4VuToJSaAsAKMvc5QQUNRs/xGttbtXXvui', 2022, 'a');
+INSERT INTO public.membre VALUES (17, 'Patate', 'pomme de terre', 'Fietts2', '$2y$10$UTzASUKkJtuO7/ggLXumM.jyvfQc4P2IAZ3f7R5jP/d9SogLRoTsK', 2022, 'a');
 
 
 --
@@ -490,6 +504,21 @@ Au programme :
 - Finir le 1er niveau en design
 - Ajouter un compteur de point avec le bon affichage qui va bien
 (- Commencer un autre niveau?)', '2019-05-13');
+INSERT INTO public.miseajour VALUES (7, 2, 'Vide', '2019-05-02');
+INSERT INTO public.miseajour VALUES (8, 2, 'Vide', '2019-05-02');
+INSERT INTO public.miseajour VALUES (9, 4, 'Chicken', '0210-02-01');
+INSERT INTO public.miseajour VALUES (10, 4, 'Chicken', '0210-02-01');
+INSERT INTO public.miseajour VALUES (11, 4, 'Chicken', '0210-02-01');
+INSERT INTO public.miseajour VALUES (12, 4, 'Chicken', '0210-02-01');
+INSERT INTO public.miseajour VALUES (13, 4, 'Poulet', '2019-05-12');
+INSERT INTO public.miseajour VALUES (14, 4, 'Poulet', '2019-05-12');
+INSERT INTO public.miseajour VALUES (15, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (16, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (17, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (18, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (19, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (20, 4, 'Poulet 2', '2019-05-14');
+INSERT INTO public.miseajour VALUES (21, 2, 'nouvelle mise à jour', '2019-05-13');
 
 
 --
@@ -497,14 +526,14 @@ Au programme :
 --
 
 INSERT INTO public.tuto VALUES (1, '[BLENDER] Squelettisation', 'Apprendre … ins‚erer un squelette sur un modŠle pour l animer.', 'squelettisation.pdf');
-INSERT INTO public.tuto VALUES (2, '[Noob] Comment démarrer son pc', 'Enfin c''est simple...', 'noob.pdf');
+INSERT INTO public.tuto VALUES (2, '[Noob] Comment d‚marer son pc', 'Tu es un boulet car c est d‚j… fait si tu vois ‡a', 'noob.pdf');
 
 
 --
 -- Name: article_id_article_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.article_id_article_seq', 6, true);
+SELECT pg_catalog.setval('public.article_id_article_seq', 9, true);
 
 
 --
@@ -518,21 +547,21 @@ SELECT pg_catalog.setval('public.jeux_id_jeu_seq', 4, true);
 -- Name: media_id_media_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.media_id_media_seq', 1, true);
+SELECT pg_catalog.setval('public.media_id_media_seq', 15, true);
 
 
 --
 -- Name: membre_id_membre_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.membre_id_membre_seq', 13, true);
+SELECT pg_catalog.setval('public.membre_id_membre_seq', 17, true);
 
 
 --
 -- Name: miseajour_id_maj_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.miseajour_id_maj_seq', 6, true);
+SELECT pg_catalog.setval('public.miseajour_id_maj_seq', 21, true);
 
 
 --

@@ -1,30 +1,19 @@
-# ENSIIE Web Project Skeleton
+# SITE WEB DE L'ASSOCIATION REALITIIE DE L'ENSIIE
 
-## Install your application
-This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
+La base de données a été réalisée sous PostgreSQL avec WAMPSERVEUR.
+Nous n'avons pas pus nous assurez que Docker faisait correctement tourner notre BDD,
+mais nous avons tout même placé un db.sql dans le dossier data à la racine du projet.
+Il est indispensable pour le bon fonctionnement du site que la BDD se nomme realitiie,
+et qu'il existe un super utilisateur de nom 'postgres' et de mot de passe 'postgres'.
 
-The only packages you need to install right now are **docker** and **docker-compose**
-* [Install Docker](https://docs.docker.com/install/) :
-    * [(Optional: docker w/o sudo on linux)](https://docs.docker.com/install/linux/linux-postinstall/)
-* [Install Docker Compose](https://docs.docker.com/compose/install/)
+Pour tester la partie administration, vous pouvez utiliser les comptes suivants :
 
-Then, clone the Web Project skeleton on your machine:
-* `git clone https://github.com/Kirouane/ensiie-project.git`
-* `cd ensiie-project`
+(Pseudo - mot de passe)
+Compte Administrateur : Altreon - default
+Compte Membre : 801 - default
 
-The next step is to set some environment variables in the `.env` file
-* Open this Skeleton on your favorite IDE : PHPStorm or VSCode.
-* Open the file .env
-    * DOCKER_USER_ID: to obtain the value of this variable you need to execute this command `$(echo id -u $USER)` on a Terminal. Copy and past the output.
-    * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
+Attention: certains projets en téléchargement sont indisponibles en raison de leur grandes tailles,
+ils n'ont pas pus être envoyés vers le Github.
 
-Now, let's begin the installation :
-* `make install`. This command may take time.  
-* That's it! Your website is running [http:localhost:8080](http:localhost:8080)
 
-Below are some useful commands :
-* `make stop` Stop the containers
-* `make start` Start the containers
-* `make db.connect` Connect to th database
-* `make phpunit.run` Run the PHPUnit tests
-* `make install` Reinstall all containers
+Merci de votre temps pour noter notre projet.
