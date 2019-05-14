@@ -17,7 +17,11 @@ $sujetsRepository = new SujetsRepository($connection);
             <?php require('../src/components/navbar_connection.php');?>
             <div id="sub-container">
                 <div id="sujet-list-container">
-                    <ul class="sujet-list">
+                <input class="search" placeholder="Search" />
+                <button class="sort" data-sort="s-title">
+                    Sort by Title
+                </button>
+                    <ul class="sujet-list list">
                         <?php
                             $sujetArr = $sujetsRepository->getSujets();
                             foreach($sujetArr as $s){
@@ -33,12 +37,56 @@ $sujetsRepository = new SujetsRepository($connection);
                                 echo "<p class='s-nbrep'>$rep</p>";
                                 echo "</div>";
                                 echo "<a class='vote-top' href='#'>&#9650;</a>";
-                                echo "<a class='vote-top' href='#'>&#9660;</a>";
+                                echo "<a class='vote-bot' href='#'>&#9660;</a>";
                                 echo "</li>";
                             }
                         ?>
                     </ul>
+                    <script>
+                        $(document).ready(function () {
+                        $("a.vote-top").click(function () {
+                            the_id = $(this).attr('id');
+                            $.ajax({
+                                type: "POST",
+                                data: "action=upvote&id=" + $(this).attr("id"),
+                                url: "vote.php",
+                                success: function (msg) {
+                                    alert("Success");
+                                },
+                                error: function () {
+                                    alert("Error");
+                                }
+                                });
+                            });
+                        });
+
+                        $(document).ready(function () {
+                            $("a.vote-bot").click(function () {
+                                the_id = $(this).attr('id');
+                                $.ajax({
+                                    type: "POST",
+                                    data: "action=downvote&id=" + $(this).attr("id"),
+                                    url: "vote.php",
+                                    success: function (msg) {
+                                        alert("Success");
+                                    },
+                                    error: function () {
+                                        alert("Error");
+                                    }
+                                });
+                            });
+                        }); 
+                    </script>
                     <ul class="pagination"></ul>
+                    <script>
+                        var options = {
+                        valueNames: [ 's-title', 's-author' ],
+                        page : 1,
+                        pagination : true
+                        };
+
+                        var subList = new List('sub-container', options);
+                    </script>
                 </div>
                 <div id="sujet-create-container">
                     <form method="post">

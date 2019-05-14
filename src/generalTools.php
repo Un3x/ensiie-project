@@ -1,11 +1,6 @@
 <?php
 require_once 'User/UserRepository.php';
 require_once 'User/User.php';
-class Tools
-{
-
-}
-
 class LoginTools
 {
 
@@ -64,3 +59,4 @@ class LoginTools
     }
 
 }
+?>
