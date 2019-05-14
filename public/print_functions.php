@@ -136,10 +136,9 @@
 			</div>
 		";
 	}
-	
+
 	function printMainLogIn(){
 		echo "<div id = \"content\" class = \"round_rect\">
-		
 				<div id = \"main\">
 					<aside id = \"protag_preview\">
 						<p>Protagonist placeholder</p>
@@ -147,24 +146,19 @@
 					<div id = \"sumup\">
 						<h1 class = \"grey\">Ma dernière fin</h1>
 						<img src = \"stroke.png\" />
-							
 						<h1 class = \"grey\">Mon dernier achievement</h1>
-						<img src = \"stroke.png\" />					
+						<img src = \"stroke.png\" />
 					</div>
 				</div>
-				
-				<div id = \"suscribe_button\">
+				<div id = \"suscribe_button\" onclick=\"window.location.replace('jeu.php')\";>
 					<img src=\"stroke.png\" />
-					<p> <span class = \"orange\" style = \"font-size: 3em;\">Y retourner</span><br /> 
+					<p> <span class = \"orange\" style = \"font-size: 3em;\">Y retourner</span><br />
 					<span class = \"grey\" style = \"font-size: 1.8em;\">Continue l'aventure !</span></p>
 					<img src=\"stroke.png\" />
 				</div>
 			</div>
 		";
 	}
-	
-
-	
 	function logOut(){
 		session_destroy();
 		/*echo " <div class = \"round_rect\" style = \"padding: 20px;\">
@@ -212,13 +206,8 @@
 							long afin de tester la feature en question.</p>
 							<button class = \"logout_button\">Jouer</button>
 							</div>
-							
-						</div>						
+						</div>
 					</div>
 				</div>
-		
 		";
-		
-		
 	}
-	
