@@ -1,8 +1,10 @@
 # SITE WEB DE L'ASSOCIATION REALITIIE DE L'ENSIIE
 
 La base de données a été réalisée sous PostgreSQL avec WAMPSERVEUR.
+<br>
 Nous n'avons pas pus nous assurez que Docker faisait correctement tourner notre BDD,
 mais nous avons tout même placé un db.sql dans le dossier data à la racine du projet.
+<br>
 Il est indispensable pour le bon fonctionnement du site que la BDD se nomme realitiie,
 et qu'il existe un super utilisateur de nom 'postgres' et de mot de passe 'postgres'.
 <br>
