@@ -65,6 +65,7 @@ class CourseManager
                 ->setDeparture($row['departure'])
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
+                ->setClient($row['client'])
                 ->setDepartureDateTime($row['datetime'])
                 ->setState($row['state'])
                 ->setPrice($row['price']);
@@ -126,7 +127,9 @@ class CourseManager
                 ->setDeparture($row['departure'])
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
+                ->setClient($row['client'])
                 ->setDepartureDateTime($row['datetime'])
+                ->setPrice($row['price'])
                 ->setState($row['state']);
             $courses[] = $course;
         }
@@ -146,13 +149,14 @@ class CourseManager
         foreach ($rows as $row) {
             $course = new Course();
             $course
-                ->setId($row['id_course'])
+                ->setId($row['id'])
                 ->setDeparture($row['departure'])
                 ->setArrival($row['arrival'])
                 ->setCarrier($row['carrier'])
-                ->setDepartureDateTime($row['departureDateTime'])
-                ->setState($row['state'])
-                ->setPrice($row['price']);
+                ->setClient($row['client'])
+                ->setDepartureDateTime($row['datetime'])
+                ->setPrice($row['price'])
+                ->setState($row['state']);
             $courses[] = $course;
         }
 

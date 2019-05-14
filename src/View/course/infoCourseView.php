@@ -45,8 +45,10 @@
 	</form>
 
 	<?php break; case 3: //"finished": ?>
+	trajet effectué
 
 	<?php break; case 4; //"cancelled": ?>
+	trajet annulé ou refusé
 
 	<?php break; } ?>
 

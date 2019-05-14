@@ -10,16 +10,16 @@
         <th> Id utilisateur  </th>
         <th> Prénom </th>
         <th> Nom  </th>
-        <th>  Date de naissance </th>
+        <th> Date de naissance </th>
         <th> Argent </th>
         <th> Numéro de téléphone </th>
         <th> Adresse mail  </th>
         <th> Réputation </th>
         <th> Genre </th>
         <th> Date de création </th>
-        <th> Nombre de course effectué ( côté client) </th>
-        <th> Nombre de course effectué ( côté vendeur) </th>
-        <th>  Race </th>
+        <th> Nombre de course effectuées ( côté client) </th>
+        <th> Nombre de course effectuées ( côté vendeur) </th>
+        <th> Race </th>
         <th> Etat </th>
         <th> Position </th>
         <th> Description </th>

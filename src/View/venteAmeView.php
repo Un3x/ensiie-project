@@ -4,7 +4,7 @@
 
 <section>
     <p> Nous rejoindre c'est avant tout rejoindre une grande famille,
-        une famille de sans-âme certes mais une famille tout de même (payée une misère grace à une optimisation financière)
+        une famille de sans-âmes certes mais une famille tout de même (payée une misère grâce à une optimisation financière)
      </p>
 </section>
 

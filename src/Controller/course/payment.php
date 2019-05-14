@@ -7,7 +7,7 @@ if(!$GLOBALS['user']){
 }
 else if($_SESSION['userType']!='Client'){
 	$title="erreur";
-	$content = "Désolé mais ce type de compte ne peut pas faire de réservations";
+	$content = "Désolé mais ce type de compte ne peut pas faire de réservations, veuillez réessayer avec un compte client";
 	require('../src/View/template.php');
 }
 else if(isset($_POST['departure']) && isset($_POST['arrival']) && isset($_POST['carrierId']) && is_string($_POST['departure']) && is_string($_POST['arrival']) && is_numeric($_POST['carrierId'])){

@@ -24,15 +24,15 @@
         <label for="password2"> Confirmez votre mot de passe : </label>
         <input type="password" name="password2" id="password2" value="<?=$valeurDefaut["password2"]?>"/>
         <br/>
-        <span class="contrainte"> Les deux mots de passe ne corresponde pas. </span>
+        <span class="contrainte"> Les deux mots de passe ne correspondent pas. </span>
         <br/>
         <p>
             <label for="prenom"> prénom : </label>
             <input type="text" name="prenom" id="prenom" value="<?=$valeurDefaut["prenom"]?>"/>
             <br/>
             <span class="contrainte">
-                Le prenom est invalide ( entre 1 et 15 caractères standard)
-                <br/> (Les caractères elfiques ne sont pas supportées)
+                Le prenom est invalide ( entre 1 et 15 caractères standards)
+                <br/> (Les caractères elfiques ne sont pas supportés)
             </span>
 
             <br/>
@@ -41,8 +41,8 @@
             <input type="text" name="nom" id="nom" value="<?=$valeurDefaut["nom"]?>"/>
             <br/>
             <span class="contrainte">
-                Le nom est invalide ( entre 1 et 15 caractères standard)
-                <br/> (Les caractères elfiques ne sont pas supportées)
+                Le nom est invalide ( entre 1 et 15 caractères standards)
+                <br/> (Les caractères elfiques ne sont pas supportés)
             </span>
             <br/>
             <label for="phoneNumber"> Son numéro de téléphone : </label>

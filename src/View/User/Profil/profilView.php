@@ -61,7 +61,7 @@
 
             <br/>
             <br/>
-            <label for="price"> Votre prix ( en lingot d'or par ) : </label>
+            <label for="price"> Votre prix ( en <img src="/image/Pokedollar.png" alt="Pokedollar"> pour 10<sup>38</sup> l<sub>p</sub>) : </label>
             <input type="number" id="price" name="price" value="<?=$valeurDefaut['price']?>" <?php if(!$modif) echo "readonly"; ?> />
 
 

@@ -6,7 +6,7 @@
 <section class="information">
 
     <p>
-        Bravo ! L'inscription s'est correctement déroulé. <br/>
+        Bravo ! L'inscription s'est correctement déroulée. <br/>
 
     </p>
 </section>

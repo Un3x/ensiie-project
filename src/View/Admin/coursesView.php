@@ -16,7 +16,7 @@
             <th> Nom du client </th>
             <th> En savoir plus </th>
             <th> Prix </th>
-            <th>  Détails </th>
+            <th> Détails </th>
         </tr>
         </thead>
         <tbody>
@@ -26,13 +26,6 @@
                 <td> <?= $cityManager->get($mesCourses[$i]->getArrival())->getName()?> </td>
                 <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("Y-m-d")?> </td>
                 <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("H:i:s")?> </td>
-                <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
-                    if($a==false) echo "Inconnu";
-                    else echo ($a->getFirstname())?> </td>
-
-                <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
-                    if($a==false) echo "Inconnu";
-                    else echo ($a->getSurname())?> </td>
                 <td> <?php
                     $a =$vendorManager->get($mesCourses[$i]->getCarrier());
                     if($a == false) echo "Inconnu";
@@ -55,7 +48,7 @@
                     else echo ($a->getSurname())?> </td>
                 <td><a href="index.php?action=modifUserAdmin&id=<?=$mesCourses[$i]->getClient()?>&type=Client"> Plus de détails</a> </td>
                 <td>  <?=$mesCourses[$i]->getPrice()?> </td>
-                <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'info </a></td>
+                <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
             </tr>
         <?php } ?>
         </tbody>

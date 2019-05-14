@@ -12,4 +12,5 @@ if($_SESSION['userType']=="Vendor") $mesCourses = $courseManager->getCourseCarri
 
 $cityManager = new CityManager($bdd);
 $vendorManager = new VendorManager($bdd);
+$clientManager = new ClientManager($bdd);
 require("../src/View/User/Profil/mesTrajetsView.php");

@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <section class="row">
-    <h1>Liste des courses effectués</h1>
+    <h1>Liste des courses effectuées</h1>
     <table>
         <tr>
             <th> Lieu de destination </th>
@@ -14,7 +14,7 @@
             <th> Prénom du transporteur </th>
             <th> Nom du transporteur </th>
             <th> Prix </th>
-            <th>  Détails </th>
+            <th> Détails </th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +27,18 @@
 
 
             <td> <?php
+                $a =$clientManager->get($mesCourses[$i]->getClient());
+                if($a == false) echo "Inconnu";
+                else echo ($a->getFirstname());
+                ?> </td>
+
+
+            <td> <?php
+                $a = $clientManager->get($mesCourses[$i]->getClient());
+                if($a==false) echo "Inconnu";
+                else echo ($a->getSurname());?> </td>
+
+            <td> <?php
                 $a =$vendorManager->get($mesCourses[$i]->getCarrier());
                 if($a == false) echo "Inconnu";
                 else echo ($a->getFirstname());
@@ -37,9 +49,10 @@
                 $a = $vendorManager->get($mesCourses[$i]->getCarrier());
                 if($a==false) echo "Inconnu";
                 else echo ($a->getSurname());?> </td>
+            
+            <td> <?=$mesCourses[$i]->getPrice()?> <img src="/image/Pokedollar.png" alt="Pokedollar"></td>
 
-            <td>  <?=$mesCourses[$i]->getCarrier()?> </td>
-            <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'info </a></td>
+            <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
         </tr>
     <?php } ?>
     </tbody>

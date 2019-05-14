@@ -4,11 +4,11 @@
 
 <section>
 
-    <p> Venez, venez, venez, venez, inscrivez vous sur notre magnifique site</p>
+    <p> Venez, venez, venez, venez, inscrivez-vous sur notre magnifique site !</p>
 </section>
 <section>
 
-        <p> Les gens vivent, les gens meurent. Mais entre les deux, qu'est ce qui se passe ? </p>
+        <p> Les gens vivent, les gens meurent. Mais entre les deux, qu'est-ce qui se passe ? </p>
     </section>
 
 

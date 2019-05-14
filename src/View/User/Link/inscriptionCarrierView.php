@@ -5,7 +5,7 @@
 
 <section>
 
-    <p> Vous êtes prêt  <br/>
+    <p> Vous êtes prêts ? <br/>
         Nous avons la solution !
     </p>
 
@@ -27,7 +27,7 @@
         <label for="password2"> Confirmez votre mot de passe : </label>
         <input type="password" name="password2" id="password2" value="<?=$valeurDefaut["password2"]?>"/>
         <span class="contrainte">
-                les mots de passe ne sont pas identique.
+                les mots de passe ne sont pas identiques.
             </span>
         <br/>
 
@@ -35,8 +35,8 @@
             <label for="prenom"> prénom : </label>
             <input type="text" name="prenom" id="prenom" value="<?=$valeurDefaut["prenom"]?>"/>
             <span class="contrainte">
-                Le prenom est invalide ( entre 1 et 15 caractères standard)
-                <br/> (Les caractères elfiques ne sont pas supportées)
+                Le prenom est invalide ( entre 1 et 15 caractères standards)
+                <br/> (Les caractères elfiques ne sont pas supportés)
             </span>
 
             <br/>
@@ -44,8 +44,8 @@
             <label for="nom"> nom : </label>
             <input type="text" name="nom" id="nom" value="<?=$valeurDefaut["nom"]?>"/>
             <span class="contrainte">
-                Le nom est invalide ( entre 1 et 15 caractères standard)
-                <br/> (Les caractères elfiques ne sont pas supportées)
+                Le nom est invalide ( entre 1 et 15 caractères standards)
+                <br/> (Les caractères elfiques ne sont pas supportés)
             </span>
             <br/>
 
@@ -75,7 +75,7 @@
 
         <br/>
 
-        <label for="price"> Votre prix (en lingot d'or par   ) : </label>
+        <label for="price"> Votre prix (en <img src='/image/Pokedollar.png' alt='Pokedollar'><br/> pour10<sup>38</sup> l<sub>p</sub> ) : </label>
         <input type="number" id="price" name="price"/>
         <br/>
 

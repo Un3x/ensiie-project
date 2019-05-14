@@ -17,7 +17,7 @@ if(isset($_POST['sujet']) && isset($_POST['corp'])&& isset($_POST['mail']))
     }
     else{
         $title="message non envoyé";
-        $content = "Suite à une erreur, le message n'a pas pu être envoyé";
+        $content = "Suite à une erreur le message n'a pas pu être envoyé, veuillez réessayer ultérieurement";
     
     }
 

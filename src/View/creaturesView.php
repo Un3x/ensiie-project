@@ -5,11 +5,11 @@
 
 <section>
 
-    <p> Nos créatures sont trés biens traités</p>
+    <p> Nos créatures sont trés biens traitées</p>
 </section>
 <section>
 
-    <p> Faites vous de l'argent, plein d'argent.</p>
+    <p> Faites-vous de l'argent, plein d'argent !</p>
 </section>
 
 

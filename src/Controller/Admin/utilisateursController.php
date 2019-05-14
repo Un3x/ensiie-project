@@ -58,7 +58,7 @@ function destruction($id,$type)
         $userManager = new VendorManager($bdd);
         $user = $userManager->get($id);
     }
-    if($type == "Client")
+    else if($type == "Client")
     {
         $userManager = new ClientManager($bdd);
         $user = $userManager->get($id);

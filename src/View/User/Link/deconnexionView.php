@@ -6,7 +6,7 @@
 <section class="information">
 
     <p>
-        Deconnexion Bien effectué ! <br/>
+        Déconnexion bien effectuée ! <br/>
 
     </p>
 </section>

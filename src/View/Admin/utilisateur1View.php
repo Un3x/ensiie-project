@@ -73,7 +73,7 @@
             <input type="submit" value="Modifier ce compte" name="modifier" />
             <input type="reset" value="Reinitialiser aux valeurs initiale"/>
         <br/>
-        (Attention, opération dangereuse )
+        (Attention, opération dangereuse !!!)
         <br/>
             <input type="submit" value="Detruire ce compte" name="destruction" />
 
