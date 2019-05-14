@@ -20,7 +20,7 @@
 <form action="login_process.php" method="POST">
 <p>
 <br/><br/>
-<label>Username :</label>
+<label>Email :</label>
 <input type="text" name="login" required/>
 </p>
 <p>
