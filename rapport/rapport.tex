@@ -142,13 +142,13 @@ On s'est toutefois laissé la possibilité de considérer les vendeurs comme des
 
 \subsubsection{Inscription}
 Seul l'inscription pour les deux premiers types d'utilisateurs sont disponible de manière public. Puisque les données à y inscrire sont légèrement différents, deux contrôleurs différents ont été fait, l'une pour l'inscription client, l'autre pour l'inscription vendeur. 
-\subsubsubsection{vérification des données}
+\subsubsection{vérification des données}
 \\
 La vérification des données entrées par l'utilisateur, notamment pour le format de l'adresse mail, de la date de naissance et du numéro de téléphone ont été effectué côté serveur ( à l'aide d'expression régulières).  
 De plus, on a rajouté un script javascript permettant de manière plus dynamique de vérifier ces entrées pendant la saisie des données. On a ainsi placé dans la vue, un message de rappel sur le format des entrées, pour les champs qui le nécessitait. Un script javascript ne rendait visible que les indications pour les champs venant d'être modifié et ne remplissant pas ses contraintes. 
 \\
 Bien sûr, la vérification javascript s'effectue côté client et n'est absolument pas une méthode sûr pour s'assurer des données. 
-\subsubsubsection{Choix de la race pour le transporteur} 
+\subsubsection{Choix de la race pour le transporteur} 
 Un deuxième problème s'est posé quand au choix de la race. Concernant le contrôleur associé au vendeur, il fallait pouvoir disposer des races ainsi que des informations les concernant. Soit, donc du côté php, un appel au modèle pour pouvoir disposer de la liste des races disponibles.
 Mais c'est encore une fois un script javascript qui a été choisi pour afficher seulement les informations relatives à la race sélectionné pendant la saisie de l'utilisateur. 
 \\
