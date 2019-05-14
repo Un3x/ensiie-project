@@ -38,6 +38,8 @@ if($jeu == NULL){ //Si le jeu introuvable, renvoie vers la page des projets
     
     $status = $MajRepository->createMiseajour($_GET['id_jeu'], $_POST['texte'], $_POST['date']);
 	
+	$idMaj = $MajRepository->getIdMaj( $_POST['titre'] );
+	
 	$i = 1;
     $envoie = TRUE;
     while( isset($_FILES['media'.$i] )) {
@@ -48,7 +50,7 @@ if($jeu == NULL){ //Si le jeu introuvable, renvoie vers la page des projets
             $envoie = FALSE;
             break;
         }else{
-            $MajRepository->addMedia($idArticle, $lien);
+            $MajRepository->addMedia($idMaj, $lien);
         }
         $i = $i + 1;
     }

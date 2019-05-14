@@ -29,24 +29,26 @@ $membreRepository = new \Membre\MembreRepository($connection);
 $roles = array('a' => "Administrateur", 'r' => "Membre"); // à compléter si ajout de nouveaux rôles
 
 if(isset($_POST['creation'])){ //Si le membre est créé, modification de la bdd puis renvoie vers la page de d'administration des membres
-	$status = $membreRepository->createMembre($_POST['nom'], $_POST['prenom'], $_POST['surnom'], $_POST['password'], $_POST['promo'], $_POST['role']);
-	$idMembre = htmlspecialchars_decode( $_GET['idMembre']);
-	$i = 1;
-	$envoie = TRUE;
-	while( isset($_FILES['media'.$i] )) {
-		$lien = "../media/";
-		$lien = $lien . basename($_FILES['media'.$i]['name']);
-		if(!move_uploaded_file($_FILES['media'.$i]['tmp_name'], $lien)) {
-			echo '<h1>'.var_dump($lien).'</h1>';
-			$envoie = FALSE;
-			break;
-		}else{
-			$membreRepository->addMedia($idMembre, $lien);
-		}
-		$i = $i + 1;
-	}
+    $status = $membreRepository->createMembre($_POST['nom'], $_POST['prenom'], $_POST['surnom'], $_POST['password'], $_POST['promo'], $_POST['role']);
+    
+	$idMembre = $membreRepository->getIdMembre( $_POST['surnom'] );
 	
-    if($status){
+	$i = 1;
+    $envoie = TRUE;
+    while( isset($_FILES['media'.$i] )) {
+        $lien = "../media/";
+        $lien = $lien . basename($_FILES['media'.$i]['name']);
+        if(!move_uploaded_file($_FILES['media'.$i]['tmp_name'], $lien)) {
+            echo '<h1>'.var_dump($lien).'</h1>';
+            $envoie = FALSE;
+            break;
+        }else{
+            $membreRepository->addMedia($idMembre, $lien);
+        }
+        $i = $i + 1;
+    }
+	
+    if($status && $envoie){
         echo '<h4>Le membre a bien été créé</h4>';
     }else{
         echo '<h4>Erreur: la création du nouveau membre a échoué!</h4>';
@@ -60,7 +62,7 @@ if(isset($_POST['creation'])){ //Si le membre est créé, modification de la bdd
                 
     ?>
     <div class="modifContainer">
-        <form action="" method="POST"  enctype="multipart/form-data" id="formAjout">
+        <form id="formAjout" action="" method="POST" enctype="multipart/form-data">
         	<label>Nom : </label><input name="nom" type="text" required/>
         	<br/>
         	<label>Prénom : </label><input name="prenom" type="text" required/>
@@ -86,9 +88,10 @@ if(isset($_POST['creation'])){ //Si le membre est créé, modification de la bdd
         		}
         		?>
         	</select>
-			<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
+			
+        	<input type="button" id="bAjoutMedia" onclick="ajoutMedia()" value="Ajouter une image" />
 			<input type="button" id="bSuppMedia" onclick="suppMedia()" style="background-color:red" value="Supprimer la dernière image" />
-        	<input type="submit" ib="bEnvoyer"  name="creation" value="Envoyer"/>
+        	<input type="submit" id="bEnvoyer" name="creation" value="Envoyer"/>
         </form>
     </div>
     
