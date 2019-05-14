@@ -107,10 +107,15 @@ CREATE TABLE "uploads" (
     title VARCHAR NOT NULL ,
     iduploader INT NOT NULL ,
     uploadpath VARCHAR NOT NULL,
+    uploadtype VARCHAR NOT NULL DEFAULT 'cours',
     CONSTRAINT FK_Users FOREIGN KEY (iduploader) REFERENCES users(id) ON UPDATE CASCADE ON DELETE SET DEFAULT
 );
 INSERT INTO "uploads"(title,iduploader,uploadpath)
-    VALUES ('DEFINITELY NOT PORN',1,'src/uploads/notporn.txt');
+    VALUES ('FichierTest',1,'testup.txt');
+INSERT INTO "uploads"(title,iduploader,uploadpath)
+    VALUES ('FichierTest2',1,'testup.txt');
+INSERT INTO "uploads"(title,iduploader,uploadpath)
+    VALUES ('FichierTest3',1,'testup.txt');
 
 --
 -- Table for quizzes

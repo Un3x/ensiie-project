@@ -1,4 +1,12 @@
-<?php session_start();?>
+<?php session_start();
+require_once '../src/uploads/uploads.php';
+require_once '../src/uploads/uploadRepository.php';
+$dbName = getenv('DB_NAME');
+$dbUser = getenv('DB_USER');
+$dbPassword = getenv('DB_PASSWORD');
+$connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+$sujetsRepository = new UploadsRepository($connection);
+?>
 
 <!DOCTYPE html>
 <html>
