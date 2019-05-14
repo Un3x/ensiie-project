@@ -42,7 +42,7 @@
                 ?>
                         <div class="col-md-1">
                             <br />
-                            <a href="/index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
+                            <a href="/deconnexion" class="whiteStyle">Deconnexion</a>
                         </div>
                 <?php
                     }       
@@ -51,11 +51,11 @@
                 ?>
                         <div class="col-md-1"> 
                             <br />
-                            <a href="/index.php?action=connexion" class="whiteStyle" >Connexion</a>
+                            <a href="/connexion" class="whiteStyle" >Connexion</a>
                         </div> 
                         <div class="col-md-1">
                             <br />
-                            <a href="/index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
+                            <a href="/choixInscription" class="whiteStyle">Inscription</a> 
                         </div>
                 <?php }
                 ?>

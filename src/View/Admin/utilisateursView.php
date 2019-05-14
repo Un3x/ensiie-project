@@ -39,7 +39,7 @@
             <td>   <?=$mesUsers[$i]->getCreationDate()->format("Y-m-d h:i:s")?></td>
             <td> <?=$mesUsers[$i]->getNbClientCourses()?> </td>
             <td> <?=$mesUsers[$i]->getDescription()?> </td>
-            <td>  <a href="index.php?action=modifUserAdmin&id=<?=$mesUsers[$i]->getId()?>&type=Client"> Plus de détails</a></td>
+            <td>  <a href="/modifUserAdmin&id=<?=$mesUsers[$i]->getId()?>&type=Client"> Plus de détails</a></td>
         </tr>
 
     <?php  }  ?>

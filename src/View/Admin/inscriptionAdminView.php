@@ -5,7 +5,7 @@
 <section>
 
 
-    <form method="POST"  action="index.php?action=inscriptionAdmin">
+    <form method="POST"  action="/inscriptionAdmin">
         <?= $messageErreur?>
         <br/>
 

@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<form action="index.php?action=ajoutRaceAdmin" method="POST">
+<form action="/ajoutRaceAdmin" method="POST">
     <label for="name"> Nom :</label>
     <input type="text" name="nom" id="name"/>
     <br/>

@@ -7,7 +7,7 @@
 <section>
     <p>
         <h3> Connexion  : </h3>
-        <form method="POST" action="index.php?action=connexion">
+        <form method="POST" action="/connexion">
             <?=$messageErreur?>
             <label> login: </label>
 
