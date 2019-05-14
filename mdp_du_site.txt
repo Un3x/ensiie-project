@@ -1,0 +1,6 @@
+Liste des différents comptes déjà présents en base:
+
+ID: Ansyth 	     MDP: a  	  	   ADMIN
+ID: Gofer	     MDP: 0		   ADMIN
+ID: Ofeeling	     MDP: 0
+ID: Deluxe	     MDP: 0
