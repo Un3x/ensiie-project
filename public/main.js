@@ -9,6 +9,7 @@ sidebarBody.innerHTML = navContent.innerHTML;
 $("#sidebar-nav").append('<span id="nav-curve"></span>')
 document.getElementById('nav-curve').innerHTML = document.querySelector('.curve').outerHTML;
 $("#sidebar-nav #login-link").append(" &#10095; ");
+$("#nav-curve svg").css("display","block");
 
 //Display menu with sliding animation on click. 
 document.getElementById('nav-toggle').onclick = function(e){ 

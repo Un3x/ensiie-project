@@ -1,5 +1,14 @@
 <?php if (isset($_SESSION['connected'])): ?>
-
+<footer id="connected">
+    <div class="container">
+        <table>
+            <td><a href="#"><img class="icon" src="img/facebook-icon.png" alt="Facebook icon" /></a></td>
+            <td><a href="#"><img class="icon" src="img/Mail-Icon.png" alt="Mail icon" /></a></td>
+            <td><a href="#"><img class="icon" src="img/anemflogo.png" /></a></td>
+            <td><a href="#"><img class="icon" src="img/anesflogo.png" /></a></td>
+        </table>
+    </div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 
