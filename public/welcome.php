@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  echo '<script>console.log("BITOKUWELCOME")</script>';
+  echo '<script>console.log("Welcome")</script>';
 
   if(isset($_SESSION['connected']) && isset($_SESSION['firstname']) && isset($_SESSION['lastname'])){
     echo ("Bonjour " . $_SESSION['firstname'] ." !");

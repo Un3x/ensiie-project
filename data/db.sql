@@ -80,7 +80,7 @@ CREATE TABLE "reponses" (
 INSERT INTO "reponses"(idrep, idsujet, rdatetime, answertext) 
     VALUES (1, 1, '2000-01-01 00:00:01', 'Ouiiiiiiiiiiiiiii');
 INSERT INTO "reponses"(idrep, idsujet, rdatetime, answertext) 
-    VALUES (2, 1, '2000-01-01 00:00:01', 'Bitoku');
+    VALUES (2, 1, '2000-01-01 00:00:01', 'Non');
 
 --
 -- Table of votes for answers
@@ -158,7 +158,7 @@ CREATE TABLE "qcmquestion" (
     CONSTRAINT FK_Q FOREIGN KEY (idqcm) REFERENCES qcm(id) ON UPDATE CASCADE ON DELETE SET DEFAULT
 );
 INSERT INTO "qcmquestion"(idqcm,idquestion,intitule)
-    VALUES (1,1,'Nounouille ?');
+    VALUES (1,1,'Bonjour ? ?');
 
 --
 -- Table for quizzes answers

@@ -21,7 +21,10 @@ $sujetsRepository = new SujetsRepository($connection);
                     <div id="sujet-list-container">
                     <input class="search" placeholder="Search" />
                     <button class="sort" data-sort="s-title">
-                        Sort by Title
+                        Trier par titre
+                    </button>
+                    <button class="sort" data-sort="s-author">
+                        Trier par auteur
                     </button>
                         <ul class="sujet-list list">
                             <?php
