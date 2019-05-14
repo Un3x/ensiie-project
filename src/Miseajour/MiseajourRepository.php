@@ -161,7 +161,7 @@ class MiseajourRepository
     {
         $rows = $this->connection->query('SELECT lien
                                           FROM media
-                                          WHERE id_media = '.$id)->fetchAll(\PDO::FETCH_OBJ);
+                                          WHERE id_maj = '.$id)->fetchAll(\PDO::FETCH_OBJ);
         $liens = [];
         foreach ($rows as $row) {
             $liens[] = $row->lien;
