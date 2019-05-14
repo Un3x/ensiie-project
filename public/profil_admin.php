@@ -22,7 +22,7 @@ if(isset($_POST['valid_del_email']))
 if(isset($_POST['valid_deban_email']))
 {
     $deban_email = $_POST['deban_email'];
-$sql_verify = "SELECT * FROM member WHERE email='$ban_email';";
+$sql_verify = "SELECT * FROM member WHERE email='$deban_email';";
 $result_verify = $connection->prepare($sql_verify);
 $result_verify->execute();
 

@@ -15,7 +15,7 @@ if(isset($_POST['submit_button']))
     $pwd = $_POST['password'];
 
     //Retrieve firstname and lastname corresponding the email above, from the database
-    $requete = "SELECT firstname, lastname FROM member WHERE email='$email_form'";
+    $requete = "SELECT firstname, lastname, email, password FROM member WHERE email='$email_form' AND password='$pwd'";
     $q = $connection->query($requete);
     $row = $q->fetch();
     $firstname_form=$row['firstname'];
