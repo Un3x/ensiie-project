@@ -1,0 +1,46 @@
+form{
+	display: flex;
+	margin: 15px;
+}
+
+.right_form{
+	display: flex;
+	align-self: flex-start;
+}
+
+.champs input{
+	margin-top: 5px;
+}
+
+.champs{
+	margin-bottom: 3px;
+}
+
+
+
+.left_form{
+	align-self: flex-start;
+}
+
+#subs_body{
+	min-width: 800px;
+	width: 60%;
+	min_width: 400px;
+}
+
+h1{
+	width: 100%;
+	text-align: center;
+}
+
+.submit_button{
+	width: 100%;
+}
+
+.submit_button button{
+	margin: auto;
+}
+
+.insc_treatment{
+	text-align: center;
+}

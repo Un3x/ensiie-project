@@ -123,6 +123,92 @@
 		}
 	}
 	
+	function getAchievementNode($node){
+		$link = dbConnect();
+		$request = "SELECT `ach_id` FROM `story_node` WHERE id = $node";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			exit();
+		}
+		
+		if(mysqli_num_rows($result) == 0){
+			return null;
+		}
+		else{
+			$achArray = $result->fetch_assoc(); 
+			return $achArray['ach_id'];
+		}
+	}
+	
+	function getInfoAchievement($ach){
+		$link = dbConnect();
+		$request = "SELECT `title`, `text`, `icon` FROM `achievements` WHERE  `id` = '$ach'";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			exit();
+		}
+		
+		$achInfo = $result->fetch_assoc();
+		return $achInfo;
+	}
+	
+	function getUserAchievements(){
+		$link = dbConnect();
+		$pseudo = $_SESSION['name'];
+		
+		$request = "SELECT `achievement` FROM `link_achievement_user` WHERE `pseudo` = '$pseudo'";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			exit();
+		}
+		if(mysqli_num_rows($result) == 0){
+			return null;
+		}
+		else{
+			
+			while ($row = $result->fetch_assoc()) {
+				$userAch[] = $row;
+			}
+			
+			return $userAch;
+		}
+	}
+	
+	function hasAchievementUser($achId){
+		$link = dbConnect();
+		$pseudo = $_SESSION['name'];
+		
+		$request = "SELECT * FROM `link_achievement_user` WHERE `pseudo` = '$pseudo' AND `achievement` = '$achId'";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			exit();
+		}
+		if(mysqli_num_rows($result) == 0){
+			return 0;
+		}
+		else{
+			return 1;
+		}
+		
+	}
+	
+	function addAchievement($achId){
+		$link = dbConnect();
+		$pseudo = $_SESSION['name'];
+		$date = date("Y-m-d");
+		
+		$request = "INSERT INTO `link_achievement_user`(`pseudo`, `achievement`, `date_acquired`) VALUES ('$pseudo','$achId','$date')";
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			exit();
+		}
+		
+	}
+	
 	function getUserVariables(){
 		$link = dbConnect();
 		$pseudo = $_SESSION['name'];
@@ -295,7 +381,7 @@
 		$is_diese = $stats['is_diese'];
 		
 		$date = date("Y-m-d");
-		/*
+		
 		$request = "INSERT INTO `completed`(`pseudo`, `end_id`, `ghost`, `alcohol`,
 											`attendance`, `bar`, `baka`, `diese`, `is_bar`, 
 											`is_baka`, `is_diese`, `date_end`) 
@@ -308,7 +394,7 @@
 			echo $request;
 			exit();
 		}
-		*/
+		
 		$request_2 = "DELETE FROM `current_story` WHERE `pseudo` = '$pseudo'";
 		if(!($result_2 = mysqli_query($link, $request_2))){
 			echo "Erreur lors de la suppression<br />";
@@ -360,5 +446,91 @@
 		}	
 		
 	}
+	
+	function addUser($pseudo, $pw, $pw_check, $gender){
+		$link = dbConnect();
+		
+		$request = "SELECT * FROM `user_bis` WHERE `pseudo` = '$pseudo'";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			echo $request;
+			exit();
+		}	
+		
+		if(mysqli_num_rows($result) != 0){
+			$state['isValid'] = 0;
+			$state['message'] = "Pseudo non disponible.";
+			return $state;
+		}
+		
+		if(strlen($pw) < 6){
+			$state['isValid'] = 0;
+			$state['message'] = "Mot de passe trop court.";
+			return $state;
+		}	
+		
+		if($pw != $pw_check){
+			$state['isValid'] = 0;
+			$state['message'] = "Les mots de passe ne correspondent pas.";
+			return $state;
+		}	
+		
+		$request_2 = "INSERT INTO `user_bis`(`pseudo`, `hash_bis`, `gender`) VALUES ('$pseudo', '$pw', '$gender')";
+		
+		if(!($result_2 = mysqli_query($link, $request_2))){
+			$state['isValid'] = 0;
+			$state['message'] = "Une erreur s'est produite. Veuillez entrez de nouveau vos informations.";
+			exit();
+		}	
+		
+		$state['isValid'] = 1;
+		return $state;
+		
+	}
+	
+	function pressBigRedButton(){
+		
+		$link = dbConnect();
+		
+		$request = "SELECT `pseudo` FROM `user_bis` WHERE `pseudo` <>'DonaldTrump'";
+
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			echo $request;
+			exit();
+		}	
+	
+
+		while($user = $result->fetch_assoc()){
+			$toDelete = $user['pseudo'];
+			$request_2 = "DELETE FROM `user_bis` WHERE `pseudo` = '$toDelete'";
+			if(!($result_2 = mysqli_query($link, $request_2))){
+				echo "Erreur lors de la suppression massive des données";
+				echo $request;
+				exit();
+			}	
+		}
+		
+	}
+	
+	function getAllUsers(){
+		$link = dbConnect();
+		
+		$request = "SELECT `pseudo` FROM `user_bis` WHERE 1";
+		
+		if(!($result = mysqli_query($link, $request))){
+			echo "Erreur lors de l'exécution de la requête<br />";
+			echo $request;
+			exit();
+		}	
+		
+		while ($row = $result->fetch_assoc()) {
+				$allUsers[] = $row;
+			}
+		return $allUsers;
+		
+	}
+	
 	
 ?>

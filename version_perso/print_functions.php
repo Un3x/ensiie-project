@@ -128,7 +128,7 @@
 						<p>Male protagonist</p>
 					</div>
 				</div>
-				<div id = \"suscribe_button\">
+				<div id = \"suscribe_button\" onclick = \"window.location.replace('inscription.php');\">
 					<img src = \"stroke.png\" />
 					<p> <span class = \"orange\" style = \"font-size: 3em;\">En avant</span><br /> 
 					<span class = \"grey\" style = \"font-size: 1.8em;\">Commencer l'aventure</span></p>

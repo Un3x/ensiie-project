@@ -19,6 +19,22 @@
 		<link rel = "stylesheet" type = "text/css" href = "profile_style.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="game_functions.js"></script>
+		
+		<script>
+		$(document).ready(function(){
+				$.post("php_script/getAdminRights.php", function(result){
+					if(result != ""){
+						$("#zone_51").html(result, function(){
+							// $("#zone_51").append(
+							
+						});
+					}
+				});
+			}); 
+		
+		
+		
+		</script>
 	</head>
 	
 	<body class = "bg">
@@ -89,6 +105,15 @@
 								</div>
 							</div>
 						</div>
+						
+						<div id = "zone_51">
+							
+						</div>					
+						<?php
+							if(isset($_POST['submit'])){
+								echo "COUCOU";
+							}
+						?>
 					</div>
 				</div>
 				
@@ -102,14 +127,14 @@
 			printFooter();
 		?>
 		
-		<div id = "pseudo_modif">
-			<div class = "round_rect" id = "form_zone">
+		<div id = "popup">
+			<div class = "round_rect" id = "popup_body">
 				<h1 class = "brown">Modifier mes informations</h1>
 					<div id = "modif_form">
-						<div class = "change_left">
+						<div class = "left_form">
 							<p class = "grey">Genre : </p>
 						</div>
-						<div class = "change_right">
+						<div class = "right_form">
 							<form action = "modif.php" target = "_self" method = "post">
 								<div>
 									<input type="radio" name="gender" value="m" checked><span class = "grey">Homme</span><br />
@@ -128,6 +153,7 @@
 				</div>	
 			</div>
 		</div>
+	
 	</body>
 
 </html>

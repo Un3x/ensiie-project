@@ -106,6 +106,21 @@
 			printFooter();
 		?>
 		
+		<div id = "popup">
+			<div class = "round_rect" id = "popup_body">
+				<h1 class = "grey">Nouveau haut-fait !</h1>
+				<div class = "ach_info">
+					<div class = "visuel_ach">
+						<img id = "ach_icon" src = ""/>
+					</div>
+					<div class = "info_ach">
+						<p> <span class = "brown" id = "ach_title"></span> <span class = "grey" id = "ach_desc"></span></p>
+					</div>
+				</div>				
+				<button class = "logout_button" onclick = "hidePopup()">Ok !</button>
+			</div>			
+		</div>
+		
 	</body>
 
 </html>

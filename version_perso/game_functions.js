@@ -44,7 +44,15 @@ function actualizeFront(){
 				$("#is_baka").css("opacity", "0.4");
 			}
 		});
-		
+		$.getJSON("php_script/checkAchievements.php", function(newAch){
+			if(newAch != ""){
+				$("#ach_icon").attr("src", "Visuels/" + newAch.icon);
+				$("#ach_title").html(newAch.title);
+				$("#ach_desc").html(newAch.text);
+				
+				showPopup();
+			}			
+		});
 	});
 }
 
@@ -98,14 +106,14 @@ function initNewStory(story){
 }
 
 function showPopup(){
-	document.getElementById("pseudo_modif").style.display = "block";
-	document.getElementById("pseudo_modif").style.opacity = "1";
+	document.getElementById("popup").style.display = "block";
+	document.getElementById("popup").style.opacity = "1";
 }
 
 function hidePopup(){
 	
-	document.getElementById("pseudo_modif").style.opacity = "0";
-	document.getElementById("pseudo_modif").style.display = "none";
+	document.getElementById("popup").style.opacity = "0";
+	document.getElementById("popup").style.display = "none";
 }
 
 
