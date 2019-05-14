@@ -134,11 +134,11 @@ class MiseajourRepository
 	
 	public function getIdMiseajour( $id_jeu, $texte)
     {
-        $row = $this->connection->query('SELECT id_maj FROM miseajour WHERE id_jeu = \''.$id_jeu.'\' AND $texte = \''.$texte.'\' ')->fetchAll(\PDO::FETCH_OBJ);
+        $row = $this->connection->query('SELECT id_maj FROM miseajour WHERE id_jeu = \''.$id_jeu.'\' AND texte = \''.$texte.'\' ')->fetchAll(\PDO::FETCH_OBJ);
         if(count($row) == 0){
             return NULL;
         }
-        return $row[0]->id_article;
+        return $row[0]->id_maj;
     }
 	
 	public function deleteAllMedia($id){

@@ -44,7 +44,8 @@ if($maj == NULL){ //Si la mise à jour introuvable, renvoie vers la page des pro
     echo '<h4>Redirection vers le projet...</h4>';
     header( "refresh:3;url=jeuModification.php?id=".$maj->getJeu()->getId());
 }else if(isset($_POST['supression'])){ //Si la mise a jour est supprimé, modification de la bdd puis renvoie vers la page de modification du projet
-    $status = $MajRepository->deleteMiseajour($_GET['id']);
+	$MajRepository->deleteAllMedia($_GET['id']);
+	$status = $MajRepository->deleteMiseajour($_GET['id']);
     
     if($status){
         echo '<h4>La mise a jour n°'.$_GET['id'].' a bien été supprimé</h4>';
