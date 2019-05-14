@@ -126,4 +126,15 @@ class EquipeRepository
         
         return $equipe;
     }
+	
+	public function faitPartieEquipe($IdJeu $id_membre){
+		$equipe = getEquipe($idJeu);
+		foreach ($equipe->getMembres() as $membre) {
+			if($id_membre = $membre->getId()){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
