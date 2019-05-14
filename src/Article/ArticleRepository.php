@@ -242,5 +242,11 @@ class ArticleRepository
         }
         
         return $liens;
-    }
+	}
+	
+	public function getMediasFromArticle( $id )
+	{
+		$res = $this->connection->query('SELECT * FROM media WHERE id_article = '.$id)->fetchAll(\PDO::FETCH_OBJ);
+		return $res;
+	}
 }

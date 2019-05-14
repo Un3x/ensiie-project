@@ -5,6 +5,7 @@
 <body>
 
 <?php
+$id_page="connexion";
 require '../src/Membre/Membre.php';
 require '../src/Membre/MembreRepository.php';
 require( "../inc/inc.default.php" );
