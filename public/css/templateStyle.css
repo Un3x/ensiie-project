@@ -4,21 +4,53 @@
     margin-left: 0px;
 }
 
-.notmain
+nav, footer
 {
     background-color: black;
     color: white;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
 main
 {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    text-align: center;
 }
 
 .whiteStyle
 {
-    color : white;
+    color: white;
+}
+
+.big_font
+{
+    font-size: 4em;
+    color: black;
+}
+
+#user_nav
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: grey;
+    font-style: italic;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.special
+{
+    text-align: center;
+}
+
+table
+{
+    border-collapse: collapse; 
+}
+
+td, th
+{
+    border: 1px solid black;
+    width: 150px;
+    text-align: center;
 }

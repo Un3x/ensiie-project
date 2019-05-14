@@ -18,45 +18,55 @@
 
     
     <body>
-        <nav class="row notmain">
-            <ul>
-                <li class="col-md-7">  
-                    <a href="/" class="whiteStyle">Uber Licorne</a>
-                </li>
-                <li class="col-md-1">  
+        <nav class="row">
+            <div>
+                <div class="col-md-7">  
+                    <a href="/" class="whiteStyle"><img alt="logo" src="/image/logo_licorne_modified.png">Uber Licorne</a>
+                </div>
+                <div class="col-md-1">  
+                    <br />
                     <a href="/clients" class="whiteStyle">Clients</a>
-                </li>
-                <li class="col-md-1"> 
+                </div>
+                <div class="col-md-1">
+                    <br /> 
                     <a href="/creatures" class="whiteStyle">Transporteurs</a> 
-                </li>
-                <li class="col-md-1"> 
+                </div>
+                <div class="col-md-1"> 
+                    <br />
                     <a href="/informations" class="whiteStyle">Informations +</a>
-                </li>
+                </div>
 
                 <?php 
                     if($GLOBALS['user']) 
                     {
                 ?>
-                        <li class="col-md-1">
-                            <a href="index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
-                        </li>
+                        <div class="col-md-1">
+                            <br />
+                            <a href="/index.php?action=deconnexion" class="whiteStyle">Deconnexion</a>
+                        </div>
                 <?php
                     }       
                     else
                     { 
                 ?>
-                        <li class="col-md-1"> 
-                            <a href="index.php?action=connexion" class="whiteStyle" >Connexion</a> / 
-                            <a href="index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
-                        </li>
+                        <div class="col-md-1"> 
+                            <br />
+                            <a href="/index.php?action=connexion" class="whiteStyle" >Connexion</a>
+                        </div> 
+                        <div class="col-md-1">
+                            <br />
+                            <a href="/index.php?action=choixInscription" class="whiteStyle">Inscription</a> 
+                        </div>
                 <?php }
                 ?>
-
-                <li class="col-md-1">
+                <div class="col-md-1">
+                    <br />
                     <a href='' onclick="document.cookie = 'lang=fr'" class="whiteStyle">Fr</a>/
                     <a href='' onclick="document.cookie = 'lang=elf'" class="whiteStyle">Elf</a>
-                </li>
-            </ul>
+                </div>
+            </div>
+            <br />
+            <br />
         </nav>
 
 
@@ -75,17 +85,21 @@
         </main>
 
 
-        <footer class="row notmain">
-            <ul class="col-xs-3"></ul>
-            <ul class="col-xs-3">
+        <footer class="row">
+            <ul class="col-md-4"></ul>
+            <ul class="col-md-2">
                 <li><a href="/aPropos" class="whiteStyle">A propos de nous</a></li>
                 <li><a href="/contactezNous" class="whiteStyle">Contactez-nous</a></li>
              </ul>
-            <ul class="col-xs-3"> 
+            <ul class="col-md-2"> 
                 <li><a href="/conditionUtilisation" class="whiteStyle">Nos conditions d'utilisations</a></li>      
                 <li><a href="/venteAme" class="whiteStyle">Cliquez ici pour vendre votre âme</a></li>
             </ul>
-            <ul class="col-xs-3"></ul>
+            <ul class="col-md-4"></ul>
+            <br />
+            <br />
+            <br />
+            <br />
         </footer>
     </body>
 

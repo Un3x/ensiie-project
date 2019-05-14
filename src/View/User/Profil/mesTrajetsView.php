@@ -1,9 +1,9 @@
 <?php $title = "Un merveilleux site pour réserver des licornes ! " ?>
 
 <?php ob_start(); ?>
-
-<table>
-    <thead>
+<section class="row">
+    <h1>Liste des courses effectués</h1>
+    <table>
         <tr>
             <th> Lieu de destination </th>
             <th> Lieu d'arrivée</th>

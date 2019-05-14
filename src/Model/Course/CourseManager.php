@@ -4,6 +4,7 @@ require("Course.php");
 
 class CourseManager
 {
+
     /**
      * @var \PDO
      */
@@ -16,6 +17,15 @@ class CourseManager
     public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
+
+        $statement = $this->connection->prepare("UPDATE Course SET state=3 where extract(second from CURRENT_TIMESTAMP - datetime) > (duration * 5391) AND state=2");
+        $statement->execute(array());
+        $rows = $statement->fetchAll();
+        //print_r($statement->errorInfo());
+        //print_r($rows);
+
+
+
     }
 
 
@@ -80,7 +90,7 @@ class CourseManager
         $courses = [];
 
         foreach ($rows as $row) {
-            $distance = round(sqrt(($row['latitude'] - $city['latitude'])**2 + ($row['longitude'] - $city['longitude'])**2), 2);
+            $distance = distance($row['latitude'], $row['longitude'], $city['latitude'], $city['longitude']);
 
             $course = ["carrierId" => $row['id'], "surname" => $row['surname'], "firstname" => $row['firstname'], "price" => round($row['price'] * $distance, 2), "distance" => $distance, "duration" => round($distance/$row['speed'], 2)];
             $courses[] = $course;
@@ -161,7 +171,7 @@ class CourseManager
 
         if (!$row || !$city) return [];
 
-        $distance = round(sqrt(($row['latitude'] - $city['latitude'])**2 + ($row['longitude'] - $city['longitude'])**2), 2);
+        $distance = distance($row['latitude'], $row['longitude'], $city['latitude'], $city['longitude']);
         $course = ["carrierId" => $row['id'], "surname" => $row['surname'], "firstname" => $row['firstname'], "price" => round($row['price'] * $distance, 2), 'departureLat' => $row['latitude'], 'departureLong' => $row['longitude'], 'arrivalLat' => $city['latitude'], 'arrivalLong' => $city['longitude'], "distance" => $distance, "duration" => round($distance/$row['speed'], 2)];
 
         return $course;
@@ -177,7 +187,7 @@ class CourseManager
         $statement3->execute(array("id" => $carrier));
         $vendor = $statement3->fetch();
 
-        $distance = round(sqrt(($departure['latitude'] - $arrival['latitude'])**2 + ($departure['longitude'] - $arrival['longitude'])**2), 2);
+        $distance = distance($departure['latitude'], $departure['longitude'], $arrival['latitude'], $arrival['longitude']);
         $statement = $this->connection->prepare("INSERT INTO Course (departure, arrival, carrier, client, datetime, state, price, distance, duration) VALUES (:departure, :arrival, :carrier, :client, :datetime, 0, :price, :distance, :duration)");
         if ($statement->execute(array("departure"=>$departure['id'], "arrival"=>$arrival['id'], "carrier"=>$carrier, "client"=>$client, 'datetime'=>date_create()->format('Y-m-d H:i:s'), 'price'=>$vendor['price'] * $distance, "distance" => $distance, "duration" => round($distance/$vendor['speed'], 2)))){
             return $this->connection->lastInsertId();
