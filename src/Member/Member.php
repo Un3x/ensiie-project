@@ -18,10 +18,6 @@ class Member
      */
     private $lastname;
 
-    /**
-     * @var boolean
-     */
-    private $searchUser;
 
     /**
      * @var string
@@ -97,23 +93,7 @@ class Member
         return $this;
     }
 
-    /**
-     * @return boolean
-     */
-    public function getSearchUser()
-    {
-        return $this->searchUser;
-    }
 
-    /**
-     * @param int $searchUser
-     * @return Member
-     */
-    public function setSearchUser($searchUser)
-    {
-        $this->searchUser = $searchUser;
-        return $this;
-    }
 
     /**
      * @return string
