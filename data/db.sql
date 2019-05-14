@@ -46,6 +46,18 @@ INSERT INTO "sujets"(title, author, sdatetime, topicstatus)
     VALUES ('Est-ce que la jonction urétéro-vésicale correspond au méat urétéral?', 'Mary Sue', '2000-01-01 15:08:01', 'unsolved');
 INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus)
     VALUES ('Sillon collatéral ventral/pré olivaire','Quelle est la différence au niveau localisation entre les deux? Une illustration serait bien.','Alicia Romana','2012-03-06 16:17:18','unsolved');
+INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus) 
+    VALUES ('À propos du système nerveux central', 'Je me demandais si on a bien formation des racines au niveau du foramen vertébral?' ,'Wanda Maximoff', '2000-01-01 12:08:59', 'unsolved');
+INSERT INTO "sujets"(title, author, sdatetime, topicstatus) 
+    VALUES ('Est-ce que la jonction urétéro-vésicale correspond au méat urétéral?', 'Mary Sue', '2000-01-01 15:08:01', 'unsolved');
+INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus)
+    VALUES ('Sillon collatéral ventral/pré olivaire','Quelle est la différence au niveau localisation entre les deux? Une illustration serait bien.','Alicia Romana','2012-03-06 16:17:18','unsolved');
+INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus) 
+    VALUES ('À propos du système nerveux central', 'Je me demandais si on a bien formation des racines au niveau du foramen vertébral?' ,'Wanda Maximoff', '2000-01-01 12:08:59', 'unsolved');
+INSERT INTO "sujets"(title, author, sdatetime, topicstatus) 
+    VALUES ('Est-ce que la jonction urétéro-vésicale correspond au méat urétéral?', 'Mary Sue', '2000-01-01 15:08:01', 'unsolved');
+INSERT INTO "sujets"(title, content, author, sdatetime, topicstatus)
+    VALUES ('Sillon collatéral ventral/pré olivaire','Quelle est la différence au niveau localisation entre les deux? Une illustration serait bien.','Alicia Romana','2012-03-06 16:17:18','unsolved');
 
 --
 -- Table of answers to topics

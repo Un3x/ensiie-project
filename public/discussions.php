@@ -37,7 +37,7 @@ $sujetsRepository = new SujetsRepository($connection);
                                 echo "<p class='s-nbrep'>$rep</p>";
                                 echo "</div>";
                                 echo "<a class='vote-top' href='#'>&#9650;</a>";
-                                echo "<a class='vote-bot' href='#'>&#9660;</a>";
+                                echo "<a class='vote-down' href='#'>&#9660;</a>";
                                 echo "</li>";
                             }
                         ?>
@@ -61,7 +61,7 @@ $sujetsRepository = new SujetsRepository($connection);
                         });
 
                         $(document).ready(function () {
-                            $("a.vote-bot").click(function () {
+                            $("a.vote-down").click(function () {
                                 the_id = $(this).attr('id');
                                 $.ajax({
                                     type: "POST",

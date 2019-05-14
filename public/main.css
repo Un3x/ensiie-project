@@ -930,3 +930,8 @@ input[type=text],input[type=password], input[type=email]{
     border-bottom: #656565 solid 1px;
 }
 
+.pagination li{
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+}
