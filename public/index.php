@@ -1,5 +1,17 @@
 <?php
 require '../vendor/autoload.php';
+require '../src/Eleve/Eleve.php';
+require '../src/Eleve/EleveRepository.php';
+require '../src/Forum/Forum.php';
+require '../src/Forum/ForumRepository.php';
+require '../src/Participant/Participant.php';
+require '../src/Participant/ParticipantRepository.php';
+
+session_start();
+
+include ('./Vue.php');
+
+
 
 //postgres
 $dbName = getenv('DB_NAME');
@@ -7,37 +19,33 @@ $dbUser = getenv('DB_USER');
 $dbPassword = getenv('DB_PASSWORD');
 $connection = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
-$userRepository = new \User\UserRepository($connection);
-$users = $userRepository->fetchAll();
+$eleveRepository = new \Eleve\EleveRepository($connection);
+$eleves = $eleveRepository->fetchAll();
+$forumRepository = new \Forum\ForumRepository($connection);
+$forums = $forumRepository->fetchAll();
+$participantRepository = new \Participant\ParticipantRepository($connection);
+$participants = $participantRepository->fetchAll();
+
+$connection = null;
 ?>
+
+<meta charset="UTF-8" content="width=device-width, initial-scale= 1.0">
+<link rel="stylesheet" href="style_howTo.css">
 
 <html>
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Site d'IImage</title>
 </head>
+
 <body>
-
-<div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+<?php en_tete(isset($_SESSION['connecte'])); ?>
+       <h1>Bienvenue sur le site d'IImage !</h1>
+       <div class = "photo_groupe">
+           <img src ="./photo_groupe.jpg" alt = "Photo de l'équipe d'IImage" style = "width : 50%; height: auto;" />
 </div>
+<br/>
 </body>
 </html>
+
+<?php pied();
+ ?>

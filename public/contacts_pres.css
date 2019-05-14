@@ -1,0 +1,115 @@
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-style: solid;
+  border: 1px;
+  border-radius: 10px;
+  color: black;
+ }
+ .nav-item {
+	 display: flex;
+ }
+ .container {
+	 border: 1px groove;
+	 border-radius: 0 0 10px 10px;
+	 text-align: center;
+	 background-color: white;
+	 width: 100%;
+
+ }
+ .body {
+	 background-color: url("./img/IImage_bg.png");
+	 border-style: solid;
+	 width: 100%;
+	 height: 100%;
+ }
+ #navbarRespwhite.collapse.navbar-collapse {
+	 display: flex; !important
+	 border-style: solid;
+	 border: 1px;
+ }
+ .ul {
+	 display : flex; !important
+	 justify-content: center;
+ }
+ #mainlogo {
+	 text-align: center;
+ }
+ .banniere {
+	 width: 100%;
+	 text-align: center;
+	 border: 1px;
+	 border-style: solid;
+	 background-color: orange;
+	 border-radius:10px 10px 0 0;
+	 display: inline-flex;
+	 justify-content: center;
+ }
+ .nav-item {
+	 display: inline;
+
+ }
+.formulaire {
+    width: 70%;
+    justify-content: center;
+    border-style: groove;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-left: 15%;
+}
+
+body {
+	justify-content: center;
+}
+#message {
+	width: 90%;
+	margin-left: 5%;
+}
+p {
+	margin-top: 5%;
+	text-align: center;
+	font-size: 3vw;
+}
+.bouton-co {
+	text-align: left;
+	margin-left: 1%;
+	margin-top: 0.1%;
+	width: 7%;
+	position: absolute;
+	
+}
+label {
+	margin: 1%;
+}
+
+/*Footer*/
+div.pied {
+	width: 100%;
+
+	border: 1px groove;
+	border-radius: 10px;
+
+	background-color: orange;
+	
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+
+	position: absolute;
+	bottom: 0;
+
+	margin-bottom: 5px;
+}
+
+div.pied  img {
+	width: 5%;
+	height: auto;
+}
