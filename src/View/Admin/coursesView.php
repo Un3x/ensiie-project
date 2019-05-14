@@ -26,7 +26,13 @@
                 <td> <?= $cityManager->get($mesCourses[$i]->getArrival())->getName()?> </td>
                 <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("Y-m-d")?> </td>
                 <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("H:i:s")?> </td>
+                <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
+                    if($a==false) echo "Inconnu";
+                    else echo ($a->getFirstname())?> </td>
 
+                <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
+                    if($a==false) echo "Inconnu";
+                    else echo ($a->getSurname())?> </td>
                 <td> <?php
                     $a =$vendorManager->get($mesCourses[$i]->getCarrier());
                     if($a == false) echo "Inconnu";

@@ -9,6 +9,8 @@
             <th> Lieu d'arrivée</th>
             <th> Date </th>
             <th> Heure de départ</th>
+            <th> Prénom du client </th>
+            <th> Nom du client </th>
             <th> Prénom du transporteur </th>
             <th> Nom du transporteur </th>
             <th> Prix </th>
@@ -22,8 +24,20 @@
             <td> <?= $cityManager->get($mesCourses[$i]->getArrival())->getName()?> </td>
             <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("Y-m-d")?> </td>
             <td> <?=$mesCourses[$i]->getDepartureDateTime()->format("H:i:s")?> </td>
-            <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getFirstname()?> </td>
-            <td> <?=$vendorManager->get($mesCourses[$i]->getCarrier())->getSurname()?> </td>
+
+
+            <td> <?php
+                $a =$vendorManager->get($mesCourses[$i]->getCarrier());
+                if($a == false) echo "Inconnu";
+                else echo ($a->getFirstname());
+                ?> </td>
+
+
+            <td> <?php
+                $a = $vendorManager->get($mesCourses[$i]->getCarrier());
+                if($a==false) echo "Inconnu";
+                else echo ($a->getSurname());?> </td>
+
             <td>  <?=$mesCourses[$i]->getCarrier()?> </td>
             <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'info </a></td>
         </tr>
