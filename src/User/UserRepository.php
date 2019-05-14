@@ -56,21 +56,25 @@ class UserRepository
      */
     public function logInWithCredentials($log, $pwh)
     {
-/*         echo "UserRepository::logInWithCredentials : {<br>";
-            echo "email : " . $log . '<br>';
-            echo "pwd : " . $pwh .'<br>}'; */
         if(array_key_exists($log,$this->usersArray)){
-            if($this->usersArray[$log]->getPasswdH() == $pwh){/* 
-                echo "<br>CONNEXION OK !!  : " . $log . '<br>'; */
+            if($this->usersArray[$log]->getPasswdH() == $pwh){
                 return $this->usersArray[$log];
-            } else {/* 
-                echo "<br>CONNEXION ECHOUEE MDP !!  : " . $log . '<br>';
-                echo "Vous avez entré  : " . $pwh . '<br>';
-                echo "Mais il fallait  : " . $this->usersArray[$log]->getPasswdH() . '<br>'; */
+            } else {
                 return FALSE;
             }
-        } else {/* 
-            echo "<br>CONNEXION ECHOUEE LOGIN !!  : " . $log . '<br>'; */
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
+     * check if email (login) already in database
+     */
+    public function emailInBase($email)
+    {
+        if(array_key_exists($email,$this->usersArray)){
+            return TRUE;
+        } else {
             return FALSE;
         }
     }
@@ -80,5 +84,16 @@ class UserRepository
         return $this->usersArray;
     }
 
+    public function addUser($firstname, $lastname, $mailaddress, $pwh, $activcode, $userrole){
+        /**
+         * $sql = "INSERT INTO users (name, surname, sex) VALUES (?,?,?)";
+         * $pdo->prepare($sql)->execute([$name, $surname, $sex]);
+         */
+        $signupdate = date('Y-m-d G:i:s');
+        $lastlogdate = $signupdate;
+        $activcode = 1;
+        $insertionUser = 'INSERT INTO "users"(firstname, lastname, signupdate, mailaddress, passwd, activcode, lastlogdate, userrole) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $this->connection->prepare($insertionUser)->execute([$firstname, $lastname, $signupdate, $mailaddress, $pwh, $activcode, $lastlogdate, $userrole]);
+    }
 
 }

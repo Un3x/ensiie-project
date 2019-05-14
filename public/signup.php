@@ -1,3 +1,5 @@
+<?php session_start();?>
+<?php require '../src/controlers/signupControler.php';?>
 <!DOCTYPE html>
 <html>
     <?php require('../src/components/head.php');?>
@@ -14,15 +16,28 @@
             <div class="container">
                 <div class="sign-container" id="signup-container">
                     <h1>Inscription</h1>
-                    <form class="sign" id="signup">
+                    <form class="sign" id="signup" onSubmit = "return checkMdp(this)" action="signup.php" method="post">
                         <div id="signup-form">
                             <input type="text" placeholder="Nom" name="lname" required>
                             <input type="text" placeholder="Prénom" name="fname" required>
                             <input type="email" placeholder="E-mail" name="email" required>
-                            <input type="password" placeholder="Mot de passe" name="pwd" required>
+                            <input type="password" minlength="6" maxlength="50" placeholder="Mot de passe" name="pwd" required>
                             <input type="password" placeholder="Confirmation du mot de passe" name="validpwd" required>
                             <input type="text" placeholder="Code d'activation" name="activcode" required>                          
                         </div>
+                        <script type="text/javascript" src="jquery.min.js"></script>
+                        <script type="text/javascript">
+                        function checkMdp(form) {
+                            pwd1=form.pwd.value;
+                            pwd2=form.validpwd.value;
+                            if (pwd1 != pwd2){
+                                alert("Mots de passe différents, vérifiez la saisie.");
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                        </script>
                         <button class="button" type="submit">Créer un compte</button><br/>
                     </form>
                 </div>

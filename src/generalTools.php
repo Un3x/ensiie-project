@@ -37,6 +37,20 @@ class LoginTools
         return $usersArr->logInWithCredentials($log, $pwh);
     }
 
+    public static function emailInBase($email, $usersArr)
+    {
+        if(array_key_exists($email,$usersArr)){
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public static function addUserInBase($userRepo, $firstname, $lastname, $mailaddress, $pwh, $activcode, $userrole)
+    {
+        $userRepo->addUser($firstname, $lastname, $mailaddress, $pwh, $activcode, $userrole);
+    }
+
     public static function fillSessionArray($user)
     {/* 
         echo "LoginTools::fillSessionArray : FILLING {<br>"; */
