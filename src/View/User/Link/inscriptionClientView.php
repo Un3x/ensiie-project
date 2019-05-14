@@ -9,7 +9,7 @@
         Nous avons la solution ! 
     </p>
 
-    <form method="POST"  action="index.php?action=inscriptionClient">
+    <form method="POST"  action="/inscriptionClient">
         <?= $messageErreur?>
         <br/>
 

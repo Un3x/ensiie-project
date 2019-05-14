@@ -20,7 +20,7 @@
 
 
     <form action=
-          <?php if($modif) echo "'index.php?action=validationProfil'"; else  echo"'index.php?action=changementProfil'"; ?>
+          <?php if($modif) echo "'/validationProfil'"; else  echo"'/changementProfil'"; ?>
           method="POST" >
         <label for="prenom"> Votre prenom : </label>
         <input type="text" id="prenom" name="prenom" value="<?=$valeurDefaut['prenom']?>"  <?php if(!$modif) echo "readonly"; ?> />

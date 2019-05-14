@@ -38,7 +38,7 @@
                     if($a==false) echo "Inconnu";
                     else echo ($a->getSurname());?> </td>
 
-                <td> <a href="index.php?action=modifUserAdmin&id=<?=$mesCourses[$i]->getCarrier()?>&type=Vendor"> Plus de détails</a> </td>
+                <td> <a href="/modifUserAdmin&id=<?=$mesCourses[$i]->getCarrier()?>&type=Vendor"> Plus de détails</a> </td>
                 <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
                 if($a==false) echo "Inconnu";
                 else echo ($a->getFirstname())?> </td>
@@ -46,9 +46,9 @@
                 <td> <?php $a =$clientManager->get($mesCourses[$i]->getClient());
                     if($a==false) echo "Inconnu";
                     else echo ($a->getSurname())?> </td>
-                <td><a href="index.php?action=modifUserAdmin&id=<?=$mesCourses[$i]->getClient()?>&type=Client"> Plus de détails</a> </td>
+                <td><a href="/modifUserAdmin&id=<?=$mesCourses[$i]->getClient()?>&type=Client"> Plus de détails</a> </td>
                 <td>  <?=$mesCourses[$i]->getPrice()?> </td>
-                <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
+                <td> <a href="/infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
             </tr>
         <?php } ?>
         </tbody>

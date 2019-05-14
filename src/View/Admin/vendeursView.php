@@ -54,7 +54,7 @@
             else echo($a->getName()); ?> </td>
 
             <td> <?=$mesUsers[$i]->getDescription()?> </td>
-            <td>  <a href="index.php?action=modifUserAdmin&id=<?=$mesUsers[$i]->getId()?>&type=Vendor"> Plus de détails</a></td>
+            <td>  <a href="/modifUserAdmin&id=<?=$mesUsers[$i]->getId()?>&type=Vendor"> Plus de détails</a></td>
 
         </tr>
 

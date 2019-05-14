@@ -31,7 +31,7 @@
 <br/>
 
 <p>
-    <a href="index.php?action=ajoutRaceAdmin"> <input type="button" value="Ajouter une race"/>  </a>
+    <a href="/ajoutRaceAdmin"> <input type="button" value="Ajouter une race"/>  </a>
 </p>
 
 <?php $content = ob_get_clean(); ?>

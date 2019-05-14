@@ -127,7 +127,7 @@
 Il a fallu gérer les deux types d'utilisateurs du site web, les transporteurs et les clients. Profitant de la configuration MVC, et puisque tout demande de passage passait par le routeur index.php, on a mis en place un petit fichier de configuration config.php pour y définir certaines variables globales utiles dans tout le reste du code. 
 \\
 \\
-Tout d'abord, lors de la connexion de l'utilisateur, on stock certaines informations dans les variables de sessions. Mais, on s'est vite rendu compte qu'en y stockant l'objet PHP représentant la donnée user, on perdait la spécificité de la classe fille utilisé. 
+Tout d'abord, lors de la connexion de l'utilisateur, on stock certaines informations dans les variables de sessions. Mais, on s'était vite rendu compte qu'en y stockant l'objet PHP représentant la donnée user, on perdait la spécificité de la classe fille utilisé. 
 \\ 
 On a donc choisi plutôt en solution de seulement stocker l'id ainsi que le type d'utilisateur. Avec seulement ce couple d'information, on pouvait savoir où chercher et dans quelle tables pour retrouver l'utilisateur actuelle. Ce couple d'informations est donc stocké dans les variables de sessions. De plus, on charge dans le fichier de configuration config.php directement en tant que variable globale cette fois, la variable objet utilisateur correspondant à l'utilisateur actuelle. 
 
@@ -136,19 +136,19 @@ On distingue les trois types d'utilisateur, correspondant au trois tables du mod
 Se sont posées les problématiques des multi-comptes ainsi que celui de l'utilisateur possédant différentes casquettes. 
 \\
 Il a été choisi, dans le but de simplifier le modèle de donnée, de limiter un compte utilisateur par adresse mail, peu importe la nature de ce compte. 
-Autrement dit, une adresse mail employé dans un compte client ne peut être utilisé pour un compte vendeur ou admin.
+Autrement dit, une adresse mail employé dans un compte client ne peut être utilisé pour un compte vendeurs. 
 \\
 On s'est toutefois laissé la possibilité de considérer les vendeurs comme des utilisateurs clients améliorées. Enfin, concernant les admins, leur particularité est surtout de leur permettre d'avoir accès à une partie du site leur procurant certaines fonctionnalité supplémentaire avec un accès sur le reste des bases de données.
 
-\subsection{Inscription}
+\subsubsection{Inscription}
 Seul l'inscription pour les deux premiers types d'utilisateurs sont disponible de manière public. Puisque les données à y inscrire sont légèrement différents, deux contrôleurs différents ont été fait, l'une pour l'inscription client, l'autre pour l'inscription vendeur. 
-\subsubsection{vérification des données}
+\subsubsubsection{vérification des données}
 \\
 La vérification des données entrées par l'utilisateur, notamment pour le format de l'adresse mail, de la date de naissance et du numéro de téléphone ont été effectué côté serveur ( à l'aide d'expression régulières).  
 De plus, on a rajouté un script javascript permettant de manière plus dynamique de vérifier ces entrées pendant la saisie des données. On a ainsi placé dans la vue, un message de rappel sur le format des entrées, pour les champs qui le nécessitait. Un script javascript ne rendait visible que les indications pour les champs venant d'être modifié et ne remplissant pas ses contraintes. 
 \\
 Bien sûr, la vérification javascript s'effectue côté client et n'est absolument pas une méthode sûr pour s'assurer des données. 
-\subsubsection{Choix de la race pour le transporteur} 
+\subsubsubsection{Choix de la race pour le transporteur} 
 Un deuxième problème s'est posé quand au choix de la race. Concernant le contrôleur associé au vendeur, il fallait pouvoir disposer des races ainsi que des informations les concernant. Soit, donc du côté php, un appel au modèle pour pouvoir disposer de la liste des races disponibles.
 Mais c'est encore une fois un script javascript qui a été choisi pour afficher seulement les informations relatives à la race sélectionné pendant la saisie de l'utilisateur. 
 \\
@@ -159,8 +159,7 @@ Puisqu'il a été choisi d'unifier l'unicité de l'adresse mail pour les trois t
 C'est une fonction commune aux trois manager, permettant de vérifier la présence d'un couple d'identifiant/motdepasse dans une des trois base de données. 
 \\
 D'ailleurs, concernant le stockage de ces mots de passe dans la base de donnée, c'est posé également la question de sécurité. On a du bien sûr, hasher les mots de passe de nos utilisateurs, c'est à dire les passer à travers un algorithme de cryptage tel qu'il est facile de vérifier l'égalité avec un autre mot de passe en lui faisant passer le même processus mais beaucoup plus dur à partir des simples données de la base de donnée duquel on a accès retrouverez le mot de passe. 
-\\ 
-Concernant le hashage utilisé, on a décidé de se fixer sur la méthode standard défini par les normes de PHP, soit verify_password() et hash_password(), fonction qui ont l'avantage d'évoluer régulièrement et de ne pas se limiter qu'à un seul type de hashage. 
+\\ Concernant le hashage utilisé, on a décidé de se fixer sur la méthode standard défini par les normes de PHP, soit verify_password() et hash_password(), fonction qui ont l'avantage d'évoluer régulièrement et de ne pas se limiter qu'à un seul type de hashage. 
 \\
 \subsection{Le profil} 
 L'ensemble des utilisateurs partageant la même base concernant leur représentation. Tous possèdent une adresse mail, un numéro de téléphone, une date de naissance, .... Ainsi, concernant la gestion de leur profil, similaire donc, un seul contrôleur a été fixé, rajoutant des champs au formulaire si besoin. 
@@ -171,14 +170,14 @@ Trois choix s'offrent ensuite à l'utilisateur. Soit valider les modifications q
 Toujours concernant le vendeur, s'est posé la même question concernant le choix de la race, et le script javascript d'information associé  a été renouvelé dans cette partie. 
 
 \subsection{Paramètres du compte}
-On a proposé dans cette partie, pour tous les utilisateurs, la possibilité de changer de mot de passe ou alors de tout simplement détruire leur compte. 
+On était proposé dans cette partie, pour tous les utilisateurs, la possibilité de changer de mot de passe ou alors de tout simplement détruire leur compte. 
 Les liens vers lequel cet utilisateurs s'était attaché ramèneront alors vers une page pour les utilisateurs désormais inexistants. Il devient Inconnu lors des affichages. 
 
 \subsection{Mes Trajets}
 Deux partie se distingue alors selon les utilisateurs, bien que la vue pourtant reste identique. 
 Du côté des utilisateurs clients, on affiche un tableau représentant l'ensemble des trajets qu'ils ont effectué en tant que client. 
 \\
-Du côté des vendeurs, ce sera l'ensemble des trajets effectué en tant que vendeur qui sera affiché. 
+Du côté des vendeurs, ce sera l'ensemble des trajtes effecuté en tant que vendeur qui sera affiché. 
 \\ 
 Soit, seulement finalement l'appel à la base de donnée change réellement quelque chose entre ces deux types. 
 Cette espace n'est pas particulièrement destinée à l'admin qui a le droit lui de consulter l'ensemble des trajets. 
@@ -186,7 +185,7 @@ Cette espace n'est pas particulièrement destinée à l'admin qui a le droit lui
 \\subsection{Déconnexion}
 Il s'agit d'une page de déconnexion commune à tous. Elle s'occupe seulement de se vider des variables de sessions, ains que des variables globales. 
 
-\\subsection{L'espace Admin}
+\subsection{L'espace Admin}
 
 L'espace admin laisse la possibilité d'accéder à la liste des clients enregistré sur le site. On peut modifier ce qui concerne la partie profil de cette utilisateurs. 
 On peut également détruire ce compte, mais il s'agit d'une opération dangereuse. En effet, tel qu'implementé actuellement, il n'y a pas vérification et suppression de la présence de cet utilisateur dans les autres bases de données.
@@ -195,16 +194,21 @@ La même possibilité est laissé pour la liste des vendeurs. Toutefois, on ne p
 \\
 L'admin a également la possibilité d'accéder à l'ensemble des trajets dans la base de données. 
 Enfin, il est le seul à pouvoir rajouter une nouvelle race dans la base de donnée, ainsi qu'un nouvel admin.
- 
-\\subsection{configuration du template}
-Pour pouvoir accéder à l'espace membres et les différentes pages que l'on vient de proposer, il faut que cela soit accessible finalement. 
-En s'aidant des variables de sessions et de celles défini dans config.php, il est facilement possible dans php d'y inclure un menu supplémentaire pour accéder à ses pages, selon le degré de connexion et le type de connexion , permettant à l'utilisateur connecté de disposer de son menu correspondant. 
-Le menu vendeur et client reste le même, ( car c'est le contrôleur de la modification du profil, et de la liste des trajets qui s'occupe de la distinction ) 
 
+\subsection{configuration du template}
+Pour pouvoir accéder à l'espace membres et les différentes pages que l'on vient de proposer, il faut que cela soit accessible.  
+En s'aidant des variables de sessions et de celles défini dans config.php, il est facilement possible dans la page template d'y inclure un menu supplémentaire pour accéder à ses pages, selon le degré de connexion et le type de connexion , permettant à l'utilisateur connecté de disposer de son menu correspondant. 
+Le menu vendeur et client reste le même, ( car c'est le contrôleur de la modification du profil, et de la liste des trajets qui s'occupe de la distinction ) 
 
 \section{La vue}
 
-
+\section{Possibles amélioration}
+Certaines tables dans la base de données et ainsi que des manager dans le modèle existe mais ne sont pas utilisé. 
+Elle corresponde à des fonctionnalitées envisagés au début du projet mais qui ont été abandonné par la suite. 
+Ainsi, on était envisagé la possibilité pour les utilisateurs de commenter les vendeurs et d'établir ainsi un score de réputation. 
+\\
+Dans la partie admin, la possibilité de modifier les aspects vendeur ( race, position, occupé) des transporteurs. 
+Enfin, la possibilité de demander l'ajout d'une race par un utilisateur ( devant ensuite être validé par l'un des admins)
 
 \section{La répartition des rôles}
 \begin{description}
@@ -221,7 +225,6 @@ Le menu vendeur et client reste le même, ( car c'est le contrôleur de la modif
  \item[Maxime Song :].
  \\
 \end{description}
-
 
 
 \]

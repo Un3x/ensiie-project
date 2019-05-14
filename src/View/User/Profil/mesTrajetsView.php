@@ -52,7 +52,7 @@
             
             <td> <?=$mesCourses[$i]->getPrice()?> <img src="/image/Pokedollar.png" alt="Pokedollar"></td>
 
-            <td> <a href="index.php?action=infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
+            <td> <a href="/infoCourse&courseId=<?php echo ($mesCourses[$i]->getId() )?>">   Plus d'infos </a></td>
         </tr>
     <?php } ?>
     </tbody>

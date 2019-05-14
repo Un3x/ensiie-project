@@ -11,7 +11,7 @@
     </p>
 
 
-    <form action="index.php?action=modifUserAdmin&id=<?=$_GET['id']?>&type=<?=$_GET['type']?>"  method="POST" >
+    <form action="/modifUserAdmin&id=<?=$_GET['id']?>&type=<?=$_GET['type']?>"  method="POST" >
 
         <label for="prenom"> Son prenom : </label>
         <input type="text" id="prenom" name="prenom" value="<?=$valeurDefaut['prenom']?>"/>

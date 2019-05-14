@@ -9,7 +9,7 @@
         Nous avons la solution !
     </p>
 
-    <form method="POST"  action="index.php?action=inscriptionCarrier">
+    <form method="POST"  action="/inscriptionCarrier">
         <?= $messageErreur?>
         <br/>
 
@@ -107,5 +107,5 @@
 
 <?php require "../src/View/template.php"; ?>
 
-<script src="js/verificationFormulaireClient.js" ></script>
-<script src="js/changementCaracRace.js" > </script>;
+<script src="/js/verificationFormulaireClient.js" ></script>
+<script src="/js/changementCaracRace.js" > </script>;

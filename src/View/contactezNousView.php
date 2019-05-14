@@ -5,7 +5,7 @@
 <section>
     <p> Pensez très fort à moi, dites trois fois mon nom et j'arrive ! (Ou envoyez un mail):
     </p>
-    <form method="POST" action="index.php?action=contactezNousController">
+    <form method="POST" action="/contactezNousController">
              <label> adresse mail : </label>
            <input type="text" name="mail"/>
                 <br/>
