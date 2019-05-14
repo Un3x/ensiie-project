@@ -1,0 +1,80 @@
+blocks:
+  - key: 85j1q
+    text: Projet Web.
+    type: header-one
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 9icmr
+    text: >-
+      - site mix Instagram/Twitter, où on peut envoyer des messages publics, des
+      photos, des messages privés à ses amis
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 3nnl5
+    text: >-
+      - on peut avoir des amis, pour ça il faut que les deux personnes se
+      suivent mutuellement
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: a7nap
+    text: '- ou on peut juste suivre qq ou être suivi'
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: fnq2o
+    text: >-
+      - questionnaire à remplir en s'inscrivant déterminant nos caractéristiques
+      de lapins (race, couleur, taille (nain, normal, géant), nom, caractère
+      etc...)
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 8vndn
+    text: >-
+      - profil : mdp unique secret, photo de profil perso + lapin, pseudo (non
+      unique) mais id unique, date de naissance, petite description de soi, nom,
+      prenom, nombre de gens qui le suivent, nombre d'amis, nombre de carottes,
+      nombre de salades
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 25tna
+    text: >-
+      - achievements récompensés par des carottes qui permettent de débloquer
+      des vidéos marrantes ou mignonnes sur les lapins
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 2sdto
+    text: >-
+      - les carottes peuvent aussi être obtenues après 10 salades (qui
+      représentent les likes à nos publications)
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+  - key: 1fts8
+    text: '- table message'
+    type: unstyled
+    depth: 0
+    inlineStyleRanges: []
+    entityRanges: []
+    data: {}
+entityMap: {}

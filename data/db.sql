@@ -1,19 +1,39 @@
 CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
-);
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+    id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    is_admin INT, -- is_admin = 0 si non admin du site, 1 si admin --
+    firstname VARCHAR(30) NOT NULL,
+    pseudo VARCHAR(30) NOT NULL UNIQUE, 
+    email VARCHAR(30) NOT NULL,
+    birthday DATE,
+    passwrd VARCHAR(30) NOT NULL,
+    perso_description VARCHAR(300),
+    nb_followers INT,
+    nb_friends INT,
+    picture TEXT(500)
+)
+
+CREATE TABLE "post" (
+
+    id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    is_ok INT, -- is_ok = 0 si non verifie ou approuve par l'admin, 1 sinon et donc il peut etre affiche --
+    author VARCHAR(30),
+    contenu TEXT(300),
+    nb_like INT, 
+    nb_dislike INT
+)
+
+CREATE TABLE "like" (
+
+    id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    id_post INT,
+    id_author INT,
+    nb_like INT,
+    nb_dislike INT
+)
+
+-- AJOUT MANUEL DES ADMINS DU SITE --
+INSERT INTO "user" (is_admin, firstname, pseudo, birthday, passwrd) VALUES ( 1, 'Tania', 'Tan', '1998-06-18', 'lapin');
+INSERT INTO "user" (is_admin, firstname, pseudo, birthday, passwrd) VALUES ( 1, 'Théo', 'Bébou', '1998-12-06', 'lapin');
+INSERT INTO "user" (is_admin, firstname, pseudo, birthday, passwrd) VALUES ( 1, 'Kelly', 'Pixie<3', '1996-06-18', 'lapin');
+INSERT INTO "user" (is_admin, firstname, pseudo, birthday, passwrd) VALUES ( 1, 'Kélian', 'Styx', '1999-01-05', 'lapin');

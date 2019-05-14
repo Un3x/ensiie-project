@@ -1,4 +1,4 @@
-<?php
+<?php 
 require '../vendor/autoload.php';
 
 //postgres
@@ -11,33 +11,84 @@ $userRepository = new \User\UserRepository($connection);
 $users = $userRepository->fetchAll();
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+
+
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0"/>
+
+    <title>Usagi Life</title>
+
+    <link rel="stylesheet" type="text/css" href="../stylesheets/accueil.css" media="all"/>
+    <link rel="icon" type="image/png" href="../design/lapinBase.png" />
 </head>
+
+
+
 <body>
 
-<div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
+    <div id="blocGauche">
+        <div class="blocGaucheHeader">
 
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
+            <!-- FORMULAIRE PAGE ACCUEIL -->
+            <form action="perso.php" class="inputHeader" method="POST">
+
+                <div class="usernameAndMDP">
+                    <div class="inputUsername">
+                            <input type="text" name="pseudo" autocomplete="username" placeholder="Nom d'utilisateur" />
+                        </div>
+        
+                    <div class="inputMDP">
+                        <input type="password" name="mdp" autocomplete="current-password" placeholder="Mot de passe" />
+                        <a class="didTheirForgot" href="resetMDP.php" rel="noopener">Mot de passe oublié ?</a>
+                    </div>
+
+                </div>
+                
+                <div class="buttonSC">
+                    <input type="submit" class="buttonSCHeader" value="Se connecter" />
+                </div>
+            </form>
+            <!-- FIN DE FORMULAIRE -->
+
+        </div>
+
+        <div class="blocGaucheMiddle">
+            <div class="icone">
+                <img src="../design/lapinBase.png" alt="Un joli lapin !"/>
+            </div>
+            
+            <div class="contenuGauche">
+                <h1>Explorez le monde des lapins, partagez le votre.</h1>
+                <h2>Rejoignez Usagi Life dès aujourd'hui.</h2>
+            </div>
+
+            <div class="boutonInscription">
+                <form action="public/inscription.php" method="POST">
+                    <input type="submit" class="boutonI" value="S'inscrire" />
+                </form>
+            </div>
+
+        </div>
+
+
+        </div>
+            
+
+        <div id="blocDroite">
+            <div class="contenuDroite">
+
+        </div>
+
+    </div>
+
 </body>
+
+
+
+
+
+
 </html>

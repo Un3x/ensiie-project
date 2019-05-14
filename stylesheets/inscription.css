@@ -1,0 +1,95 @@
+html { height: 100%; }
+body { margin: 0; padding: 0; height: 100%; position: relative; background-color: #ffcafc; }
+
+.btGauche { height: 100%; width: 20%; float: left; }
+.btDroit { height: 100%; width: 20%; float: left; }
+
+.formInscription h1 {
+
+    font-size: 30px;
+    line-height: 32px;
+    font-family: 'Gill Sans', sans-serif;
+
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.formInscription {
+
+    width: 60%;
+    float: left;
+    margin: 20px 0 0 0;
+    padding: 20px;
+
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#divAsked {
+
+    width: 100%;
+    margin-top: 10px;
+
+    background-color: rgb(250, 250, 250);
+    border-bottom: #ff70f8 solid 2px;
+}
+#divAsked h6 {
+
+    margin: 0;
+    margin-left: 2%;
+    padding: 0;
+
+    font-size: 18px;
+    color: #ff70f8;
+    font-family: 'Gill Sans', sans-serif;
+}
+#divAsked h5 {
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 14px;
+    color: #808080;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+#asked {
+    background-color: transparent;
+
+    border : 0px;
+    height: 1cm;
+    margin: 0;
+    padding: 0;
+
+    color: #2b2b2b;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.validInscription {
+    background-color: #ff70f8;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #ff70f8;
+
+    height: 1cm;
+    width: 50%;
+    margin-top: 1cm;
+
+    color: white;
+    letter-spacing: .5px;
+    font-size: 15px;
+}
+
+p {
+    margin: 0 0 2px 0;
+    padding: 0;
+
+    color: black;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+}
+a { margin-top: 5px; color: #ff70f8; }

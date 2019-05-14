@@ -13,7 +13,7 @@ help:
 	@echo "${bold}phpunit.run${normal}\n\t Runs the unit tests.\n"
 
 start:
-	docker-compose up --build -d
+	sudo docker-compose up --build -d
 	sleep 3
 
 stop:
