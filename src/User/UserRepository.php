@@ -53,7 +53,7 @@ class UserRepository
         $req = 'INSERT INTO "user" (/*mail,*/ pseudo, firstname, lastname, birthday, mdp)
                 VALUES (/*:mail,*/ :pseudo, :prenom, :nom, :anniv, :mdp)';
         $valeurs = [/*'mail'=>$mail,*/ 'pseudo'=>$pseudo, 'prenom'=>$firstname, 'nom'=>$lastname,
-        'anniv'=>$birthday, 'mdp'=>$mdp];
+        'anniv'=>date_format($birthday, 'Y-m-d') , 'mdp'=>$mdp];
         $req_preparee = $this->connection->prepare($req);
         if (!$req_preparee->execute($valeurs)) {
             print_r($req_preparee->errorInfo());
