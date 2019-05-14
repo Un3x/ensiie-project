@@ -111,7 +111,7 @@
 
 <?php if($_SESSION["userType"] == 'Vendor' && $modif)  {?>
 
-<script src="../public/js/changementCaracRace.js">
+<script src="/js/changementCaracRace.js">
 
 </script>
 

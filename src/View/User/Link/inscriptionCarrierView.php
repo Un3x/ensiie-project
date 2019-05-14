@@ -107,5 +107,5 @@
 
 <?php require "../src/View/template.php"; ?>
 
-<script src="js/verificationFormulaireClient.js" ></script>
-<script src="js/changementCaracRace.js" > </script>;
+<script src="/js/verificationFormulaireClient.js" ></script>
+<script src="/js/changementCaracRace.js" > </script>;
