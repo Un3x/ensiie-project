@@ -29,6 +29,20 @@ Below are some useful commands :
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
 
+## 'version-perso' version
+Some issues occured with Docker and the latest working version of the website currently only is available at the following location : https://hovi.iiens.net/MyNewLiife/jeu.php. Please use this version for any further tests.
+
+## How to make your own story
+Using the csv to create scenarios actually is pretty simple, but some things can be tricky.
+
+First, requirements for a choice to appear must be specified in the **final node**. A choice leading to this node will only appear if you satisfy the requirements.
+
+Modifiers can be positive or negative. 
+
+Join-X modifiers have the following effect : if 1, join the club, if -1, leave the club, else, do nothing.
+
+If your story doesn't have an end corresponding to the node it ends on, you will not really be able to finish it and to start another one.
+
 ## Adding stories to the database easily
 
 In the `csv/` directory you will find a parser. Its use is simple: `cd csv && python3 parser.py *.csv`. The output is by default printed on `stdout`, to allow for easier validation by a human. This output can be redirected or copied at the end of the file `data/db.sql` (be sure to delete any previous version of this output to avoid errors).
