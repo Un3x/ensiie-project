@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,900');
+
+html, body{
+    font-family: 'Lato';
+}
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    background-color: #F44336;
+    border-radius: 5px;
+    margin: 10px 10px 20px 10px;
+    padding: 20px 20px 20px 20px;
+}
+
+h4, h5{
+    text-align: center;
+}
+
+form{
+    margin-right: 40%;
+    margin-left: 40%;
+}
+
+fieldset{
+    padding: 20px 20px 20px 20px;
+    border: 1px solid purple;
+    border-radius: 10px;
+}
+
+legend{
+    color: purple;
+    font-weight: bold;
+}
+
+label{
+    margin-top: 10px;
+    display: block;
+}
+
+label.inline{
+    display: inline;
+    margin-right: 50px;
+}
+
+input, textarea, select, option{
+    background-color: #FFF3F3;
+}
+
+input, textarea, select{
+    padding: 3px;
+    border: 1px solid #efe1ff;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+}
+
+select{
+    margin-top:10px;
+}
+
+input[type=radio] {
+    background-color: transparent;
+    border: none;
+    width: 10px;
+}
+
+input[type=submit]{
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 5px;
+    box-shadow: 1px 1px 1px purple;
+    cursor:pointer;
+}
