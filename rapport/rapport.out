@@ -1,12 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Approches importantes}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{Structure du site}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Structure de la base de donn\351e}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{Structure de la base de donn\351es}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.3}{Fonctionnalit\351s pour les \351l\350ves}{section.1}% 4
 \BOOKMARK [2][-]{subsection.1.4}{Fonctionnalit\351s pour les membres du BDE}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.5}{Fonctionnalit\351s pour les pr\351sidents d'associations}{section.1}% 6
 \BOOKMARK [2][-]{subsection.1.6}{La r\351cup\351ration de mot de passe}{section.1}% 7
 \BOOKMARK [1][-]{section.2}{R\351partition des r\364les}{}% 8
 \BOOKMARK [1][-]{section.3}{Probl\350mes rencontr\351s}{}% 9
-\BOOKMARK [2][-]{subsection.3.1}{OAuth et base de donn\351e distante}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.1}{OAuth et base de donn\351es distante}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.2}{Envoi d'un mail}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.3}{Design et graphisme du site}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Validation des formulaires}{section.3}% 13

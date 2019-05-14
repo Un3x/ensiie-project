@@ -53,7 +53,7 @@ Nous avons donc pensé le site comme une plateforme épurée où la seule page a
  Toutes les requêtes post passent par un fichier controller associer à la page actuelle. Les fichiers controller sont dans le répertoire "/public/admin/"\\
  
  Si l'utilisateur tente d'accéder à une page où il n'a pas les droits nécessaires il est automatiquement redirigé vers la page "\textbf{authentification.php}". 
- \subsection{Structure de la base de donnée}
+ \subsection{Structure de la base de données}
  On a choisi d'utiliser une base de données découpée en 5 tables : \\
  \begin{itemize}
  	\item users(id\_user, firstname, lastname, pseudo, year, password, mail, bde, president) : contient tous les utilisateurs et leurs informations personnelles.
@@ -63,16 +63,16 @@ Nous avons donc pensé le site comme une plateforme épurée où la seule page a
  	\item pointsassos(id\_user, id\_asso, notation, proposition) : contient la liste des points associatifs pour chaque élève pour chaque association.\\
  \end{itemize} 
 
-Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilisées dans le code : \\
+Nous avons aussi créé les vues suivantes qui simplifient les requêtes utilisées dans le code : \\
 \begin{itemize}
-	\item pointsassos\_prop(id\_user, id\_asso, moyenne) : calcul la proposition de note d'un élève dans une association en faisant la moyenne de ses notes dans chaque association.
-	\item leaderboard(id\_user, moyenne) : calcul les points totaux de tous les élèves pour le semestre.
+	\item pointsassos\_prop(id\_user, id\_asso, moyenne) : calcule la proposition de note d'un élève dans une association en faisant la moyenne de ses notes dans chaque association.
+	\item leaderboard(id\_user, moyenne) : calcule les points totaux de tous les élèves pour le semestre.
 \end{itemize}
 \subsection{Fonctionnalités pour les élèves}
-	Tous les élèves enregistrés ont accès à "\textbf{eleves.php}" qui permet aux élèves de consulter leurs participations aux évènement des différentes associations et leurs points dans chaque association. \\
+	Tous les élèves enregistrés ont accès à "\textbf{eleves.php}" qui permet aux élèves de consulter leurs participations aux évènements des différentes associations et leurs points dans chaque association. \\
 	Sur cette page ils peuvent aussi proclamer leurs participations aux évènements pour chaque association (ils choisissent d'abord l'association par un simple formulaire constitué d'un select puis un des évènements correspondants par un deuxième formulaire similaire)\\
 	
-	Ils ont aussi accès à "\textbf{profil.php}" sur laquelle ils peuvent consulter les informations sur leur compte, modifier leur mot de passe par un formulaire classique à 3 champs (le mot de passe est hashé avec l'algorithme bcrypt avant d'être stocké dans la base de donnée). Le même type de formulaire est utilisé pour modifier (ou en mettre une si il n'y en avait pas) l'adresse mail de récupération du mot de passe.
+	Ils ont aussi accès à "\textbf{profil.php}" sur laquelle ils peuvent consulter les informations sur leur compte, modifier leur mot de passe par un formulaire classique à 3 champs (le mot de passe est hashé avec l'algorithme bcrypt avant d'être stocké dans la base de données). Le même type de formulaire est utilisé pour modifier (ou en mettre une si il n'y en avait pas) l'adresse mail de récupération du mot de passe.
 	
 \subsection{Fonctionnalités pour les membres du BDE}
 	Les membres du BDE, sur la page "\textbf{bde.php}" peuvent choisir parmi deux menus de sélections : les promos et les associations des élèves à afficher. Ils peuvent ensuite afficher un tableau récapitulant ces données ou exporter ces données au format csv.\\ Un select déroulant permet de choisir l'ordre d'affichage du tableau : par nom ou pseudo ou points associatifs (si une seule association est sélectionnée).\\
@@ -88,7 +88,7 @@ Nous avons aussi créer les vues suivantes qui simplifient les requêtes utilis�
 	
 	Ces boutons envoient des requêtes différentes qui sont interprétées par le php et permettent respectivement de supprimer un évènement, envoyer les modifications sur l'évènement et afficher les détails des gens ayant participé à un évènement. \\
 	
-	\textit{Il faut préciser que la suppression d'un évènement dans la base de donnée ne fonctionne pas si il y a encore des gens qui y ont participé. Il vaut mieux donc supprimer ces gens avant la suppression de l'évènement.\\}
+	\textit{Il faut préciser que la suppression d'un évènement dans la base de données ne fonctionne pas si il y a encore des gens qui y ont participé. Il vaut mieux donc supprimer ces gens avant la suppression de l'évènement.\\}
 	
 	Le bouton "Détails" redirige vers la page "\textbf{event.php}" en définissant la variable de session : "\$\_SESSION['event']" qui contient l'id de l'évènement concerné. On pourra, exactement de la même manière qu'avec les évènements sur la page précédente, modifier la note de participation d'un élève à cet évènement ou le supprimer de l'évènement. \\
 	
@@ -114,8 +114,8 @@ La répartition du travail a donc été originalement faite comme présentée ci
 \end{itemize}
 
 \section{Problèmes rencontrés}
-\subsection{OAuth et base de donnée distante}
-Le principe de base était d'utiliser le protocole OAuth pour se connecter directement à la base de donnée d'Arise, et en recréer une en local avec uniquement les nouvelles données. Nous n'avons pas réussi à l'implémenter avec docker, mais une fois en production sur les serveurs d'arise, ce sera facile de le faire.  
+\subsection{OAuth et base de données distante}
+Le principe de base était d'utiliser le protocole OAuth pour se connecter directement à la base de données d'Arise, et en recréer une en local avec uniquement les nouvelles données. Nous n'avons pas réussi à l'implémenter avec docker, mais une fois en production sur les serveurs d'arise, ce sera facile de le faire.  
 
 \subsection{Envoi d'un mail}
 La fonction mail() de php ne fonctionnant pas sur docker (pas de Mail Transfert Agent) nous avons choisi de recréer une fonction php qui fait une requête au serveur smtp de google avec un compte créé pour l'occasion et le mot de passe stocké en clair côté serveur pour envoyer un mail.\\
@@ -123,6 +123,8 @@ La fonction mail() de php ne fonctionnant pas sur docker (pas de Mail Transfert 
 Si le site venait à être mis en production, nous utiliserons la fonction mail() de base du php.\\
 
 \subsection{Design et graphisme du site}
-Côté design, le site n'est pas un exemple. En effet, nous n'avons pas eu d'idées révolutionnaires pour rendre notre produit attrayant.
+Côté design, le site est très épuré afin de maximiser la clarté. Quelques améliorations graphiques peuvent cependant être faites, notamment sur la couleur. 
+\subsection{Validation des formulaires}
+Pour éviter les tentatives de piratage, on pourrait mettre des "->quote()" sur toutes les requêtes au lieu d'en mettre uniquement là où le risque d'intrusion est le plus fort.  
 
 \end{document}

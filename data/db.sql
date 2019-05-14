@@ -78,6 +78,11 @@ insert into users (firstname,lastname,pseudo,year,president,mail) values ('Loïc
 insert into users(firstname,lastname,pseudo,year,bde,president) values ('Quentin','Japhet','Samuh',2018,1,1);
 insert into users(firstname,lastname,pseudo,year,bde,president) values ('Antoine','Boudinel','Boudi',2018,1,1);
 insert into users(firstname,lastname,pseudo,year) values ('Corentin','Lafond','Tuareg',2017);
+insert into users(firstname,lastname,pseudo,year) values ('Oscar','Pothier','Oskul',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Aurélien','Inacio','Prophet',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Maël','Martin','Kubat',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Alexis','Bourget','Polio',2018);
+insert into users(firstname,lastname,pseudo,year) values ('Paul','Barbé','Agammon',2017);
 insert into associations(name,president) values ('Securitiie',1);
 insert into associations(name,president) values ('Vocaliise',2);
 insert into associations(name,president) values ('BDE',3);
