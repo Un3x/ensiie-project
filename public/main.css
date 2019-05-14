@@ -846,6 +846,29 @@ input[type=text],input[type=password], input[type=email]{
     max-width: 50%;
 }
 
+#my-account-data table{
+    width: 50%;
+    text-align: left;
+}
+
+#my-account-data table tr + td{
+    font-weight: 600;
+}
+
+#my-account-forms{
+    padding-top: 10px;
+}
+
+#my-account-forms input{
+    height:40px;
+}
+
+#my-account h3{
+    font-size: 22px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
 @media only screen and (max-width: 768px){
     #my-account-container{
         padding-top: 30px;
