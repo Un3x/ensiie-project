@@ -28,6 +28,13 @@ $sujetsRepository = new SujetsRepository($connection);
                 <ul class="pagination"></ul>
             </div>
             <div id="sub-container">
+                <div id="sujet-list-container">
+                    <ul class="sujet-list">
+                        <li class="sujet-container"></li>
+                    </div>
+                    </ul>
+                    <ul class="pagination"></ul>
+                </div>
                 <div id="sujet-create-container">
                     <form method="post">
                         <h3>Créer un nouveau sujet</h3>
