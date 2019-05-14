@@ -1,47 +1,27 @@
-const express = require('express')
-const app = express()
+var app = require('express')(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server),
+    ent = require('ent'), // Blocks HTML characters (security equivalent to htmlentities in PHP)
+    fs = require('fs');
 
+// Loading the page index.html
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '/index.html');
+});
 
-//set the template engine ejs
-app.set('view engine', 'ejs')
+io.sockets.on('connection', function (socket, username) {
+    // When the username is received it’s stored as a session variable and informs the other people
+    socket.on('new_client', function(username) {
+        username = ent.encode(username);
+        socket.username = username;
+        socket.broadcast.emit('new_client', username);
+    });
 
-//middlewares
-app.use(express.static('public'))
+    // When a message is received, the client’s username is retrieved and sent to the other people
+    socket.on('message', function (message) {
+        message = ent.encode(message);
+        socket.broadcast.emit('message', {username: socket.username, message: message});
+    });
+});
 
-
-//routes
-app.get('/', (req, res) => {
-    res.render('accueil')
-})
-
-//Listen on port 3000
-server = app.listen(8080)
-
-
-//socket.io instantiation
-const io = require("socket.io")(server)
-
-
-//listen on every connection
-io.on('connection', (socket) => {
-    console.log('New user connected')
-
-    //default username
-    socket.username = username
-
-    /*//listen on change_username
-    socket.on('change_username', (data) => {
-        socket.username = data.username
-    })*/
-
-    //listen on new_message
-    socket.on('new_message', (data) => {
-        //broadcast the new message
-        io.sockets.emit('new_message', {message : data.message, username : socket.username});
-    })
-
-    //listen on typing
-    socket.on('typing', (data) => {
-        socket.broadcast.emit('typing', {username : socket.username})
-    })
-})
+server.listen(8080);

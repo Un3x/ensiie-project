@@ -79,7 +79,7 @@ foreach ($members as $m) {
     </form>
     <div class="top-bar-left" style="display:inline-block;float:right;">
         <div class="menu">
-            <a href="discu_video.php"><button type="button">Lancer une discussion</button></a>
+            <a href="http://localhost:3000/index.html"><button type="button">Lancer une discussion</button></a>
             <a href="<?php if($member->getAdmin() && isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil_admin.php";} else if(isset($firstname_tmp) && isset($lastname_tmp)) {echo "profil.php";} else {echo"loginView.php";}?>"><button type="button">Profil</button></a>
             <a href="logout.php" ><button type="button">Logout</button></a>
         </div>
