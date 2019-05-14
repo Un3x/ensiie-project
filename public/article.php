@@ -31,7 +31,7 @@
 			$imgs = $articleRepository->getMedias($article->getId());
 			foreach($imgs as $img){
 				if(file_exists($img)){
-						echo '<img src="'.$img.'" alt="img not found"/>'; 
+						echo '<img class="media" src="'.$img.'" alt="img not found"/>'; 
 				}
 			}
 		
