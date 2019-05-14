@@ -36,6 +36,7 @@ CREATE TABLE "sujets" (
     author VARCHAR NOT NULL,
     sdatetime TIMESTAMP NOT NULL ,
     nbrep INT NOT NULL DEFAULT 0,
+    score INT NOT NULL DEFAULT 0,
     topicstatus VARCHAR NOT NULL CHECK (topicstatus IN ('solved','unsolved')) 
 );
 

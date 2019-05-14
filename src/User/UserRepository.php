@@ -96,4 +96,18 @@ class UserRepository
         $this->connection->prepare($insertionUser)->execute([$firstname, $lastname, $signupdate, $mailaddress, $pwh, $activcode, $lastlogdate, $userrole]);
     }
 
+    /**
+     * return user corresponding to id or false
+     */
+    public function getUserFromID($id){
+        foreach($usersArray as $usr){
+            if ($usr->getId() == $id){
+                return $usr;
+            }
+        }
+        return false;
+    }
+
+    
+
 }

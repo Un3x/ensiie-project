@@ -14,7 +14,7 @@ class SujetsRepository
     private $connection;
 
     /**
-     * array of all users
+     * array of all sujets
      */
     private $sujetsArray;
 
@@ -24,7 +24,7 @@ class SujetsRepository
      * @todo check if connection ok
      * Charge les sujets et réponses de la BD, et les range dans le tableau sujetsArray
      */
-    public function __construct(\PDO $connection, $orderByVote=TRUE)
+    public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
         $this->usersArray = $this->fetchAll();

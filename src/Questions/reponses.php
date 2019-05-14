@@ -143,7 +143,7 @@ class Reponse
     }
 
     /**
-     * @param string $validated
+     * @param bool $validated
      * @return Reponse
      */
     public function setValidated($validated)

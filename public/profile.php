@@ -27,7 +27,7 @@
                     <h1>Mon compte</h1>
                 <div id="my-account">
                     <div id="profile-pic-container">
-                    <img id="avatar" src=<?php echo $picpath ?> alt="Profile picture">
+                    <img id="avatar" src=<?php echo "$picpath" ?> alt="Profile picture">
                     <input type="file" accept="image/png, image/jpeg">
                     </div>
                     <div id="my-account data">
