@@ -9,6 +9,7 @@ Objectif pédagogique
 >Apprendre à concevoir et développer des applications web utilisant un serveur de bases de données.
 >Prendre conscience des problématiques d’organisation d’équipes et de répartition des tâches.
 
+
 Les sujets
 ------------
 
@@ -30,6 +31,7 @@ Must have
 
 ### Les sujets devront tous proposer **au minimum**
 
+> * POO (design pattern, héritage)
 > * Une authentification
 > * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
 > * Un profil utilisateur éditable
@@ -39,6 +41,7 @@ Must have
 > * au moins une jointure dans une requête
 > * des INSERT, DELETE, UPDATE, SELECT
 > * Un CRUD (Create Read Update Delete)
+> * Du javascript (au minimum validation JS des formulaires)
 
 Du javascript (au minimum validation JS des formulaires).
 Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
@@ -54,23 +57,23 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 #### On aimera
 
 > * Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
-> * PHP 7.1+
+> * PHP 7.4+
 > * Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
 > * Une API REST bien faite
 > * Les animations CSS parcimonieuses qui profitent à l’UX
 
 #### On n’aimera pas
 
-* Les frameworks (Zend Framework, Symfony, Angular, etc)
 * Le XML
 * jQuery utilisé n’importe comment
 * HTML5 utilisé n’importe comment
 
 ### Séances
 
-> * **26 mars 2019** : choix du sujet, début des projets, présentation de cloud9 (documentation)
-> * **09 avril 2019** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **14 mai 2019** : soutenance, livraison des sources
+> * **09 avril 2020** : choix du sujet, début des projets, présentation de la stack
+> * **23 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **30 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **07 mai 2020** : soutenance, livraison des sources
 
 ### La notation
 
@@ -90,9 +93,11 @@ Afin de s’affranchir de problème d’infrastructure, nous vous mettons à dis
 
 ### Le rendu des sources et du rapport
 
->Les projets devront être pushé sur ce [repository git](https://github.com/Un3x/ensiie-project) sur une branche ```<nom-de-votre-groupe>-group```.
+Une pull request devra être créée sur ce [repository git](https://github.com/rparpa/ensiie-project).
 
-**ATTENTION**: ce repo git n'as pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
+Aide : https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
+
+**ATTENTION**: ce repo git n'a pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
 
 > Le rapport doit être inclus dans les sources du projet, à la racine: ```/rapport.pdf```
 
@@ -129,12 +134,8 @@ Aussi, n’oubliez pas qu’on est là pour passer un bon moment, pas de lynchag
 
 ### Notre équipe
 
-* Thomas COMES : ENSIIE promo 2012, Project Lead chez Matters.
-* Nassim Kirouane : Tech Lead chez Matters.
-* Remi Parpaillon : Php Gourou chez Matters.
+* Remi Parpaillon : Tech lead chez Matters.
 
 ### Comment nous contacter
-
-Nous mettons un slack à votre disposition pour échanger avec nous. L'url vous sera communiqué lors du premier cours.
 
 Vous êtes également les bienvenus tous les jeudis après-midi dans nos locaux au 10 rue du Faubourg Poissonnière 75010 PARIS. Ce sera l’occasion de faire un peu plus connaissance, et d’assister à nos SteamLearn, les formations hebdo !
